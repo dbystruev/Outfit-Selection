@@ -10,12 +10,15 @@ import UIKit
 
 // MARK: - UIViewController
 extension ViewController {
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        buttonsStackView.isHidden = !editing
+        clothesStackView.setEditing(editing)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let logoImage = UIImage(named: "Logo")
-        let logoImageView = UIImageView(image: logoImage)
-        logoImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = logoImageView
+        setupUI()
         scrollViews.forEach { $0.delegate = self }
     }
     

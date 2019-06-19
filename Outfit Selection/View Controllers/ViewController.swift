@@ -9,5 +9,10 @@
 import UIKit
 
 class ViewController: UIViewController {
+    @IBOutlet var clothesStackView: UIStackView!
     @IBOutlet var scrollViews: [UIScrollView]!
+    @IBOutlet var buttonsStackView: UIStackView!
+    @IBOutlet var buttons: [UIButton]!
+    
+    var selectedButtonIndex: Int?
 }

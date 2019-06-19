@@ -18,4 +18,17 @@ extension ViewController {
         UIGraphicsEndImageContext()
         return image
     }
+    
+    func setupUI() {
+        let logoImage = UIImage(named: "logo")
+        let logoImageView = UIImageView(image: logoImage)
+        logoImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = logoImageView
+        
+        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let diceImage = UIImage(named: "dice")
+        let diceItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonPressed(_:)))
+        
+        setToolbarItems([spaceItem, diceItem, spaceItem], animated: false)
+    }
 }

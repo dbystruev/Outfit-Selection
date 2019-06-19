@@ -11,8 +11,7 @@ import UIKit
 // MARK: - Extension
 extension UIScrollView {
     var count: Int {
-        guard let stackView = subviews.first as? UIStackView else { return 0 }
-        return stackView.arrangedSubviews.count
+        return stackView?.arrangedSubviews.count ?? 0
     }
     
     var currentIndex: Int {
@@ -23,6 +22,18 @@ extension UIScrollView {
     var elementWidth: CGFloat {
         guard 0 < count else { return 0 }
         return contentSize.width / CGFloat(count)
+    }
+    
+    var stackView: UIStackView? {
+        return subviews.first as? UIStackView
+    }
+    
+    func add(image: UIImage?) {
+        let imageView = UIImageView(image: image)
+        stackView?.insertArrangedSubview(imageView, at: currentIndex + 1)
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            self.scrollToElement(withIndex: self.currentIndex + 1, duration: 1)
+        }
     }
     
     func scrollToRandomElement(duration: TimeInterval = 1) {
@@ -37,6 +48,16 @@ extension UIScrollView {
         let index = (index ?? currentIndex) % count
         UIView.animate(withDuration: duration) {
             self.contentOffset.x = self.elementWidth * CGFloat(index)
+        }
+    }
+    
+    func setEditing(_ editing: Bool) {
+        isUserInteractionEnabled = !editing
+        if editing {
+            mask = UIView(frame: bounds)
+            mask?.backgroundColor = UIColor.black.withAlphaComponent(0.5)
+        } else {
+            mask = nil
         }
     }
 }
