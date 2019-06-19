@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		69739EB022BA5DF80077E45D /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69739EAF22BA5DF80077E45D /* UIScrollView+Extension.swift */; };
+		69739EB222BA64E40077E45D /* ViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69739EB122BA64E40077E45D /* ViewController+Gestures.swift */; };
 		69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */; };
 		69A6F6F622BA26B7002A3B49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F522BA26B7002A3B49 /* ViewController.swift */; };
 		69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A6F6F722BA26B7002A3B49 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		69739EAF22BA5DF80077E45D /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
+		69739EB122BA64E40077E45D /* ViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Gestures.swift"; sourceTree = "<group>"; };
 		69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outfit Selection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69A6F6F522BA26B7002A3B49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 			children = (
 				69A6F6F522BA26B7002A3B49 /* ViewController.swift */,
 				69AB228B22BA4BE400C7FA8D /* ViewController+Actions.swift */,
+				69739EB122BA64E40077E45D /* ViewController+Gestures.swift */,
 				69A6F70B22BA42F1002A3B49 /* ViewController+UI.swift */,
 				69A6F70922BA3965002A3B49 /* ViewController+UIScrollViewDelegate.swift */,
 				69A6F70D22BA438A002A3B49 /* ViewController+UIViewController.swift */,
@@ -210,6 +213,7 @@
 				69A6F6F622BA26B7002A3B49 /* ViewController.swift in Sources */,
 				69A6F70A22BA3965002A3B49 /* ViewController+UIScrollViewDelegate.swift in Sources */,
 				69A6F70C22BA42F1002A3B49 /* ViewController+UI.swift in Sources */,
+				69739EB222BA64E40077E45D /* ViewController+Gestures.swift in Sources */,
 				69A6F70E22BA438A002A3B49 /* ViewController+UIViewController.swift in Sources */,
 				69AB228C22BA4BE400C7FA8D /* ViewController+Actions.swift in Sources */,
 				69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */,

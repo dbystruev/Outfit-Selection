@@ -25,9 +25,17 @@ extension UIScrollView {
         return contentSize.width / CGFloat(count)
     }
     
-    func snapToElement(withIndex index: Int? = nil) {
-        let index = index ?? currentIndex
-        UIView.animate(withDuration: 0.5) {
+    func scrollToRandomElement(duration: TimeInterval = 1) {
+        var random: Int
+        repeat {
+            random = .random(in: 0 ..< count)
+        } while random == currentIndex
+        scrollToElement(withIndex: random, duration: duration)
+    }
+    
+    func scrollToElement(withIndex index: Int? = nil, duration: TimeInterval = 0.5) {
+        let index = (index ?? currentIndex) % count
+        UIView.animate(withDuration: duration) {
             self.contentOffset.x = self.elementWidth * CGFloat(index)
         }
     }

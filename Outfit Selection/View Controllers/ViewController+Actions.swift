@@ -11,13 +11,7 @@ import UIKit
 // MARK: - Actions
 extension ViewController {
     @IBAction func diceButtonPressed(_ sender: UIBarButtonItem) {
-        scrollViews.forEach { scrollView in
-            var random: Int
-            repeat {
-                random = .random(in: 0 ..< scrollView.count)
-            } while random == scrollView.currentIndex
-            scrollView.snapToElement(withIndex: random)
-        }
+        scrollViews.forEach { $0.scrollToRandomElement() }
     }
     
     @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {

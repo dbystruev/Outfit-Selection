@@ -17,8 +17,9 @@ extension ViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        setupTapGestureRecognizers()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.scrollViews.forEach { $0.snapToElement() }
+            self.scrollViews.forEach { $0.scrollToElement() }
         }
     }
 }

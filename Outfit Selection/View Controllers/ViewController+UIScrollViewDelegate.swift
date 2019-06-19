@@ -12,10 +12,10 @@ import UIKit
 extension ViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if decelerate { return }
-        scrollView.snapToElement()
+        scrollView.scrollToElement()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        scrollView.snapToElement()
+        scrollView.scrollToElement()
     }
 }
