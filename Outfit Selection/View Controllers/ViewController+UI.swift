@@ -10,6 +10,15 @@ import UIKit
 
 // MARK: - UI
 extension ViewController {
+    func makeScreenshot(of view: UIView) -> UIImage? {
+        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
+        guard let context = UIGraphicsGetCurrentContext() else { return nil }
+        view.layer.render(in: context)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
+    
     func snap(_ scrollView: UIScrollView) {
         guard let stackView = scrollView.subviews.first as? UIStackView else { return }
         let numberOfSubviews = stackView.arrangedSubviews.count

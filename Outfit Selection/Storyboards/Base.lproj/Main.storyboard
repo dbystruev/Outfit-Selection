@@ -178,7 +178,13 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
-                    <navigationItem key="navigationItem" title="Get Outfit" id="NXz-cG-HPg"/>
+                    <navigationItem key="navigationItem" title="Get Outfit" id="NXz-cG-HPg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="2AA-iP-MGy">
+                            <connections>
+                                <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="9ar-hu-pj1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outletCollection property="scrollViews" destination="e2j-61-yTt" collectionClass="NSMutableArray" id="NFy-MN-k4n"/>
                         <outletCollection property="scrollViews" destination="McV-FV-yxk" collectionClass="NSMutableArray" id="uZW-Kz-d8q"/>
