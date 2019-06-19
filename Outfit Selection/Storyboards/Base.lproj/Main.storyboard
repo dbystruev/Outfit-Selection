@@ -31,7 +31,7 @@
                                                         <rect key="frame" x="0.0" y="0.0" width="1242" height="361"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topleft01" translatesAutoresizingMaskIntoConstraints="NO" id="yAK-fJ-kYJ">
-                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="361.00000000000011"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="361"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topleft03" translatesAutoresizingMaskIntoConstraints="NO" id="KmK-t3-4O9">
                                                                 <rect key="frame" x="207" y="0.0" width="207" height="361"/>
@@ -46,7 +46,7 @@
                                                                 <rect key="frame" x="828" y="0.0" width="207" height="361"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="topleft18" translatesAutoresizingMaskIntoConstraints="NO" id="8RG-k0-fli">
-                                                                <rect key="frame" x="1035" y="0.0" width="207" height="361.00000000000011"/>
+                                                                <rect key="frame" x="1035" y="0.0" width="207" height="361"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
@@ -101,7 +101,7 @@
                                                                 <rect key="frame" x="207" y="0.0" width="207" height="361"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomleft06" translatesAutoresizingMaskIntoConstraints="NO" id="0EC-Cr-hdt">
-                                                                <rect key="frame" x="414" y="0.0" width="207" height="361.00000000000011"/>
+                                                                <rect key="frame" x="414" y="0.0" width="207" height="361"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomleft10" translatesAutoresizingMaskIntoConstraints="NO" id="SOc-6o-vd7">
                                                                 <rect key="frame" x="621" y="0.0" width="207" height="361"/>
@@ -138,7 +138,7 @@
                                                                 <rect key="frame" x="621" y="0.0" width="207" height="361"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomright10-1" translatesAutoresizingMaskIntoConstraints="NO" id="bVJ-sp-dld">
-                                                                <rect key="frame" x="828" y="0.0" width="207" height="361.00000000000011"/>
+                                                                <rect key="frame" x="828" y="0.0" width="207" height="361"/>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bottomright10-2" translatesAutoresizingMaskIntoConstraints="NO" id="5IR-lc-Rk1">
                                                                 <rect key="frame" x="1035" y="0.0" width="207" height="361"/>
@@ -179,6 +179,12 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Get Outfit" id="NXz-cG-HPg"/>
+                    <connections>
+                        <outletCollection property="scrollViews" destination="e2j-61-yTt" collectionClass="NSMutableArray" id="NFy-MN-k4n"/>
+                        <outletCollection property="scrollViews" destination="McV-FV-yxk" collectionClass="NSMutableArray" id="uZW-Kz-d8q"/>
+                        <outletCollection property="scrollViews" destination="nrI-94-QGh" collectionClass="NSMutableArray" id="aOa-FR-wV6"/>
+                        <outletCollection property="scrollViews" destination="YAH-LD-FOj" collectionClass="NSMutableArray" id="PLC-BD-bcd"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
