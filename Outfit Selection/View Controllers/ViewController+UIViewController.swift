@@ -12,6 +12,10 @@ import UIKit
 extension ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
+        let logoImage = UIImage(named: "Logo")
+        let logoImageView = UIImageView(image: logoImage)
+        logoImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = logoImageView
         scrollViews.forEach { $0.delegate = self }
     }
     
