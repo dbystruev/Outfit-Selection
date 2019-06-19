@@ -179,6 +179,11 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" title="Get Outfit" id="NXz-cG-HPg">
+                        <barButtonItem key="leftBarButtonItem" image="dice" id="7Y5-wx-eaw">
+                            <connections>
+                                <action selector="diceButtonPressed:" destination="BYZ-38-t0r" id="M9f-kZ-cSm"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="2AA-iP-MGy">
                             <connections>
                                 <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="9ar-hu-pj1"/>
@@ -228,6 +233,7 @@
         <image name="bottomright10-1" width="250" height="412"/>
         <image name="bottomright10-2" width="363" height="245"/>
         <image name="bottomright16" width="323" height="599"/>
+        <image name="dice" width="25" height="25"/>
         <image name="topleft01" width="371" height="491"/>
         <image name="topleft03" width="423" height="583"/>
         <image name="topleft06" width="467" height="548"/>

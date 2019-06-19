@@ -18,7 +18,7 @@ extension ViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.scrollViews.forEach { self.snap($0) }
+            self.scrollViews.forEach { $0.snapToElement() }
         }
     }
 }

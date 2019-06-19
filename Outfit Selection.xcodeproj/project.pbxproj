@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		69739EB022BA5DF80077E45D /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69739EAF22BA5DF80077E45D /* UIScrollView+Extension.swift */; };
 		69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */; };
 		69A6F6F622BA26B7002A3B49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F522BA26B7002A3B49 /* ViewController.swift */; };
 		69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A6F6F722BA26B7002A3B49 /* Main.storyboard */; };
@@ -21,6 +22,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		69739EAF22BA5DF80077E45D /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outfit Selection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69A6F6F522BA26B7002A3B49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +49,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		69739EAE22BA5DCD0077E45D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				69739EAF22BA5DF80077E45D /* UIScrollView+Extension.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		69A6F6E722BA26B7002A3B49 = {
 			isa = PBXGroup;
 			children = (
@@ -70,6 +80,7 @@
 				69A6F70622BA38CE002A3B49 /* Resources */,
 				69A6F70822BA38FB002A3B49 /* Storyboards */,
 				69A6F70722BA38E6002A3B49 /* View Controllers */,
+				69739EAE22BA5DCD0077E45D /* Views */,
 			);
 			path = "Outfit Selection";
 			sourceTree = "<group>";
@@ -195,6 +206,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69739EB022BA5DF80077E45D /* UIScrollView+Extension.swift in Sources */,
 				69A6F6F622BA26B7002A3B49 /* ViewController.swift in Sources */,
 				69A6F70A22BA3965002A3B49 /* ViewController+UIScrollViewDelegate.swift in Sources */,
 				69A6F70C22BA42F1002A3B49 /* ViewController+UI.swift in Sources */,
