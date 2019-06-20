@@ -12,8 +12,9 @@ import UIKit
 extension ViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
+        buttons.forEach { $0.setEditing(action: selectedAction) }
         buttonsStackView.isHidden = !editing
-        clothesStackView.setEditing(editing)
+        scrollViews.forEach { $0.setEditing(editing) }
     }
     
     override func viewDidLoad() {

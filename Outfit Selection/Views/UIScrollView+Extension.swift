@@ -28,7 +28,22 @@ extension UIScrollView {
         return subviews.first as? UIStackView
     }
     
-    func add(image: UIImage?) {
+    func deleteImage(withIndex index: Int) {
+        guard 1 < count else { return }
+        guard 0 <= index && index < count else { return }
+        guard let imageView = stackView?.arrangedSubviews[index] as? UIImageView else { return }
+        if index == 0 {
+            guard let secondImageView = stackView?.arrangedSubviews[1] as? UIImageView else { return }
+            imageView.image = secondImageView.image
+            stackView?.removeArrangedSubview(secondImageView)
+            secondImageView.removeFromSuperview()
+        } else {
+            stackView?.removeArrangedSubview(imageView)
+            imageView.removeFromSuperview()
+        }
+    }
+    
+    func insert(image: UIImage?) {
         let imageView = UIImageView(image: image)
         stackView?.insertArrangedSubview(imageView, at: currentIndex + 1)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

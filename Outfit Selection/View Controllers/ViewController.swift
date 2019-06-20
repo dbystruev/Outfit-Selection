@@ -14,5 +14,6 @@ class ViewController: UIViewController {
     @IBOutlet var buttonsStackView: UIStackView!
     @IBOutlet var buttons: [UIButton]!
     
+    var selectedAction = UIBarButtonItem.SystemItem.cancel
     var selectedButtonIndex: Int?
 }

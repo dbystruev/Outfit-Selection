@@ -167,111 +167,43 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="v08-i2-MWB">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="362.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pK-U7-9S8">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrh-Mc-QXc">
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="Nk1-Nj-A9e">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrh-Mc-QXc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                        <connections>
-                                                            <action selector="plusButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihW-9Z-AYF"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="Qrh-Mc-QXc" secondAttribute="trailing" id="0WF-0V-Dv2"/>
-                                                    <constraint firstItem="Nk1-Nj-A9e" firstAttribute="top" secondItem="6pK-U7-9S8" secondAttribute="top" id="551-aA-AtD"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Nk1-Nj-A9e" secondAttribute="trailing" id="70O-by-30c"/>
-                                                    <constraint firstItem="Qrh-Mc-QXc" firstAttribute="leading" secondItem="6pK-U7-9S8" secondAttribute="leading" id="P1m-TQ-ffl"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Nk1-Nj-A9e" secondAttribute="bottom" id="aBc-UG-C7l"/>
-                                                    <constraint firstItem="Nk1-Nj-A9e" firstAttribute="leading" secondItem="6pK-U7-9S8" secondAttribute="leading" id="eMr-2X-ATH"/>
-                                                    <constraint firstItem="Qrh-Mc-QXc" firstAttribute="top" secondItem="6pK-U7-9S8" secondAttribute="top" id="vr8-kT-1s7"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Qrh-Mc-QXc" secondAttribute="bottom" id="y6J-oT-wmb"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ahN-wj-NEc">
+                                                <state key="normal" image="add"/>
+                                                <state key="selected" image="trash"/>
+                                                <connections>
+                                                    <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihW-9Z-AYF"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6d8-jy-X4g">
                                                 <rect key="frame" x="207" y="0.0" width="207" height="362.5"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="Kft-Ty-Dhm">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JXV-lV-Wyg">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                        <connections>
-                                                            <action selector="plusButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Fxi-G9-aMc"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="JXV-lV-Wyg" firstAttribute="leading" secondItem="ahN-wj-NEc" secondAttribute="leading" id="7dc-ld-sRM"/>
-                                                    <constraint firstItem="Kft-Ty-Dhm" firstAttribute="leading" secondItem="ahN-wj-NEc" secondAttribute="leading" id="7nb-HR-2QT"/>
-                                                    <constraint firstItem="Kft-Ty-Dhm" firstAttribute="top" secondItem="ahN-wj-NEc" secondAttribute="top" id="Cfu-Ha-trD"/>
-                                                    <constraint firstAttribute="trailing" secondItem="Kft-Ty-Dhm" secondAttribute="trailing" id="JBY-FF-KkX"/>
-                                                    <constraint firstAttribute="trailing" secondItem="JXV-lV-Wyg" secondAttribute="trailing" id="MLe-tk-kps"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Kft-Ty-Dhm" secondAttribute="bottom" id="QmW-b3-OLW"/>
-                                                    <constraint firstItem="JXV-lV-Wyg" firstAttribute="top" secondItem="ahN-wj-NEc" secondAttribute="top" id="aUK-9T-8Jg"/>
-                                                    <constraint firstAttribute="bottom" secondItem="JXV-lV-Wyg" secondAttribute="bottom" id="sz9-je-x60"/>
-                                                </constraints>
-                                            </view>
+                                                <state key="normal" image="add"/>
+                                                <state key="selected" image="trash"/>
+                                                <connections>
+                                                    <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRl-aN-Yn3"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="IhR-uz-Edf">
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="kgN-iQ-i5v">
                                         <rect key="frame" x="0.0" y="362.5" width="414" height="362.5"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cAh-Eg-MSM">
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veY-L1-vFI">
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="KoG-Cs-1ob">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sRt-Tt-lpe">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                        <connections>
-                                                            <action selector="plusButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="k1M-22-xgU"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="sRt-Tt-lpe" firstAttribute="top" secondItem="cAh-Eg-MSM" secondAttribute="top" id="1Yd-3d-Max"/>
-                                                    <constraint firstItem="sRt-Tt-lpe" firstAttribute="leading" secondItem="cAh-Eg-MSM" secondAttribute="leading" id="8rK-75-49Y"/>
-                                                    <constraint firstAttribute="trailing" secondItem="KoG-Cs-1ob" secondAttribute="trailing" id="9UV-Dk-V6k"/>
-                                                    <constraint firstAttribute="bottom" secondItem="KoG-Cs-1ob" secondAttribute="bottom" id="DYP-D1-n3e"/>
-                                                    <constraint firstItem="KoG-Cs-1ob" firstAttribute="leading" secondItem="cAh-Eg-MSM" secondAttribute="leading" id="JcI-EG-pjI"/>
-                                                    <constraint firstAttribute="bottom" secondItem="sRt-Tt-lpe" secondAttribute="bottom" id="Pt0-VG-0Yx"/>
-                                                    <constraint firstItem="KoG-Cs-1ob" firstAttribute="top" secondItem="cAh-Eg-MSM" secondAttribute="top" id="h1C-F7-hnA"/>
-                                                    <constraint firstAttribute="trailing" secondItem="sRt-Tt-lpe" secondAttribute="trailing" id="wx7-cM-ai3"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2ex-OT-ayy">
+                                                <state key="normal" image="add"/>
+                                                <state key="selected" image="trash"/>
+                                                <connections>
+                                                    <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KO8-2e-Yba"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prF-ci-obE">
                                                 <rect key="frame" x="207" y="0.0" width="207" height="362.5"/>
-                                                <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="plus" translatesAutoresizingMaskIntoConstraints="NO" id="ixf-6p-a0X">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                    </imageView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YoC-pG-Rn8">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                        <connections>
-                                                            <action selector="plusButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a2V-Vn-yXe"/>
-                                                        </connections>
-                                                    </button>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="YoC-pG-Rn8" firstAttribute="top" secondItem="2ex-OT-ayy" secondAttribute="top" id="Rme-TU-4hc"/>
-                                                    <constraint firstAttribute="trailing" secondItem="ixf-6p-a0X" secondAttribute="trailing" id="SaL-OQ-s5Z"/>
-                                                    <constraint firstAttribute="bottom" secondItem="ixf-6p-a0X" secondAttribute="bottom" id="XVd-IG-ye3"/>
-                                                    <constraint firstAttribute="trailing" secondItem="YoC-pG-Rn8" secondAttribute="trailing" id="Y0u-J6-iBe"/>
-                                                    <constraint firstItem="YoC-pG-Rn8" firstAttribute="leading" secondItem="2ex-OT-ayy" secondAttribute="leading" id="Yqa-LR-0V3"/>
-                                                    <constraint firstItem="ixf-6p-a0X" firstAttribute="leading" secondItem="2ex-OT-ayy" secondAttribute="leading" id="bwx-g5-O2e"/>
-                                                    <constraint firstItem="ixf-6p-a0X" firstAttribute="top" secondItem="2ex-OT-ayy" secondAttribute="top" id="mTH-Pr-D1W"/>
-                                                    <constraint firstAttribute="bottom" secondItem="YoC-pG-Rn8" secondAttribute="bottom" id="ur6-v4-Jjt"/>
-                                                </constraints>
-                                            </view>
+                                                <state key="normal" image="add"/>
+                                                <state key="selected" image="trash"/>
+                                                <connections>
+                                                    <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQ5-oH-8Ra"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
@@ -318,9 +250,9 @@
                         <outletCollection property="scrollViews" destination="nrI-94-QGh" collectionClass="NSMutableArray" id="aOa-FR-wV6"/>
                         <outletCollection property="scrollViews" destination="YAH-LD-FOj" collectionClass="NSMutableArray" id="PLC-BD-bcd"/>
                         <outletCollection property="buttons" destination="Qrh-Mc-QXc" collectionClass="NSMutableArray" id="ceP-hT-fRt"/>
-                        <outletCollection property="buttons" destination="JXV-lV-Wyg" collectionClass="NSMutableArray" id="Ifq-c5-ocx"/>
-                        <outletCollection property="buttons" destination="sRt-Tt-lpe" collectionClass="NSMutableArray" id="cmr-7u-pEW"/>
-                        <outletCollection property="buttons" destination="YoC-pG-Rn8" collectionClass="NSMutableArray" id="RC0-XE-MrV"/>
+                        <outletCollection property="buttons" destination="6d8-jy-X4g" collectionClass="NSMutableArray" id="ta9-oQ-ufj"/>
+                        <outletCollection property="buttons" destination="veY-L1-vFI" collectionClass="NSMutableArray" id="VIv-ua-9uO"/>
+                        <outletCollection property="buttons" destination="prF-ci-obE" collectionClass="NSMutableArray" id="M2z-il-wIJ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -351,6 +283,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="add" width="50" height="50"/>
         <image name="bottomleft01" width="292" height="726"/>
         <image name="bottomleft03" width="358" height="435"/>
         <image name="bottomleft06" width="440" height="765"/>
@@ -363,7 +296,6 @@
         <image name="bottomright10-1" width="250" height="412"/>
         <image name="bottomright10-2" width="363" height="245"/>
         <image name="bottomright16" width="323" height="599"/>
-        <image name="plus" width="500" height="500"/>
         <image name="topleft01" width="371" height="491"/>
         <image name="topleft03" width="423" height="583"/>
         <image name="topleft06" width="467" height="548"/>
@@ -373,5 +305,6 @@
         <image name="topright01" width="400" height="489"/>
         <image name="topright06" width="413" height="676"/>
         <image name="topright16" width="419" height="181"/>
+        <image name="trash" width="50" height="50"/>
     </resources>
 </document>

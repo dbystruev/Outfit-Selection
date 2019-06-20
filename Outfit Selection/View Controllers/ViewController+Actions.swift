@@ -11,6 +11,7 @@ import UIKit
 // MARK: - Actions
 extension ViewController {
     @IBAction func addButtonPressed(_ sender: UIBarButtonItem) {
+        selectedAction = .add
         setEditing(!isEditing, animated: true)
         return
     }
@@ -24,13 +25,30 @@ extension ViewController {
         present(activityController, animated: true)
     }
     
-    @IBAction func plusButtonPressed(_ sender: UIButton) {
+    @IBAction func insideButtonPressed(_ sender: UIButton) {
         selectedButtonIndex = buttons.firstIndex(of: sender)
-        let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.image"], in: .import)
-        documentPicker.allowsMultipleSelection = true
-        documentPicker.delegate = self
-        present(documentPicker, animated: true)
         setEditing(false, animated: false)
+        if sender.isSelected {
+            guard let scrollViewIndex = selectedButtonIndex else { return }
+            guard scrollViewIndex < scrollViews.count else { return }
+            let scrollView = scrollViews[scrollViewIndex]
+            scrollView.scrollToElement(withIndex: scrollView.currentIndex + 1, duration: 0.5)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                scrollView.deleteImage(withIndex: scrollView.currentIndex - 1)
+                scrollView.scrollToElement(withIndex: scrollView.currentIndex - 1, duration: 0)
+            }
+        } else {
+            let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.image"], in: .import)
+            documentPicker.allowsMultipleSelection = true
+            documentPicker.delegate = self
+            present(documentPicker, animated: true)
+        }
+    }
+    
+    @objc func trashButtonPressed(_ sender: UIBarButtonItem) {
+        selectedAction = .trash
+        setEditing(!isEditing, animated: true)
+        return
     }
     
     @objc func diceButtonPressed(_ sender: UIBarButtonItem) {

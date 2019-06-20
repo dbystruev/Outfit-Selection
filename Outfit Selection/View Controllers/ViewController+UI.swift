@@ -25,10 +25,11 @@ extension ViewController {
         logoImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = logoImageView
         
+        let deleteItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashButtonPressed(_:)))
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let diceImage = UIImage(named: "dice")
         let diceItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonPressed(_:)))
         
-        setToolbarItems([spaceItem, diceItem, spaceItem], animated: false)
+        setToolbarItems([deleteItem, spaceItem, diceItem], animated: false)
     }
 }
