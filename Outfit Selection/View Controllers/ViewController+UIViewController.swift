@@ -19,13 +19,13 @@ extension ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupTapGestureRecognizers()
         setupUI()
         scrollViews.forEach { $0.delegate = self }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setupTapGestureRecognizers()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.scrollViews.forEach { $0.scrollToElement() }
         }

@@ -28,16 +28,20 @@ extension UIScrollView {
         return subviews.first as? UIStackView
     }
     
-    func deleteImage(withIndex index: Int) {
+    func deleteImage(withIndex deleteIndex: Int) {
         guard 1 < count else { return }
-        guard 0 <= index && index < count else { return }
-        guard let imageView = stackView?.arrangedSubviews[index] as? UIImageView else { return }
-        if index == 0 {
+        guard 0 <= deleteIndex && deleteIndex < count else { return }
+        guard let imageView = stackView?.arrangedSubviews[deleteIndex] as? UIImageView else { return }
+        if deleteIndex == 0 {
+            contentOffset.x = 0
             guard let secondImageView = stackView?.arrangedSubviews[1] as? UIImageView else { return }
             imageView.image = secondImageView.image
             stackView?.removeArrangedSubview(secondImageView)
             secondImageView.removeFromSuperview()
         } else {
+            if deleteIndex < count - 1 {
+                contentOffset.x -= elementWidth
+            }
             stackView?.removeArrangedSubview(imageView)
             imageView.removeFromSuperview()
         }
@@ -52,18 +56,20 @@ extension UIScrollView {
     }
     
     func scrollToRandomElement(duration: TimeInterval = 1) {
-        var random: Int
-        repeat {
-            random = .random(in: 0 ..< count)
-        } while random == currentIndex
+        var random = 0
+        if 1 < count {
+            repeat {
+                random = .random(in: 0 ..< count)
+            } while random == currentIndex
+        }
         scrollToElement(withIndex: random, duration: duration)
     }
     
-    func scrollToElement(withIndex index: Int? = nil, duration: TimeInterval = 0.5) {
+    func scrollToElement(withIndex index: Int? = nil, duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
         let index = (index ?? currentIndex) % count
-        UIView.animate(withDuration: duration) {
+        UIView.animate(withDuration: duration, animations: {
             self.contentOffset.x = self.elementWidth * CGFloat(index)
-        }
+        }, completion: completion)
     }
     
     func setEditing(_ editing: Bool) {
