@@ -20,6 +20,12 @@ extension ViewController {
     }
     
     func setupUI() {
+        scrollViews.forEach {
+            $0.minimumZoomScale = zoomScale
+            $0.maximumZoomScale = zoomScale
+            $0.zoomScale = zoomScale
+        }
+        
         let logoImage = UIImage(named: "logo")
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.contentMode = .scaleAspectFit

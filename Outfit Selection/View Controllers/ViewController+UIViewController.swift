@@ -19,9 +19,10 @@ extension ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        loadImages()
+        scrollViews.forEach { $0.delegate = self }
         setupTapGestureRecognizers()
         setupUI()
-        scrollViews.forEach { $0.delegate = self }
     }
     
     override func viewDidLayoutSubviews() {

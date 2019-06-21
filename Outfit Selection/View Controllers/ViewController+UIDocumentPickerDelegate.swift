@@ -16,7 +16,7 @@ extension ViewController: UIDocumentPickerDelegate {
         let scrollView = scrollViews[index]
         for url in urls {
             guard let data = try? Data(contentsOf: url) else { continue }
-            scrollView.insert(image: UIImage(data: data))
+            scrollView.insertAndScroll(image: UIImage(data: data))
         }
     }
 }

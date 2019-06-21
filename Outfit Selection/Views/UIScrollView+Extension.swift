@@ -47,11 +47,24 @@ extension UIScrollView {
         }
     }
     
-    func insert(image: UIImage?) {
+    func insert(image: UIImage?, atIndex index: Int? = nil) {
+        if let lastImageView = stackView?.arrangedSubviews.last as? UIImageView {
+            guard lastImageView.image != nil else {
+                lastImageView.image = image
+                return
+            }
+        }
         let imageView = UIImageView(image: image)
-        stackView?.insertArrangedSubview(imageView, at: currentIndex + 1)
+        imageView.contentMode = .scaleAspectFit
+        let index = index ?? count
+        stackView?.insertArrangedSubview(imageView, at: index)
+    }
+    
+    func insertAndScroll(image: UIImage?, atIndex index: Int? = nil) {
+        let index = index ?? currentIndex + 1
+        insert(image: image, atIndex: index)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.scrollToElement(withIndex: self.currentIndex + 1, duration: 1)
+            self.scrollToElement(withIndex: index, duration: 1)
         }
     }
     

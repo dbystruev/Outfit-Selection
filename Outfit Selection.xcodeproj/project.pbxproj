@@ -8,8 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		6919AA1622BAFF82005474A8 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6919AA1522BAFF82005474A8 /* UIButton+Extension.swift */; };
+		692A074322BD32D70042F639 /* Images.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 692A074222BD32D70042F639 /* Images.bundle */; };
 		69739EB022BA5DF80077E45D /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69739EAF22BA5DF80077E45D /* UIScrollView+Extension.swift */; };
 		69739EB222BA64E40077E45D /* ViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69739EB122BA64E40077E45D /* ViewController+Gestures.swift */; };
+		6990766722BD340700DAA417 /* ViewController+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6990766622BD340700DAA417 /* ViewController+Images.swift */; };
 		69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */; };
 		69A6F6F622BA26B7002A3B49 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F522BA26B7002A3B49 /* ViewController.swift */; };
 		69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A6F6F722BA26B7002A3B49 /* Main.storyboard */; };
@@ -26,8 +28,10 @@
 
 /* Begin PBXFileReference section */
 		6919AA1522BAFF82005474A8 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
+		692A074222BD32D70042F639 /* Images.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Images.bundle; sourceTree = "<group>"; };
 		69739EAF22BA5DF80077E45D /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		69739EB122BA64E40077E45D /* ViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Gestures.swift"; sourceTree = "<group>"; };
+		6990766622BD340700DAA417 /* ViewController+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Images.swift"; sourceTree = "<group>"; };
 		69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outfit Selection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69A6F6F522BA26B7002A3B49 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 		69A6F70622BA38CE002A3B49 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				692A074222BD32D70042F639 /* Images.bundle */,
 				69A6F70F22BA4978002A3B49 /* Screenshots */,
 				69A6F6FA22BA26BA002A3B49 /* Assets.xcassets */,
 			);
@@ -116,6 +121,7 @@
 				69A6F6F522BA26B7002A3B49 /* ViewController.swift */,
 				69AB228B22BA4BE400C7FA8D /* ViewController+Actions.swift */,
 				69739EB122BA64E40077E45D /* ViewController+Gestures.swift */,
+				6990766622BD340700DAA417 /* ViewController+Images.swift */,
 				69A6F70B22BA42F1002A3B49 /* ViewController+UI.swift */,
 				69AF825322BAC77800A04DEA /* ViewController+UIDocumentPickerDelegate.swift */,
 				69A6F70922BA3965002A3B49 /* ViewController+UIScrollViewDelegate.swift */,
@@ -201,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				69A6F6FE22BA26BA002A3B49 /* LaunchScreen.storyboard in Resources */,
+				692A074322BD32D70042F639 /* Images.bundle in Resources */,
 				69A6F6FB22BA26BA002A3B49 /* Assets.xcassets in Resources */,
 				69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */,
 				69A6F71322BA4986002A3B49 /* Screen2.png in Resources */,
@@ -215,6 +222,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6990766722BD340700DAA417 /* ViewController+Images.swift in Sources */,
 				69739EB022BA5DF80077E45D /* UIScrollView+Extension.swift in Sources */,
 				69A6F6F622BA26B7002A3B49 /* ViewController.swift in Sources */,
 				69A6F70A22BA3965002A3B49 /* ViewController+UIScrollViewDelegate.swift in Sources */,
