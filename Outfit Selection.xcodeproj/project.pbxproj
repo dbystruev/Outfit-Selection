@@ -20,8 +20,6 @@
 		69A6F70A22BA3965002A3B49 /* ViewController+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F70922BA3965002A3B49 /* ViewController+UIScrollViewDelegate.swift */; };
 		69A6F70C22BA42F1002A3B49 /* ViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F70B22BA42F1002A3B49 /* ViewController+UI.swift */; };
 		69A6F70E22BA438A002A3B49 /* ViewController+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F70D22BA438A002A3B49 /* ViewController+UIViewController.swift */; };
-		69A6F71222BA4986002A3B49 /* Screen1.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A6F71022BA4986002A3B49 /* Screen1.png */; };
-		69A6F71322BA4986002A3B49 /* Screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = 69A6F71122BA4986002A3B49 /* Screen2.png */; };
 		69AB228C22BA4BE400C7FA8D /* ViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB228B22BA4BE400C7FA8D /* ViewController+Actions.swift */; };
 		69AF825422BAC77800A04DEA /* ViewController+UIDocumentPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AF825322BAC77800A04DEA /* ViewController+UIDocumentPickerDelegate.swift */; };
 /* End PBXBuildFile section */
@@ -42,10 +40,10 @@
 		69A6F70922BA3965002A3B49 /* ViewController+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
 		69A6F70B22BA42F1002A3B49 /* ViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UI.swift"; sourceTree = "<group>"; };
 		69A6F70D22BA438A002A3B49 /* ViewController+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UIViewController.swift"; sourceTree = "<group>"; };
-		69A6F71022BA4986002A3B49 /* Screen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen1.png; sourceTree = "<group>"; };
-		69A6F71122BA4986002A3B49 /* Screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen2.png; sourceTree = "<group>"; };
 		69AB228B22BA4BE400C7FA8D /* ViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Actions.swift"; sourceTree = "<group>"; };
 		69AF825322BAC77800A04DEA /* ViewController+UIDocumentPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+UIDocumentPickerDelegate.swift"; sourceTree = "<group>"; };
+		69D904C622E1D45B0055ACAF /* Screen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Screen1.png; path = ../../../../../../../Desktop/Screen1.png; sourceTree = "<group>"; };
+		69D904C722E1D45B0055ACAF /* Screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Screen2.png; path = ../../../../../../../Desktop/Screen2.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -142,8 +140,8 @@
 		69A6F70F22BA4978002A3B49 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
-				69A6F71022BA4986002A3B49 /* Screen1.png */,
-				69A6F71122BA4986002A3B49 /* Screen2.png */,
+				69D904C622E1D45B0055ACAF /* Screen1.png */,
+				69D904C722E1D45B0055ACAF /* Screen2.png */,
 			);
 			path = Screenshots;
 			sourceTree = "<group>";
@@ -210,8 +208,6 @@
 				692A074322BD32D70042F639 /* Images.bundle in Resources */,
 				69A6F6FB22BA26BA002A3B49 /* Assets.xcassets in Resources */,
 				69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */,
-				69A6F71322BA4986002A3B49 /* Screen2.png in Resources */,
-				69A6F71222BA4986002A3B49 /* Screen1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

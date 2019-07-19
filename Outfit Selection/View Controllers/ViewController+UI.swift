@@ -27,6 +27,7 @@ extension ViewController {
         }
         
         let logoImage = UIImage(named: "logo")
+        print(#line, #function, logoImage)
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = logoImageView
