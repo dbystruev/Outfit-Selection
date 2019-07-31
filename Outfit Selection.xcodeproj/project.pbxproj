@@ -11,7 +11,6 @@
 		692A074322BD32D70042F639 /* Images.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 692A074222BD32D70042F639 /* Images.bundle */; };
 		6930F57422F1B58B007E0462 /* Screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6930F57122F1B58B007E0462 /* Screen2.png */; };
 		6930F57522F1B58B007E0462 /* Screen3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6930F57222F1B58B007E0462 /* Screen3.png */; };
-		693FA5FE22F1CAC900801A61 /* Screen1.png in Resources */ = {isa = PBXBuildFile; fileRef = 693FA5FD22F1CAC900801A61 /* Screen1.png */; };
 		69739EB022BA5DF80077E45D /* UIScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69739EAF22BA5DF80077E45D /* UIScrollView+Extension.swift */; };
 		69739EB222BA64E40077E45D /* OutfitViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69739EB122BA64E40077E45D /* OutfitViewController+Gestures.swift */; };
 		6990766722BD340700DAA417 /* OutfitViewController+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6990766622BD340700DAA417 /* OutfitViewController+Images.swift */; };
@@ -33,7 +32,6 @@
 		692A074222BD32D70042F639 /* Images.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Images.bundle; sourceTree = "<group>"; };
 		6930F57122F1B58B007E0462 /* Screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen2.png; sourceTree = "<group>"; };
 		6930F57222F1B58B007E0462 /* Screen3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen3.png; sourceTree = "<group>"; };
-		693FA5FD22F1CAC900801A61 /* Screen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Screen1.png; path = ../../../../../../../Downloads/Screen1.png; sourceTree = "<group>"; };
 		69739EAF22BA5DF80077E45D /* UIScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIScrollView+Extension.swift"; sourceTree = "<group>"; };
 		69739EB122BA64E40077E45D /* OutfitViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+Gestures.swift"; sourceTree = "<group>"; };
 		6990766622BD340700DAA417 /* OutfitViewController+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+Images.swift"; sourceTree = "<group>"; };
@@ -140,7 +138,6 @@
 		69A6F70F22BA4978002A3B49 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
-				693FA5FD22F1CAC900801A61 /* Screen1.png */,
 				6930F57122F1B58B007E0462 /* Screen2.png */,
 				6930F57222F1B58B007E0462 /* Screen3.png */,
 			);
@@ -233,7 +230,6 @@
 				69A6F6FB22BA26BA002A3B49 /* Assets.xcassets in Resources */,
 				69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */,
 				6930F57522F1B58B007E0462 /* Screen3.png in Resources */,
-				693FA5FE22F1CAC900801A61 /* Screen1.png in Resources */,
 				6930F57422F1B58B007E0462 /* Screen2.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
