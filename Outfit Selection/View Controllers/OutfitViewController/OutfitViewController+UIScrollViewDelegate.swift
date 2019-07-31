@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - UIScrollViewDelegate
-extension ViewController: UIScrollViewDelegate {
+extension OutfitViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if decelerate { return }
         scrollView.scrollToElement()

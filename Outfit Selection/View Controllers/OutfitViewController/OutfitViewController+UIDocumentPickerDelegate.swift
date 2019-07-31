@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - UIDocumentPickerDelegate
-extension ViewController: UIDocumentPickerDelegate {
+extension OutfitViewController: UIDocumentPickerDelegate {
     func documentPicker(_ controller: UIDocumentPickerViewController, didPickDocumentsAt urls: [URL]) {
         guard let index = selectedButtonIndex else { return }
         guard index < scrollViews.count else { return }

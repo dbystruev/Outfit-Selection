@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - UI
-extension ViewController {
+extension OutfitViewController {
     func getScreenshot(of view: UIView) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
         guard let context = UIGraphicsGetCurrentContext() else { return nil }

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  OutfitViewController.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 19/06/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class OutfitViewController: UIViewController {
     @IBOutlet var clothesStackView: UIStackView!
     @IBOutlet var scrollViews: [UIScrollView]!
     @IBOutlet var buttonsStackView: UIStackView!

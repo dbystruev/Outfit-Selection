@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - Images
-extension ViewController {
+extension OutfitViewController {
     func loadImages() {
         let fileManager = FileManager.default
         let bundleURL = Bundle.main.bundleURL

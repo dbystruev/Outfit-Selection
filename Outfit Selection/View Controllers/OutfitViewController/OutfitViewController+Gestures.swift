@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - Gestures
-extension ViewController {
+extension OutfitViewController {
     func setupTapGestureRecognizers() {
         scrollViews.forEach { scrollView in
             let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
