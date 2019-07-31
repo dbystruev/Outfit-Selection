@@ -23,6 +23,7 @@ extension OutfitViewController {
         scrollViews.forEach { $0.delegate = self }
         setupTapGestureRecognizers()
         setupUI()
+        presentMaleFemaleSelection()
     }
     
     override func viewDidLayoutSubviews() {
