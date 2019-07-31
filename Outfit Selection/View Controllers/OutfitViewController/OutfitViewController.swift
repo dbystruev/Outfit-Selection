@@ -14,8 +14,7 @@ class OutfitViewController: UIViewController {
     @IBOutlet var buttonsStackView: UIStackView!
     @IBOutlet var buttons: [UIButton]!
     
-    let bundleFolders = ["Top Left", "Bottom Left", "Top Right", "Middle Right", "Bottom Right"]
-    
+    var images: [[UIImage]]!
     var selectedAction = UIBarButtonItem.SystemItem.cancel
     var selectedButtonIndex: Int?
     var zoomScale = CGFloat(3)
