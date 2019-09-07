@@ -20,9 +20,9 @@ extension OutfitViewController {
         setEditing(false, animated: true)
         guard let view = navigationController?.view else { return }
         
-        scrollViews.forEach { $0.clearBorder() }
+        scrollViews.clearBorders()
         let possibleScreenshot = getScreenshot(of: view)
-        scrollViews.forEach { $0.restoreBorder() }
+        scrollViews.restoreBorders()
         
         guard let screenshot = possibleScreenshot else { return }
         
