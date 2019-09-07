@@ -19,7 +19,7 @@ extension OutfitViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadImages()
+        loadImagesFromAssets()
         scrollViews.forEach { $0.delegate = self }
         setupTapGestureRecognizers()
         setupUI()

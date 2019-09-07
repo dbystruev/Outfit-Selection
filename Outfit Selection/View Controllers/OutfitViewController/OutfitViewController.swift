@@ -16,7 +16,8 @@ class OutfitViewController: UIViewController {
     @IBOutlet var buttons: [UIButton]!
     
     // MARK: - Properties
-    let bundleFolders = ["Top Left", "Bottom Left", "Top Right", "Middle Right", "Bottom Right"]
+    // imagePrefixes should correspond to scrollViews
+    let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
     
     var selectedAction = UIBarButtonItem.SystemItem.cancel
     var selectedButtonIndex: Int?

@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		6919AA1622BAFF82005474A8 /* UIButton+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6919AA1522BAFF82005474A8 /* UIButton+Extension.swift */; };
 		6919F12D22F1CC0700F3A48C /* Screen1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6919F12C22F1CC0700F3A48C /* Screen1.png */; };
-		692A074322BD32D70042F639 /* Images.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 692A074222BD32D70042F639 /* Images.bundle */; };
 		6930F57422F1B58B007E0462 /* Screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6930F57122F1B58B007E0462 /* Screen2.png */; };
 		6930F57522F1B58B007E0462 /* Screen3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6930F57222F1B58B007E0462 /* Screen3.png */; };
 		69672AE922F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69672AE822F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift */; };
@@ -32,7 +31,6 @@
 /* Begin PBXFileReference section */
 		6919AA1522BAFF82005474A8 /* UIButton+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extension.swift"; sourceTree = "<group>"; };
 		6919F12C22F1CC0700F3A48C /* Screen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen1.png; sourceTree = "<group>"; };
-		692A074222BD32D70042F639 /* Images.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Images.bundle; sourceTree = "<group>"; };
 		6930F57122F1B58B007E0462 /* Screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen2.png; sourceTree = "<group>"; };
 		6930F57222F1B58B007E0462 /* Screen3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen3.png; sourceTree = "<group>"; };
 		69672AE822F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+MaleFemale.swift"; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 		69A6F70622BA38CE002A3B49 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				692A074222BD32D70042F639 /* Images.bundle */,
 				69A6F70F22BA4978002A3B49 /* Screenshots */,
 				69A6F6FA22BA26BA002A3B49 /* Assets.xcassets */,
 			);
@@ -232,7 +229,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				69A6F6FE22BA26BA002A3B49 /* LaunchScreen.storyboard in Resources */,
-				692A074322BD32D70042F639 /* Images.bundle in Resources */,
 				69A6F6FB22BA26BA002A3B49 /* Assets.xcassets in Resources */,
 				69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */,
 				6930F57522F1B58B007E0462 /* Screen3.png in Resources */,
