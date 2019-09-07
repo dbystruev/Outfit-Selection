@@ -17,6 +17,7 @@
 		698990D22323808B002DCA29 /* PinnableScrollViews+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D12323808B002DCA29 /* PinnableScrollViews+Extension.swift */; };
 		698990D42323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D32323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift */; };
 		698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D523238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift */; };
+		698990D82323B9B0002DCA29 /* OutfitViewController+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D72323B9B0002DCA29 /* OutfitViewController+Shake.swift */; };
 		6990766722BD340700DAA417 /* OutfitViewController+Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6990766622BD340700DAA417 /* OutfitViewController+Images.swift */; };
 		69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */; };
 		69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F522BA26B7002A3B49 /* OutfitViewController.swift */; };
@@ -43,6 +44,7 @@
 		698990D12323808B002DCA29 /* PinnableScrollViews+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollViews+Extension.swift"; sourceTree = "<group>"; };
 		698990D32323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
 		698990D523238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+UINavigationControllerDelegate.swift"; sourceTree = "<group>"; };
+		698990D72323B9B0002DCA29 /* OutfitViewController+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+Shake.swift"; sourceTree = "<group>"; };
 		6990766622BD340700DAA417 /* OutfitViewController+Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+Images.swift"; sourceTree = "<group>"; };
 		69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outfit Selection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -188,12 +190,13 @@
 				69739EB122BA64E40077E45D /* OutfitViewController+Gestures.swift */,
 				6990766622BD340700DAA417 /* OutfitViewController+Images.swift */,
 				69672AE822F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift */,
+				698990D72323B9B0002DCA29 /* OutfitViewController+Shake.swift */,
 				69A6F70B22BA42F1002A3B49 /* OutfitViewController+UI.swift */,
 				69AF825322BAC77800A04DEA /* OutfitViewController+UIDocumentPickerDelegate.swift */,
-				69A6F70922BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift */,
-				69A6F70D22BA438A002A3B49 /* OutfitViewController+UIViewController.swift */,
 				698990D32323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift */,
 				698990D523238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift */,
+				69A6F70922BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift */,
+				69A6F70D22BA438A002A3B49 /* OutfitViewController+UIViewController.swift */,
 			);
 			path = OutfitViewController;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6990766722BD340700DAA417 /* OutfitViewController+Images.swift in Sources */,
+				698990D82323B9B0002DCA29 /* OutfitViewController+Shake.swift in Sources */,
 				698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */,
 				69739EB022BA5DF80077E45D /* PinnableScrollView+Extension.swift in Sources */,
 				69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */,

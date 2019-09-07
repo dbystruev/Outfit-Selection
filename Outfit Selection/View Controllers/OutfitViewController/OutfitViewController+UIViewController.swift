@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - UIViewController
-extension OutfitViewController {
+extension OutfitViewController {    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         buttons.forEach { $0.setEditing(action: selectedAction) }

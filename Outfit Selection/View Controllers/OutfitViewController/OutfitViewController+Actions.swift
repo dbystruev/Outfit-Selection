@@ -91,11 +91,6 @@ extension OutfitViewController {
     }
     
     @objc func diceButtonPressed(_ sender: UIBarButtonItem) {
-        setEditing(false, animated: true)
-        scrollViews.forEach {
-            if !$0.isPinned {
-                $0.scrollToRandomElement()
-            }
-        }
+        shuffle()
     }
 }
