@@ -1,5 +1,5 @@
 //
-//  UIScrollView+Extension.swift
+//  PinnableScrollView+Extension.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 19/06/2019.
@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - Extension
-extension UIScrollView {
+extension PinnableScrollView {
     var count: Int {
         return stackView?.arrangedSubviews.count ?? 0
     }

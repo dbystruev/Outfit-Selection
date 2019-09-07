@@ -18,7 +18,7 @@ extension OutfitViewController {
     }
     
     @objc func scrollViewTapped(_ sender: UIGestureRecognizer) {
-        guard let scrollView = sender.view as? UIScrollView else { return }
-        scrollView.scrollToElement(withIndex: scrollView.currentIndex + 1)
+        guard let scrollView = sender.view as? PinnableScrollView else { return }
+        scrollView.isPinned.toggle()
     }
 }

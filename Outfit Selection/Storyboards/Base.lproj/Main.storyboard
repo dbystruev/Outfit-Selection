@@ -79,7 +79,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rsf-bl-rKH">
                                         <rect key="frame" x="0.0" y="0.0" width="207" height="725"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-61-yTt">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-61-yTt" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="968-N5-ncz">
@@ -99,7 +99,7 @@
                                                     <constraint firstAttribute="bottom" secondItem="968-N5-ncz" secondAttribute="bottom" id="nwt-bs-XTS"/>
                                                 </constraints>
                                             </scrollView>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McV-FV-yxk">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McV-FV-yxk" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="362.5" width="207" height="362.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0zR-30-TcT">
@@ -123,7 +123,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="3sE-ao-p4b">
                                         <rect key="frame" x="207" y="0.0" width="207" height="725"/>
                                         <subviews>
-                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrI-94-QGh">
+                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrI-94-QGh" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MdE-3E-PTX">
@@ -145,7 +145,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="YRV-PJ-7tk">
                                                 <rect key="frame" x="0.0" y="362.5" width="207" height="362.5"/>
                                                 <subviews>
-                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAH-LD-FOj">
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAH-LD-FOj" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="181.5"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PWZ-Fo-lTr">
@@ -164,7 +164,7 @@
                                                             <constraint firstAttribute="trailing" secondItem="PWZ-Fo-lTr" secondAttribute="trailing" id="vhq-Qh-L6K"/>
                                                         </constraints>
                                                     </scrollView>
-                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mM-sh-37O">
+                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mM-sh-37O" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
                                                         <rect key="frame" x="0.0" y="181.5" width="207" height="181"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="32E-Pf-wzh">

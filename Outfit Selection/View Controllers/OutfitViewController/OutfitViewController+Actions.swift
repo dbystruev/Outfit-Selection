@@ -19,8 +19,14 @@ extension OutfitViewController {
     @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
         setEditing(false, animated: true)
         guard let view = navigationController?.view else { return }
-        guard let image = getScreenshot(of: view) else { return }
-        let activityController = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        
+        scrollViews.forEach { $0.clearBorder() }
+        let possibleScreenshot = getScreenshot(of: view)
+        scrollViews.forEach { $0.restoreBorder() }
+        
+        guard let screenshot = possibleScreenshot else { return }
+        
+        let activityController = UIActivityViewController(activityItems: [screenshot], applicationActivities: nil)
         activityController.popoverPresentationController?.sourceView = sender.customView
         present(activityController, animated: true)
     }
@@ -64,6 +70,10 @@ extension OutfitViewController {
     
     @objc func diceButtonPressed(_ sender: UIBarButtonItem) {
         setEditing(false, animated: true)
-        scrollViews.forEach { $0.scrollToRandomElement() }
+        scrollViews.forEach {
+            if !$0.isPinned {
+                $0.scrollToRandomElement()
+            }
+        }
     }
 }
