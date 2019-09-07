@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Actions
 extension OutfitViewController {
-    @IBAction func addButtonPressed() {
+    @IBAction func addButtonPressed(sender: UIBarButtonItem) {
         selectedAction = .add
         setEditing(!isEditing, animated: true)
     }

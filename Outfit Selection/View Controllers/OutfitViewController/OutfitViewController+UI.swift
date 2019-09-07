@@ -34,8 +34,8 @@ extension OutfitViewController {
         let deleteItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashButtonPressed(_:)))
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let diceImage = UIImage(named: "dice")
-        let diceItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonPressed(_:)))
+        diceButtonItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonPressed(_:)))
         
-        setToolbarItems([deleteItem, spaceItem, diceItem], animated: false)
+        setToolbarItems([deleteItem, spaceItem, diceButtonItem], animated: false)
     }
 }

@@ -276,7 +276,7 @@
                     <navigationItem key="navigationItem" id="NXz-cG-HPg">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="7Y5-wx-eaw">
                             <connections>
-                                <action selector="addButtonPressed:" destination="BYZ-38-t0r" id="M9f-kZ-cSm"/>
+                                <action selector="addButtonPressedWithSender:" destination="BYZ-38-t0r" id="c1y-tu-fB6"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="2AA-iP-MGy">

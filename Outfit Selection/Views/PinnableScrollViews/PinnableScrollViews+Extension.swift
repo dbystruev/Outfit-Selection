@@ -9,6 +9,10 @@
 typealias PinnableScrollViews = [PinnableScrollView]
 
 extension PinnableScrollViews {
+    var allPinned: Bool {
+        return reduce(true) { $0 && $1.isPinned }
+    }
+    
     func clearBorders() {
         forEach { $0.clearBorder() }
     }

@@ -15,6 +15,8 @@ class OutfitViewController: UIViewController {
     @IBOutlet var buttonsStackView: UIStackView!
     @IBOutlet var buttons: [UIButton]!
     
+    var diceButtonItem: UIBarButtonItem!
+    
     // MARK: - Properties
     // imagePrefixes should correspond to scrollViews
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]

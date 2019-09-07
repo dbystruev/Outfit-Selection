@@ -20,7 +20,7 @@ class PinnableScrollView: UIScrollView {
     }
     
     func restoreBorder() {
-        layer.borderColor = UIColor.lightGray.cgColor
-        layer.borderWidth = isPinned ? 0.5 : 0
+        layer.borderColor = tintColor.cgColor
+        layer.borderWidth = isPinned ? 1 : 0
     }
 }
