@@ -15,24 +15,18 @@ extension OutfitViewController {
             let longPress = UILongPressGestureRecognizer(target: self, action: #selector(pinImage(_:)))
             scrollView.addGestureRecognizer(longPress)
             
-            let doubleTap = UITapGestureRecognizer(target: self, action: #selector(pinImage(_:)))
-            doubleTap.numberOfTapsRequired = 2
-            scrollView.addGestureRecognizer(doubleTap)
-            
             let singleTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTappedOnce(_:)))
-            singleTap.require(toFail: doubleTap)
             scrollView.addGestureRecognizer(singleTap)
         }
     }
     
     @objc func pinImage(_ sender: UIGestureRecognizer) {
         guard let scrollView = sender.view as? PinnableScrollView else { return }
-        scrollView.isPinned.toggle()
+        scrollView.toggle()
         diceButtonItem.isEnabled = !scrollViews.allPinned
     }
     
     @objc func scrollViewTappedOnce(_ sender: UIGestureRecognizer) {
         pinImage(sender)
     }
-
 }

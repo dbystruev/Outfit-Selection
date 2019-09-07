@@ -11,6 +11,7 @@ import UIKit
 // MARK: - Actions
 extension OutfitViewController {
     @IBAction func addButtonPressed(sender: UIBarButtonItem) {
+        unpin()
         selectedAction = .add
         setEditing(!isEditing, animated: true)
     }
@@ -83,6 +84,7 @@ extension OutfitViewController {
     }
     
     @objc func trashButtonPressed(_ sender: UIBarButtonItem) {
+        unpin()
         selectedAction = .trash
         setEditing(!isEditing, animated: true)
         return

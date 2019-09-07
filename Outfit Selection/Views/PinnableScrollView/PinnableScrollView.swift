@@ -9,18 +9,30 @@
 import UIKit
 
 class PinnableScrollView: UIScrollView {
-    var isPinned = false {
+    private(set) var isPinned = false {
         didSet {
             restoreBorder()
         }
     }
     
-    func clearBorder() {
+    public func clearBorder() {
         layer.borderWidth = 0
     }
     
-    func restoreBorder() {
+    public func pin() {
+        isPinned = true
+    }
+    
+    public func restoreBorder() {
         layer.borderColor = tintColor.cgColor
         layer.borderWidth = isPinned ? 1 : 0
+    }
+    
+    public func toggle() {
+        isPinned.toggle()
+    }
+    
+    public func unpin() {
+        isPinned = false
     }
 }

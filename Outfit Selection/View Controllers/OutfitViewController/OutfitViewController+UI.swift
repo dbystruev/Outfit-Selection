@@ -19,6 +19,11 @@ extension OutfitViewController {
         return image
     }
     
+    func pin() {
+        scrollViews.pin()
+        diceButtonItem.isEnabled = false
+    }
+    
     func setupUI() {
         scrollViews.forEach {
             $0.minimumZoomScale = zoomScale
@@ -37,5 +42,10 @@ extension OutfitViewController {
         diceButtonItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonPressed(_:)))
         
         setToolbarItems([deleteItem, spaceItem, diceButtonItem], animated: false)
+    }
+    
+    func unpin() {
+        scrollViews.unpin()
+        diceButtonItem.isEnabled = true
     }
 }

@@ -17,7 +17,15 @@ extension PinnableScrollViews {
         forEach { $0.clearBorder() }
     }
     
+    func pin() {
+        forEach { $0.pin() }
+    }
+    
     func restoreBorders() {
         forEach { $0.restoreBorder() }
+    }
+    
+    func unpin() {
+        forEach { $0.unpin() }
     }
 }
