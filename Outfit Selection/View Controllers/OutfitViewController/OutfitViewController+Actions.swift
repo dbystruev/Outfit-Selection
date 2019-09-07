@@ -38,10 +38,31 @@ extension OutfitViewController {
         switch selectedAction {
             
         case .add:
-            let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.image"], in: .import)
-            documentPicker.allowsMultipleSelection = true
-            documentPicker.delegate = self
-            present(documentPicker, animated: true)
+//            let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.image"], in: .import)
+//            documentPicker.allowsMultipleSelection = true
+//            documentPicker.delegate = self
+//            present(documentPicker, animated: true)
+            let sourceTitles: [UIImagePickerController.SourceType: String] = [
+                .camera: "📷",
+                .photoLibrary: "🖼"
+            ]
+            
+            let imagePicker = UIImagePickerController()
+            imagePicker.delegate = self
+            
+            let cancel = UIAlertAction(title: "⛔️", style: .cancel)
+            let alert = UIAlertController(title: "Image Source", message: nil, preferredStyle: .actionSheet)
+            alert.addAction(cancel)
+            
+            for (source, title) in sourceTitles {
+                guard UIImagePickerController.isSourceTypeAvailable(source) else { continue }
+                let action = UIAlertAction(title: title, style: .default) { _ in
+                    imagePicker.sourceType = source
+                    self.present(imagePicker, animated: true)
+                }
+                alert.addAction(action)
+            }
+            present(alert, animated: true)
             
         case .trash:
             guard let scrollViewIndex = selectedButtonIndex else { return }
