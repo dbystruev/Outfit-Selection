@@ -12,13 +12,27 @@ import UIKit
 extension OutfitViewController {
     func setupTapGestureRecognizers() {
         scrollViews.forEach { scrollView in
-            let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(scrollViewTapped(_:)))
-            scrollView.addGestureRecognizer(tapRecognizer)
+            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(pinImage(_:)))
+            scrollView.addGestureRecognizer(longPress)
+            
+            let doubleTap = UITapGestureRecognizer(target: self, action: #selector(pinImage(_:)))
+            doubleTap.numberOfTapsRequired = 2
+            scrollView.addGestureRecognizer(doubleTap)
+            
+            let singleTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTappedOnce(_:)))
+            singleTap.require(toFail: doubleTap)
+            scrollView.addGestureRecognizer(singleTap)
         }
     }
     
-    @objc func scrollViewTapped(_ sender: UIGestureRecognizer) {
+    @objc func pinImage(_ sender: UIGestureRecognizer) {
         guard let scrollView = sender.view as? PinnableScrollView else { return }
         scrollView.isPinned.toggle()
     }
+    
+    @objc func scrollViewTappedOnce(_ sender: UIGestureRecognizer) {
+        guard let scrollView = sender.view as? PinnableScrollView else { return }
+        scrollView.isPinned.toggle()
+    }
+
 }
