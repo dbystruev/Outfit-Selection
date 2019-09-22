@@ -10,10 +10,11 @@ import UIKit
 
 // MARK: - MaleFemale
 extension OutfitViewController {
-    func presentMaleFemaleSelection() {
+    func presentMaleFemaleViewController(style: UIModalPresentationStyle) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let maleFemaleController = storyboard.instantiateViewController(withIdentifier: "MaleFemaleController")
-        maleFemaleController.modalPresentationStyle = .popover
+        maleFemaleController.modalPresentationStyle = style
+        maleFemaleController.popoverPresentationController?.sourceView = view
         OperationQueue.main.addOperation {
             self.present(maleFemaleController, animated: true)
         }
