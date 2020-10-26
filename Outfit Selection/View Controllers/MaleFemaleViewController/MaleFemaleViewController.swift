@@ -13,7 +13,18 @@ class MaleFemaleViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet var stackView: UIStackView!
     
-    // MARK: - UIViewController Methods
+    // MARK: - Methods
+    func updateMainViewController(with gender: Gender) {
+        guard let navigationController = presentingViewController as? UINavigationController else { return }
+        
+        guard let outfitViewController = navigationController.viewControllers.first as? OutfitViewController else {
+            return
+        }
+        
+        outfitViewController.gender = gender
+    }
+    
+    // MARK: - UIViewController Methods    
     override func viewDidLoad() {
         super.viewDidLoad()
         updateUI(with: view.bounds.size)
@@ -32,9 +43,11 @@ class MaleFemaleViewController: UIViewController {
     // MARK: - Actions
     @IBAction func femaleSelected(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true)
+        updateMainViewController(with: .female)
     }
     
     @IBAction func maleSelected(_ sender: UITapGestureRecognizer) {
         dismiss(animated: true)
+        updateMainViewController(with: .male)
     }
 }

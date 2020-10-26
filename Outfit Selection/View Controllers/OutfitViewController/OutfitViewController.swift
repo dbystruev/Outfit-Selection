@@ -10,14 +10,20 @@ import UIKit
 
 class OutfitViewController: UIViewController {
     // MARK: - Outlets
+    @IBOutlet var buttons: [UIButton]!
+    @IBOutlet var buttonsStackView: UIStackView!
     @IBOutlet var clothesStackView: UIStackView!
     @IBOutlet var scrollViews: [PinnableScrollView]!
-    @IBOutlet var buttonsStackView: UIStackView!
-    @IBOutlet var buttons: [UIButton]!
-    
-    var diceButtonItem: UIBarButtonItem!
     
     // MARK: - Properties
+    var diceButtonItem: UIBarButtonItem!
+    var gender = Gender.other {
+        didSet {
+            print("\(#line) \(Self.self).\(#function) gender = \(gender)")
+
+        }
+    }
+    
     // imagePrefixes should correspond to scrollViews
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
     
