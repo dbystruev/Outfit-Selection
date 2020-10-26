@@ -12,6 +12,7 @@
 		692C940A2546FB8D0075BD92 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C94092546FB8D0075BD92 /* Gender.swift */; };
 		692C940F254700FC0075BD92 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C940E254700FC0075BD92 /* NetworkManager.swift */; };
 		692C94132547025D0075BD92 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C94122547025D0075BD92 /* Category.swift */; };
+		692C9417254708830075BD92 /* URL+withQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C9416254708830075BD92 /* URL+withQueries.swift */; };
 		6930F57422F1B58B007E0462 /* Screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6930F57122F1B58B007E0462 /* Screen2.png */; };
 		6930F57522F1B58B007E0462 /* Screen3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6930F57222F1B58B007E0462 /* Screen3.png */; };
 		69672AE922F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69672AE822F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift */; };
@@ -42,6 +43,7 @@
 		692C94092546FB8D0075BD92 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		692C940E254700FC0075BD92 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		692C94122547025D0075BD92 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		692C9416254708830075BD92 /* URL+withQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+withQueries.swift"; sourceTree = "<group>"; };
 		6930F57122F1B58B007E0462 /* Screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen2.png; sourceTree = "<group>"; };
 		6930F57222F1B58B007E0462 /* Screen3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screen3.png; sourceTree = "<group>"; };
 		69672AE822F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+MaleFemale.swift"; sourceTree = "<group>"; };
@@ -96,6 +98,14 @@
 			path = Managers;
 			sourceTree = "<group>";
 		};
+		692C9415254708670075BD92 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				692C9416254708830075BD92 /* URL+withQueries.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		69739EAE22BA5DCD0077E45D /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -142,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				69A6F70522BA38B3002A3B49 /* App */,
+				692C9415254708670075BD92 /* Extensions */,
 				692C940D254700E40075BD92 /* Managers */,
 				692C94082546FB7A0075BD92 /* Models */,
 				69A6F70622BA38CE002A3B49 /* Resources */,
@@ -314,6 +325,7 @@
 				69739EB022BA5DF80077E45D /* PinnableScrollView+Extension.swift in Sources */,
 				69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */,
 				69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */,
+				692C9417254708830075BD92 /* URL+withQueries.swift in Sources */,
 				69A6F70A22BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift in Sources */,
 				6919AA1622BAFF82005474A8 /* UIButton+Extension.swift in Sources */,
 				69672AE922F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift in Sources */,

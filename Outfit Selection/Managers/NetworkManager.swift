@@ -23,7 +23,8 @@ class NetworkManager {
     
     // MARK: - Methods
     func getCategories(completion: @escaping (_ categories: [Category]?) -> Void) {
-        let requestURL = url.appendingPathComponent("categories")
+        let requestURL = url.appendingPathComponent("categories").withQueries(["limit": 999999])
+        
         let task = URLSession.shared.dataTask(with: requestURL) { data, _, error in
             guard let data = data else {
                 let message = error?.localizedDescription ?? "Didn't get any data"

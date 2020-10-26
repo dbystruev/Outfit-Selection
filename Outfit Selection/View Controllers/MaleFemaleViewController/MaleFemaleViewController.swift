@@ -29,8 +29,9 @@ class MaleFemaleViewController: UIViewController {
         super.viewDidLoad()
         
         NetworkManager.shared.getCategories { categories in
-            guard let categories = categories else { return }
-            print("\(#line) \(Self.self).\(#function) categories = \(categories)")
+            guard let categories = categories?.sorted(by: { $0.name < $1.name }) else { return }
+            print("\(#line) \(Self.self).\(#function) categories.count = \(categories.count)")
+            categories.forEach { print("\t\($0)") }
         }
         
         updateUI(with: view.bounds.size)
