@@ -17,12 +17,7 @@ class OutfitViewController: UIViewController {
     
     // MARK: - Properties
     var diceButtonItem: UIBarButtonItem!
-    var gender = Gender.other {
-        didSet {
-            print("\(#line) \(Self.self).\(#function) gender = \(gender)")
-
-        }
-    }
+    var gender = Gender.other
     
     // imagePrefixes should correspond to scrollViews
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]

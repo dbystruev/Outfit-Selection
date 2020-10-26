@@ -27,6 +27,12 @@ class MaleFemaleViewController: UIViewController {
     // MARK: - UIViewController Methods    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        NetworkManager.shared.getCategories { categories in
+            guard let categories = categories else { return }
+            print("\(#line) \(Self.self).\(#function) categories = \(categories)")
+        }
+        
         updateUI(with: view.bounds.size)
     }
     
