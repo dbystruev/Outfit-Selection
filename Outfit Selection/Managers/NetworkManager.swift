@@ -22,28 +22,36 @@ class NetworkManager {
     }
     
     // MARK: - Methods
-    func getCategories(completion: @escaping (_ categories: [Category]?) -> Void) {
-        let requestURL = url.appendingPathComponent("categories").withQueries(["limit": 999999])
+    func get<T: Codable>(_ path: String, parameters: [String: Any] = [:], completion: @escaping (T?) -> Void) {
+        let request = url.appendingPathComponent(path).withQueries(parameters)
         
-        let task = URLSession.shared.dataTask(with: requestURL) { data, _, error in
+        let task = URLSession.shared.dataTask(with: request) { data, _, error in
             guard let data = data else {
-                let message = error?.localizedDescription ?? "Didn't get any data"
-                print("\(#line) \(Self.self).\(#function) ERROR requesting \(requestURL): \(message)")
+                let message = error?.localizedDescription ?? "No data"
+                print("\(#line) \(Self.self).\(#function) ERROR requesting \(request): \(message)")
                 completion(nil)
                 return
             }
             
-            let decoder = JSONDecoder()
-            guard let categories = try? decoder.decode([Category].self, from: data) else {
-                let message = String(data: data, encoding: .utf8) ?? "nil"
+            guard let decodedData = try? JSON.decoder.decode(T.self, from: data) else {
+                let message = String(data: data, encoding: .utf8) ?? "Unknown data format"
                 print("\(#line) \(Self.self).\(#function) ERROR decoding \(data): \(message)")
                 completion(nil)
                 return
             }
             
-            completion(categories)
+            completion(decodedData)
         }
+        
         task.resume()
+    }
+    
+    func getCategories(completion: @escaping (_ categories: [Category]?) -> Void) {
+        get("categories", parameters: ["limit": 999999], completion: completion)
+    }
+    
+    func getOffers(in category: Category, completion: @escaping ([Offer]?) -> Void) {
+        get("offers", parameters: ["categoryId": category.id], completion: completion)
     }
 }
 

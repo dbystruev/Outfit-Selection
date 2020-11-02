@@ -34,6 +34,18 @@ class MaleFemaleViewController: UIViewController {
             categories.forEach { print("\t\($0)") }
         }
         
+        let categories = [
+            Category(id: 136332, name: "Футболки и майки", parentId: 136330),
+        ]
+        
+        for category in categories {
+            NetworkManager.shared.getOffers(in: category) { offers in
+                guard let offers = offers else { return }
+                print("\(#line) \(Self.self).\(#function) offers.count = \(offers.count)")
+                offers.forEach { print("\t\($0)") }
+            }
+        }
+        
         updateUI(with: view.bounds.size)
     }
     
