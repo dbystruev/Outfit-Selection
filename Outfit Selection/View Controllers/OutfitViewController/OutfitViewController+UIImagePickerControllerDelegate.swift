@@ -15,5 +15,6 @@ extension OutfitViewController: UIImagePickerControllerDelegate {
         let scrollView = scrollViews[index]
         scrollView.insertAndScroll(image: image)
         dismiss(animated: true)
+        updateItemCount()
     }
 }

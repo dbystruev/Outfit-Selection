@@ -26,6 +26,7 @@ class NetworkManager {
         let request: URL
         
         request = url.appendingPathComponent(path).withQueries(parameters)
+//        print("\(#line) \(Self.self).\(#function) request = \(request)")
         
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             guard let data = data else {
@@ -74,7 +75,7 @@ class NetworkManager {
     }
     
     func getOffers(in category: Category, completion: @escaping ([Offer]?) -> Void) {
-        get("offers", parameters: ["categoryId": category.id], completion: completion)
+        get("offers", parameters: ["categoryId": category.id, "limit": Category.maxCount], completion: completion)
     }
 }
 

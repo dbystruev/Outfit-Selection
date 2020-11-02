@@ -75,6 +75,7 @@ extension OutfitViewController {
             
             scrollView.scrollToElement(withIndex: indexToShow) { completed in
                 scrollView.deleteImage(withIndex: indexToDelete)
+                self.updateItemCount()
             }
             
         default:

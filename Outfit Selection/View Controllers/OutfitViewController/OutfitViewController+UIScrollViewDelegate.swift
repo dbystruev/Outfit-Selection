@@ -13,11 +13,11 @@ extension OutfitViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if decelerate { return }
         guard let pinnableScrollView = scrollView as? PinnableScrollView else { return }
-        pinnableScrollView.scrollToElement()
+        pinnableScrollView.scrollToCurrentElement()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard let pinnableScrollView = scrollView as? PinnableScrollView else { return }
-        pinnableScrollView.scrollToElement()
+        pinnableScrollView.scrollToCurrentElement()
     }
 }

@@ -78,11 +78,20 @@ extension PinnableScrollView {
         scrollToElement(withIndex: random, duration: duration)
     }
     
-    func scrollToElement(withIndex index: Int? = nil, duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
-        let index = (index ?? currentIndex) % count
+    func scrollToCurrentElement(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
+        scrollToElement(withIndex: currentIndex, duration: duration, completion: completion)
+    }
+    
+    func scrollToElement(withIndex index: Int, duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
+        guard 0 < count else { return }
+        let index = (index + count) % count
         UIView.animate(withDuration: duration, animations: {
             self.contentOffset.x = self.elementWidth * CGFloat(index)
         }, completion: completion)
+    }
+    
+    func scrollToLastElement(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
+        scrollToElement(withIndex: count - 1, duration: duration, completion: completion)
     }
     
     func setEditing(_ editing: Bool) {

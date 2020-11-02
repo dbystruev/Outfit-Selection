@@ -20,6 +20,7 @@ extension OutfitViewController {
                 scrollView.insert(image: image)
             }
         }
+        updateItemCount()
     }
     
     func loadImagesFromServer() {
@@ -29,12 +30,15 @@ extension OutfitViewController {
             for offer in offers {
                 guard let url = offer.pictures.first else { continue }
                 NetworkManager.shared.getImage(url) { image in
+                    guard let image = image else { return }
                     DispatchQueue.main.async {
                         scrollView.insert(image: image)
-                        scrollView.scrollToElement()
-                        if (0 < count) {
-                            scrollView.deleteImage(withIndex: 0)
-                            count -= 1
+                        scrollView.scrollToLastElement() {_ in
+                            if (0 < count) {
+                                scrollView.deleteImage(withIndex: 0)
+                                count -= 1
+                            }
+                            self.updateItemCount()
                         }
                     }
                 }

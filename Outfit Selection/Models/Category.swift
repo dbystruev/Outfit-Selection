@@ -14,6 +14,7 @@ struct Category: Codable {
         Category(id: 136311, name: "Рюкзаки", parentId: 135971),
         Category(id: 136310, name: "Кроссовки", parentId: 136301),
     ]
+    static let maxCount = 12
     
     let id: Int
     let name: String

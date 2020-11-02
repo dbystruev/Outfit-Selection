@@ -18,5 +18,6 @@ extension OutfitViewController: UIDocumentPickerDelegate {
             guard let data = try? Data(contentsOf: url) else { continue }
             scrollView.insertAndScroll(image: UIImage(data: data))
         }
+        updateItemCount()
     }
 }
