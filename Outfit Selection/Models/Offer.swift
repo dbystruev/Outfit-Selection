@@ -11,6 +11,7 @@ import Foundation
 struct Offer: Codable {
     static var all = [Offer]()
     
+    let categoryId: Int
     let name: String
     let pictures: [URL]
     let url: URL

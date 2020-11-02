@@ -6,7 +6,7 @@
 //  Copyright © 2020 Denis Bystruev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 class NetworkManager {
     // MARK: - Class Properties
@@ -23,7 +23,9 @@ class NetworkManager {
     
     // MARK: - Methods
     func get<T: Codable>(_ path: String, parameters: [String: Any] = [:], completion: @escaping (T?) -> Void) {
-        let request = url.appendingPathComponent(path).withQueries(parameters)
+        let request: URL
+        
+        request = url.appendingPathComponent(path).withQueries(parameters)
         
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             guard let data = data else {
@@ -48,6 +50,27 @@ class NetworkManager {
     
     func getCategories(completion: @escaping (_ categories: [Category]?) -> Void) {
         get("categories", parameters: ["limit": 999999], completion: completion)
+    }
+    
+    func getImage(_ url: URL, completion: @escaping (_ image: UIImage?) -> Void) {
+        let task = URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data else {
+                let message = error?.localizedDescription ?? "No data"
+                print("\(#line) \(Self.self).\(#function) ERROR requesting \(url): \(message)")
+                completion(nil)
+                return
+            }
+            
+            guard let image = UIImage(data: data) else {
+                print("\(#line) \(Self.self).\(#function) ERROR converting \(data) to image")
+                completion(nil)
+                return
+            }
+            
+            completion(image)
+        }
+        
+        task.resume()
     }
     
     func getOffers(in category: Category, completion: @escaping ([Offer]?) -> Void) {

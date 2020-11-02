@@ -23,6 +23,9 @@ extension OutfitViewController {
     }
     
     func loadImagesFromServer() {
-        
+        for (category, scrollView) in zip(Category.all, scrollViews) {
+            let offers = Offer.all.filter { $0.categoryId == category.id }
+            
+        }
     }
 }
