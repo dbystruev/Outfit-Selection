@@ -24,8 +24,21 @@ extension OutfitViewController {
     
     func loadImagesFromServer() {
         for (category, scrollView) in zip(Category.all, scrollViews) {
+            var count = scrollView.count
             let offers = Offer.all.filter { $0.categoryId == category.id }
-            
+            for offer in offers {
+                guard let url = offer.pictures.first else { continue }
+                NetworkManager.shared.getImage(url) { image in
+                    DispatchQueue.main.async {
+                        scrollView.insert(image: image)
+                        scrollView.scrollToElement()
+                        if (0 < count) {
+                            scrollView.deleteImage(withIndex: 0)
+                            count -= 1
+                        }
+                    }
+                }
+            }
         }
     }
 }
