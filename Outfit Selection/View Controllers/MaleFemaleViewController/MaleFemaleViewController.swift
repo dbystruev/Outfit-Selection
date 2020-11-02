@@ -28,21 +28,25 @@ class MaleFemaleViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        NetworkManager.shared.getCategories { categories in
-            guard let categories = categories?.sorted(by: { $0.name < $1.name }) else { return }
-            print("\(#line) \(Self.self).\(#function) categories.count = \(categories.count)")
-            categories.forEach { print("\t\($0)") }
-        }
+//        NetworkManager.shared.getCategories { categories in
+//            guard let categories = categories?.sorted(by: { $0.name < $1.name }) else { return }
+//            print("\(#line) \(Self.self).\(#function) categories.count = \(categories.count)")
+//            categories.forEach { print("\t\($0)") }
+//        }
         
         let categories = [
             Category(id: 136332, name: "Футболки и майки", parentId: 136330),
+            Category(id: 136226, name: "Куртки", parentId: 135967),
+            Category(id: 136043, name: "Деним", parentId: 135967),
+            Category(id: 136311, name: "Рюкзаки", parentId: 135971),
+            Category(id: 136310, name: "Кроссовки", parentId: 136301),
         ]
         
         for category in categories {
             NetworkManager.shared.getOffers(in: category) { offers in
                 guard let offers = offers else { return }
-                print("\(#line) \(Self.self).\(#function) offers.count = \(offers.count)")
-                offers.forEach { print("\t\($0)") }
+                print("\(#line) \(Self.self).\(#function) category: \(category.name), offers.count = \(offers.count)")
+//                offers.forEach { print("\t\($0)") }
             }
         }
         
