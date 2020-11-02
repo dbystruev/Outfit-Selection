@@ -21,4 +21,8 @@ extension OutfitViewController {
             }
         }
     }
+    
+    func loadImagesFromServer() {
+        
+    }
 }

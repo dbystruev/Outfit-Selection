@@ -34,18 +34,12 @@ class MaleFemaleViewController: UIViewController {
 //            categories.forEach { print("\t\($0)") }
 //        }
         
-        let categories = [
-            Category(id: 136332, name: "Футболки и майки", parentId: 136330),
-            Category(id: 136226, name: "Куртки", parentId: 135967),
-            Category(id: 136043, name: "Деним", parentId: 135967),
-            Category(id: 136311, name: "Рюкзаки", parentId: 135971),
-            Category(id: 136310, name: "Кроссовки", parentId: 136301),
-        ]
-        
-        for category in categories {
+        for category in Category.all {
             NetworkManager.shared.getOffers(in: category) { offers in
                 guard let offers = offers else { return }
-                print("\(#line) \(Self.self).\(#function) category: \(category.name), offers.count = \(offers.count)")
+                Offer.all.append(contentsOf: offers)
+                print("\(#line) \(Self.self).\(#function) category: \(category.name),",
+                      "offers.count = \(offers.count) / \(Offer.all.count)")
 //                offers.forEach { print("\t\($0)") }
             }
         }

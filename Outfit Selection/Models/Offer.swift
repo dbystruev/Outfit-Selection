@@ -9,6 +9,8 @@
 import Foundation
 
 struct Offer: Codable {
+    static var all = [Offer]()
+    
     let name: String
     let pictures: [URL]
     let url: URL
