@@ -35,13 +35,20 @@ class MaleFemaleViewController: UIViewController {
 //        }
         
         for category in Category.all {
+            DispatchManager.shared.group.enter()
+            
             NetworkManager.shared.getOffers(in: category) { offers in
+                DispatchManager.shared.group.leave()
+                
                 guard let offers = offers else { return }
                 Offer.all.append(contentsOf: offers)
-                print("\(#line) \(Self.self).\(#function) category: \(category.name),",
-                      "offers.count = \(offers.count) / \(Offer.all.count)")
+                print("\(#line) \(Self.self).\(#function) category: \(category.name), offers.count = \(offers.count)")
 //                offers.forEach { print("\t\($0)") }
             }
+        }
+        
+        DispatchManager.shared.group.notify(queue: .main) {
+            print("\(#line) \(Self.self).\(#function) Offer.all.count = \(Offer.all.count)")
         }
         
         updateUI(with: view.bounds.size)
