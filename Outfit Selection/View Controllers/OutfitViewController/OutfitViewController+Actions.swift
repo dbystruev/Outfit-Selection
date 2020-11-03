@@ -62,6 +62,22 @@ extension OutfitViewController {
                 }
                 alert.addAction(action)
             }
+            
+            let action = UIAlertAction(title: "👕", style: .default) { _ in
+                self.performSegue(withIdentifier: "selectCategory", sender: nil)
+            }
+            alert.addAction(action)
+            
+            // Find negative constraint and make it positive
+            for subview in alert.view.subviews {
+                for constraint in subview.constraints {
+                    if constraint.constant < 0 {
+                        constraint.constant = -constraint.constant
+                    }
+                }
+            }
+            
+            // Present alert controller
             present(alert, animated: true)
             
         case .trash:

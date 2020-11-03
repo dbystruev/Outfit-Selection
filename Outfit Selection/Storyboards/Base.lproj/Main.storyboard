@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d9P-ps-ZoO">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="d9P-ps-ZoO">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -38,6 +37,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="idg-op-Q59"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="fkg-59-ObQ" firstAttribute="top" secondItem="idg-op-Q59" secondAttribute="top" constant="100" id="1lP-et-03D"/>
@@ -45,7 +45,6 @@
                             <constraint firstItem="fkg-59-ObQ" firstAttribute="leading" secondItem="idg-op-Q59" secondAttribute="leading" constant="100" id="SXc-k0-Dua"/>
                             <constraint firstAttribute="bottom" secondItem="fkg-59-ObQ" secondAttribute="bottom" constant="100" id="fFn-Pe-qYV"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="idg-op-Q59"/>
                     </view>
                     <connections>
                         <outlet property="stackView" destination="fkg-59-ObQ" id="cdV-qT-8I8"/>
@@ -63,7 +62,23 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2613" y="115"/>
+            <point key="canvasLocation" x="3491" y="123"/>
+        </scene>
+        <!--Select Category-->
+        <scene sceneID="KSq-b2-tmJ">
+            <objects>
+                <viewController id="QdM-tb-TbV" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iTU-JU-m1n">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="eF5-ZZ-miU"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Select Category" id="ZN3-5u-1Xm"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bi3-vZ-ni8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2655" y="123"/>
         </scene>
         <!--Outfit View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -250,6 +265,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="E0I-hd-Y8I" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="1/2" id="6I8-iJ-bjx"/>
@@ -271,7 +287,6 @@
                             <constraint firstItem="yAK-fJ-kYJ" firstAttribute="width" secondItem="6Tk-OE-BBY" secondAttribute="width" multiplier="1/2" id="xvh-C5-9bq"/>
                             <constraint firstItem="gbr-Gx-rxa" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="1/2" id="yDC-A1-tsJ"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <navigationItem key="navigationItem" id="NXz-cG-HPg">
                         <barButtonItem key="leftBarButtonItem" systemItem="add" id="7Y5-wx-eaw">
@@ -298,6 +313,7 @@
                         <outletCollection property="buttons" destination="prF-ci-obE" collectionClass="NSMutableArray" id="M2z-il-wIJ"/>
                         <outletCollection property="buttons" destination="fbQ-md-Z3V" collectionClass="NSMutableArray" id="OB3-z8-JXa"/>
                         <outletCollection property="scrollViews" destination="7mM-sh-37O" collectionClass="NSMutableArray" id="Yvd-C0-m1N"/>
+                        <segue destination="QdM-tb-TbV" kind="show" identifier="selectCategory" id="lmL-Qz-xwj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -332,5 +348,8 @@
         <image name="female" width="512" height="617"/>
         <image name="male" width="512" height="617"/>
         <image name="trash" width="50" height="50"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
