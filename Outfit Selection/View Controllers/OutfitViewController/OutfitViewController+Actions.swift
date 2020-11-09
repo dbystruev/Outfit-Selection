@@ -104,6 +104,21 @@ extension OutfitViewController {
         diceButtonItem.isEnabled = !scrollViews.allPinned
     }
     
+    @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
+        setEditing(false, animated: true)
+        guard let view = navigationController?.view else { return }
+        
+        pinButtons.forEach { $0.isHidden = true }
+        let possibleScreenshot = getScreenshot(of: view)
+        pinButtons.forEach { $0.isHidden = false }
+        
+        guard let screenshot = possibleScreenshot else { return }
+        
+        let activityController = UIActivityViewController(activityItems: [screenshot], applicationActivities: nil)
+        activityController.popoverPresentationController?.sourceView = sender.customView
+        present(activityController, animated: true)
+    }
+    
     @objc func trashButtonPressed(_ sender: UIBarButtonItem) {
         unpin()
         selectedAction = .trash

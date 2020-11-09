@@ -419,7 +419,7 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="2AA-iP-MGy">
                             <connections>
-                                <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="9ar-hu-pj1"/>
+                                <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="q04-4G-p2d"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
