@@ -25,6 +25,10 @@ extension OutfitViewController {
     }
     
     func setupUI() {
+        buttons.forEach {
+            $0.isHidden = !isEditing
+        }
+        
         scrollViews.forEach {
             $0.minimumZoomScale = zoomScale
             $0.maximumZoomScale = zoomScale

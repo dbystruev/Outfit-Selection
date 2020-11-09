@@ -11,7 +11,6 @@ import UIKit
 class OutfitViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet var buttons: [UIButton]!
-    @IBOutlet var buttonsStackView: UIStackView!
     @IBOutlet var clothesStackView: UIStackView!
     @IBOutlet var scrollViews: [PinnableScrollView]!
     

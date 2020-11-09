@@ -75,7 +75,7 @@ class NetworkManager {
     }
     
     func getOffers(in category: Category, completion: @escaping ([Offer]?) -> Void) {
-        get("offers", parameters: ["categoryId": category.id, "limit": Category.maxCount], completion: completion)
+        get("offers", parameters: ["categoryId": category.id, "limit": Offer.maxCount], completion: completion)
     }
 }
 

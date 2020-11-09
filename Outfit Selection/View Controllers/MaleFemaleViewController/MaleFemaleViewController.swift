@@ -52,7 +52,7 @@ class MaleFemaleViewController: UIViewController {
         DispatchManager.shared.group.notify(queue: .main) {
 //            print("\(#line) \(Self.self).\(#function) Offer.all.count = \(Offer.all.count)")
             
-            guard Category.maxCount * (Category.all.count - 1) < Offer.all.count else { return }
+            guard Offer.maxCount * (Category.all.count - 1) < Offer.all.count else { return }
             guard let controller = navigationController.viewControllers.first as? OutfitViewController else { return }
             
             controller.loadImagesFromServer()

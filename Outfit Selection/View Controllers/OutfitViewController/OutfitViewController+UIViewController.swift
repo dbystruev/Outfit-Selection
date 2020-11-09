@@ -12,8 +12,10 @@ import UIKit
 extension OutfitViewController {    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
-        buttons.forEach { $0.setEditing(action: selectedAction) }
-        buttonsStackView.isHidden = !editing
+        buttons.forEach {
+            $0.isHidden = !editing
+            $0.setEditing(action: selectedAction)
+        }
         scrollViews.forEach { $0.setEditing(editing) }
     }
     

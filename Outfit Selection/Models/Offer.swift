@@ -10,6 +10,7 @@ import Foundation
 
 struct Offer: Codable {
     static var all = [Offer]()
+    static let maxCount = 12
     
     let categoryId: Int
     let name: String
