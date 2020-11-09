@@ -29,6 +29,12 @@ extension OutfitViewController {
             $0.isHidden = !isEditing
         }
         
+        pinButtons.forEach {
+            $0.imageView?.image = UIImage(systemName: "pin")
+            $0.isHighlighted = false
+            $0.imageView?.highlightedImage = UIImage(systemName: "pin.fill")
+        }
+        
         scrollViews.forEach {
             $0.minimumZoomScale = zoomScale
             $0.maximumZoomScale = zoomScale
@@ -49,8 +55,12 @@ extension OutfitViewController {
     }
     
     func unpin() {
-        scrollViews.unpin()
         diceButtonItem.isEnabled = true
+        pinButtons.forEach {
+            $0.alpha = 0.5
+            $0.imageView?.isHighlighted = false
+        }
+        scrollViews.unpin()
     }
     
     func updateItemCount() {

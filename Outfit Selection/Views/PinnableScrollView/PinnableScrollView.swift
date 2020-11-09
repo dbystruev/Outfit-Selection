@@ -11,7 +11,7 @@ import UIKit
 class PinnableScrollView: UIScrollView {
     private(set) var isPinned = false {
         didSet {
-            restoreBorder()
+            // restoreBorder()
         }
     }
     

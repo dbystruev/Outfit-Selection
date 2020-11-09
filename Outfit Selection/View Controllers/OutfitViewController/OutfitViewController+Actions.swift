@@ -16,19 +16,13 @@ extension OutfitViewController {
         setEditing(!isEditing, animated: true)
     }
     
-    @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
+    @objc func diceButtonPressed(_ sender: UIBarButtonItem) {
         setEditing(false, animated: true)
-        guard let view = navigationController?.view else { return }
-        
-        scrollViews.clearBorders()
-        let possibleScreenshot = getScreenshot(of: view)
-        scrollViews.restoreBorders()
-        
-        guard let screenshot = possibleScreenshot else { return }
-        
-        let activityController = UIActivityViewController(activityItems: [screenshot], applicationActivities: nil)
-        activityController.popoverPresentationController?.sourceView = sender.customView
-        present(activityController, animated: true)
+        scrollViews.forEach {
+            if !$0.isPinned {
+                $0.scrollToRandomElement()
+            }
+        }
     }
     
     @IBAction func insideButtonPressed(_ sender: UIButton) {
@@ -38,10 +32,6 @@ extension OutfitViewController {
         switch selectedAction {
             
         case .add:
-//            let documentPicker = UIDocumentPickerViewController(documentTypes: ["public.image"], in: .import)
-//            documentPicker.allowsMultipleSelection = true
-//            documentPicker.delegate = self
-//            present(documentPicker, animated: true)
             let sourceTitles: [UIImagePickerController.SourceType: String] = [
                 .camera: "📷",
                 .photoLibrary: "🖼"
@@ -100,19 +90,24 @@ extension OutfitViewController {
 
     }
     
+    @IBAction func pinButtonTapped(_ sender: UIButton) {
+        guard let selectedIndex = pinButtons.firstIndex(of: sender) else { return }
+        
+        let scrollView = scrollViews[selectedIndex]
+        scrollView.toggle()
+        
+        let isPinned = scrollView.isPinned
+        let pinButton = pinButtons[selectedIndex]
+        pinButton.alpha = isPinned ? 1 : 0.5
+        pinButton.imageView?.isHighlighted = isPinned
+        
+        diceButtonItem.isEnabled = !scrollViews.allPinned
+    }
+    
     @objc func trashButtonPressed(_ sender: UIBarButtonItem) {
         unpin()
         selectedAction = .trash
         setEditing(!isEditing, animated: true)
         return
-    }
-    
-    @objc func diceButtonPressed(_ sender: UIBarButtonItem) {
-        setEditing(false, animated: true)
-        scrollViews.forEach {
-            if !$0.isPinned {
-                $0.scrollToRandomElement()
-            }
-        }
     }
 }

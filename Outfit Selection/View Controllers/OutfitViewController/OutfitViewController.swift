@@ -12,6 +12,7 @@ class OutfitViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var clothesStackView: UIStackView!
+    @IBOutlet var pinButtons: [UIButton]!
     @IBOutlet var scrollViews: [PinnableScrollView]!
     
     // MARK: - Properties
