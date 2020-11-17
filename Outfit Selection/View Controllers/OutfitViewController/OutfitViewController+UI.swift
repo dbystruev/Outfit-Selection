@@ -57,6 +57,10 @@ extension OutfitViewController {
         setupToolbar()
     }
     
+    func titleForCountButtonItem(_ items: Int) -> String {
+        "Items: \(items)"
+    }
+    
     func unpin() {
         diceButtonItem.isEnabled = true
         pinButtons.forEach {
@@ -74,7 +78,7 @@ extension OutfitViewController {
     }
     
     func updateCountButtonItem(with count: Int) {
-        countButtonItem.title = "Items: \(itemCount)"
+        countButtonItem.title = titleForCountButtonItem(itemCount)
     }
     
     func updateItemCount() {

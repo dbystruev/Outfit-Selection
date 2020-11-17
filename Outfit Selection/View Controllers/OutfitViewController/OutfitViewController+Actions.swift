@@ -18,10 +18,11 @@ extension OutfitViewController {
     
     @objc func countButtonItemPressed(_ sender: UIBarButtonItem) {
         debug("Step 1:", sender.title)
-        if sender.title == OutfitViewController.loadingMessage {
+        if sender.title == OutfitViewController.loadingMessage || sender.title == titleForCountButtonItem(assetCount) {
             debug("Step 2:", sender.title)
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                if sender.title == OutfitViewController.loadingMessage {
+                if sender.title == OutfitViewController.loadingMessage
+                    || sender.title == self.titleForCountButtonItem(self.assetCount) {
                     debug("Step 3:", sender.title)
                     self.loadImagesFromServer()
                 }

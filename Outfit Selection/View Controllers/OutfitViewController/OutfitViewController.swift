@@ -20,6 +20,7 @@ class OutfitViewController: UIViewController {
     @IBOutlet var scrollViews: [PinnableScrollView]!
     
     // MARK: - Stored Properties
+    var assetCount = 0
     var countButtonItem: UIBarButtonItem!
     var diceButtonItem: UIBarButtonItem!
     var gender = Gender.other

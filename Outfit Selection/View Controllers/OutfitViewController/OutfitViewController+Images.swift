@@ -10,16 +10,19 @@ import UIKit
 
 // MARK: - Images
 extension OutfitViewController {
-    func loadImagesFromAssets() {
+    func loadImagesFromAssets() -> Int {
+        var count = 0
         // Image names are "\(prefix)01", "\(prefix)02" etc.
         for (prefix, scrollView) in zip(imagePrefixes, scrollViews) {
             for suffixCount in 1... {
                 let suffix = String(format: "%02d", suffixCount)
                 let imageName = "\(prefix)\(suffix)"
                 guard let image = UIImage(named: imageName) else { break }
+                count += 1
                 scrollView.insert(image: image).tag = -1
             }
         }
+        return count
     }
     
     func loadImagesFromServer() {
