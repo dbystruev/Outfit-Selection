@@ -20,7 +20,6 @@ extension OutfitViewController {
                 scrollView.insert(image: image)
             }
         }
-        updateItemCount()
     }
     
     func loadImagesFromServer() {
@@ -28,7 +27,7 @@ extension OutfitViewController {
             var count = scrollView.count
             let offers = Item.all.filter { $0.categoryId == category.id }
             for offer in offers {
-                guard let url = offer.pictures.first else { continue }
+                guard let url = offer.pictures?.first else { continue }
                 NetworkManager.shared.getImage(url) { image in
                     guard let image = image else { return }
                     guard let itemIndex = offer.itemIndex else  {

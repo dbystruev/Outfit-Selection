@@ -17,7 +17,7 @@ class OutfitViewController: UIViewController {
     @IBOutlet var scrollViews: [PinnableScrollView]!
     
     // MARK: - Properties
-    var countButtonItem = UIBarButtonItem(title: "Loading...", style: .done, target: nil, action: nil)
+    var countButtonItem: UIBarButtonItem!
     var diceButtonItem: UIBarButtonItem!
     var gender = Gender.other
     

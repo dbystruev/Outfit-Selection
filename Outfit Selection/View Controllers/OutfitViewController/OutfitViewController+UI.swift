@@ -25,11 +25,13 @@ extension OutfitViewController {
     }
     
     func setupToolbar() {
-        let deleteItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: nil) // #selector(trashButtonPressed(_:)))
-        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        countButtonItem = UIBarButtonItem(title: "Loading...", style: .done, target: self,
+                                          action: #selector(countButtonItemPressed(_:)))
+        let deleteItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashButtonPressed(_:)))
         let diceImage = UIImage(named: "dice")
         diceButtonItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonPressed(_:)))
-        toolbarItems = [deleteItem, spaceItem, countButtonItem, spaceItem, diceButtonItem!]
+        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        toolbarItems = [countButtonItem, spaceItem, diceButtonItem!, spaceItem, deleteItem]
         navigationController?.setToolbarHidden(false, animated: false)
     }
     
@@ -51,6 +53,8 @@ extension OutfitViewController {
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = logoImageView
+        
+        setupToolbar()
     }
     
     func unpin() {

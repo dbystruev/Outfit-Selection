@@ -35,12 +35,6 @@ extension OutfitViewController {
         presentMaleFemaleViewController(style: .formSheet)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        // Don't move to viewDidLoad(): https://stackoverflow.com/a/2476310/7851379
-        setupToolbar()
-    }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {

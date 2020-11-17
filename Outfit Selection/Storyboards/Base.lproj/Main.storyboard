@@ -457,27 +457,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KqW-9N-Ntk">
-                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3W-h9-jQb">
+                                <rect key="frame" x="16" y="104" width="382" height="29"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tez-9P-gqj">
+                                <rect key="frame" x="16" y="149" width="382" height="582"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpo-Qn-AYN">
+                                <rect key="frame" x="16" y="747" width="382" height="50"/>
+                                <color key="backgroundColor" systemColor="systemTealColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="UIG-6s-OG6"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Order">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ttT-PL-VLh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ttT-PL-VLh" firstAttribute="bottom" secondItem="KqW-9N-Ntk" secondAttribute="bottom" id="9Sy-jn-2hF"/>
-                            <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="KqW-9N-Ntk" secondAttribute="trailing" id="Efa-BZ-RS5"/>
-                            <constraint firstItem="KqW-9N-Ntk" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" id="gCS-bU-XDy"/>
-                            <constraint firstItem="KqW-9N-Ntk" firstAttribute="top" secondItem="ttT-PL-VLh" secondAttribute="top" id="mZw-a2-fCq"/>
+                            <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="Tez-9P-gqj" secondAttribute="trailing" constant="16" id="HXN-vV-rbI"/>
+                            <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="dpo-Qn-AYN" secondAttribute="trailing" constant="16" id="HeZ-Em-Ehk"/>
+                            <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="q3W-h9-jQb" secondAttribute="trailing" constant="16" id="Lw4-aY-NZJ"/>
+                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="top" secondItem="Tez-9P-gqj" secondAttribute="bottom" constant="16" id="MoE-RU-ael"/>
+                            <constraint firstItem="q3W-h9-jQb" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="PPt-97-Jxc"/>
+                            <constraint firstItem="ttT-PL-VLh" firstAttribute="bottom" secondItem="dpo-Qn-AYN" secondAttribute="bottom" constant="16" id="Vhd-Gv-sdX"/>
+                            <constraint firstItem="Tez-9P-gqj" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="mH5-lY-pyQ"/>
+                            <constraint firstItem="q3W-h9-jQb" firstAttribute="top" secondItem="ttT-PL-VLh" secondAttribute="top" constant="16" id="wYl-4Y-LgN"/>
+                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="wdQ-Na-5A4"/>
+                            <constraint firstItem="Tez-9P-gqj" firstAttribute="top" secondItem="q3W-h9-jQb" secondAttribute="bottom" constant="16" id="ytE-Kb-Dop"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="by0-GS-4kH"/>
                     <connections>
-                        <outlet property="imageView" destination="KqW-9N-Ntk" id="BgU-Py-70L"/>
+                        <outlet property="imageView" destination="Tez-9P-gqj" id="NF6-q8-GWd"/>
+                        <outlet property="nameLabel" destination="q3W-h9-jQb" id="Qfq-uF-dtP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2524" y="402"/>
+            <point key="canvasLocation" x="2523.1884057971015" y="401.78571428571428"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Ut-nn-jAK">
@@ -510,6 +534,9 @@
         <image name="trash" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

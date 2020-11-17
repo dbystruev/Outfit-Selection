@@ -24,13 +24,14 @@ struct Item: Codable {
     }
     
     // MARK: - Properties
-    let categoryId: Int
+    let categoryId: Int?
     
     /// Index in Item.all array
     var itemIndex: Int?
     
-    let name: String
-    let pictures: [URL]
-    let url: URL
+    let name: String?
+    let pictures: [URL]?
+    let price: Double?
+    let url: URL?
     
 }

@@ -16,6 +16,10 @@ extension OutfitViewController {
         setEditing(!isEditing, animated: true)
     }
     
+    @objc func countButtonItemPressed(_ sender: UIBarButtonItem) {
+        debug(sender.title)
+    }
+    
     @objc func diceButtonPressed(_ sender: UIBarButtonItem) {
         selectedAction = .cancel
         setEditing(false, animated: true)
@@ -128,6 +132,5 @@ extension OutfitViewController {
         unpin()
         selectedAction = isEditing ? .cancel : .trash
         setEditing(!isEditing, animated: true)
-        debug(isEditing)
     }
 }
