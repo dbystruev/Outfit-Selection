@@ -90,7 +90,7 @@ extension OutfitViewController {
             }
             
         default:
-            performSegue(withIdentifier: "viewItem", sender: sender)
+            break
         }
 
     }

@@ -25,9 +25,7 @@ extension OutfitViewController {
     }
     
     func setupUI() {
-//        buttons.forEach {
-//            $0.isHidden = !isEditing
-//        }
+        buttonsStackView.isHidden = true
         
         pinButtons.forEach {
             $0.imageView?.image = UIImage(systemName: "pin")

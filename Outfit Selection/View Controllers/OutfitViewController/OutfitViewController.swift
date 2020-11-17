@@ -11,6 +11,7 @@ import UIKit
 class OutfitViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet var buttons: [UIButton]!
+    @IBOutlet var buttonsStackView: UIStackView!
     @IBOutlet var clothesStackView: UIStackView!
     @IBOutlet var pinButtons: [UIButton]!
     @IBOutlet var scrollViews: [PinnableScrollView]!
@@ -25,6 +26,7 @@ class OutfitViewController: UIViewController {
     
     var selectedAction = UIBarButtonItem.SystemItem.cancel {
         didSet {
+            buttonsStackView.isHidden = ![.add, .trash].contains(selectedAction)
             buttons.forEach {
                 $0.setEditing(action: selectedAction)
             }

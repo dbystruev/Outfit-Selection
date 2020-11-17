@@ -26,8 +26,11 @@ extension OutfitViewController {
         diceButtonItem.isEnabled = !scrollViews.allPinned
     }
     
-    @objc func scrollViewTappedOnce(_ sender: UIGestureRecognizer) {
-        debug(sender)
+    @objc func scrollViewTappedTwice(_ sender: UIGestureRecognizer) {
         pinImage(sender)
+    }
+    
+    @objc func scrollViewTappedOnce(_ sender: UIGestureRecognizer) {
+        performSegue(withIdentifier: "viewItem", sender: sender)
     }
 }

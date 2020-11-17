@@ -9,9 +9,10 @@
 import UIKit
 
 func debug(line: Int = #line,
-           file: String = #file.lastComponent.dropExtension,
+           file: String = #file,
            function: String = #function,
            _ messages: CustomStringConvertible?...) {
+    let file = file.lastComponent.dropExtension
     let message = messages.reduce("") { "\($0) \($1?.description ?? "nil")" }
     #if DEBUG
     print("\(line) \(file).\(function)\(message)")
