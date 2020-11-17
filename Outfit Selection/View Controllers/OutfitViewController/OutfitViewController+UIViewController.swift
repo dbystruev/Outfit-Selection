@@ -29,7 +29,7 @@ extension OutfitViewController {
         super.viewDidLoad()
         loadImagesFromAssets()
         scrollViews.forEach { $0.delegate = self }
-        setupTapGestureRecognizers()
+        setupGestures()
         setupUI()
         presentMaleFemaleViewController(style: .formSheet)
     }

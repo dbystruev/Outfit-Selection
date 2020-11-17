@@ -10,13 +10,22 @@ import UIKit
 
 // MARK: - Gestures
 extension OutfitViewController {
-    func setupTapGestureRecognizers() {
+    func setupGestures() {
         scrollViews.forEach { scrollView in
-            let longPress = UILongPressGestureRecognizer(target: self, action: #selector(pinImage(_:)))
-            scrollView.addGestureRecognizer(longPress)
+            let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(pinImage(_:)))
+            doubleTapRecognizer.delegate = scrollView
+            doubleTapRecognizer.numberOfTouchesRequired = 2
+            scrollView.addGestureRecognizer(doubleTapRecognizer)
             
-            let singleTap = UITapGestureRecognizer(target: self, action: #selector(scrollViewTappedOnce(_:)))
-            scrollView.addGestureRecognizer(singleTap)
+            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(pinImage(_:)))
+            scrollView.addGestureRecognizer(longPressRecognizer)
+            
+            let singleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(scrollViewTappedOnce(_:)))
+            singleTapRecognizer.delegate = scrollView
+            scrollView.addGestureRecognizer(singleTapRecognizer)
+            
+            scrollView.doubleTapRecognizer = doubleTapRecognizer
+            scrollView.singleTapRecognizer = singleTapRecognizer
         }
     }
     
@@ -26,11 +35,11 @@ extension OutfitViewController {
         diceButtonItem.isEnabled = !scrollViews.allPinned
     }
     
-    @objc func scrollViewTappedTwice(_ sender: UIGestureRecognizer) {
-        pinImage(sender)
-    }
-    
     @objc func scrollViewTappedOnce(_ sender: UIGestureRecognizer) {
-        performSegue(withIdentifier: "viewItem", sender: sender)
+        if sender.numberOfTouches == 1 {
+            performSegue(withIdentifier: "viewItem", sender: sender)
+        } else {
+            pinImage(sender)
+        }
     }
 }

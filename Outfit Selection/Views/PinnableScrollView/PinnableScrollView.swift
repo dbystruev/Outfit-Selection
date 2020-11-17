@@ -9,12 +9,18 @@
 import UIKit
 
 class PinnableScrollView: UIScrollView {
+    // MARK: - Stored Properties
+    var doubleTapRecognizer: UITapGestureRecognizer!
+    var singleTapRecognizer: UITapGestureRecognizer!
+    
+    // MARK: - Computed Properties
     private(set) var isPinned = false {
         didSet {
-            // restoreBorder()
+            restoreBorder()
         }
     }
     
+    // MARK: - Methods
     public func clearBorder() {
         layer.borderWidth = 0
     }
