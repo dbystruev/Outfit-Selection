@@ -467,7 +467,7 @@
                                 <rect key="frame" x="16" y="149" width="382" height="582"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpo-Qn-AYN">
-                                <rect key="frame" x="16" y="747" width="382" height="50"/>
+                                <rect key="frame" x="103.5" y="747" width="207" height="50"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="UIG-6s-OG6"/>
@@ -481,20 +481,23 @@
                                         <integer key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="priceButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="5vk-11-a6Q"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ttT-PL-VLh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="Tez-9P-gqj" secondAttribute="trailing" constant="16" id="HXN-vV-rbI"/>
-                            <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="dpo-Qn-AYN" secondAttribute="trailing" constant="16" id="HeZ-Em-Ehk"/>
                             <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="q3W-h9-jQb" secondAttribute="trailing" constant="16" id="Lw4-aY-NZJ"/>
                             <constraint firstItem="dpo-Qn-AYN" firstAttribute="top" secondItem="Tez-9P-gqj" secondAttribute="bottom" constant="16" id="MoE-RU-ael"/>
                             <constraint firstItem="q3W-h9-jQb" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="PPt-97-Jxc"/>
+                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="centerX" secondItem="uN6-6g-WHf" secondAttribute="centerX" id="PVf-2Y-YQK"/>
                             <constraint firstItem="ttT-PL-VLh" firstAttribute="bottom" secondItem="dpo-Qn-AYN" secondAttribute="bottom" constant="16" id="Vhd-Gv-sdX"/>
+                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="width" secondItem="uN6-6g-WHf" secondAttribute="width" multiplier="0.5" id="feQ-fy-rrT"/>
                             <constraint firstItem="Tez-9P-gqj" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="mH5-lY-pyQ"/>
                             <constraint firstItem="q3W-h9-jQb" firstAttribute="top" secondItem="ttT-PL-VLh" secondAttribute="top" constant="16" id="wYl-4Y-LgN"/>
-                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="wdQ-Na-5A4"/>
                             <constraint firstItem="Tez-9P-gqj" firstAttribute="top" secondItem="q3W-h9-jQb" secondAttribute="bottom" constant="16" id="ytE-Kb-Dop"/>
                         </constraints>
                     </view>

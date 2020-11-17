@@ -6,7 +6,7 @@
 //  Copyright © 2020 Denis Bystruev. All rights reserved.
 //
 
-import UIKit
+import SafariServices
 
 class ItemViewController: UIViewController {
     
@@ -25,8 +25,6 @@ class ItemViewController: UIViewController {
         super.viewDidLoad()
         
         imageView.image = image
-        debug(itemIndex, Item.all.count)
-        
         item = 0 <= itemIndex && itemIndex < Item.all.count ? Item.all[itemIndex] : nil
         
         updateUI()
@@ -36,5 +34,18 @@ class ItemViewController: UIViewController {
         nameLabel.text = item?.name
         priceButton.isHidden = item == nil
         title = item?.price?.asPrice
+    }
+    
+    // Actions
+    @IBAction func priceButtonTapped(_ sender: UIButton) {
+        guard let url = item?.url else { return }
+        
+        let config = SFSafariViewController.Configuration()
+        config.barCollapsingEnabled = false
+        
+        let controller = SFSafariViewController(url: url, configuration: config)
+        present(controller, animated: true)
+        
+        debug(url)
     }
 }
