@@ -1,6 +1,9 @@
 # Outfit-Selection
 GetOufit.ru Selection Prototype
 
-![Screenshot 1](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screen1.png?raw=true)
-![Screenshot 2](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screen2.png?raw=true)
-![Screenshot 3](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screen3.png?raw=true)
+![Logo](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screenshot01.png?raw=true)
+![Gender Selection](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screenshot02.png?raw=true)
+![Standard Assets](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screenshot03.png?raw=true)
+![Outlook Creation](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screenshot04.png?raw=true)
+![Item Detail](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screenshot05.png?raw=true)
+![Purchase](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screenshot06.png?raw=true)
