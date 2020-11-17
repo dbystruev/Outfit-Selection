@@ -476,6 +476,11 @@
                                 <state key="normal" title="Order">
                                     <color key="titleColor" systemColor="systemBackgroundColor"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ttT-PL-VLh"/>
@@ -497,6 +502,7 @@
                     <connections>
                         <outlet property="imageView" destination="Tez-9P-gqj" id="NF6-q8-GWd"/>
                         <outlet property="nameLabel" destination="q3W-h9-jQb" id="Qfq-uF-dtP"/>
+                        <outlet property="priceButton" destination="dpo-Qn-AYN" id="kqi-hR-5gW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

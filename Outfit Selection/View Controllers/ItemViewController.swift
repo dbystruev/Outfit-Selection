@@ -13,6 +13,7 @@ class ItemViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceButton: UIButton!
     
     // MARK: - Properties
     var image: UIImage?
@@ -26,13 +27,14 @@ class ItemViewController: UIViewController {
         imageView.image = image
         debug(itemIndex, Item.all.count)
         
-        item = itemIndex < Item.all.count ? Item.all[itemIndex] : nil
+        item = 0 <= itemIndex && itemIndex < Item.all.count ? Item.all[itemIndex] : nil
         
         updateUI()
     }
     
     func updateUI() {
         nameLabel.text = item?.name
+        priceButton.isHidden = item == nil
         title = item?.price?.asPrice
     }
 }

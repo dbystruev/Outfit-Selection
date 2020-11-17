@@ -17,7 +17,7 @@ extension OutfitViewController {
                 let suffix = String(format: "%02d", suffixCount)
                 let imageName = "\(prefix)\(suffix)"
                 guard let image = UIImage(named: imageName) else { break }
-                scrollView.insert(image: image)
+                scrollView.insert(image: image).tag = -1
             }
         }
     }
@@ -31,7 +31,7 @@ extension OutfitViewController {
                 NetworkManager.shared.getImage(url) { image in
                     guard let image = image else { return }
                     guard let itemIndex = offer.itemIndex else  {
-                        debug("ERROR: Can't get item index for offer", offer.name, offer.url)
+                        debug("ERROR: Can't get item index for the offer", offer.name, offer.url)
                         return
                     }
                     DispatchQueue.main.async {

@@ -9,6 +9,9 @@
 import UIKit
 
 class OutfitViewController: UIViewController {
+    // MARK: - Static Constants
+    static let loadingMessage = "Loading..."
+    
     // MARK: - Outlets
     @IBOutlet var buttons: [UIButton]!
     @IBOutlet var buttonsStackView: UIStackView!
@@ -33,6 +36,10 @@ class OutfitViewController: UIViewController {
     var zoomScale = CGFloat(3)
     
     // MARK: - Computed Properties
+    var itemCount: Int {
+        scrollViews.reduce(0) { $0 + $1.count }
+    }
+    
     var price: Double? {
         var amount = 0.0
         for scrollView in scrollViews {

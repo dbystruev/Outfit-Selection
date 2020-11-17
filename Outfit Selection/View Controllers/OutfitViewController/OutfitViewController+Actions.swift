@@ -17,7 +17,16 @@ extension OutfitViewController {
     }
     
     @objc func countButtonItemPressed(_ sender: UIBarButtonItem) {
-        debug(sender.title)
+        debug("Step 1:", sender.title)
+        if sender.title == OutfitViewController.loadingMessage {
+            debug("Step 2:", sender.title)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                if sender.title == OutfitViewController.loadingMessage {
+                    debug("Step 3:", sender.title)
+                    self.loadImagesFromServer()
+                }
+            }
+        }
     }
     
     @objc func diceButtonPressed(_ sender: UIBarButtonItem) {

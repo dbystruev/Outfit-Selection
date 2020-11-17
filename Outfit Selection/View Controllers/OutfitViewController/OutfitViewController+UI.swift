@@ -25,7 +25,7 @@ extension OutfitViewController {
     }
     
     func setupToolbar() {
-        countButtonItem = UIBarButtonItem(title: "Loading...", style: .done, target: self,
+        countButtonItem = UIBarButtonItem(title: OutfitViewController.loadingMessage, style: .done, target: self,
                                           action: #selector(countButtonItemPressed(_:)))
         let deleteItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashButtonPressed(_:)))
         let diceImage = UIImage(named: "dice")
@@ -73,16 +73,22 @@ extension OutfitViewController {
         }
     }
     
+    func updateCountButtonItem(with count: Int) {
+        countButtonItem.title = "Items: \(itemCount)"
+    }
+    
     func updateItemCount() {
-        let count = scrollViews.reduce(0) { $0 + $1.count }
-        countButtonItem.title = "Items: \(count)"
+        updateCountButtonItem(with: itemCount)
         updatePrice()
     }
     
     func updatePrice() {
+        guard let title = price?.asPrice else {
+            updateCountButtonItem(with: itemCount)
+            return
+        }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let title = self.countButtonItem.title
-            self.countButtonItem.title = self.price?.asPrice ?? title
+            self.countButtonItem.title = title
         }
     }
 }

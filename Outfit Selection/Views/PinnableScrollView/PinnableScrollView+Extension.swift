@@ -51,7 +51,7 @@ extension PinnableScrollView {
         return stackView?.arrangedSubviews[index] as? UIImageView
     }
     
-    @discardableResult func insert(image: UIImage?, atIndex index: Int? = nil) -> UIImageView {
+    func insert(image: UIImage?, atIndex index: Int? = nil) -> UIImageView {
         if let lastImageView = stackView?.arrangedSubviews.last as? UIImageView {
             guard lastImageView.image != nil else {
                 lastImageView.image = image
@@ -65,11 +65,11 @@ extension PinnableScrollView {
         return imageView
     }
     
-    @discardableResult func insertAndScroll(image: UIImage?, atIndex index: Int? = nil) -> UIImageView {
+    func insertAndScroll(image: UIImage?, atIndex index: Int? = nil, completion: ((Bool) -> Void)? = nil) -> UIImageView {
         let index = index ?? currentIndex + 1
         let imageView = insert(image: image, atIndex: index)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            self.scrollToElement(withIndex: index, duration: 1)
+            self.scrollToElement(withIndex: index, duration: 1, completion: completion)
         }
         return imageView
     }
