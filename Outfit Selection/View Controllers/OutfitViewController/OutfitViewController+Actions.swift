@@ -85,7 +85,7 @@ extension OutfitViewController {
             let indexToShow = deletingLastItem ? indexToDelete - 1 : indexToDelete + 1
             
             scrollView.scrollToElement(withIndex: indexToShow) { completed in
-                scrollView.deleteImage(withIndex: indexToDelete)
+                scrollView.deleteImageView(withIndex: indexToDelete)
                 self.updateItemCount()
             }
             

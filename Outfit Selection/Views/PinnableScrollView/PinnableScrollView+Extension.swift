@@ -28,23 +28,26 @@ extension PinnableScrollView {
         return subviews.first as? UIStackView
     }
     
-    func deleteImage(withIndex deleteIndex: Int) {
-        guard 1 < count else { return }
-        guard 0 <= deleteIndex && deleteIndex < count else { return }
-        guard let imageView = stackView?.arrangedSubviews[deleteIndex] as? UIImageView else { return }
+    func deleteImageView(withIndex deleteIndex: Int) {
+        guard let imageView = getImageView(withIndex: deleteIndex) else { return }
         if deleteIndex == 0 {
             contentOffset.x = 0
-            guard let secondImageView = stackView?.arrangedSubviews[1] as? UIImageView else { return }
+            guard let secondImageView = getImageView(withIndex: 1) else { return }
             imageView.image = secondImageView.image
-            stackView?.removeArrangedSubview(secondImageView)
             secondImageView.removeFromSuperview()
         } else {
             if deleteIndex < count - 1 {
                 contentOffset.x -= elementWidth
             }
-            stackView?.removeArrangedSubview(imageView)
             imageView.removeFromSuperview()
         }
+    }
+    
+    func getImageView(withIndex index: Int? = nil) -> UIImageView? {
+        guard 1 < count else { return nil }
+        let index = index ?? currentIndex
+        guard 0 <= index && index < count else { return nil }
+        return stackView?.arrangedSubviews[index] as? UIImageView
     }
     
     func insert(image: UIImage?, atIndex index: Int? = nil) {

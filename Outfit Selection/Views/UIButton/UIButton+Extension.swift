@@ -13,12 +13,15 @@ extension UIButton {
     func setEditing(action: UIBarButtonItem.SystemItem) {
         switch action {
         case .add:
+            isHidden = false
             isHighlighted = true
             isSelected = false
         case .trash:
+            isHidden = false
             isHighlighted = false
             isSelected = true
         default:
+            isHidden = true
             isHighlighted = false
             isSelected = false
         }

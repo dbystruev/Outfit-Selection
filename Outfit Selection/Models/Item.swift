@@ -20,7 +20,6 @@ struct Item: Codable {
         for var newItem in newItems {
             newItem.itemIndex = all.count
             all.append(newItem)
-            all.append(contentsOf: [newItem])
         }
     }
     

@@ -10,11 +10,16 @@ import UIKit
 
 class ItemViewController: UIViewController {
     
+    // MARK: - Outlets
+    @IBOutlet weak var imageView: UIImageView!
+    
+    // MARK: - Properties
+    var image: UIImage!
     var item: Item!
 
+    // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        imageView.image = image
     }
 }

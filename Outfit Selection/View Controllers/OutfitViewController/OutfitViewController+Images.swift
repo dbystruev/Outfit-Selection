@@ -35,7 +35,7 @@ extension OutfitViewController {
                         scrollView.insert(image: image)
                         scrollView.scrollToLastElement() {_ in
                             if (0 < count) {
-                                scrollView.deleteImage(withIndex: 0)
+                                scrollView.deleteImageView(withIndex: 0)
                                 count -= 1
                             }
                             self.updateItemCount()

@@ -13,8 +13,11 @@ extension OutfitViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "viewItem" else { return }
         guard let destination = segue.destination as? ItemViewController else { return }
+        guard let button = sender as? UIButton else { return }
+        guard let buttonIndex = buttons.firstIndex(of: button) else { return }
+        guard let image = scrollViews[buttonIndex].getImageView()?.image else { return }
         
-        debug(sender as? UIButton)
+        destination.image = image
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {

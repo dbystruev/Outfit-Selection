@@ -27,6 +27,7 @@ extension OutfitViewController {
     }
     
     @objc func scrollViewTappedOnce(_ sender: UIGestureRecognizer) {
+        debug(sender)
         pinImage(sender)
     }
 }
