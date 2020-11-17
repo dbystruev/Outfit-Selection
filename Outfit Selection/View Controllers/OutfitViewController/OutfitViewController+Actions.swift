@@ -12,11 +12,12 @@ import UIKit
 extension OutfitViewController {
     @IBAction func addButtonPressed(sender: UIBarButtonItem) {
         unpin()
-        selectedAction = .add
+        selectedAction = isEditing ? .cancel : .add
         setEditing(!isEditing, animated: true)
     }
     
     @objc func diceButtonPressed(_ sender: UIBarButtonItem) {
+        selectedAction = .cancel
         setEditing(false, animated: true)
         scrollViews.forEach {
             if !$0.isPinned {
@@ -29,11 +30,11 @@ extension OutfitViewController {
         selectedButtonIndex = buttons.firstIndex(of: sender)
         setEditing(false, animated: false)
         
-        debug("selectedAction =", selectedAction)
-        
         switch selectedAction {
             
         case .add:
+            selectedAction = .cancel
+            
             let sourceTitles: [UIImagePickerController.SourceType: String] = [
                 .camera: "📷",
                 .photoLibrary: "🖼"
@@ -73,6 +74,8 @@ extension OutfitViewController {
             present(alert, animated: true)
             
         case .trash:
+            selectedAction = .cancel
+            
             guard let scrollViewIndex = selectedButtonIndex else { return }
             guard scrollViewIndex < scrollViews.count else { return }
             let scrollView = scrollViews[scrollViewIndex]
@@ -87,7 +90,7 @@ extension OutfitViewController {
             }
             
         default:
-            break
+            debug("isEditing =", isEditing, "selectedAction =", selectedAction)
         }
 
     }
@@ -123,7 +126,7 @@ extension OutfitViewController {
     
     @objc func trashButtonPressed(_ sender: UIBarButtonItem) {
         unpin()
-        selectedAction = .trash
+        selectedAction = isEditing ? .cancel : .trash
         setEditing(!isEditing, animated: true)
         return
     }

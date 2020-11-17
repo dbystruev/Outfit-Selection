@@ -215,8 +215,8 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrh-Mc-QXc">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                        <state key="normal" image="add"/>
                                                         <state key="selected" image="trash"/>
+                                                        <state key="highlighted" image="add"/>
                                                         <connections>
                                                             <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihW-9Z-AYF"/>
                                                         </connections>
@@ -247,8 +247,8 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6d8-jy-X4g">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                        <state key="normal" image="add"/>
                                                         <state key="selected" image="trash"/>
+                                                        <state key="highlighted" image="add"/>
                                                         <connections>
                                                             <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRl-aN-Yn3"/>
                                                         </connections>
@@ -284,8 +284,8 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veY-L1-vFI">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="362.5"/>
-                                                        <state key="normal" image="add"/>
                                                         <state key="selected" image="trash"/>
+                                                        <state key="highlighted" image="add"/>
                                                         <connections>
                                                             <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KO8-2e-Yba"/>
                                                         </connections>
@@ -319,8 +319,8 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prF-ci-obE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="181.5"/>
-                                                                <state key="normal" image="add"/>
                                                                 <state key="selected" image="trash"/>
+                                                                <state key="highlighted" image="add"/>
                                                                 <connections>
                                                                     <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQ5-oH-8Ra"/>
                                                                 </connections>
@@ -352,8 +352,8 @@
                                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbQ-md-Z3V">
                                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="181"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" image="add"/>
                                                                 <state key="selected" image="trash"/>
+                                                                <state key="highlighted" image="add"/>
                                                                 <connections>
                                                                     <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MOg-Nb-Ots"/>
                                                                 </connections>
@@ -441,6 +441,7 @@
                         <outletCollection property="pinButtons" destination="PdK-GK-Ra7" collectionClass="NSMutableArray" id="LIC-zU-XIl"/>
                         <outletCollection property="pinButtons" destination="NT3-Ff-VD4" collectionClass="NSMutableArray" id="uXe-2B-1Ku"/>
                         <segue destination="QdM-tb-TbV" kind="show" identifier="selectCategory" id="lmL-Qz-xwj"/>
+                        <segue destination="Uns-Sh-QHX" kind="show" identifier="viewItem" id="YhA-rh-zAa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -457,6 +458,7 @@
                         <viewLayoutGuide key="safeArea" id="ttT-PL-VLh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="by0-GS-4kH"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -14,7 +14,7 @@ func debug(line: Int = #line,
            _ messages: CustomStringConvertible...) {
     let message = messages.reduce("") { "\($0) \($1)" }
     #if DEBUG
-    print("\(line) \(file).\(function) \(message)")
+    print("\(line) \(file).\(function)\(message)")
     #endif
 }
 

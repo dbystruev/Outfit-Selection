@@ -23,7 +23,13 @@ class OutfitViewController: UIViewController {
     // imagePrefixes should correspond to scrollViews
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
     
-    var selectedAction = UIBarButtonItem.SystemItem.cancel
+    var selectedAction = UIBarButtonItem.SystemItem.cancel {
+        didSet {
+            buttons.forEach {
+                $0.setEditing(action: selectedAction)
+            }
+        }
+    }
     var selectedButtonIndex: Int?
     var zoomScale = CGFloat(3)
 }
