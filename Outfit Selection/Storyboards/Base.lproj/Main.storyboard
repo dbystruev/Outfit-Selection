@@ -448,10 +448,10 @@
             </objects>
             <point key="canvasLocation" x="1744.9275362318842" y="122.54464285714285"/>
         </scene>
-        <!--View Controller-->
+        <!--Item View Controller-->
         <scene sceneID="wZr-ET-Xq5">
             <objects>
-                <viewController id="Uns-Sh-QHX" sceneMemberID="viewController">
+                <viewController id="Uns-Sh-QHX" customClass="ItemViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uN6-6g-WHf">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

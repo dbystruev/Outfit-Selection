@@ -11,8 +11,8 @@ import UIKit
 func debug(line: Int = #line,
            file: String = #file.lastComponent.dropExtension,
            function: String = #function,
-           _ messages: CustomStringConvertible...) {
-    let message = messages.reduce("") { "\($0) \($1)" }
+           _ messages: CustomStringConvertible?...) {
+    let message = messages.reduce("") { "\($0) \($1?.description ?? "nil")" }
     #if DEBUG
     print("\(line) \(file).\(function)\(message)")
     #endif

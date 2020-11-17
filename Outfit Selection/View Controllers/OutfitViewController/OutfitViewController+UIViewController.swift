@@ -9,7 +9,14 @@
 import UIKit
 
 // MARK: - UIViewController
-extension OutfitViewController {    
+extension OutfitViewController {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "viewItem" else { return }
+        guard let destination = segue.destination as? ItemViewController else { return }
+        
+        debug(sender as? UIButton)
+    }
+    
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         scrollViews.forEach { $0.setEditing(editing) }

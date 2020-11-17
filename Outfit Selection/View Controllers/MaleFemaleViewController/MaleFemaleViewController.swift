@@ -43,16 +43,12 @@ class MaleFemaleViewController: UIViewController {
                 DispatchManager.shared.group.leave()
                 
                 guard let offers = offers else { return }
-                Offer.all.append(contentsOf: offers)
-//                print("\(#line) \(Self.self).\(#function) category: \(category.name), offers.count = \(offers.count)")
-//                offers.forEach { print("\t\($0)") }
+                Item.all.append(contentsOf: offers)
             }
         }
         
         DispatchManager.shared.group.notify(queue: .main) {
-//            print("\(#line) \(Self.self).\(#function) Offer.all.count = \(Offer.all.count)")
-            
-            guard Offer.maxCount * (Category.all.count - 1) < Offer.all.count else { return }
+            guard Item.maxCount * (Category.all.count - 1) < Item.all.count else { return }
             guard let controller = navigationController.viewControllers.first as? OutfitViewController else { return }
             
             controller.loadImagesFromServer()

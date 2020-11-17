@@ -1,5 +1,5 @@
 //
-//  Offer.swift
+//  Item.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 26.10.2020.
@@ -8,8 +8,8 @@
 
 import Foundation
 
-struct Offer: Codable {
-    static var all = [Offer]()
+struct Item: Codable {
+    static var all = [Item]()
     static let maxCount = 24
     
     let categoryId: Int

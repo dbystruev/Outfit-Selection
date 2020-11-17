@@ -90,7 +90,7 @@ extension OutfitViewController {
             }
             
         default:
-            debug("isEditing =", isEditing, "selectedAction =", selectedAction)
+            performSegue(withIdentifier: "viewItem", sender: sender)
         }
 
     }

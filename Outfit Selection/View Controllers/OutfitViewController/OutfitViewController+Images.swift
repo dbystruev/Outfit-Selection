@@ -26,7 +26,7 @@ extension OutfitViewController {
     func loadImagesFromServer() {
         for (category, scrollView) in zip(Category.all, scrollViews) {
             var count = scrollView.count
-            let offers = Offer.all.filter { $0.categoryId == category.id }
+            let offers = Item.all.filter { $0.categoryId == category.id }
             for offer in offers {
                 guard let url = offer.pictures.first else { continue }
                 NetworkManager.shared.getImage(url) { image in
