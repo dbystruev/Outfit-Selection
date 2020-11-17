@@ -20,6 +20,14 @@ class PinnableScrollView: UIScrollView {
         }
     }
     
+    var item: Item? {
+        itemIndex == nil || itemIndex! < 0 || Item.all.count <= itemIndex! ? nil : Item.all[itemIndex!]
+    }
+    
+    var itemIndex: Int? {
+        getImageView()?.tag
+    }
+    
     // MARK: - Methods
     public func clearBorder() {
         layer.borderWidth = 0

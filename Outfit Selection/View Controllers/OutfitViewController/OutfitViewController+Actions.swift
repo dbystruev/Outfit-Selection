@@ -28,6 +28,8 @@ extension OutfitViewController {
                 $0.scrollToRandomElement()
             }
         }
+        
+        updatePrice()
     }
     
     @IBAction func insideButtonPressed(_ sender: UIButton) {

@@ -76,5 +76,13 @@ extension OutfitViewController {
     func updateItemCount() {
         let count = scrollViews.reduce(0) { $0 + $1.count }
         countButtonItem.title = "Items: \(count)"
+        updatePrice()
+    }
+    
+    func updatePrice() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let title = self.countButtonItem.title
+            self.countButtonItem.title = self.price?.asPrice ?? title
+        }
     }
 }

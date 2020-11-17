@@ -16,7 +16,7 @@ class OutfitViewController: UIViewController {
     @IBOutlet var pinButtons: [UIButton]!
     @IBOutlet var scrollViews: [PinnableScrollView]!
     
-    // MARK: - Properties
+    // MARK: - Stored Properties
     var countButtonItem: UIBarButtonItem!
     var diceButtonItem: UIBarButtonItem!
     var gender = Gender.other
@@ -31,4 +31,14 @@ class OutfitViewController: UIViewController {
     }
     var selectedButtonIndex: Int?
     var zoomScale = CGFloat(3)
+    
+    // MARK: - Computed Properties
+    var price: Double? {
+        var amount = 0.0
+        for scrollView in scrollViews {
+            guard let itemPrice = scrollView.item?.price else { return nil }
+            amount += itemPrice
+        }
+        return amount
+    }
 }

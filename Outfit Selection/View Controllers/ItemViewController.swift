@@ -33,12 +33,6 @@ class ItemViewController: UIViewController {
     
     func updateUI() {
         nameLabel.text = item?.name
-        if let price = item?.price {
-            let formatter = NumberFormatter()
-            formatter.locale = Locale(identifier: "ru_RU")
-            formatter.numberStyle = .currency
-            let amount = formatter.string(from: NSNumber(value: price))
-            title = amount
-        }
+        title = item?.price?.asPrice
     }
 }
