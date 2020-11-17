@@ -14,12 +14,13 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     
     // MARK: - Properties
-    var image: UIImage!
-    var item: Item!
+    var image: UIImage?
+    var itemIndex = 0
 
     // MARK: - Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        debug(itemIndex)
         imageView.image = image
     }
 }

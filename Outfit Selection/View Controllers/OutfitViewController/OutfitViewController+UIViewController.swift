@@ -15,9 +15,10 @@ extension OutfitViewController {
         guard let destination = segue.destination as? ItemViewController else { return }
         guard let recognizer = sender as? UIGestureRecognizer else { return }
         guard let scrollView = recognizer.view as? PinnableScrollView else { return }
-        guard let image = scrollView.getImageView()?.image else { return }
+        guard let imageView = scrollView.getImageView() else { return }
         
-        destination.image = image
+        destination.image = imageView.image
+        destination.itemIndex = imageView.tag
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {
@@ -32,6 +33,12 @@ extension OutfitViewController {
         setupGestures()
         setupUI()
         presentMaleFemaleViewController(style: .formSheet)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        // Don't move to viewDidLoad(): https://stackoverflow.com/a/2476310/7851379
+        setupToolbar()
     }
     
     override func viewDidLayoutSubviews() {

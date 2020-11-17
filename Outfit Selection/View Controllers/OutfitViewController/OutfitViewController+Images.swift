@@ -31,8 +31,12 @@ extension OutfitViewController {
                 guard let url = offer.pictures.first else { continue }
                 NetworkManager.shared.getImage(url) { image in
                     guard let image = image else { return }
+                    guard let itemIndex = offer.itemIndex else  {
+                        debug("ERROR: Can't get item index for offer", offer.name, offer.url)
+                        return
+                    }
                     DispatchQueue.main.async {
-                        scrollView.insert(image: image)
+                        scrollView.insert(image: image).tag = itemIndex
                         scrollView.scrollToLastElement() {_ in
                             if (0 < count) {
                                 scrollView.deleteImageView(withIndex: 0)

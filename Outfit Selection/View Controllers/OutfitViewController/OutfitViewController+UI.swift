@@ -24,6 +24,15 @@ extension OutfitViewController {
         diceButtonItem.isEnabled = false
     }
     
+    func setupToolbar() {
+        let deleteItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: nil) // #selector(trashButtonPressed(_:)))
+        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let diceImage = UIImage(named: "dice")
+        diceButtonItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonPressed(_:)))
+        toolbarItems = [deleteItem, spaceItem, countButtonItem, spaceItem, diceButtonItem!]
+        navigationController?.setToolbarHidden(false, animated: false)
+    }
+    
     func setupUI() {
         buttonsStackView.isHidden = true
         
@@ -42,13 +51,6 @@ extension OutfitViewController {
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = logoImageView
-        
-        let deleteItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashButtonPressed(_:)))
-        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        let diceImage = UIImage(named: "dice")
-        diceButtonItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonPressed(_:)))
-        
-        setToolbarItems([deleteItem, spaceItem, countButtonItem, spaceItem, diceButtonItem], animated: false)
     }
     
     func unpin() {
@@ -58,6 +60,13 @@ extension OutfitViewController {
             $0.imageView?.isHighlighted = false
         }
         scrollViews.unpin()
+    }
+    
+    func updateButtons() {
+        buttonsStackView.isHidden = ![.add, .trash].contains(selectedAction)
+        buttons.forEach {
+            $0.setEditing(action: selectedAction)
+        }
     }
     
     func updateItemCount() {

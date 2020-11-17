@@ -34,6 +34,7 @@ extension PinnableScrollView {
             contentOffset.x = 0
             guard let secondImageView = getImageView(withIndex: 1) else { return }
             imageView.image = secondImageView.image
+            imageView.tag = secondImageView.tag
             secondImageView.removeFromSuperview()
         } else {
             if deleteIndex < count - 1 {
@@ -50,25 +51,27 @@ extension PinnableScrollView {
         return stackView?.arrangedSubviews[index] as? UIImageView
     }
     
-    func insert(image: UIImage?, atIndex index: Int? = nil) {
+    @discardableResult func insert(image: UIImage?, atIndex index: Int? = nil) -> UIImageView {
         if let lastImageView = stackView?.arrangedSubviews.last as? UIImageView {
             guard lastImageView.image != nil else {
                 lastImageView.image = image
-                return
+                return lastImageView
             }
         }
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFit
         let index = index ?? count
         stackView?.insertArrangedSubview(imageView, at: index)
+        return imageView
     }
     
-    func insertAndScroll(image: UIImage?, atIndex index: Int? = nil) {
+    @discardableResult func insertAndScroll(image: UIImage?, atIndex index: Int? = nil) -> UIImageView {
         let index = index ?? currentIndex + 1
-        insert(image: image, atIndex: index)
+        let imageView = insert(image: image, atIndex: index)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             self.scrollToElement(withIndex: index, duration: 1)
         }
+        return imageView
     }
     
     func scrollToRandomElement(duration: TimeInterval = 1) {

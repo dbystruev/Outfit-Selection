@@ -26,10 +26,7 @@ class OutfitViewController: UIViewController {
     
     var selectedAction = UIBarButtonItem.SystemItem.cancel {
         didSet {
-            buttonsStackView.isHidden = ![.add, .trash].contains(selectedAction)
-            buttons.forEach {
-                $0.setEditing(action: selectedAction)
-            }
+            updateButtons()
         }
     }
     var selectedButtonIndex: Int?

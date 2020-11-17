@@ -31,7 +31,7 @@ extension OutfitViewController {
         setEditing(false, animated: false)
         
         switch selectedAction {
-            
+        
         case .add:
             selectedAction = .cancel
             
@@ -92,7 +92,7 @@ extension OutfitViewController {
         default:
             break
         }
-
+        
     }
     
     @IBAction func pinButtonTapped(_ sender: UIButton) {
@@ -128,6 +128,6 @@ extension OutfitViewController {
         unpin()
         selectedAction = isEditing ? .cancel : .trash
         setEditing(!isEditing, animated: true)
-        return
+        debug(isEditing)
     }
 }
