@@ -43,7 +43,7 @@ class MaleFemaleViewController: UIViewController {
                 DispatchManager.shared.group.leave()
                 
                 guard let offers = offers else { return }
-                Item.all.append(contentsOf: offers)
+                Item.append(contentsOf: offers)
             }
         }
         
