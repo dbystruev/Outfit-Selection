@@ -29,6 +29,8 @@ extension OutfitViewController {
         selectedButtonIndex = buttons.firstIndex(of: sender)
         setEditing(false, animated: false)
         
+        debug("selectedAction =", selectedAction)
+        
         switch selectedAction {
             
         case .add:

@@ -37,6 +37,7 @@
 		69AB228C22BA4BE400C7FA8D /* OutfitViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB228B22BA4BE400C7FA8D /* OutfitViewController+Actions.swift */; };
 		69AE954D2563B87000850210 /* String+lastComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE954C2563B87000850210 /* String+lastComponent.swift */; };
 		69AE95502563B8FB00850210 /* String+dropExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE954F2563B8FB00850210 /* String+dropExtension.swift */; };
+		69AE95562563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE95552563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift */; };
 		69AF825422BAC77800A04DEA /* OutfitViewController+UIDocumentPickerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AF825322BAC77800A04DEA /* OutfitViewController+UIDocumentPickerDelegate.swift */; };
 		69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */; };
 		69FBB20722F1ABE000187562 /* MaleFemaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FBB20622F1ABE000187562 /* MaleFemaleViewController.swift */; };
@@ -75,6 +76,7 @@
 		69AB228B22BA4BE400C7FA8D /* OutfitViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+Actions.swift"; sourceTree = "<group>"; };
 		69AE954C2563B87000850210 /* String+lastComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+lastComponent.swift"; sourceTree = "<group>"; };
 		69AE954F2563B8FB00850210 /* String+dropExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+dropExtension.swift"; sourceTree = "<group>"; };
+		69AE95552563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem.SystemItem+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		69AF825322BAC77800A04DEA /* OutfitViewController+UIDocumentPickerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+UIDocumentPickerDelegate.swift"; sourceTree = "<group>"; };
 		69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnableScrollView.swift; sourceTree = "<group>"; };
 		69FBB20622F1ABE000187562 /* MaleFemaleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaleFemaleViewController.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 				69AE954F2563B8FB00850210 /* String+dropExtension.swift */,
 				69AE954C2563B87000850210 /* String+lastComponent.swift */,
 				692C9416254708830075BD92 /* URL+withQueries.swift */,
+				69AE95552563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				692C9417254708830075BD92 /* URL+withQueries.swift in Sources */,
 				69AE95502563B8FB00850210 /* String+dropExtension.swift in Sources */,
 				69A6F70A22BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift in Sources */,
+				69AE95562563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift in Sources */,
 				6919AA1622BAFF82005474A8 /* UIButton+Extension.swift in Sources */,
 				69672AE922F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift in Sources */,
 				69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */,
