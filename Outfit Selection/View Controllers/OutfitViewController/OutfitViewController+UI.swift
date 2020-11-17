@@ -41,17 +41,17 @@ extension OutfitViewController {
             $0.zoomScale = zoomScale
         }
         
-//        let logoImage = UIImage(named: "logo")
-//        let logoImageView = UIImageView(image: logoImage)
-//        logoImageView.contentMode = .scaleAspectFit
-//        navigationItem.titleView = logoImageView
+        let logoImage = UIImage(named: "logo")
+        let logoImageView = UIImageView(image: logoImage)
+        logoImageView.contentMode = .scaleAspectFit
+        navigationItem.titleView = logoImageView
         
         let deleteItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashButtonPressed(_:)))
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         let diceImage = UIImage(named: "dice")
         diceButtonItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonPressed(_:)))
         
-        setToolbarItems([deleteItem, spaceItem, diceButtonItem], animated: false)
+        setToolbarItems([deleteItem, spaceItem, countButtonItem, spaceItem, diceButtonItem], animated: false)
     }
     
     func unpin() {
@@ -65,6 +65,6 @@ extension OutfitViewController {
     
     func updateItemCount() {
         let count = scrollViews.reduce(0) { $0 + $1.count }
-        navigationItem.title = "Items: \(count)"
+        countButtonItem.title = "Items: \(count)"
     }
 }
