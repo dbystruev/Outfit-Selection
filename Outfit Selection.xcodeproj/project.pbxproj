@@ -15,6 +15,7 @@
 		692C94132547025D0075BD92 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C94122547025D0075BD92 /* Category.swift */; };
 		692C9417254708830075BD92 /* URL+withQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C9416254708830075BD92 /* URL+withQueries.swift */; };
 		692C941B25470B8F0075BD92 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C941A25470B8F0075BD92 /* Item.swift */; };
+		693D7286256BF1EA00540C10 /* Brands.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 693D7285256BF1EA00540C10 /* Brands.bundle */; };
 		69672AE922F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69672AE822F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift */; };
 		696E875B256463160061802E /* Double+asPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696E875A256463160061802E /* Double+asPrice.swift */; };
 		696E876725647BF20061802E /* Screenshot02.png in Resources */ = {isa = PBXBuildFile; fileRef = 696E876125647BF10061802E /* Screenshot02.png */; };
@@ -59,6 +60,7 @@
 		692C94122547025D0075BD92 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		692C9416254708830075BD92 /* URL+withQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+withQueries.swift"; sourceTree = "<group>"; };
 		692C941A25470B8F0075BD92 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		693D7285256BF1EA00540C10 /* Brands.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Brands.bundle; sourceTree = "<group>"; };
 		69672AE822F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+MaleFemale.swift"; sourceTree = "<group>"; };
 		696E875A256463160061802E /* Double+asPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+asPrice.swift"; sourceTree = "<group>"; };
 		696E876125647BF10061802E /* Screenshot02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot02.png; sourceTree = "<group>"; };
@@ -209,8 +211,9 @@
 		69A6F70622BA38CE002A3B49 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				69A6F70F22BA4978002A3B49 /* Screenshots */,
 				69A6F6FA22BA26BA002A3B49 /* Assets.xcassets */,
+				693D7285256BF1EA00540C10 /* Brands.bundle */,
+				69A6F70F22BA4978002A3B49 /* Screenshots */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				696E876C25647BF20061802E /* Screenshot01.png in Resources */,
 				696E876825647BF20061802E /* Screenshot04.png in Resources */,
 				696E876B25647BF20061802E /* Screenshot05.png in Resources */,
+				693D7286256BF1EA00540C10 /* Brands.bundle in Resources */,
 				696E876725647BF20061802E /* Screenshot02.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
