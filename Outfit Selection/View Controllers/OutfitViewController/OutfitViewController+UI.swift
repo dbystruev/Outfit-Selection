@@ -19,6 +19,16 @@ extension OutfitViewController {
         return image
     }
     
+    func loadImages() {
+        ItemManager.shared.loadImages(into: scrollViews) { success in
+            debug("Success =", success, "items =", Item.all.count)
+            
+            DispatchQueue.main.async {
+                self.updateItemCount()
+            }
+        }
+    }
+    
     func pin() {
         scrollViews.pin()
         diceButtonItem.isEnabled = false
@@ -39,8 +49,13 @@ extension OutfitViewController {
         buttonsStackView.isHidden = true
         
         pinButtons.forEach {
-            $0.imageView?.image = UIImage(systemName: "pin")
-            $0.imageView?.highlightedImage = UIImage(systemName: "pin.fill")
+            if #available(iOS 13.0, *) {
+                $0.imageView?.highlightedImage = UIImage(systemName: "pin.fill")
+                $0.imageView?.image = UIImage(systemName: "pin")
+            } else {
+                $0.imageView?.highlightedImage = UIImage(named: "pin")
+                $0.imageView?.image = UIImage(named: "pin")
+            }
         }
         
         scrollViews.forEach {

@@ -25,9 +25,6 @@ class OutfitViewController: UIViewController {
     var diceButtonItem: UIBarButtonItem!
     var gender = Gender.other
     
-    // imagePrefixes should correspond to scrollViews
-    let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
-    
     var selectedAction = UIBarButtonItem.SystemItem.cancel {
         didSet {
             updateButtons()

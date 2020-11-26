@@ -24,7 +24,7 @@ extension OutfitViewController {
                 if sender.title == OutfitViewController.loadingMessage
                     || sender.title == self.titleForCountButtonItem(self.assetCount) {
                     debug("Step 3:", sender.title)
-                    self.loadImagesFromServer()
+                    self.loadImages()
                 }
             }
         }

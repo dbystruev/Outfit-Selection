@@ -28,11 +28,12 @@ extension OutfitViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        assetCount = loadImagesFromAssets()
+        assetCount = ItemManager.shared.loadImagesFromAssets(into: scrollViews)
         scrollViews.forEach { $0.delegate = self }
         setupGestures()
         setupUI()
-        presentMaleFemaleViewController(style: .formSheet)
+        loadImages()
+//        presentMaleFemaleViewController(style: .formSheet)
     }
     
     override func viewDidLayoutSubviews() {

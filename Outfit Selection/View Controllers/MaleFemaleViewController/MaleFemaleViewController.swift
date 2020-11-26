@@ -48,10 +48,15 @@ class MaleFemaleViewController: UIViewController {
         }
         
         DispatchManager.shared.group.notify(queue: .main) {
-            guard Item.maxCount * (Category.all.count - 1) < Item.all.count else { return }
+            guard (Category.all.count - 1) * Item.maxCount / Category.all.count < Item.all.count else { return }
             guard let controller = navigationController.viewControllers.first as? OutfitViewController else { return }
             
-            controller.loadImagesFromServer()
+            ItemManager.shared.loadImages(into: controller.scrollViews) { status in
+                guard status == true else { return }
+                DispatchQueue.main.async {
+                    controller.updateItemCount()
+                }
+            }
         }
         
         updateUI(with: view.bounds.size)

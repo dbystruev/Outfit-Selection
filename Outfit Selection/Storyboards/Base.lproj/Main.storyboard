@@ -537,7 +537,7 @@
         <!--Select Brands-->
         <scene sceneID="D6N-mj-93I">
             <objects>
-                <viewController id="Xzm-zb-a3t" sceneMemberID="viewController">
+                <viewController id="Xzm-zb-a3t" customClass="BrandsViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5hd-8z-0gK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -559,27 +559,27 @@
                                 </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="priceButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="GkZ-ex-YEi"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" id="MqE-4S-GZL"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" identifier="OutfitViewController" id="MqE-4S-GZL"/>
                                 </connections>
                             </button>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Au3-xo-Yc2">
-                                <rect key="frame" x="16" y="104" width="382" height="627"/>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Au3-xo-Yc2">
+                                <rect key="frame" x="103.5" y="104" width="207" height="627"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="uFK-2G-QlT">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="125.5"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="uFK-2G-QlT">
+                                        <rect key="frame" x="0.0" y="0.0" width="207" height="125.5"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="armani.png" translatesAutoresizingMaskIntoConstraints="NO" id="76h-0W-nRu">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="125.5"/>
-                                            </imageView>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D34-AC-Nar">
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="125.5"/>
+                                            </button>
                                         </subviews>
                                     </stackView>
                                 </subviews>
                                 <constraints>
+                                    <constraint firstItem="D34-AC-Nar" firstAttribute="height" secondItem="TER-Uu-nQe" secondAttribute="height" multiplier="1/5" id="61K-54-eLq"/>
                                     <constraint firstItem="uFK-2G-QlT" firstAttribute="trailing" secondItem="9nf-FM-mii" secondAttribute="trailing" id="6c3-ny-3RJ"/>
                                     <constraint firstItem="uFK-2G-QlT" firstAttribute="top" secondItem="9nf-FM-mii" secondAttribute="top" id="Hcf-rg-EPv"/>
                                     <constraint firstItem="uFK-2G-QlT" firstAttribute="bottom" secondItem="9nf-FM-mii" secondAttribute="bottom" id="K1V-Lf-38g"/>
-                                    <constraint firstItem="76h-0W-nRu" firstAttribute="width" secondItem="TER-Uu-nQe" secondAttribute="width" id="KdU-UF-PsV"/>
-                                    <constraint firstItem="76h-0W-nRu" firstAttribute="height" secondItem="TER-Uu-nQe" secondAttribute="height" multiplier="1/5" id="tpJ-Tz-X50"/>
+                                    <constraint firstItem="D34-AC-Nar" firstAttribute="width" secondItem="TER-Uu-nQe" secondAttribute="width" id="sDa-Bl-FSr"/>
                                     <constraint firstItem="uFK-2G-QlT" firstAttribute="leading" secondItem="9nf-FM-mii" secondAttribute="leading" id="xVq-VH-PDO"/>
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="9nf-FM-mii"/>
@@ -590,15 +590,19 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="centerX" secondItem="5hd-8z-0gK" secondAttribute="centerX" id="9Iw-90-L9S"/>
+                            <constraint firstItem="TER-Uu-nQe" firstAttribute="width" secondItem="Wo2-HJ-54b" secondAttribute="width" id="Fae-tF-lWN"/>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="width" secondItem="9SB-V3-nAX" secondAttribute="width" multiplier="0.5" id="TwQ-jb-laF"/>
                             <constraint firstItem="9SB-V3-nAX" firstAttribute="bottom" secondItem="Wo2-HJ-54b" secondAttribute="bottom" constant="16" id="V1t-wr-FwN"/>
                             <constraint firstItem="Au3-xo-Yc2" firstAttribute="top" secondItem="9SB-V3-nAX" secondAttribute="top" constant="16" id="Xsi-3L-e4k"/>
-                            <constraint firstItem="9SB-V3-nAX" firstAttribute="trailing" secondItem="Au3-xo-Yc2" secondAttribute="trailing" constant="16" id="ac3-QD-oGz"/>
-                            <constraint firstItem="Au3-xo-Yc2" firstAttribute="leading" secondItem="9SB-V3-nAX" secondAttribute="leading" constant="16" id="gUc-qn-ujZ"/>
+                            <constraint firstItem="Au3-xo-Yc2" firstAttribute="centerX" secondItem="5hd-8z-0gK" secondAttribute="centerX" id="nNi-Q1-tP3"/>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="top" secondItem="Au3-xo-Yc2" secondAttribute="bottom" constant="16" id="sT4-NP-a1v"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Brands" id="7AD-qZ-4JX"/>
+                    <connections>
+                        <outlet property="brandsStackView" destination="uFK-2G-QlT" id="CCm-AF-KHc"/>
+                        <outlet property="goButton" destination="Wo2-HJ-54b" id="aar-AG-wHK"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVE-B9-uYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -607,7 +611,6 @@
     </scenes>
     <resources>
         <image name="add" width="50" height="50"/>
-        <image name="armani.png" width="2560" height="286"/>
         <image name="female" width="512" height="617"/>
         <image name="male" width="512" height="617"/>
         <image name="pin" catalog="system" width="119" height="128"/>

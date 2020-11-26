@@ -9,11 +9,18 @@
 import UIKit
 
 class NetworkManager {
-    // MARK: - Class Properties
+    // MARK: - Static Properties
     static let defaultURL = URL(string: "http://server.getoutfit.ru")!
     static let shared = NetworkManager()
     
-    // MARK: - Properties
+    // MARK: - Stored Properties
+    /// Maximum number of simultaneous get requests (image loading is not counted)
+    let maxRequests = 1
+    
+    /// Number of get requests currently running (image loading is not counted)
+    var numberOfRequestsRunning = 0
+    
+    // API server URL
     let url: URL
     
     // MARK: - Init
@@ -22,16 +29,33 @@ class NetworkManager {
     }
     
     // MARK: - Methods
+    /// Send get request with parameters and call completion when done
+    /// - Parameters:
+    ///   - path: path to add to server URL
+    ///   - parameters: query parameters to add to request
+    ///   - completion: closure called after request is finished, with data if successfull, or with nil if not
     func get<T: Codable>(_ path: String, parameters: [String: Any] = [:], completion: @escaping (T?) -> Void) {
-        let request: URL
         
-        request = url.appendingPathComponent(path).withQueries(parameters)
-//        print("\(#line) \(Self.self).\(#function) request = \(request)")
+        let request = url.appendingPathComponent(path).withQueries(parameters)
+        
+        debug("request = \(request)")
+        
+        // Check that we don't run more than allowed number of get requests in parallel
+        guard numberOfRequestsRunning < maxRequests else {
+            debug("ERROR: the number of requests \(numberOfRequestsRunning) is not lower than maximum \(maxRequests)")
+            completion(nil)
+            return
+        }
+        
+        numberOfRequestsRunning += 1
         
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
+            
+            self.numberOfRequestsRunning -= 1
+            
             guard let data = data else {
                 let message = error?.localizedDescription ?? "No data"
-                print("\(#line) \(Self.self).\(#function) ERROR requesting \(request): \(message)")
+                debug("ERROR requesting \(request): \(message)")
                 completion(nil)
                 return
             }
@@ -49,21 +73,27 @@ class NetworkManager {
         task.resume()
     }
     
+    /// Add /categories?limit=999999 to server URL and call the API
+    /// - Parameter completion: closure called after the request is finished, with list of categories if successfull, or with nil if not
     func getCategories(completion: @escaping (_ categories: [Category]?) -> Void) {
         get("categories", parameters: ["limit": 999999], completion: completion)
     }
     
+    /// Download image from the given URL
+    /// - Parameters:
+    ///   - url: url to download image from
+    ///   - completion: closure called after request is finished, with image if successfull, with nil if not
     func getImage(_ url: URL, completion: @escaping (_ image: UIImage?) -> Void) {
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
                 let message = error?.localizedDescription ?? "No data"
-                print("\(#line) \(Self.self).\(#function) ERROR requesting \(url): \(message)")
+                debug("ERROR requesting \(url): \(message)")
                 completion(nil)
                 return
             }
             
             guard let image = UIImage(data: data) else {
-                print("\(#line) \(Self.self).\(#function) ERROR converting \(data) to image")
+                debug("ERROR converting \(data) at \(url) to image")
                 completion(nil)
                 return
             }
@@ -74,8 +104,24 @@ class NetworkManager {
         task.resume()
     }
     
+    /// Add /offers?categoryId=...&categoryId=...&...&limit=... to server URL and call the API
+    /// - Parameters:
+    ///   - categories: the list of categories to get items
+    ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
+    func getOffers(in categories: [Category], completion: @escaping ([Item]?) -> Void) {
+        get("offers",
+            parameters: ["categoryId": categories.map { $0.id }, "limit": Item.maxCount],
+            completion: completion)
+    }
+    
+    /// Add /offers?categoryId=...&limit=... to server URL and call the API
+    /// - Parameters:
+    ///   - category: category id to get the items from
+    ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
     func getOffers(in category: Category, completion: @escaping ([Item]?) -> Void) {
-        get("offers", parameters: ["categoryId": category.id, "limit": Item.maxCount], completion: completion)
+        get("offers",
+            parameters: ["categoryId": category.id, "limit": Item.maxCount / Category.all.count],
+            completion: completion)
     }
 }
 
