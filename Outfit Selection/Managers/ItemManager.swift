@@ -18,14 +18,10 @@ class ItemManager {
     /// Call completion closure if all categories and all items were looped through
     /// - Parameters:
     ///   - success: true if there were no single error while loading items' images
-    ///   - categoriesRemaining: the number of categories remaining to loop through
     ///   - itemsRemaining: the number of items in category remaining to loop through
     ///   - completion: closure with bool parameter which is called when there are no categories and items remaining
-    func checkForCompletion(_ success: Bool,
-                            categoriesRemaining: Int,
-                            itemsRemaining: Int,
-                            completion: @escaping (_ success: Bool?) -> Void) {
-        if categoriesRemaining < 1 && itemsRemaining < 1 {
+    func checkForCompletion(_ success: Bool, items: Int, completion: @escaping (_ success: Bool?) -> Void) {
+        if items < 1 {
             completion(success)
         }
     }
@@ -35,26 +31,20 @@ class ItemManager {
     ///   - scrollViews: scroll views to load images into, one scroll view for each category
     ///   - completion: closure with bool parameter which is called when all images are processed, parameter is true if no errors were encountered
     func loadImages(into scrollViews: [PinnableScrollView], completion: @escaping (_ success: Bool?) -> Void) {
-        // The number of categories remaining to load from the server
-        var categoriesRemaining = min(Category.all.count, scrollViews.count)
+        /// Items remaining to load into scroll views
+        var itemsRemaining = Item.all.count {
+            didSet {
+                checkForCompletion(success, items: itemsRemaining, completion: completion)
+            }
+        }
         
-        // True if there were no errors so far while loading images
+        /// True if there were no errors so far while loading images
         var success = true
         
-        // Loop all categories and scroll views, whatever number is lower
+        /// Loop all categories and scroll views, whatever number is lower
         for (category, scrollView) in zip(Category.all, scrollViews) {
             // Get all items in the given category
             let items = Item.all.filter { $0.categoryId == category.id }
-            
-            // The number of items remaining to load images for from the server
-            var itemsRemaining = items.count {
-                didSet {
-                    checkForCompletion(success,
-                                       categoriesRemaining: categoriesRemaining,
-                                       itemsRemaining: itemsRemaining,
-                                       completion: completion)
-                }
-            }
             
             // The number of images in this category's scroll view
             var imagesInScrollView = scrollView.count
@@ -63,6 +53,7 @@ class ItemManager {
             for item in items {
                 guard let url = item.pictures?.first else {
                     // No picture — that's an error
+                    debug("ERROR: No picture URLs for the item", item.name, item.url)
                     success = false
                     itemsRemaining -= 1
                     continue
@@ -72,6 +63,7 @@ class ItemManager {
                 NetworkManager.shared.getImage(url) { image in
                     // Didn't get the image — that's an error
                     guard let image = image else {
+                        debug("ERROR: Can't get an image for the item", item.name, item.url)
                         success = false
                         itemsRemaining -= 1
                         return
@@ -100,7 +92,6 @@ class ItemManager {
                 }
             }
         }
-        categoriesRemaining -= 1
     }
     
     /// Load placeholder images in app bundle before items from the server are ready
@@ -124,14 +115,20 @@ class ItemManager {
     /// Load items from the server to Item.all array
     /// - Parameter completion: closure with bool parameter which is called with true in case of success, with false otherwise
     func loadItems(completion: @escaping (_ success: Bool?) -> Void) {
+        let startTime = Date()
         NetworkManager.shared.getOffers(in: Category.all) { items in
+            let endTime = Date()
+            
             guard let items = items else {
                 completion(nil)
                 return
             }
             
             Item.append(contentsOf: items)
-            debug(Item.all.count, "items are loaded")
+            
+            let passedTime = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
+            
+            debug(Item.all.count, "items are loaded from server in", passedTime.asTime, "seconds")
             completion(true)
         }
     }

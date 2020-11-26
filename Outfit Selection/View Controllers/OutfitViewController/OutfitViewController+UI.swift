@@ -20,8 +20,11 @@ extension OutfitViewController {
     }
     
     func loadImages() {
+        let startTime = Date()
         ItemManager.shared.loadImages(into: scrollViews) { success in
-            debug("Success =", success, "items =", Item.all.count)
+            let passedTime = Date().timeIntervalSince1970 - startTime.timeIntervalSince1970
+            
+            debug(success == true ? "All" : "Some", "items are loaded into scroll views in", passedTime.asTime, "seconds")
             
             DispatchQueue.main.async {
                 self.updateItemCount()
