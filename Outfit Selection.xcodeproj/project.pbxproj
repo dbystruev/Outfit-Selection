@@ -19,7 +19,7 @@
 		693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7289256BF3FB00540C10 /* BrandsViewController.swift */; };
 		693D728E256BF4CA00540C10 /* BrandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D728D256BF4CA00540C10 /* BrandManager.swift */; };
 		693D7292256BFDD700540C10 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7291256BFDD700540C10 /* ItemManager.swift */; };
-		69672AE922F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69672AE822F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift */; };
+		69672AE922F1D06A0053FB85 /* OutfitViewController+present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69672AE822F1D06A0053FB85 /* OutfitViewController+present.swift */; };
 		696E875B256463160061802E /* Double+asPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696E875A256463160061802E /* Double+asPrice.swift */; };
 		696E876725647BF20061802E /* Screenshot02.png in Resources */ = {isa = PBXBuildFile; fileRef = 696E876125647BF10061802E /* Screenshot02.png */; };
 		696E876825647BF20061802E /* Screenshot04.png in Resources */ = {isa = PBXBuildFile; fileRef = 696E876225647BF10061802E /* Screenshot04.png */; };
@@ -68,7 +68,7 @@
 		693D7289256BF3FB00540C10 /* BrandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
 		693D728D256BF4CA00540C10 /* BrandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandManager.swift; sourceTree = "<group>"; };
 		693D7291256BFDD700540C10 /* ItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
-		69672AE822F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+MaleFemale.swift"; sourceTree = "<group>"; };
+		69672AE822F1D06A0053FB85 /* OutfitViewController+present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+present.swift"; sourceTree = "<group>"; };
 		696E875A256463160061802E /* Double+asPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+asPrice.swift"; sourceTree = "<group>"; };
 		696E876125647BF10061802E /* Screenshot02.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot02.png; sourceTree = "<group>"; };
 		696E876225647BF10061802E /* Screenshot04.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot04.png; sourceTree = "<group>"; };
@@ -279,7 +279,7 @@
 				69A6F6F522BA26B7002A3B49 /* OutfitViewController.swift */,
 				69AB228B22BA4BE400C7FA8D /* OutfitViewController+Actions.swift */,
 				69739EB122BA64E40077E45D /* OutfitViewController+Gestures.swift */,
-				69672AE822F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift */,
+				69672AE822F1D06A0053FB85 /* OutfitViewController+present.swift */,
 				698990D72323B9B0002DCA29 /* OutfitViewController+Shake.swift */,
 				69A6F70B22BA42F1002A3B49 /* OutfitViewController+UI.swift */,
 				69AF825322BAC77800A04DEA /* OutfitViewController+UIDocumentPickerDelegate.swift */,
@@ -392,7 +392,7 @@
 				69A6F70A22BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift in Sources */,
 				69AE95562563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift in Sources */,
 				6919AA1622BAFF82005474A8 /* UIButton+Extension.swift in Sources */,
-				69672AE922F1D06A0053FB85 /* OutfitViewController+MaleFemale.swift in Sources */,
+				69672AE922F1D06A0053FB85 /* OutfitViewController+present.swift in Sources */,
 				693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */,
 				693D7292256BFDD700540C10 /* ItemManager.swift in Sources */,
 				69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */,

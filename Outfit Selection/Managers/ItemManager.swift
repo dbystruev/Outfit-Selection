@@ -34,7 +34,7 @@ class ItemManager {
         }
     }
     
-    /// Load images for all items in Item.all filtered by category in Category.all.count into scroll views
+    /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
     /// - Parameters:
     ///   - scrollViews: scroll views to load images into, one scroll view for each category
     ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded

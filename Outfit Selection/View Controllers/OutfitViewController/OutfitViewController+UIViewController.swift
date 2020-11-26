@@ -11,7 +11,7 @@ import UIKit
 // MARK: - UIViewController
 extension OutfitViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "viewItem" else { return }
+        guard segue.identifier == "ItemViewController" else { return }
         guard let destination = segue.destination as? ItemViewController else { return }
         guard let recognizer = sender as? UIGestureRecognizer else { return }
         guard let scrollView = recognizer.view as? PinnableScrollView else { return }
@@ -32,8 +32,7 @@ extension OutfitViewController {
         scrollViews.forEach { $0.delegate = self }
         setupGestures()
         setupUI()
-        loadImages()
-//        presentMaleFemaleViewController(style: .formSheet)
+        presentBrandsViewController()
     }
     
     override func viewDidLayoutSubviews() {

@@ -9,7 +9,7 @@
 import UIKit
 
 class BrandsViewController: UIViewController {
-
+    
     // MARK: - Outlets
     @IBOutlet weak var brandsStackView: UIStackView!
     @IBOutlet weak var goButton: UIButton!
@@ -18,15 +18,6 @@ class BrandsViewController: UIViewController {
     var itemsLoaded = false
     
     // MARK: - Inherited Methods
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        guard identifier == "OutfitViewController" else { return false }
-        guard itemsLoaded else {
-            configureItems()
-            return false
-        }
-        return itemsLoaded
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,6 +39,7 @@ class BrandsViewController: UIViewController {
     func configureItems() {
         goButton.isHidden = true
         ItemManager.shared.loadItems { success in
+            // Update the title for go button
             let title = success == true ? "Go" : "Reload"
             
             // Unhide go button when items are loaded
@@ -55,7 +47,28 @@ class BrandsViewController: UIViewController {
                 self.goButton.isHidden = false
                 self.goButton.setTitle(title, for: .normal)
                 self.itemsLoaded = success == true
+                
+                // Continue only if we loaded items from server successfully
+                guard success == true else { return }
+                
+                // Find out the navigation controller
+                guard let navigationController = self.presentingViewController as? UINavigationController else { return }
+                
+                // Find out the root = outfit view controller
+                guard let outfitViewController = navigationController.viewControllers.first as? OutfitViewController else { return }
+                
+                // Load images into the outfit view controller's sroll views
+                outfitViewController.loadImages()
             }
         }
+    }
+    
+    // MARK: - Actions
+    @IBAction func goButtonTapped(_ sender: UIButton) {
+        guard itemsLoaded else {
+            configureItems()
+            return
+        }
+        dismiss(animated: true)
     }
 }

@@ -62,7 +62,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="3491" y="123"/>
+            <point key="canvasLocation" x="570" y="-640"/>
         </scene>
         <!--Select Category-->
         <scene sceneID="KSq-b2-tmJ">
@@ -78,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bi3-vZ-ni8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2516" y="-293"/>
+            <point key="canvasLocation" x="1345" y="-198"/>
         </scene>
         <!--Outfit View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -442,12 +442,12 @@
                         <outletCollection property="pinButtons" destination="PdK-GK-Ra7" collectionClass="NSMutableArray" id="LIC-zU-XIl"/>
                         <outletCollection property="pinButtons" destination="NT3-Ff-VD4" collectionClass="NSMutableArray" id="uXe-2B-1Ku"/>
                         <segue destination="QdM-tb-TbV" kind="show" identifier="selectCategory" id="lmL-Qz-xwj"/>
-                        <segue destination="Uns-Sh-QHX" kind="show" identifier="viewItem" id="YhA-rh-zAa"/>
+                        <segue destination="Uns-Sh-QHX" kind="show" identifier="ItemViewController" id="YhA-rh-zAa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1670" y="138"/>
+            <point key="canvasLocation" x="570" y="138"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="wZr-ET-Xq5">
@@ -510,7 +510,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2523.1884057971015" y="401.78571428571428"/>
+            <point key="canvasLocation" x="1345" y="534"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="7Ut-nn-jAK">
@@ -527,23 +527,23 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="Xzm-zb-a3t" kind="relationship" relationship="rootViewController" id="2HB-YE-bIS"/>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="7Mv-g2-C3n"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7l-Lq-BzI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-235" y="138"/>
+            <point key="canvasLocation" x="-225" y="138"/>
         </scene>
         <!--Select Brands-->
         <scene sceneID="D6N-mj-93I">
             <objects>
-                <viewController id="Xzm-zb-a3t" customClass="BrandsViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="BrandsViewController" id="Xzm-zb-a3t" customClass="BrandsViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5hd-8z-0gK">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wo2-HJ-54b">
-                                <rect key="frame" x="103.5" y="747" width="207" height="50"/>
+                                <rect key="frame" x="52" y="796" width="310.5" height="50"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="aAM-I9-wja"/>
@@ -558,18 +558,18 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="goButtonTapped:" destination="Xzm-zb-a3t" eventType="touchUpInside" id="qHk-Ae-rih"/>
                                     <action selector="priceButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="GkZ-ex-YEi"/>
-                                    <segue destination="BYZ-38-t0r" kind="show" identifier="OutfitViewController" id="MqE-4S-GZL"/>
                                 </connections>
                             </button>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Au3-xo-Yc2">
-                                <rect key="frame" x="103.5" y="104" width="207" height="627"/>
+                                <rect key="frame" x="20" y="60" width="374" height="720"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="uFK-2G-QlT">
-                                        <rect key="frame" x="0.0" y="0.0" width="207" height="125.5"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="144"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D34-AC-Nar">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="125.5"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="374" height="144"/>
                                             </button>
                                         </subviews>
                                     </stackView>
@@ -590,12 +590,12 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="centerX" secondItem="5hd-8z-0gK" secondAttribute="centerX" id="9Iw-90-L9S"/>
-                            <constraint firstItem="TER-Uu-nQe" firstAttribute="width" secondItem="Wo2-HJ-54b" secondAttribute="width" id="Fae-tF-lWN"/>
-                            <constraint firstItem="Wo2-HJ-54b" firstAttribute="width" secondItem="9SB-V3-nAX" secondAttribute="width" multiplier="0.5" id="TwQ-jb-laF"/>
+                            <constraint firstItem="Wo2-HJ-54b" firstAttribute="width" secondItem="9SB-V3-nAX" secondAttribute="width" multiplier="3 / 4" id="TwQ-jb-laF"/>
                             <constraint firstItem="9SB-V3-nAX" firstAttribute="bottom" secondItem="Wo2-HJ-54b" secondAttribute="bottom" constant="16" id="V1t-wr-FwN"/>
                             <constraint firstItem="Au3-xo-Yc2" firstAttribute="top" secondItem="9SB-V3-nAX" secondAttribute="top" constant="16" id="Xsi-3L-e4k"/>
-                            <constraint firstItem="Au3-xo-Yc2" firstAttribute="centerX" secondItem="5hd-8z-0gK" secondAttribute="centerX" id="nNi-Q1-tP3"/>
+                            <constraint firstItem="9SB-V3-nAX" firstAttribute="trailing" secondItem="Au3-xo-Yc2" secondAttribute="trailing" constant="20" id="lT8-Fm-anl"/>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="top" secondItem="Au3-xo-Yc2" secondAttribute="bottom" constant="16" id="sT4-NP-a1v"/>
+                            <constraint firstItem="Au3-xo-Yc2" firstAttribute="leading" secondItem="9SB-V3-nAX" secondAttribute="leading" constant="20" id="u0y-bv-CoJ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Select Brands" id="7AD-qZ-4JX"/>
@@ -606,7 +606,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVE-B9-uYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="734.78260869565224" y="137.94642857142856"/>
+            <point key="canvasLocation" x="570" y="946"/>
         </scene>
     </scenes>
     <resources>

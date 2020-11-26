@@ -19,6 +19,7 @@ extension OutfitViewController {
         return image
     }
     
+    /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
     func loadImages() {
         let startTime = Date()
         ItemManager.shared.loadImages(into: scrollViews) { itemsLoaded in

@@ -37,7 +37,7 @@ extension OutfitViewController {
     
     @objc func scrollViewTappedOnce(_ sender: UIGestureRecognizer) {
         if sender.numberOfTouches == 1 {
-            performSegue(withIdentifier: "viewItem", sender: sender)
+            performSegue(withIdentifier: "ItemViewController", sender: sender)
         } else {
             pinImage(sender)
         }
