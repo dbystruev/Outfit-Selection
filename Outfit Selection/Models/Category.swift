@@ -17,6 +17,9 @@ struct Category: Codable {
         Category(id: 136310, name: "Кроссовки", parentId: 136301),
     ]
     
+    /// The maximum number of items in one category, all of them displayed
+    static let maxItemCount = 25
+    
     // MARK: - Stored Properties
     /// Category identifier
     let id: Int

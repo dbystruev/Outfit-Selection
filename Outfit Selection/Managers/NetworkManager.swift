@@ -120,7 +120,7 @@ class NetworkManager {
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
     func getOffers(in category: Category, completion: @escaping ([Item]?) -> Void) {
         get("offers",
-            parameters: ["categoryId": category.id, "limit": Item.maxCount / Category.all.count],
+            parameters: ["categoryId": category.id, "limit": Category.maxItemCount],
             completion: completion)
     }
 }

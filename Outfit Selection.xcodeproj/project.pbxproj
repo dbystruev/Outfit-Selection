@@ -131,8 +131,8 @@
 			children = (
 				693D728D256BF4CA00540C10 /* BrandManager.swift */,
 				6924900025504DFD00106681 /* DispatchManager.swift */,
-				692C940E254700FC0075BD92 /* NetworkManager.swift */,
 				693D7291256BFDD700540C10 /* ItemManager.swift */,
+				692C940E254700FC0075BD92 /* NetworkManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";

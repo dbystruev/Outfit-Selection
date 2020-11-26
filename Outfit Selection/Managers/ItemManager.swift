@@ -9,42 +9,50 @@
 import UIKit
 
 class ItemManager {
-    // imagePrefixes should correspond to scrollViews
-    let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
-    
+    // MARK: - Static Properties
     static let shared = ItemManager()
+    
+    // MARK: - Init
     private init() {}
     
+    // MARK: - Stored Properties
+    /// imagePrefixes should correspond to scrollViews
+    let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
+    
+    /// The number of images loaded into scroll views
+    var itemsLoaded = 0
+    
+    // MARK: - Methods
     /// Call completion closure if all categories and all items were looped through
     /// - Parameters:
     ///   - success: true if there were no single error while loading items' images
     ///   - itemsRemaining: the number of items in category remaining to loop through
-    ///   - completion: closure with bool parameter which is called when there are no categories and items remaining
-    func checkForCompletion(_ success: Bool, items: Int, completion: @escaping (_ success: Bool?) -> Void) {
-        if items < 1 {
-            completion(success)
+    ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
+    func checkForCompletion(remaining: Int, completion: @escaping (_ success: Int) -> Void) {
+        if remaining < 1 {
+            completion(itemsLoaded)
         }
     }
     
     /// Load images for all items in Item.all filtered by category in Category.all.count into scroll views
     /// - Parameters:
     ///   - scrollViews: scroll views to load images into, one scroll view for each category
-    ///   - completion: closure with bool parameter which is called when all images are processed, parameter is true if no errors were encountered
-    func loadImages(into scrollViews: [PinnableScrollView], completion: @escaping (_ success: Bool?) -> Void) {
+    ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
+    func loadImages(into scrollViews: [PinnableScrollView], completion: @escaping (_ count: Int) -> Void) {
         /// Items remaining to load into scroll views
-        var itemsRemaining = Item.all.count {
+        var itemsRemaining = 0 {
             didSet {
-                checkForCompletion(success, items: itemsRemaining, completion: completion)
+                checkForCompletion(remaining: itemsRemaining, completion: completion)
             }
         }
         
-        /// True if there were no errors so far while loading images
-        var success = true
-        
         /// Loop all categories and scroll views, whatever number is lower
         for (category, scrollView) in zip(Category.all, scrollViews) {
-            // Get all items in the given category
-            let items = Item.all.filter { $0.categoryId == category.id }
+            // Get Category.maxItemCount items in the given category
+            let items = Item.all.filter({ $0.categoryId == category.id }).prefix(Category.maxItemCount)
+            
+            // Remember how many items we need to load
+            itemsRemaining += items.count
             
             // The number of images in this category's scroll view
             var imagesInScrollView = scrollView.count
@@ -54,7 +62,6 @@ class ItemManager {
                 guard let url = item.pictures?.first else {
                     // No picture — that's an error
                     debug("ERROR: No picture URLs for the item", item.name, item.url)
-                    success = false
                     itemsRemaining -= 1
                     continue
                 }
@@ -64,7 +71,6 @@ class ItemManager {
                     // Didn't get the image — that's an error
                     guard let image = image else {
                         debug("ERROR: Can't get an image for the item", item.name, item.url)
-                        success = false
                         itemsRemaining -= 1
                         return
                     }
@@ -72,10 +78,11 @@ class ItemManager {
                     // No item index — that's an error
                     guard let itemIndex = item.itemIndex else  {
                         debug("ERROR: Can't get item index for the item", item.name, item.url)
-                        success = false
                         itemsRemaining -= 1
                         return
                     }
+                    
+                    self.itemsLoaded += 1
                     
                     // Append image to the end of corresponding scroll view
                     DispatchQueue.main.async {
