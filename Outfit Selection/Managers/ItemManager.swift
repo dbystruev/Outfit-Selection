@@ -86,7 +86,7 @@ class ItemManager {
                     
                     // Append image to the end of corresponding scroll view
                     DispatchQueue.main.async {
-                        scrollView.insert(image: image).tag = itemIndex
+                        scrollView.insert(image: image.halved).tag = itemIndex
                         scrollView.scrollToLastElement() {_ in
                             // Delete one placeholder image from the beginning of scroll view with each insertion
                             if (0 < imagesInScrollView) {
