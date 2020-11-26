@@ -11,7 +11,7 @@ import UIKit
 class BrandsViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var brandsStackView: UIStackView!
+    @IBOutlet weak var brandsCollectionView: UICollectionView!
     @IBOutlet weak var goButton: UIButton!
     
     // MARK: - Properties
@@ -22,19 +22,10 @@ class BrandsViewController: UIViewController {
         super.viewDidLoad()
         
         configureItems()
-        configureContent()
+        configureLayout()
     }
     
     // MARK: - Methods
-    /// Fill brands stack view with brand images
-    func configureContent() {
-        for image in BrandManager.shared.brandImages {
-            let imageView = UIImageView(image: image)
-            imageView.contentMode = .scaleAspectFit
-            brandsStackView.addArrangedSubview(imageView)
-        }
-    }
-    
     /// Start loading items from the server
     func configureItems() {
         goButton.isHidden = true
@@ -61,6 +52,11 @@ class BrandsViewController: UIViewController {
                 outfitViewController.loadImages()
             }
         }
+    }
+    
+    /// Configure brands collection view
+    func configureLayout() {
+        brandsCollectionView.dataSource = self
     }
     
     // MARK: - Actions

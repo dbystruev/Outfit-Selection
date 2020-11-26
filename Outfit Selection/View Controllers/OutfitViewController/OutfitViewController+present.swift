@@ -12,7 +12,7 @@ import UIKit
 extension OutfitViewController {
     /// Instantiate and present brands view controller
     func presentBrandsViewController() {
-        presentViewController(withIdentifier: "BrandsViewController", style: .formSheet)
+        presentViewController(withIdentifier: "BrandsViewController", style: .currentContext)
     }
     
     /// Instantiate and present male female view controller
