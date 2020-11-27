@@ -104,21 +104,29 @@ class NetworkManager {
         task.resume()
     }
     
-    /// Add /offers?categoryId=...&categoryId=...&...&limit=... to server URL and call the API
+    /// Add /offers?categoryId=...&categoryId=...&vendor=...&vendor=...&limit=... to server URL and call the API
     /// - Parameters:
-    ///   - categories: the list of categories to get items
+    ///   - categories: the list of categories to filter items by
+    ///   - vendors: the list of vendors to filter items by
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
-    func getOffers(in categories: [Category], completion: @escaping ([Item]?) -> Void) {
-        get("offers",
-            parameters: ["categoryId": categories.map { $0.id }, "limit": Item.maxCount],
-            completion: completion)
+    func getOffers(inCategories categories: [Category] = [],
+                   forVendors vendors: [String] = [],
+                   completion: @escaping ([Item]?) -> Void) {
+        
+        // Prepare parameters
+        var parameters: [String: Any] = ["limit": Item.maxCount]
+        parameters["categoryId"] = categories.isEmpty ? nil : categories.map { $0.id }
+        parameters["vendor"] = vendors.isEmpty ? nil : vendors
+        
+        // Send the get request
+        get("offers", parameters: parameters, completion: completion)
     }
     
     /// Add /offers?categoryId=...&limit=... to server URL and call the API
     /// - Parameters:
     ///   - category: category id to get the items from
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
-    func getOffers(in category: Category, completion: @escaping ([Item]?) -> Void) {
+    func getOffers(inCategory category: Category, completion: @escaping ([Item]?) -> Void) {
         get("offers",
             parameters: ["categoryId": category.id, "limit": Category.maxItemCount],
             completion: completion)

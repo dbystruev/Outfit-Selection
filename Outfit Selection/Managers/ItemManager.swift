@@ -127,7 +127,7 @@ class ItemManager {
     /// - Parameter completion: closure with bool parameter which is called with true in case of success, with false otherwise
     func loadItems(completion: @escaping (_ success: Bool?) -> Void) {
         let startTime = Date()
-        NetworkManager.shared.getOffers(in: Category.all) { items in
+        NetworkManager.shared.getOffers(inCategories: Category.all, forVendors: BrandManager.shared.brandNames) { items in
             let endTime = Date()
             
             guard let items = items else {

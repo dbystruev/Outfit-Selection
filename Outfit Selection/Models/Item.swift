@@ -14,7 +14,7 @@ struct Item: Codable {
     private(set) static var all = [Item]()
     
     /// The maximum number of items for all categories together, not all of them displayed
-    static let maxCount = 7500
+    static let maxCount = 15000
     
     // MARK: - Static Methods
     /// Appends items to Item.all. Mimics generic collection's method append(contentsOf:) while saving current index in itemIndex property of each item

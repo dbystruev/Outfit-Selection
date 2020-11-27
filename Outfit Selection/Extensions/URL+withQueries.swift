@@ -40,6 +40,15 @@ extension URL {
                 
                 // Value is not initialized, items already added — go to the next item in query
                 continue
+            } else if let stringArray = query.value as? [String] {
+                // Create temporary array of URL query items with the same key and different values
+                let items = stringArray.map { URLQueryItem(name: query.key, value: $0) }
+                
+                // Append temporaty array into the accumulating array of URL query items
+                queryItems.append(contentsOf: items)
+                
+                // Value is not initialized, items already added - go to the next item in the query
+                continue
             } else {
                 // Skip this query — no recognizable value is found
                 continue

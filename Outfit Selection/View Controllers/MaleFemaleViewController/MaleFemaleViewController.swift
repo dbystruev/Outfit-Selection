@@ -39,7 +39,7 @@ class MaleFemaleViewController: UIViewController {
         for category in Category.all {
             DispatchManager.shared.group.enter()
             
-            NetworkManager.shared.getOffers(in: category) { offers in
+            NetworkManager.shared.getOffers(inCategory: category) { offers in
                 DispatchManager.shared.group.leave()
                 
                 guard let offers = offers else { return }
