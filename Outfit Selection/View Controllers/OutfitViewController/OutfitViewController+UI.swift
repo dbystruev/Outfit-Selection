@@ -21,8 +21,11 @@ extension OutfitViewController {
     
     /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
     func loadImages() {
+        // Clear scroll views
+        scrollViews.clear()
+        
         let startTime = Date()
-        ItemManager.shared.loadImages(into: scrollViews) { itemsLoaded in
+        ItemManager.shared.loadImages(branded: brandNames, into: scrollViews) { itemsLoaded in
             let passedTime = Date().timeIntervalSince1970 - startTime.timeIntervalSince1970
             
             debug(itemsLoaded, "items are loaded into scroll views in", passedTime.asTime, "seconds")
@@ -97,7 +100,7 @@ extension OutfitViewController {
     }
     
     func updateCountButtonItem(with count: Int) {
-        countButtonItem.title = titleForCountButtonItem(itemCount)
+        countButtonItem.title = titleForCountButtonItem(count)
     }
     
     func updateItemCount() {

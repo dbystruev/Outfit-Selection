@@ -10,8 +10,18 @@ import UIKit
 
 // MARK: - Extension
 extension PinnableScrollView {
+    // MARK: - Computed Properties
     var count: Int {
-        return stackView?.arrangedSubviews.count ?? 0
+        stackView?.arrangedSubviews.count ?? 0
+    }
+    
+    var itemCount: Int {
+        stackView?.arrangedSubviews.reduce(0, { result, view in
+            let result = result ?? 0
+            guard let imageView = view as? UIImageView else { return result }
+            guard imageView.image != nil && 0 <= imageView.tag else { return result }
+            return result + 1
+        }) ?? 0
     }
     
     var currentIndex: Int {
@@ -25,13 +35,27 @@ extension PinnableScrollView {
     }
     
     var stackView: UIStackView? {
-        return subviews.first as? UIStackView
+        subviews.first as? UIStackView
+    }
+    
+    // MARK: - Methods
+    func clear() {
+        unpin()
+        if 1 < count {
+            for _ in 1 ..< count {
+                stackView?.arrangedSubviews.last?.removeFromSuperview()
+            }
+        }
+        let imageView = stackView?.arrangedSubviews.first as? UIImageView
+        imageView?.image = nil
+        imageView?.tag = -1
     }
     
     func deleteImageView(withIndex deleteIndex: Int) {
         guard let imageView = getImageView(withIndex: deleteIndex) else { return }
         if deleteIndex == 0 {
             contentOffset.x = 0
+            imageView.image = nil
             guard let secondImageView = getImageView(withIndex: 1) else { return }
             imageView.image = secondImageView.image
             imageView.tag = secondImageView.tag
@@ -45,7 +69,7 @@ extension PinnableScrollView {
     }
     
     func getImageView(withIndex index: Int? = nil) -> UIImageView? {
-        guard 1 < count else { return nil }
+        guard 0 < count else { return nil }
         let index = index ?? currentIndex
         guard 0 <= index && index < count else { return nil }
         return stackView?.arrangedSubviews[index] as? UIImageView

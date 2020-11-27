@@ -21,6 +21,7 @@ class OutfitViewController: UIViewController {
     
     // MARK: - Stored Properties
     var assetCount = 0
+    var brandNames = [String]()
     var countButtonItem: UIBarButtonItem!
     var diceButtonItem: UIBarButtonItem!
     var gender = Gender.other
@@ -35,7 +36,7 @@ class OutfitViewController: UIViewController {
     
     // MARK: - Computed Properties
     var itemCount: Int {
-        scrollViews.reduce(0) { $0 + $1.count }
+        scrollViews.reduce(0) { $0 + $1.itemCount }
     }
     
     var price: Double? {

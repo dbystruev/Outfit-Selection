@@ -13,6 +13,13 @@ extension PinnableScrollViews {
         return reduce(true) { $0 && $1.isPinned }
     }
     
+    func clear() {
+        forEach { $0.clear() }
+        
+        // Clear the number of images loaded into scroll views
+        ItemManager.shared.imagesLoaded = 0
+    }
+    
     func clearBorders() {
         forEach { $0.clearBorder() }
     }

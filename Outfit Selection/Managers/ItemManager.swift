@@ -20,7 +20,7 @@ class ItemManager {
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
     
     /// The number of images loaded into scroll views
-    var itemsLoaded = 0
+    var imagesLoaded = 0
     
     // MARK: - Methods
     /// Call completion closure if all categories and all items were looped through
@@ -30,15 +30,18 @@ class ItemManager {
     ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
     func checkForCompletion(remaining: Int, completion: @escaping (_ success: Int) -> Void) {
         if remaining < 1 {
-            completion(itemsLoaded)
+            completion(imagesLoaded)
         }
     }
     
     /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
     /// - Parameters:
+    ///   - brands: the names of the brands to filter images by
     ///   - scrollViews: scroll views to load images into, one scroll view for each category
     ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
-    func loadImages(into scrollViews: [PinnableScrollView], completion: @escaping (_ count: Int) -> Void) {
+    func loadImages(branded brands: [String] = [],
+                    into scrollViews: [PinnableScrollView],
+                    completion: @escaping (_ count: Int) -> Void) {
         /// Items remaining to load into scroll views
         var itemsRemaining = 0 {
             didSet {
@@ -46,16 +49,24 @@ class ItemManager {
             }
         }
         
+        debug(brands)
+        
         /// Loop all categories and scroll views, whatever number is lower
         for (category, scrollView) in zip(Category.all, scrollViews) {
             // Get Category.maxItemCount items in the given category
-            let items = Item.all.filter({ $0.categoryId == category.id }).prefix(Category.maxItemCount)
+            let items = Item.all.filter({ $0.categoryId == category.id && $0.branded(brands) }).prefix(Category.maxItemCount)
             
             // Remember how many items we need to load
             itemsRemaining += items.count
             
             // The number of images in this category's scroll view
             var imagesInScrollView = scrollView.count
+            
+            // Delete all placeholder images from the beginning of scroll view
+            while (0 < imagesInScrollView) {
+                scrollView.deleteImageView(withIndex: 0)
+                imagesInScrollView -= 1
+            }
             
             // Loop all items in given category
             for item in items {
@@ -82,19 +93,12 @@ class ItemManager {
                         return
                     }
                     
-                    self.itemsLoaded += 1
+                    self.imagesLoaded += 1
                     
                     // Append image to the end of corresponding scroll view
                     DispatchQueue.main.async {
                         scrollView.insert(image: image.halved).tag = itemIndex
-                        scrollView.scrollToLastElement() {_ in
-                            // Delete one placeholder image from the beginning of scroll view with each insertion
-                            if (0 < imagesInScrollView) {
-                                scrollView.deleteImageView(withIndex: 0)
-                                imagesInScrollView -= 1
-                            }
-                            itemsRemaining -= 1
-                        }
+                        itemsRemaining -= 1
                     }
                 }
             }

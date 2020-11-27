@@ -18,7 +18,7 @@ class ItemViewController: UIViewController {
     // MARK: - Properties
     var image: UIImage?
     var item: Item?
-    var itemIndex = 0
+    var itemIndex = -1
 
     // MARK: - Methods
     override func viewDidLoad() {

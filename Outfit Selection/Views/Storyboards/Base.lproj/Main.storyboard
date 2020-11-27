@@ -413,11 +413,18 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="NXz-cG-HPg">
-                        <barButtonItem key="leftBarButtonItem" systemItem="add" id="7Y5-wx-eaw">
-                            <connections>
-                                <action selector="addButtonPressedWithSender:" destination="BYZ-38-t0r" id="c1y-tu-fB6"/>
-                            </connections>
-                        </barButtonItem>
+                        <leftBarButtonItems>
+                            <barButtonItem systemItem="add" id="7Y5-wx-eaw">
+                                <connections>
+                                    <action selector="addButtonPressedWithSender:" destination="BYZ-38-t0r" id="c1y-tu-fB6"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem title="Item" image="suit.heart" catalog="system" id="ka5-GL-mJm">
+                                <connections>
+                                    <action selector="heartButtonTouched:" destination="BYZ-38-t0r" id="BWA-2Z-RUP"/>
+                                </connections>
+                            </barButtonItem>
+                        </leftBarButtonItems>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="2AA-iP-MGy">
                             <connections>
                                 <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="q04-4G-p2d"/>
@@ -631,6 +638,7 @@
         <image name="female" width="512" height="617"/>
         <image name="male" width="512" height="617"/>
         <image name="pin" catalog="system" width="119" height="128"/>
+        <image name="suit.heart" catalog="system" width="128" height="109"/>
         <image name="trash" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

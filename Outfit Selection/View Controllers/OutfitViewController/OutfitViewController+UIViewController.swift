@@ -28,7 +28,7 @@ extension OutfitViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        assetCount = ItemManager.shared.loadImagesFromAssets(into: scrollViews)
+        assetCount = 0 // ItemManager.shared.loadImagesFromAssets(into: scrollViews)
         scrollViews.forEach { $0.delegate = self }
         setupGestures()
         setupUI()

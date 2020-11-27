@@ -17,8 +17,12 @@ class BrandManager {
     
     // MARK: - Computed Properties
     /// Available brand images
-    var brandImages: [UIImage] {
-        fullNames.compactMap { UIImage(contentsOfFile: $0) }
+    var brandImages: [BrandImage] {
+        fullNames.compactMap {
+            let brandImage = BrandImage(contentsOfFile: $0)
+            brandImage?.brandName = $0.lastComponent.dropExtension
+            return brandImage
+        }
     }
     
     /// Sorted full file names of images with brand logos

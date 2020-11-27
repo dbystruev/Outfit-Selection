@@ -42,6 +42,10 @@ extension OutfitViewController {
         updatePrice()
     }
     
+    @IBAction func heartButtonTouched(_ sender: UIBarButtonItem) {
+        presentBrandsViewController()
+    }
+    
     @IBAction func insideButtonPressed(_ sender: UIButton) {
         selectedButtonIndex = buttons.firstIndex(of: sender)
         setEditing(false, animated: false)

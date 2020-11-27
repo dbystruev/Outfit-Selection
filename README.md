@@ -12,4 +12,6 @@ GetOufit.ru Selection Prototype
 
 ## Acknowledgments
 
-Prior-iOS 13 fallback [pin](http://simpleicon.com/pin.html) icon from [simple icon](http://simpleicon.com)
+Pre iOS 13 fallback:
+* [pin](http://simpleicon.com/pin.html) icon from [simple icon](http://simpleicon.com)
+* [suit.heart](https://icons-for-free.com/heart-131965017458786724/) icon from [Icons-For-Free.com](https://icons-for-free.com)
