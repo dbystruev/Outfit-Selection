@@ -38,9 +38,7 @@ extension OutfitViewController {
         NetworkManager.shared.getCategories { categories in
             guard let categories = categories?.sorted(by: { $0.name < $1.name }) else { return }
             
-            let categoriesSorted = categories.sorted { $0.name < $1.name }
-            
-            for category in categoriesSorted {
+            for category in categories {
                 print("\(category.id)\t\(category.name)")
             }
             
