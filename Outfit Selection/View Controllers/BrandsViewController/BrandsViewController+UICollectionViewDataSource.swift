@@ -17,7 +17,7 @@ extension BrandsViewController: UICollectionViewDataSource {
         let brandImage = brandImages[indexPath.row]
         let cell = brandsCollectionView.dequeueReusableCell(withReuseIdentifier: "BrandCell", for: indexPath)
         let brandCell = cell as! BrandCell
-        brandCell.brandImageView.alpha = brandImage.isSelected ? 1 : 0.125
+        brandCell.brandImageView.alpha = brandImage.isSelected ? 1 : 0.5
         brandCell.brandImageView.image = brandImage
         return brandCell
     }

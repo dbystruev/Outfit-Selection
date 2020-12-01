@@ -33,6 +33,19 @@ extension OutfitViewController {
         setupGestures()
         setupUI()
         presentBrandsViewController()
+        
+        // DEBUG: List of categories
+        NetworkManager.shared.getCategories { categories in
+            guard let categories = categories?.sorted(by: { $0.name < $1.name }) else { return }
+            
+            let categoriesSorted = categories.sorted { $0.name < $1.name }
+            
+            for category in categoriesSorted {
+                print("\(category.id)\t\(category.name)")
+            }
+            
+            debug("categories.count = \(categories.count)")
+        }
     }
     
     override func viewDidLayoutSubviews() {
