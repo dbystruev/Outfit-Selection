@@ -13,8 +13,8 @@ extension BrandsViewController: UICollectionViewDelegate {
         guard let brandCell = collectionView.cellForItem(at: indexPath) as? BrandCell else { return }
         let brandImage = brandImages[indexPath.row]
         
-        // Toggle alpha between 0.125 and 1
+        // Toggle alpha between 0.25 and 1
         brandImage.isSelected.toggle()
-        brandCell.brandImageView.alpha = brandImage.isSelected ? 1 : 0.125
+        brandCell.brandImageView.alpha = brandImage.isSelected ? 1 : 0.25
     }
 }

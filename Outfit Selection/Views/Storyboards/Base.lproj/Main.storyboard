@@ -535,7 +535,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="d9P-ps-ZoO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L6l-jV-vyF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -614,6 +614,8 @@
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="brandImageView" destination="kZX-Wt-GDk" id="x0A-Yt-vPC"/>
+                                            <outlet property="brandImageViewHeightConstraint" destination="HC6-0c-8wS" id="OEJ-ww-hMN"/>
+                                            <outlet property="brandImageViewWidthConstraint" destination="mcG-CA-nsv" id="fUV-ZZ-Pjf"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>

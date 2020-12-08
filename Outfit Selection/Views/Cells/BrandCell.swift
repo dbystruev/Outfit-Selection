@@ -10,4 +10,6 @@ import UIKit
 
 class BrandCell: UICollectionViewCell {
     @IBOutlet weak var brandImageView: UIImageView!
+    @IBOutlet weak var brandImageViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var brandImageViewWidthConstraint: NSLayoutConstraint!
 }

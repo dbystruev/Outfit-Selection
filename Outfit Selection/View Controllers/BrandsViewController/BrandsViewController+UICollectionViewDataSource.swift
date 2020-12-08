@@ -17,8 +17,14 @@ extension BrandsViewController: UICollectionViewDataSource {
         let brandImage = brandImages[indexPath.row]
         let cell = brandsCollectionView.dequeueReusableCell(withReuseIdentifier: "BrandCell", for: indexPath)
         let brandCell = cell as! BrandCell
-        brandCell.brandImageView.alpha = brandImage.isSelected ? 1 : 0.5
+        brandCell.brandImageView.alpha = brandImage.isSelected ? 1 : 0.25
         brandCell.brandImageView.image = brandImage
+        
+        // Set min brand view image height and width
+        let size = (collectionView.bounds.size.width - 32) / 3
+        brandCell.brandImageViewHeightConstraint.constant = size
+        brandCell.brandImageViewWidthConstraint.constant = size
+        
         return brandCell
     }
 }
