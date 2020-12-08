@@ -137,9 +137,11 @@ extension OutfitViewController {
         setEditing(false, animated: true)
         guard let view = navigationController?.view else { return }
         
+        hideTabBar()
         pinButtons.forEach { $0.isHidden = true }
         let possibleScreenshot = getScreenshot(of: view)
         pinButtons.forEach { $0.isHidden = false }
+        showTabBar()
         
         guard let screenshot = possibleScreenshot else { return }
         
