@@ -41,7 +41,7 @@ class BrandsViewController: UIViewController {
         
         // Load items if none are found
         goButton.isHidden = true
-        ItemManager.shared.loadItems { success in
+        ItemManager.shared.loadItems(filteredBy: gender) { success in
             // Update the title for go button
             let title = success == true ? "Go" : "Reload"
             

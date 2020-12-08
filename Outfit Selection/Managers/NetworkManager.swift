@@ -107,9 +107,11 @@ class NetworkManager {
     /// Add /offers?categoryId=...&categoryId=...&vendor=...&vendor=...&limit=... to server URL and call the API
     /// - Parameters:
     ///   - categories: the list of categories to filter items by
+    ///   - gender: load female or male items only, both if nil
     ///   - vendors: the list of vendors to filter items by
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
     func getOffers(inCategories categories: [Category] = [],
+                   filteredBy gender: Gender? = nil,
                    forVendors vendors: [String] = [],
                    completion: @escaping ([Item]?) -> Void) {
         
@@ -117,6 +119,16 @@ class NetworkManager {
         var parameters: [String: Any] = ["limit": Item.maxCount]
         parameters["categoryId"] = categories.isEmpty ? nil : categories.map { $0.id }
         parameters["vendor"] = vendors.isEmpty ? nil : vendors
+        
+        // Add gender in parameter
+        switch gender {
+        case .female:
+            parameters["пол"] = "женский"
+        case .male:
+            parameters["пол"] = "мужской"
+        default:
+            break
+        }
         
         // Send the get request
         get("offers", parameters: parameters, completion: completion)
