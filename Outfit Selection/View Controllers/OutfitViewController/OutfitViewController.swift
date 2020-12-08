@@ -24,7 +24,6 @@ class OutfitViewController: UIViewController {
     var brandNames = [String]()
     var countButtonItem: UIBarButtonItem!
     var diceButtonItem: UIBarButtonItem!
-    var gender = Gender.other
     
     var selectedAction = UIBarButtonItem.SystemItem.cancel {
         didSet {

@@ -32,7 +32,7 @@ extension OutfitViewController {
         scrollViews.forEach { $0.delegate = self }
         setupGestures()
         setupUI()
-        presentBrandsViewController()
+        presentGenderViewController()
         
         // DEBUG: List of categories
         NetworkManager.shared.getCategories { categories in

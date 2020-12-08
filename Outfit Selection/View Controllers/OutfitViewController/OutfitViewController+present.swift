@@ -8,16 +8,15 @@
 
 import UIKit
 
-// MARK: - MaleFemale
 extension OutfitViewController {
     /// Instantiate and present brands view controller
     func presentBrandsViewController() {
         presentViewController(withIdentifier: "BrandsViewController", style: .currentContext)
     }
     
-    /// Instantiate and present male female view controller
-    func presentMaleFemaleViewController() {
-        presentViewController(withIdentifier: "MaleFemaleController", style: .formSheet)
+    /// Instantiate and present gender view controller
+    func presentGenderViewController() {
+        presentViewController(withIdentifier: "GenderViewController", style: .formSheet)
     }
     
     /// Instantiate and present view controller with given identifier and style

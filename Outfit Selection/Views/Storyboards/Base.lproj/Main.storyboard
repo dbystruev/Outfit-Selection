@@ -10,10 +10,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Male Female View Controller-->
+        <!--Gender View Controller-->
         <scene sceneID="q32-6b-SBL">
             <objects>
-                <viewController storyboardIdentifier="MaleFemaleController" id="tMR-11-qmS" customClass="MaleFemaleViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="GenderViewController" id="tMR-11-qmS" customClass="GenderViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="rDl-6c-iur">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -48,7 +48,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="stackView" destination="fkg-59-ObQ" id="cdV-qT-8I8"/>
+                        <outlet property="genderStackView" destination="fkg-59-ObQ" id="cdV-qT-8I8"/>
+                        <segue destination="Xzm-zb-a3t" kind="show" identifier="BrandsViewController" id="OvM-Fc-VYf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDm-al-36Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -63,7 +64,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="570" y="-640"/>
+            <point key="canvasLocation" x="-225" y="-653"/>
         </scene>
         <!--Select Category-->
         <scene sceneID="KSq-b2-tmJ">
@@ -526,7 +527,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="d9P-ps-ZoO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L6l-jV-vyF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -547,11 +548,11 @@
             <objects>
                 <viewController storyboardIdentifier="BrandsViewController" id="Xzm-zb-a3t" customClass="BrandsViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5hd-8z-0gK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="460"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wo2-HJ-54b">
-                                <rect key="frame" x="40" y="414" width="240" height="50"/>
+                                <rect key="frame" x="40" y="394" width="240" height="50"/>
                                 <color key="backgroundColor" systemColor="systemTealColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="aAM-I9-wja"/>
@@ -571,7 +572,7 @@
                                 </connections>
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Nq-Bt-ovQ">
-                                <rect key="frame" x="32" y="16" width="256" height="382"/>
+                                <rect key="frame" x="32" y="16" width="256" height="362"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-16" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a5e-Cj-BOC">
@@ -630,7 +631,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVE-B9-uYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="570" y="946"/>
+            <point key="canvasLocation" x="570" y="-654"/>
         </scene>
     </scenes>
     <resources>

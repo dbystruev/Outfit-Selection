@@ -15,6 +15,9 @@ class BrandsViewController: UIViewController {
     @IBOutlet weak var goButton: UIButton!
     
     // MARK: - Properties
+    /// Gender selected on female male screen
+    var gender = Gender.other
+    
     /// Flag which changes to true when all items are loaded from the server
     var itemsLoaded = false
     
@@ -66,7 +69,7 @@ class BrandsViewController: UIViewController {
         }
         
         // Find out the navigation controller
-        let navigationController = self.presentingViewController as? UINavigationController
+        let navigationController = self.presentingViewController?.presentingViewController as? UINavigationController
         
         // Find out the root = outfit view controller
         let outfitViewController = navigationController?.viewControllers.first as? OutfitViewController
@@ -77,6 +80,6 @@ class BrandsViewController: UIViewController {
         // Load images into the outfit view controller's sroll views
         outfitViewController?.loadImages()
         
-        dismiss(animated: true)
+        dismissRoot(animated: true)
     }
 }
