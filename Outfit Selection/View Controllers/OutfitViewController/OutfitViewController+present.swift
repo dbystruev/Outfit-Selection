@@ -3,7 +3,7 @@
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 31/07/2019.
-//  Copyright © 2019 Denis Bystruev. All rights reserved.
+//  Copyright © 2019–2020 Denis Bystruev. All rights reserved.
 //
 
 import UIKit

@@ -68,8 +68,11 @@ class BrandsViewController: UIViewController {
             return
         }
         
-        // Find out the navigation controller
-        let navigationController = self.presentingViewController?.presentingViewController as? UINavigationController
+        // Find out where is the navigation controller
+        var navigationController = presentingViewController as? UINavigationController
+        if navigationController == nil {
+            navigationController = presentingViewController?.presentingViewController as? UINavigationController
+        }
         
         // Find out the root = outfit view controller
         let outfitViewController = navigationController?.viewControllers.first as? OutfitViewController

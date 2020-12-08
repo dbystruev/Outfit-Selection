@@ -3,7 +3,7 @@
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 19/06/2019.
-//  Copyright © 2019 Denis Bystruev. All rights reserved.
+//  Copyright © 2019–2020 Denis Bystruev. All rights reserved.
 //
 
 import UIKit
@@ -14,8 +14,9 @@ class OutfitViewController: UIViewController {
     
     // MARK: - Outlets
     @IBOutlet var buttons: [UIButton]!
-    @IBOutlet var buttonsStackView: UIStackView!
-    @IBOutlet var clothesStackView: UIStackView!
+    @IBOutlet weak var buttonsStackView: UIStackView!
+    @IBOutlet weak var clothesStackView: UIStackView!
+    @IBOutlet weak var genderItem: UIBarButtonItem!
     @IBOutlet var pinButtons: [UIButton]!
     @IBOutlet var scrollViews: [PinnableScrollView]!
     
@@ -24,6 +25,13 @@ class OutfitViewController: UIViewController {
     var brandNames = [String]()
     var countButtonItem: UIBarButtonItem!
     var diceButtonItem: UIBarButtonItem!
+    
+    /// Gender selected on female male screen
+    var gender = Gender.other {
+        didSet {
+            configureGenderItem()
+        }
+    }
     
     var selectedAction = UIBarButtonItem.SystemItem.cancel {
         didSet {

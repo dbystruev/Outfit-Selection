@@ -3,13 +3,24 @@
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 19/06/2019.
-//  Copyright © 2019 Denis Bystruev. All rights reserved.
+//  Copyright © 2019–2020 Denis Bystruev. All rights reserved.
 //
 
 import UIKit
 
 // MARK: - UI
 extension OutfitViewController {
+    func configureGenderItem() {
+        switch gender {
+        case .female:
+            genderItem.image = UIImage(named: "female_icon")
+        case .male:
+            genderItem.image = UIImage(named: "male_icon")
+        default:
+            genderItem.image = nil
+        }
+    }
+    
     func getScreenshot(of view: UIView) -> UIImage? {
         UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
         guard let context = UIGraphicsGetCurrentContext() else { return nil }

@@ -3,7 +3,7 @@
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 31/07/2019.
-//  Copyright © 2019 Denis Bystruev. All rights reserved.
+//  Copyright © 2019–2020 Denis Bystruev. All rights reserved.
 //
 
 import UIKit
@@ -16,7 +16,13 @@ class GenderViewController: UIViewController {
     
     // MARK: - Properties
     /// Gender selected by user
-    var gender = Gender.other
+    var gender = Gender.other {
+        didSet {
+            guard let navigationController = presentingViewController as? UINavigationController else { return }
+            guard let outfitViewController = navigationController.viewControllers.first as? OutfitViewController else { return }
+            outfitViewController.gender = gender
+        }
+    }
     
     // MARK: - Methods
     /// Make gender stack view horizontal or vertical depending on screen size and orientation

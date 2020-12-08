@@ -426,15 +426,19 @@
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="2AA-iP-MGy">
-                            <connections>
-                                <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="q04-4G-p2d"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="action" id="2AA-iP-MGy">
+                                <connections>
+                                    <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="q04-4G-p2d"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem image="female_icon" style="plain" id="rBZ-Hp-bbB"/>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
                         <outlet property="buttonsStackView" destination="hWK-Fq-NLp" id="QBm-ii-8Zv"/>
                         <outlet property="clothesStackView" destination="5D7-8L-CyA" id="jbe-YV-yDm"/>
+                        <outlet property="genderItem" destination="rBZ-Hp-bbB" id="GMG-XX-9tc"/>
                         <outletCollection property="scrollViews" destination="e2j-61-yTt" collectionClass="NSMutableArray" id="NFy-MN-k4n"/>
                         <outletCollection property="scrollViews" destination="McV-FV-yxk" collectionClass="NSMutableArray" id="uZW-Kz-d8q"/>
                         <outletCollection property="scrollViews" destination="nrI-94-QGh" collectionClass="NSMutableArray" id="aOa-FR-wV6"/>
@@ -527,7 +531,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="d9P-ps-ZoO" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="L6l-jV-vyF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -637,6 +641,7 @@
     <resources>
         <image name="add" width="50" height="50"/>
         <image name="female" width="512" height="617"/>
+        <image name="female_icon" width="23" height="28"/>
         <image name="male" width="512" height="617"/>
         <image name="pin" catalog="system" width="119" height="128"/>
         <image name="suit.heart" catalog="system" width="128" height="109"/>
