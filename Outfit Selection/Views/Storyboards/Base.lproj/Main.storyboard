@@ -220,7 +220,7 @@
                                                         <state key="selected" image="trash"/>
                                                         <state key="highlighted" image="add"/>
                                                         <connections>
-                                                            <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihW-9Z-AYF"/>
+                                                            <action selector="insideButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihW-9Z-AYF"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2m-cA-WkI">
@@ -252,7 +252,7 @@
                                                         <state key="selected" image="trash"/>
                                                         <state key="highlighted" image="add"/>
                                                         <connections>
-                                                            <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRl-aN-Yn3"/>
+                                                            <action selector="insideButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRl-aN-Yn3"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yi-5U-Vzn">
@@ -289,7 +289,7 @@
                                                         <state key="selected" image="trash"/>
                                                         <state key="highlighted" image="add"/>
                                                         <connections>
-                                                            <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KO8-2e-Yba"/>
+                                                            <action selector="insideButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KO8-2e-Yba"/>
                                                         </connections>
                                                     </button>
                                                     <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oI-QJ-jlu">
@@ -324,7 +324,7 @@
                                                                 <state key="selected" image="trash"/>
                                                                 <state key="highlighted" image="add"/>
                                                                 <connections>
-                                                                    <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQ5-oH-8Ra"/>
+                                                                    <action selector="insideButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQ5-oH-8Ra"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdK-GK-Ra7">
@@ -357,7 +357,7 @@
                                                                 <state key="selected" image="trash"/>
                                                                 <state key="highlighted" image="add"/>
                                                                 <connections>
-                                                                    <action selector="insideButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MOg-Nb-Ots"/>
+                                                                    <action selector="insideButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MOg-Nb-Ots"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NT3-Ff-VD4">
@@ -417,22 +417,26 @@
                         <leftBarButtonItems>
                             <barButtonItem systemItem="add" id="7Y5-wx-eaw">
                                 <connections>
-                                    <action selector="addButtonPressedWithSender:" destination="BYZ-38-t0r" id="c1y-tu-fB6"/>
+                                    <action selector="addButtonTappedWithSender:" destination="BYZ-38-t0r" id="c1y-tu-fB6"/>
                                 </connections>
                             </barButtonItem>
                             <barButtonItem title="Item" image="suit.heart" catalog="system" id="ka5-GL-mJm">
                                 <connections>
-                                    <action selector="heartButtonTouched:" destination="BYZ-38-t0r" id="BWA-2Z-RUP"/>
+                                    <action selector="heartButtonTapped:" destination="BYZ-38-t0r" id="BWA-2Z-RUP"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
                         <rightBarButtonItems>
                             <barButtonItem systemItem="action" id="2AA-iP-MGy">
                                 <connections>
-                                    <action selector="shareButtonPressed:" destination="BYZ-38-t0r" id="q04-4G-p2d"/>
+                                    <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="q04-4G-p2d"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="female_icon" style="plain" id="rBZ-Hp-bbB"/>
+                            <barButtonItem image="female_icon" style="plain" id="rBZ-Hp-bbB">
+                                <connections>
+                                    <action selector="genderItemTapped:" destination="BYZ-38-t0r" id="6Ll-4Q-onU"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>

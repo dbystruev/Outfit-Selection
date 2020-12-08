@@ -26,6 +26,12 @@ extension OutfitViewController {
     func presentViewController(withIdentifier identifier: String, style: UIModalPresentationStyle) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: identifier)
+        
+        // If we are presenting gender view controller pass currently selected gender to it
+        if let genderViewController = viewController as? GenderViewController {
+            genderViewController.gender = gender
+        }
+        
         viewController.modalPresentationStyle = style
         viewController.popoverPresentationController?.sourceView = view
         OperationQueue.main.addOperation {

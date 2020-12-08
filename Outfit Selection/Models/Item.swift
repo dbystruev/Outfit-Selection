@@ -61,4 +61,9 @@ struct Item: Codable {
         
         return brandNames.contains { vendor.contains($0.lowercased()) }
     }
+    
+    /// Clears all items
+    static func removeAll() {
+        all.removeAll()
+    }
 }

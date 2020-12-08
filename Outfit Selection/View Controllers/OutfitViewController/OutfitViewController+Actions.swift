@@ -10,13 +10,13 @@ import UIKit
 
 // MARK: - Actions
 extension OutfitViewController {
-    @IBAction func addButtonPressed(sender: UIBarButtonItem) {
+    @IBAction func addButtonTapped(sender: UIBarButtonItem) {
         unpin()
         selectedAction = isEditing ? .cancel : .add
         setEditing(!isEditing, animated: true)
     }
     
-    @objc func countButtonItemPressed(_ sender: UIBarButtonItem) {
+    @objc func countButtonTapped(_ sender: UIBarButtonItem) {
         debug("Step 1:", sender.title)
         if sender.title == OutfitViewController.loadingMessage || sender.title == titleForCountButtonItem(assetCount) {
             debug("Step 2:", sender.title)
@@ -30,7 +30,7 @@ extension OutfitViewController {
         }
     }
     
-    @objc func diceButtonPressed(_ sender: UIBarButtonItem) {
+    @objc func diceButtonTapped(_ sender: UIBarButtonItem) {
         selectedAction = .cancel
         setEditing(false, animated: true)
         scrollViews.forEach {
@@ -42,11 +42,15 @@ extension OutfitViewController {
         updatePrice()
     }
     
-    @IBAction func heartButtonTouched(_ sender: UIBarButtonItem) {
+    @IBAction func genderItemTapped(_ sender: UIBarButtonItem) {
+        presentGenderViewController()
+    }
+    
+    @IBAction func heartButtonTapped(_ sender: UIBarButtonItem) {
         presentBrandsViewController()
     }
     
-    @IBAction func insideButtonPressed(_ sender: UIButton) {
+    @IBAction func insideButtonTapped(_ sender: UIButton) {
         selectedButtonIndex = buttons.firstIndex(of: sender)
         setEditing(false, animated: false)
         
@@ -129,7 +133,7 @@ extension OutfitViewController {
         diceButtonItem.isEnabled = !scrollViews.allPinned
     }
     
-    @IBAction func shareButtonPressed(_ sender: UIBarButtonItem) {
+    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         setEditing(false, animated: true)
         guard let view = navigationController?.view else { return }
         
@@ -144,7 +148,7 @@ extension OutfitViewController {
         present(activityController, animated: true)
     }
     
-    @objc func trashButtonPressed(_ sender: UIBarButtonItem) {
+    @objc func trashButtonTapped(_ sender: UIBarButtonItem) {
         unpin()
         selectedAction = isEditing ? .cancel : .trash
         setEditing(!isEditing, animated: true)

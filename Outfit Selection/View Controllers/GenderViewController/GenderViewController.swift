@@ -18,8 +18,10 @@ class GenderViewController: UIViewController {
     /// Gender selected by user
     var gender = Gender.other {
         didSet {
+            guard oldValue != gender else { return }
             guard let navigationController = presentingViewController as? UINavigationController else { return }
             guard let outfitViewController = navigationController.viewControllers.first as? OutfitViewController else { return }
+            Item.removeAll()
             outfitViewController.gender = gender
         }
     }
