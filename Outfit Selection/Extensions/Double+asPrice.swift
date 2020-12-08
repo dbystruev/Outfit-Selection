@@ -9,10 +9,11 @@
 import Foundation
 
 extension Double {
-    var asPrice: String? {
+    var asPrice: String {
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
         formatter.numberStyle = .currency
-        return formatter.string(from: NSNumber(value: self))
+        guard let fullAmount = formatter.string(from: NSNumber(value: self)) else { return "\(Int(self.rounded())) ₽" }
+        return String(fullAmount.dropLast(5)) + " ₽"
     }
 }
