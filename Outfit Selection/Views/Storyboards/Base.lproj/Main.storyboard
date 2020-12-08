@@ -567,7 +567,7 @@
                                 </constraints>
                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="24"/>
                                 <state key="normal" title="Go">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
@@ -581,7 +581,7 @@
                             </button>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Nq-Bt-ovQ">
                                 <rect key="frame" x="32" y="16" width="256" height="362"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-16" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a5e-Cj-BOC">
                                     <size key="itemSize" width="128" height="128"/>
@@ -622,7 +622,7 @@
                             </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9SB-V3-nAX"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="centerX" secondItem="5hd-8z-0gK" secondAttribute="centerX" id="9Iw-90-L9S"/>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="top" secondItem="3Nq-Bt-ovQ" secondAttribute="bottom" constant="16" id="BIs-Kc-8xR"/>
