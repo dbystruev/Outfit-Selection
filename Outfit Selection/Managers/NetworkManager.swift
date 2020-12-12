@@ -10,7 +10,9 @@ import UIKit
 
 class NetworkManager {
     // MARK: - Static Properties
-    static let defaultURL = URL(string: "http://server.getoutfit.ru")!
+//    static let defaultURL = URL(string: "http://server.getoutfit.ru")!
+//    static let defaultURL = URL(string: "http://sc.getoutfit.ru")!
+    static let defaultURL = URL(string: "http://37.18.100.119")!
     static let shared = NetworkManager()
     
     // MARK: - Stored Properties
