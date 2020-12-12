@@ -17,7 +17,7 @@ class NetworkManager {
     
     // MARK: - Stored Properties
     /// Maximum number of simultaneous get requests (image loading is not counted)
-    let maxRequests = 2
+    let maxRequestsInParallel = 10
     
     /// Number of get requests currently running (image loading is not counted)
     var numberOfRequestsRunning = 0
@@ -43,8 +43,8 @@ class NetworkManager {
         debug("request = \(request)")
         
         // Check that we don't run more than allowed number of get requests in parallel
-        guard numberOfRequestsRunning < maxRequests else {
-            debug("ERROR: the number of requests \(numberOfRequestsRunning) is not lower than maximum \(maxRequests)")
+        guard numberOfRequestsRunning < maxRequestsInParallel else {
+            debug("ERROR: the number of requests \(numberOfRequestsRunning) is not lower than maximum \(maxRequestsInParallel)")
             completion(nil)
             return
         }
@@ -116,10 +116,53 @@ class NetworkManager {
                    filteredBy gender: Gender? = nil,
                    forVendors vendors: [String] = [],
                    completion: @escaping ([Item]?) -> Void) {
+        // The array of items we will collect the result in
+        var allItems = [Item]()
+        
+        // Make several category requests in parallel
+        let group = DispatchGroup()
+        
+        // Create a separate request for each category
+        for category in categories {
+            // Enter the dispatch group before the request
+            group.enter()
+            
+            // Request the items in the current category
+            getOffers(inCategory: category, filteredBy: gender, forVendors: vendors) { items in
+                // Add items to all items if we got any
+                if let items = items {
+                    allItems.append(contentsOf: items)
+                }
+                
+                // Leave the dispatch group when request is completed
+                group.leave()
+            }
+        }
+        
+        // When all requests are finished make sure items are not nil
+        group.notify(queue: .main) {
+            guard !allItems.isEmpty else {
+                completion(nil)
+                return
+            }
+            completion(allItems)
+        }
+    }
+    
+    /// Add /offers?categoryId=...&vendor=...&vendor=...&limit=... to server URL and call the API
+    /// - Parameters:
+    ///   - category: the category to get the items for
+    ///   - gender: load female or male items only, both if nil
+    ///   - vendors: the list of vendors to filter items by
+    ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
+    func getOffers(inCategory category: Category? = nil,
+                   filteredBy gender: Gender? = nil,
+                   forVendors vendors: [String] = [],
+                   completion: @escaping ([Item]?) -> Void) {
         
         // Prepare parameters
         var parameters: [String: Any] = ["limit": Item.maxCount]
-        parameters["categoryId"] = categories.isEmpty ? nil : categories.map { $0.id }
+        parameters["categoryId"] = category?.id
         parameters["vendor"] = vendors.isEmpty ? nil : vendors
         
         // Add gender in parameter
@@ -134,16 +177,6 @@ class NetworkManager {
         
         // Send the get request
         get("offers", parameters: parameters, completion: completion)
-    }
-    
-    /// Add /offers?categoryId=...&limit=... to server URL and call the API
-    /// - Parameters:
-    ///   - category: category id to get the items from
-    ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
-    func getOffers(inCategory category: Category, completion: @escaping ([Item]?) -> Void) {
-        get("offers",
-            parameters: ["categoryId": category.id, "limit": Category.maxItemCount],
-            completion: completion)
     }
 }
 

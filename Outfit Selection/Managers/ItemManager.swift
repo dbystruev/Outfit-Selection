@@ -142,7 +142,7 @@ class ItemManager {
             
             let passedTime = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
             
-            debug(Item.all.count, "items are loaded from server in", passedTime.asTime, "seconds")
+            debug(Item.all.count, "items are loaded from the server in", passedTime.asTime, "seconds")
             completion(true)
         }
     }
