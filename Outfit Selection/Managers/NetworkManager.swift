@@ -17,7 +17,7 @@ class NetworkManager {
     
     // MARK: - Stored Properties
     /// Maximum number of simultaneous get requests (image loading is not counted)
-    let maxRequestsInParallel = 160
+    let maxRequestsInParallel = 5
     
     /// Number of get requests currently running (image loading is not counted)
     var numberOfRequestsRunning = 0
@@ -110,27 +110,40 @@ class NetworkManager {
     /// - Parameters:
     ///   - categories: the list of categories to filter items by, should not be empty
     ///   - gender: load female or male items only, both if nil
-    ///   - vendors: the list of vendors to filter items by, should not be empty
+    ///   - vendors: the list of vendors to filter items by
+    ///   - singleRequest: true — run one single request, false — separate request for each category in parallel, nil — decide based on gender
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
     func getOffers(inCategories categories: [Category],
                    filteredBy gender: Gender? = nil,
-                   forVendors vendors: [String],
+                   forVendors vendors: [String] = [],
+                   withSingleRequest singleRequest: Bool? = false,
                    completion: @escaping ([Item]?) -> Void) {
-        // The array of items we will collect the result in
-        var allItems = [Item]()
+        // Run single request if said so, or if not defined and gender is male
+        let singleRequest = singleRequest ?? (gender == .male)
         
-        // Make several category requests in parallel
-        let group = DispatchGroup()
-        
-        // Create a separate request for each category and each vendor
-        for category in categories {
-            for vendor in vendors {
+        if singleRequest {
+            // Prepare parameters
+            let parameters = getParameters(inCategories: categories, filteredBy: gender, forVendors: vendors)
+            
+            // Run signle request
+            get("offers", parameters: parameters, completion: completion)
+        } else {
+            // The array of items we will collect the result in
+            var allItems = [Item]()
+            
+            // Make several category requests in parallel
+            let group = DispatchGroup()
+            
+            // Create a separate request for each category and each vendor
+            for category in categories {
+                // Prepare parameters
+                let parameters = getParameters(inCategories: [category], filteredBy: gender, forVendors: vendors)
                 
                 // Enter the dispatch group before the request
                 group.enter()
                 
                 // Request the items in the current category
-                getOffers(inCategory: category, filteredBy: gender, forVendor: vendor) { items in
+                get("offers", parameters: parameters) { (items: [Item]?) in
                     // Add items to all items if we got any
                     if let items = items {
                         allItems.append(contentsOf: items)
@@ -140,62 +153,30 @@ class NetworkManager {
                     group.leave()
                 }
             }
-        }
-        
-        // When all requests are finished make sure items are not nil
-        group.notify(queue: .main) {
-            guard !allItems.isEmpty else {
-                completion(nil)
-                return
+            
+            // When all requests are finished make sure items are not nil
+            group.notify(queue: .main) {
+                guard !allItems.isEmpty else {
+                    completion(nil)
+                    return
+                }
+                completion(allItems)
             }
-            completion(allItems)
         }
     }
     
-    /// Add /offers?categoryId=...&vendor=..&limit=... to server URL and call the API
+    /// Prepare parameters dictionary for given categories, gender, and vendors
     /// - Parameters:
-    ///   - category: the category to get the items for
-    ///   - gender: load female or male items only, both if nil
-    ///   - vendor: the list of vendors to filter items by
-    ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
-    func getOffers(inCategory category: Category? = nil,
-                   filteredBy gender: Gender? = nil,
-                   forVendor vendor: String? = nil,
-                   completion: @escaping ([Item]?) -> Void) {
-        
-        // Prepare parameters
-        var parameters: [String: Any] = ["limit": Item.maxCount]
-        parameters["categoryId"] = category?.id
-        parameters["vendor"] = vendor
-        
-        // Add gender in parameter
-        switch gender {
-        case .female:
-            parameters["пол"] = "женский"
-        case .male:
-            parameters["пол"] = "мужской"
-        default:
-            break
-        }
-        
-        // Send the get request
-        get("offers", parameters: parameters, completion: completion)
-    }
-    
-    /// Add /offers?categoryId=...&vendor=...&vendor=...&limit=... to server URL and call the API
-    /// - Parameters:
-    ///   - category: the category to get the items for
+    ///   - categories: the list of categories to filter items by
     ///   - gender: load female or male items only, both if nil
     ///   - vendors: the list of vendors to filter items by
-    ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
-    func getOffers(inCategory category: Category? = nil,
-                   filteredBy gender: Gender? = nil,
-                   forVendors vendors: [String] = [],
-                   completion: @escaping ([Item]?) -> Void) {
-        
+    /// - Returns: dictionary with parameters suitable to call get()
+    func getParameters(inCategories categories: [Category] = [],
+                    filteredBy gender: Gender? = nil,
+                    forVendors vendors: [String] = []) -> [String: Any] {
         // Prepare parameters
         var parameters: [String: Any] = ["limit": Item.maxCount]
-        parameters["categoryId"] = category?.id
+        parameters["categoryId"] = categories.isEmpty ? nil : categories.map { $0.id }
         parameters["vendor"] = vendors.isEmpty ? nil : vendors
         
         // Add gender in parameter
@@ -208,8 +189,6 @@ class NetworkManager {
             break
         }
         
-        // Send the get request
-        get("offers", parameters: parameters, completion: completion)
+        return parameters
     }
 }
-
