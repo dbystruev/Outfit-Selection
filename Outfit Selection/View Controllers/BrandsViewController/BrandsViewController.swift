@@ -27,7 +27,6 @@ class BrandsViewController: UIViewController {
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         configureItems()
         configureLayout()
     }
@@ -59,30 +58,5 @@ class BrandsViewController: UIViewController {
     func configureLayout() {
         brandsCollectionView.dataSource = self
         brandsCollectionView.delegate = self
-    }
-    
-    // MARK: - Actions
-    @IBAction func goButtonTapped(_ sender: UIButton) {
-        guard itemsLoaded else {
-            configureItems()
-            return
-        }
-        
-        // Find out where is the navigation controller
-        var navigationController = presentingViewController as? UINavigationController
-        if navigationController == nil {
-            navigationController = presentingViewController?.presentingViewController as? UINavigationController
-        }
-        
-        // Find out the root = outfit view controller
-        let outfitViewController = navigationController?.viewControllers.first as? OutfitViewController
-        
-        // Save selected brands
-        outfitViewController?.brandNames = brandImages.compactMap { $0.isSelected ? $0.brandName : nil }
-        
-        // Load images into the outfit view controller's sroll views
-        outfitViewController?.loadImages()
-        
-        dismissRoot(animated: true)
     }
 }

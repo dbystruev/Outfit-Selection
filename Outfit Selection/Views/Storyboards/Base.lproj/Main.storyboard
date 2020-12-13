@@ -75,7 +75,7 @@
                     </view>
                     <connections>
                         <outlet property="genderStackView" destination="fkg-59-ObQ" id="cdV-qT-8I8"/>
-                        <segue destination="Xzm-zb-a3t" kind="show" identifier="BrandsViewController" id="OvM-Fc-VYf"/>
+                        <segue destination="Xzm-zb-a3t" kind="showDetail" identifier="BrandsViewController" id="OvM-Fc-VYf"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDm-al-36Y" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -446,9 +446,9 @@
                                     <action selector="addButtonTappedWithSender:" destination="BYZ-38-t0r" id="c1y-tu-fB6"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="arrow.clockwise" catalog="system" id="ka5-GL-mJm">
+                            <barButtonItem image="female_icon" style="plain" id="rBZ-Hp-bbB">
                                 <connections>
-                                    <action selector="heartButtonTapped:" destination="BYZ-38-t0r" id="BWA-2Z-RUP"/>
+                                    <action selector="genderItemTapped:" destination="BYZ-38-t0r" id="6Ll-4Q-onU"/>
                                 </connections>
                             </barButtonItem>
                         </leftBarButtonItems>
@@ -458,9 +458,9 @@
                                     <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="q04-4G-p2d"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="female_icon" style="plain" id="rBZ-Hp-bbB">
+                            <barButtonItem image="arrow.clockwise" catalog="system" id="ka5-GL-mJm">
                                 <connections>
-                                    <action selector="genderItemTapped:" destination="BYZ-38-t0r" id="6Ll-4Q-onU"/>
+                                    <action selector="heartButtonTapped:" destination="BYZ-38-t0r" id="BWA-2Z-RUP"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>

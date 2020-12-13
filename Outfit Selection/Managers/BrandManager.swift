@@ -15,13 +15,25 @@ class BrandManager {
     // MARK: - Init
     private init() {}
     
+    // MARK: - Stored Properties
+    private var _brandImages: [BrandImage]?
+    
     // MARK: - Computed Properties
     /// Available brand images
     var brandImages: [BrandImage] {
-        fullNames.compactMap {
-            let brandImage = BrandImage(contentsOfFile: $0)
-            brandImage?.brandName = $0.lastComponent.dropExtension
-            return brandImage
+        get {
+            guard let brandImages = _brandImages else {
+                _brandImages = fullNames.compactMap {
+                    let brandImage = BrandImage(contentsOfFile: $0)
+                    brandImage?.brandName = $0.lastComponent.dropExtension
+                    return brandImage
+                }
+                return _brandImages ?? []
+            }
+            return brandImages
+        }
+        set {
+            _brandImages = newValue
         }
     }
     
