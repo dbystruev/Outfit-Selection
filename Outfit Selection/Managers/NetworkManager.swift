@@ -10,9 +10,9 @@ import UIKit
 
 class NetworkManager {
     // MARK: - Static Properties
-    //    static let defaultURL = URL(string: "http://server.getoutfit.ru")!
+        static let defaultURL = URL(string: "http://server.getoutfit.ru")!
     //    static let defaultURL = URL(string: "http://sc.getoutfit.ru")!
-    static let defaultURL = URL(string: "http://37.18.100.119")!
+//    static let defaultURL = URL(string: "http://37.18.100.119")!
     static let shared = NetworkManager()
     
     // MARK: - Stored Properties
@@ -23,7 +23,7 @@ class NetworkManager {
     var numberOfRequestsRunning = 0
     
     // API server URL
-    let url: URL
+    var url: URL
     
     // MARK: - Init
     private init(_ url: URL? = nil) {
@@ -116,7 +116,7 @@ class NetworkManager {
     func getOffers(inCategories categories: [Category],
                    filteredBy gender: Gender? = nil,
                    forVendors vendors: [String] = [],
-                   withSingleRequest singleRequest: Bool? = false,
+                   withSingleRequest singleRequest: Bool? = true,
                    completion: @escaping ([Item]?) -> Void) {
         // Run single request if said so, or if not defined and gender is male
         let singleRequest = singleRequest ?? (gender == .male)
@@ -190,5 +190,18 @@ class NetworkManager {
         }
         
         return parameters
+    }
+    
+    /// Update the main url we have to use in the future
+    func updateURL() {
+        get("server") { (decodedData: [String: URL]?) in
+            guard let url = decodedData?["server"] else {
+                debug("ERROR: Can't find server in decoded data", decodedData)
+                return
+            }
+            
+            self.url = url
+            debug("Updated server url to \(url)")
+        }
     }
 }

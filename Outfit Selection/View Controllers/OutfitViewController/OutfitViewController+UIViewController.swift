@@ -29,21 +29,22 @@ extension OutfitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         assetCount = 0 // ItemManager.shared.loadImagesFromAssets(into: scrollViews)
+        NetworkManager.shared.updateURL()
         scrollViews.forEach { $0.delegate = self }
         setupGestures()
         setupUI()
         presentGenderViewController()
         
-        // DEBUG: List of categories
-        NetworkManager.shared.getCategories { categories in
-            guard let categories = categories?.sorted(by: { $0.name < $1.name }) else { return }
-            
-            for category in categories {
-                print("\(category.id)\t\(category.name)")
-            }
-            
-            debug("categories.count = \(categories.count)")
-        }
+        // DEBUG: List categories
+//        NetworkManager.shared.getCategories { categories in
+//            guard let categories = categories?.sorted(by: { $0.name < $1.name }) else { return }
+//
+//            for category in categories {
+//                print("\(category.id)\t\(category.name)")
+//            }
+//
+//            debug("categories.count = \(categories.count)")
+//        }
     }
     
     override func viewDidLayoutSubviews() {
