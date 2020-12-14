@@ -446,7 +446,7 @@
                                     <action selector="addButtonTappedWithSender:" destination="BYZ-38-t0r" id="c1y-tu-fB6"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="female_icon" style="plain" id="rBZ-Hp-bbB">
+                            <barButtonItem image="female_icon" id="rBZ-Hp-bbB">
                                 <connections>
                                     <action selector="genderItemTapped:" destination="BYZ-38-t0r" id="6Ll-4Q-onU"/>
                                 </connections>

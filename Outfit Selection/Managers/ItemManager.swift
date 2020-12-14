@@ -20,7 +20,17 @@ class ItemManager {
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
     
     /// The number of images loaded into scroll views
-    var imagesLoaded = 0
+    var imagesLoaded = 0 {
+        didSet {
+            debug("Number of view models =", viewModels.count)
+            for (index, viewModel) in viewModels.enumerated() {
+                debug("viewModels[\(index)].count =", viewModel.count)
+            }
+        }
+    }
+    
+    /// Array of category image collection view models
+    let viewModels: [ImageCollectionViewModel] = (0 ..< Category.all.count).map { _ in ImageCollectionViewModel.empty }
     
     // MARK: - Methods
     /// Call completion closure if all categories and all items were looped through
@@ -34,42 +44,38 @@ class ItemManager {
         }
     }
     
-    /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
+    /// Clear all view models
+    func clearViewModels() {
+        viewModels.forEach { $0.removeAll() }
+    }
+    
+    /// Load images filtered by brands and categories view models
     /// - Parameters:
     ///   - brands: the names of the brands to filter images by
-    ///   - scrollViews: scroll views to load images into, one scroll view for each category
     ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
-    func loadImages(branded brands: [String] = [],
-                    into scrollViews: [PinnableScrollView],
-                    completion: @escaping (_ count: Int) -> Void) {
-        /// Items remaining to load into scroll views
+    func loadImages(branded brands: [String] = [], completion: @escaping (_ count: Int) -> Void) {
+        // Items remaining to load into view models
         var itemsRemaining = 0 {
             didSet {
                 checkForCompletion(remaining: itemsRemaining, completion: completion)
             }
         }
         
-        debug(brands)
+        // Clear all view models
+        clearViewModels()
         
-        /// Loop all categories and scroll views, whatever number is lower
-        for (category, scrollView) in zip(Category.all, scrollViews) {
-            // The names of items already loaded in this category
+        /// Loop all categories and view models, whatever number is lower
+        for (category, viewModel) in zip(Category.all, ItemManager.shared.viewModels) {
+            // The names of the items already loaded in this category
             var loadedItemNames = [String]()
             
             // Get Category.maxItemCount items in the given category
+            // TODO: shuffle
+            // TODO: categories.contains($0.categoryId)
             let items = Item.all.filter({ $0.categoryId == category.id && $0.branded(brands) }).prefix(Category.maxItemCount)
             
             // Remember how many items we need to load
             itemsRemaining += items.count
-            
-            // The number of images in this category's scroll view
-            var imagesInScrollView = scrollView.count
-            
-            // Delete all placeholder images from the beginning of scroll view
-            while (0 < imagesInScrollView) {
-                scrollView.deleteImageView(withIndex: 0)
-                imagesInScrollView -= 1
-            }
             
             // Loop all items in given category
             for item in items {
@@ -80,11 +86,11 @@ class ItemManager {
                     itemsRemaining -= 1
                     continue
                 }
-                   
+                
                 // Check that there is no item with the same name already in the list
                 guard !loadedItemNames.contains(itemName) else {
                     // Items with similar names - that's not an error, but a warning
-                    debug("WARNING: \(itemName) already loaded in category \(category.name)")
+                    //debug("WARNING: \(itemName) already loaded in category \(category.name)")
                     itemsRemaining -= 1
                     continue
                 }
@@ -97,10 +103,10 @@ class ItemManager {
                     continue
                 }
                 
-                // Pretend that we have succesfully loaded item with given name
+                // Pretend that we have succesfully loaded an item with given name
                 loadedItemNames.append(itemName)
                 
-                // Try to get an image for current item
+                // Try to get an image for the current item
                 NetworkManager.shared.getImage(pictureURL) { image in
                     // Didn't get the image — that's an error
                     guard let image = image else {
@@ -130,12 +136,24 @@ class ItemManager {
                     
                     self.imagesLoaded += 1
                     
-                    // Append image to the end of corresponding scroll view
-                    DispatchQueue.main.async {
-                        scrollView.insert(image: image.halved).tag = itemIndex
-                        itemsRemaining -= 1
-                    }
+                    // Append image to the end of corresponding image collection view model
+                    viewModel.append(image.halved, tag: itemIndex)
+                    itemsRemaining -= 1
                 }
+            }
+        }
+    }
+    
+    /// Load images from view models into scroll views
+    /// - Parameters:
+    ///   - scrollViews: scroll views to load images into, one scroll view for each category
+    func loadImages(into scrollViews: [PinnableScrollView]) {
+        /// Loop all view models and scroll views, whatever number is lower
+        for (viewModel, scrollView) in zip(ItemManager.shared.viewModels, scrollViews) {
+            // Loop all items in given category
+            for index in 0 ..< viewModel.count {
+                let (image, tag) = viewModel[index]
+                scrollView.insert(image: image).tag = tag
             }
         }
     }

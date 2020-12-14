@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Actions
 extension BrandsViewController {
     @IBAction func goButtonTapped(_ sender: UIButton) {
-        guard itemsLoaded else {
+        guard allItemsLoaded else {
             configureItems()
             return
         }
@@ -24,9 +24,6 @@ extension BrandsViewController {
         
         // Find out the root = outfit view controller
         let outfitViewController = navigationController?.viewControllers.first as? OutfitViewController
-        
-        // Save selected brands
-        outfitViewController?.brandNames = brandImages.compactMap { $0.isSelected ? $0.brandName : nil }
         
         // Load images into the outfit view controller's sroll views
         outfitViewController?.loadImages()

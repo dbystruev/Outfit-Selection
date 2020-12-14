@@ -19,7 +19,7 @@ class BrandsViewController: UIViewController {
     var gender = Gender.other
     
     /// Flag which changes to true when all items are loaded from the server
-    var itemsLoaded = false
+    var allItemsLoaded = false
     
     /// The collection of brand images
     let brandImages = BrandManager.shared.brandImages
@@ -35,22 +35,32 @@ class BrandsViewController: UIViewController {
     /// Start loading items from the server
     func configureItems() {
         // Check that there are no loaded items
-        itemsLoaded = 0 < Item.all.count
-        guard !itemsLoaded else { return }
+        allItemsLoaded = 0 < Item.all.count
+        guard !allItemsLoaded else { return }
+        
+        // Get brand names selected by the user
+        let brandNames = brandImages.compactMap { $0.isSelected ? $0.brandName : nil }
         
         // Load items if none are found
         goButton.isHidden = true
         ItemManager.shared.loadItems(filteredBy: gender) { success in
-            // Update the title for go button
-            let title = success == true ? "Go" : "Reload"
-            
-            // Unhide go button when items are loaded
-            DispatchQueue.main.async {
-                self.goButton.isHidden = false
-                self.goButton.setTitle(title, for: .normal)
+            // Load view models with the new images
+            let startTime = Date().timeIntervalSince1970
+            ItemManager.shared.loadImages(branded: brandNames) { itemsLoaded in
+                let passedTime = Date().timeIntervalSince1970 - startTime
+                
+                debug(itemsLoaded, "images are loaded from the server into view models in", passedTime.asTime, "seconds")
+                
+                // Update the title for go button
+                self.allItemsLoaded = success == true && 0 < itemsLoaded
+                let title = self.allItemsLoaded ? "Go" : "Reload"
+                
+                // Unhide go button when items are loaded
+                DispatchQueue.main.async {
+                    self.goButton.isHidden = false
+                    self.goButton.setTitle(title, for: .normal)
+                }
             }
-            
-            self.itemsLoaded = success == true
         }
     }
     
