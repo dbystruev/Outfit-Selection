@@ -25,11 +25,14 @@ extension BrandsViewController {
         // Find out the root = outfit view controller
         let outfitViewController = navigationController?.viewControllers.first as? OutfitViewController
         
+        // Save selected brands
+        outfitViewController?.brandNames = brandedImages.compactMap { $0.isSelected ? $0.brandName : nil }
+        
         // Load images into the outfit view controller's sroll views
         outfitViewController?.loadImages()
         
         // Save brand images for future selection change
-        BrandManager.shared.brandImages = brandImages
+        BrandManager.shared.brandedImages = brandedImages
         
         dismissRoot(animated: true)
     }

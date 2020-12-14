@@ -49,19 +49,6 @@ struct Item: Codable {
     let vendor: String?
     
     // MARK: - Methods
-    /// Returns true if item's vendor includes one of the given brand names
-    /// - Parameter brandNames: the names of the brands to search for
-    /// - Returns: true if brand name is found, false otherwise
-    func branded(_ brandNames: [String]) -> Bool {
-        // If no brand names are given anything matches
-        guard !brandNames.isEmpty else { return true }
-        
-        // If brand names are given but vendor is nil nothing matches
-        guard let vendor = vendor?.lowercased() else { return false }
-        
-        return brandNames.contains { vendor.contains($0.lowercased()) }
-    }
-    
     /// Clears all items
     static func removeAll() {
         all.removeAll()

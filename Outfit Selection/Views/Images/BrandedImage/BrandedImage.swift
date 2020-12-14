@@ -1,5 +1,5 @@
 //
-//  BrandImage.swift
+//  BrandedImage.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 27.11.2020.
@@ -8,10 +8,13 @@
 
 import UIKit
 
-class BrandImage: UIImage {
+class BrandedImage: UIImage {
     /// The name of the brand
     var brandName = ""
     
     /// Whether this brand image is selected
     var isSelected = false
+    
+    /// Tag for the scroll view
+    var tag = 0
 }

@@ -22,7 +22,7 @@ class BrandsViewController: UIViewController {
     var allItemsLoaded = false
     
     /// The collection of brand images
-    let brandImages = BrandManager.shared.brandImages
+    let brandedImages = BrandManager.shared.brandedImages
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {
@@ -38,15 +38,12 @@ class BrandsViewController: UIViewController {
         allItemsLoaded = 0 < Item.all.count
         guard !allItemsLoaded else { return }
         
-        // Get brand names selected by the user
-        let brandNames = brandImages.compactMap { $0.isSelected ? $0.brandName : nil }
-        
         // Load items if none are found
         goButton.isHidden = true
         ItemManager.shared.loadItems(filteredBy: gender) { success in
             // Load view models with the new images
             let startTime = Date().timeIntervalSince1970
-            ItemManager.shared.loadImages(branded: brandNames) { itemsLoaded in
+            ItemManager.shared.loadImages() { itemsLoaded in
                 let passedTime = Date().timeIntervalSince1970 - startTime
                 
                 debug(itemsLoaded, "images are loaded from the server into view models in", passedTime.asTime, "seconds")

@@ -19,6 +19,9 @@
 		693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7289256BF3FB00540C10 /* BrandsViewController.swift */; };
 		693D728E256BF4CA00540C10 /* BrandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D728D256BF4CA00540C10 /* BrandManager.swift */; };
 		693D7292256BFDD700540C10 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7291256BFDD700540C10 /* ItemManager.swift */; };
+		69560EC82587E5D400337F35 /* Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560EC72587E5D400337F35 /* Branded.swift */; };
+		69560ECC2587E7C700337F35 /* Item+Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560ECB2587E7C700337F35 /* Item+Branded.swift */; };
+		69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */; };
 		695EE0042586449E00E2BB57 /* BrandsViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695EE0032586449E00E2BB57 /* BrandsViewController+Actions.swift */; };
 		69672AE922F1D06A0053FB85 /* OutfitViewController+present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69672AE822F1D06A0053FB85 /* OutfitViewController+present.swift */; };
 		696E875B256463160061802E /* Double+asPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696E875A256463160061802E /* Double+asPrice.swift */; };
@@ -37,7 +40,7 @@
 		6986612825705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986612725705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift */; };
 		6986612E25706378008F94CA /* BrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986612D25706378008F94CA /* BrandCell.swift */; };
 		6986613325706B6B008F94CA /* BrandsViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986613225706B6B008F94CA /* BrandsViewController+UICollectionViewDelegate.swift */; };
-		6986613B25707A61008F94CA /* BrandImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986613A25707A61008F94CA /* BrandImage.swift */; };
+		6986613B25707A61008F94CA /* BrandedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986613A25707A61008F94CA /* BrandedImage.swift */; };
 		698990D22323808B002DCA29 /* PinnableScrollViews+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D12323808B002DCA29 /* PinnableScrollViews+Extension.swift */; };
 		698990D42323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D32323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift */; };
 		698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D523238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift */; };
@@ -76,6 +79,9 @@
 		693D7289256BF3FB00540C10 /* BrandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
 		693D728D256BF4CA00540C10 /* BrandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandManager.swift; sourceTree = "<group>"; };
 		693D7291256BFDD700540C10 /* ItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
+		69560EC72587E5D400337F35 /* Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branded.swift; sourceTree = "<group>"; };
+		69560ECB2587E7C700337F35 /* Item+Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Branded.swift"; sourceTree = "<group>"; };
+		69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandedImage+Branded.swift"; sourceTree = "<group>"; };
 		695EE0032586449E00E2BB57 /* BrandsViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+Actions.swift"; sourceTree = "<group>"; };
 		69672AE822F1D06A0053FB85 /* OutfitViewController+present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+present.swift"; sourceTree = "<group>"; };
 		696E875A256463160061802E /* Double+asPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+asPrice.swift"; sourceTree = "<group>"; };
@@ -94,7 +100,7 @@
 		6986612725705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		6986612D25706378008F94CA /* BrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCell.swift; sourceTree = "<group>"; };
 		6986613225706B6B008F94CA /* BrandsViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
-		6986613A25707A61008F94CA /* BrandImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandImage.swift; sourceTree = "<group>"; };
+		6986613A25707A61008F94CA /* BrandedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandedImage.swift; sourceTree = "<group>"; };
 		698990D12323808B002DCA29 /* PinnableScrollViews+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollViews+Extension.swift"; sourceTree = "<group>"; };
 		698990D32323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
 		698990D523238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+UINavigationControllerDelegate.swift"; sourceTree = "<group>"; };
@@ -138,7 +144,7 @@
 			children = (
 				692C94122547025D0075BD92 /* Category.swift */,
 				692C94092546FB8D0075BD92 /* Gender.swift */,
-				692C941A25470B8F0075BD92 /* Item.swift */,
+				69560ECE2587E7D300337F35 /* Item */,
 				69248FFC25503F2F00106681 /* JSON.swift */,
 			);
 			path = Models;
@@ -166,6 +172,32 @@
 				692C9416254708830075BD92 /* URL+withQueries.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		69560EC62587E5BE00337F35 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				69560EC72587E5D400337F35 /* Branded.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		69560ECE2587E7D300337F35 /* Item */ = {
+			isa = PBXGroup;
+			children = (
+				692C941A25470B8F0075BD92 /* Item.swift */,
+				69560ECB2587E7C700337F35 /* Item+Branded.swift */,
+			);
+			path = Item;
+			sourceTree = "<group>";
+		};
+		69560ED32587E80B00337F35 /* BrandedImage */ = {
+			isa = PBXGroup;
+			children = (
+				6986613A25707A61008F94CA /* BrandedImage.swift */,
+				69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */,
+			);
+			path = BrandedImage;
 			sourceTree = "<group>";
 		};
 		69739EAE22BA5DCD0077E45D /* Views */ = {
@@ -211,7 +243,7 @@
 		6986613925707A2F008F94CA /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				6986613A25707A61008F94CA /* BrandImage.swift */,
+				69560ED32587E80B00337F35 /* BrandedImage */,
 				6986612025704F1A008F94CA /* UIImage+resize.swift */,
 			);
 			path = Images;
@@ -258,6 +290,7 @@
 				692C9415254708670075BD92 /* Extensions */,
 				692C940D254700E40075BD92 /* Managers */,
 				692C94082546FB7A0075BD92 /* Models */,
+				69560EC62587E5BE00337F35 /* Protocols */,
 				69A6F70622BA38CE002A3B49 /* Resources */,
 				69A6F70722BA38E6002A3B49 /* View Controllers */,
 				6978202D2587BC7A007D4CCB /* View Models */,
@@ -456,18 +489,20 @@
 				69AE95502563B8FB00850210 /* String+dropExtension.swift in Sources */,
 				69A6F70A22BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift in Sources */,
 				69AE95562563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift in Sources */,
-				6986613B25707A61008F94CA /* BrandImage.swift in Sources */,
+				6986613B25707A61008F94CA /* BrandedImage.swift in Sources */,
 				6919AA1622BAFF82005474A8 /* UIButton+Extension.swift in Sources */,
 				69672AE922F1D06A0053FB85 /* OutfitViewController+present.swift in Sources */,
 				693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */,
 				693D7292256BFDD700540C10 /* ItemManager.swift in Sources */,
 				69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */,
+				69560EC82587E5D400337F35 /* Branded.swift in Sources */,
 				698990D42323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift in Sources */,
 				6986612E25706378008F94CA /* BrandCell.swift in Sources */,
 				69739EB222BA64E40077E45D /* OutfitViewController+Gestures.swift in Sources */,
 				6986612825705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift in Sources */,
 				692C940F254700FC0075BD92 /* NetworkManager.swift in Sources */,
 				69AE954D2563B87000850210 /* String+lastComponent.swift in Sources */,
+				69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */,
 				69B539FA257FBC3C00116F98 /* UIViewController+tabBar.swift in Sources */,
 				69AF825422BAC77800A04DEA /* OutfitViewController+UIDocumentPickerDelegate.swift in Sources */,
 				69248FFD25503F2F00106681 /* JSON.swift in Sources */,
@@ -485,6 +520,7 @@
 				692C940A2546FB8D0075BD92 /* Gender.swift in Sources */,
 				69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */,
 				692C94132547025D0075BD92 /* Category.swift in Sources */,
+				69560ECC2587E7C700337F35 /* Item+Branded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

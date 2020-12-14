@@ -42,11 +42,10 @@ class ItemManager {
         viewModels.forEach { $0.removeAll() }
     }
     
-    /// Load images filtered by brands and categories view models
+    /// Load images filtered by categories into view models
     /// - Parameters:
-    ///   - brands: the names of the brands to filter images by
     ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
-    func loadImages(branded brands: [String] = [], completion: @escaping (_ count: Int) -> Void) {
+    func loadImages(completion: @escaping (_ count: Int) -> Void) {
         // Items remaining to load into view models
         var itemsRemaining = 0 {
             didSet {
@@ -65,7 +64,7 @@ class ItemManager {
             // Get Category.maxItemCount items in the given category
             // TODO: shuffle
             // TODO: categories.contains($0.categoryId)
-            let items = Item.all.filter({ $0.categoryId == category.id && $0.branded(brands) }).prefix(Category.maxItemCount)
+            let items = Item.all.filter({ $0.categoryId == category.id }).prefix(Category.maxItemCount)
             
             // Remember how many items we need to load
             itemsRemaining += items.count
@@ -130,7 +129,7 @@ class ItemManager {
                     self.imagesLoaded += 1
                     
                     // Append image to the end of corresponding image collection view model
-                    viewModel.append(image.halved, tag: itemIndex)
+                    viewModel.append(image.halved, tag: itemIndex, vendor: item.vendor)
                     itemsRemaining -= 1
                 }
             }
@@ -139,14 +138,14 @@ class ItemManager {
     
     /// Load images from view models into scroll views
     /// - Parameters:
+    ///   - brands: the names of the brands to filter images by
     ///   - scrollViews: scroll views to load images into, one scroll view for each category
-    func loadImages(into scrollViews: [PinnableScrollView]) {
+    func loadImages(branded brands: [String], into scrollViews: [PinnableScrollView]) {
         /// Loop all view models and scroll views, whatever number is lower
         for (viewModel, scrollView) in zip(ItemManager.shared.viewModels, scrollViews) {
-            // Loop all items in given category
-            for index in 0 ..< viewModel.count {
-                let (image, tag) = viewModel[index]
-                scrollView.insert(image: image).tag = tag
+            // Loop all items in given category filtered by brands
+            for brandedImage in viewModel.branded(brands) {
+                scrollView.insert(image: brandedImage).tag = brandedImage.tag
             }
         }
     }
@@ -191,5 +190,12 @@ class ItemManager {
             debug(Item.all.count, "items are loaded from the server in", passedTime.asTime, "seconds")
             completion(true)
         }
+    }
+    
+    /// Return image collection view models filetered by brands
+    /// - Parameter brands: the names of the brands to filter view models by
+    /// - Returns: image collection view model array
+    func viewModels(branded brands: [String]) -> [ImageCollectionViewModel] {
+        viewModels
     }
 }

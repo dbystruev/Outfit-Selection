@@ -22,6 +22,7 @@ class OutfitViewController: UIViewController {
     
     // MARK: - Stored Properties
     var assetCount = 0
+    var brandNames = [String]()
     var countButtonItem: UIBarButtonItem!
     var diceButtonItem: UIBarButtonItem!
     
