@@ -36,7 +36,7 @@ extension OutfitViewController {
         scrollViews.clear()
         
         // Load images from view models into scroll view
-        ItemManager.shared.loadImages(branded: brandNames, into: scrollViews)
+        ItemManager.shared.loadImages(into: scrollViews)
         
         // Update the number of images loaded
         updateItemCount()

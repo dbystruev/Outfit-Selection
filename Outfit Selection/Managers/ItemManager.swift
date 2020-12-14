@@ -55,16 +55,19 @@ class ItemManager {
             let categoryIds = categories.map { $0.id }
             
             // Select only the items which belong to one of the categories given
-            let items = Item.all.filter {
+            let categoryFilteredItems = Item.all.filter {
                 // Check that the item has category id attached, else filter it out
                 guard let itemCategoryId = $0.categoryId else { return false }
-                
-                // Check that the item is branded as required
-                guard $0.branded(brandNames) else { return false }
                 
                 // Check that item's category id is in the list of category ids looked for
                 return categoryIds.contains(itemCategoryId)
             }
+            
+            // Filter category items by the brand given
+            let brandFilteredItems = categoryFilteredItems.filter { $0.branded(brandNames) }
+            
+            // If brand filtering brought us an empty list, discard it
+            let items = brandFilteredItems.isEmpty ? categoryFilteredItems : brandFilteredItems
             
             // The maximum number of network image loads in one corner
             var remainingLoads = Category.maxItemCount
@@ -139,14 +142,14 @@ class ItemManager {
     
     /// Load images from view models into scroll views
     /// - Parameters:
-    ///   - brands: the names of the brands to filter images by
     ///   - scrollViews: scroll views to load images into, one scroll view for each category
-    func loadImages(branded brands: [String], into scrollViews: [PinnableScrollView]) {
+    func loadImages(into scrollViews: [PinnableScrollView]) {
         /// Loop all view models and scroll views, whatever number is lower
         for (viewModel, scrollView) in zip(ItemManager.shared.viewModels, scrollViews) {
             // Loop all items in given category filtered by brands
-            for brandedImage in viewModel.branded(brands) {
-                scrollView.insert(image: brandedImage).tag = brandedImage.tag
+            for index in 0 ..< viewModel.count {
+                let image = viewModel[index]
+                scrollView.insert(image: image).tag = image.tag
             }
         }
     }
