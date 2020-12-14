@@ -13,5 +13,5 @@ GetOufit.ru Selection Prototype
 ## Acknowledgments
 
 Pre iOS 13 fallback:
-* [pin](http://simpleicon.com/pin.html) icon from [simple icon](http://simpleicon.com)
-* [suit.heart](https://icons-for-free.com/heart-131965017458786724/) icon from [Icons-For-Free.com](https://icons-for-free.com)
+* [arrow.clockwise](https://www.shareicon.net/clockwise-circle-circular-arrow-circular-arrow-fine-ui-rotating-arrows-symbol-680993) icon from [shareicon.net](https://www.shareicon.net)
+* [pin](http://simpleicon.com/pin.html) icon from [simpleicon.com](http://simpleicon.com)

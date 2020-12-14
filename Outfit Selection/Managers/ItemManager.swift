@@ -20,14 +20,7 @@ class ItemManager {
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
     
     /// The number of images loaded into scroll views
-    var imagesLoaded = 0 {
-        didSet {
-            debug("Number of view models =", viewModels.count)
-            for (index, viewModel) in viewModels.enumerated() {
-                debug("viewModels[\(index)].count =", viewModel.count)
-            }
-        }
-    }
+    var imagesLoaded = 0
     
     /// Array of category image collection view models
     let viewModels: [ImageCollectionViewModel] = (0 ..< Category.all.count).map { _ in ImageCollectionViewModel.empty }
