@@ -61,7 +61,7 @@ class OutfitViewController: UIViewController {
             guard let categories = categories?.sorted(by: { $0.name < $1.name }) else { return }
 
             for category in categories {
-                print(category)
+                print("\(category),")
                 //print("\(category.id)\t\(category.name)")
             }
 

@@ -18,39 +18,39 @@ struct Category: Codable {
     ]
     
     /// Female categories
-    static let female: [[Category]] = [
+    static let female: [[String]] = [
         // Top left
-        [],
+        ["Топы"],
         
         // Bottom left
-        [],
+        ["Брюки", "Деним", "Юбки"],
         
         // Top right
-        [],
+        ["Куртки и пиджаки", "Пальто", "Свитеры и трикотаж"],
         
         // Middle right
-        [],
+        ["Клатчи", "Колье", "Колье и ожерелья", "Кольца", "Маски", "Серьги", "Сумки", "Сумки-тоут", "Сумки на плечо"],
         
         // Bottom right
-        [],
+        ["Ботинки на шнурках", "Мюли", "Сапоги", "Туфли-лодочки"],
     ]
     
     /// Male categories
-    static let male: [[Category]] = [
+    static let male: [[String]] = [
         // Top left
-        [],
+        ["Футболки и майки"],
         
         // Bottom left
-        [],
+        ["Брюки", "Деним"],
         
         // Top right
-        [],
+        ["Куртки", "Куртки и пиджаки", "Пальто", "Рубашки", "Трикотаж"],
         
         // Middle right
-        [],
+        ["Головные уборы", "Маски"],
         
         // Bottom right
-        [],
+        ["Броги", "Броги и оксфорды", "Лоферы", "Сапоги"],
     ]
     
     /// The maximum number of items in one category, all of them displayed
