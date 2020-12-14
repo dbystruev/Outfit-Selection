@@ -58,14 +58,10 @@ class OutfitViewController: UIViewController {
     /// Update the list of categories from the server
     func updateCategories() {
         NetworkManager.shared.getCategories { categories in
-            guard let categories = categories?.sorted(by: { $0.name < $1.name }) else { return }
-
-            for category in categories {
-                print("\(category),")
-                //print("\(category.id)\t\(category.name)")
-            }
-
-            debug("categories.count = \(categories.count)")
+            // Make sure we don't update to the empty list of categories
+            guard let categories = categories, !categories.isEmpty else { return }
+            
+            Category.all = categories
         }
     }
 }

@@ -400,7 +400,11 @@ struct Category: Codable {
         Category(id: 136985, name: "Ювелирные украшения для девочек", parentId: Optional(136652)),
         Category(id: 136640, name: "Ювелирные украшения для тела", parentId: Optional(137175)),
         Category(id: 136638, name: "Ювелирные цепочки и подвески", parentId: Optional(135976)),
-    ]
+    ] {
+        didSet {
+            debug("updated to \(all.count) values")
+        }
+    }
     
     /// Female category names
     static let femaleNames: [[String]] = [
@@ -439,7 +443,7 @@ struct Category: Codable {
     ]
     
     /// The maximum number of items in one category, all of them displayed
-    static let maxItemCount = 25
+    static let maxItemCount = BrandManager.shared.brandedImages.count
     
     // MARK: - Computed Static Properties
     /// Female categories filtered by chosen female category names
