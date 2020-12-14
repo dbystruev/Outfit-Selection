@@ -31,7 +31,11 @@ class ItemViewController: UIViewController {
     }
     
     func updateUI() {
-        nameLabel.text = item?.name
+        if let name = item?.name, let firstLetter = name.first?.uppercased() {
+            nameLabel.text = firstLetter + name.dropFirst()
+        } else {
+            nameLabel.text = nil
+        }
         priceButton.isHidden = item == nil
         title = item?.price?.asPrice
     }
