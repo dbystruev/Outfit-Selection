@@ -27,8 +27,10 @@ extension OutfitViewController {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: identifier)
         
-        // If we are presenting gender view controller pass currently selected gender to it
-        if let genderViewController = viewController as? GenderViewController {
+        // Pass currently selected gender to brand or gender view controllers
+        if let brandViewController = viewController as? BrandsViewController {
+            brandViewController.gender = gender
+        } else if let genderViewController = viewController as? GenderViewController {
             genderViewController.gender = gender
         }
         

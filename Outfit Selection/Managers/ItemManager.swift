@@ -19,24 +19,16 @@ class ItemManager {
     /// imagePrefixes should correspond to scrollViews
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
     
-    /// The number of images loaded into scroll views
-    var imagesLoaded = 0
-    
     /// Array of category image collection view models
     let viewModels: [ImageCollectionViewModel] = (0 ..< Category.all.count).map { _ in ImageCollectionViewModel.empty }
     
-    // MARK: - Methods
-    /// Call completion closure if all categories and all items were looped through
-    /// - Parameters:
-    ///   - success: true if there were no single error while loading items' images
-    ///   - itemsRemaining: the number of items in category remaining to loop through
-    ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
-    func checkForCompletion(remaining: Int, completion: @escaping (_ success: Int) -> Void) {
-        if remaining < 1 {
-            completion(imagesLoaded)
-        }
+    // MARK: - Computed Properties
+    /// Number of items loaded into view models
+    var count: Int {
+        viewModels.reduce(0) { $0 + $1.count }
     }
     
+    // MARK: - Methods
     /// Clear all view models
     func clearViewModels() {
         viewModels.forEach { $0.removeAll() }
@@ -44,17 +36,15 @@ class ItemManager {
     
     /// Load images filtered by categories into view models
     /// - Parameters:
+    ///   - gender: gender to filter images by
+    ///   - brandNames: brand names to filter images by
     ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
-    func loadImages(filteredBy gender: Gender, completion: @escaping (_ count: Int) -> Void) {
-        // Items remaining to load into view models
-        var itemsRemaining = 0 {
-            didSet {
-                checkForCompletion(remaining: itemsRemaining, completion: completion)
-            }
-        }
-        
+    func loadImages(filteredBy gender: Gender, andBy brandNames: [String], completion: @escaping (_ count: Int) -> Void) {
         // Clear all view models
         clearViewModels()
+        
+        // Create a dispatch group to stop when all images are loaded
+        let group = DispatchGroup()
         
         /// Loop all categories and view models, whatever number is lower
         for (categories, viewModel) in zip(Category.filtered(by: gender), ItemManager.shared.viewModels) {
@@ -65,17 +55,19 @@ class ItemManager {
             let categoryIds = categories.map { $0.id }
             
             // Select only the items which belong to one of the categories given
-            let filteredItems = Item.all.filter {
+            let items = Item.all.filter {
+                // Check that the item has category id attached, else filter it out
                 guard let itemCategoryId = $0.categoryId else { return false }
+                
+                // Check that the item is branded as required
+                guard $0.branded(brandNames) else { return false }
+                
+                // Check that item's category id is in the list of category ids looked for
                 return categoryIds.contains(itemCategoryId)
             }
             
-            // Get Category.maxItemCount items in the given category
-            // TODO: shuffle
-            let items = filteredItems.prefix(Category.maxItemCount)
-            
-            // Remember how many items we need to load
-            itemsRemaining += items.count
+            // The maximum number of network image loads in one corner
+            var remainingLoads = Category.maxItemCount
             
             // Loop all items in given category
             for item in items {
@@ -83,7 +75,6 @@ class ItemManager {
                 guard let itemName = item.name else {
                     // No item name - that's an error
                     debug("ERROR: no item name for item in categories \(categories)")
-                    itemsRemaining -= 1
                     continue
                 }
                 
@@ -91,7 +82,6 @@ class ItemManager {
                 guard !loadedItemNames.contains(itemName) else {
                     // Items with similar names - that's not an error, but a warning
                     //debug("WARNING: \(itemName) already loaded in category \(category.name)")
-                    itemsRemaining -= 1
                     continue
                 }
                 
@@ -99,48 +89,51 @@ class ItemManager {
                 guard let pictureURL = item.pictures?.first else {
                     // No picture — that's an error
                     debug("ERROR: No picture URLs for the item", item.name, item.url)
-                    itemsRemaining -= 1
                     continue
                 }
+                
+                // Check that we haven't used the maximum number of network loads in the category
+                guard 0 < remainingLoads else { continue }
+                remainingLoads -= 1
                 
                 // Pretend that we have succesfully loaded an item with given name
                 loadedItemNames.append(itemName)
                 
+                // Enter the dispatch group for the next get image request
+                group.enter()
+                
                 // Try to get an image for the current item
-                NetworkManager.shared.getImage(pictureURL) { image in
+                NetworkManager.shared.getImage(pictureURL) { optionalImage in
+                    // Make sure we always leave the group
+                    defer { group.leave() }
+                    
                     // Didn't get the image — that's an error
-                    guard let image = image else {
-                        debug("ERROR: Can't get an image for the item", item.name, item.url)
+                    guard let image = optionalImage, let itemIndex = item.itemIndex else {
+                        // Compose error message
+                        let message = optionalImage == nil ? "image" : "item index"
+                        
+                        debug("ERROR: Can't get an \(message) for the item", item.name, item.url)
                         
                         // Remove item name already added to the array of loaded item names
                         if let itemNameIndex = loadedItemNames.firstIndex(of: itemName) {
                             loadedItemNames.remove(at: itemNameIndex)
                         }
                         
-                        itemsRemaining -= 1
+                        // Increase remaining loads
+                        remainingLoads += 1
+                        
                         return
                     }
-                    
-                    // No item index — that's an error
-                    guard let itemIndex = item.itemIndex else  {
-                        debug("ERROR: Can't get item index for the item", item.name, item.url)
-                        
-                        // Remove item name already added to the array of loaded item names
-                        if let itemNameIndex = loadedItemNames.firstIndex(of: itemName) {
-                            loadedItemNames.remove(at: itemNameIndex)
-                        }
-                        
-                        itemsRemaining -= 1
-                        return
-                    }
-                    
-                    self.imagesLoaded += 1
                     
                     // Append image to the end of corresponding image collection view model
                     viewModel.append(image.halved, tag: itemIndex, vendor: item.vendor)
-                    itemsRemaining -= 1
                 }
             }
+        }
+        
+        // Get here when all image network requests are finished
+        group.notify(queue: DispatchQueue.global(qos: .background)) {
+            completion(self.count)
         }
     }
     

@@ -41,22 +41,14 @@ class BrandsViewController: UIViewController {
         // Load items if none are found
         goButton.isHidden = true
         ItemManager.shared.loadItems(filteredBy: gender) { success in
-            // Load view models with the new images
-            let startTime = Date().timeIntervalSince1970
-            ItemManager.shared.loadImages(filteredBy: self.gender) { itemsLoaded in
-                let passedTime = Date().timeIntervalSince1970 - startTime
-                
-                debug(itemsLoaded, "images are loaded from the server into view models in", passedTime.asTime, "seconds")
-                
-                // Update the title for go button
-                self.allItemsLoaded = success == true && 0 < itemsLoaded
-                let title = self.allItemsLoaded ? "Go" : "Reload"
-                
-                // Unhide go button when items are loaded
-                DispatchQueue.main.async {
-                    self.goButton.isHidden = false
-                    self.goButton.setTitle(title, for: .normal)
-                }
+            // Update the title for go button
+            self.allItemsLoaded = success == true
+            let title = self.allItemsLoaded ? "Go" : "Reload"
+            
+            // Unhide go button when items are loaded
+            DispatchQueue.main.async {
+                self.goButton.isHidden = false
+                self.goButton.setTitle(title, for: .normal)
             }
         }
     }
