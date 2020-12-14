@@ -53,6 +53,9 @@ class ItemManager {
         
         /// Loop all categories and scroll views, whatever number is lower
         for (category, scrollView) in zip(Category.all, scrollViews) {
+            // The names of items already loaded in this category
+            var loadedItemNames = [String]()
+            
             // Get Category.maxItemCount items in the given category
             let items = Item.all.filter({ $0.categoryId == category.id && $0.branded(brands) }).prefix(Category.maxItemCount)
             
@@ -70,18 +73,44 @@ class ItemManager {
             
             // Loop all items in given category
             for item in items {
-                guard let url = item.pictures?.first else {
+                // Don't load items with names similar to already loaded
+                guard let itemName = item.name else {
+                    // No item name - that's an error
+                    debug("ERROR: no item name for item in category \(category.name)")
+                    itemsRemaining -= 1
+                    continue
+                }
+                   
+                // Check that there is no item with the same name already in the list
+                guard !loadedItemNames.contains(itemName) else {
+                    // Items with similar names - that's not an error, but a warning
+                    debug("WARNING: \(itemName) already loaded in category \(category.name)")
+                    itemsRemaining -= 1
+                    continue
+                }
+                
+                // Get the item picture url
+                guard let pictureURL = item.pictures?.first else {
                     // No picture — that's an error
                     debug("ERROR: No picture URLs for the item", item.name, item.url)
                     itemsRemaining -= 1
                     continue
                 }
                 
+                // Pretend that we have succesfully loaded item with given name
+                loadedItemNames.append(itemName)
+                
                 // Try to get an image for current item
-                NetworkManager.shared.getImage(url) { image in
+                NetworkManager.shared.getImage(pictureURL) { image in
                     // Didn't get the image — that's an error
                     guard let image = image else {
                         debug("ERROR: Can't get an image for the item", item.name, item.url)
+                        
+                        // Remove item name already added to the array of loaded item names
+                        if let itemNameIndex = loadedItemNames.firstIndex(of: itemName) {
+                            loadedItemNames.remove(at: itemNameIndex)
+                        }
+                        
                         itemsRemaining -= 1
                         return
                     }
@@ -89,6 +118,12 @@ class ItemManager {
                     // No item index — that's an error
                     guard let itemIndex = item.itemIndex else  {
                         debug("ERROR: Can't get item index for the item", item.name, item.url)
+                        
+                        // Remove item name already added to the array of loaded item names
+                        if let itemNameIndex = loadedItemNames.firstIndex(of: itemName) {
+                            loadedItemNames.remove(at: itemNameIndex)
+                        }
+                        
                         itemsRemaining -= 1
                         return
                     }

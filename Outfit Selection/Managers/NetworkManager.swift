@@ -119,7 +119,7 @@ class NetworkManager {
                    withSingleRequest singleRequest: Bool? = true,
                    completion: @escaping ([Item]?) -> Void) {
         // Run single request if said so, or if not defined and gender is male
-        let singleRequest = singleRequest ?? (gender == .male)
+        let singleRequest = singleRequest ?? false
         
         if singleRequest {
             // Prepare parameters

@@ -35,9 +35,10 @@ extension OutfitViewController {
         // Clear scroll views
         scrollViews.clear()
         
-        let startTime = Date()
+        // Load scroll view with new images
+        let startTime = Date().timeIntervalSince1970
         ItemManager.shared.loadImages(branded: brandNames, into: scrollViews) { itemsLoaded in
-            let passedTime = Date().timeIntervalSince1970 - startTime.timeIntervalSince1970
+            let passedTime = Date().timeIntervalSince1970 - startTime
             
             debug(itemsLoaded, "items are loaded into scroll views in", passedTime.asTime, "seconds")
             

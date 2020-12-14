@@ -54,4 +54,17 @@ class OutfitViewController: UIViewController {
         }
         return amount
     }
+    
+    // MARK: - DEBUG: list categories
+    func listCategories() {
+        NetworkManager.shared.getCategories { categories in
+            guard let categories = categories?.sorted(by: { $0.name < $1.name }) else { return }
+
+            for category in categories {
+                print("\(category.id)\t\(category.name)")
+            }
+
+            debug("categories.count = \(categories.count)")
+        }
+    }
 }
