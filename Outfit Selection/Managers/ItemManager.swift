@@ -57,14 +57,22 @@ class ItemManager {
         clearViewModels()
         
         /// Loop all categories and view models, whatever number is lower
-        for (category, viewModel) in zip(Category.all, ItemManager.shared.viewModels) {
+        for (categories, viewModel) in zip(Category.all, ItemManager.shared.viewModels) {
             // The names of the items already loaded in this category
             var loadedItemNames = [String]()
             
+            // Get category identifiers
+            let categoryIds = categories.map { $0.id }
+            
+            // Select only the items which belong to one of the categories given
+            let filteredItems = Item.all.filter {
+                guard let itemCategoryId = $0.categoryId else { return false }
+                return categoryIds.contains(itemCategoryId)
+            }
+            
             // Get Category.maxItemCount items in the given category
             // TODO: shuffle
-            // TODO: categories.contains($0.categoryId)
-            let items = Item.all.filter({ $0.categoryId == category.id }).prefix(Category.maxItemCount)
+            let items = filteredItems.prefix(Category.maxItemCount)
             
             // Remember how many items we need to load
             itemsRemaining += items.count
@@ -74,7 +82,7 @@ class ItemManager {
                 // Don't load items with names similar to already loaded
                 guard let itemName = item.name else {
                     // No item name - that's an error
-                    debug("ERROR: no item name for item in category \(category.name)")
+                    debug("ERROR: no item name for item in categories \(categories)")
                     itemsRemaining -= 1
                     continue
                 }
@@ -173,7 +181,8 @@ class ItemManager {
     /// - Parameter completion: closure with bool parameter which is called with true in case of success, with false otherwise
     func loadItems(filteredBy gender: Gender? = nil, completion: @escaping (_ success: Bool?) -> Void) {
         let startTime = Date()
-        NetworkManager.shared.getOffers(inCategories: Category.all,
+        let categories = Category.all.flatMap { $0 }
+        NetworkManager.shared.getOffers(inCategories: categories,
                                         filteredBy: gender,
                                         forVendors: BrandManager.shared.brandNames) { items in
             let endTime = Date()

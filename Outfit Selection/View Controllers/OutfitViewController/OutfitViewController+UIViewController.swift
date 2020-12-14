@@ -36,7 +36,7 @@ extension OutfitViewController {
         presentGenderViewController()
         
         // DEBUG: List categories
-        //listCategories()
+        listCategories()
     }
     
     override func viewDidLayoutSubviews() {

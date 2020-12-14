@@ -9,12 +9,48 @@
 struct Category: Codable {
     // MARK: - Static Properties
     /// All categories to load from the server, must match the number of scroll views in outfit view controller's scroll views
-    static let all: [Category] = [
-        Category(id: 136332, name: "Футболки и майки", parentId: 136330),
-        Category(id: 136043, name: "Деним", parentId: 135967),
-        Category(id: 136226, name: "Куртки", parentId: 135967),
-        Category(id: 136311, name: "Рюкзаки", parentId: 135971),
-        Category(id: 136310, name: "Кроссовки", parentId: 136301),
+    static let all: [[Category]] = [
+        [Category(id: 136332, name: "Футболки и майки", parentId: 136330)],
+        [Category(id: 136043, name: "Деним", parentId: 135967)],
+        [Category(id: 136226, name: "Куртки", parentId: 135967)],
+        [Category(id: 136311, name: "Рюкзаки", parentId: 135971)],
+        [Category(id: 136310, name: "Кроссовки", parentId: 136301)],
+    ]
+    
+    /// Female categories
+    static let female: [[Category]] = [
+        // Top left
+        [],
+        
+        // Bottom left
+        [],
+        
+        // Top right
+        [],
+        
+        // Middle right
+        [],
+        
+        // Bottom right
+        [],
+    ]
+    
+    /// Male categories
+    static let male: [[Category]] = [
+        // Top left
+        [],
+        
+        // Bottom left
+        [],
+        
+        // Top right
+        [],
+        
+        // Middle right
+        [],
+        
+        // Bottom right
+        [],
     ]
     
     /// The maximum number of items in one category, all of them displayed
