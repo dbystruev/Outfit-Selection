@@ -43,7 +43,7 @@ class BrandsViewController: UIViewController {
         ItemManager.shared.loadItems(filteredBy: gender) { success in
             // Load view models with the new images
             let startTime = Date().timeIntervalSince1970
-            ItemManager.shared.loadImages() { itemsLoaded in
+            ItemManager.shared.loadImages(filteredBy: self.gender) { itemsLoaded in
                 let passedTime = Date().timeIntervalSince1970 - startTime
                 
                 debug(itemsLoaded, "images are loaded from the server into view models in", passedTime.asTime, "seconds")

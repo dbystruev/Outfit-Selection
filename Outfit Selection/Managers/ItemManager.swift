@@ -45,7 +45,7 @@ class ItemManager {
     /// Load images filtered by categories into view models
     /// - Parameters:
     ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
-    func loadImages(completion: @escaping (_ count: Int) -> Void) {
+    func loadImages(filteredBy gender: Gender, completion: @escaping (_ count: Int) -> Void) {
         // Items remaining to load into view models
         var itemsRemaining = 0 {
             didSet {
@@ -57,7 +57,7 @@ class ItemManager {
         clearViewModels()
         
         /// Loop all categories and view models, whatever number is lower
-        for (categories, viewModel) in zip(Category.all, ItemManager.shared.viewModels) {
+        for (categories, viewModel) in zip(Category.filtered(by: gender), ItemManager.shared.viewModels) {
             // The names of the items already loaded in this category
             var loadedItemNames = [String]()
             
@@ -177,11 +177,11 @@ class ItemManager {
     }
     
     /// Load items from the server to Item.all array
-    /// - Parameter gender: load female or male items only, both if nil
+    /// - Parameter gender: load female or male items only
     /// - Parameter completion: closure with bool parameter which is called with true in case of success, with false otherwise
-    func loadItems(filteredBy gender: Gender? = nil, completion: @escaping (_ success: Bool?) -> Void) {
+    func loadItems(filteredBy gender: Gender, completion: @escaping (_ success: Bool?) -> Void) {
         let startTime = Date()
-        let categories = Category.all.flatMap { $0 }
+        let categories = Category.filtered(by: gender).flatMap { $0 }
         NetworkManager.shared.getOffers(inCategories: categories,
                                         filteredBy: gender,
                                         forVendors: BrandManager.shared.brandNames) { items in

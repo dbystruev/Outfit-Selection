@@ -193,15 +193,18 @@ class NetworkManager {
     }
     
     /// Update the main url we have to use in the future
-    func updateURL() {
+    /// - Parameter completion: closure called when request is finished, with true if request is succesfull, and false if not
+    func updateURL(completion: @escaping (_ success: Bool) -> Void) {
         get("server") { (decodedData: [String: URL]?) in
             guard let url = decodedData?["server"] else {
                 debug("ERROR: Can't find server in decoded data", decodedData)
+                completion(false)
                 return
             }
             
             self.url = url
             debug("Updated server url to \(url)")
+            completion(true)
         }
     }
 }

@@ -55,8 +55,8 @@ class OutfitViewController: UIViewController {
         return amount
     }
     
-    // MARK: - DEBUG: list categories
-    func listCategories() {
+    /// Update the list of categories from the server
+    func updateCategories() {
         NetworkManager.shared.getCategories { categories in
             guard let categories = categories?.sorted(by: { $0.name < $1.name }) else { return }
 
