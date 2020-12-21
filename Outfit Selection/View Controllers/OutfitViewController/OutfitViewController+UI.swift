@@ -22,18 +22,21 @@ extension OutfitViewController {
     }
     
     func getScreenshot(of view: UIView) -> UIImage? {
+        // Screenshot size is equal to the view size
+        let size = view.bounds.size
+        
         // Setup logo image view
         let logoImage = UIImage(named: "logo")
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.contentMode = .scaleAspectFit
-        logoImageView.frame.origin.y += 16
-        logoImageView.frame.size.width = view.frame.size.width
+//        logoImageView.frame.origin.y += 16
+        logoImageView.frame.size.width = size.width
         
         // Add the logo image view to the view
         view.addSubview(logoImageView)
         
         // Get the renderer
-        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+        let renderer = UIGraphicsImageRenderer(size: size)
         let image = renderer.image { context in
             // Draw the screenshot view
             view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
@@ -41,6 +44,8 @@ extension OutfitViewController {
         
         // Remove the logo image view from the view
         logoImageView.removeFromSuperview()
+        
+        debug("view.bounds.size = \(view.bounds.size), image = \(image)")
         
         return image
     }
