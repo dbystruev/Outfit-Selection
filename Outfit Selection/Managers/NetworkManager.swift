@@ -69,6 +69,8 @@ class NetworkManager {
                 return
             }
             
+            debug("Decoded \(data) of data")
+            
             completion(decodedData)
         }
         
