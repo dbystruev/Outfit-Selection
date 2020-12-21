@@ -11,15 +11,10 @@ import UIKit
 class PinnableScrollView: UIScrollView {
     // MARK: - Stored Properties
     var doubleTapRecognizer: UITapGestureRecognizer!
+    private(set) var isPinned = false
     var singleTapRecognizer: UITapGestureRecognizer!
     
     // MARK: - Computed Properties
-    private(set) var isPinned = false {
-        didSet {
-            restoreBorder()
-        }
-    }
-    
     var item: Item? {
         itemIndex == nil || itemIndex! < 0 || Item.all.count <= itemIndex! ? nil : Item.all[itemIndex!]
     }

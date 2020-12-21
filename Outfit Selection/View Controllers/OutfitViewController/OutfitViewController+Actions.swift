@@ -16,7 +16,16 @@ extension OutfitViewController {
         setEditing(!isEditing, animated: true)
     }
     
-    @objc func countButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func bookmarksButtonTapped(_ sender: UIBarButtonItem) {
+        selectedAction = isEditing ? .cancel : .bookmarks
+        setEditing(!isEditing, animated: true)
+    }
+    
+    @objc func brandButtonTapped(_ sender: UIBarButtonItem) {
+        presentBrandsViewController()
+    }
+    
+    @objc func priceButtonTapped(_ sender: UIBarButtonItem) {
         debug("Step 1:", sender.title)
         if sender.title == OutfitViewController.loadingMessage || sender.title == titleForCountButtonItem(assetCount) {
             debug("Step 2:", sender.title)
@@ -42,95 +51,92 @@ extension OutfitViewController {
         updatePrice()
     }
     
+    @IBAction func dislikeButtonTapped(_ sender: UIButton) {
+        guard let scrollViewIndex = dislikeButtons.firstIndex(of: sender) else { return }
+        
+        // Cancel editing model
+        setEditing(false, animated: false)
+        
+        selectedAction = .cancel
+        
+        guard scrollViewIndex < scrollViews.count else { return }
+        let scrollView = scrollViews[scrollViewIndex]
+        guard 1 < scrollView.count else { return }
+        let indexToDelete = scrollView.currentIndex
+        let deletingLastItem = indexToDelete == scrollView.count - 1
+        let indexToShow = deletingLastItem ? indexToDelete - 1 : indexToDelete + 1
+        
+        scrollView.scrollToElement(withIndex: indexToShow) { completed in
+            scrollView.deleteImageView(withIndex: indexToDelete)
+            self.updateItemCount()
+        }
+    }
+    
     @IBAction func genderItemTapped(_ sender: UIBarButtonItem) {
         presentGenderViewController()
     }
     
-    @IBAction func heartButtonTapped(_ sender: UIBarButtonItem) {
-        presentBrandsViewController()
-    }
-    
-    @IBAction func insideButtonTapped(_ sender: UIButton) {
-        selectedButtonIndex = buttons.firstIndex(of: sender)
+    @IBAction func greenPlusButtonTapped(_ sender: UIButton) {
+        // Cancel editing mode
         setEditing(false, animated: false)
         
-        switch selectedAction {
+        // Continue only if we are in image adding mode
+        guard selectedAction == .add else { return }
         
-        case .add:
-            selectedAction = .cancel
-            
-            let sourceTitles: [UIImagePickerController.SourceType: String] = [
-                .camera: "📷",
-                .photoLibrary: "🖼"
-            ]
-            
-            let imagePicker = UIImagePickerController()
-            imagePicker.delegate = self
-            
-            let cancel = UIAlertAction(title: "⛔️", style: .cancel)
-            let alert = UIAlertController(title: "Image Source", message: nil, preferredStyle: .actionSheet)
-            alert.addAction(cancel)
-            
-            for (source, title) in sourceTitles {
-                guard UIImagePickerController.isSourceTypeAvailable(source) else { continue }
-                let action = UIAlertAction(title: title, style: .default) { _ in
-                    imagePicker.sourceType = source
-                    self.present(imagePicker, animated: true)
-                }
-                alert.addAction(action)
-            }
-            
-            let action = UIAlertAction(title: "👕", style: .default) { _ in
-                self.performSegue(withIdentifier: "selectCategory", sender: nil)
+        selectedButtonIndex = greenPlusButtons.firstIndex(of: sender)
+        
+        selectedAction = .cancel
+        
+        let sourceTitles: [UIImagePickerController.SourceType: String] = [
+            .camera: "📷",
+            .photoLibrary: "🖼"
+        ]
+        
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        
+        let cancel = UIAlertAction(title: "⛔️", style: .cancel)
+        let alert = UIAlertController(title: "Image Source", message: nil, preferredStyle: .actionSheet)
+        alert.addAction(cancel)
+        
+        for (source, title) in sourceTitles {
+            guard UIImagePickerController.isSourceTypeAvailable(source) else { continue }
+            let action = UIAlertAction(title: title, style: .default) { _ in
+                imagePicker.sourceType = source
+                self.present(imagePicker, animated: true)
             }
             alert.addAction(action)
-            
-            // Find negative constraint and make it positive
-            for subview in alert.view.subviews {
-                for constraint in subview.constraints {
-                    if constraint.constant < 0 {
-                        constraint.constant = -constraint.constant
-                    }
+        }
+        
+        //            let action = UIAlertAction(title: "👕", style: .default) { _ in
+        //                self.performSegue(withIdentifier: "selectCategory", sender: nil)
+        //            }
+        //            alert.addAction(action)
+        
+        // Find negative constraint and make it positive
+        for subview in alert.view.subviews {
+            for constraint in subview.constraints {
+                if constraint.constant < 0 {
+                    constraint.constant = -constraint.constant
                 }
             }
-            
-            // Present alert controller
-            present(alert, animated: true)
-            
-        case .trash:
-            selectedAction = .cancel
-            
-            guard let scrollViewIndex = selectedButtonIndex else { return }
-            guard scrollViewIndex < scrollViews.count else { return }
-            let scrollView = scrollViews[scrollViewIndex]
-            guard 1 < scrollView.count else { return }
-            let indexToDelete = scrollView.currentIndex
-            let deletingLastItem = indexToDelete == scrollView.count - 1
-            let indexToShow = deletingLastItem ? indexToDelete - 1 : indexToDelete + 1
-            
-            scrollView.scrollToElement(withIndex: indexToShow) { completed in
-                scrollView.deleteImageView(withIndex: indexToDelete)
-                self.updateItemCount()
-            }
-            
-        default:
-            break
         }
+        
+        // Present alert controller
+        present(alert, animated: true)
         
     }
     
-    @IBAction func pinButtonTapped(_ sender: UIButton) {
-        guard let selectedIndex = pinButtons.firstIndex(of: sender) else { return }
+    @IBAction func likeButtonTapped(_ sender: UIButton) {
+        guard let selectedIndex = likeButtons.firstIndex(of: sender) else { return }
         
         let scrollView = scrollViews[selectedIndex]
         scrollView.toggle()
         
-        let isPinned = scrollView.isPinned
-        let pinButton = pinButtons[selectedIndex]
-        pinButton.alpha = isPinned ? 1 : 0.5
-        pinButton.imageView?.isHighlighted = isPinned
-        
+        likeButtons[selectedIndex].isSelected = scrollView.isPinned
         diceButtonItem.isEnabled = !scrollViews.allPinned
+        
+        updateButtons()
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
@@ -138,9 +144,9 @@ extension OutfitViewController {
         guard let view = navigationController?.view else { return }
         
         hideTabBar()
-        pinButtons.forEach { $0.isHidden = true }
+        likeButtons.forEach { $0.isHidden = true }
         let possibleScreenshot = getScreenshot(of: view)
-        pinButtons.forEach { $0.isHidden = false }
+        likeButtons.forEach { $0.isHidden = false }
         showTabBar()
         
         guard let screenshot = possibleScreenshot else { return }
@@ -148,11 +154,5 @@ extension OutfitViewController {
         let activityController = UIActivityViewController(activityItems: [screenshot], applicationActivities: nil)
         activityController.popoverPresentationController?.sourceView = sender.customView
         present(activityController, animated: true)
-    }
-    
-    @objc func trashButtonTapped(_ sender: UIBarButtonItem) {
-        unpin()
-        selectedAction = isEditing ? .cancel : .trash
-        setEditing(!isEditing, animated: true)
     }
 }

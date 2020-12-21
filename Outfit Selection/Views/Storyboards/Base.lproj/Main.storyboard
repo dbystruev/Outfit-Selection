@@ -116,7 +116,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5D7-8L-CyA">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="5D7-8L-CyA" userLabel="Items Stack View">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="rsf-bl-rKH">
@@ -232,7 +232,7 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hWK-Fq-NLp">
+                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hWK-Fq-NLp" userLabel="Buttons Stack View">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="v08-i2-MWB">
@@ -243,31 +243,45 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrh-Mc-QXc">
                                                         <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="320.66666666666669"/>
-                                                        <state key="selected" image="trash"/>
+                                                        <state key="normal" image="add"/>
                                                         <state key="highlighted" image="add"/>
                                                         <connections>
-                                                            <action selector="insideButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihW-9Z-AYF"/>
+                                                            <action selector="greenPlusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihW-9Z-AYF"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2m-cA-WkI">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZK1-zn-y9g" userLabel="Dislike">
+                                                        <rect key="frame" x="16" y="16" width="32" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="A5j-Ui-vu1"/>
+                                                            <constraint firstAttribute="width" constant="32" id="D6d-Ln-Ze5"/>
+                                                        </constraints>
+                                                        <state key="normal" image="heart.slash" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="dislikeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jgB-B9-VcP"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2m-cA-WkI" userLabel="Like">
                                                         <rect key="frame" x="139.66666666666666" y="16" width="32" height="32"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="5jJ-1Q-r0a"/>
                                                             <constraint firstAttribute="width" constant="32" id="M3U-EN-guW"/>
                                                         </constraints>
-                                                        <state key="normal" image="pin" catalog="system"/>
+                                                        <state key="normal" image="heart"/>
+                                                        <state key="selected" image="heart.fill"/>
                                                         <connections>
-                                                            <action selector="pinButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H0x-L7-ZTl"/>
+                                                            <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H0x-L7-ZTl"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
+                                                    <constraint firstItem="ZK1-zn-y9g" firstAttribute="top" secondItem="soe-qC-gFy" secondAttribute="top" constant="16" id="0eE-Rq-nJG"/>
                                                     <constraint firstAttribute="trailing" secondItem="Qrh-Mc-QXc" secondAttribute="trailing" id="1Pn-tn-Rby"/>
                                                     <constraint firstItem="Qrh-Mc-QXc" firstAttribute="leading" secondItem="soe-qC-gFy" secondAttribute="leading" id="4FY-cu-OKa"/>
                                                     <constraint firstItem="r2m-cA-WkI" firstAttribute="top" secondItem="soe-qC-gFy" secondAttribute="top" constant="16" id="9P0-2V-OyW"/>
                                                     <constraint firstAttribute="bottom" secondItem="Qrh-Mc-QXc" secondAttribute="bottom" id="A1p-qB-hds"/>
                                                     <constraint firstAttribute="trailing" secondItem="r2m-cA-WkI" secondAttribute="trailing" constant="16" id="KTa-OA-n4F"/>
                                                     <constraint firstItem="Qrh-Mc-QXc" firstAttribute="top" secondItem="soe-qC-gFy" secondAttribute="top" id="KWz-vN-quz"/>
+                                                    <constraint firstItem="ZK1-zn-y9g" firstAttribute="leading" secondItem="soe-qC-gFy" secondAttribute="leading" constant="16" id="osH-3O-fcH"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q3p-Hb-HCX">
@@ -275,30 +289,44 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6d8-jy-X4g">
                                                         <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="320.33333333333331"/>
-                                                        <state key="selected" image="trash"/>
+                                                        <state key="normal" image="add"/>
                                                         <state key="highlighted" image="add"/>
                                                         <connections>
-                                                            <action selector="insideButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRl-aN-Yn3"/>
+                                                            <action selector="greenPlusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRl-aN-Yn3"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yi-5U-Vzn">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UvA-CA-WBa" userLabel="Dislike">
+                                                        <rect key="frame" x="16" y="16" width="32" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="32" id="mPt-IT-DLh"/>
+                                                            <constraint firstAttribute="height" constant="32" id="s0N-1H-4or"/>
+                                                        </constraints>
+                                                        <state key="normal" image="heart.slash" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="dislikeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tyG-fq-R1n"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yi-5U-Vzn" userLabel="Like">
                                                         <rect key="frame" x="139.66666666666666" y="16" width="32" height="32"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="fF2-qo-wKv"/>
                                                             <constraint firstAttribute="width" constant="32" id="o8e-dH-9KD"/>
                                                         </constraints>
-                                                        <state key="normal" image="pin" catalog="system"/>
+                                                        <state key="normal" image="heart"/>
+                                                        <state key="selected" image="heart.fill"/>
                                                         <connections>
-                                                            <action selector="pinButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0SR-TP-ghd"/>
+                                                            <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0SR-TP-ghd"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="0yi-5U-Vzn" secondAttribute="trailing" constant="16" id="END-gk-4y1"/>
                                                     <constraint firstAttribute="trailing" secondItem="6d8-jy-X4g" secondAttribute="trailing" id="Plx-MV-BWH"/>
+                                                    <constraint firstItem="UvA-CA-WBa" firstAttribute="leading" secondItem="q3p-Hb-HCX" secondAttribute="leading" constant="16" id="Q4e-Jh-DOG"/>
                                                     <constraint firstAttribute="bottom" secondItem="6d8-jy-X4g" secondAttribute="bottom" id="dPn-2A-tZu"/>
                                                     <constraint firstItem="0yi-5U-Vzn" firstAttribute="top" secondItem="q3p-Hb-HCX" secondAttribute="top" constant="16" id="k6Q-Tr-b46"/>
                                                     <constraint firstItem="6d8-jy-X4g" firstAttribute="leading" secondItem="q3p-Hb-HCX" secondAttribute="leading" id="tg6-Gd-GqZ"/>
+                                                    <constraint firstItem="UvA-CA-WBa" firstAttribute="top" secondItem="q3p-Hb-HCX" secondAttribute="top" constant="16" id="uzm-Y9-wWL"/>
                                                     <constraint firstItem="6d8-jy-X4g" firstAttribute="top" secondItem="q3p-Hb-HCX" secondAttribute="top" id="zMN-52-1kw"/>
                                                 </constraints>
                                             </view>
@@ -312,28 +340,42 @@
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veY-L1-vFI">
                                                         <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="320.66666666666669"/>
-                                                        <state key="selected" image="trash"/>
+                                                        <state key="normal" image="add"/>
                                                         <state key="highlighted" image="add"/>
                                                         <connections>
-                                                            <action selector="insideButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KO8-2e-Yba"/>
+                                                            <action selector="greenPlusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KO8-2e-Yba"/>
                                                         </connections>
                                                     </button>
-                                                    <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oI-QJ-jlu">
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uo7-ec-Teq" userLabel="Dislike">
+                                                        <rect key="frame" x="16" y="16" width="32" height="32"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="32" id="KxL-jY-TZe"/>
+                                                            <constraint firstAttribute="width" constant="32" id="PfZ-gg-PQ1"/>
+                                                        </constraints>
+                                                        <state key="normal" image="heart.slash" catalog="system"/>
+                                                        <connections>
+                                                            <action selector="dislikeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dYw-xk-LxL"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oI-QJ-jlu" userLabel="Like">
                                                         <rect key="frame" x="139.33333333333334" y="16" width="32" height="32"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="32" id="DtN-57-Koc"/>
                                                             <constraint firstAttribute="width" constant="32" id="K8Q-EW-hgh"/>
                                                         </constraints>
-                                                        <state key="normal" image="pin" catalog="system"/>
+                                                        <state key="normal" image="heart"/>
+                                                        <state key="selected" image="heart.fill"/>
                                                         <connections>
-                                                            <action selector="pinButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n2r-lj-YGY"/>
+                                                            <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n2r-lj-YGY"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="veY-L1-vFI" firstAttribute="leading" secondItem="ZMD-nX-CLZ" secondAttribute="leading" id="5ks-E3-nPV"/>
                                                     <constraint firstAttribute="bottom" secondItem="veY-L1-vFI" secondAttribute="bottom" id="GtP-hr-Z8q"/>
+                                                    <constraint firstItem="Uo7-ec-Teq" firstAttribute="top" secondItem="ZMD-nX-CLZ" secondAttribute="top" constant="16" id="arc-CN-dRO"/>
                                                     <constraint firstItem="veY-L1-vFI" firstAttribute="top" secondItem="ZMD-nX-CLZ" secondAttribute="top" id="fEr-sK-Qkn"/>
+                                                    <constraint firstItem="Uo7-ec-Teq" firstAttribute="leading" secondItem="ZMD-nX-CLZ" secondAttribute="leading" constant="16" id="g8X-2S-1hx"/>
                                                     <constraint firstAttribute="trailing" secondItem="veY-L1-vFI" secondAttribute="trailing" id="uM6-JE-ukN"/>
                                                     <constraint firstAttribute="trailing" secondItem="3oI-QJ-jlu" secondAttribute="trailing" constant="16" id="uel-TW-K7X"/>
                                                     <constraint firstItem="3oI-QJ-jlu" firstAttribute="top" secondItem="ZMD-nX-CLZ" secondAttribute="top" constant="16" id="vcp-7Y-p7s"/>
@@ -347,29 +389,43 @@
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prF-ci-obE">
                                                                 <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="160"/>
-                                                                <state key="selected" image="trash"/>
+                                                                <state key="normal" image="add"/>
                                                                 <state key="highlighted" image="add"/>
                                                                 <connections>
-                                                                    <action selector="insideButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQ5-oH-8Ra"/>
+                                                                    <action selector="greenPlusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQ5-oH-8Ra"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdK-GK-Ra7">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EYx-P2-Zbs" userLabel="Dislike">
+                                                                <rect key="frame" x="16" y="16" width="32" height="32"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="32" id="6qN-4g-1Hn"/>
+                                                                    <constraint firstAttribute="width" constant="32" id="zjf-qq-UMw"/>
+                                                                </constraints>
+                                                                <state key="normal" image="heart.slash" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="dislikeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ExC-qf-SKL"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdK-GK-Ra7" userLabel="Like">
                                                                 <rect key="frame" x="139.33333333333334" y="16" width="32" height="32"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="32" id="ACX-OP-bgH"/>
                                                                     <constraint firstAttribute="width" constant="32" id="m3A-ZL-2hA"/>
                                                                 </constraints>
-                                                                <state key="normal" image="pin" catalog="system"/>
+                                                                <state key="normal" image="heart"/>
+                                                                <state key="selected" image="heart.fill"/>
                                                                 <connections>
-                                                                    <action selector="pinButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cs2-CL-o89"/>
+                                                                    <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cs2-CL-o89"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="prF-ci-obE" firstAttribute="top" secondItem="CIz-Li-wcf" secondAttribute="top" id="96l-FG-UFU"/>
+                                                            <constraint firstItem="EYx-P2-Zbs" firstAttribute="leading" secondItem="CIz-Li-wcf" secondAttribute="leading" constant="16" id="ULH-bo-ecg"/>
                                                             <constraint firstAttribute="trailing" secondItem="prF-ci-obE" secondAttribute="trailing" id="YVU-Rv-yWL"/>
                                                             <constraint firstAttribute="trailing" secondItem="PdK-GK-Ra7" secondAttribute="trailing" constant="16" id="fkv-fg-URA"/>
                                                             <constraint firstItem="prF-ci-obE" firstAttribute="leading" secondItem="CIz-Li-wcf" secondAttribute="leading" id="p1q-4Z-Hbk"/>
+                                                            <constraint firstItem="EYx-P2-Zbs" firstAttribute="top" secondItem="CIz-Li-wcf" secondAttribute="top" constant="16" id="r41-Yn-d4K"/>
                                                             <constraint firstAttribute="bottom" secondItem="prF-ci-obE" secondAttribute="bottom" id="u5v-gI-9QU"/>
                                                             <constraint firstItem="PdK-GK-Ra7" firstAttribute="top" secondItem="CIz-Li-wcf" secondAttribute="top" constant="16" id="yJd-Jf-jsh"/>
                                                         </constraints>
@@ -380,27 +436,41 @@
                                                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbQ-md-Z3V">
                                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="181"/>
                                                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="selected" image="trash"/>
+                                                                <state key="normal" image="add"/>
                                                                 <state key="highlighted" image="add"/>
                                                                 <connections>
-                                                                    <action selector="insideButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MOg-Nb-Ots"/>
+                                                                    <action selector="greenPlusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MOg-Nb-Ots"/>
                                                                 </connections>
                                                             </button>
-                                                            <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NT3-Ff-VD4">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0OS-NR-j9e" userLabel="Dislike">
+                                                                <rect key="frame" x="16" y="16" width="32" height="32"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="32" id="JOB-sp-pCk"/>
+                                                                    <constraint firstAttribute="width" constant="32" id="VWx-ZQ-AY0"/>
+                                                                </constraints>
+                                                                <state key="normal" image="heart.slash" catalog="system"/>
+                                                                <connections>
+                                                                    <action selector="dislikeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lhi-gB-3Ip"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NT3-Ff-VD4" userLabel="Like">
                                                                 <rect key="frame" x="139.33333333333334" y="16" width="32" height="32"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="32" id="5Xw-Zm-UpF"/>
                                                                     <constraint firstAttribute="height" constant="32" id="6VG-xl-4Mw"/>
                                                                 </constraints>
-                                                                <state key="normal" image="pin" catalog="system"/>
+                                                                <state key="normal" image="heart"/>
+                                                                <state key="selected" image="heart.fill"/>
                                                                 <connections>
-                                                                    <action selector="pinButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kPA-ZX-vC6"/>
+                                                                    <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kPA-ZX-vC6"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
+                                                            <constraint firstItem="0OS-NR-j9e" firstAttribute="leading" secondItem="ACr-z5-nl2" secondAttribute="leading" constant="16" id="76f-pn-fUJ"/>
                                                             <constraint firstItem="NT3-Ff-VD4" firstAttribute="top" secondItem="ACr-z5-nl2" secondAttribute="top" constant="16" id="hUG-9a-Pm2"/>
                                                             <constraint firstAttribute="trailing" secondItem="NT3-Ff-VD4" secondAttribute="trailing" constant="16" id="hou-xe-hoD"/>
+                                                            <constraint firstItem="0OS-NR-j9e" firstAttribute="top" secondItem="ACr-z5-nl2" secondAttribute="top" constant="16" id="mGs-cm-cak"/>
                                                         </constraints>
                                                     </view>
                                                 </subviews>
@@ -458,32 +528,35 @@
                                     <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="q04-4G-p2d"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="arrow.clockwise" catalog="system" id="ka5-GL-mJm">
+                            <barButtonItem image="heart" id="ka5-GL-mJm">
                                 <connections>
-                                    <action selector="heartButtonTapped:" destination="BYZ-38-t0r" id="BWA-2Z-RUP"/>
+                                    <action selector="bookmarksButtonTapped:" destination="BYZ-38-t0r" id="BWA-2Z-RUP"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="buttonsStackView" destination="hWK-Fq-NLp" id="QBm-ii-8Zv"/>
-                        <outlet property="clothesStackView" destination="5D7-8L-CyA" id="jbe-YV-yDm"/>
                         <outlet property="genderItem" destination="rBZ-Hp-bbB" id="GMG-XX-9tc"/>
                         <outletCollection property="scrollViews" destination="e2j-61-yTt" collectionClass="NSMutableArray" id="NFy-MN-k4n"/>
                         <outletCollection property="scrollViews" destination="McV-FV-yxk" collectionClass="NSMutableArray" id="uZW-Kz-d8q"/>
                         <outletCollection property="scrollViews" destination="nrI-94-QGh" collectionClass="NSMutableArray" id="aOa-FR-wV6"/>
                         <outletCollection property="scrollViews" destination="YAH-LD-FOj" collectionClass="NSMutableArray" id="PLC-BD-bcd"/>
                         <outletCollection property="scrollViews" destination="7mM-sh-37O" collectionClass="NSMutableArray" id="Yvd-C0-m1N"/>
-                        <outletCollection property="buttons" destination="Qrh-Mc-QXc" collectionClass="NSMutableArray" id="ceP-hT-fRt"/>
-                        <outletCollection property="buttons" destination="6d8-jy-X4g" collectionClass="NSMutableArray" id="ta9-oQ-ufj"/>
-                        <outletCollection property="buttons" destination="veY-L1-vFI" collectionClass="NSMutableArray" id="VIv-ua-9uO"/>
-                        <outletCollection property="buttons" destination="prF-ci-obE" collectionClass="NSMutableArray" id="M2z-il-wIJ"/>
-                        <outletCollection property="buttons" destination="fbQ-md-Z3V" collectionClass="NSMutableArray" id="OB3-z8-JXa"/>
-                        <outletCollection property="pinButtons" destination="r2m-cA-WkI" collectionClass="NSMutableArray" id="y1h-UK-MjH"/>
-                        <outletCollection property="pinButtons" destination="0yi-5U-Vzn" collectionClass="NSMutableArray" id="FfW-5r-fWB"/>
-                        <outletCollection property="pinButtons" destination="3oI-QJ-jlu" collectionClass="NSMutableArray" id="uQP-hd-orQ"/>
-                        <outletCollection property="pinButtons" destination="PdK-GK-Ra7" collectionClass="NSMutableArray" id="LIC-zU-XIl"/>
-                        <outletCollection property="pinButtons" destination="NT3-Ff-VD4" collectionClass="NSMutableArray" id="uXe-2B-1Ku"/>
+                        <outletCollection property="greenPlusButtons" destination="Qrh-Mc-QXc" collectionClass="NSMutableArray" id="ceP-hT-fRt"/>
+                        <outletCollection property="greenPlusButtons" destination="6d8-jy-X4g" collectionClass="NSMutableArray" id="ta9-oQ-ufj"/>
+                        <outletCollection property="greenPlusButtons" destination="veY-L1-vFI" collectionClass="NSMutableArray" id="VIv-ua-9uO"/>
+                        <outletCollection property="greenPlusButtons" destination="prF-ci-obE" collectionClass="NSMutableArray" id="M2z-il-wIJ"/>
+                        <outletCollection property="greenPlusButtons" destination="fbQ-md-Z3V" collectionClass="NSMutableArray" id="OB3-z8-JXa"/>
+                        <outletCollection property="likeButtons" destination="r2m-cA-WkI" collectionClass="NSMutableArray" id="y1h-UK-MjH"/>
+                        <outletCollection property="likeButtons" destination="0yi-5U-Vzn" collectionClass="NSMutableArray" id="FfW-5r-fWB"/>
+                        <outletCollection property="likeButtons" destination="3oI-QJ-jlu" collectionClass="NSMutableArray" id="uQP-hd-orQ"/>
+                        <outletCollection property="likeButtons" destination="PdK-GK-Ra7" collectionClass="NSMutableArray" id="LIC-zU-XIl"/>
+                        <outletCollection property="likeButtons" destination="NT3-Ff-VD4" collectionClass="NSMutableArray" id="uXe-2B-1Ku"/>
+                        <outletCollection property="dislikeButtons" destination="ZK1-zn-y9g" collectionClass="NSMutableArray" id="3YV-QV-sZN"/>
+                        <outletCollection property="dislikeButtons" destination="UvA-CA-WBa" collectionClass="NSMutableArray" id="lYh-f7-dCk"/>
+                        <outletCollection property="dislikeButtons" destination="Uo7-ec-Teq" collectionClass="NSMutableArray" id="BWi-DM-Alh"/>
+                        <outletCollection property="dislikeButtons" destination="EYx-P2-Zbs" collectionClass="NSMutableArray" id="pJI-O2-Y7X"/>
+                        <outletCollection property="dislikeButtons" destination="0OS-NR-j9e" collectionClass="NSMutableArray" id="mBZ-ry-jR8"/>
                         <segue destination="QdM-tb-TbV" kind="show" identifier="selectCategory" id="lmL-Qz-xwj"/>
                         <segue destination="Uns-Sh-QHX" kind="show" identifier="ItemViewController" id="YhA-rh-zAa"/>
                     </connections>
@@ -672,12 +745,12 @@
     </scenes>
     <resources>
         <image name="add" width="50" height="50"/>
-        <image name="arrow.clockwise" catalog="system" width="115" height="128"/>
         <image name="female" width="143" height="205"/>
         <image name="female_icon" width="19.666666030883789" height="28"/>
+        <image name="heart" width="32" height="32"/>
+        <image name="heart.fill" width="32" height="32"/>
+        <image name="heart.slash" catalog="system" width="128" height="115"/>
         <image name="male" width="200" height="205"/>
-        <image name="pin" catalog="system" width="119" height="128"/>
-        <image name="trash" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

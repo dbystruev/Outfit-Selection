@@ -48,41 +48,32 @@ extension OutfitViewController {
     }
     
     func setupToolbar() {
-        countButtonItem = UIBarButtonItem(title: OutfitViewController.loadingMessage, style: .done, target: self,
-                                          action: #selector(countButtonTapped(_:)))
-        let deleteItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(trashButtonTapped(_:)))
+        // Bottom left button with price
+        let priceTitle = OutfitViewController.loadingMessage
+        priceButtonItem = UIBarButtonItem(title: priceTitle, style: .done, target: self, action: #selector(priceButtonTapped(_:)))
+        
+        // Bottom middle button with dice
         let diceImage = UIImage(named: "dice")
         diceButtonItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonTapped(_:)))
+        
+        // Bottom right button with brand re-selection
+        let brandButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(brandButtonTapped(_:)))
+        
+        // Add flexible spacing between the items
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbarItems = [countButtonItem, spaceItem, diceButtonItem!, spaceItem, deleteItem]
+        toolbarItems = [priceButtonItem, spaceItem, diceButtonItem, spaceItem, brandButtonItem]
+        
         navigationController?.setToolbarHidden(false, animated: false)
     }
     
     func setupUI() {
-        buttonsStackView.isHidden = true
-        
-        pinButtons.forEach {
-            if #available(iOS 13.0, *) {
-                $0.imageView?.highlightedImage = UIImage(systemName: "pin.fill")
-                $0.imageView?.image = UIImage(systemName: "pin")
-            } else {
-                $0.imageView?.highlightedImage = UIImage(named: "pin")
-                $0.imageView?.image = UIImage(named: "pin")
-            }
-        }
-        
-        scrollViews.forEach {
-            $0.minimumZoomScale = zoomScale
-            $0.maximumZoomScale = zoomScale
-            $0.zoomScale = zoomScale
-        }
-        
         let logoImage = UIImage(named: "logo")
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.contentMode = .scaleAspectFit
         navigationItem.titleView = logoImageView
         
         setupToolbar()
+        updateButtons()
     }
     
     func titleForCountButtonItem(_ items: Int) -> String {
@@ -91,22 +82,26 @@ extension OutfitViewController {
     
     func unpin() {
         diceButtonItem.isEnabled = true
-        pinButtons.forEach {
-            $0.alpha = 0.5
-            $0.imageView?.isHighlighted = false
-        }
+        likeButtons.forEach { $0.isSelected = false }
         scrollViews.unpin()
+        
+        updateButtons()
     }
     
     func updateButtons() {
-        buttonsStackView.isHidden = ![.add, .trash].contains(selectedAction)
-        buttons.forEach {
-            $0.setEditing(action: selectedAction)
+        greenPlusButtons.forEach {
+            $0.isHidden = selectedAction != .add
+        }
+        
+        for (dislikeButton, likeButton) in zip(dislikeButtons, likeButtons) {
+            let notBookmarksAction = selectedAction != .bookmarks
+            dislikeButton.isHidden = notBookmarksAction || likeButton.isSelected
+            likeButton.isHidden = notBookmarksAction && !likeButton.isSelected
         }
     }
     
     func updateCountButtonItem(with count: Int) {
-        countButtonItem.title = titleForCountButtonItem(count)
+        priceButtonItem.title = titleForCountButtonItem(count)
     }
     
     func updateItemCount() {
@@ -120,7 +115,7 @@ extension OutfitViewController {
             return
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.countButtonItem.title = title
+            self.priceButtonItem.title = title
         }
     }
 }

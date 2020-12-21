@@ -14,4 +14,3 @@ GetOufit.ru Selection Prototype
 
 Pre iOS 13 fallback:
 * [arrow.clockwise](https://www.shareicon.net/clockwise-circle-circular-arrow-circular-arrow-fine-ui-rotating-arrows-symbol-680993) icon from [shareicon.net](https://www.shareicon.net)
-* [pin](http://simpleicon.com/pin.html) icon from [simpleicon.com](http://simpleicon.com)

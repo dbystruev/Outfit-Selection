@@ -13,17 +13,16 @@ class OutfitViewController: UIViewController {
     static let loadingMessage = "Loading..."
     
     // MARK: - Outlets
-    @IBOutlet var buttons: [UIButton]!
-    @IBOutlet weak var buttonsStackView: UIStackView!
-    @IBOutlet weak var clothesStackView: UIStackView!
+    @IBOutlet var dislikeButtons: [UIButton]!
     @IBOutlet weak var genderItem: UIBarButtonItem!
-    @IBOutlet var pinButtons: [UIButton]!
+    @IBOutlet var greenPlusButtons: [UIButton]!
+    @IBOutlet var likeButtons: [UIButton]!
     @IBOutlet var scrollViews: [PinnableScrollView]!
     
     // MARK: - Stored Properties
     var assetCount = 0
     var brandNames = [String]()
-    var countButtonItem: UIBarButtonItem!
+    var priceButtonItem: UIBarButtonItem!
     var diceButtonItem: UIBarButtonItem!
     
     /// Gender selected on female male screen
@@ -39,7 +38,6 @@ class OutfitViewController: UIViewController {
         }
     }
     var selectedButtonIndex: Int?
-    var zoomScale = CGFloat(3)
     
     // MARK: - Computed Properties
     var itemCount: Int {

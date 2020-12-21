@@ -1,21 +1,23 @@
 {
   "images" : [
     {
+      "filename" : "heart.png",
       "idiom" : "universal",
-      "filename" : "trash.pdf",
       "scale" : "1x"
     },
     {
+      "filename" : "heart@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
+      "filename" : "heart@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }
   ],
   "info" : {
-    "version" : 1,
-    "author" : "xcode"
+    "author" : "xcode",
+    "version" : 1
   }
 }
