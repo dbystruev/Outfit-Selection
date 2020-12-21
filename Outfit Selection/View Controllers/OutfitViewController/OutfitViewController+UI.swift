@@ -22,11 +22,26 @@ extension OutfitViewController {
     }
     
     func getScreenshot(of view: UIView) -> UIImage? {
-        UIGraphicsBeginImageContextWithOptions(view.bounds.size, true, 0)
-        guard let context = UIGraphicsGetCurrentContext() else { return nil }
-        view.layer.render(in: context)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
+        // Setup logo image view
+        let logoImage = UIImage(named: "logo")
+        let logoImageView = UIImageView(image: logoImage)
+        logoImageView.contentMode = .scaleAspectFit
+        logoImageView.frame.origin.y += 16
+        logoImageView.frame.size.width = view.frame.size.width
+        
+        // Add the logo image view to the view
+        view.addSubview(logoImageView)
+        
+        // Get the renderer
+        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+        let image = renderer.image { context in
+            // Draw the screenshot view
+            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+        }
+        
+        // Remove the logo image view from the view
+        logoImageView.removeFromSuperview()
+        
         return image
     }
     

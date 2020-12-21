@@ -141,13 +141,8 @@ extension OutfitViewController {
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         setEditing(false, animated: true)
-        guard let view = navigationController?.view else { return }
-        
-        hideTabBar()
-        likeButtons.forEach { $0.isHidden = true }
+            
         let possibleScreenshot = getScreenshot(of: view)
-        likeButtons.forEach { $0.isHidden = false }
-        showTabBar()
         
         guard let screenshot = possibleScreenshot else { return }
         
