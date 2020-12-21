@@ -665,7 +665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2020.12.14;
+				CURRENT_PROJECT_VERSION = 2020.12.22;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				INFOPLIST_FILE = "$(SRCROOT)/Outfit Selection/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -673,7 +673,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -686,7 +686,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2020.12.14;
+				CURRENT_PROJECT_VERSION = 2020.12.22;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				INFOPLIST_FILE = "$(SRCROOT)/Outfit Selection/App/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
@@ -694,7 +694,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.2.6;
+				MARKETING_VERSION = 0.2.7;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

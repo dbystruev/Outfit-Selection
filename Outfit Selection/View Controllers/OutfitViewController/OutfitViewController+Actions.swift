@@ -141,8 +141,16 @@ extension OutfitViewController {
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         setEditing(false, animated: true)
-            
+        selectedAction = .cancel
+        
+        // Hide like buttons
+        likeButtons.forEach { $0.isHidden = true }
+        
+        // Make screenshot
         let possibleScreenshot = getScreenshot(of: view)
+        
+        // Restore like buttons' hidden status
+        updateButtons()
         
         guard let screenshot = possibleScreenshot else { return }
         
