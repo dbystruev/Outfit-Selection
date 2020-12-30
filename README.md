@@ -1,6 +1,12 @@
 # Outfit-Selection
 GetOufit.ru Selection Prototype
 
+## Installation
+
+Install via TestFlight: [testflight.apple.com/join/xNvAtbhx](https://testflight.apple.com/join/xNvAtbhx).
+
+Make sure [TestFlight App](https://apps.apple.com/app/testflight/id899247664) is installed.
+
 ## Screenshots
 
 ![Logo](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screenshot01.png?raw=true)
