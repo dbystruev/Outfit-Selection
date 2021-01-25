@@ -11,8 +11,7 @@ import UIKit
 class GenderViewController: UIViewController {
     
     // MARK: - Outlets
-    /// Stack view with female and male icons
-    @IBOutlet var genderStackView: UIStackView!
+    @IBOutlet weak var getOutfitLogo: UIImageView!
     
     // MARK: - Properties
     /// Gender selected by user
@@ -27,16 +26,19 @@ class GenderViewController: UIViewController {
     }
     
     // MARK: - Methods
-    /// Make gender stack view horizontal or vertical depending on screen size and orientation
+    /// Hide/show Get Outfit logo depending on screen orientation
     /// - Parameter size: size of the view where gender stack view is present
     func configureLayout(with size: CGSize) {
-        let isVertical = size.width < size.height
-        genderStackView.axis = isVertical ? .vertical : .horizontal
+        let isHorizontal = size.height < size.width
+        getOutfitLogo.isHidden = isHorizontal
     }
     
     /// Performs segue to brands view controller
     /// - Parameter sender: the object which caused the segue
     func performSegueToBrandsViewController(sender: Any?) {
+        // Show navigation bar on top
+        navigationController?.navigationBar.isHidden = false
+        
         performSegue(withIdentifier: "BrandsViewController", sender: sender)
     }
     
@@ -56,10 +58,17 @@ class GenderViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Hide toolbar at the bottom
+        navigationController?.isToolbarHidden = true
+        
+        // Hide navigation bar on top
+        navigationController?.navigationBar.isHidden = true
+        
+        // Hide/show Get Outfit logo depending on screen orientation
         configureLayout(with: view.bounds.size)
     }
     
-    /// Calls configuration of gender stack view layout to the new size to which the view is about to change.
+    /// Calls hide/show Get Outfit logo depending on screen size.
     /// - Parameters:
     ///   - size: the new size for the view
     ///   - coordinator: the transition coordinator object managing the size change for passing to super
@@ -71,15 +80,20 @@ class GenderViewController: UIViewController {
     // MARK: - Actions
     /// Called when the female button is tapped
     /// - Parameter sender: the gesture recognizer which was tapped
-    @IBAction func femaleSelected(_ sender: UITapGestureRecognizer) {
+    @IBAction func femaleSelected(_ sender: GenderButton) {
         gender = .female
         performSegueToBrandsViewController(sender: sender)
     }
     
     /// Called when the male button is tapped
     /// - Parameter sender: the gesture recognizer which was tapped
-    @IBAction func maleSelected(_ sender: UITapGestureRecognizer) {
+    @IBAction func maleSelected(_ sender: GenderButton) {
         gender = .male
+        performSegueToBrandsViewController(sender: sender)
+    }
+    
+    @IBAction func otherSelected(_ sender: GenderButton) {
+        gender = .other
         performSegueToBrandsViewController(sender: sender)
     }
 }
