@@ -26,14 +26,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
         
         // Change global tint color
-        UIView.appearance().tintColor = #colorLiteral(red: 0.3157597482, green: 0.3807889521, blue: 0.3728570044, alpha: 1)
+        UIView.appearance().tintColor = #colorLiteral(red: 0.4693212509, green: 0.5382487178, blue: 0.5183649659, alpha: 1)
         
         // Ignore dark mode
         if #available(iOS 13.0, *) {
             window?.overrideUserInterfaceStyle = .light
         }
-        
-        // For tests
         
         return true
     }
