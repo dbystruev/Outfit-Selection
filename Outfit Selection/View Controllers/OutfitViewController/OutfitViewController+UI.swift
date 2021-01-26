@@ -22,15 +22,16 @@ extension OutfitViewController {
     }
     
     func getScreenshot(of view: UIView) -> UIImage? {
-        // Screenshot size is equal to the view size
-        let size = view.bounds.size
+        // Set screenshot size to Instagram story size 1080x1920
+        // https://www.picmonkey.com/blog/size-matters-instagram-photo-sizes-made-easy
+        let size = CGSize(width: 1080, height: 1920)
         
         // Setup logo image view
         let logoImage = UIImage(named: "logo")
         let logoImageView = UIImageView(image: logoImage)
         logoImageView.contentMode = .scaleAspectFit
-//        logoImageView.frame.origin.y += 16
-        logoImageView.frame.size.width = size.width
+        logoImageView.frame.origin.y -= 12
+        logoImageView.frame.size.width = view.frame.size.width
         
         // Add the logo image view to the view
         view.addSubview(logoImageView)
@@ -39,13 +40,14 @@ extension OutfitViewController {
         let renderer = UIGraphicsImageRenderer(size: size)
         let image = renderer.image { context in
             // Draw the screenshot view
-            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+            view.drawHierarchy(in: CGRect(origin: CGPoint(), size: size), afterScreenUpdates: true)
         }
+        
+        debug("logo image =", logoImage, "logoImageView.frame = \(logoImageView.frame)", "image = \(image)")
         
         // Remove the logo image view from the view
         logoImageView.removeFromSuperview()
         
-        debug("view.bounds.size = \(view.bounds.size), image = \(image)")
         
         return image
     }
