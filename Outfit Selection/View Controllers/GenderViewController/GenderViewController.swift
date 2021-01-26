@@ -26,13 +26,6 @@ class GenderViewController: UIViewController {
     }
     
     // MARK: - Methods
-    /// Hide/show Get Outfit logo depending on screen orientation
-    /// - Parameter size: size of the view where gender stack view is present
-    func configureLayout(with size: CGSize) {
-        let isHorizontal = size.height < size.width
-        getOutfitLogo.isHidden = isHorizontal
-    }
-    
     /// Performs segue to brands view controller
     /// - Parameter sender: the object which caused the segue
     func performSegueToBrandsViewController(sender: Any?) {
@@ -42,7 +35,7 @@ class GenderViewController: UIViewController {
         performSegue(withIdentifier: "BrandsViewControllerSegue", sender: sender)
     }
     
-    // MARK: - UIViewController Methods
+    // MARK: - Inherited Methods
     /// Passes gender information to the brands view controller
     /// - Parameters:
     ///   - segue: the segue with information about the view controllers involved in the segue
@@ -60,9 +53,6 @@ class GenderViewController: UIViewController {
         
         // Hide toolbar at the bottom
         navigationController?.isToolbarHidden = true
-        
-        // Hide/show Get Outfit logo depending on screen orientation
-        configureLayout(with: view.bounds.size)
     }
     
     /// Hides navigation bar before the view is added to a view hierarchy
@@ -71,15 +61,6 @@ class GenderViewController: UIViewController {
         
         // Hide navigation bar on top
         navigationController?.navigationBar.isHidden = true
-    }
-    
-    /// Calls hide/show Get Outfit logo depending on screen size.
-    /// - Parameters:
-    ///   - size: the new size for the view
-    ///   - coordinator: the transition coordinator object managing the size change for passing to super
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        configureLayout(with: size)
     }
     
     // MARK: - Actions

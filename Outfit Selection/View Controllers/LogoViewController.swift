@@ -9,7 +9,14 @@
 import UIKit
 
 class LogoViewController: UIViewController {
-
+    // MARK: - Outlets
+    /// Image view with Get Outfit logo
+    @IBOutlet weak var logoImageView: UIImageView!
+    
+    /// Label with text "Get Outfit is a personalised styling platform"
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    // MARK: - Inherited Methods
     /// Hides toolbar after the controller's view is loaded into memory
     override func viewDidLoad() {
         super.viewDidLoad()
