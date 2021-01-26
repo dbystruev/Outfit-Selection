@@ -557,12 +557,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="MDY-In-wrG" kind="relationship" relationship="rootViewController" id="VJv-lA-Fn3"/>
+                        <segue destination="Wyr-mt-DXx" kind="relationship" relationship="rootViewController" id="evX-e4-ftA"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7l-Lq-BzI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1737" y="137"/>
+            <point key="canvasLocation" x="-3327" y="137"/>
         </scene>
         <!--Gender View Controller-->
         <scene sceneID="spj-y5-PFP">
@@ -587,7 +587,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                         <state key="normal" title="Female">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.25958698990000001" green="0.2596296072" blue="0.259577632" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="femaleSelected:" destination="MDY-In-wrG" eventType="touchUpInside" id="G2R-hi-4hw"/>
@@ -598,7 +598,7 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                         <state key="normal" title="Male">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <color key="titleColor" red="0.25958698990000001" green="0.2596296072" blue="0.259577632" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="maleSelected:" destination="MDY-In-wrG" eventType="touchUpInside" id="MER-LF-IYH"/>
@@ -608,8 +608,8 @@
                                         <rect key="frame" x="0.0" y="156" width="343" height="62"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
-                                        <state key="normal" title="Nonbinary">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <state key="normal" title="Non-binary">
+                                            <color key="titleColor" red="0.25958698990000001" green="0.2596296072" blue="0.259577632" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="otherSelected:" destination="MDY-In-wrG" eventType="touchUpInside" id="PuT-6t-n2A"/>
@@ -634,12 +634,12 @@
                     <navigationItem key="navigationItem" id="7WD-IW-RjP"/>
                     <connections>
                         <outlet property="getOutfitLogo" destination="wZv-pk-BHm" id="yQQ-S8-Ho0"/>
-                        <segue destination="Xzm-zb-a3t" kind="show" identifier="BrandsViewController" id="qpH-Ap-Q2C"/>
+                        <segue destination="Xzm-zb-a3t" kind="show" identifier="BrandsViewControllerSegue" id="qpH-Ap-Q2C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YuV-Jk-aUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-970" y="137"/>
+            <point key="canvasLocation" x="-1118" y="137"/>
         </scene>
         <!--Select Brands-->
         <scene sceneID="D6N-mj-93I">
@@ -651,7 +651,7 @@
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wo2-HJ-54b">
                                 <rect key="frame" x="47" y="663" width="281" height="50"/>
-                                <color key="backgroundColor" red="0.31575974820000002" green="0.38078895210000002" blue="0.37285700440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.31989601249999999" green="0.37662404779999997" blue="0.38108557459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="aAM-I9-wja"/>
                                 </constraints>
@@ -731,7 +731,48 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVE-B9-uYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-138" y="137"/>
+            <point key="canvasLocation" x="-244" y="137"/>
+        </scene>
+        <!--Logo View Controller-->
+        <scene sceneID="80x-lJ-lXv">
+            <objects>
+                <viewController id="Wyr-mt-DXx" customClass="LogoViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="lp4-qk-me2">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="kyl-Qg-dc7">
+                                <rect key="frame" x="71.666666666666686" y="361" width="232" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HzE-U7-YFd"/>
+                                    <constraint firstAttribute="width" constant="232" id="pIz-hj-Usc"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A personalised experience to buy, create and discover outfits." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRx-OI-IIK">
+                                <rect key="frame" x="67" y="419" width="241" height="40.666666666666686"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Iry-5g-BWL"/>
+                        <color key="backgroundColor" red="0.46932125089999999" green="0.53824871780000005" blue="0.51836496590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="kyl-Qg-dc7" firstAttribute="centerX" secondItem="lp4-qk-me2" secondAttribute="centerX" id="46q-rs-xQC"/>
+                            <constraint firstItem="kyl-Qg-dc7" firstAttribute="centerY" secondItem="lp4-qk-me2" secondAttribute="centerY" multiplier="386 / 406" id="KIV-6g-Ewl"/>
+                            <constraint firstItem="WRx-OI-IIK" firstAttribute="centerX" secondItem="lp4-qk-me2" secondAttribute="centerX" id="PvV-pP-q0D"/>
+                            <constraint firstItem="WRx-OI-IIK" firstAttribute="top" secondItem="kyl-Qg-dc7" secondAttribute="bottom" constant="8" symbolic="YES" id="RYl-Mo-crj"/>
+                            <constraint firstItem="WRx-OI-IIK" firstAttribute="width" secondItem="Iry-5g-BWL" secondAttribute="width" multiplier="241:375" id="d5V-aV-a3T"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="chG-0Q-ezW"/>
+                    <connections>
+                        <segue destination="MDY-In-wrG" kind="show" identifier="GenderViewControllerSegue" id="6DD-d6-XSH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mnY-gB-juC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2199" y="137"/>
         </scene>
     </scenes>
     <resources>

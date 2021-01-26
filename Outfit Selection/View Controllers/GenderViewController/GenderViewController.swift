@@ -39,7 +39,7 @@ class GenderViewController: UIViewController {
         // Show navigation bar on top
         navigationController?.navigationBar.isHidden = false
         
-        performSegue(withIdentifier: "BrandsViewController", sender: sender)
+        performSegue(withIdentifier: "BrandsViewControllerSegue", sender: sender)
     }
     
     // MARK: - UIViewController Methods
@@ -49,23 +49,28 @@ class GenderViewController: UIViewController {
     ///   - sender: the object that initiated the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        guard segue.identifier == "BrandsViewController" else { return }
+        guard segue.identifier == "BrandsViewControllerSegue" else { return }
         guard let destination = segue.destination as? BrandsViewController else { return }
         destination.gender = gender
     }
     
-    /// Configure layout after the controller's view is loaded into memory.
+    /// Configures layout after the controller's view is loaded into memory
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Hide toolbar at the bottom
         navigationController?.isToolbarHidden = true
         
-        // Hide navigation bar on top
-        navigationController?.navigationBar.isHidden = true
-        
         // Hide/show Get Outfit logo depending on screen orientation
         configureLayout(with: view.bounds.size)
+    }
+    
+    /// Hides navigation bar before the view is added to a view hierarchy
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide navigation bar on top
+        navigationController?.navigationBar.isHidden = true
     }
     
     /// Calls hide/show Get Outfit logo depending on screen size.
