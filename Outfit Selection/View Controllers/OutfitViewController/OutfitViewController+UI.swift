@@ -17,7 +17,7 @@ extension OutfitViewController {
         case .male:
             genderItem.image = UIImage(named: "male_icon")
         default:
-            genderItem.image = nil
+            genderItem.image = UIImage(named: "other_icon")
         }
     }
     
