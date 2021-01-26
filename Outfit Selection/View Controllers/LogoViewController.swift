@@ -16,10 +16,27 @@ class LogoViewController: UIViewController {
     /// Label with text "Get Outfit is a personalised styling platform"
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    // MARK: - Methods
+    /// Update the list of categories from the server
+    func updateCategories() {
+        NetworkManager.shared.getCategories { categories in
+            // Make sure we don't update to the empty list of categories
+            guard let categories = categories, !categories.isEmpty else { return }
+            
+            Category.all = categories
+        }
+    }
+    
     // MARK: - Inherited Methods
     /// Hides toolbar after the controller's view is loaded into memory
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Make sure we use the most recent URL
+        NetworkManager.shared.updateURL() { _ in
+            // Update the list of categories from the server
+            self.updateCategories()
+        }
 
         // Hide toolbar at the bottom
         navigationController?.isToolbarHidden = true

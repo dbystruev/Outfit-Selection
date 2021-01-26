@@ -15,15 +15,7 @@ class GenderViewController: UIViewController {
     
     // MARK: - Properties
     /// Gender selected by user
-    var gender = Gender.other {
-        didSet {
-            guard oldValue != gender else { return }
-            guard let navigationController = presentingViewController as? UINavigationController else { return }
-            guard let outfitViewController = navigationController.viewControllers.first as? OutfitViewController else { return }
-            Item.removeAll()
-            outfitViewController.gender = gender
-        }
-    }
+    var gender = Gender.other
     
     // MARK: - Methods
     /// Performs segue to brands view controller
@@ -47,17 +39,12 @@ class GenderViewController: UIViewController {
         destination.gender = gender
     }
     
-    /// Configures layout after the controller's view is loaded into memory
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    /// Hides toolbar and navigation bar before the view is added to a view hierarchy
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
         // Hide toolbar at the bottom
         navigationController?.isToolbarHidden = true
-    }
-    
-    /// Hides navigation bar before the view is added to a view hierarchy
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
         
         // Hide navigation bar on top
         navigationController?.navigationBar.isHidden = true

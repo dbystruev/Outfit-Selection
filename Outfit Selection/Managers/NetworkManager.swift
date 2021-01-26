@@ -170,7 +170,7 @@ class NetworkManager {
     /// Prepare parameters dictionary for given categories, gender, and vendors
     /// - Parameters:
     ///   - categories: the list of categories to filter items by
-    ///   - gender: load female or male items only, both if nil
+    ///   - gender: load female or male items only, both if nil or other
     ///   - vendors: the list of vendors to filter items by
     /// - Returns: dictionary with parameters suitable to call get()
     func getParameters(inCategories categories: [Category] = [],
@@ -187,7 +187,7 @@ class NetworkManager {
             parameters["пол"] = "женский"
         case .male:
             parameters["пол"] = "мужской"
-        default:
+        case .other, nil:
             break
         }
         

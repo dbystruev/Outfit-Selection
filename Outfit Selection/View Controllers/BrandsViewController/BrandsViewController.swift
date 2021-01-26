@@ -11,12 +11,23 @@ import UIKit
 class BrandsViewController: UIViewController {
     
     // MARK: - Outlets
+    /// Collection view with brand logos
     @IBOutlet weak var brandsCollectionView: UICollectionView!
+    
+    /// Go button at the bottom of the screen
     @IBOutlet weak var goButton: UIButton!
     
     // MARK: - Properties
-    /// Gender selected on female male screen
-    var gender = Gender.other
+    /// Gender selected on gender selection screen
+    var gender: Gender? {
+        didSet {
+            // Don't clear items if gender value did not change
+            guard gender != oldValue else { return }
+            
+            // Clear all loaded items
+            Item.removeAll()
+        }
+    }
     
     /// Flag which changes to true when all items are loaded from the server
     var allItemsLoaded = false

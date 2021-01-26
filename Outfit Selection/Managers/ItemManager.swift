@@ -39,7 +39,7 @@ class ItemManager {
     ///   - gender: gender to filter images by
     ///   - brandNames: brand names to filter images by
     ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
-    func loadImages(filteredBy gender: Gender, andBy brandNames: [String], completion: @escaping (_ count: Int) -> Void) {
+    func loadImages(filteredBy gender: Gender?, andBy brandNames: [String], completion: @escaping (_ count: Int) -> Void) {
         // Clear all view models
         clearViewModels()
         
@@ -173,9 +173,9 @@ class ItemManager {
     }
     
     /// Load items from the server to Item.all array
-    /// - Parameter gender: load female or male items only
+    /// - Parameter gender: load female, male or other items only
     /// - Parameter completion: closure with bool parameter which is called with true in case of success, with false otherwise
-    func loadItems(filteredBy gender: Gender, completion: @escaping (_ success: Bool?) -> Void) {
+    func loadItems(filteredBy gender: Gender?, completion: @escaping (_ success: Bool?) -> Void) {
         let startTime = Date()
         let categories = Category.filtered(by: gender).flatMap { $0 }
         NetworkManager.shared.getOffers(inCategories: categories,

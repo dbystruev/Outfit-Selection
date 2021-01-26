@@ -29,13 +29,12 @@ extension OutfitViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         assetCount = 0 // ItemManager.shared.loadImagesFromAssets(into: scrollViews)
-        NetworkManager.shared.updateURL() { _ in
-            self.updateCategories()
-        }
         scrollViews.forEach { $0.delegate = self }
         setupGestures()
         setupUI()
-        presentGenderViewController()
+        
+        // Load images into the outfit view controller's scroll views
+        loadImages()
     }
     
     override func viewDidLayoutSubviews() {

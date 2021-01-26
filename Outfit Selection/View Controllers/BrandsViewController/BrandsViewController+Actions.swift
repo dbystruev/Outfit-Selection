@@ -21,14 +21,15 @@ extension BrandsViewController {
         goButton.isEnabled = false
         goButton.setTitle("Loading images...", for: .disabled)
         
-        // Find out where is the navigation controller
-        var navigationController = presentingViewController as? UINavigationController
-        if navigationController == nil {
-            navigationController = presentingViewController?.presentingViewController as? UINavigationController
+        // Instantiate the Outfit View Controller
+        let controller = storyboard?.instantiateViewController(withIdentifier: "OutfitViewController")
+        guard let outfitViewController = controller as? OutfitViewController else {
+            debug("WARNING: Can't get Outfit View Controller from Storyboard", storyboard)
+            return
         }
         
-        // Find out the root = outfit view controller
-        let outfitViewController = navigationController?.viewControllers.first as? OutfitViewController
+        // Copy gender to Outfit View Controller
+        outfitViewController.gender = gender ?? .other
         
         // Get brand names to filter by
         let brandNames = brandedImages.compactMap { $0.isSelected ? $0.brandName : nil }
@@ -41,16 +42,15 @@ extension BrandsViewController {
             debug(itemsLoaded, "images are loaded from the server into view models in", passedTime.asTime, "seconds")
             
             // Save selected brands (do not use brand names as the user could have changed the selection while waiting)
-            outfitViewController?.brandNames = self.brandedImages.compactMap { $0.isSelected ? $0.brandName : nil }
+            outfitViewController.brandNames = self.brandedImages.compactMap { $0.isSelected ? $0.brandName : nil }
             
             // Save brand images for future selection change
             BrandManager.shared.brandedImages = self.brandedImages
             
             DispatchQueue.main.async {
-                // Load images into the outfit view controller's scroll views
-                outfitViewController?.loadImages()
-                
-                self.dismissRoot(animated: true)
+                self.navigationController?.pushViewController(outfitViewController, animated: true)
+                self.goButton.isEnabled = true
+                self.goButton.setTitle("Go", for: .normal)
             }
         }
     }

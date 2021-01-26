@@ -470,13 +470,13 @@ struct Category: Codable {
     /// Return the list of the category lists filtered by gender
     /// - Parameter gender: gender to filter categories by
     /// - Returns: the list of the category lists filtered by gender
-    static func filtered(by gender: Gender) -> [[Category]] {
+    static func filtered(by gender: Gender?) -> [[Category]] {
         switch gender {
         case .female:
             return female
         case .male:
             return male
-        case .other:
+        case .other, nil:
             return female + male
         }
     }
