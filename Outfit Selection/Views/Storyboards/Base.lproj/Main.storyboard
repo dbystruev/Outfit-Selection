@@ -643,7 +643,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="7WD-IW-RjP"/>
                     <connections>
-                        <outlet property="getOutfitLogo" destination="wZv-pk-BHm" id="yQQ-S8-Ho0"/>
+                        <outlet property="logoImageView" destination="wZv-pk-BHm" id="yQQ-S8-Ho0"/>
                         <segue destination="Xzm-zb-a3t" kind="show" identifier="BrandsViewControllerSegue" id="qpH-Ap-Q2C"/>
                     </connections>
                 </viewController>

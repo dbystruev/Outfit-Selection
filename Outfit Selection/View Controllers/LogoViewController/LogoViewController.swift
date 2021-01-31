@@ -16,6 +16,10 @@ class LogoViewController: UIViewController {
     /// Label with text "Get Outfit is a personalised styling platform"
     @IBOutlet weak var descriptionLabel: UILabel!
     
+    // MARK: - Stored Properties
+    /// Custom animator for pushing next view controller
+    let transition = LogoAnimator()
+    
     // MARK: - Methods
     /// Update the list of categories from the server
     func updateCategories() {
@@ -37,6 +41,9 @@ class LogoViewController: UIViewController {
             // Update the list of categories from the server
             self.updateCategories()
         }
+        
+        // Make self a delegate of navigation controller to allow custom transition animation
+        navigationController?.delegate = self
 
         // Hide toolbar at the bottom
         navigationController?.isToolbarHidden = true

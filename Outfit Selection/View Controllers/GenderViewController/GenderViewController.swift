@@ -11,7 +11,7 @@ import UIKit
 class GenderViewController: UIViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var getOutfitLogo: UIImageView!
+    @IBOutlet weak var logoImageView: UIImageView!
     
     // MARK: - Properties
     /// Gender selected by user
