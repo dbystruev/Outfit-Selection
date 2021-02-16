@@ -707,23 +707,27 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kZX-Wt-GDk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <rect key="frame" x="16" y="16" width="96" height="96"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="192" id="HC6-0c-8wS"/>
-                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="128" id="mcG-CA-nsv"/>
+                                                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="160" id="HC6-0c-8wS"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="96" id="mcG-CA-nsv"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="kZX-Wt-GDk" firstAttribute="leading" secondItem="JPu-MB-r5d" secondAttribute="leading" id="N0N-dv-tgX"/>
-                                                <constraint firstItem="kZX-Wt-GDk" firstAttribute="top" secondItem="JPu-MB-r5d" secondAttribute="top" id="X3m-a7-9ww"/>
-                                                <constraint firstAttribute="bottom" secondItem="kZX-Wt-GDk" secondAttribute="bottom" id="rdY-3O-QMh"/>
-                                                <constraint firstAttribute="trailing" secondItem="kZX-Wt-GDk" secondAttribute="trailing" id="wNv-hT-2SC"/>
+                                                <constraint firstItem="kZX-Wt-GDk" firstAttribute="leading" secondItem="JPu-MB-r5d" secondAttribute="leading" constant="16" id="N0N-dv-tgX"/>
+                                                <constraint firstItem="kZX-Wt-GDk" firstAttribute="top" secondItem="JPu-MB-r5d" secondAttribute="top" constant="16" id="X3m-a7-9ww"/>
+                                                <constraint firstAttribute="bottom" secondItem="kZX-Wt-GDk" secondAttribute="bottom" constant="16" id="rdY-3O-QMh"/>
+                                                <constraint firstAttribute="trailing" secondItem="kZX-Wt-GDk" secondAttribute="trailing" constant="16" id="wNv-hT-2SC"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="brandImageView" destination="kZX-Wt-GDk" id="x0A-Yt-vPC"/>
+                                            <outlet property="brandImageViewBottomConstraint" destination="rdY-3O-QMh" id="6y3-xO-pn7"/>
                                             <outlet property="brandImageViewHeightConstraint" destination="HC6-0c-8wS" id="OEJ-ww-hMN"/>
+                                            <outlet property="brandImageViewLeadingConstraint" destination="N0N-dv-tgX" id="PwJ-im-gTe"/>
+                                            <outlet property="brandImageViewTopConstraint" destination="X3m-a7-9ww" id="7pm-zF-kCO"/>
+                                            <outlet property="brandImageViewTrailingConstraint" destination="wNv-hT-2SC" id="HSd-jZ-9Qm"/>
                                             <outlet property="brandImageViewWidthConstraint" destination="mcG-CA-nsv" id="fUV-ZZ-Pjf"/>
                                         </connections>
                                     </collectionViewCell>
