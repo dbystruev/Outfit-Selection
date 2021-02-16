@@ -19,6 +19,7 @@
 		693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7289256BF3FB00540C10 /* BrandsViewController.swift */; };
 		693D728E256BF4CA00540C10 /* BrandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D728D256BF4CA00540C10 /* BrandManager.swift */; };
 		693D7292256BFDD700540C10 /* ItemManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7291256BFDD700540C10 /* ItemManager.swift */; };
+		694E7BEE25DBFFFB006607CD /* UIView+findSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E7BED25DBFFFB006607CD /* UIView+findSuperview.swift */; };
 		69560EC82587E5D400337F35 /* Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560EC72587E5D400337F35 /* Branded.swift */; };
 		69560ECC2587E7C700337F35 /* Item+Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560ECB2587E7C700337F35 /* Item+Branded.swift */; };
 		69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */; };
@@ -79,6 +80,7 @@
 		693D7289256BF3FB00540C10 /* BrandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
 		693D728D256BF4CA00540C10 /* BrandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandManager.swift; sourceTree = "<group>"; };
 		693D7291256BFDD700540C10 /* ItemManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemManager.swift; sourceTree = "<group>"; };
+		694E7BED25DBFFFB006607CD /* UIView+findSuperview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+findSuperview.swift"; sourceTree = "<group>"; };
 		69560EC72587E5D400337F35 /* Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branded.swift; sourceTree = "<group>"; };
 		69560ECB2587E7C700337F35 /* Item+Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Branded.swift"; sourceTree = "<group>"; };
 		69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandedImage+Branded.swift"; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				6986611A25700ED2008F94CA /* Double+asTime.swift */,
 				69AE954F2563B8FB00850210 /* String+dropExtension.swift */,
 				69AE954C2563B87000850210 /* String+lastComponent.swift */,
+				694E7BED25DBFFFB006607CD /* UIView+findSuperview.swift */,
 				69B539FC257FBC6800116F98 /* UIViewController */,
 				692C9416254708830075BD92 /* URL+withQueries.swift */,
 			);
@@ -480,6 +483,7 @@
 				698990D82323B9B0002DCA29 /* OutfitViewController+Shake.swift in Sources */,
 				698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */,
 				69739EB022BA5DF80077E45D /* PinnableScrollView+Extension.swift in Sources */,
+				694E7BEE25DBFFFB006607CD /* UIView+findSuperview.swift in Sources */,
 				696E875B256463160061802E /* Double+asPrice.swift in Sources */,
 				69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */,
 				69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */,

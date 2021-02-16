@@ -683,13 +683,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose 3 or more brands you like " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="si2-Dp-h6s">
-                                <rect key="frame" x="16" y="104" width="342" height="21"/>
+                                <rect key="frame" x="16" y="104" width="343" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Nq-Bt-ovQ">
-                                <rect key="frame" x="16" y="141" width="342" height="506"/>
+                                <rect key="frame" x="16" y="141" width="343" height="495"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-16" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="a5e-Cj-BOC">
@@ -734,12 +734,13 @@
                                 </cells>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wo2-HJ-54b">
-                                <rect key="frame" x="47" y="663" width="281" height="50"/>
+                                <rect key="frame" x="16" y="652" width="343" height="61"/>
                                 <color key="backgroundColor" red="0.31989601249999999" green="0.37662404779999997" blue="0.38108557459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="aAM-I9-wja"/>
+                                    <constraint firstAttribute="height" constant="61" id="aAM-I9-wja"/>
+                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="343" id="s8r-oo-5ir"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="17"/>
                                 <state key="normal" title="Get Outfit">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -757,15 +758,16 @@
                         <viewLayoutGuide key="safeArea" id="9SB-V3-nAX"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Wo2-HJ-54b" firstAttribute="centerX" secondItem="5hd-8z-0gK" secondAttribute="centerX" id="9Iw-90-L9S"/>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="top" secondItem="3Nq-Bt-ovQ" secondAttribute="bottom" constant="16" id="BIs-Kc-8xR"/>
                             <constraint firstItem="si2-Dp-h6s" firstAttribute="top" secondItem="9SB-V3-nAX" secondAttribute="top" constant="16" id="HIi-kX-DD6"/>
-                            <constraint firstItem="9SB-V3-nAX" firstAttribute="trailing" secondItem="si2-Dp-h6s" secondAttribute="trailing" constant="17" id="HeU-GP-SDv"/>
+                            <constraint firstItem="9SB-V3-nAX" firstAttribute="trailing" secondItem="si2-Dp-h6s" secondAttribute="trailing" constant="16" id="HeU-GP-SDv"/>
                             <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="top" secondItem="si2-Dp-h6s" secondAttribute="bottom" constant="16" id="RMP-jy-iGK"/>
-                            <constraint firstItem="Wo2-HJ-54b" firstAttribute="width" secondItem="9SB-V3-nAX" secondAttribute="width" multiplier="3 / 4" id="TwQ-jb-laF"/>
                             <constraint firstItem="9SB-V3-nAX" firstAttribute="bottom" secondItem="Wo2-HJ-54b" secondAttribute="bottom" constant="16" id="V1t-wr-FwN"/>
                             <constraint firstItem="si2-Dp-h6s" firstAttribute="leading" secondItem="9SB-V3-nAX" secondAttribute="leading" constant="16" id="WMo-5G-YRp"/>
+                            <constraint firstItem="Wo2-HJ-54b" firstAttribute="leading" secondItem="si2-Dp-h6s" secondAttribute="leading" priority="750" id="be7-5g-r78"/>
+                            <constraint firstItem="Wo2-HJ-54b" firstAttribute="trailing" secondItem="si2-Dp-h6s" secondAttribute="trailing" priority="750" id="bkG-sF-sQt"/>
                             <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="leading" secondItem="si2-Dp-h6s" secondAttribute="leading" id="lkM-oZ-4NA"/>
+                            <constraint firstItem="Wo2-HJ-54b" firstAttribute="centerX" secondItem="si2-Dp-h6s" secondAttribute="centerX" id="rRl-m9-IpV"/>
                             <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="trailing" secondItem="si2-Dp-h6s" secondAttribute="trailing" id="tot-Km-4gv"/>
                         </constraints>
                     </view>

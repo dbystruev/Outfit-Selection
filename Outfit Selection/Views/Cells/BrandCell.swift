@@ -34,4 +34,20 @@ class BrandCell: UICollectionViewCell {
     var verticalPaddingConstraints: [NSLayoutConstraint] {
         [brandImageViewBottomConstraint, brandImageViewTopConstraint]
     }
+    
+    /// Configure brand cell with given branded image
+    /// - Parameter brandedImage: the branded image to configure the brand cell with
+    func configure(brandedImage: BrandedImage, in collectionView: UICollectionView) {
+        brandImageView.alpha = brandedImage.isSelected ? 1 : 0.25
+        brandImageView.image = brandedImage
+        
+        // Configure horizontal and vertical padding around brand image view
+        horizontalPaddingConstraints.forEach { $0.constant = BrandCell.horizontalPadding }
+        verticalPaddingConstraints.forEach { $0.constant = BrandCell.verticalPadding }
+        
+        // Set min brand image view height and width
+        let cellSide = (collectionView.bounds.size.width - 32) / 3
+        brandImageViewHeightConstraint.constant = cellSide - 2 * BrandCell.verticalPadding
+        brandImageViewWidthConstraint.constant = cellSide - 2 * BrandCell.horizontalPadding
+    }
 }
