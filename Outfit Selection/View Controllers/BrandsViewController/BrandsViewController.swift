@@ -36,11 +36,14 @@ class BrandsViewController: UIViewController {
     let brandedImages = BrandManager.shared.brandedImages
     
     // MARK: - Computed Properties
-    /// Number of columns in the brands collection view
-    var columns: CGFloat { CGFloat(BrandCell.cellsPerRow) }
+    /// The height of the cell in the brands collection view
+    fileprivate var cellHeight: CGFloat { cellWidth - 2 * (BrandCell.horizontalMargin - BrandCell.verticalMargin) }
     
-    /// The size of single side of the cell in the brands collection view
-    var cellSide: CGFloat { floor((brandsCollectionView.bounds.size.width - 10 * columns - 32) / columns) }
+    /// The size of the cell in the brands collection view
+    var cellSize: CGSize { CGSize(width: cellWidth, height: cellHeight) }
+    
+    /// The width of the cell in the brands collection view
+    fileprivate var cellWidth: CGFloat { floor(brandsCollectionView.bounds.size.width / CGFloat(BrandCell.cellsPerRow)) }
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {
@@ -51,13 +54,11 @@ class BrandsViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
-        debug()
         super.viewWillLayoutSubviews()
         brandsCollectionView.reloadData()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        debug()
         super.viewWillTransition(to: size, with: coordinator)
         configureContent(sized: size)
     }

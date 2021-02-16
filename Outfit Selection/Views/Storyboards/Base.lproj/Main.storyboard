@@ -370,7 +370,7 @@
                                                                     <constraint firstAttribute="height" constant="32" id="JOB-sp-pCk"/>
                                                                     <constraint firstAttribute="width" constant="32" id="VWx-ZQ-AY0"/>
                                                                 </constraints>
-                                                                <state key="normal" image="heart.slash" catalog="system"/>
+                                                                <state key="normal" image="heart.slash"/>
                                                                 <connections>
                                                                     <action selector="dislikeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="lhi-gB-3Ip"/>
                                                                 </connections>
@@ -689,7 +689,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Nq-Bt-ovQ">
-                                <rect key="frame" x="16" y="141" width="343" height="495"/>
+                                <rect key="frame" x="4" y="133" width="367" height="511"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-16" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="a5e-Cj-BOC">
@@ -700,14 +700,14 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="BrandCell" id="p53-8U-MhP" customClass="BrandCell" customModule="Outfit_Selection" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="124" height="92"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="138" height="98"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="JPu-MB-r5d">
-                                            <rect key="frame" x="0.0" y="0.0" width="124" height="92"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="138" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aIa-h2-yPi">
-                                                    <rect key="frame" x="5" y="5" width="114" height="82"/>
+                                                    <rect key="frame" x="12" y="8" width="114" height="82"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kZX-Wt-GDk">
                                                             <rect key="frame" x="0.0" y="0.0" width="114" height="82"/>
@@ -734,22 +734,26 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="aIa-h2-yPi" firstAttribute="top" secondItem="JPu-MB-r5d" secondAttribute="top" constant="5" id="JXy-Tl-Ghx"/>
-                                                <constraint firstAttribute="bottom" secondItem="aIa-h2-yPi" secondAttribute="bottom" constant="5" id="YnC-uB-7oA"/>
-                                                <constraint firstItem="aIa-h2-yPi" firstAttribute="leading" secondItem="JPu-MB-r5d" secondAttribute="leading" constant="5" id="mEL-m4-eGX"/>
-                                                <constraint firstAttribute="trailing" secondItem="aIa-h2-yPi" secondAttribute="trailing" constant="5" id="ui3-9X-cBe"/>
+                                                <constraint firstItem="aIa-h2-yPi" firstAttribute="top" secondItem="JPu-MB-r5d" secondAttribute="top" constant="8" id="JXy-Tl-Ghx"/>
+                                                <constraint firstAttribute="bottom" secondItem="aIa-h2-yPi" secondAttribute="bottom" constant="8" id="YnC-uB-7oA"/>
+                                                <constraint firstItem="aIa-h2-yPi" firstAttribute="leading" secondItem="JPu-MB-r5d" secondAttribute="leading" constant="12" id="mEL-m4-eGX"/>
+                                                <constraint firstAttribute="trailing" secondItem="aIa-h2-yPi" secondAttribute="trailing" constant="12" id="ui3-9X-cBe"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
+                                            <outlet property="bottomMarginConstraint" destination="YnC-uB-7oA" id="K3H-w3-Nua"/>
+                                            <outlet property="bottomPaddingConstraint" destination="WGU-Gu-qlW" id="2of-G8-hqn"/>
                                             <outlet property="brandImageContainerView" destination="aIa-h2-yPi" id="eox-I8-n82"/>
                                             <outlet property="brandImageView" destination="kZX-Wt-GDk" id="x0A-Yt-vPC"/>
-                                            <outlet property="brandImageViewBottomConstraint" destination="WGU-Gu-qlW" id="2of-G8-hqn"/>
                                             <outlet property="brandImageViewHeightConstraint" destination="HC6-0c-8wS" id="OEJ-ww-hMN"/>
-                                            <outlet property="brandImageViewLeadingConstraint" destination="crk-Dg-ivT" id="pcf-HR-Rq5"/>
-                                            <outlet property="brandImageViewTopConstraint" destination="rDW-JK-JRS" id="NuZ-F6-EiL"/>
-                                            <outlet property="brandImageViewTrailingConstraint" destination="MTs-dK-IEg" id="4ci-Ow-gWH"/>
                                             <outlet property="brandImageViewWidthConstraint" destination="mcG-CA-nsv" id="fUV-ZZ-Pjf"/>
                                             <outlet property="checkmarkImageView" destination="y9o-Fl-Di0" id="JyU-PX-Bbr"/>
+                                            <outlet property="leadingMarginConstraint" destination="mEL-m4-eGX" id="1IM-CX-A9g"/>
+                                            <outlet property="leadingPaddingConstraint" destination="crk-Dg-ivT" id="pcf-HR-Rq5"/>
+                                            <outlet property="topMarginConstraint" destination="JXy-Tl-Ghx" id="kn5-GT-2BM"/>
+                                            <outlet property="topPaddingConstraint" destination="rDW-JK-JRS" id="NuZ-F6-EiL"/>
+                                            <outlet property="trailingMarginConstraint" destination="ui3-9X-cBe" id="MKH-2Y-2Tc"/>
+                                            <outlet property="trailingPaddingConstraint" destination="MTs-dK-IEg" id="4ci-Ow-gWH"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -779,17 +783,17 @@
                         <viewLayoutGuide key="safeArea" id="9SB-V3-nAX"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Wo2-HJ-54b" firstAttribute="top" secondItem="3Nq-Bt-ovQ" secondAttribute="bottom" constant="16" id="BIs-Kc-8xR"/>
+                            <constraint firstItem="Wo2-HJ-54b" firstAttribute="top" secondItem="3Nq-Bt-ovQ" secondAttribute="bottom" constant="8" id="BIs-Kc-8xR"/>
                             <constraint firstItem="si2-Dp-h6s" firstAttribute="top" secondItem="9SB-V3-nAX" secondAttribute="top" constant="16" id="HIi-kX-DD6"/>
                             <constraint firstItem="9SB-V3-nAX" firstAttribute="trailing" secondItem="si2-Dp-h6s" secondAttribute="trailing" constant="16" id="HeU-GP-SDv"/>
-                            <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="top" secondItem="si2-Dp-h6s" secondAttribute="bottom" constant="16" id="RMP-jy-iGK"/>
+                            <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="top" secondItem="si2-Dp-h6s" secondAttribute="bottom" constant="8" id="RMP-jy-iGK"/>
                             <constraint firstItem="9SB-V3-nAX" firstAttribute="bottom" secondItem="Wo2-HJ-54b" secondAttribute="bottom" constant="16" id="V1t-wr-FwN"/>
                             <constraint firstItem="si2-Dp-h6s" firstAttribute="leading" secondItem="9SB-V3-nAX" secondAttribute="leading" constant="16" id="WMo-5G-YRp"/>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="leading" secondItem="si2-Dp-h6s" secondAttribute="leading" priority="750" id="be7-5g-r78"/>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="trailing" secondItem="si2-Dp-h6s" secondAttribute="trailing" priority="750" id="bkG-sF-sQt"/>
-                            <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="leading" secondItem="si2-Dp-h6s" secondAttribute="leading" id="lkM-oZ-4NA"/>
+                            <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="leading" secondItem="si2-Dp-h6s" secondAttribute="leading" constant="-12" id="lkM-oZ-4NA"/>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="centerX" secondItem="si2-Dp-h6s" secondAttribute="centerX" id="rRl-m9-IpV"/>
-                            <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="trailing" secondItem="si2-Dp-h6s" secondAttribute="trailing" id="tot-Km-4gv"/>
+                            <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="trailing" secondItem="si2-Dp-h6s" secondAttribute="trailing" constant="12" id="tot-Km-4gv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tell us your favourites" id="7AD-qZ-4JX">
@@ -815,6 +819,7 @@
         <image name="female_icon" width="19.666666030883789" height="28"/>
         <image name="heart" width="32" height="32"/>
         <image name="heart.fill" width="32" height="32"/>
+        <image name="heart.slash" width="32" height="32"/>
         <image name="heart.slash" catalog="system" width="128" height="115"/>
         <image name="logo_white" width="299" height="96"/>
         <systemColor name="systemBackgroundColor">
