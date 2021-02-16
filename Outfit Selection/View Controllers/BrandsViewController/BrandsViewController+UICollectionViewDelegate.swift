@@ -15,6 +15,6 @@ extension BrandsViewController: UICollectionViewDelegate {
         
         // Toggle alpha between 0.25 and 1
         brandedImage.isSelected.toggle()
-        brandCell.brandImageView.alpha = brandedImage.isSelected ? 1 : 0.25
+        brandCell.configureBackground(isSelected: brandedImage.isSelected)
     }
 }
