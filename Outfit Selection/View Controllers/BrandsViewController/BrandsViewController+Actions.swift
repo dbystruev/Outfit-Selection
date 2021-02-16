@@ -10,7 +10,16 @@ import UIKit
 
 // MARK: - Actions
 extension BrandsViewController {
-    @IBAction func goButtonTapped(_ sender: UIButton) {
+    @IBAction func clearAllButtonTapped(_ sender: UIBarButtonItem) {
+        brandedImages.forEach {
+            $0.isSelected = false
+        }
+        brandsCollectionView.reloadData()
+    }
+    
+    /// Called when Get Outfit button is tapped
+    /// - Parameter sender: the get outfit button which was tapped
+    @IBAction func getOutfitButtonTapped(_ sender: UIButton) {
         // Check that items were loaded, otherwise reload them
         guard allItemsLoaded else {
             configureItems()
@@ -18,8 +27,8 @@ extension BrandsViewController {
         }
         
         // Hide go button
-        goButton.isEnabled = false
-        goButton.setTitle("Loading images...", for: .disabled)
+        getOutfitButton.isEnabled = false
+        getOutfitButton.setTitle("Loading images...", for: .disabled)
         
         // Instantiate the Outfit View Controller
         let controller = storyboard?.instantiateViewController(withIdentifier: "OutfitViewController")
@@ -49,8 +58,8 @@ extension BrandsViewController {
             
             DispatchQueue.main.async {
                 self.navigationController?.pushViewController(outfitViewController, animated: true)
-                self.goButton.isEnabled = true
-                self.goButton.setTitle("Go", for: .normal)
+                self.getOutfitButton.isEnabled = true
+                self.getOutfitButton.setTitle("Get Outfit", for: .normal)
             }
         }
     }

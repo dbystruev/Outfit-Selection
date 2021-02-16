@@ -15,7 +15,7 @@ class BrandsViewController: UIViewController {
     @IBOutlet weak var brandsCollectionView: UICollectionView!
     
     /// Go button at the bottom of the screen
-    @IBOutlet weak var goButton: UIButton!
+    @IBOutlet weak var getOutfitButton: UIButton!
     
     // MARK: - Properties
     /// Gender selected on gender selection screen
@@ -50,16 +50,16 @@ class BrandsViewController: UIViewController {
         guard !allItemsLoaded else { return }
         
         // Load items if none are found
-        goButton.isHidden = true
+        getOutfitButton.isHidden = true
         ItemManager.shared.loadItems(filteredBy: gender) { success in
             // Update the title for go button
             self.allItemsLoaded = success == true
-            let title = self.allItemsLoaded ? "Go" : "Reload"
+            let title = self.allItemsLoaded ? "Get Outfit" : "Reload"
             
             // Unhide go button when items are loaded
             DispatchQueue.main.async {
-                self.goButton.isHidden = false
-                self.goButton.setTitle(title, for: .normal)
+                self.getOutfitButton.isHidden = false
+                self.getOutfitButton.setTitle(title, for: .normal)
             }
         }
     }

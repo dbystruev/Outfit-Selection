@@ -682,28 +682,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wo2-HJ-54b">
-                                <rect key="frame" x="47" y="663" width="281" height="50"/>
-                                <color key="backgroundColor" red="0.31989601249999999" green="0.37662404779999997" blue="0.38108557459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="aAM-I9-wja"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Go">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="goButtonTapped:" destination="Xzm-zb-a3t" eventType="touchUpInside" id="qHk-Ae-rih"/>
-                                    <action selector="priceButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="GkZ-ex-YEi"/>
-                                </connections>
-                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose 3 or more brands you like " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="si2-Dp-h6s">
+                                <rect key="frame" x="16" y="104" width="343" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="3Nq-Bt-ovQ">
-                                <rect key="frame" x="32" y="104" width="311" height="543"/>
+                                <rect key="frame" x="16" y="141" width="343" height="506"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-16" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="a5e-Cj-BOC">
@@ -743,25 +729,52 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Wo2-HJ-54b">
+                                <rect key="frame" x="47" y="663" width="281" height="50"/>
+                                <color key="backgroundColor" red="0.31989601249999999" green="0.37662404779999997" blue="0.38108557459999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="aAM-I9-wja"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
+                                <state key="normal" title="Get Outfit">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="getOutfitButtonTapped:" destination="Xzm-zb-a3t" eventType="touchUpInside" id="qHk-Ae-rih"/>
+                                    <action selector="priceButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="GkZ-ex-YEi"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9SB-V3-nAX"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="centerX" secondItem="5hd-8z-0gK" secondAttribute="centerX" id="9Iw-90-L9S"/>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="top" secondItem="3Nq-Bt-ovQ" secondAttribute="bottom" constant="16" id="BIs-Kc-8xR"/>
-                            <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="top" secondItem="9SB-V3-nAX" secondAttribute="top" constant="16" id="EPt-0G-RC6"/>
+                            <constraint firstItem="si2-Dp-h6s" firstAttribute="top" secondItem="9SB-V3-nAX" secondAttribute="top" constant="16" id="HIi-kX-DD6"/>
+                            <constraint firstItem="9SB-V3-nAX" firstAttribute="trailing" secondItem="si2-Dp-h6s" secondAttribute="trailing" constant="16" id="HeU-GP-SDv"/>
+                            <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="top" secondItem="si2-Dp-h6s" secondAttribute="bottom" constant="16" id="RMP-jy-iGK"/>
                             <constraint firstItem="Wo2-HJ-54b" firstAttribute="width" secondItem="9SB-V3-nAX" secondAttribute="width" multiplier="3 / 4" id="TwQ-jb-laF"/>
                             <constraint firstItem="9SB-V3-nAX" firstAttribute="bottom" secondItem="Wo2-HJ-54b" secondAttribute="bottom" constant="16" id="V1t-wr-FwN"/>
-                            <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="leading" secondItem="9SB-V3-nAX" secondAttribute="leading" constant="32" id="lkM-oZ-4NA"/>
-                            <constraint firstItem="9SB-V3-nAX" firstAttribute="trailing" secondItem="3Nq-Bt-ovQ" secondAttribute="trailing" constant="32" id="uwr-3Y-RBV"/>
+                            <constraint firstItem="si2-Dp-h6s" firstAttribute="leading" secondItem="9SB-V3-nAX" secondAttribute="leading" constant="16" id="WMo-5G-YRp"/>
+                            <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="leading" secondItem="si2-Dp-h6s" secondAttribute="leading" id="lkM-oZ-4NA"/>
+                            <constraint firstItem="3Nq-Bt-ovQ" firstAttribute="trailing" secondItem="si2-Dp-h6s" secondAttribute="trailing" id="tot-Km-4gv"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tell us your favourites" id="7AD-qZ-4JX">
-                        <barButtonItem key="rightBarButtonItem" title="Clear all" id="7KH-5K-ldd"/>
+                        <barButtonItem key="rightBarButtonItem" title="Clear all" id="7KH-5K-ldd">
+                            <connections>
+                                <action selector="clearAllButtonTapped:" destination="Xzm-zb-a3t" id="RVk-3L-i0J"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="brandsCollectionView" destination="3Nq-Bt-ovQ" id="Tsl-Lq-ZWF"/>
-                        <outlet property="goButton" destination="Wo2-HJ-54b" id="aar-AG-wHK"/>
+                        <outlet property="getOutfitButton" destination="Wo2-HJ-54b" id="aar-AG-wHK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVE-B9-uYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
