@@ -40,9 +40,26 @@ class BrandsViewController: UIViewController {
         super.viewDidLoad()
         configureItems()
         configureLayout()
+        configureContent(sized: view.frame.size)
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        brandsCollectionView.reloadData()
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        configureContent(sized: size)
     }
     
     // MARK: - Methods
+    /// Configure the number of cells per row depending on view size
+    /// - Parameter size: view size for which we need to configure brand cells per row
+    func configureContent(sized size: CGSize) {
+        BrandCell.cellsPerRow = size.height < size.width ? 6 : 3
+    }
+    
     /// Start loading items from the server
     func configureItems() {
         // Check that there are no loaded items

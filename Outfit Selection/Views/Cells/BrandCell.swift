@@ -10,6 +10,9 @@ import UIKit
 
 class BrandCell: UICollectionViewCell {
     // MARK: - Static Properties
+    /// Number of cells to fit in one row
+    static var cellsPerRow = 3
+    
     /// Horizontal padding around brand image view in the cell
     static let horizontalPadding: CGFloat = 8
     
@@ -35,6 +38,7 @@ class BrandCell: UICollectionViewCell {
         [brandImageViewBottomConstraint, brandImageViewTopConstraint]
     }
     
+    // MARK: - Methods
     /// Configure brand cell with given branded image
     /// - Parameter brandedImage: the branded image to configure the brand cell with
     func configure(brandedImage: BrandedImage, in collectionView: UICollectionView) {
@@ -46,7 +50,7 @@ class BrandCell: UICollectionViewCell {
         verticalPaddingConstraints.forEach { $0.constant = BrandCell.verticalPadding }
         
         // Set min brand image view height and width
-        let cellSide = (collectionView.bounds.size.width - 32) / 3
+        let cellSide = (collectionView.bounds.size.width - 32) / CGFloat(BrandCell.cellsPerRow)
         brandImageViewHeightConstraint.constant = cellSide - 2 * BrandCell.verticalPadding
         brandImageViewWidthConstraint.constant = cellSide - 2 * BrandCell.horizontalPadding
     }
