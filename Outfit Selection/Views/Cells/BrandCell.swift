@@ -55,8 +55,10 @@ class BrandCell: UICollectionViewCell {
     }
     
     /// Configure brand cell with given branded image
-    /// - Parameter brandedImage: the branded image to configure the brand cell with
-    func configure(brandedImage: BrandedImage, in collectionView: UICollectionView) {
+    /// - Parameters:
+    ///   - brandedImage: the branded image to configure the brand cell with
+    ///   - cellSide: the size of a single side of the cell
+    func configure(brandedImage: BrandedImage, cellSide: CGFloat) {
         // Configure cell background
         configureBackground(isSelected: brandedImage.isSelected)
         
@@ -68,8 +70,6 @@ class BrandCell: UICollectionViewCell {
         verticalPaddingConstraints.forEach { $0.constant = BrandCell.verticalPadding }
         
         // Set min brand image view height and width
-        let columns = CGFloat(BrandCell.cellsPerRow)
-        let cellSide = (collectionView.bounds.size.width - 10 * columns - 32) / columns
         brandImageViewHeightConstraint.constant = cellSide - 2 * BrandCell.verticalPadding
         brandImageViewWidthConstraint.constant = cellSide - 2 * BrandCell.horizontalPadding
     }

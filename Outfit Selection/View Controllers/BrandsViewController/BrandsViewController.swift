@@ -17,7 +17,7 @@ class BrandsViewController: UIViewController {
     /// Go button at the bottom of the screen
     @IBOutlet weak var getOutfitButton: UIButton!
     
-    // MARK: - Properties
+    // MARK: - Stored Properties
     /// Gender selected on gender selection screen
     var gender: Gender? {
         didSet {
@@ -34,6 +34,13 @@ class BrandsViewController: UIViewController {
     
     /// The collection of brand images
     let brandedImages = BrandManager.shared.brandedImages
+    
+    // MARK: - Computed Properties
+    /// Number of columns in the brands collection view
+    var columns: CGFloat { CGFloat(BrandCell.cellsPerRow) }
+    
+    /// The size of single side of the cell in the brands collection view
+    var cellSide: CGFloat { floor((brandsCollectionView.bounds.size.width - 10 * columns - 32) / columns) }
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {
