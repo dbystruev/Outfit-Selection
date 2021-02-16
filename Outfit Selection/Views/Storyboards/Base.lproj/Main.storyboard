@@ -667,7 +667,7 @@
                         <outlet property="descriptionLabel" destination="mWa-JN-GW5" id="Abp-bH-nG3"/>
                         <outlet property="logoImageView" destination="wZv-pk-BHm" id="yQQ-S8-Ho0"/>
                         <outlet property="startingLogoImageView" destination="M5K-e7-I01" id="gVf-sV-UQi"/>
-                        <segue destination="Xzm-zb-a3t" kind="show" identifier="BrandsViewControllerSegue" id="qpH-Ap-Q2C"/>
+                        <segue destination="Xzm-zb-a3t" kind="show" identifier="BrandsViewControllerSegue" destinationCreationSelector="checkmarkImageView:" id="qpH-Ap-Q2C"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YuV-Jk-aUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -712,15 +712,22 @@
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kZX-Wt-GDk">
                                                             <rect key="frame" x="0.0" y="0.0" width="114" height="82"/>
                                                             <constraints>
-                                                                <constraint firstAttribute="height" relation="lessThanOrEqual" constant="82" id="HC6-0c-8wS"/>
-                                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="114" id="mcG-CA-nsv"/>
+                                                                <constraint firstAttribute="height" constant="82" id="HC6-0c-8wS"/>
+                                                                <constraint firstAttribute="width" constant="114" id="mcG-CA-nsv"/>
                                                             </constraints>
+                                                        </imageView>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="y9o-Fl-Di0">
+                                                            <rect key="frame" x="28.666666666666664" y="20.666666666666671" width="56.999999999999993" height="41"/>
                                                         </imageView>
                                                     </subviews>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <constraints>
+                                                        <constraint firstItem="y9o-Fl-Di0" firstAttribute="height" secondItem="kZX-Wt-GDk" secondAttribute="height" multiplier="0.5" id="2id-tZ-coB"/>
                                                         <constraint firstAttribute="trailing" secondItem="kZX-Wt-GDk" secondAttribute="trailing" id="MTs-dK-IEg"/>
+                                                        <constraint firstItem="y9o-Fl-Di0" firstAttribute="width" secondItem="kZX-Wt-GDk" secondAttribute="width" multiplier="0.5" id="QRm-Wg-lrN"/>
                                                         <constraint firstAttribute="bottom" secondItem="kZX-Wt-GDk" secondAttribute="bottom" id="WGU-Gu-qlW"/>
+                                                        <constraint firstItem="y9o-Fl-Di0" firstAttribute="centerX" secondItem="kZX-Wt-GDk" secondAttribute="centerX" id="bfk-hV-apG"/>
+                                                        <constraint firstItem="y9o-Fl-Di0" firstAttribute="centerY" secondItem="kZX-Wt-GDk" secondAttribute="centerY" id="cpA-4w-tS6"/>
                                                         <constraint firstItem="kZX-Wt-GDk" firstAttribute="leading" secondItem="aIa-h2-yPi" secondAttribute="leading" id="crk-Dg-ivT"/>
                                                         <constraint firstItem="kZX-Wt-GDk" firstAttribute="top" secondItem="aIa-h2-yPi" secondAttribute="top" id="rDW-JK-JRS"/>
                                                     </constraints>
@@ -742,6 +749,7 @@
                                             <outlet property="brandImageViewTopConstraint" destination="rDW-JK-JRS" id="NuZ-F6-EiL"/>
                                             <outlet property="brandImageViewTrailingConstraint" destination="MTs-dK-IEg" id="4ci-Ow-gWH"/>
                                             <outlet property="brandImageViewWidthConstraint" destination="mcG-CA-nsv" id="fUV-ZZ-Pjf"/>
+                                            <outlet property="checkmarkImageView" destination="y9o-Fl-Di0" id="JyU-PX-Bbr"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -803,6 +811,7 @@
     </scenes>
     <resources>
         <image name="add" width="50" height="50"/>
+        <image name="checkmark" width="29.333333969116211" height="21.666666030883789"/>
         <image name="female_icon" width="19.666666030883789" height="28"/>
         <image name="heart" width="32" height="32"/>
         <image name="heart.fill" width="32" height="32"/>

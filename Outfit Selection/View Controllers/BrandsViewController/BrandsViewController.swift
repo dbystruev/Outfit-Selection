@@ -44,11 +44,13 @@ class BrandsViewController: UIViewController {
     }
     
     override func viewWillLayoutSubviews() {
+        debug()
         super.viewWillLayoutSubviews()
         brandsCollectionView.reloadData()
     }
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        debug()
         super.viewWillTransition(to: size, with: coordinator)
         configureContent(sized: size)
     }

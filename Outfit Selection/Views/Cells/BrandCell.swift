@@ -28,6 +28,7 @@ class BrandCell: UICollectionViewCell {
     @IBOutlet weak var brandImageViewTopConstraint: NSLayoutConstraint!
     @IBOutlet weak var brandImageViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var brandImageViewWidthConstraint: NSLayoutConstraint!
+    @IBOutlet weak var checkmarkImageView: UIImageView!
     
     /// Horizontal padding constraints surrounding brand image view in the cell
     var horizontalPaddingConstraints: [NSLayoutConstraint] {
@@ -48,6 +49,9 @@ class BrandCell: UICollectionViewCell {
         
         // Make corners round
         brandImageContainerView.layer.cornerRadius = brandImageContainerView.frame.size.width / 2
+        
+        // Show / hide checkmark image view depending on selection
+        checkmarkImageView.isHidden = !isSelected
     }
     
     /// Configure brand cell with given branded image
