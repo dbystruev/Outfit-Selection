@@ -23,7 +23,8 @@ class GenderViewController: UIViewController {
     /// Initial position of Get Outfit logo
     @IBOutlet weak var startingLogoImageView: UIImageView!
     
-    // MARK: - Properties
+    // MARK: - Inherited Computed Properties
+    // MARK: - Stored Properties
     /// Flag which indicates if this is the first appearance of this view controller (true) or we came back from navigation stack (false)
     var firstAppearance = true
     
@@ -59,8 +60,17 @@ class GenderViewController: UIViewController {
         // Hide toolbar at the bottom
         navigationController?.isToolbarHidden = true
         
+        // Make navigation controller bar style dark in order for status bar to become light
+        navigationController?.navigationBar.barStyle = .black
+        
         // Hide navigation bar on top
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    /// Return navigation controller bar style back to normal
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.barStyle = .default
     }
     
     /// Animate logo to the new position, hide description and unhide button stack view
@@ -91,7 +101,7 @@ class GenderViewController: UIViewController {
                 self.buttonStackView.alpha = 1
             }
         }
-
+        
     }
     
     // MARK: - Actions

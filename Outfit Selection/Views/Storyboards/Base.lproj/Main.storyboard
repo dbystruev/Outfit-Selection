@@ -586,7 +586,7 @@
                                     <constraint firstAttribute="height" constant="50" id="U5K-ly-LFt"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Get Outfit is a personalised styling platform" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWa-JN-GW5">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Get Outfit  — your personal styling platform" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWa-JN-GW5">
                                 <rect key="frame" x="67" y="419" width="241" height="40.666666666666686"/>
                                 <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="15"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -659,7 +659,9 @@
                             </mask>
                         </variation>
                     </view>
-                    <navigationItem key="navigationItem" id="7WD-IW-RjP"/>
+                    <navigationItem key="navigationItem" id="7WD-IW-RjP">
+                        <barButtonItem key="backBarButtonItem" title=" " id="Ya0-gk-aqI"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="buttonStackView" destination="u5r-N2-btI" id="LBT-u4-qUd"/>
                         <outlet property="descriptionLabel" destination="mWa-JN-GW5" id="Abp-bH-nG3"/>
@@ -672,7 +674,7 @@
             </objects>
             <point key="canvasLocation" x="-1255" y="137"/>
         </scene>
-        <!--Select Brands-->
+        <!--Tell us your favourites-->
         <scene sceneID="D6N-mj-93I">
             <objects>
                 <viewController storyboardIdentifier="BrandsViewController" id="Xzm-zb-a3t" customClass="BrandsViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
@@ -754,7 +756,9 @@
                             <constraint firstItem="9SB-V3-nAX" firstAttribute="trailing" secondItem="3Nq-Bt-ovQ" secondAttribute="trailing" constant="32" id="uwr-3Y-RBV"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Select Brands" id="7AD-qZ-4JX"/>
+                    <navigationItem key="navigationItem" title="Tell us your favourites" id="7AD-qZ-4JX">
+                        <barButtonItem key="rightBarButtonItem" title="Clear all" id="7KH-5K-ldd"/>
+                    </navigationItem>
                     <connections>
                         <outlet property="brandsCollectionView" destination="3Nq-Bt-ovQ" id="Tsl-Lq-ZWF"/>
                         <outlet property="goButton" destination="Wo2-HJ-54b" id="aar-AG-wHK"/>
