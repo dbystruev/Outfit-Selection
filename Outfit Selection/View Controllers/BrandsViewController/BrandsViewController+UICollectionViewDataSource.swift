@@ -21,10 +21,11 @@ extension BrandsViewController: UICollectionViewDataSource {
         brandCell.brandImageView.image = brandImage
         
         // Set min brand view image height and width
-        let cellWidth = (collectionView.bounds.size.width - 32) / 3
-        brandCell.brandImageViewHeightConstraint.constant = cellWidth - 2 * BrandCell.padding
-        brandCell.brandImageViewWidthConstraint.constant = cellWidth - 2 * BrandCell.padding
-        brandCell.paddingConstraints.forEach { $0.constant = BrandCell.padding }
+        let cellSide = (collectionView.bounds.size.width - 32) / 3
+        brandCell.brandImageViewHeightConstraint.constant = cellSide - 2 * BrandCell.verticalPadding
+        brandCell.brandImageViewWidthConstraint.constant = cellSide - 2 * BrandCell.horizontalPadding
+        brandCell.horizontalPaddingConstraints.forEach { $0.constant = BrandCell.horizontalPadding }
+        brandCell.verticalPaddingConstraints.forEach { $0.constant = BrandCell.verticalPadding }
         
         return brandCell
     }

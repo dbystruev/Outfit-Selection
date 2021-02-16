@@ -10,8 +10,11 @@ import UIKit
 
 class BrandCell: UICollectionViewCell {
     // MARK: - Static Properties
-    /// Padding around brand image view in the cell
-    static let padding: CGFloat = 20
+    /// Horizontal padding around brand image view in the cell
+    static let horizontalPadding: CGFloat = 8
+    
+    /// Vertical padding around brand image view in the cell
+    static let verticalPadding: CGFloat = 24
     
     // MARK: - Outlets
     @IBOutlet weak var brandImageView: UIImageView!
@@ -22,8 +25,13 @@ class BrandCell: UICollectionViewCell {
     @IBOutlet weak var brandImageViewTrailingConstraint: NSLayoutConstraint!
     @IBOutlet weak var brandImageViewWidthConstraint: NSLayoutConstraint!
     
-    /// Constraints surrounding brand image view in the cell
-    var paddingConstraints: [NSLayoutConstraint] {
-        [brandImageViewBottomConstraint, brandImageViewLeadingConstraint, brandImageViewTopConstraint, brandImageViewTrailingConstraint]
+    /// Horizontal padding constraints surrounding brand image view in the cell
+    var horizontalPaddingConstraints: [NSLayoutConstraint] {
+        [brandImageViewLeadingConstraint, brandImageViewTrailingConstraint]
+    }
+    
+    /// Vertical padding constraints surrounding brand image view in the cell
+    var verticalPaddingConstraints: [NSLayoutConstraint] {
+        [brandImageViewBottomConstraint, brandImageViewTopConstraint]
     }
 }
