@@ -557,12 +557,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="Wyr-mt-DXx" kind="relationship" relationship="rootViewController" id="evX-e4-ftA"/>
+                        <segue destination="MDY-In-wrG" kind="relationship" relationship="rootViewController" id="kuy-JE-18J"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7l-Lq-BzI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-3327" y="137"/>
+            <point key="canvasLocation" x="-2202" y="137"/>
         </scene>
         <!--Gender View Controller-->
         <scene sceneID="spj-y5-PFP">
@@ -572,14 +572,27 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="wZv-pk-BHm">
+                            <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="wZv-pk-BHm">
                                 <rect key="frame" x="71.666666666666686" y="297" width="232" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="JGj-fQ-qqf"/>
                                     <constraint firstAttribute="width" constant="232" id="bFB-8h-xjr"/>
                                 </constraints>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="u5r-N2-btI">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="M5K-e7-I01">
+                                <rect key="frame" x="71.666666666666686" y="361" width="232" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="2jy-aQ-pnc"/>
+                                    <constraint firstAttribute="height" constant="50" id="U5K-ly-LFt"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Get Outfit is a personalised styling platform" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mWa-JN-GW5">
+                                <rect key="frame" x="67" y="419" width="241" height="40.666666666666686"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="u5r-N2-btI">
                                 <rect key="frame" x="16" y="495" width="343" height="218"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eoO-DX-4zW" customClass="GenderButton" customModule="Outfit_Selection" customModuleProvider="target">
@@ -626,14 +639,19 @@
                         <color key="backgroundColor" red="0.46932125089999999" green="0.53824871780000005" blue="0.51836496590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wZv-pk-BHm" firstAttribute="centerX" secondItem="ghD-z1-L7l" secondAttribute="centerX" id="60u-W5-Q1Y"/>
-                            <constraint firstItem="u5r-N2-btI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wZv-pk-BHm" secondAttribute="bottom" constant="16" id="DLl-na-hTZ"/>
-                            <constraint firstItem="DNN-q1-Nvf" firstAttribute="trailing" secondItem="u5r-N2-btI" secondAttribute="trailing" priority="750" constant="16" id="EuD-n3-ZVO"/>
+                            <constraint firstItem="M5K-e7-I01" firstAttribute="centerY" secondItem="ghD-z1-L7l" secondAttribute="centerY" multiplier="386 / 406" priority="750" id="9PW-be-ztB"/>
+                            <constraint firstItem="u5r-N2-btI" firstAttribute="top" relation="greaterThanOrEqual" secondItem="wZv-pk-BHm" secondAttribute="bottom" priority="750" constant="8" id="DLl-na-hTZ"/>
+                            <constraint firstAttribute="trailing" secondItem="u5r-N2-btI" secondAttribute="trailing" priority="750" constant="16" id="EuD-n3-ZVO"/>
+                            <constraint firstItem="mWa-JN-GW5" firstAttribute="centerX" secondItem="M5K-e7-I01" secondAttribute="centerX" id="FA2-Rn-RYa"/>
                             <constraint firstItem="u5r-N2-btI" firstAttribute="centerX" secondItem="ghD-z1-L7l" secondAttribute="centerX" id="IAL-FY-qk8"/>
-                            <constraint firstItem="u5r-N2-btI" firstAttribute="leading" secondItem="DNN-q1-Nvf" secondAttribute="leading" priority="750" constant="16" id="Pvu-h7-ZfJ"/>
+                            <constraint firstItem="u5r-N2-btI" firstAttribute="leading" secondItem="ghD-z1-L7l" secondAttribute="leading" priority="750" constant="16" id="Pvu-h7-ZfJ"/>
                             <constraint firstItem="DNN-q1-Nvf" firstAttribute="bottom" secondItem="u5r-N2-btI" secondAttribute="bottom" constant="16" id="akC-Xv-cKI"/>
+                            <constraint firstItem="mWa-JN-GW5" firstAttribute="width" secondItem="ghD-z1-L7l" secondAttribute="width" multiplier="241:375" id="bD3-gD-asg"/>
+                            <constraint firstItem="M5K-e7-I01" firstAttribute="centerX" secondItem="ghD-z1-L7l" secondAttribute="centerX" id="cTW-8V-Z2y"/>
                             <constraint firstItem="wZv-pk-BHm" firstAttribute="centerY" secondItem="ghD-z1-L7l" secondAttribute="centerY" multiplier="322 / 406" priority="750" id="iED-Vu-7pe"/>
+                            <constraint firstItem="mWa-JN-GW5" firstAttribute="top" secondItem="M5K-e7-I01" secondAttribute="bottom" constant="8" symbolic="YES" id="mCt-3C-nVf"/>
                             <constraint firstItem="wZv-pk-BHm" firstAttribute="top" secondItem="DNN-q1-Nvf" secondAttribute="top" priority="250" constant="16" id="mFs-rB-Ohm"/>
-                            <constraint firstItem="wZv-pk-BHm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DNN-q1-Nvf" secondAttribute="top" constant="16" id="tOJ-hV-O2C"/>
+                            <constraint firstItem="wZv-pk-BHm" firstAttribute="top" relation="greaterThanOrEqual" secondItem="DNN-q1-Nvf" secondAttribute="top" constant="8" id="tOJ-hV-O2C"/>
                         </constraints>
                         <variation key="heightClass=compact">
                             <mask key="constraints">
@@ -643,7 +661,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="7WD-IW-RjP"/>
                     <connections>
+                        <outlet property="buttonStackView" destination="u5r-N2-btI" id="LBT-u4-qUd"/>
+                        <outlet property="descriptionLabel" destination="mWa-JN-GW5" id="Abp-bH-nG3"/>
                         <outlet property="logoImageView" destination="wZv-pk-BHm" id="yQQ-S8-Ho0"/>
+                        <outlet property="startingLogoImageView" destination="M5K-e7-I01" id="gVf-sV-UQi"/>
                         <segue destination="Xzm-zb-a3t" kind="show" identifier="BrandsViewControllerSegue" id="qpH-Ap-Q2C"/>
                     </connections>
                 </viewController>
@@ -742,49 +763,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVE-B9-uYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-294" y="137"/>
-        </scene>
-        <!--Logo View Controller-->
-        <scene sceneID="80x-lJ-lXv">
-            <objects>
-                <viewController id="Wyr-mt-DXx" customClass="LogoViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="lp4-qk-me2">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="kyl-Qg-dc7">
-                                <rect key="frame" x="71.666666666666686" y="361" width="232" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="HzE-U7-YFd"/>
-                                    <constraint firstAttribute="width" constant="232" id="pIz-hj-Usc"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Outfit is a personalised styling platform" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WRx-OI-IIK">
-                                <rect key="frame" x="67" y="419" width="241" height="40.666666666666686"/>
-                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="15"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="Iry-5g-BWL"/>
-                        <color key="backgroundColor" red="0.46932125089999999" green="0.53824871780000005" blue="0.51836496590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="kyl-Qg-dc7" firstAttribute="centerX" secondItem="lp4-qk-me2" secondAttribute="centerX" id="46q-rs-xQC"/>
-                            <constraint firstItem="kyl-Qg-dc7" firstAttribute="centerY" secondItem="lp4-qk-me2" secondAttribute="centerY" multiplier="386 / 406" id="KIV-6g-Ewl"/>
-                            <constraint firstItem="WRx-OI-IIK" firstAttribute="centerX" secondItem="lp4-qk-me2" secondAttribute="centerX" id="PvV-pP-q0D"/>
-                            <constraint firstItem="WRx-OI-IIK" firstAttribute="top" secondItem="kyl-Qg-dc7" secondAttribute="bottom" constant="8" symbolic="YES" id="RYl-Mo-crj"/>
-                            <constraint firstItem="WRx-OI-IIK" firstAttribute="width" secondItem="Iry-5g-BWL" secondAttribute="width" multiplier="241:375" id="d5V-aV-a3T"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" id="chG-0Q-ezW"/>
-                    <connections>
-                        <outlet property="descriptionLabel" destination="WRx-OI-IIK" id="cb0-vv-jee"/>
-                        <outlet property="logoImageView" destination="kyl-Qg-dc7" id="juV-Il-8N4"/>
-                        <segue destination="MDY-In-wrG" kind="show" identifier="GenderViewControllerSegue" id="6DD-d6-XSH"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="mnY-gB-juC" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2306" y="137"/>
         </scene>
     </scenes>
     <resources>

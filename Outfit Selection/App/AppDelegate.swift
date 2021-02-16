@@ -20,10 +20,30 @@ func debug(line: Int = #line,
 }
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder {
     var window: UIWindow?
     
+    // MARK: - Methods
+    /// Update the list of categories from the server
+    func updateCategories() {
+        NetworkManager.shared.getCategories { categories in
+            // Make sure we don't update to the empty list of categories
+            guard let categories = categories, !categories.isEmpty else { return }
+            
+            Category.all = categories
+        }
+    }
+}
+
+// MARK: - UIApplicationDelegate
+extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        
+        // Make sure we use the most recent URL
+        NetworkManager.shared.updateURL() { _ in
+            // Update the list of categories from the server
+            self.updateCategories()
+        }
         
         // Change global tint color
         UIView.appearance().tintColor = #colorLiteral(red: 0.4693212509, green: 0.5382487178, blue: 0.5183649659, alpha: 1)
@@ -36,4 +56,3 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 }
-

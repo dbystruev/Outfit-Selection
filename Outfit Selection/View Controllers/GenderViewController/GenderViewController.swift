@@ -11,9 +11,22 @@ import UIKit
 class GenderViewController: UIViewController {
     
     // MARK: - Outlets
+    /// Gender selection buttons stack view
+    @IBOutlet weak var buttonStackView: UIStackView!
+    
+    /// Label with text "Get Outfit is a personalised styling platform"
+    @IBOutlet weak var descriptionLabel: UILabel!
+    
+    /// Final position of Get Outfit logo
     @IBOutlet weak var logoImageView: UIImageView!
     
+    /// Initial position of Get Outfit logo
+    @IBOutlet weak var startingLogoImageView: UIImageView!
+    
     // MARK: - Properties
+    /// Flag which indicates if this is the first appearance of this view controller (true) or we came back from navigation stack (false)
+    var firstAppearance = true
+    
     /// Gender selected by user
     var gender = Gender.other
     
@@ -48,6 +61,37 @@ class GenderViewController: UIViewController {
         
         // Hide navigation bar on top
         navigationController?.navigationBar.isHidden = true
+    }
+    
+    /// Animate logo to the new position, hide description and unhide button stack view
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        // Animate only if we came from logo screen
+        guard firstAppearance else { return }
+        
+        firstAppearance = false
+        
+        // Animate logo image view shift and description label fading
+        UIView.animate(withDuration: 1) {
+            self.descriptionLabel.alpha = 0
+            self.startingLogoImageView.frame = self.logoImageView.frame
+        } completion: { _ in
+            // Hide outlets from the logo screen
+            self.descriptionLabel.isHidden = true
+            self.startingLogoImageView.isHidden = true
+            
+            // Show outlets at the gender screen
+            self.buttonStackView.alpha = 0
+            self.buttonStackView.isHidden = false
+            self.logoImageView.isHidden = false
+            
+            // Animate button stack view unfading
+            UIView.animate(withDuration: 1) {
+                self.buttonStackView.alpha = 1
+            }
+        }
+
     }
     
     // MARK: - Actions
