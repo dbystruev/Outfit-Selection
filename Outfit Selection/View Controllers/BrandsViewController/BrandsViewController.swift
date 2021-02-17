@@ -53,6 +53,13 @@ class BrandsViewController: UIViewController {
         configureContent(sized: view.frame.size)
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide toolbar at the bottom
+        navigationController?.isToolbarHidden = true
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         brandsCollectionView.reloadData()

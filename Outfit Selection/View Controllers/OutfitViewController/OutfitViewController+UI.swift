@@ -85,7 +85,8 @@ extension OutfitViewController {
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
         toolbarItems = [priceButtonItem, spaceItem, diceButtonItem, spaceItem, brandButtonItem]
         
-        navigationController?.setToolbarHidden(false, animated: false)
+        // Show toolbar at the bottom
+        navigationController?.isToolbarHidden = false
     }
     
     func setupUI() {
