@@ -10,17 +10,6 @@ import UIKit
 
 // MARK: - UI
 extension OutfitViewController {
-    func configureGenderItem() {
-        switch gender {
-        case .female:
-            genderItem.image = UIImage(named: "female_icon")
-        case .male:
-            genderItem.image = UIImage(named: "male_icon")
-        default:
-            genderItem.image = UIImage(named: "other_icon")
-        }
-    }
-    
     func getScreenshot(of view: UIView) -> UIImage? {
         // Set screenshot size to Instagram story size 1080x1920
         // https://www.picmonkey.com/blog/size-matters-instagram-photo-sizes-made-easy
@@ -90,10 +79,8 @@ extension OutfitViewController {
     }
     
     func setupUI() {
-        let logoImage = UIImage(named: "logo")
-        let logoImageView = UIImageView(image: logoImage)
-        logoImageView.contentMode = .scaleAspectFit
-        navigationItem.titleView = logoImageView
+        // Hide back button
+        navigationItem.hidesBackButton = true
         
         setupToolbar()
         updateButtons()
@@ -124,7 +111,7 @@ extension OutfitViewController {
     }
     
     func updateCountButtonItem(with count: Int) {
-        priceButtonItem.title = titleForCountButtonItem(count)
+        priceButtonItem?.title = titleForCountButtonItem(count)
     }
     
     func updateItemCount() {
@@ -138,7 +125,7 @@ extension OutfitViewController {
             return
         }
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.priceButtonItem.title = title
+            self.priceButtonItem?.title = title
         }
     }
 }

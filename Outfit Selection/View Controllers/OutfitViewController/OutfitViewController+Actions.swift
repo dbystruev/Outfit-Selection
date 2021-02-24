@@ -10,12 +10,6 @@ import UIKit
 
 // MARK: - Actions
 extension OutfitViewController {
-    @IBAction func addButtonTapped(sender: UIBarButtonItem) {
-        unpin()
-        selectedAction = isEditing ? .cancel : .add
-        setEditing(!isEditing, animated: true)
-    }
-    
     @IBAction func bookmarksButtonTapped(_ sender: UIBarButtonItem) {
         selectedAction = isEditing ? .cancel : .bookmarks
         setEditing(!isEditing, animated: true)
@@ -70,10 +64,6 @@ extension OutfitViewController {
             scrollView.deleteImageView(withIndex: indexToDelete)
             self.updateItemCount()
         }
-    }
-    
-    @IBAction func genderItemTapped(_ sender: UIBarButtonItem) {
-        presentGenderViewController()
     }
     
     @IBAction func greenPlusButtonTapped(_ sender: UIButton) {

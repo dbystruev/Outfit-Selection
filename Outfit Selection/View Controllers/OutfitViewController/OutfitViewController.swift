@@ -26,11 +26,7 @@ class OutfitViewController: UIViewController {
     var diceButtonItem: UIBarButtonItem!
     
     /// Gender selected on female male screen
-    var gender = Gender.other {
-        didSet {
-            configureGenderItem()
-        }
-    }
+    var gender = Gender.other
     
     var selectedAction = UIBarButtonItem.SystemItem.cancel {
         didSet {

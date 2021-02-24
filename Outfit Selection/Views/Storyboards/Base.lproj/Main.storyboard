@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="1345" y="-198"/>
         </scene>
-        <!--Outfit View Controller-->
+        <!--Outfit-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController storyboardIdentifier="OutfitViewController" id="BYZ-38-t0r" customClass="OutfitViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
@@ -423,26 +423,14 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="hWK-Fq-NLp" secondAttribute="bottom" id="tCy-uI-xtF"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="NXz-cG-HPg">
-                        <leftBarButtonItems>
-                            <barButtonItem systemItem="add" id="7Y5-wx-eaw">
-                                <connections>
-                                    <action selector="addButtonTappedWithSender:" destination="BYZ-38-t0r" id="c1y-tu-fB6"/>
-                                </connections>
-                            </barButtonItem>
-                            <barButtonItem image="female_icon" id="rBZ-Hp-bbB">
-                                <connections>
-                                    <action selector="genderItemTapped:" destination="BYZ-38-t0r" id="6Ll-4Q-onU"/>
-                                </connections>
-                            </barButtonItem>
-                        </leftBarButtonItems>
+                    <navigationItem key="navigationItem" title="Outfit" id="NXz-cG-HPg">
                         <rightBarButtonItems>
-                            <barButtonItem systemItem="action" id="2AA-iP-MGy">
+                            <barButtonItem image="share" id="2AA-iP-MGy">
                                 <connections>
                                     <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="q04-4G-p2d"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="heart" id="ka5-GL-mJm">
+                            <barButtonItem image="hanger" id="ka5-GL-mJm">
                                 <connections>
                                     <action selector="bookmarksButtonTapped:" destination="BYZ-38-t0r" id="BWA-2Z-RUP"/>
                                 </connections>
@@ -450,7 +438,6 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="genderItem" destination="rBZ-Hp-bbB" id="GMG-XX-9tc"/>
                         <outletCollection property="greenPlusButtons" destination="Qrh-Mc-QXc" collectionClass="NSMutableArray" id="ceP-hT-fRt"/>
                         <outletCollection property="greenPlusButtons" destination="6d8-jy-X4g" collectionClass="NSMutableArray" id="ta9-oQ-ufj"/>
                         <outletCollection property="greenPlusButtons" destination="veY-L1-vFI" collectionClass="NSMutableArray" id="VIv-ua-9uO"/>
@@ -866,12 +853,13 @@
     <resources>
         <image name="add" width="50" height="50"/>
         <image name="checkmark" width="29.333333969116211" height="21.666666030883789"/>
-        <image name="female_icon" width="19.666666030883789" height="28"/>
+        <image name="hanger" width="32" height="23.333333969116211"/>
         <image name="heart" width="32" height="32"/>
         <image name="heart.fill" width="32" height="32"/>
         <image name="heart.slash" catalog="system" width="128" height="115"/>
         <image name="heart.slash" width="32" height="32"/>
         <image name="logo_white" width="299" height="96"/>
+        <image name="share" width="21.666666030883789" height="22.333333969116211"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
