@@ -46,6 +46,20 @@ class BrandsViewController: UIViewController {
     fileprivate var cellWidth: CGFloat { floor(brandsCollectionView.bounds.size.width / CGFloat(BrandCell.cellsPerRow)) }
     
     // MARK: - Inherited Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "ProgressViewControllerSegue" else {
+            debug("Navigation Error: can't find ProgressViewControllerSegue")
+            return
+        }
+        
+        guard let progressViewController = segue.destination as? ProgressViewController else {
+            debug("Navigation Error: can't find ProgressViewController")
+            return
+        }
+        
+        progressViewController.gender = gender
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureItems()

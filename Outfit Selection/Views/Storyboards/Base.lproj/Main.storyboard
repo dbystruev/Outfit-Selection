@@ -562,7 +562,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="E7l-Lq-BzI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2202" y="137"/>
+            <point key="canvasLocation" x="-2919" y="137"/>
         </scene>
         <!--Gender View Controller-->
         <scene sceneID="spj-y5-PFP">
@@ -672,7 +672,23 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YuV-Jk-aUT" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1255" y="137"/>
+            <point key="canvasLocation" x="-2030" y="137"/>
+        </scene>
+        <!--Progress View Controller-->
+        <scene sceneID="W7a-eZ-uDB">
+            <objects>
+                <viewController id="BDs-gn-8qG" customClass="ProgressViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xy0-Ea-yLm">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="UVM-HT-Ply"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="yfy-HJ-pZa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7fy-O0-VI0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-274" y="137"/>
         </scene>
         <!--Tell us your favourites-->
         <scene sceneID="D6N-mj-93I">
@@ -806,11 +822,12 @@
                     <connections>
                         <outlet property="brandsCollectionView" destination="3Nq-Bt-ovQ" id="Tsl-Lq-ZWF"/>
                         <outlet property="getOutfitButton" destination="Wo2-HJ-54b" id="aar-AG-wHK"/>
+                        <segue destination="BDs-gn-8qG" kind="show" identifier="ProgressViewControllerSegue" id="b3g-E3-5Vd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SVE-B9-uYe" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-294" y="137"/>
+            <point key="canvasLocation" x="-1174" y="137"/>
         </scene>
     </scenes>
     <resources>
@@ -819,8 +836,8 @@
         <image name="female_icon" width="19.666666030883789" height="28"/>
         <image name="heart" width="32" height="32"/>
         <image name="heart.fill" width="32" height="32"/>
-        <image name="heart.slash" width="32" height="32"/>
         <image name="heart.slash" catalog="system" width="128" height="115"/>
+        <image name="heart.slash" width="32" height="32"/>
         <image name="logo_white" width="299" height="96"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
