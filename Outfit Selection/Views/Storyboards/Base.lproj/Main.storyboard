@@ -313,6 +313,9 @@
                                             <constraint firstAttribute="width" secondItem="EUS-GK-b31" secondAttribute="height" multiplier="1:1" id="CyU-aE-pnS"/>
                                         </constraints>
                                         <state key="normal" image="refresh"/>
+                                        <connections>
+                                            <action selector="refreshButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NXL-2I-Qnf"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <constraints>
@@ -349,6 +352,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="priceLabel" destination="TjY-vq-NEy" id="a2R-Fu-TWq"/>
+                        <outlet property="refreshButton" destination="EUS-GK-b31" id="15N-Hx-Phk"/>
                         <outletCollection property="likeButtons" destination="r2m-cA-WkI" collectionClass="NSMutableArray" id="y1h-UK-MjH"/>
                         <outletCollection property="likeButtons" destination="0yi-5U-Vzn" collectionClass="NSMutableArray" id="FfW-5r-fWB"/>
                         <outletCollection property="likeButtons" destination="3oI-QJ-jlu" collectionClass="NSMutableArray" id="uQP-hd-orQ"/>

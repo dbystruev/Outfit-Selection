@@ -54,21 +54,16 @@ extension OutfitViewController {
     }
     
     func pin() {
+        refreshButton.isEnabled = false
         scrollViews.pin()
-        diceButtonItem.isEnabled = false
     }
     
     func setupToolbar() {
-        // Bottom middle button with dice
-        let diceImage = UIImage(named: "dice")
-        diceButtonItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonTapped(_:)))
-        
         // Bottom right button with brand re-selection
         let brandButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(brandButtonTapped(_:)))
         
         // Add flexible spacing between the items
-        let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbarItems = [diceButtonItem, spaceItem, brandButtonItem]
+        toolbarItems = [brandButtonItem]
         
         // Show toolbar at the bottom
         navigationController?.isToolbarHidden = false
@@ -86,8 +81,8 @@ extension OutfitViewController {
     }
     
     func unpin() {
-        diceButtonItem.isEnabled = true
         likeButtons.forEach { $0.isSelected = false }
+        refreshButton.isEnabled = true
         scrollViews.unpin()
     }
     

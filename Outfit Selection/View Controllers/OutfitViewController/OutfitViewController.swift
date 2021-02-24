@@ -12,13 +12,12 @@ class OutfitViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet var likeButtons: [UIButton]!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet var scrollViews: [PinnableScrollView]!
     
     // MARK: - Stored Properties
     var assetCount = 0
     var brandNames = [String]()
-    var priceButtonItem: UIBarButtonItem!
-    var diceButtonItem: UIBarButtonItem!
     
     /// Gender selected on female male screen
     var gender = Gender.other

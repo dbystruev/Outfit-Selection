@@ -32,7 +32,7 @@ extension OutfitViewController {
     @objc func pinImage(_ sender: UIGestureRecognizer) {
         guard let scrollView = sender.view as? PinnableScrollView else { return }
         scrollView.toggle()
-        diceButtonItem.isEnabled = !scrollViews.allPinned
+        refreshButton.isEnabled = !scrollViews.allPinned
     }
     
     @objc func scrollViewTappedOnce(_ sender: UIGestureRecognizer) {

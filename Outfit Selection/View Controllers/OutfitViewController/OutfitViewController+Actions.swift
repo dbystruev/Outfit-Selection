@@ -14,27 +14,15 @@ extension OutfitViewController {
         presentBrandsViewController()
     }
     
-    @objc func diceButtonTapped(_ sender: UIBarButtonItem) {
-        selectedAction = .cancel
-        setEditing(false, animated: true)
-        scrollViews.forEach {
-            if !$0.isPinned {
-                $0.scrollToRandomElement()
-            }
-        }
-        
-        updatePrice()
-    }
-    
     @IBAction func hangerBarButtonItemTapped(_ sender: UIBarButtonItem) {
         let shouldUnpin = scrollViews.allPinned
-        diceButtonItem.isEnabled = shouldUnpin
         likeButtons.forEach { $0.isHidden = shouldUnpin }
         if shouldUnpin {
             scrollViews.unpin()
         } else {
             scrollViews.pin()
         }
+        refreshButton.isEnabled = shouldUnpin
     }
     
     @IBAction func hangerButtonTapped(_ sender: UIButton) {
@@ -44,7 +32,19 @@ extension OutfitViewController {
         scrollView.toggle()
         
         likeButtons[selectedIndex].isHidden = !scrollView.isPinned
-        diceButtonItem.isEnabled = !scrollViews.allPinned
+        refreshButton.isEnabled = !scrollViews.allPinned
+    }
+    
+    @IBAction func refreshButtonTapped(_ sender: UIButton) {
+        selectedAction = .cancel
+        setEditing(false, animated: true)
+        scrollViews.forEach {
+            if !$0.isPinned {
+                $0.scrollToRandomElement()
+            }
+        }
+        
+        updatePrice()
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
