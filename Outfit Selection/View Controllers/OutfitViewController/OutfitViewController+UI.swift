@@ -59,10 +59,6 @@ extension OutfitViewController {
     }
     
     func setupToolbar() {
-        // Bottom left button with price
-        let priceTitle = OutfitViewController.loadingMessage
-        priceButtonItem = UIBarButtonItem(title: priceTitle, style: .done, target: self, action: #selector(priceButtonTapped(_:)))
-        
         // Bottom middle button with dice
         let diceImage = UIImage(named: "dice")
         diceButtonItem = UIBarButtonItem(image: diceImage, style: .plain, target: self, action: #selector(diceButtonTapped(_:)))
@@ -72,7 +68,7 @@ extension OutfitViewController {
         
         // Add flexible spacing between the items
         let spaceItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
-        toolbarItems = [priceButtonItem, spaceItem, diceButtonItem, spaceItem, brandButtonItem]
+        toolbarItems = [diceButtonItem, spaceItem, brandButtonItem]
         
         // Show toolbar at the bottom
         navigationController?.isToolbarHidden = false
@@ -89,32 +85,29 @@ extension OutfitViewController {
         setupToolbar()
     }
     
-    func titleForCountButtonItem(_ items: Int) -> String {
-        "Items: \(items)"
-    }
-    
     func unpin() {
         diceButtonItem.isEnabled = true
         likeButtons.forEach { $0.isSelected = false }
         scrollViews.unpin()
     }
     
-    func updateCountButtonItem(with count: Int) {
-        priceButtonItem?.title = titleForCountButtonItem(count)
+    func updatePriceLabelWithItemCount(with count: Int) {
+        priceLabel.text = "Items: \(count)"
     }
     
     func updateItemCount() {
-        updateCountButtonItem(with: itemCount)
+        updatePriceLabelWithItemCount(with: itemCount)
         updatePrice()
     }
     
     func updatePrice() {
-        guard let title = price?.asPrice else {
-            updateCountButtonItem(with: itemCount)
+        guard 0 < price else {
+            updatePriceLabelWithItemCount(with: itemCount)
             return
         }
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.priceButtonItem?.title = title
+            self.priceLabel.text = "Outfit price: \(self.price.asPrice)"
         }
     }
 }

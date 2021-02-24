@@ -47,20 +47,6 @@ extension OutfitViewController {
         diceButtonItem.isEnabled = !scrollViews.allPinned
     }
     
-    @objc func priceButtonTapped(_ sender: UIBarButtonItem) {
-        debug("Step 1:", sender.title)
-        if sender.title == OutfitViewController.loadingMessage || sender.title == titleForCountButtonItem(assetCount) {
-            debug("Step 2:", sender.title)
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                if sender.title == OutfitViewController.loadingMessage
-                    || sender.title == self.titleForCountButtonItem(self.assetCount) {
-                    debug("Step 3:", sender.title)
-                    self.loadImages()
-                }
-            }
-        }
-    }
-    
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         setEditing(false, animated: true)
         selectedAction = .cancel

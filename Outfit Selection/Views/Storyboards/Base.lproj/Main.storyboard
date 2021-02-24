@@ -294,10 +294,10 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggf-Jf-cb6">
                                 <rect key="frame" x="16" y="722" width="343" height="56"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Outfit price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TjY-vq-NEy">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TjY-vq-NEy">
                                         <rect key="frame" x="0.0" y="0.0" width="231" height="56"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
+                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="15"/>
+                                        <color key="textColor" red="0.42388966680000001" green="0.42394387719999999" blue="0.42387127879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYh-UG-gmm">
@@ -348,6 +348,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="priceLabel" destination="TjY-vq-NEy" id="a2R-Fu-TWq"/>
                         <outletCollection property="likeButtons" destination="r2m-cA-WkI" collectionClass="NSMutableArray" id="y1h-UK-MjH"/>
                         <outletCollection property="likeButtons" destination="0yi-5U-Vzn" collectionClass="NSMutableArray" id="FfW-5r-fWB"/>
                         <outletCollection property="likeButtons" destination="3oI-QJ-jlu" collectionClass="NSMutableArray" id="uQP-hd-orQ"/>

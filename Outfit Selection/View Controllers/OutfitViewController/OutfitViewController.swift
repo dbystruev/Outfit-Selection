@@ -9,11 +9,9 @@
 import UIKit
 
 class OutfitViewController: UIViewController {
-    // MARK: - Static Constants
-    static let loadingMessage = "Loading..."
-    
     // MARK: - Outlets
     @IBOutlet var likeButtons: [UIButton]!
+    @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet var scrollViews: [PinnableScrollView]!
     
     // MARK: - Stored Properties
@@ -33,10 +31,10 @@ class OutfitViewController: UIViewController {
         scrollViews.reduce(0) { $0 + $1.itemCount }
     }
     
-    var price: Double? {
+    var price: Double {
         var amount = 0.0
         for scrollView in scrollViews {
-            guard let itemPrice = scrollView.item?.price else { return nil }
+            let itemPrice = scrollView.item?.price ?? 0
             amount += itemPrice
         }
         return amount
