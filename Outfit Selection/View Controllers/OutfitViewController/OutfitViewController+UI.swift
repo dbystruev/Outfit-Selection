@@ -61,9 +61,6 @@ extension OutfitViewController {
     func setupUI() {
         // Hide all like buttons
         likeButtons.forEach { $0.isHidden = true }
-        
-        // Hide back button in navigation bar
-        navigationItem.hidesBackButton = true
     }
     
     func unpin() {

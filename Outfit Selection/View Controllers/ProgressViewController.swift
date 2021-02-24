@@ -32,9 +32,13 @@ class ProgressViewController: UIViewController {
 
         // Instantiate the Outfit View Controller
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        let controller = mainStoryboard.instantiateViewController(withIdentifier: "OutfitViewController")
-        guard let outfitViewController = controller as? OutfitViewController else {
-            debug("WARNING: Can't get Outfit View Controller from Storyboard", storyboard)
+        let controller = mainStoryboard.instantiateViewController(withIdentifier: "tabBarController")
+        guard let tabBarController = controller as? UITabBarController else {
+            debug("WARNING: Can't get Tab Bar Controller from the storyboard", mainStoryboard)
+            return
+        }
+        guard let outfitViewController = tabBarController.viewControllers?.first as? OutfitViewController else {
+            debug("WARNING: Can't get Outfit View Controller from the storyboard", mainStoryboard)
             return
         }
         
@@ -70,7 +74,7 @@ class ProgressViewController: UIViewController {
                 self.navigationController?.navigationBar.isHidden = false
 
                 // Push to outfit view controller
-                self.navigationController?.pushViewController(outfitViewController, animated: true)
+                self.navigationController?.pushViewController(tabBarController, animated: true)
             }
         }
 

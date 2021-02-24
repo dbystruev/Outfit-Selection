@@ -48,6 +48,7 @@
 		698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D523238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift */; };
 		698990D82323B9B0002DCA29 /* OutfitViewController+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D72323B9B0002DCA29 /* OutfitViewController+Shake.swift */; };
 		699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 699ABB5A25E6CA3900E388FC /* Welcome.storyboard */; };
+		699ABB5F25E6D54A00E388FC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699ABB5E25E6D54A00E388FC /* TabBarController.swift */; };
 		69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */; };
 		69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F522BA26B7002A3B49 /* OutfitViewController.swift */; };
 		69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A6F6F722BA26B7002A3B49 /* Main.storyboard */; };
@@ -113,6 +114,7 @@
 		698990D523238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+UINavigationControllerDelegate.swift"; sourceTree = "<group>"; };
 		698990D72323B9B0002DCA29 /* OutfitViewController+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+Shake.swift"; sourceTree = "<group>"; };
 		699ABB5A25E6CA3900E388FC /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
+		699ABB5E25E6D54A00E388FC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outfit Selection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69A6F6F522BA26B7002A3B49 /* OutfitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitViewController.swift; sourceTree = "<group>"; };
@@ -339,6 +341,7 @@
 				69AE95582563D43700850210 /* ItemViewController.swift */,
 				69FBB20422F1A86700187562 /* OutfitViewController */,
 				69BA640325E66EDE00C805B6 /* ProgressViewController.swift */,
+				699ABB5E25E6D54A00E388FC /* TabBarController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 				698990D82323B9B0002DCA29 /* OutfitViewController+Shake.swift in Sources */,
 				698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */,
 				69739EB022BA5DF80077E45D /* PinnableScrollView+Extension.swift in Sources */,
+				699ABB5F25E6D54A00E388FC /* TabBarController.swift in Sources */,
 				694E7BEE25DBFFFB006607CD /* UIView+findSuperview.swift in Sources */,
 				696E875B256463160061802E /* Double+asPrice.swift in Sources */,
 				69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */,
