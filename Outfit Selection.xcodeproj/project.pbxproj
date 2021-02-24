@@ -47,6 +47,7 @@
 		698990D42323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D32323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift */; };
 		698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D523238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift */; };
 		698990D82323B9B0002DCA29 /* OutfitViewController+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D72323B9B0002DCA29 /* OutfitViewController+Shake.swift */; };
+		699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 699ABB5A25E6CA3900E388FC /* Welcome.storyboard */; };
 		69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */; };
 		69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F522BA26B7002A3B49 /* OutfitViewController.swift */; };
 		69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A6F6F722BA26B7002A3B49 /* Main.storyboard */; };
@@ -111,6 +112,7 @@
 		698990D32323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+UIImagePickerControllerDelegate.swift"; sourceTree = "<group>"; };
 		698990D523238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+UINavigationControllerDelegate.swift"; sourceTree = "<group>"; };
 		698990D72323B9B0002DCA29 /* OutfitViewController+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+Shake.swift"; sourceTree = "<group>"; };
+		699ABB5A25E6CA3900E388FC /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outfit Selection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69A6F6F522BA26B7002A3B49 /* OutfitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitViewController.swift; sourceTree = "<group>"; };
@@ -344,8 +346,9 @@
 		69A6F70822BA38FB002A3B49 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
-				69A6F6F722BA26B7002A3B49 /* Main.storyboard */,
 				690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */,
+				69A6F6F722BA26B7002A3B49 /* Main.storyboard */,
+				699ABB5A25E6CA3900E388FC /* Welcome.storyboard */,
 			);
 			path = Storyboards;
 			sourceTree = "<group>";
@@ -471,6 +474,7 @@
 				69A6F6FB22BA26BA002A3B49 /* Assets.xcassets in Resources */,
 				696E876925647BF20061802E /* Screenshot03.png in Resources */,
 				69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */,
+				699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */,
 				696E876C25647BF20061802E /* Screenshot01.png in Resources */,
 				690B1F9825BEF54E000CDD51 /* Launch Screen.storyboard in Resources */,
 				696E876825647BF20061802E /* Screenshot04.png in Resources */,

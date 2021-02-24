@@ -58,26 +58,12 @@ extension OutfitViewController {
         scrollViews.pin()
     }
     
-    func setupToolbar() {
-        // Bottom right button with brand re-selection
-        let brandButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(brandButtonTapped(_:)))
-        
-        // Add flexible spacing between the items
-        toolbarItems = [brandButtonItem]
-        
-        // Show toolbar at the bottom
-        navigationController?.isToolbarHidden = false
-    }
-    
     func setupUI() {
         // Hide all like buttons
         likeButtons.forEach { $0.isHidden = true }
         
         // Hide back button in navigation bar
         navigationItem.hidesBackButton = true
-        
-        // Setup toolbar buttons
-        setupToolbar()
     }
     
     func unpin() {

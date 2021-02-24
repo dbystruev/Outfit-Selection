@@ -10,10 +10,6 @@ import UIKit
 
 // MARK: - Actions
 extension OutfitViewController {
-    @objc func brandButtonTapped(_ sender: UIBarButtonItem) {
-        presentBrandsViewController()
-    }
-    
     @IBAction func hangerBarButtonItemTapped(_ sender: UIBarButtonItem) {
         let shouldUnpin = scrollViews.allPinned
         likeButtons.forEach { $0.isHidden = shouldUnpin }

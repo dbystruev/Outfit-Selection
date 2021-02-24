@@ -31,7 +31,8 @@ class ProgressViewController: UIViewController {
         progressView.progress = 0
 
         // Instantiate the Outfit View Controller
-        let controller = storyboard?.instantiateViewController(withIdentifier: "OutfitViewController")
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = mainStoryboard.instantiateViewController(withIdentifier: "OutfitViewController")
         guard let outfitViewController = controller as? OutfitViewController else {
             debug("WARNING: Can't get Outfit View Controller from Storyboard", storyboard)
             return
