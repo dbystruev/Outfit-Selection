@@ -681,10 +681,43 @@
                     <view key="view" contentMode="scaleToFill" id="xy0-Ea-yLm">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_white" translatesAutoresizingMaskIntoConstraints="NO" id="W2u-12-8G8">
+                                <rect key="frame" x="71.666666666666686" y="297" width="232" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="232" id="6o3-02-Hoh"/>
+                                    <constraint firstAttribute="height" constant="50" id="FTp-c3-VCN"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Picking up the right pieces for your perfect outfit" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oVL-m1-YGh">
+                                <rect key="frame" x="16" y="355" width="343" height="19"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="QvA-6t-UnR">
+                                <rect key="frame" x="38.333333333333343" y="382" width="298.33333333333326" height="4"/>
+                                <color key="progressTintColor" red="0.32052502040000003" green="0.37435173989999998" blue="0.37976023549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="trackTintColor" red="0.99991279840000002" green="1" blue="0.99988144639999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </progressView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="UVM-HT-Ply"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.47051721810000002" green="0.53788596389999999" blue="0.51839429140000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="QvA-6t-UnR" firstAttribute="top" secondItem="oVL-m1-YGh" secondAttribute="bottom" constant="8" symbolic="YES" id="2Jq-gT-5VZ"/>
+                            <constraint firstItem="oVL-m1-YGh" firstAttribute="leading" secondItem="UVM-HT-Ply" secondAttribute="leading" constant="16" id="As3-Jy-opM"/>
+                            <constraint firstItem="QvA-6t-UnR" firstAttribute="width" secondItem="oVL-m1-YGh" secondAttribute="width" multiplier="0.87" id="NXm-J2-ymN"/>
+                            <constraint firstItem="W2u-12-8G8" firstAttribute="centerX" secondItem="xy0-Ea-yLm" secondAttribute="centerX" id="R2x-7J-gnf"/>
+                            <constraint firstItem="W2u-12-8G8" firstAttribute="centerY" secondItem="xy0-Ea-yLm" secondAttribute="centerY" multiplier="322 / 406" id="X6f-5u-8nr"/>
+                            <constraint firstItem="QvA-6t-UnR" firstAttribute="centerX" secondItem="xy0-Ea-yLm" secondAttribute="centerX" id="c57-tf-ScY"/>
+                            <constraint firstItem="UVM-HT-Ply" firstAttribute="trailing" secondItem="oVL-m1-YGh" secondAttribute="trailing" constant="16" id="qFl-Nh-dGd"/>
+                            <constraint firstItem="oVL-m1-YGh" firstAttribute="top" secondItem="W2u-12-8G8" secondAttribute="bottom" constant="8" symbolic="YES" id="uuB-Rm-lXw"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="yfy-HJ-pZa"/>
+                    <connections>
+                        <outlet property="progressView" destination="QvA-6t-UnR" id="qhe-oM-XEk"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7fy-O0-VI0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -39,12 +39,16 @@ class ItemManager {
     ///   - gender: gender to filter images by
     ///   - brandNames: brand names to filter images by
     ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
-    func loadImages(filteredBy gender: Gender?, andBy brandNames: [String], completion: @escaping (_ count: Int) -> Void) {
+    func loadImages(filteredBy gender: Gender?, andBy brandNames: [String], completion: @escaping (_ current: Int, _ total: Int) -> Void) {
         // Clear all view models
         clearViewModels()
         
         // Create a dispatch group to stop when all images are loaded
         let group = DispatchGroup()
+        
+        // Counts for progress view update
+        var current = 0
+        var total = 0
         
         /// Loop all categories and view models, whatever number is lower
         for (categories, viewModel) in zip(Category.filtered(by: gender), ItemManager.shared.viewModels) {
@@ -105,6 +109,9 @@ class ItemManager {
                 // Enter the dispatch group for the next get image request
                 group.enter()
                 
+                // Update the number of total images
+                total += 1
+                
                 // Try to get an image for the current item
                 NetworkManager.shared.getImage(pictureURL) { optionalImage in
                     // Make sure we always leave the group
@@ -130,13 +137,21 @@ class ItemManager {
                     
                     // Append image to the end of corresponding image collection view model
                     viewModel.append(image.halved, tag: itemIndex, vendor: item.vendor)
+                    
+                    // Update the number of currently loaded images
+                    current += 1
+                    
+                    // Update progress bar, but avoid final update
+                    if current < total {
+                        completion(current, total)
+                    }
                 }
             }
         }
         
         // Get here when all image network requests are finished
         group.notify(queue: DispatchQueue.global(qos: .background)) {
-            completion(self.count)
+            completion(self.count, self.count)
         }
     }
     
