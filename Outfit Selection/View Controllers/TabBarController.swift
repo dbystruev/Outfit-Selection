@@ -19,6 +19,9 @@ class TabBarController: UITabBarController {
             
             // Configure navigation item title to the currently selected view controller
             navigationItem.title = selectedViewController?.title
+            
+            // Configure navigation item right bar button items to the currently selected view controller
+            navigationItem.rightBarButtonItems = selectedViewController?.navigationItem.rightBarButtonItems
         }
     }
 
