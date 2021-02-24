@@ -10,10 +10,16 @@ import UIKit
 
 // MARK: - Actions
 extension BrandsViewController {
-    @IBAction func clearAllButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func selectAllButtonTapped(_ sender: SelectableButtonItem) {
+        sender.isSelected.toggle()
+        
+        let isSelected = sender.isSelected
+        sender.title = isSelected ? "Clear all" : "Select all"
+        
         brandedImages.forEach {
-            $0.isSelected = false
+            $0.isSelected = isSelected
         }
+        
         brandsCollectionView.reloadData()
     }
     

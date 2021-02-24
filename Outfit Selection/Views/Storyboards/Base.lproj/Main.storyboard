@@ -701,9 +701,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Tell us your favourites" id="7AD-qZ-4JX">
-                        <barButtonItem key="rightBarButtonItem" title="Clear all" id="7KH-5K-ldd">
+                        <barButtonItem key="rightBarButtonItem" title="Select all" id="7KH-5K-ldd" customClass="SelectableButtonItem" customModule="Outfit_Selection" customModuleProvider="target">
                             <connections>
-                                <action selector="clearAllButtonTapped:" destination="Xzm-zb-a3t" id="RVk-3L-i0J"/>
+                                <action selector="selectAllButtonTapped:" destination="Xzm-zb-a3t" id="RVk-3L-i0J"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
