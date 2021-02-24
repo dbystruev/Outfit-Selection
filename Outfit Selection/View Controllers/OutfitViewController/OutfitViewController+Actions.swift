@@ -45,27 +45,6 @@ extension OutfitViewController {
         updatePrice()
     }
     
-    @IBAction func dislikeButtonTapped(_ sender: UIButton) {
-        guard let scrollViewIndex = dislikeButtons.firstIndex(of: sender) else { return }
-        
-        // Cancel editing model
-        setEditing(false, animated: false)
-        
-        selectedAction = .cancel
-        
-        guard scrollViewIndex < scrollViews.count else { return }
-        let scrollView = scrollViews[scrollViewIndex]
-        guard 1 < scrollView.count else { return }
-        let indexToDelete = scrollView.currentIndex
-        let deletingLastItem = indexToDelete == scrollView.count - 1
-        let indexToShow = deletingLastItem ? indexToDelete - 1 : indexToDelete + 1
-        
-        scrollView.scrollToElement(withIndex: indexToShow) { completed in
-            scrollView.deleteImageView(withIndex: indexToDelete)
-            self.updateItemCount()
-        }
-    }
-    
     @IBAction func greenPlusButtonTapped(_ sender: UIButton) {
         // Cancel editing mode
         setEditing(false, animated: false)

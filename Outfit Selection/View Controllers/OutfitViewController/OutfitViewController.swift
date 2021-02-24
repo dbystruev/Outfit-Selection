@@ -13,8 +13,6 @@ class OutfitViewController: UIViewController {
     static let loadingMessage = "Loading..."
     
     // MARK: - Outlets
-    @IBOutlet var dislikeButtons: [UIButton]!
-    @IBOutlet weak var genderItem: UIBarButtonItem!
     @IBOutlet var greenPlusButtons: [UIButton]!
     @IBOutlet var likeButtons: [UIButton]!
     @IBOutlet var scrollViews: [PinnableScrollView]!

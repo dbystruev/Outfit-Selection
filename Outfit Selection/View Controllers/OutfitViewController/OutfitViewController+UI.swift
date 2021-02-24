@@ -103,10 +103,8 @@ extension OutfitViewController {
             $0.isHidden = selectedAction != .add
         }
         
-        for (dislikeButton, likeButton) in zip(dislikeButtons, likeButtons) {
-            let notBookmarksAction = selectedAction != .bookmarks
-            dislikeButton.isHidden = notBookmarksAction || likeButton.isSelected
-            likeButton.isHidden = notBookmarksAction && !likeButton.isSelected
+        for likeButton in likeButtons {
+            likeButton.isHidden = selectedAction != .bookmarks && !likeButton.isSelected
         }
     }
     
