@@ -63,14 +63,6 @@
                                                             <constraint firstAttribute="bottom" secondItem="968-N5-ncz" secondAttribute="bottom" id="nwt-bs-XTS"/>
                                                         </constraints>
                                                     </scrollView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qrh-Mc-QXc">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="367"/>
-                                                        <state key="normal" image="add"/>
-                                                        <state key="highlighted" image="add"/>
-                                                        <connections>
-                                                            <action selector="greenPlusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ihW-9Z-AYF"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r2m-cA-WkI" userLabel="Like">
                                                         <rect key="frame" x="139.66666666666666" y="16" width="32" height="32"/>
                                                         <constraints>
@@ -80,17 +72,13 @@
                                                         <state key="normal" image="hanger"/>
                                                         <state key="selected" image="hanger"/>
                                                         <connections>
-                                                            <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H0x-L7-ZTl"/>
+                                                            <action selector="hangerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="H0x-L7-ZTl"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="trailing" secondItem="Qrh-Mc-QXc" secondAttribute="trailing" id="1Pn-tn-Rby"/>
-                                                    <constraint firstItem="Qrh-Mc-QXc" firstAttribute="leading" secondItem="soe-qC-gFy" secondAttribute="leading" id="4FY-cu-OKa"/>
                                                     <constraint firstItem="r2m-cA-WkI" firstAttribute="top" secondItem="soe-qC-gFy" secondAttribute="top" constant="16" id="9P0-2V-OyW"/>
-                                                    <constraint firstAttribute="bottom" secondItem="Qrh-Mc-QXc" secondAttribute="bottom" id="A1p-qB-hds"/>
                                                     <constraint firstAttribute="trailing" secondItem="r2m-cA-WkI" secondAttribute="trailing" constant="16" id="KTa-OA-n4F"/>
-                                                    <constraint firstItem="Qrh-Mc-QXc" firstAttribute="top" secondItem="soe-qC-gFy" secondAttribute="top" id="KWz-vN-quz"/>
                                                     <constraint firstItem="yAK-fJ-kYJ" firstAttribute="height" secondItem="soe-qC-gFy" secondAttribute="height" id="KfH-pk-U6v"/>
                                                     <constraint firstItem="e2j-61-yTt" firstAttribute="leading" secondItem="soe-qC-gFy" secondAttribute="leading" id="LML-ak-1at"/>
                                                     <constraint firstItem="e2j-61-yTt" firstAttribute="top" secondItem="soe-qC-gFy" secondAttribute="top" id="Ovn-gI-UVm"/>
@@ -121,14 +109,6 @@
                                                             <constraint firstItem="0zR-30-TcT" firstAttribute="top" secondItem="McV-FV-yxk" secondAttribute="top" id="kwt-57-FLt"/>
                                                         </constraints>
                                                     </scrollView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6d8-jy-X4g">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="367"/>
-                                                        <state key="normal" image="add"/>
-                                                        <state key="highlighted" image="add"/>
-                                                        <connections>
-                                                            <action selector="greenPlusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="jRl-aN-Yn3"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0yi-5U-Vzn" userLabel="Like">
                                                         <rect key="frame" x="139.66666666666666" y="16" width="32" height="32"/>
                                                         <constraints>
@@ -138,7 +118,7 @@
                                                         <state key="normal" image="hanger"/>
                                                         <state key="selected" image="hanger"/>
                                                         <connections>
-                                                            <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0SR-TP-ghd"/>
+                                                            <action selector="hangerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0SR-TP-ghd"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
@@ -148,13 +128,9 @@
                                                     <constraint firstItem="3gk-iW-dx9" firstAttribute="width" secondItem="q3p-Hb-HCX" secondAttribute="width" id="B4F-rg-fXi"/>
                                                     <constraint firstAttribute="trailing" secondItem="0yi-5U-Vzn" secondAttribute="trailing" constant="16" id="END-gk-4y1"/>
                                                     <constraint firstItem="3gk-iW-dx9" firstAttribute="height" secondItem="q3p-Hb-HCX" secondAttribute="height" multiplier="1.00104" id="KHt-Ak-bnd"/>
-                                                    <constraint firstAttribute="trailing" secondItem="6d8-jy-X4g" secondAttribute="trailing" id="Plx-MV-BWH"/>
                                                     <constraint firstItem="McV-FV-yxk" firstAttribute="top" secondItem="q3p-Hb-HCX" secondAttribute="top" id="cCK-f0-LTG"/>
-                                                    <constraint firstAttribute="bottom" secondItem="6d8-jy-X4g" secondAttribute="bottom" id="dPn-2A-tZu"/>
                                                     <constraint firstAttribute="bottom" secondItem="McV-FV-yxk" secondAttribute="bottom" id="k4G-SP-JBA"/>
                                                     <constraint firstItem="0yi-5U-Vzn" firstAttribute="top" secondItem="q3p-Hb-HCX" secondAttribute="top" constant="16" id="k6Q-Tr-b46"/>
-                                                    <constraint firstItem="6d8-jy-X4g" firstAttribute="leading" secondItem="q3p-Hb-HCX" secondAttribute="leading" id="tg6-Gd-GqZ"/>
-                                                    <constraint firstItem="6d8-jy-X4g" firstAttribute="top" secondItem="q3p-Hb-HCX" secondAttribute="top" id="zMN-52-1kw"/>
                                                 </constraints>
                                             </view>
                                         </subviews>
@@ -184,14 +160,6 @@
                                                             <constraint firstItem="MdE-3E-PTX" firstAttribute="top" secondItem="nrI-94-QGh" secondAttribute="top" id="wF7-b5-8PY"/>
                                                         </constraints>
                                                     </scrollView>
-                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="veY-L1-vFI">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="367"/>
-                                                        <state key="normal" image="add"/>
-                                                        <state key="highlighted" image="add"/>
-                                                        <connections>
-                                                            <action selector="greenPlusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KO8-2e-Yba"/>
-                                                        </connections>
-                                                    </button>
                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3oI-QJ-jlu" userLabel="Like">
                                                         <rect key="frame" x="139.33333333333334" y="16" width="32" height="32"/>
                                                         <constraints>
@@ -201,20 +169,16 @@
                                                         <state key="normal" image="hanger"/>
                                                         <state key="selected" image="hanger"/>
                                                         <connections>
-                                                            <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n2r-lj-YGY"/>
+                                                            <action selector="hangerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="n2r-lj-YGY"/>
                                                         </connections>
                                                     </button>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstItem="veY-L1-vFI" firstAttribute="leading" secondItem="ZMD-nX-CLZ" secondAttribute="leading" id="5ks-E3-nPV"/>
                                                     <constraint firstItem="gbr-Gx-rxa" firstAttribute="width" secondItem="ZMD-nX-CLZ" secondAttribute="width" id="9w0-dQ-UZ8"/>
-                                                    <constraint firstAttribute="bottom" secondItem="veY-L1-vFI" secondAttribute="bottom" id="GtP-hr-Z8q"/>
                                                     <constraint firstItem="nrI-94-QGh" firstAttribute="leading" secondItem="ZMD-nX-CLZ" secondAttribute="leading" id="OUB-QY-gnQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="nrI-94-QGh" secondAttribute="trailing" id="YHX-cf-Tk8"/>
                                                     <constraint firstItem="nrI-94-QGh" firstAttribute="top" secondItem="ZMD-nX-CLZ" secondAttribute="top" id="cYA-rs-Heo"/>
                                                     <constraint firstAttribute="bottom" secondItem="nrI-94-QGh" secondAttribute="bottom" id="f2v-HN-PdP"/>
-                                                    <constraint firstItem="veY-L1-vFI" firstAttribute="top" secondItem="ZMD-nX-CLZ" secondAttribute="top" id="fEr-sK-Qkn"/>
-                                                    <constraint firstAttribute="trailing" secondItem="veY-L1-vFI" secondAttribute="trailing" id="uM6-JE-ukN"/>
                                                     <constraint firstAttribute="trailing" secondItem="3oI-QJ-jlu" secondAttribute="trailing" constant="16" id="uel-TW-K7X"/>
                                                     <constraint firstItem="3oI-QJ-jlu" firstAttribute="top" secondItem="ZMD-nX-CLZ" secondAttribute="top" constant="16" id="vcp-7Y-p7s"/>
                                                     <constraint firstItem="gbr-Gx-rxa" firstAttribute="height" secondItem="ZMD-nX-CLZ" secondAttribute="height" id="zGd-Om-Sxk"/>
@@ -245,14 +209,6 @@
                                                                     <constraint firstAttribute="trailing" secondItem="PWZ-Fo-lTr" secondAttribute="trailing" id="vhq-Qh-L6K"/>
                                                                 </constraints>
                                                             </scrollView>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="prF-ci-obE">
-                                                                <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="183.66666666666666"/>
-                                                                <state key="normal" image="add"/>
-                                                                <state key="highlighted" image="add"/>
-                                                                <connections>
-                                                                    <action selector="greenPlusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="OQ5-oH-8Ra"/>
-                                                                </connections>
-                                                            </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PdK-GK-Ra7" userLabel="Like">
                                                                 <rect key="frame" x="139.33333333333334" y="16" width="32" height="32"/>
                                                                 <constraints>
@@ -262,21 +218,17 @@
                                                                 <state key="normal" image="hanger"/>
                                                                 <state key="selected" image="hanger"/>
                                                                 <connections>
-                                                                    <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cs2-CL-o89"/>
+                                                                    <action selector="hangerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cs2-CL-o89"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
                                                         <constraints>
                                                             <constraint firstItem="YAH-LD-FOj" firstAttribute="leading" secondItem="CIz-Li-wcf" secondAttribute="leading" id="6mc-yB-cWf"/>
-                                                            <constraint firstItem="prF-ci-obE" firstAttribute="top" secondItem="CIz-Li-wcf" secondAttribute="top" id="96l-FG-UFU"/>
                                                             <constraint firstAttribute="bottom" secondItem="YAH-LD-FOj" secondAttribute="bottom" id="Pnm-KC-AnF"/>
                                                             <constraint firstAttribute="trailing" secondItem="YAH-LD-FOj" secondAttribute="trailing" id="WSR-oA-Icx"/>
-                                                            <constraint firstAttribute="trailing" secondItem="prF-ci-obE" secondAttribute="trailing" id="YVU-Rv-yWL"/>
                                                             <constraint firstItem="slC-JN-DLX" firstAttribute="height" secondItem="CIz-Li-wcf" secondAttribute="height" multiplier="1.00208" id="Yc3-ki-6kI"/>
                                                             <constraint firstAttribute="trailing" secondItem="PdK-GK-Ra7" secondAttribute="trailing" constant="16" id="fkv-fg-URA"/>
-                                                            <constraint firstItem="prF-ci-obE" firstAttribute="leading" secondItem="CIz-Li-wcf" secondAttribute="leading" id="p1q-4Z-Hbk"/>
                                                             <constraint firstItem="slC-JN-DLX" firstAttribute="width" secondItem="CIz-Li-wcf" secondAttribute="width" id="rVk-oz-TNw"/>
-                                                            <constraint firstAttribute="bottom" secondItem="prF-ci-obE" secondAttribute="bottom" id="u5v-gI-9QU"/>
                                                             <constraint firstItem="PdK-GK-Ra7" firstAttribute="top" secondItem="CIz-Li-wcf" secondAttribute="top" constant="16" id="yJd-Jf-jsh"/>
                                                             <constraint firstItem="YAH-LD-FOj" firstAttribute="top" secondItem="CIz-Li-wcf" secondAttribute="top" id="zj3-zY-zXI"/>
                                                         </constraints>
@@ -303,15 +255,6 @@
                                                                     <constraint firstItem="32E-Pf-wzh" firstAttribute="leading" secondItem="7mM-sh-37O" secondAttribute="leading" id="vFj-qk-Nb8"/>
                                                                 </constraints>
                                                             </scrollView>
-                                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fbQ-md-Z3V">
-                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="181"/>
-                                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                <state key="normal" image="add"/>
-                                                                <state key="highlighted" image="add"/>
-                                                                <connections>
-                                                                    <action selector="greenPlusButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MOg-Nb-Ots"/>
-                                                                </connections>
-                                                            </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NT3-Ff-VD4" userLabel="Like">
                                                                 <rect key="frame" x="139.33333333333334" y="16" width="32" height="32"/>
                                                                 <constraints>
@@ -321,7 +264,7 @@
                                                                 <state key="normal" image="hanger"/>
                                                                 <state key="selected" image="hanger"/>
                                                                 <connections>
-                                                                    <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kPA-ZX-vC6"/>
+                                                                    <action selector="hangerButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kPA-ZX-vC6"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -367,17 +310,12 @@
                             </barButtonItem>
                             <barButtonItem image="hanger" id="ka5-GL-mJm">
                                 <connections>
-                                    <action selector="bookmarksButtonTapped:" destination="BYZ-38-t0r" id="BWA-2Z-RUP"/>
+                                    <action selector="hangerBarButtonItemTapped:" destination="BYZ-38-t0r" id="BWA-2Z-RUP"/>
                                 </connections>
                             </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outletCollection property="greenPlusButtons" destination="Qrh-Mc-QXc" collectionClass="NSMutableArray" id="ceP-hT-fRt"/>
-                        <outletCollection property="greenPlusButtons" destination="6d8-jy-X4g" collectionClass="NSMutableArray" id="ta9-oQ-ufj"/>
-                        <outletCollection property="greenPlusButtons" destination="veY-L1-vFI" collectionClass="NSMutableArray" id="VIv-ua-9uO"/>
-                        <outletCollection property="greenPlusButtons" destination="prF-ci-obE" collectionClass="NSMutableArray" id="M2z-il-wIJ"/>
-                        <outletCollection property="greenPlusButtons" destination="fbQ-md-Z3V" collectionClass="NSMutableArray" id="OB3-z8-JXa"/>
                         <outletCollection property="likeButtons" destination="r2m-cA-WkI" collectionClass="NSMutableArray" id="y1h-UK-MjH"/>
                         <outletCollection property="likeButtons" destination="0yi-5U-Vzn" collectionClass="NSMutableArray" id="FfW-5r-fWB"/>
                         <outletCollection property="likeButtons" destination="3oI-QJ-jlu" collectionClass="NSMutableArray" id="uQP-hd-orQ"/>
@@ -781,7 +719,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="add" width="50" height="50"/>
         <image name="checkmark" width="29.333333969116211" height="21.666666030883789"/>
         <image name="hanger" width="32" height="23.333333969116211"/>
         <image name="logo_white" width="299" height="96"/>

@@ -13,7 +13,6 @@ class OutfitViewController: UIViewController {
     static let loadingMessage = "Loading..."
     
     // MARK: - Outlets
-    @IBOutlet var greenPlusButtons: [UIButton]!
     @IBOutlet var likeButtons: [UIButton]!
     @IBOutlet var scrollViews: [PinnableScrollView]!
     
@@ -26,11 +25,7 @@ class OutfitViewController: UIViewController {
     /// Gender selected on female male screen
     var gender = Gender.other
     
-    var selectedAction = UIBarButtonItem.SystemItem.cancel {
-        didSet {
-            updateButtons()
-        }
-    }
+    var selectedAction = UIBarButtonItem.SystemItem.cancel
     var selectedButtonIndex: Int?
     
     // MARK: - Computed Properties

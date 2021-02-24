@@ -79,11 +79,14 @@ extension OutfitViewController {
     }
     
     func setupUI() {
-        // Hide back button
+        // Hide all like buttons
+        likeButtons.forEach { $0.isHidden = true }
+        
+        // Hide back button in navigation bar
         navigationItem.hidesBackButton = true
         
+        // Setup toolbar buttons
         setupToolbar()
-        updateButtons()
     }
     
     func titleForCountButtonItem(_ items: Int) -> String {
@@ -94,18 +97,6 @@ extension OutfitViewController {
         diceButtonItem.isEnabled = true
         likeButtons.forEach { $0.isSelected = false }
         scrollViews.unpin()
-        
-        updateButtons()
-    }
-    
-    func updateButtons() {
-        greenPlusButtons.forEach {
-            $0.isHidden = selectedAction != .add
-        }
-        
-        for likeButton in likeButtons {
-            likeButton.isHidden = selectedAction != .bookmarks && !likeButton.isSelected
-        }
     }
     
     func updateCountButtonItem(with count: Int) {

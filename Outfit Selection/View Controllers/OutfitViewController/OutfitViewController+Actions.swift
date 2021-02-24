@@ -10,13 +10,41 @@ import UIKit
 
 // MARK: - Actions
 extension OutfitViewController {
-    @IBAction func bookmarksButtonTapped(_ sender: UIBarButtonItem) {
-        selectedAction = isEditing ? .cancel : .bookmarks
-        setEditing(!isEditing, animated: true)
-    }
-    
     @objc func brandButtonTapped(_ sender: UIBarButtonItem) {
         presentBrandsViewController()
+    }
+    
+    @objc func diceButtonTapped(_ sender: UIBarButtonItem) {
+        selectedAction = .cancel
+        setEditing(false, animated: true)
+        scrollViews.forEach {
+            if !$0.isPinned {
+                $0.scrollToRandomElement()
+            }
+        }
+        
+        updatePrice()
+    }
+    
+    @IBAction func hangerBarButtonItemTapped(_ sender: UIBarButtonItem) {
+        let shouldUnpin = scrollViews.allPinned
+        diceButtonItem.isEnabled = shouldUnpin
+        likeButtons.forEach { $0.isHidden = shouldUnpin }
+        if shouldUnpin {
+            scrollViews.unpin()
+        } else {
+            scrollViews.pin()
+        }
+    }
+    
+    @IBAction func hangerButtonTapped(_ sender: UIButton) {
+        guard let selectedIndex = likeButtons.firstIndex(of: sender) else { return }
+        
+        let scrollView = scrollViews[selectedIndex]
+        scrollView.toggle()
+        
+        likeButtons[selectedIndex].isHidden = !scrollView.isPinned
+        diceButtonItem.isEnabled = !scrollViews.allPinned
     }
     
     @objc func priceButtonTapped(_ sender: UIBarButtonItem) {
@@ -33,81 +61,6 @@ extension OutfitViewController {
         }
     }
     
-    @objc func diceButtonTapped(_ sender: UIBarButtonItem) {
-        selectedAction = .cancel
-        setEditing(false, animated: true)
-        scrollViews.forEach {
-            if !$0.isPinned {
-                $0.scrollToRandomElement()
-            }
-        }
-        
-        updatePrice()
-    }
-    
-    @IBAction func greenPlusButtonTapped(_ sender: UIButton) {
-        // Cancel editing mode
-        setEditing(false, animated: false)
-        
-        // Continue only if we are in image adding mode
-        guard selectedAction == .add else { return }
-        
-        selectedButtonIndex = greenPlusButtons.firstIndex(of: sender)
-        
-        selectedAction = .cancel
-        
-        let sourceTitles: [UIImagePickerController.SourceType: String] = [
-            .camera: "📷",
-            .photoLibrary: "🖼"
-        ]
-        
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        
-        let cancel = UIAlertAction(title: "⛔️", style: .cancel)
-        let alert = UIAlertController(title: "Image Source", message: nil, preferredStyle: .actionSheet)
-        alert.addAction(cancel)
-        
-        for (source, title) in sourceTitles {
-            guard UIImagePickerController.isSourceTypeAvailable(source) else { continue }
-            let action = UIAlertAction(title: title, style: .default) { _ in
-                imagePicker.sourceType = source
-                self.present(imagePicker, animated: true)
-            }
-            alert.addAction(action)
-        }
-        
-        //            let action = UIAlertAction(title: "👕", style: .default) { _ in
-        //                self.performSegue(withIdentifier: "selectCategory", sender: nil)
-        //            }
-        //            alert.addAction(action)
-        
-        // Find negative constraint and make it positive
-        for subview in alert.view.subviews {
-            for constraint in subview.constraints {
-                if constraint.constant < 0 {
-                    constraint.constant = -constraint.constant
-                }
-            }
-        }
-        
-        // Present alert controller
-        present(alert, animated: true)
-        
-    }
-    
-    @IBAction func likeButtonTapped(_ sender: UIButton) {
-        guard let selectedIndex = likeButtons.firstIndex(of: sender) else { return }
-        
-        let scrollView = scrollViews[selectedIndex]
-        scrollView.toggle()
-        
-        likeButtons[selectedIndex].isSelected = scrollView.isPinned
-        diceButtonItem.isEnabled = !scrollViews.allPinned
-        
-        updateButtons()
-    }
-    
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         setEditing(false, animated: true)
         selectedAction = .cancel
@@ -118,8 +71,10 @@ extension OutfitViewController {
         // Make screenshot
         let possibleScreenshot = getScreenshot(of: view)
         
-        // Restore like buttons' hidden status
-        updateButtons()
+        // Restore like buttons
+        for (likeButton, scrollView) in zip(likeButtons, scrollViews) {
+            likeButton.isHidden = !scrollView.isPinned
+        }
         
         guard let screenshot = possibleScreenshot else { return }
         
