@@ -17,6 +17,13 @@ class WishlistViewController: UIViewController {
     @IBOutlet weak var wishlistCollectionView: UICollectionView!
     
     // MARK: - Computed Properties
+    /// Number of cells to show per row: 2 for vertical and 4 for horizontal orientations
+    var cellsPerRow: Int {
+        let size = view.bounds.size
+        let isHorizontal = size.height < size.width
+        return isHorizontal ? 3 : 2
+    }
+    
     /// Either items or outfits wishlist depending on whether the items tab is selected
     var wishlist: [Wishlist] {
         itemsTabSelected ? Wishlist.items : Wishlist.outfits
@@ -47,15 +54,16 @@ class WishlistViewController: UIViewController {
     }
     
     // MARK: - Inherited Methods
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        updateUI()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         wishlistCollectionView.dataSource = self
+        wishlistCollectionView.delegate = self
         itemsTabSelected = Wishlist.outfits.count <= Wishlist.items.count
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        updateUI()
     }
     
     // MARK: - Actions
@@ -66,21 +74,4 @@ class WishlistViewController: UIViewController {
     @IBAction func outfitsButtonTapped(_ sender: UIButton) {
         itemsTabSelected = false
     }
-}
-
-extension WishlistViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { wishlist.count }
-    
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = wishlistCollectionView.dequeueReusableCell(withReuseIdentifier: wishlistCellId, for: indexPath)
-        let wishlistElement = wishlist[indexPath.row]
-        if let itemCell = cell as? ItemCell, let item = wishlistElement.item {
-            itemCell.configure(with: item)
-        } else if let outfitCell = cell as? OutfitCell {
-            outfitCell.configure(with: wishlistElement)
-        }
-        return cell
-    }
-    
-    
 }

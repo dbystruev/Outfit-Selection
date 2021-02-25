@@ -12,18 +12,10 @@ import Foundation
 struct Wishlist: Codable {
     // MARK: - Stored Static Properties
     /// List of items added by the user to the wishlist
-    private(set) static var items = [Wishlist]() {
-        didSet {
-            debug(items.count)
-        }
-    }
+    private(set) static var items = [Wishlist]()
     
     /// Dictinary (map) of outfits added by the user to the wishlist
-    private static var outfitsDictionary = [String: [Item]]() {
-        didSet {
-            debug(outfitsDictionary.count)
-        }
-    }
+    private static var outfitsDictionary = [String: [Item]]()
     
     // MARK: - Computed Static Properties
     /// List of outfits added by the user to the wishlist

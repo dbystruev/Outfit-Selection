@@ -51,8 +51,6 @@ class ProgressViewController: UIViewController {
         // Load view models with the new images
         let startTime = Date().timeIntervalSince1970
         ItemManager.shared.loadImages(filteredBy: self.gender, andBy: brandNames) { itemsLoaded, itemsTotal in
-            debug("Items loaded: \(itemsLoaded) of \(itemsTotal)")
-            
             // If not all items loaded — update progress view and continue
             DispatchQueue.main.async {
                 self.progressView.progress = itemsTotal == 0 ? 0 : Float(itemsLoaded) / Float(itemsTotal)

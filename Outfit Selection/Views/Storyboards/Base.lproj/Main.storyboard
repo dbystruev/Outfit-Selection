@@ -447,40 +447,40 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Or-GK-FyM">
                                 <rect key="frame" x="16" y="104" width="343" height="625"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="29" id="JcY-jG-Na8">
-                                    <size key="itemSize" width="187" height="276"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="28" id="JcY-jG-Na8">
+                                    <size key="itemSize" width="184" height="276"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCell" id="IhR-SG-gIa" customClass="ItemCell" customModule="Outfit_Selection" customModuleProvider="target">
-                                        <rect key="frame" x="78" y="0.0" width="187" height="276"/>
+                                        <rect key="frame" x="79.666666666666671" y="0.0" width="184" height="276"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ILC-FV-G4V">
-                                            <rect key="frame" x="0.0" y="0.0" width="187" height="276"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="184" height="276"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2kQ-fH-szp">
-                                                    <rect key="frame" x="0.0" y="0.0" width="187" height="224.33333333333334"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="224.33333333333334"/>
                                                 </imageView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="bFg-vi-rVv">
-                                                    <rect key="frame" x="0.0" y="228.33333333333334" width="187" height="47.666666666666657"/>
+                                                    <rect key="frame" x="0.0" y="228.33333333333334" width="184" height="47.666666666666657"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Louis Vuitton" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxM-e2-zna">
-                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="17.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="17.666666666666668"/>
                                                             <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="13"/>
                                                             <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cotton shirt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-OH-EtX">
-                                                            <rect key="frame" x="0.0" y="17.666666666666657" width="187" height="15"/>
+                                                            <rect key="frame" x="0.0" y="17.666666666666657" width="184" height="15"/>
                                                             <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="11"/>
                                                             <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199 500 ₽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMb-Ot-KWb">
-                                                            <rect key="frame" x="0.0" y="32.666666666666657" width="187" height="15"/>
+                                                            <rect key="frame" x="0.0" y="32.666666666666657" width="184" height="15"/>
                                                             <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="11"/>
                                                             <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -506,23 +506,23 @@
                                         </connections>
                                     </collectionViewCell>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="outfitCell" id="koE-HJ-iBK" customClass="OutfitCell" customModule="Outfit_Selection" customModuleProvider="target">
-                                        <rect key="frame" x="78" y="292" width="187" height="276"/>
+                                        <rect key="frame" x="79.666666666666671" y="292" width="184" height="276"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Bnk-MH-xaW">
-                                            <rect key="frame" x="0.0" y="0.0" width="187" height="276"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="184" height="276"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="Gng-8s-7nM" userLabel="Images Stack View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="187" height="236"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="236"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="oNU-PG-FX0">
-                                                            <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="236"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="236"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sva-Ia-zvf">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="93.666666666666671" height="78.666666666666671"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="78.666666666666671"/>
                                                                 </imageView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="39F-zy-XfC">
-                                                                    <rect key="frame" x="0.0" y="78.666666666666671" width="93.666666666666671" height="157.33333333333331"/>
+                                                                    <rect key="frame" x="0.0" y="78.666666666666671" width="92" height="157.33333333333331"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
@@ -530,19 +530,19 @@
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="vCG-ZC-oTU">
-                                                            <rect key="frame" x="93.666666666666686" y="0.0" width="93.333333333333314" height="236"/>
+                                                            <rect key="frame" x="92" y="0.0" width="92" height="236"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KA9-vr-2o6">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="78.666666666666671"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="78.666666666666671"/>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="eHl-uB-RTJ">
-                                                                    <rect key="frame" x="0.0" y="78.666666666666671" width="93.333333333333329" height="157.33333333333331"/>
+                                                                    <rect key="frame" x="0.0" y="78.666666666666671" width="92" height="157.33333333333331"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNH-xL-3Fq">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="93.333333333333329" height="78.666666666666671"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="78.666666666666671"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V76-lb-mb5">
-                                                                                    <rect key="frame" x="8" y="15.999999999999996" width="77.333333333333329" height="62.666666666666657"/>
+                                                                                    <rect key="frame" x="8" y="15.999999999999996" width="76" height="62.666666666666657"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -554,10 +554,10 @@
                                                                             </constraints>
                                                                         </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h3h-4K-ZiI">
-                                                                            <rect key="frame" x="0.0" y="78.666666666666657" width="93.333333333333329" height="78.666666666666657"/>
+                                                                            <rect key="frame" x="0.0" y="78.666666666666657" width="92" height="78.666666666666657"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kHa-zc-dLy">
-                                                                                    <rect key="frame" x="8" y="0.0" width="77.333333333333329" height="62.666666666666664"/>
+                                                                                    <rect key="frame" x="8" y="0.0" width="76" height="62.666666666666664"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -578,16 +578,16 @@
                                                     </subviews>
                                                 </stackView>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="ngc-vi-uZ2" userLabel="Labels Stack View">
-                                                    <rect key="frame" x="0.0" y="235.33333333333334" width="187" height="32.666666666666657"/>
+                                                    <rect key="frame" x="0.0" y="235.33333333333334" width="184" height="32.666666666666657"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ETh-Qa-ZMS">
-                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="17.666666666666668"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="17.666666666666668"/>
                                                             <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="13"/>
                                                             <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199 500 ₽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="elU-rh-9xP">
-                                                            <rect key="frame" x="0.0" y="17.666666666666657" width="187" height="15"/>
+                                                            <rect key="frame" x="0.0" y="17.666666666666657" width="184" height="15"/>
                                                             <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="11"/>
                                                             <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>

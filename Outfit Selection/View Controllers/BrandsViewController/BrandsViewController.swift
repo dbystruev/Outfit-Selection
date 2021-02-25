@@ -35,16 +35,6 @@ class BrandsViewController: UIViewController {
     /// The collection of brand images
     let brandedImages = BrandManager.shared.brandedImages
     
-    // MARK: - Computed Properties
-    /// The height of the cell in the brands collection view
-    fileprivate var cellHeight: CGFloat { cellWidth - 2 * (BrandCell.horizontalMargin - BrandCell.verticalMargin) }
-    
-    /// The size of the cell in the brands collection view
-    var cellSize: CGSize { CGSize(width: cellWidth, height: cellHeight) }
-    
-    /// The width of the cell in the brands collection view
-    fileprivate var cellWidth: CGFloat { floor(brandsCollectionView.bounds.size.width / CGFloat(BrandCell.cellsPerRow)) }
-    
     // MARK: - Inherited Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "ProgressViewControllerSegue" else {
