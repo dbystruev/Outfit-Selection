@@ -12,35 +12,78 @@ import Foundation
 struct Wishlist: Codable {
     // MARK: - Static Properties
     /// List of items added by the user to the wishlist
-    private(set) static var items = [Wishlist]()
+    private(set) static var items = [Wishlist]() {
+        didSet {
+            debug(items.count)
+        }
+    }
     
     /// List of outfits added by the user to the wishlist
-    private(set) static var outfits = [Wishlist]()
+    private(set) static var outfits = [Wishlist]() {
+        didSet {
+            debug(outfits.count)
+        }
+    }
     
     // MARK: - Static Methods
     /// Add an item to the items wishlist if it is not present there
-    /// - Parameter item: item to add to the wishlist
+    /// - Parameter item: item to add to the item wishlist
     static func add(item: Item?) {
         // Make sure we don't have item added already
-        guard let item = item, contains(item: item) == false else { return }
+        guard let item = item, contains(item) == false else { return }
         
-        // Append the item to the end of the wishlist
-        Wishlist.items.append(Wishlist(item))
+        // Append the item to the end of the items wishlist
+        items.append(Wishlist(item))
+    }
+    
+    /// Add items to the outfit wishlist if they are not present there
+    /// - Parameters:
+    ///   - items: the list of items to add to the outfit wishlist
+    ///   - occasion: Occasion for the outfit
+    static func add(items: [Item], occasion: String) {
+        // Make sure we don't add an empty or existing wishlist
+        let outfit = Wishlist(items, occasion: occasion)
+        guard contains(outfit) == false else { return }
+        
+        // Append the new outfit to the end of the outfits wishlist
+        outfits.append(outfit)
     }
     
     /// Returns true if item is contained in the items wishlist already, false otherwise
     /// - Parameter item: item to check for inclusion into the collection
     /// - Returns: true if item is contained in the items wishlist, false if not, nil if item's itemIndex is nil
-    static func contains(item: Item) -> Bool? {
+    static func contains(_ item: Item) -> Bool? {
         guard let itemIndex = item.itemIndex else { return nil }
-        return Wishlist.items.contains { $0.item?.itemIndex == itemIndex }
+        return items.contains { $0.item?.itemIndex == itemIndex }
+    }
+    
+    /// Returns true if outfit is contained in the outfit wishlist already, false otherwise
+    /// - Parameter newOutfit: the collection of items in the outfit
+    /// - Returns: true if outfit is container in the outfit wishlist, false if not, nil if outfit is empty
+    static func contains(_ newOutfit: Wishlist) -> Bool? {
+        let newOutfitCount = newOutfit.items.count
+        guard 0 < newOutfitCount else { return nil }
+        for outfit in outfits {
+            // Skip outfits with different number of items
+            guard newOutfitCount == outfit.items.count else { continue }
+            
+            // Make two sets of outfit item indexes
+            let newOutfitSet = Set(newOutfit.items.compactMap { $0.itemIndex })
+            let outfitSet = Set(outfit.items.compactMap { $0.itemIndex })
+            
+            // Compare two sets of outfit item indexes
+            if newOutfitCount == newOutfitSet.count && newOutfitSet == outfitSet {
+                return true
+            }
+        }
+        return false
     }
     
     // MARK: - Stored Properties
     /// The list of items or a single item in the wishlist element
     private(set) var items: [Item]
     
-    /// Occasion for a single item
+    /// Occasion for the list of items
     private(set) var occasion: String?
     
     // MARK: - Computed Properties
