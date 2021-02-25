@@ -17,7 +17,7 @@ class ItemCell: UICollectionViewCell {
     @IBOutlet weak var vendorLabel: UILabel!
     
     // MARK: - Methods
-    /// Configure cell content with a given item
+    /// Configure item cell content with a given item
     /// - Parameter item: item to configure cell content with
     func configure(with item: Item) {
         // Configure labels

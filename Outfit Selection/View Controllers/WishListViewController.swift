@@ -50,6 +50,7 @@ class WishlistViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         wishlistCollectionView.dataSource = self
+        itemsTabSelected = Wishlist.outfits.count <= Wishlist.items.count
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -75,6 +76,8 @@ extension WishlistViewController: UICollectionViewDataSource {
         let wishlistElement = wishlist[indexPath.row]
         if let itemCell = cell as? ItemCell, let item = wishlistElement.item {
             itemCell.configure(with: item)
+        } else if let outfitCell = cell as? OutfitCell {
+            outfitCell.configure(with: wishlistElement)
         }
         return cell
     }

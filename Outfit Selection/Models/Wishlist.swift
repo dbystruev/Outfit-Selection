@@ -50,6 +50,13 @@ struct Wishlist: Codable {
         // Make sure we don't add an empty wishlist with no occasion
         guard 0 < items.count && !occasion.isEmpty else { return }
         
+        // Check if similar items exist in another occasion, clear it if found
+        for occasion in outfitsDictionary.keys {
+            if contains(items, occasion: occasion) == true {
+                outfitsDictionary[occasion] = nil
+            }
+        }
+        
         // Append the new outfit to the end of the outfits wishlist
         outfitsDictionary[occasion] = items
     }
@@ -109,6 +116,11 @@ struct Wishlist: Codable {
                 items.append(newValue)
             }
         }
+    }
+    
+    /// Calculate wishlist items price
+    var price: Double {
+        items.reduce(0) { $0 + ($1.price ?? 0) }
     }
     
     // MARK: - Init
