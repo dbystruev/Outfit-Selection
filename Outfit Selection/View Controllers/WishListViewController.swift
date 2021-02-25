@@ -1,5 +1,5 @@
 //
-//  WishListViewController.swift
+//  WishlistViewController.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 25.02.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WishListViewController: UIViewController {
+class WishlistViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var itemsButton: UIButton!
     @IBOutlet weak var itemsUnderline: UIView!

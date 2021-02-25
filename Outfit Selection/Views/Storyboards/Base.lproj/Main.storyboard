@@ -377,7 +377,7 @@
         <!--Wish list-->
         <scene sceneID="QuB-zm-Xxz">
             <objects>
-                <viewController title="Wish list" id="BzB-Fk-lRv" customClass="WishListViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Wish list" id="BzB-Fk-lRv" customClass="WishlistViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yCN-Pl-l3o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
