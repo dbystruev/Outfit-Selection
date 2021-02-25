@@ -10,7 +10,7 @@ import Foundation
 
 /// Element of a wishlist
 struct Wishlist: Codable {
-    // MARK: - Static Properties
+    // MARK: - Stored Static Properties
     /// List of items added by the user to the wishlist
     private(set) static var items = [Wishlist]() {
         didSet {
@@ -18,11 +18,17 @@ struct Wishlist: Codable {
         }
     }
     
-    /// List of outfits added by the user to the wishlist
-    private(set) static var outfits = [Wishlist]() {
+    /// Dictinary (map) of outfits added by the user to the wishlist
+    private static var outfitsDictionary = [String: [Item]]() {
         didSet {
-            debug(outfits.count)
+            debug(outfitsDictionary.count)
         }
+    }
+    
+    // MARK: - Computed Static Properties
+    /// List of outfits added by the user to the wishlist
+    static var outfits: [Wishlist] {
+        outfitsDictionary.map { Wishlist($0.value, occasion: $0.key) }
     }
     
     // MARK: - Static Methods
@@ -41,12 +47,11 @@ struct Wishlist: Codable {
     ///   - items: the list of items to add to the outfit wishlist
     ///   - occasion: Occasion for the outfit
     static func add(_ items: [Item], occasion: String) {
-        // Make sure we don't add an empty or existing wishlist
-        let outfit = Wishlist(items, occasion: occasion)
-        guard contains(outfit) == false else { return }
+        // Make sure we don't add an empty wishlist with no occasion
+        guard 0 < items.count && !occasion.isEmpty else { return }
         
         // Append the new outfit to the end of the outfits wishlist
-        outfits.append(outfit)
+        outfitsDictionary[occasion] = items
     }
     
     /// Returns true if item is contained in the items wishlist already, false otherwise
@@ -58,25 +63,27 @@ struct Wishlist: Codable {
     }
     
     /// Returns true if outfit is contained in the outfit wishlist already, false otherwise
-    /// - Parameter newOutfit: the collection of items in the outfit
-    /// - Returns: true if outfit is container in the outfit wishlist, false if not, nil if outfit is empty
-    static func contains(_ newOutfit: Wishlist) -> Bool? {
-        let newOutfitCount = newOutfit.items.count
-        guard 0 < newOutfitCount else { return nil }
-        for outfit in outfits {
-            // Skip outfits with different number of items
-            guard newOutfitCount == outfit.items.count else { continue }
-            
-            // Make two sets of outfit item indexes
-            let newOutfitSet = Set(newOutfit.items.compactMap { $0.itemIndex })
-            let outfitSet = Set(outfit.items.compactMap { $0.itemIndex })
-            
-            // Compare two sets of outfit item indexes
-            if newOutfitCount == newOutfitSet.count && newOutfitSet == outfitSet {
-                return true
-            }
-        }
-        return false
+    /// - Parameters:
+    ///   - newOutfit: the collection of items in the new outfit
+    ///   - occasion: the occasion for the outfit
+    /// - Returns: true if outfit is contained in the outfit wishlist, false if not, nil if items or occasion are empty
+    static func contains(_ newOutfit: [Item], occasion: String) -> Bool? {
+        // Return nil if new items or occasion is empty
+        let newOutfitCount = newOutfit.count
+        guard 0 < newOutfitCount && !occasion.isEmpty else { return nil }
+        
+        // Return false if there is no outfit for the occasion present
+        guard let outfit = outfitsDictionary[occasion] else { return false }
+        
+        // Return false if the number of items in the outfits differ
+        guard newOutfitCount == outfit.count else { return false }
+        
+        // Make two sets of outfit item indexes
+        let newOutfitSet = Set(newOutfit.compactMap { $0.itemIndex })
+        let outfitSet = Set(outfit.compactMap { $0.itemIndex })
+        
+        // Compare two sets of outfit item indexes
+        return newOutfitCount == newOutfitSet.count && newOutfitSet == outfitSet
     }
     
     // MARK: - Stored Properties
