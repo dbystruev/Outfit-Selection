@@ -25,7 +25,7 @@ struct Wishlist: Codable {
     
     // MARK: - Static Methods
     /// Add an item to the items wishlist if it is not present there
-    /// - Parameter item: item to add to the item wishlist
+    /// - Parameter item: the item to add to the item wishlist
     static func add(_ item: Item?) {
         // Make sure we don't have item added already
         guard let item = item, contains(item) == false else { return }
@@ -53,11 +53,21 @@ struct Wishlist: Codable {
         outfitsDictionary[occasion] = items
     }
     
+    /// Remove an item from the items wishlist if it is present there
+    /// - Parameter item: the item to remove from the item wishlist
+    static func remove(_ item: Item?) {
+        // Make sure the item amd its index are not nil
+        guard let itemIndex = item?.itemIndex else { return }
+        
+        // Remove all items with given itemIndex
+        items.removeAll { $0.item?.itemIndex == itemIndex }
+    }
+    
     /// Returns true if item is contained in the items wishlist already, false otherwise
     /// - Parameter item: item to check for inclusion into the collection
-    /// - Returns: true if item is contained in the items wishlist, false if not, nil if item's itemIndex is nil
-    static func contains(_ item: Item) -> Bool? {
-        guard let itemIndex = item.itemIndex else { return nil }
+    /// - Returns: true if item is contained in the items wishlist, false if not, nil if item or its itemIndex is nil
+    static func contains(_ item: Item?) -> Bool? {
+        guard let itemIndex = item?.itemIndex else { return nil }
         return items.contains { $0.item?.itemIndex == itemIndex }
     }
     

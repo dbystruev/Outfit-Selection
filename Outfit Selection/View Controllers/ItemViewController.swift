@@ -14,6 +14,7 @@ class ItemViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var orderButton: UIButton!
+    @IBOutlet weak var wishlistButton: UIButton!
     
     // MARK: - Properties
     var image: UIImage?
@@ -37,14 +38,11 @@ class ItemViewController: UIViewController {
             nameLabel.text = nil
         }
         orderButton.isHidden = item == nil
+        wishlistButton.isSelected = Wishlist.contains(item) ?? false
         title = item?.price?.asPrice
     }
     
     // Actions
-    @IBAction func addToWishlistButtonTapped(_ sender: UIButton) {
-        Wishlist.add(item)
-    }
-    
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         guard let url = item?.url else { return }
         
@@ -55,5 +53,15 @@ class ItemViewController: UIViewController {
         present(controller, animated: true)
         
         debug(url)
+    }
+    
+    @IBAction func wishlistButtonTapped(_ sender: UIButton) {
+        if Wishlist.contains(item) == true {
+            Wishlist.remove(item)
+            sender.isSelected = false
+        } else {
+            Wishlist.add(item)
+            sender.isSelected = true
+        }
     }
 }

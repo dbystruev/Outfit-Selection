@@ -755,8 +755,9 @@
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8C-LO-Yd8">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="69"/>
                                         <state key="normal" image="wishlist"/>
+                                        <state key="selected" image="wishlist_filled"/>
                                         <connections>
-                                            <action selector="addToWishlistButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="4Vd-cV-N7T"/>
+                                            <action selector="wishlistButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="4Vd-cV-N7T"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -805,6 +806,7 @@
                         <outlet property="imageView" destination="Tez-9P-gqj" id="NF6-q8-GWd"/>
                         <outlet property="nameLabel" destination="q3W-h9-jQb" id="Qfq-uF-dtP"/>
                         <outlet property="orderButton" destination="dpo-Qn-AYN" id="kqi-hR-5gW"/>
+                        <outlet property="wishlistButton" destination="w8C-LO-Yd8" id="HA3-bo-fWH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -841,6 +843,7 @@
         <image name="refresh" width="28" height="28"/>
         <image name="share" width="21.666666030883789" height="22.333333969116211"/>
         <image name="wishlist" width="24" height="24"/>
+        <image name="wishlist_filled" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
