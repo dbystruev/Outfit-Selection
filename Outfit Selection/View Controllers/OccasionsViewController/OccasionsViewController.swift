@@ -64,8 +64,16 @@ class OccasionsViewController: UIViewController {
         // Configure occasion picker view
         occasionPickerView.dataSource = self
         occasionPickerView.delegate = self
-        if let dailyIndex = occasions.firstIndex(of: "Daily") {
-            occasionPickerView.selectRow(dailyIndex, inComponent: 0, animated: false)
+        
+        // Find the first non-occupied index
+        if var shouldSelectRow = occasions.firstIndex(of: "Daily") {
+            let occasionsCount = occasions.count
+            if Wishlist.outfits.count < occasionsCount {
+                while Wishlist.contains(occasions[shouldSelectRow]) {
+                    shouldSelectRow = (shouldSelectRow + 1) % occasionsCount
+                }
+            }
+            occasionPickerView.selectRow(shouldSelectRow, inComponent: 0, animated: false)
         }
     }
     

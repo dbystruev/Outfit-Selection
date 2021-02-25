@@ -89,6 +89,12 @@ struct Wishlist: Codable {
         return newOutfitCount == newOutfitSet.count && newOutfitSet == outfitSet
     }
     
+    /// Returns true if occasion exists in outfits dictionary, false otherwise
+    /// - Parameter occasion: the occasion to search for
+    static func contains(_ occasion: String) -> Bool {
+        outfitsDictionary[occasion] != nil
+    }
+    
     /// Remove an item from the items wishlist if it is present there
     /// - Parameter item: the item to remove from the item wishlist
     static func remove(_ item: Item?) {
