@@ -43,6 +43,12 @@ extension OutfitViewController {
         updatePrice()
     }
     
+    @IBAction func likeButtonTapped(_ sender: UIButton) {
+        let controller = storyboard?.instantiateViewController(withIdentifier: "chooseTheOccasionViewController")
+        guard let chooseTheOccasionViewController = controller as? ChooseTheOccasionViewController else { return }
+        present(chooseTheOccasionViewController, animated: true)
+    }
+    
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         setEditing(false, animated: true)
         selectedAction = .cancel

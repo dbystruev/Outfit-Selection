@@ -305,6 +305,9 @@
                                             <constraint firstAttribute="width" secondItem="kYh-UG-gmm" secondAttribute="height" multiplier="1:1" id="3QI-xL-Yno"/>
                                         </constraints>
                                         <state key="normal" image="heart"/>
+                                        <connections>
+                                            <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3y8-R6-MF9"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EUS-GK-b31">
                                         <rect key="frame" x="287" y="0.0" width="56" height="56"/>
@@ -369,7 +372,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1511.2" y="137.4384236453202"/>
+            <point key="canvasLocation" x="1362" y="-198"/>
         </scene>
         <!--Wish list-->
         <scene sceneID="QuB-zm-Xxz">
@@ -402,6 +405,66 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHv-UT-keA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1511" y="881"/>
+        </scene>
+        <!--Choose The Occasion View Controller-->
+        <scene sceneID="L4D-s5-Wfa">
+            <objects>
+                <viewController storyboardIdentifier="chooseTheOccasionViewController" id="CSx-YW-3hg" customClass="ChooseTheOccasionViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="noJ-et-5vB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="C6M-bL-1C2">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vEv-g6-6ax">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the occasion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwF-7x-wa1">
+                                                <rect key="frame" x="0.0" y="0.0" width="307" height="48"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLI-2y-iWG">
+                                                <rect key="frame" x="307" y="0.0" width="68" height="48"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <state key="normal" title="Save">
+                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="saveButtonTapped:" destination="CSx-YW-3hg" eventType="touchUpInside" id="7jb-8p-cCg"/>
+                                                    <action selector="saveButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="M7t-Eg-hjJ"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="48" id="VWO-S3-tcz"/>
+                                            <constraint firstItem="xLI-2y-iWG" firstAttribute="width" secondItem="WwF-7x-wa1" secondAttribute="width" multiplier="68 : 307" id="lF1-ug-jBg"/>
+                                        </constraints>
+                                    </stackView>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZP-LX-1Xz">
+                                        <rect key="frame" x="0.0" y="48" width="375" height="216"/>
+                                    </pickerView>
+                                </subviews>
+                                <color key="backgroundColor" red="0.96956211329999997" green="0.96954470869999998" blue="0.98015028240000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="264" id="T1v-hb-geg"/>
+                                </constraints>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="3lW-d9-whw"/>
+                        <constraints>
+                            <constraint firstItem="C6M-bL-1C2" firstAttribute="leading" secondItem="noJ-et-5vB" secondAttribute="leading" id="ZbG-Bp-KHY"/>
+                            <constraint firstAttribute="bottom" secondItem="C6M-bL-1C2" secondAttribute="bottom" id="aZj-Tk-wCb"/>
+                            <constraint firstAttribute="trailing" secondItem="C6M-bL-1C2" secondAttribute="trailing" id="qCE-ff-uEZ"/>
+                        </constraints>
+                    </view>
+                    <size key="freeformSize" width="375" height="264"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="47C-Ts-Pe3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1361" y="340"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="wZr-ET-Xq5">
@@ -464,7 +527,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2287.1999999999998" y="533.49753694581284"/>
+            <point key="canvasLocation" x="2287" y="545"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kA0-0v-X04">
@@ -472,6 +535,7 @@
                 <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="p6y-3M-M5c" customClass="TabBarController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p0d-o6-Tzp">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.46932125089999999" green="0.53824871780000005" blue="0.51836496590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
