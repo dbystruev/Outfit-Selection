@@ -377,16 +377,100 @@
         <!--Wish list-->
         <scene sceneID="QuB-zm-Xxz">
             <objects>
-                <viewController title="Wish list" id="BzB-Fk-lRv" sceneMemberID="viewController">
+                <viewController title="Wish list" id="BzB-Fk-lRv" customClass="WishListViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yCN-Pl-l3o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29n-JH-U61">
+                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NFh-XI-bog">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfc-xn-YQy">
+                                                <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="44"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <state key="normal" title="Items">
+                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="itemsButtonTapped:" destination="BzB-Fk-lRv" eventType="touchUpInside" id="ZiT-sX-Zfe"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zx-Gt-g9k">
+                                                <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="44"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <state key="normal" title="Outfits">
+                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="outfitsButtonTapped:" destination="BzB-Fk-lRv" eventType="touchUpInside" id="hyd-wY-WvX"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="uXS-gS-6AV"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzv-Sd-NHd">
+                                        <rect key="frame" x="63.333333333333343" y="43" width="61" height="1"/>
+                                        <color key="backgroundColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="cIT-9l-z95"/>
+                                            <constraint firstAttribute="height" constant="1" id="lc4-EY-Gfx"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flf-XD-PcW">
+                                        <rect key="frame" x="250.66666666666663" y="43" width="61" height="1"/>
+                                        <color key="backgroundColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="95Z-ab-PwV"/>
+                                            <constraint firstAttribute="height" constant="1" id="j0n-TD-7Nm"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstItem="NFh-XI-bog" firstAttribute="leading" secondItem="29n-JH-U61" secondAttribute="leading" id="1x1-qG-CjX"/>
+                                    <constraint firstAttribute="trailing" secondItem="NFh-XI-bog" secondAttribute="trailing" id="P6p-R6-W2s"/>
+                                    <constraint firstAttribute="bottom" secondItem="NFh-XI-bog" secondAttribute="bottom" id="jaw-T1-VhI"/>
+                                    <constraint firstItem="NFh-XI-bog" firstAttribute="top" secondItem="29n-JH-U61" secondAttribute="top" id="obr-Et-iUr"/>
+                                    <constraint firstAttribute="bottom" secondItem="fzv-Sd-NHd" secondAttribute="bottom" id="rh9-bR-J42"/>
+                                    <constraint firstAttribute="bottom" secondItem="flf-XD-PcW" secondAttribute="bottom" id="uCF-Zc-Yh9"/>
+                                    <constraint firstItem="flf-XD-PcW" firstAttribute="centerX" secondItem="0zx-Gt-g9k" secondAttribute="centerX" id="wnA-ru-yep"/>
+                                    <constraint firstItem="fzv-Sd-NHd" firstAttribute="centerX" secondItem="yfc-xn-YQy" secondAttribute="centerX" id="znf-BJ-XIH"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="CPt-Fb-Gp2"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="29n-JH-U61" firstAttribute="trailing" secondItem="CPt-Fb-Gp2" secondAttribute="trailing" id="4Lr-0m-etB"/>
+                            <constraint firstItem="29n-JH-U61" firstAttribute="top" secondItem="CPt-Fb-Gp2" secondAttribute="top" id="JAK-RD-duf"/>
+                            <constraint firstItem="29n-JH-U61" firstAttribute="leading" secondItem="CPt-Fb-Gp2" secondAttribute="leading" id="mUP-Az-VGf"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Wish list" image="wishlist" id="Rdy-KM-KXm"/>
+                    <connections>
+                        <outlet property="itemsButton" destination="yfc-xn-YQy" id="kCj-et-gKA"/>
+                        <outlet property="itemsUnderline" destination="fzv-Sd-NHd" id="wkm-po-9kr"/>
+                        <outlet property="outletsButton" destination="0zx-Gt-g9k" id="ckW-pi-oeQ"/>
+                        <outlet property="outletsUnderline" destination="flf-XD-PcW" id="jZH-hi-Wha"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sa-oM-7Is" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="FcZ-fA-QJ0">
+                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <viewLayoutGuide key="safeArea" id="y27-kM-Euq"/>
+                    <color key="backgroundColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" id="AMv-oj-9DW"/>
+                        <constraint firstAttribute="width" constant="61" id="enn-Bu-c9X"/>
+                    </constraints>
+                </view>
             </objects>
             <point key="canvasLocation" x="569" y="881"/>
         </scene>
