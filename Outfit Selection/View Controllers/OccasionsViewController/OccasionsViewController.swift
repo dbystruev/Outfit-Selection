@@ -55,7 +55,6 @@ class OccasionsViewController: UIViewController {
     
     // MARK: - Inherited Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        debug()
         dismiss(animated: true)
     }
     
@@ -75,6 +74,13 @@ class OccasionsViewController: UIViewController {
         let occasionIndex = occasionPickerView.selectedRow(inComponent: 0)
         guard 0 <= occasionIndex && occasionIndex < occasions.count else { return }
         Wishlist.add(items, occasion: occasions[occasionIndex])
+        
         dismiss(animated: true)
+        
+        // Select like button at outfit view controller
+        let navigationController = presentingViewController as? UINavigationController
+        let tabBarController = navigationController?.findViewController(ofType: UITabBarController.self)        
+        let outfitController = tabBarController?.selectedViewController as? OutfitViewController
+        outfitController?.likeButton.isSelected = true
     }
 }

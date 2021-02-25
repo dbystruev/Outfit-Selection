@@ -42,25 +42,11 @@ struct Wishlist: Codable {
         // Make sure we don't add an empty wishlist with no occasion
         guard 0 < items.count && !occasion.isEmpty else { return }
         
-        // Check if similar items exist in another occasion, clear it if found
-        for occasion in outfitsDictionary.keys {
-            if contains(items, occasion: occasion) == true {
-                outfitsDictionary[occasion] = nil
-            }
-        }
+        // Check if similar items exist in any occasion, clear it if found
+        remove(items)
         
         // Append the new outfit to the end of the outfits wishlist
         outfitsDictionary[occasion] = items
-    }
-    
-    /// Remove an item from the items wishlist if it is present there
-    /// - Parameter item: the item to remove from the item wishlist
-    static func remove(_ item: Item?) {
-        // Make sure the item amd its index are not nil
-        guard let itemIndex = item?.itemIndex else { return }
-        
-        // Remove all items with given itemIndex
-        items.removeAll { $0.item?.itemIndex == itemIndex }
     }
     
     /// Returns true if item is contained in the items wishlist already, false otherwise
@@ -74,12 +60,20 @@ struct Wishlist: Codable {
     /// Returns true if outfit is contained in the outfit wishlist already, false otherwise
     /// - Parameters:
     ///   - newOutfit: the collection of items in the new outfit
-    ///   - occasion: the occasion for the outfit
+    ///   - occasion: the occasion for the outfit, if nil search all occasions
     /// - Returns: true if outfit is contained in the outfit wishlist, false if not, nil if items or occasion are empty
-    static func contains(_ newOutfit: [Item], occasion: String) -> Bool? {
+    static func contains(_ newOutfit: [Item], occasion: String? = nil) -> Bool? {
         // Return nil if new items or occasion is empty
         let newOutfitCount = newOutfit.count
-        guard 0 < newOutfitCount && !occasion.isEmpty else { return nil }
+        guard 0 < newOutfitCount && occasion?.isEmpty != true else { return nil }
+        
+        // If occasion is nil search for all occasions
+        guard let occasion = occasion else {
+            for occasion in outfitsDictionary.keys {
+                if contains(newOutfit, occasion: occasion) == true { return true }
+            }
+            return false
+        }
         
         // Return false if there is no outfit for the occasion present
         guard let outfit = outfitsDictionary[occasion] else { return false }
@@ -93,6 +87,27 @@ struct Wishlist: Codable {
         
         // Compare two sets of outfit item indexes
         return newOutfitCount == newOutfitSet.count && newOutfitSet == outfitSet
+    }
+    
+    /// Remove an item from the items wishlist if it is present there
+    /// - Parameter item: the item to remove from the item wishlist
+    static func remove(_ item: Item?) {
+        // Make sure the item amd its index are not nil
+        guard let itemIndex = item?.itemIndex else { return }
+        
+        // Remove all items with given itemIndex
+        items.removeAll { $0.item?.itemIndex == itemIndex }
+    }
+    
+    /// Remove items from the outfit wishlist if they are present there
+    /// - Parameter items: the items in outfit to remove
+    static func remove(_ items: [Item]) {
+        // Check all occasions and remove similar items from them
+        for occasion in outfitsDictionary.keys {
+            if contains(items, occasion: occasion) == true {
+                outfitsDictionary[occasion] = nil
+            }
+        }
     }
     
     // MARK: - Stored Properties

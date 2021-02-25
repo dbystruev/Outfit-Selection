@@ -78,6 +78,14 @@ extension OutfitViewController {
         updatePrice()
     }
     
+    /// Updates like button
+    func updateLikeButton() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.likeButton.isSelected = Wishlist.contains(self.items) == true
+        }
+    }
+    
+    /// Updates price label
     func updatePrice() {
         guard 0 < price else {
             updatePriceLabelWithItemCount(with: itemCount)
@@ -87,5 +95,14 @@ extension OutfitViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             self.priceLabel.text = "Outfit price: \(self.price.asPrice)"
         }
+    }
+    
+    /// Updates like button and price
+    func updateUI() {
+        // Update like button
+        updateLikeButton()
+        
+        // Update price label
+        updatePrice()
     }
 }

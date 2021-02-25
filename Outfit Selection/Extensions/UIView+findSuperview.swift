@@ -10,7 +10,7 @@ extension UIView {
     /// Find the first superview of given type
     /// - Parameter type: the type to search superview for
     /// - Returns: the found superview of given type or nil
-    func findSuperview<T>(ofType type: T.Type) -> T? {
+    func findSuperview<T: UIView>(ofType type: T.Type) -> T? {
         var foundView = superview
         while foundView != nil {
             if let foundViewAsT = foundView as? T {

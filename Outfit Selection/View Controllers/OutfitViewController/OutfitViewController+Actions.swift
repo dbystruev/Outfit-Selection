@@ -40,14 +40,20 @@ extension OutfitViewController {
             }
         }
         
-        updatePrice()
+        // Update like button and price
+        updateUI()
     }
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "occasionsViewController")
-        guard let occasionsViewController = controller as? OccasionsViewController else { return }
-        occasionsViewController.items = items
-        present(occasionsViewController, animated: true)
+        if Wishlist.contains(items) == true {
+            Wishlist.remove(items)
+            sender.isSelected = false
+        } else {
+            let controller = storyboard?.instantiateViewController(withIdentifier: "occasionsViewController")
+            guard let occasionsViewController = controller as? OccasionsViewController else { return }
+            occasionsViewController.items = items
+            present(occasionsViewController, animated: true)
+        }
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {

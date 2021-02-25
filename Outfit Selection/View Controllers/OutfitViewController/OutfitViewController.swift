@@ -10,6 +10,7 @@ import UIKit
 
 class OutfitViewController: UIViewController {
     // MARK: - Outlets
+    @IBOutlet weak var likeButton: UIButton!
     @IBOutlet var likeButtons: [UIButton]!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
