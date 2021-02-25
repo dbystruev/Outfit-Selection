@@ -44,9 +44,9 @@ extension OutfitViewController {
     }
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
-        let controller = storyboard?.instantiateViewController(withIdentifier: "chooseTheOccasionViewController")
-        guard let chooseTheOccasionViewController = controller as? ChooseTheOccasionViewController else { return }
-        present(chooseTheOccasionViewController, animated: true)
+        let controller = storyboard?.instantiateViewController(withIdentifier: "occasionsViewController")
+        guard let occasionsViewController = controller as? OccasionsViewController else { return }
+        present(occasionsViewController, animated: true)
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
