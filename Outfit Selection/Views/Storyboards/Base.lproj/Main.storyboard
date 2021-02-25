@@ -6,6 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -443,12 +444,79 @@
                                     <constraint firstItem="fzv-Sd-NHd" firstAttribute="centerX" secondItem="yfc-xn-YQy" secondAttribute="centerX" id="znf-BJ-XIH"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Or-GK-FyM">
+                                <rect key="frame" x="16" y="104" width="343" height="625"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="29" id="JcY-jG-Na8">
+                                    <size key="itemSize" width="187" height="274"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCell" id="IhR-SG-gIa" customClass="ItemCell" customModule="Outfit_Selection" customModuleProvider="target">
+                                        <rect key="frame" x="78" y="0.0" width="187" height="274"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ILC-FV-G4V">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="274"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2kQ-fH-szp">
+                                                    <rect key="frame" x="0.0" y="0.0" width="187" height="217"/>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="bFg-vi-rVv">
+                                                    <rect key="frame" x="0.0" y="221" width="187" height="53"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Louis Vuitton" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxM-e2-zna">
+                                                            <rect key="frame" x="0.0" y="0.0" width="187" height="17.666666666666668"/>
+                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="13"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cotton shirt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dSg-OH-EtX">
+                                                            <rect key="frame" x="0.0" y="17.666666666666657" width="187" height="17.666666666666671"/>
+                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="11"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199 500 ₽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kMb-Ot-KWb">
+                                                            <rect key="frame" x="0.0" y="35.333333333333314" width="187" height="17.666666666666671"/>
+                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="11"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="bFg-vi-rVv" secondAttribute="trailing" id="BMP-YK-J5e"/>
+                                                <constraint firstItem="2kQ-fH-szp" firstAttribute="top" secondItem="ILC-FV-G4V" secondAttribute="top" id="ZGx-da-Fen"/>
+                                                <constraint firstItem="bFg-vi-rVv" firstAttribute="top" secondItem="2kQ-fH-szp" secondAttribute="bottom" constant="4" id="dO0-9E-AUq"/>
+                                                <constraint firstItem="bFg-vi-rVv" firstAttribute="leading" secondItem="ILC-FV-G4V" secondAttribute="leading" id="hWV-uS-qQT"/>
+                                                <constraint firstAttribute="bottom" secondItem="bFg-vi-rVv" secondAttribute="bottom" id="kTx-np-OcX"/>
+                                                <constraint firstItem="2kQ-fH-szp" firstAttribute="leading" secondItem="ILC-FV-G4V" secondAttribute="leading" id="tdk-RI-7zT"/>
+                                                <constraint firstAttribute="trailing" secondItem="2kQ-fH-szp" secondAttribute="trailing" id="xEC-Iu-YfP"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="dSg-OH-EtX" id="KDx-Jg-g6A"/>
+                                            <outlet property="pictureImageView" destination="2kQ-fH-szp" id="UBE-GY-0fg"/>
+                                            <outlet property="priceLabel" destination="kMb-Ot-KWb" id="ajL-CK-y1a"/>
+                                            <outlet property="vendorLabel" destination="pxM-e2-zna" id="oCY-qH-ZDE"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="CPt-Fb-Gp2"/>
                         <color key="backgroundColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="CPt-Fb-Gp2" firstAttribute="bottom" secondItem="9Or-GK-FyM" secondAttribute="bottom" id="3BB-XH-gkc"/>
                             <constraint firstItem="29n-JH-U61" firstAttribute="trailing" secondItem="CPt-Fb-Gp2" secondAttribute="trailing" id="4Lr-0m-etB"/>
                             <constraint firstItem="29n-JH-U61" firstAttribute="top" secondItem="CPt-Fb-Gp2" secondAttribute="top" id="JAK-RD-duf"/>
+                            <constraint firstItem="9Or-GK-FyM" firstAttribute="top" secondItem="29n-JH-U61" secondAttribute="bottom" constant="16" id="Oix-gK-oze"/>
+                            <constraint firstItem="9Or-GK-FyM" firstAttribute="leading" secondItem="CPt-Fb-Gp2" secondAttribute="leading" constant="16" id="S8H-cM-bM9"/>
+                            <constraint firstItem="CPt-Fb-Gp2" firstAttribute="trailing" secondItem="9Or-GK-FyM" secondAttribute="trailing" constant="16" id="kyu-Tw-g0r"/>
                             <constraint firstItem="29n-JH-U61" firstAttribute="leading" secondItem="CPt-Fb-Gp2" secondAttribute="leading" id="mUP-Az-VGf"/>
                         </constraints>
                     </view>
@@ -458,6 +526,7 @@
                         <outlet property="itemsUnderline" destination="fzv-Sd-NHd" id="wkm-po-9kr"/>
                         <outlet property="outletsButton" destination="0zx-Gt-g9k" id="ckW-pi-oeQ"/>
                         <outlet property="outletsUnderline" destination="flf-XD-PcW" id="jZH-hi-Wha"/>
+                        <outlet property="wishlistCollectionView" destination="9Or-GK-FyM" id="vQ3-YU-CU0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sa-oM-7Is" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -472,7 +541,7 @@
                     </constraints>
                 </view>
             </objects>
-            <point key="canvasLocation" x="569" y="881"/>
+            <point key="canvasLocation" x="568.79999999999995" y="880.78817733990149"/>
         </scene>
         <!--Profile-->
         <scene sceneID="hoZ-Mh-dts">
@@ -568,8 +637,20 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tez-9P-gqj">
-                                <rect key="frame" x="16" y="60.666666666666686" width="343" height="581.33333333333326"/>
+                                <rect key="frame" x="16" y="60.666666666666657" width="343" height="496.33333333333337"/>
                             </imageView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmk-y1-NPB">
+                                <rect key="frame" x="16" y="573" width="343" height="69"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8C-LO-Yd8">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="69"/>
+                                        <state key="normal" image="wishlist"/>
+                                        <connections>
+                                            <action selector="addToWishlistButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="4Vd-cV-N7T"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpo-Qn-AYN">
                                 <rect key="frame" x="93.666666666666671" y="658" width="187.66666666666663" height="50"/>
                                 <color key="backgroundColor" red="0.31575974820000002" green="0.38078895210000002" blue="0.37285700440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -586,7 +667,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="priceButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="5vk-11-a6Q"/>
+                                    <action selector="orderButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="5vk-11-a6Q"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -595,10 +676,14 @@
                         <constraints>
                             <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="Tez-9P-gqj" secondAttribute="trailing" constant="16" id="HXN-vV-rbI"/>
                             <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="q3W-h9-jQb" secondAttribute="trailing" constant="16" id="Lw4-aY-NZJ"/>
-                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="top" secondItem="Tez-9P-gqj" secondAttribute="bottom" constant="16" id="MoE-RU-ael"/>
+                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="top" secondItem="Tez-9P-gqj" secondAttribute="bottom" constant="101" id="MoE-RU-ael"/>
                             <constraint firstItem="q3W-h9-jQb" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="PPt-97-Jxc"/>
                             <constraint firstItem="dpo-Qn-AYN" firstAttribute="centerX" secondItem="uN6-6g-WHf" secondAttribute="centerX" id="PVf-2Y-YQK"/>
+                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="top" secondItem="qmk-y1-NPB" secondAttribute="bottom" constant="16" id="Rx2-3k-bEJ"/>
+                            <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="qmk-y1-NPB" secondAttribute="trailing" constant="16" id="Ss5-dL-6Bu"/>
                             <constraint firstItem="ttT-PL-VLh" firstAttribute="bottom" secondItem="dpo-Qn-AYN" secondAttribute="bottom" constant="16" id="Vhd-Gv-sdX"/>
+                            <constraint firstItem="qmk-y1-NPB" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="Zyp-6s-KQx"/>
+                            <constraint firstItem="qmk-y1-NPB" firstAttribute="top" secondItem="Tez-9P-gqj" secondAttribute="bottom" constant="16" id="fV1-Hn-PJ4"/>
                             <constraint firstItem="dpo-Qn-AYN" firstAttribute="width" secondItem="uN6-6g-WHf" secondAttribute="width" multiplier="0.5" id="feQ-fy-rrT"/>
                             <constraint firstItem="Tez-9P-gqj" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="mH5-lY-pyQ"/>
                             <constraint firstItem="q3W-h9-jQb" firstAttribute="top" secondItem="ttT-PL-VLh" secondAttribute="top" constant="16" id="wYl-4Y-LgN"/>
@@ -609,12 +694,12 @@
                     <connections>
                         <outlet property="imageView" destination="Tez-9P-gqj" id="NF6-q8-GWd"/>
                         <outlet property="nameLabel" destination="q3W-h9-jQb" id="Qfq-uF-dtP"/>
-                        <outlet property="priceButton" destination="dpo-Qn-AYN" id="kqi-hR-5gW"/>
+                        <outlet property="orderButton" destination="dpo-Qn-AYN" id="kqi-hR-5gW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2287" y="545"/>
+            <point key="canvasLocation" x="2285.5999999999999" y="544.58128078817731"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kA0-0v-X04">

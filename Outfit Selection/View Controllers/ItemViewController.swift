@@ -13,7 +13,7 @@ class ItemViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var priceButton: UIButton!
+    @IBOutlet weak var orderButton: UIButton!
     
     // MARK: - Properties
     var image: UIImage?
@@ -36,12 +36,16 @@ class ItemViewController: UIViewController {
         } else {
             nameLabel.text = nil
         }
-        priceButton.isHidden = item == nil
+        orderButton.isHidden = item == nil
         title = item?.price?.asPrice
     }
     
     // Actions
-    @IBAction func priceButtonTapped(_ sender: UIButton) {
+    @IBAction func addToWishlistButtonTapped(_ sender: UIButton) {
+        
+    }
+    
+    @IBAction func orderButtonTapped(_ sender: UIButton) {
         guard let url = item?.url else { return }
         
         let config = SFSafariViewController.Configuration()
