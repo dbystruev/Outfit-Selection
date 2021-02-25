@@ -46,6 +46,7 @@ extension OutfitViewController {
     @IBAction func likeButtonTapped(_ sender: UIButton) {
         let controller = storyboard?.instantiateViewController(withIdentifier: "occasionsViewController")
         guard let occasionsViewController = controller as? OccasionsViewController else { return }
+        occasionsViewController.items = items
         present(occasionsViewController, animated: true)
     }
     

@@ -13,6 +13,9 @@ class OccasionsViewController: UIViewController {
     @IBOutlet weak var occasionPickerView: UIPickerView!
     
     // MARK: - Properties
+    /// Items in the current outfit
+    var items = [Item]()
+    
     let occasions = [
         "Daily",
         "Basic",
@@ -69,7 +72,9 @@ class OccasionsViewController: UIViewController {
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: UIButton) {
-        debug()
+        let occasionIndex = occasionPickerView.selectedRow(inComponent: 0)
+        guard 0 <= occasionIndex && occasionIndex < occasions.count else { return }
+        Wishlist.add(items, occasion: occasions[occasionIndex])
         dismiss(animated: true)
     }
 }

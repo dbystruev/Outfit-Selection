@@ -30,6 +30,16 @@ class OutfitViewController: UIViewController {
         scrollViews.reduce(0) { $0 + $1.itemCount }
     }
     
+    /// Item indexes for current image views
+    var itemIndexes: [Int] {
+        scrollViews.compactMap({ $0.getImageView()?.tag }).filter { 0 <= $0 }
+    }
+    
+    /// Items for current image views
+    var items: [Item] {
+        itemIndexes.compactMap { 0 <= $0 && $0 < Item.all.count ? Item.all[$0] : nil }
+    }
+    
     var price: Double {
         var amount = 0.0
         for scrollView in scrollViews {

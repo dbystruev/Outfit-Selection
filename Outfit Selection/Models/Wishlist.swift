@@ -28,7 +28,7 @@ struct Wishlist: Codable {
     // MARK: - Static Methods
     /// Add an item to the items wishlist if it is not present there
     /// - Parameter item: item to add to the item wishlist
-    static func add(item: Item?) {
+    static func add(_ item: Item?) {
         // Make sure we don't have item added already
         guard let item = item, contains(item) == false else { return }
         
@@ -40,7 +40,7 @@ struct Wishlist: Codable {
     /// - Parameters:
     ///   - items: the list of items to add to the outfit wishlist
     ///   - occasion: Occasion for the outfit
-    static func add(items: [Item], occasion: String) {
+    static func add(_ items: [Item], occasion: String) {
         // Make sure we don't add an empty or existing wishlist
         let outfit = Wishlist(items, occasion: occasion)
         guard contains(outfit) == false else { return }

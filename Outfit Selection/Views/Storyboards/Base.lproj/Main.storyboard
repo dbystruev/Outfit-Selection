@@ -505,6 +505,14 @@
                                             <outlet property="vendorLabel" destination="pxM-e2-zna" id="oCY-qH-ZDE"/>
                                         </connections>
                                     </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="outfitCell" id="koE-HJ-iBK">
+                                        <rect key="frame" x="78" y="290" width="187" height="274"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Bnk-MH-xaW">
+                                            <rect key="frame" x="0.0" y="0.0" width="187" height="274"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
                                 </cells>
                             </collectionView>
                         </subviews>
