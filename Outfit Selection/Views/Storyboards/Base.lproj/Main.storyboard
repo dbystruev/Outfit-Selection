@@ -642,16 +642,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sa-oM-7Is" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-                <view contentMode="scaleToFill" id="FcZ-fA-QJ0">
-                    <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <viewLayoutGuide key="safeArea" id="y27-kM-Euq"/>
-                    <color key="backgroundColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" id="AMv-oj-9DW"/>
-                        <constraint firstAttribute="width" constant="61" id="enn-Bu-c9X"/>
-                    </constraints>
-                </view>
             </objects>
             <point key="canvasLocation" x="568.79999999999995" y="880.78817733990149"/>
         </scene>

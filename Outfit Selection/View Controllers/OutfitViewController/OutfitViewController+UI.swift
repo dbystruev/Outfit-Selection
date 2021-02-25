@@ -75,7 +75,7 @@ extension OutfitViewController {
     
     func updateItemCount() {
         updatePriceLabelWithItemCount(with: itemCount)
-        updatePrice()
+        updateUI()
     }
     
     /// Updates like button
