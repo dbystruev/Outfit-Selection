@@ -41,12 +41,19 @@ class WishlistViewController: UIViewController {
         itemsUnderline.isHidden = !itemsTabSelected
         outletsButton.titleLabel?.alpha = itemsTabSelected ? 0.5 : 1
         outletsUnderline.isHidden = itemsTabSelected
+        
+        // Reload collection view
+        wishlistCollectionView.reloadData()
     }
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         wishlistCollectionView.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         updateUI()
     }
     

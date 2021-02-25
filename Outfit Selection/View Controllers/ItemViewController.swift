@@ -42,7 +42,7 @@ class ItemViewController: UIViewController {
     
     // Actions
     @IBAction func addToWishlistButtonTapped(_ sender: UIButton) {
-        
+        Wishlist.add(item: item)
     }
     
     @IBAction func orderButtonTapped(_ sender: UIButton) {
