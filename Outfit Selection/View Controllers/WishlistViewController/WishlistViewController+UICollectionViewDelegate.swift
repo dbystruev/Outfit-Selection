@@ -13,7 +13,16 @@ extension WishlistViewController: UICollectionViewDelegate {
         if itemsTabSelected {
             performSegue(withIdentifier: "itemViewControllerSegue", sender: self)
         } else {
+            // Get the navigation controller for the outfit view controller
+            guard let navigationController = tabBarController?.viewControllers?.first as? UINavigationController else { return }
             
+            // Quickly navigate back from item view controller in case we are there
+            if (navigationController.viewControllers.last as? ItemViewController) != nil {
+                navigationController.popViewController(animated: false)
+            }
+            
+            // Switch to the first (outfit view controller) tab
+            tabBarController?.selectedIndex = 0
         }
     }
 }
