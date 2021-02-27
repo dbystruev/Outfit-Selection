@@ -38,6 +38,11 @@ extension PinnableScrollView {
         subviews.first as? UIStackView
     }
     
+    /// Tags of each of the arranged subviews of the pinnable scroll view
+    var tags: [Int] {
+        stackView?.arrangedSubviews.map { $0.tag } ?? []
+    }
+    
     // MARK: - Methods
     func clear() {
         unpin()
@@ -73,6 +78,13 @@ extension PinnableScrollView {
         let index = index ?? currentIndex
         guard 0 <= index && index < count else { return nil }
         return stackView?.arrangedSubviews[index] as? UIImageView
+    }
+    
+    /// Search for the first element with a given tag and return its index if found, or nil if not found
+    /// - Parameter tag: tag to search for
+    /// - Returns: the index of the first element with the given tag
+    func index(ofTag tag: Int) -> Int? {
+        tags.firstIndex(of: tag)
     }
     
     func insert(image: UIImage?, atIndex index: Int? = nil) -> UIImageView {
@@ -118,6 +130,13 @@ extension PinnableScrollView {
         UIView.animate(withDuration: duration, animations: {
             self.contentOffset.x = self.elementWidth * CGFloat(index)
         }, completion: completion)
+    }
+    
+    /// Scroll to element with the given tag
+    /// - Parameter tag: the tag to search for and scroll to
+    func scrollToElement(withTag tag: Int) {
+        guard let index = index(ofTag: tag) else { return }
+        scrollToElement(withIndex: index)
     }
     
     func scrollToLastElement(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {

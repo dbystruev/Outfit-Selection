@@ -32,7 +32,6 @@ extension OutfitViewController {
     }
     
     @IBAction func refreshButtonTapped(_ sender: UIButton) {
-        setEditing(false, animated: true)
         scrollViews.forEach {
             if !$0.isPinned {
                 $0.scrollToRandomElement()
@@ -60,8 +59,6 @@ extension OutfitViewController {
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
-        setEditing(false, animated: true)
-        
         // Hide like buttons
         likeButtons.forEach { $0.isHidden = true }
         

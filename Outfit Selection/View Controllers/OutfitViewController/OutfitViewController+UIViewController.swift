@@ -44,4 +44,9 @@ extension OutfitViewController {
             self.updateUI()
         }
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateUI()
+    }
 }

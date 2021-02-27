@@ -21,7 +21,6 @@ extension OutfitViewController {
     }
     
     func shuffle() {
-        setEditing(false, animated: true)
         scrollViews.forEach {
             if !$0.isPinned {
                 $0.scrollToRandomElement()

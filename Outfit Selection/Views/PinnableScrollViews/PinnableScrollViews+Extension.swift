@@ -29,6 +29,15 @@ extension PinnableScrollViews {
         forEach { $0.restoreBorder() }
     }
     
+    /// Scroll its views to the given tags
+    /// - Parameter tags: the tags to scroll the scroll views to
+    func scrollToElements(withTags tags: [Int?]) {
+        for (scrollView, tag) in zip(self, tags) {
+            guard let tag = tag else { continue }
+            scrollView.scrollToElement(withTag: tag)
+        }
+    }
+    
     func unpin() {
         forEach { $0.unpin() }
     }

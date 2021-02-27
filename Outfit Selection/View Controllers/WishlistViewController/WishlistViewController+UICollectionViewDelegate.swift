@@ -16,6 +16,9 @@ extension WishlistViewController: UICollectionViewDelegate {
             // Get the navigation controller for the outfit view controller
             guard let navigationController = tabBarController?.viewControllers?.first as? UINavigationController else { return }
             
+            // Find outfit view controller in navigation stack
+            guard let outfitViewController = navigationController.findViewController(ofType: OutfitViewController.self) else { return }
+            
             // Quickly navigate back from item view controller in case we are there
             if (navigationController.viewControllers.last as? ItemViewController) != nil {
                 navigationController.popViewController(animated: false)
@@ -23,6 +26,9 @@ extension WishlistViewController: UICollectionViewDelegate {
             
             // Switch to the first (outfit view controller) tab
             tabBarController?.selectedIndex = 0
+            
+            // Scroll to the items in the current outfit
+            outfitViewController.scrollTo(items: wishlist[indexPath.row].items)
         }
     }
 }

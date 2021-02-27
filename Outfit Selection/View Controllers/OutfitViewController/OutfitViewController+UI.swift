@@ -58,6 +58,13 @@ extension OutfitViewController {
         scrollViews.pin()
     }
     
+    /// Scroll outfit's scroll views to the given items
+    /// - Parameter items: the items to scroll the scroll views to
+    func scrollTo(items: [Item]) {
+        let tags = items.map { $0.itemIndex }
+        scrollViews.scrollToElements(withTags: tags)
+    }
+    
     func setupUI() {
         // Hide all like buttons
         likeButtons.forEach { $0.isHidden = true }
