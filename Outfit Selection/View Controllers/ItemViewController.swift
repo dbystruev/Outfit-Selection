@@ -56,6 +56,10 @@ class ItemViewController: UIViewController {
     }
     
     @IBAction func wishlistButtonTapped(_ sender: UIButton) {
+        // Set most recent like/dislike to item
+        let outfitViewController = navigationController?.findViewController(ofType: OutfitViewController.self)
+        outfitViewController?.wasLastEmotionAboutItem = true
+        
         if Wishlist.contains(item) == true {
             Wishlist.remove(item)
             sender.isSelected = false

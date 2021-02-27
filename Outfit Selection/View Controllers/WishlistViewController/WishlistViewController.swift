@@ -39,6 +39,15 @@ class WishlistViewController: UIViewController {
     // MARK: - Custom Methods
     /// Select non-empty tab, but if both are empty or both are not empty do not change selected tab
     func selectNonEmptyTab() {
+        // If last emotion in outfit view controller is not nil select the corresponding tab
+        let navigationController = tabBarController?.viewControllers?.first as? UINavigationController
+        let outfitViewController = navigationController?.viewControllers.first as? OutfitViewController
+        if let wasLastEmotionAboutItem = outfitViewController?.wasLastEmotionAboutItem {
+            itemsTabSelected = wasLastEmotionAboutItem
+            return
+        }
+        
+        // Otherwise select a non-empty tab
         let itemsCount = Wishlist.items.count
         let outfitsCount = Wishlist.outfits.count
         

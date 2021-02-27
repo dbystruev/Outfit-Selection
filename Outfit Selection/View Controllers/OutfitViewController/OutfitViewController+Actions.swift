@@ -32,7 +32,6 @@ extension OutfitViewController {
     }
     
     @IBAction func refreshButtonTapped(_ sender: UIButton) {
-        selectedAction = .cancel
         setEditing(false, animated: true)
         scrollViews.forEach {
             if !$0.isPinned {
@@ -45,9 +44,13 @@ extension OutfitViewController {
     }
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
+        // Set most recent like/dislike to outfit, not item
+        wasLastEmotionAboutItem = false
+        
+        // Dislike if we already liked it, or like if we didn't
         if Wishlist.contains(items) == true {
-            Wishlist.remove(items)
             sender.isSelected = false
+            Wishlist.remove(items)
         } else {
             let controller = storyboard?.instantiateViewController(withIdentifier: "occasionsViewController")
             guard let occasionsViewController = controller as? OccasionsViewController else { return }
@@ -58,7 +61,6 @@ extension OutfitViewController {
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         setEditing(false, animated: true)
-        selectedAction = .cancel
         
         // Hide like buttons
         likeButtons.forEach { $0.isHidden = true }
