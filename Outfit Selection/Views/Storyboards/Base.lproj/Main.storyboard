@@ -13,7 +13,7 @@
         <!--Outfit-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController title="Outfit" id="BYZ-38-t0r" customClass="OutfitViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="OutfitViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -357,18 +357,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1359" y="-198"/>
+            <point key="canvasLocation" x="1311" y="494"/>
         </scene>
         <!--Wish list-->
         <scene sceneID="QuB-zm-Xxz">
             <objects>
-                <viewController title="Wish list" id="BzB-Fk-lRv" customClass="WishlistViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BzB-Fk-lRv" customClass="WishlistViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yCN-Pl-l3o">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="29n-JH-U61">
-                                <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="88" width="375" height="44"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="NFh-XI-bog">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -429,7 +429,7 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Or-GK-FyM">
-                                <rect key="frame" x="16" y="104" width="343" height="625"/>
+                                <rect key="frame" x="16" y="148" width="343" height="581"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="28" id="JcY-jG-Na8">
                                     <size key="itemSize" width="184" height="276"/>
@@ -614,7 +614,7 @@
                             <constraint firstItem="29n-JH-U61" firstAttribute="leading" secondItem="CPt-Fb-Gp2" secondAttribute="leading" id="mUP-Az-VGf"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Wish list" image="wishlist" id="Rdy-KM-KXm"/>
+                    <navigationItem key="navigationItem" title="Wish list" id="gG6-27-ece"/>
                     <connections>
                         <outlet property="itemsButton" destination="yfc-xn-YQy" id="kCj-et-gKA"/>
                         <outlet property="itemsUnderline" destination="fzv-Sd-NHd" id="wkm-po-9kr"/>
@@ -626,7 +626,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sa-oM-7Is" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1358" y="500"/>
+            <point key="canvasLocation" x="1310" y="-175"/>
         </scene>
         <!--Profile-->
         <scene sceneID="hoZ-Mh-dts">
@@ -831,7 +831,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2145" y="209"/>
+            <point key="canvasLocation" x="2094" y="183"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kA0-0v-X04">
@@ -846,7 +846,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="GxA-0B-2jL" kind="relationship" relationship="viewControllers" id="jBC-ny-lRj"/>
-                        <segue destination="BzB-Fk-lRv" kind="relationship" relationship="viewControllers" id="TXd-ae-D09"/>
+                        <segue destination="FC2-yZ-683" kind="relationship" relationship="viewControllers" id="TXd-ae-D09"/>
                         <segue destination="FjR-QX-jdW" kind="relationship" relationship="viewControllers" id="wBg-fv-Blj"/>
                     </connections>
                 </tabBarController>
@@ -871,7 +871,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6UC-Fd-aaN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="503" y="-198"/>
+            <point key="canvasLocation" x="505" y="494"/>
+        </scene>
+        <!--Wish list-->
+        <scene sceneID="uD9-G1-kuD">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="FC2-yZ-683" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Wish list" image="wishlist" id="Rdy-KM-KXm"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="LsD-Eb-cEf">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BzB-Fk-lRv" kind="relationship" relationship="rootViewController" id="Ofq-hH-0qi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7Jm-gg-mMc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="505" y="-175"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
