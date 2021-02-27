@@ -21,7 +21,7 @@ class ItemCell: UICollectionViewCell {
     /// - Parameter item: item to configure cell content with
     func configure(with item: Item) {
         // Configure labels
-        nameLabel.text = item.name
+        nameLabel.text = item.nameWithoutVendor
         priceLabel.text = item.price?.asPrice
         vendorLabel.text = item.vendor
         

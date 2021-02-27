@@ -26,7 +26,7 @@ struct Item: Codable {
         }
     }
     
-    // MARK: - Properties
+    // MARK: - Stored Properties
     /// Item's category id
     let categoryId: Int?
     
@@ -47,6 +47,14 @@ struct Item: Codable {
     
     /// The item vendor
     let vendor: String?
+    
+    // MARK: - Computed Properties
+    /// If item name startd with vendor (brand) drop that brand and capitalize the first letter of remaining string
+    var nameWithoutVendor: String? {
+        guard let name = name?.lowercased() else { return nil }
+        guard let vendor = vendor?.lowercased(), name.starts(with: vendor) else { return name }
+        return name.dropFirst(vendor.count).trimmingCharacters(in: .whitespacesAndNewlines).firstCapitalized
+    }
     
     // MARK: - Methods
     /// Clears all items

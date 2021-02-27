@@ -25,15 +25,11 @@ class ItemViewController: UIViewController {
     // MARK: - Custom Methods
     /// Fill labels with item data
     func updateUI() {
-        if let name = item?.name, let firstLetter = name.first?.uppercased() {
-            nameLabel.text = firstLetter + name.dropFirst()
-        } else {
-            nameLabel.text = nil
-        }
-        vendorLabel.text = item?.vendor?.uppercased()
-        orderButton.isHidden = item == nil
         addToWishlistButton.isSelected = Wishlist.contains(item) ?? false
+        nameLabel.text = item?.nameWithoutVendor
+        orderButton.isHidden = item == nil
         title = item?.price?.asPrice
+        vendorLabel.text = item?.vendor?.uppercased()
     }
     
     /// Set last emotion in outfit view controller to item
