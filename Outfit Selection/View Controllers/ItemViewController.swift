@@ -45,10 +45,12 @@ class ItemViewController: UIViewController {
         
         imageView.image = image
         item = 0 <= itemIndex && itemIndex < Item.all.count ? Item.all[itemIndex] : nil
-        
-        updateUI()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        updateUI()
+    }
     
     // MARK: - Actions
     @IBAction func addToWishlistButtonTapped(_ sender: UIButton) {

@@ -76,6 +76,20 @@ class WishlistViewController: UIViewController {
     }
     
     // MARK: - Inherited Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "itemViewControllerSegue":
+            guard let destination = segue.destination as? ItemViewController else { return }
+            guard let selectedIndexPath = wishlistCollectionView.indexPathsForSelectedItems?.first else { return }
+            guard let itemCell = wishlistCollectionView.cellForItem(at: selectedIndexPath) as? ItemCell else { return }
+            guard let itemIndex = wishlist[selectedIndexPath.row].item?.itemIndex else { return }
+            destination.image = itemCell.pictureImageView.image
+            destination.itemIndex = itemIndex
+        default:
+            debug("WARNING: Unknown segue identifier", segue.identifier)
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         wishlistCollectionView.dataSource = self

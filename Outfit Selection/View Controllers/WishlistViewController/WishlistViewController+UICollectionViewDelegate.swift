@@ -10,6 +10,10 @@ import UIKit
 
 extension WishlistViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        debug(indexPath)
+        if itemsTabSelected {
+            performSegue(withIdentifier: "itemViewControllerSegue", sender: self)
+        } else {
+            
+        }
     }
 }

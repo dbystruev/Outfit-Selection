@@ -325,7 +325,6 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Outfit" id="NXz-cG-HPg">
-                        <barButtonItem key="backBarButtonItem" title=" " id="9BH-Cd-c9I"/>
                         <rightBarButtonItems>
                             <barButtonItem image="share" id="2AA-iP-MGy">
                                 <connections>
@@ -353,7 +352,7 @@
                         <outletCollection property="scrollViews" destination="nrI-94-QGh" collectionClass="NSMutableArray" id="aOa-FR-wV6"/>
                         <outletCollection property="scrollViews" destination="YAH-LD-FOj" collectionClass="NSMutableArray" id="PLC-BD-bcd"/>
                         <outletCollection property="scrollViews" destination="7mM-sh-37O" collectionClass="NSMutableArray" id="Yvd-C0-m1N"/>
-                        <segue destination="Uns-Sh-QHX" kind="show" identifier="ItemViewController" id="YhA-rh-zAa"/>
+                        <segue destination="Uns-Sh-QHX" kind="show" identifier="itemViewControllerSegue" id="YhA-rh-zAa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -622,11 +621,12 @@
                         <outlet property="outletsButton" destination="0zx-Gt-g9k" id="ckW-pi-oeQ"/>
                         <outlet property="outletsUnderline" destination="flf-XD-PcW" id="jZH-hi-Wha"/>
                         <outlet property="wishlistCollectionView" destination="9Or-GK-FyM" id="vQ3-YU-CU0"/>
+                        <segue destination="Uns-Sh-QHX" kind="show" identifier="itemViewControllerSegue" id="Rw2-uy-7Iw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sa-oM-7Is" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-287" y="881"/>
+            <point key="canvasLocation" x="1358" y="500"/>
         </scene>
         <!--Profile-->
         <scene sceneID="hoZ-Mh-dts">
@@ -642,7 +642,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHv-UT-keA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="503" y="881"/>
+            <point key="canvasLocation" x="-287" y="891"/>
         </scene>
         <!--Occasions View Controller-->
         <scene sceneID="L4D-s5-Wfa">
@@ -705,7 +705,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="47C-Ts-Pe3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="500" y="340"/>
+            <point key="canvasLocation" x="-287" y="-401"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="wZr-ET-Xq5">
@@ -831,7 +831,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2257" y="-198"/>
+            <point key="canvasLocation" x="2145" y="209"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kA0-0v-X04">
@@ -874,6 +874,9 @@
             <point key="canvasLocation" x="503" y="-198"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="YhA-rh-zAa"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="backslash" width="22" height="22"/>
         <image name="hanger" width="32" height="23.333333969116211"/>
