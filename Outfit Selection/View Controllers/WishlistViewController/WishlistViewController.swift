@@ -37,6 +37,18 @@ class WishlistViewController: UIViewController {
     }
     
     // MARK: - Custom Methods
+    /// Select non-empty tab, but if both are empty or both are not empty do not change selected tab
+    func selectNonEmptyTab() {
+        let itemsCount = Wishlist.items.count
+        let outfitsCount = Wishlist.outfits.count
+        
+        if itemsCount == 0 && 0 < outfitsCount {
+            itemsTabSelected = false
+        } else if 0 < itemsCount && outfitsCount == 0 {
+            itemsTabSelected = true
+        }
+    }
+    
     /// Update items or outfits displayed depending on items selected state
     func updateUI(isHorizontal: Bool? = nil) {
         // Set the number of cells per row
@@ -59,11 +71,11 @@ class WishlistViewController: UIViewController {
         super.viewDidLoad()
         wishlistCollectionView.dataSource = self
         wishlistCollectionView.delegate = self
-        itemsTabSelected = Wishlist.outfits.count <= Wishlist.items.count
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        selectNonEmptyTab()
         updateUI()
     }
     

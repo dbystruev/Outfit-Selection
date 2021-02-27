@@ -10,22 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Select Category-->
-        <scene sceneID="KSq-b2-tmJ">
-            <objects>
-                <viewController id="QdM-tb-TbV" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="iTU-JU-m1n">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <viewLayoutGuide key="safeArea" id="eF5-ZZ-miU"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Select Category" id="ZN3-5u-1Xm"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bi3-vZ-ni8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2287.1999999999998" y="-198.02955665024632"/>
-        </scene>
         <!--Outfit-->
         <scene sceneID="tne-QT-ifu">
             <objects>
@@ -35,22 +19,22 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hWK-Fq-NLp" userLabel="Full Stack View">
-                                <rect key="frame" x="0.0" y="60" width="375" height="613"/>
+                                <rect key="frame" x="0.0" y="104" width="375" height="569"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v08-i2-MWB" userLabel="Left Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="613"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="569"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soe-qC-gFy">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="204.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="189.66666666666666"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-61-yTt" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="204.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="189.66666666666666"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="968-N5-ncz">
-                                                                <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="204.33333333333334"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="189.66666666666666"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yAK-fJ-kYJ">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="204.33333333333334"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="189.66666666666666"/>
                                                                         <gestureRecognizers/>
                                                                     </imageView>
                                                                 </subviews>
@@ -88,16 +72,16 @@
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q3p-Hb-HCX">
-                                                <rect key="frame" x="0.0" y="204.33333333333329" width="187.66666666666666" height="408.66666666666674"/>
+                                                <rect key="frame" x="0.0" y="189.66666666666671" width="187.66666666666666" height="379.33333333333326"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McV-FV-yxk" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="408.66666666666669"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="379.33333333333331"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0zR-30-TcT">
-                                                                <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="408.66666666666669"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="379.33333333333331"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3gk-iW-dx9">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="408.66666666666669"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="379.33333333333331"/>
                                                                     </imageView>
                                                                 </subviews>
                                                             </stackView>
@@ -139,19 +123,19 @@
                                         </constraints>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kgN-iQ-i5v" userLabel="Right Stack View">
-                                        <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="613"/>
+                                        <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="569"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMD-nX-CLZ">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="204.33333333333334"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="189.66666666666666"/>
                                                 <subviews>
                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrI-94-QGh" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="204.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="189.66666666666666"/>
                                                         <subviews>
                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MdE-3E-PTX">
-                                                                <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="204.33333333333334"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="189.66666666666666"/>
                                                                 <subviews>
                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gbr-Gx-rxa">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="204.33333333333334"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="189.66666666666666"/>
                                                                     </imageView>
                                                                 </subviews>
                                                             </stackView>
@@ -188,19 +172,19 @@
                                                 </constraints>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CVg-er-V9a" userLabel="Bottom Stack View">
-                                                <rect key="frame" x="0.0" y="204.33333333333329" width="187.33333333333334" height="408.66666666666674"/>
+                                                <rect key="frame" x="0.0" y="189.66666666666671" width="187.33333333333334" height="379.33333333333326"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIz-Li-wcf">
-                                                        <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="204.33333333333334"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="187.33333333333334" height="189.66666666666666"/>
                                                         <subviews>
                                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAH-LD-FOj" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="32" width="155.33333333333334" height="172.33333333333334"/>
+                                                                <rect key="frame" x="16" y="32" width="155.33333333333334" height="157.66666666666666"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PWZ-Fo-lTr">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="172.33333333333334"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="157.66666666666666"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="slC-JN-DLX">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="172.33333333333334"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="157.66666666666666"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                     </stackView>
@@ -237,16 +221,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACr-z5-nl2">
-                                                        <rect key="frame" x="0.0" y="204.33333333333337" width="187.33333333333334" height="204.33333333333337"/>
+                                                        <rect key="frame" x="0.0" y="189.66666666666663" width="187.33333333333334" height="189.66666666666663"/>
                                                         <subviews>
                                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mM-sh-37O" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
-                                                                <rect key="frame" x="16" y="0.0" width="155.33333333333334" height="172.33333333333334"/>
+                                                                <rect key="frame" x="16" y="0.0" width="155.33333333333334" height="157.66666666666666"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="32E-Pf-wzh">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="172.33333333333334"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="157.66666666666666"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E0I-hd-Y8I">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="172.33333333333334"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="155.33333333333334" height="157.66666666666666"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                     </stackView>
@@ -340,7 +324,6 @@
                             <constraint firstItem="Ggf-Jf-cb6" firstAttribute="top" secondItem="hWK-Fq-NLp" secondAttribute="bottom" id="tCy-uI-xtF"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Outfit" image="outfit" id="cyd-Md-t2B"/>
                     <navigationItem key="navigationItem" title="Outfit" id="NXz-cG-HPg">
                         <rightBarButtonItems>
                             <barButtonItem image="share" id="2AA-iP-MGy">
@@ -369,13 +352,12 @@
                         <outletCollection property="scrollViews" destination="nrI-94-QGh" collectionClass="NSMutableArray" id="aOa-FR-wV6"/>
                         <outletCollection property="scrollViews" destination="YAH-LD-FOj" collectionClass="NSMutableArray" id="PLC-BD-bcd"/>
                         <outletCollection property="scrollViews" destination="7mM-sh-37O" collectionClass="NSMutableArray" id="Yvd-C0-m1N"/>
-                        <segue destination="QdM-tb-TbV" kind="show" identifier="selectCategory" id="lmL-Qz-xwj"/>
                         <segue destination="Uns-Sh-QHX" kind="show" identifier="ItemViewController" id="YhA-rh-zAa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1362" y="-198"/>
+            <point key="canvasLocation" x="1359" y="-198"/>
         </scene>
         <!--Wish list-->
         <scene sceneID="QuB-zm-Xxz">
@@ -643,7 +625,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sa-oM-7Is" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="568.79999999999995" y="880.78817733990149"/>
+            <point key="canvasLocation" x="-287" y="881"/>
         </scene>
         <!--Profile-->
         <scene sceneID="hoZ-Mh-dts">
@@ -659,7 +641,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHv-UT-keA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1511" y="881"/>
+            <point key="canvasLocation" x="503" y="881"/>
         </scene>
         <!--Occasions View Controller-->
         <scene sceneID="L4D-s5-Wfa">
@@ -722,27 +704,27 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="47C-Ts-Pe3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1361" y="340"/>
+            <point key="canvasLocation" x="500" y="340"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="wZr-ET-Xq5">
             <objects>
                 <viewController id="Uns-Sh-QHX" customClass="ItemViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uN6-6g-WHf">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3W-h9-jQb">
-                                <rect key="frame" x="16" y="16" width="343" height="28.666666666666671"/>
+                                <rect key="frame" x="16" y="104" width="343" height="28.666666666666657"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tez-9P-gqj">
-                                <rect key="frame" x="16" y="60.666666666666657" width="343" height="496.33333333333337"/>
+                                <rect key="frame" x="16" y="148.66666666666666" width="343" height="413.33333333333337"/>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmk-y1-NPB">
-                                <rect key="frame" x="16" y="573" width="343" height="69"/>
+                                <rect key="frame" x="16" y="578" width="343" height="69"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8C-LO-Yd8">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="69"/>
@@ -755,7 +737,7 @@
                                 </subviews>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpo-Qn-AYN">
-                                <rect key="frame" x="93.666666666666671" y="658" width="187.66666666666663" height="50"/>
+                                <rect key="frame" x="93.666666666666671" y="663" width="187.66666666666663" height="50"/>
                                 <color key="backgroundColor" red="0.31575974820000002" green="0.38078895210000002" blue="0.37285700440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="UIG-6s-OG6"/>
@@ -803,7 +785,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2285.5999999999999" y="544.58128078817731"/>
+            <point key="canvasLocation" x="2257" y="-198"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kA0-0v-X04">
@@ -817,14 +799,33 @@
                         <color key="tintColor" red="0.46932125089999999" green="0.53824871780000005" blue="0.51836496590000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="viewControllers" id="jBC-ny-lRj"/>
+                        <segue destination="GxA-0B-2jL" kind="relationship" relationship="viewControllers" id="jBC-ny-lRj"/>
                         <segue destination="BzB-Fk-lRv" kind="relationship" relationship="viewControllers" id="TXd-ae-D09"/>
                         <segue destination="FjR-QX-jdW" kind="relationship" relationship="viewControllers" id="wBg-fv-Blj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbE-wz-sTg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="568.79999999999995" y="137.4384236453202"/>
+            <point key="canvasLocation" x="-286" y="137"/>
+        </scene>
+        <!--Outfit-->
+        <scene sceneID="wQy-hR-ILy">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GxA-0B-2jL" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Outfit" image="outfit" id="cyd-Md-t2B"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RFR-1r-Ce2">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Qdd-UF-y8r"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6UC-Fd-aaN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="503" y="-198"/>
         </scene>
     </scenes>
     <resources>

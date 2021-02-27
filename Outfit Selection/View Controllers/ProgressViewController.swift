@@ -37,7 +37,11 @@ class ProgressViewController: UIViewController {
             debug("WARNING: Can't get Tab Bar Controller from the storyboard", mainStoryboard)
             return
         }
-        guard let outfitViewController = tabBarController.viewControllers?.first as? OutfitViewController else {
+        guard let navigationController = tabBarController.viewControllers?.first as? UINavigationController else {
+            debug("WARNING: Can't get Naviation Controller from the storyboard")
+            return
+        }
+        guard let outfitViewController = navigationController.viewControllers.first as? OutfitViewController else {
             debug("WARNING: Can't get Outfit View Controller from the storyboard", mainStoryboard)
             return
         }

@@ -86,9 +86,10 @@ class OccasionsViewController: UIViewController {
         dismiss(animated: true)
         
         // Select like button at outfit view controller
-        let navigationController = presentingViewController as? UINavigationController
-        let tabBarController = navigationController?.findViewController(ofType: UITabBarController.self)        
-        let outfitController = tabBarController?.selectedViewController as? OutfitViewController
+        let topNavigationController = presentingViewController as? UINavigationController
+        let tabBarController = topNavigationController?.findViewController(ofType: UITabBarController.self)
+        let navigationController = tabBarController?.selectedViewController as? UINavigationController
+        let outfitController = navigationController?.viewControllers.first as? OutfitViewController
         outfitController?.likeButton.isSelected = true
     }
 }
