@@ -49,7 +49,7 @@ struct Item: Codable {
     let vendor: String?
     
     // MARK: - Computed Properties
-    /// If item name startd with vendor (brand) drop that brand and capitalize the first letter of remaining string
+    /// If item name starts with vendor (brand) drop that brand and capitalize the first letter of remaining string
     var nameWithoutVendor: String? {
         guard let name = name?.lowercased() else { return nil }
         guard let vendor = vendor?.lowercased(), name.starts(with: vendor) else { return name }

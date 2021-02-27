@@ -39,6 +39,7 @@
 		69739EB222BA64E40077E45D /* OutfitViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69739EB122BA64E40077E45D /* OutfitViewController+Gestures.swift */; };
 		6978202F2587BCAA007D4CCB /* ImageCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978202E2587BCAA007D4CCB /* ImageCollectionViewModel.swift */; };
 		697A3CFB25EACCCB007158B4 /* String+firstCapitalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697A3CFA25EACCCB007158B4 /* String+firstCapitalized.swift */; };
+		697A3CFE25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697A3CFD25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift */; };
 		6986611B25700ED2008F94CA /* Double+asTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986611A25700ED2008F94CA /* Double+asTime.swift */; };
 		6986612125704F1A008F94CA /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986612025704F1A008F94CA /* UIImage+resize.swift */; };
 		6986612825705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986612725705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift */; };
@@ -116,6 +117,7 @@
 		69739EB122BA64E40077E45D /* OutfitViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+Gestures.swift"; sourceTree = "<group>"; };
 		6978202E2587BCAA007D4CCB /* ImageCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewModel.swift; sourceTree = "<group>"; };
 		697A3CFA25EACCCB007158B4 /* String+firstCapitalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+firstCapitalized.swift"; sourceTree = "<group>"; };
+		697A3CFD25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		6986611A25700ED2008F94CA /* Double+asTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+asTime.swift"; sourceTree = "<group>"; };
 		6986612025704F1A008F94CA /* UIImage+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
 		6986612725705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
@@ -422,6 +424,7 @@
 			children = (
 				69C3696625E79ED3000A8E5E /* WishlistViewController.swift */,
 				69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */,
+				697A3CFD25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift */,
 				69DB6A5925E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift */,
 			);
 			path = WishlistViewController;
@@ -555,6 +558,7 @@
 				699ABB5F25E6D54A00E388FC /* TabBarController.swift in Sources */,
 				694E7BEE25DBFFFB006607CD /* UIView+findSuperview.swift in Sources */,
 				696E875B256463160061802E /* Double+asPrice.swift in Sources */,
+				697A3CFE25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift in Sources */,
 				697A3CFB25EACCCB007158B4 /* String+firstCapitalized.swift in Sources */,
 				69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */,
 				69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */,
