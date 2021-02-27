@@ -325,6 +325,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Outfit" id="NXz-cG-HPg">
+                        <barButtonItem key="backBarButtonItem" title=" " id="9BH-Cd-c9I"/>
                         <rightBarButtonItems>
                             <barButtonItem image="share" id="2AA-iP-MGy">
                                 <connections>
@@ -714,73 +715,118 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" " textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3W-h9-jQb">
-                                <rect key="frame" x="16" y="104" width="343" height="28.666666666666657"/>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Tez-9P-gqj">
-                                <rect key="frame" x="16" y="148.66666666666666" width="343" height="413.33333333333337"/>
-                            </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qmk-y1-NPB">
-                                <rect key="frame" x="16" y="578" width="343" height="69"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="jnZ-Z3-pXL">
+                                <rect key="frame" x="16" y="104" width="343" height="601"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8C-LO-Yd8">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="69"/>
-                                        <state key="normal" image="wishlist"/>
-                                        <state key="selected" image="wishlist_filled"/>
-                                        <connections>
-                                            <action selector="wishlistButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="4Vd-cV-N7T"/>
-                                        </connections>
-                                    </button>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="NZV-RY-0LF" userLabel="Labels Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="54"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOUIS VUITTON" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YCt-8s-sZN">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="27"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="20"/>
+                                                <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text=" Cotton Shirt" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q3W-h9-jQb">
+                                                <rect key="frame" x="0.0" y="27" width="343" height="27"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="20"/>
+                                                <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Tez-9P-gqj">
+                                        <rect key="frame" x="0.0" y="70" width="343" height="369"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E47-cd-6bH">
+                                        <rect key="frame" x="0.0" y="455" width="343" height="69"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="qmk-y1-NPB" userLabel="Buttons Stack View">
+                                                <rect key="frame" x="83.666666666666686" y="22.666666666666629" width="176" height="24"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZR-VQ-dzE">
+                                                        <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
+                                                        <state key="normal" image="wishlist" backgroundImage="backslash"/>
+                                                        <connections>
+                                                            <action selector="dislikeButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="pmr-rg-aEe"/>
+                                                        </connections>
+                                                    </button>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8C-LO-Yd8">
+                                                        <rect key="frame" x="53.999999999999986" y="0.0" width="122.00000000000001" height="24"/>
+                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
+                                                        <state key="normal" title=" Add to wish list" image="wishlist">
+                                                            <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </state>
+                                                        <state key="selected" image="wishlist_filled"/>
+                                                        <connections>
+                                                            <action selector="addToWishlistButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="4Vd-cV-N7T"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="2Bh-Y6-uxy"/>
+                                                </constraints>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="69" id="JuP-GN-l7y"/>
+                                            <constraint firstItem="qmk-y1-NPB" firstAttribute="centerX" secondItem="E47-cd-6bH" secondAttribute="centerX" id="byn-aM-nE2"/>
+                                            <constraint firstItem="qmk-y1-NPB" firstAttribute="centerY" secondItem="E47-cd-6bH" secondAttribute="centerY" id="qhL-MA-TJE"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="tuz-mA-INp">
+                                        <rect key="frame" x="0.0" y="540" width="343" height="61"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpo-Qn-AYN">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="61"/>
+                                                <color key="backgroundColor" red="0.31575974820000002" green="0.38078895210000002" blue="0.37285700440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="61" id="ljH-nF-1BF"/>
+                                                    <constraint firstAttribute="width" priority="750" constant="343" id="u6H-U4-NGE"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="17"/>
+                                                <state key="normal" title="Shop now">
+                                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                </state>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                        <integer key="value" value="10"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="orderButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="5vk-11-a6Q"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tuz-mA-INp" secondAttribute="leading" id="7xO-tM-cl4"/>
+                                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="centerX" secondItem="tuz-mA-INp" secondAttribute="centerX" id="NiJ-0h-LWk"/>
+                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dpo-Qn-AYN" secondAttribute="trailing" id="Q5J-x3-M5x"/>
+                                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="top" secondItem="tuz-mA-INp" secondAttribute="top" id="TaV-I9-CWg"/>
+                                            <constraint firstAttribute="bottom" secondItem="dpo-Qn-AYN" secondAttribute="bottom" id="ykY-HK-r1K"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                             </stackView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpo-Qn-AYN">
-                                <rect key="frame" x="93.666666666666671" y="663" width="187.66666666666663" height="50"/>
-                                <color key="backgroundColor" red="0.31575974820000002" green="0.38078895210000002" blue="0.37285700440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="UIG-6s-OG6"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
-                                <state key="normal" title="Order">
-                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="orderButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="5vk-11-a6Q"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ttT-PL-VLh"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="Tez-9P-gqj" secondAttribute="trailing" constant="16" id="HXN-vV-rbI"/>
-                            <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="q3W-h9-jQb" secondAttribute="trailing" constant="16" id="Lw4-aY-NZJ"/>
-                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="top" secondItem="Tez-9P-gqj" secondAttribute="bottom" constant="101" id="MoE-RU-ael"/>
-                            <constraint firstItem="q3W-h9-jQb" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="PPt-97-Jxc"/>
-                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="centerX" secondItem="uN6-6g-WHf" secondAttribute="centerX" id="PVf-2Y-YQK"/>
-                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="top" secondItem="qmk-y1-NPB" secondAttribute="bottom" constant="16" id="Rx2-3k-bEJ"/>
-                            <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="qmk-y1-NPB" secondAttribute="trailing" constant="16" id="Ss5-dL-6Bu"/>
-                            <constraint firstItem="ttT-PL-VLh" firstAttribute="bottom" secondItem="dpo-Qn-AYN" secondAttribute="bottom" constant="16" id="Vhd-Gv-sdX"/>
-                            <constraint firstItem="qmk-y1-NPB" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="Zyp-6s-KQx"/>
-                            <constraint firstItem="qmk-y1-NPB" firstAttribute="top" secondItem="Tez-9P-gqj" secondAttribute="bottom" constant="16" id="fV1-Hn-PJ4"/>
-                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="width" secondItem="uN6-6g-WHf" secondAttribute="width" multiplier="0.5" id="feQ-fy-rrT"/>
-                            <constraint firstItem="Tez-9P-gqj" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="mH5-lY-pyQ"/>
-                            <constraint firstItem="q3W-h9-jQb" firstAttribute="top" secondItem="ttT-PL-VLh" secondAttribute="top" constant="16" id="wYl-4Y-LgN"/>
-                            <constraint firstItem="Tez-9P-gqj" firstAttribute="top" secondItem="q3W-h9-jQb" secondAttribute="bottom" constant="16" id="ytE-Kb-Dop"/>
+                            <constraint firstItem="ttT-PL-VLh" firstAttribute="trailing" secondItem="jnZ-Z3-pXL" secondAttribute="trailing" constant="16" id="XC5-hm-lLK"/>
+                            <constraint firstItem="jnZ-Z3-pXL" firstAttribute="top" secondItem="ttT-PL-VLh" secondAttribute="top" constant="16" id="jmP-MR-MWs"/>
+                            <constraint firstItem="jnZ-Z3-pXL" firstAttribute="leading" secondItem="ttT-PL-VLh" secondAttribute="leading" constant="16" id="l2N-BM-xXG"/>
+                            <constraint firstItem="ttT-PL-VLh" firstAttribute="bottom" secondItem="jnZ-Z3-pXL" secondAttribute="bottom" constant="24" id="pJr-9s-wQQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="by0-GS-4kH"/>
                     <connections>
+                        <outlet property="addToWishlistButton" destination="w8C-LO-Yd8" id="HA3-bo-fWH"/>
                         <outlet property="imageView" destination="Tez-9P-gqj" id="NF6-q8-GWd"/>
                         <outlet property="nameLabel" destination="q3W-h9-jQb" id="Qfq-uF-dtP"/>
                         <outlet property="orderButton" destination="dpo-Qn-AYN" id="kqi-hR-5gW"/>
-                        <outlet property="wishlistButton" destination="w8C-LO-Yd8" id="HA3-bo-fWH"/>
+                        <outlet property="vendorLabel" destination="YCt-8s-sZN" id="zt4-XX-3zq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -829,6 +875,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backslash" width="22" height="22"/>
         <image name="hanger" width="32" height="23.333333969116211"/>
         <image name="heart" width="28" height="28"/>
         <image name="outfit" width="14.666666984558105" height="24"/>

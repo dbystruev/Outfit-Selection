@@ -11,17 +11,39 @@ import SafariServices
 class ItemViewController: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var addToWishlistButton: UIButton!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var orderButton: UIButton!
-    @IBOutlet weak var wishlistButton: UIButton!
+    @IBOutlet weak var vendorLabel: UILabel!
     
     // MARK: - Properties
     var image: UIImage?
     var item: Item?
     var itemIndex = -1
 
-    // MARK: - Methods
+    // MARK: - Custom Methods
+    /// Fill labels with item data
+    func updateUI() {
+        if let name = item?.name, let firstLetter = name.first?.uppercased() {
+            nameLabel.text = firstLetter + name.dropFirst()
+        } else {
+            nameLabel.text = nil
+        }
+        vendorLabel.text = item?.vendor?.uppercased()
+        orderButton.isHidden = item == nil
+        addToWishlistButton.isSelected = Wishlist.contains(item) ?? false
+        title = item?.price?.asPrice
+    }
+    
+    /// Set last emotion in outfit view controller to item
+    func setLastEmotionToItem() {
+        // Set most recent like/dislike to item
+        let outfitViewController = navigationController?.findViewController(ofType: OutfitViewController.self)
+        outfitViewController?.wasLastEmotionAboutItem = true
+    }
+    
+    // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -31,18 +53,24 @@ class ItemViewController: UIViewController {
         updateUI()
     }
     
-    func updateUI() {
-        if let name = item?.name, let firstLetter = name.first?.uppercased() {
-            nameLabel.text = firstLetter + name.dropFirst()
+    
+    // MARK: - Actions
+    @IBAction func addToWishlistButtonTapped(_ sender: UIButton) {
+        if Wishlist.contains(item) == true {
+            dislikeButtonTapped(sender)
         } else {
-            nameLabel.text = nil
+            sender.isSelected = true
+            setLastEmotionToItem()
+            Wishlist.add(item)
         }
-        orderButton.isHidden = item == nil
-        wishlistButton.isSelected = Wishlist.contains(item) ?? false
-        title = item?.price?.asPrice
     }
     
-    // Actions
+    @IBAction func dislikeButtonTapped(_ sender: UIButton) {
+        addToWishlistButton.isSelected = false
+        setLastEmotionToItem()
+        Wishlist.remove(item)
+    }
+    
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         guard let url = item?.url else { return }
         
@@ -53,19 +81,5 @@ class ItemViewController: UIViewController {
         present(controller, animated: true)
         
         debug(url)
-    }
-    
-    @IBAction func wishlistButtonTapped(_ sender: UIButton) {
-        // Set most recent like/dislike to item
-        let outfitViewController = navigationController?.findViewController(ofType: OutfitViewController.self)
-        outfitViewController?.wasLastEmotionAboutItem = true
-        
-        if Wishlist.contains(item) == true {
-            Wishlist.remove(item)
-            sender.isSelected = false
-        } else {
-            Wishlist.add(item)
-            sender.isSelected = true
-        }
     }
 }

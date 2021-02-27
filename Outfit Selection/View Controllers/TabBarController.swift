@@ -18,7 +18,13 @@ class TabBarController: UITabBarController {
             super.selectedViewController = newValue
             
             // Configure navigation item title to the currently selected view controller
-            navigationItem.title = selectedViewController?.title
+            let title = selectedViewController?.title ?? ""
+            if title.isEmpty {
+                navigationController?.isNavigationBarHidden = true
+            } else {
+                navigationController?.isNavigationBarHidden = false
+                navigationItem.title = title
+            }
             
             // Configure navigation item right bar button items to the currently selected view controller
             navigationItem.rightBarButtonItems = selectedViewController?.navigationItem.rightBarButtonItems
