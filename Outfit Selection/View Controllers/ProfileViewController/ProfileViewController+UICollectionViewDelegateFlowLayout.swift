@@ -10,6 +10,24 @@ import UIKit
 
 // MARK: - UICollectionViewDelegateFlowLayout
 extension ProfileViewController: UICollectionViewDelegateFlowLayout {
+    /// Provides the size for the header view in given profile collection view section
+    /// - Parameters:
+    ///   - collectionView: profile collection view
+    ///   - collectionViewLayout: the layout object that requests the size
+    ///   - section: the section of the profile collection view to provide the header size for
+    /// - Returns: header view size for the given section
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        referenceSizeForHeaderInSection section: Int) -> CGSize {
+        CGSize(width: collectionView.bounds.width, height: 40)
+    }
+    
+    /// Provides the size for item in given profile collection view
+    /// - Parameters:
+    ///   - collectionView: profile collection view
+    ///   - collectionViewLayout: the layout object that requests the size
+    ///   - indexPath: the item's index path
+    /// - Returns: size for the item with index path provided
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
@@ -23,4 +41,6 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
             return CGSize.zero
         }
     }
+    
+    
 }

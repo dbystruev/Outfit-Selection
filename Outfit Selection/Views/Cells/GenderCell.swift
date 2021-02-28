@@ -25,7 +25,7 @@ class GenderCell: UICollectionViewCell {
     /// - Parameters:
     ///   - gender: the gender to confiture cell with
     ///   - selected: gender which is currently selected
-    func configure(with gender: Gender, selected: Gender?) {
+    func configure(gender: Gender, selected: Gender?) {
         genderLabel.text = gender.rawValue.firstCapitalized
         radioImageView.isHidden = gender != selected
     }

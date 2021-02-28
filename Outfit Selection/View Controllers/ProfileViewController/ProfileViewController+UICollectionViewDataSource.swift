@@ -10,6 +10,10 @@ import UIKit
 
 // MARK: - UICollectionViewDataSource
 extension ProfileViewController: UICollectionViewDataSource {
+    // MARK: - Static Properties
+    static let sectionHeaders = ["Gender", "Brands"]
+    
+    // MARK: - UICollectionViewDataSource Methods
     /// Get cell for the given index path in profile collection view
     /// - Parameters:
     ///   - collectionView: profile collection view
@@ -20,14 +24,32 @@ extension ProfileViewController: UICollectionViewDataSource {
         case 0:
             // Section 0 is gender - configure gender cell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenderCell.reuseId, for: indexPath)
-            (cell as? GenderCell)?.configure(with: Gender.allCases[indexPath.row], selected: Gender.current)
+            (cell as? GenderCell)?.configure(gender: Gender.allCases[indexPath.row], selected: Gender.current)
             return cell
         case 1:
             // Section 1 is brands - use brands view controller section 0 to answer
             return brandsViewController?.collectionView(collectionView, cellForItemAt: indexPath) ?? BrandCell()
         default:
-            debug("WARNING: Unknown section \(indexPath.section)")
+            debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")
             return UICollectionViewCell()
+        }
+    }
+    
+    /// Configure and provide section header for the profile collection view
+    /// - Parameters:
+    ///   - collectionView: profile collection view
+    ///   - kind: UICollectionView.elementKindSectionHeader
+    ///   - indexPath: index path of given section
+    /// - Returns: section header for the profile collection view
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileSectionHeaderView.reuseId, for: indexPath)
+            (headerView as? ProfileSectionHeaderView)?.configure(title: ProfileViewController.sectionHeaders[indexPath.section])
+            return headerView
+        default:
+            debug("WARNING: Unknown kind \(kind) in section \(indexPath.section), row \(indexPath.row)")
+            return UICollectionReusableView()
         }
     }
     
@@ -53,5 +75,5 @@ extension ProfileViewController: UICollectionViewDataSource {
     /// Returns the number of sections in profile collection view: 2 (gender and brands)
     /// - Parameter collectionView: profile collection view
     /// - Returns: the number of sections in profile collection view
-    func numberOfSections(in collectionView: UICollectionView) -> Int { 2 }
+    func numberOfSections(in collectionView: UICollectionView) -> Int { ProfileViewController.sectionHeaders.count }
 }

@@ -28,6 +28,9 @@ class ProfileViewController: UIViewController {
         profileCollectionView.delegate = self
         profileCollectionView.register(BrandCell.nib, forCellWithReuseIdentifier: BrandCell.reuseId)
         profileCollectionView.register(GenderCell.nib, forCellWithReuseIdentifier: GenderCell.reuseId)
+        profileCollectionView.register(ProfileSectionHeaderView.nib,
+                                       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+                                       withReuseIdentifier: ProfileSectionHeaderView.reuseId)
     }
     
     override func viewWillLayoutSubviews() {
