@@ -16,19 +16,18 @@ extension ProfileViewController: UICollectionViewDataSource {
     ///   - indexPath: index path to give the cell for
     /// - Returns: the cell for the given index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cellId: String
         switch indexPath.section {
         case 0:
-            cellId = "genderCell"
+            // Section 0 is gender - configure gender cell
+            return profileCollectionView.dequeueReusableCell(withReuseIdentifier: "genderCell", for: indexPath)
         case 1:
-            cellId = "brandCell"
+            // Section 1 is brands - use brands view controller section 0 to answer
+            let indexPath = IndexPath(row: indexPath.row, section: 0)
+            return brandsViewController?.collectionView(collectionView, cellForItemAt: indexPath) ?? BrandCell()
         default:
             debug("WARNING: Unknown section \(indexPath.section)")
             return UICollectionViewCell()
         }
-        
-        let cell = profileCollectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
-        return cell
     }
     
     /// Returns the number of items in each section of profile collection view
@@ -42,8 +41,8 @@ extension ProfileViewController: UICollectionViewDataSource {
             // Section 0 is gender — 3 items
             return 3
         case 1:
-            // Section 1 is brands — the number of items equal to the number of brands
-            return brandedImages.count
+            // Section 1 is brands — use brands view controller section 0 to answer.
+            return brandsViewController?.collectionView(collectionView, numberOfItemsInSection: 0) ?? 0
         default:
             debug("WARNING: Unknown section \(section)")
             return 0

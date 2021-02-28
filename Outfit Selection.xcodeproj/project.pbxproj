@@ -12,6 +12,7 @@
 		6924900125504DFD00106681 /* DispatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924900025504DFD00106681 /* DispatchManager.swift */; };
 		69297C5225EB852700A8684E /* BrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69297C5025EB852700A8684E /* BrandCell.swift */; };
 		69297C5325EB852700A8684E /* BrandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69297C5125EB852700A8684E /* BrandCell.xib */; };
+		69297C5A25EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69297C5925EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift */; };
 		692C940A2546FB8D0075BD92 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C94092546FB8D0075BD92 /* Gender.swift */; };
 		692C940F254700FC0075BD92 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C940E254700FC0075BD92 /* NetworkManager.swift */; };
 		692C94132547025D0075BD92 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C94122547025D0075BD92 /* Category.swift */; };
@@ -93,6 +94,7 @@
 		6924900025504DFD00106681 /* DispatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchManager.swift; sourceTree = "<group>"; };
 		69297C5025EB852700A8684E /* BrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCell.swift; sourceTree = "<group>"; };
 		69297C5125EB852700A8684E /* BrandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrandCell.xib; sourceTree = "<group>"; };
+		69297C5925EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
 		692C94092546FB8D0075BD92 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		692C940E254700FC0075BD92 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		692C94122547025D0075BD92 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -432,6 +434,7 @@
 			children = (
 				69D0FD9E25EB621800FC15F6 /* ProfileViewController.swift */,
 				69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */,
+				69297C5925EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				698990D22323808B002DCA29 /* PinnableScrollViews+Extension.swift in Sources */,
 				6986612125704F1A008F94CA /* UIImage+resize.swift in Sources */,
 				69C3697125E7D127000A8E5E /* ItemCell.swift in Sources */,
+				69297C5A25EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				69297C5225EB852700A8684E /* BrandCell.swift in Sources */,
 				69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */,
 				69AEC9E825BF014100183E15 /* GenderButton.swift in Sources */,

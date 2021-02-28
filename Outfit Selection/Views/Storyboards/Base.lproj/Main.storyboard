@@ -637,27 +637,20 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OCY-3v-5de">
-                                <rect key="frame" x="16" y="60" width="343" height="669"/>
+                                <rect key="frame" x="4" y="52" width="367" height="677"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Tzy-9V-j6n">
+                                <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-16" maxY="0.0"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Tzy-9V-j6n">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="brandCell" id="XaZ-6h-xLM">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="genderCell" id="XaZ-6h-xLM">
                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rIw-WJ-MJU">
-                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </collectionViewCellContentView>
-                                    </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="genderCell" id="0cG-Zc-yBs">
-                                        <rect key="frame" x="215" y="0.0" width="128" height="128"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="tPj-vM-GQa">
                                             <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </collectionViewCellContentView>
@@ -668,10 +661,10 @@
                         <viewLayoutGuide key="safeArea" id="a4g-r6-dhU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="a4g-r6-dhU" firstAttribute="trailing" secondItem="OCY-3v-5de" secondAttribute="trailing" constant="16" id="AcJ-2F-C5O"/>
+                            <constraint firstItem="a4g-r6-dhU" firstAttribute="trailing" secondItem="OCY-3v-5de" secondAttribute="trailing" constant="4" id="AcJ-2F-C5O"/>
                             <constraint firstItem="a4g-r6-dhU" firstAttribute="bottom" secondItem="OCY-3v-5de" secondAttribute="bottom" id="I2T-ES-VRO"/>
-                            <constraint firstItem="OCY-3v-5de" firstAttribute="top" secondItem="a4g-r6-dhU" secondAttribute="top" constant="16" id="db3-uO-dxv"/>
-                            <constraint firstItem="OCY-3v-5de" firstAttribute="leading" secondItem="a4g-r6-dhU" secondAttribute="leading" constant="16" id="gqb-CF-tfo"/>
+                            <constraint firstItem="OCY-3v-5de" firstAttribute="top" secondItem="a4g-r6-dhU" secondAttribute="top" constant="8" id="db3-uO-dxv"/>
+                            <constraint firstItem="OCY-3v-5de" firstAttribute="leading" secondItem="a4g-r6-dhU" secondAttribute="leading" constant="4" id="gqb-CF-tfo"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="profile" id="6ox-Td-a2p"/>

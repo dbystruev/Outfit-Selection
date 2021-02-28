@@ -16,11 +16,18 @@ class ProfileViewController: UIViewController {
     /// The collection of brand images
     let brandedImages = BrandManager.shared.brandedImages
     
+    /// Brands view controller to use as profile collection view data source
+    var brandsViewController: BrandsViewController?
+    
     // MARK: - Inhertited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Find brands view controller
+        brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self)
+        
         // Setup profile collection view
         profileCollectionView.dataSource = self
+        profileCollectionView.delegate = self
     }
 }

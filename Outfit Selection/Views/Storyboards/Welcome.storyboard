@@ -241,7 +241,7 @@
                         <constraints>
                             <constraint firstItem="nkP-pd-enc" firstAttribute="centerX" secondItem="MB4-2h-AF5" secondAttribute="centerX" id="6Qe-Sn-BTO"/>
                             <constraint firstItem="On4-rd-E6O" firstAttribute="trailing" secondItem="MB4-2h-AF5" secondAttribute="trailing" constant="16" id="8XU-Wl-12R"/>
-                            <constraint firstItem="Juc-Ac-YEM" firstAttribute="leading" secondItem="MB4-2h-AF5" secondAttribute="leading" constant="-12" id="Efk-RP-LHJ"/>
+                            <constraint firstItem="MB4-2h-AF5" firstAttribute="leading" secondItem="Juc-Ac-YEM" secondAttribute="leading" constant="12" id="Efk-RP-LHJ"/>
                             <constraint firstItem="nkP-pd-enc" firstAttribute="top" secondItem="Juc-Ac-YEM" secondAttribute="bottom" constant="8" id="FvY-lU-w4N"/>
                             <constraint firstItem="MB4-2h-AF5" firstAttribute="leading" secondItem="On4-rd-E6O" secondAttribute="leading" constant="16" id="M4t-6U-895"/>
                             <constraint firstItem="MB4-2h-AF5" firstAttribute="top" secondItem="On4-rd-E6O" secondAttribute="top" constant="16" id="OQf-kc-MDr"/>
