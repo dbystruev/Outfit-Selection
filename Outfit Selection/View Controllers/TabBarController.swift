@@ -36,6 +36,10 @@ class TabBarController: UITabBarController {
         
         // Hide back button in navigation bar
         navigationItem.hidesBackButton = true
+        
+        // Set tab bar icon colors
+        UITabBar.appearance().tintColor = #colorLiteral(red: 66 / 255, green: 66 / 255, blue: 66 / 255, alpha: 1)
+        UITabBar.appearance().unselectedItemTintColor = #colorLiteral(red: 66 / 255, green: 66 / 255, blue: 66 / 255, alpha: 0.5)
     }
 
 }
