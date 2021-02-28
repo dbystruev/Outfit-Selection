@@ -19,7 +19,9 @@ extension ProfileViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             // Section 0 is gender - configure gender cell
-            return collectionView.dequeueReusableCell(withReuseIdentifier: "genderCell", for: indexPath)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenderCell.reuseId, for: indexPath)
+            (cell as? GenderCell)?.configure(with: Gender.allCases[indexPath.row], selected: Gender.current)
+            return cell
         case 1:
             // Section 1 is brands - use brands view controller section 0 to answer
             return brandsViewController?.collectionView(collectionView, cellForItemAt: indexPath) ?? BrandCell()
@@ -38,7 +40,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         switch section {
         case 0:
             // Section 0 is gender — 3 items
-            return 0 // 3
+            return Gender.allCases.count
         case 1:
             // Section 1 is brands — use brands view controller section 0 to answer.
             return brandsViewController?.collectionView(collectionView, numberOfItemsInSection: 0) ?? 0

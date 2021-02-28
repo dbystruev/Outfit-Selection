@@ -20,11 +20,6 @@ class OutfitViewController: UIViewController {
     var assetCount = 0
     var brandNames = [String]()
     
-    /// Gender selected on female male screen
-    var gender = Gender.other
-        
-    var selectedButtonIndex: Int?
-    
     /// True if last like / dislike was about item, false if it was about outfit, nil if no likes/dislikes were given
     var wasLastEmotionAboutItem: Bool?
     

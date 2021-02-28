@@ -24,9 +24,10 @@ class ProfileViewController: UIViewController {
         brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self)
         
         // Setup profile collection view
-        profileCollectionView.register(BrandCell.nib, forCellWithReuseIdentifier: BrandCell.reuseId)
         profileCollectionView.dataSource = self
         profileCollectionView.delegate = self
+        profileCollectionView.register(BrandCell.nib, forCellWithReuseIdentifier: BrandCell.reuseId)
+        profileCollectionView.register(GenderCell.nib, forCellWithReuseIdentifier: GenderCell.reuseId)
     }
     
     override func viewWillLayoutSubviews() {

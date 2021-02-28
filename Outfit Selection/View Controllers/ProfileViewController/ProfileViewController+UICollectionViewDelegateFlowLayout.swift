@@ -13,8 +13,8 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            // Section 0 is gender
-            return CGSize(width: 50, height: 50)
+            // Section 0 is gender - 1 item per row
+            return CGSize(width: collectionView.bounds.width, height: 44)
         case 1:
             // Section 1 is brands — reuse brands view controller to answer
             return brandsViewController?.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath) ?? CGSize.zero

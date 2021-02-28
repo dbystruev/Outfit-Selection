@@ -23,13 +23,12 @@ class GenderViewController: UIViewController {
     /// Initial position of Get Outfit logo
     @IBOutlet weak var startingLogoImageView: UIImageView!
     
-    // MARK: - Inherited Computed Properties
     // MARK: - Stored Properties
     /// Flag which indicates if this is the first appearance of this view controller (true) or we came back from navigation stack (false)
     var firstAppearance = true
     
-    /// Gender selected by user
-    var gender = Gender.other
+    /// Gender selected by user (not using Gender.current to save old value)
+    var gender: Gender = .other
     
     // MARK: - Methods
     /// Performs segue to brands view controller
@@ -52,7 +51,7 @@ class GenderViewController: UIViewController {
         guard let destination = segue.destination as? BrandsViewController else { return }
         destination.gender = gender
     }
-    
+
     /// Hides toolbar and navigation bar before the view is added to a view hierarchy
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -101,7 +100,6 @@ class GenderViewController: UIViewController {
                 self.buttonStackView.alpha = 1
             }
         }
-        
     }
     
     // MARK: - Actions

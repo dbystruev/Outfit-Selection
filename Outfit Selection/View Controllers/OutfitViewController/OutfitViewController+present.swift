@@ -15,12 +15,6 @@ extension OutfitViewController {
         popToViewController(withType: BrandsViewController.self)
     }
     
-    /// Instantiate and present gender view controller
-    func presentGenderViewController() {
-        // Pop to Gender View Controller
-        popToViewController(withType: GenderViewController.self)
-    }
-    
     /// Find a view controller of a given type in navigation controller hierarchy and pop to it
     /// - Parameter type: type of a view controller to search for
     func popToViewController<T>(withType type: T.Type) {
@@ -32,27 +26,5 @@ extension OutfitViewController {
         
         // Pop to the view controller of the given type
         navigationController?.popToViewController(controller, animated: true)
-    }
-    
-    /// Instantiate and present view controller with given identifier and style
-    /// - Parameters:
-    ///   - identifier: storyboard identifier of view controller
-    ///   - style: modal presentation style for view controller
-    func presentViewController(withIdentifier identifier: String, style: UIModalPresentationStyle) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let viewController = storyboard.instantiateViewController(withIdentifier: identifier)
-        
-        // Pass currently selected gender to brand or gender view controllers
-        if let brandViewController = viewController as? BrandsViewController {
-            brandViewController.gender = gender
-        } else if let genderViewController = viewController as? GenderViewController {
-            genderViewController.gender = gender
-        }
-        
-        viewController.modalPresentationStyle = style
-        viewController.popoverPresentationController?.sourceView = view
-        OperationQueue.main.addOperation {
-            self.present(viewController, animated: true)
-        }
     }
 }

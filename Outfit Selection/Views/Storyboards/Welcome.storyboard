@@ -133,7 +133,7 @@
                         <outlet property="descriptionLabel" destination="TuD-oz-zdU" id="p9h-k8-viF"/>
                         <outlet property="logoImageView" destination="fXx-uJ-geP" id="DjQ-nH-dN1"/>
                         <outlet property="startingLogoImageView" destination="JzR-RJ-jCH" id="8P4-2X-Rq7"/>
-                        <segue destination="K50-Fg-dgI" kind="show" identifier="BrandsViewControllerSegue" destinationCreationSelector="checkmarkImageView:" id="dF4-wM-JWl"/>
+                        <segue destination="K50-Fg-dgI" kind="show" identifier="BrandsViewControllerSegue" id="dF4-wM-JWl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-JP-tfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

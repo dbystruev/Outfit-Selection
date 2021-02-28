@@ -14,9 +14,6 @@ class ProgressViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     
     // MARK: - Properties
-    /// Gender selected on gender selection screen
-    var gender: Gender?
-    
     /// The collection of brand images
     let brandedImages = BrandManager.shared.brandedImages
 
@@ -46,15 +43,12 @@ class ProgressViewController: UIViewController {
             return
         }
         
-        // Copy gender to Outfit View Controller
-        outfitViewController.gender = gender ?? .other
-        
         // Get brand names to filter by
         let brandNames = brandedImages.compactMap { $0.isSelected ? $0.brandName : nil }
         
         // Load view models with the new images
         let startTime = Date().timeIntervalSince1970
-        ItemManager.shared.loadImages(filteredBy: self.gender, andBy: brandNames) { itemsLoaded, itemsTotal in
+        ItemManager.shared.loadImages(filteredBy: Gender.current, andBy: brandNames) { itemsLoaded, itemsTotal in
             // If not all items loaded — update progress view and continue
             DispatchQueue.main.async {
                 self.progressView.progress = itemsTotal == 0 ? 0 : Float(itemsLoaded) / Float(itemsTotal)

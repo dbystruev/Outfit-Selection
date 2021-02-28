@@ -20,9 +20,13 @@ class BrandsViewController: UIViewController {
     // MARK: - Stored Properties
     /// Gender selected on gender selection screen
     var gender: Gender? {
-        didSet {
+        get { Gender.current }
+        set {
             // Don't clear items if gender value did not change
-            guard gender != oldValue else { return }
+            guard Gender.current != newValue else { return }
+            
+            // Set current gender
+            Gender.current = newValue
             
             // Clear all loaded items
             Item.removeAll()
@@ -36,20 +40,6 @@ class BrandsViewController: UIViewController {
     let brandedImages = BrandManager.shared.brandedImages
     
     // MARK: - Inherited Methods
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "ProgressViewControllerSegue" else {
-            debug("Navigation Error: can't find ProgressViewControllerSegue")
-            return
-        }
-        
-        guard let progressViewController = segue.destination as? ProgressViewController else {
-            debug("Navigation Error: can't find ProgressViewController")
-            return
-        }
-        
-        progressViewController.gender = gender
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         configureItems()
