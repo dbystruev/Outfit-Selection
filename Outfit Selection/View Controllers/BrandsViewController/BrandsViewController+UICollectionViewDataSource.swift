@@ -14,9 +14,9 @@ extension BrandsViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = brandsCollectionView.dequeueReusableCell(withReuseIdentifier: BrandCell.reuseId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCell.reuseId, for: indexPath)
         let brandCell = cell as? BrandCell ?? BrandCell(frame: cell.frame)
-        brandCell.configure(brandedImage: brandedImages[indexPath.row], cellSize: cellSize)
+        brandCell.configure(brandedImage: brandedImages[indexPath.row], cellSize: cellSize(for: collectionView))
         return brandCell
     }
 }

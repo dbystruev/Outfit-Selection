@@ -19,10 +19,9 @@ extension ProfileViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             // Section 0 is gender - configure gender cell
-            return profileCollectionView.dequeueReusableCell(withReuseIdentifier: "genderCell", for: indexPath)
+            return collectionView.dequeueReusableCell(withReuseIdentifier: "genderCell", for: indexPath)
         case 1:
             // Section 1 is brands - use brands view controller section 0 to answer
-            let indexPath = IndexPath(row: indexPath.row, section: 0)
             return brandsViewController?.collectionView(collectionView, cellForItemAt: indexPath) ?? BrandCell()
         default:
             debug("WARNING: Unknown section \(indexPath.section)")
@@ -39,7 +38,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         switch section {
         case 0:
             // Section 0 is gender — 3 items
-            return 3
+            return 0 // 3
         case 1:
             // Section 1 is brands — use brands view controller section 0 to answer.
             return brandsViewController?.collectionView(collectionView, numberOfItemsInSection: 0) ?? 0

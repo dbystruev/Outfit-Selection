@@ -10,9 +10,6 @@ import UIKit
 
 class BrandCell: UICollectionViewCell {
     // MARK: - Static Properties
-    /// Number of cells to fit in one row
-    static var cellsPerRow = 3
-    
     /// Horizontal margin between brand image view container and the cell
     static let horizontalMargin: CGFloat = 12
     
@@ -30,6 +27,14 @@ class BrandCell: UICollectionViewCell {
     
     /// Vertical padding around brand image view and its container
     static let verticalPadding: CGFloat = 24
+    
+    // MARK: - Static Methods
+    /// Returns the number of cells to fit in one row
+    /// - Parameter size: size of a view to determine landscape or portrait orientation
+    /// - Returns: the number of cells to fit in one row
+    static func cellsPerRow(for size: CGSize) -> Int {
+        size.height < size.width ? 6 : 3
+    }
     
     // MARK: - Outlets
     /// Bottom margin constraint around brand image view container and the cell

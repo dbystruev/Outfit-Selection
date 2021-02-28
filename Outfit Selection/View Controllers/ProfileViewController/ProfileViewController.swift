@@ -13,9 +13,6 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileCollectionView: UICollectionView!
     
     // MARK: - Stored Properties
-    /// The collection of brand images
-    let brandedImages = BrandManager.shared.brandedImages
-    
     /// Brands view controller to use as profile collection view data source
     var brandsViewController: BrandsViewController?
     
@@ -23,11 +20,17 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Find brands view controller
+        // Find and configure brands view controller
         brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self)
         
         // Setup profile collection view
+        profileCollectionView.register(BrandCell.nib, forCellWithReuseIdentifier: BrandCell.reuseId)
         profileCollectionView.dataSource = self
         profileCollectionView.delegate = self
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        profileCollectionView.reloadData()
     }
 }

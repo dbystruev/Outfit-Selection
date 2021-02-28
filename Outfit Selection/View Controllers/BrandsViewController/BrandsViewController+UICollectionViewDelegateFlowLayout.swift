@@ -9,18 +9,19 @@
 import UIKit
 
 extension BrandsViewController: UICollectionViewDelegateFlowLayout {
-    // MARK: - Computed Properties
-    /// The height of the cell in the brands collection view
-    fileprivate var cellHeight: CGFloat { cellWidth - 2 * (BrandCell.horizontalMargin - BrandCell.verticalMargin) }
+    // MARK: - Helper Methods
+    /// Calculates cell size for the given collection view
+    /// - Parameter collectionView: the collection view to calculate cell size for
+    /// - Returns: calculated cell size
+    func cellSize(for collectionView: UICollectionView) -> CGSize {
+        let size = collectionView.bounds.size
+        let cellWidth = floor(size.width / CGFloat(BrandCell.cellsPerRow(for: size)))
+        let cellHeight = cellWidth - 2 * (BrandCell.horizontalMargin - BrandCell.verticalMargin)
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
     
-    /// The size of the cell in the brands collection view
-    var cellSize: CGSize { CGSize(width: cellWidth, height: cellHeight) }
-    
-    /// The width of the cell in the brands collection view
-    fileprivate var cellWidth: CGFloat { floor(brandsCollectionView.bounds.size.width / CGFloat(BrandCell.cellsPerRow)) }
-    
-    // MARK: - Methods
+    // MARK: - UICollectionViewDelegateFlowLayout Methods
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        cellSize
+        cellSize(for: collectionView)
     }
 }
