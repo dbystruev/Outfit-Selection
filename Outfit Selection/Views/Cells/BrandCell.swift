@@ -19,6 +19,12 @@ class BrandCell: UICollectionViewCell {
     /// Horizontal padding around brand image view and its container
     static let horizontalPadding: CGFloat = 8
     
+    /// The nib object containing this cell
+    static let nib = UINib(nibName: "BrandCell", bundle: nil)
+    
+    /// The reuse identifier to associate with this cell's nib file
+    static let reuseId = "brandCell"
+    
     /// Vertical margin between brand image view container and the container
     static let verticalMargin: CGFloat = 8
     

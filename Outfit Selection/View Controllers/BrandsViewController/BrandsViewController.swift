@@ -106,5 +106,6 @@ class BrandsViewController: UIViewController {
     func configureLayout() {
         brandsCollectionView.dataSource = self
         brandsCollectionView.delegate = self
+        brandsCollectionView.register(BrandCell.nib, forCellWithReuseIdentifier: BrandCell.reuseId)
     }
 }

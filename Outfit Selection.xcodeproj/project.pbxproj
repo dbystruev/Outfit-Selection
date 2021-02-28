@@ -10,6 +10,8 @@
 		690B1F9825BEF54E000CDD51 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */; };
 		69248FFD25503F2F00106681 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69248FFC25503F2F00106681 /* JSON.swift */; };
 		6924900125504DFD00106681 /* DispatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924900025504DFD00106681 /* DispatchManager.swift */; };
+		69297C5225EB852700A8684E /* BrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69297C5025EB852700A8684E /* BrandCell.swift */; };
+		69297C5325EB852700A8684E /* BrandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69297C5125EB852700A8684E /* BrandCell.xib */; };
 		692C940A2546FB8D0075BD92 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C94092546FB8D0075BD92 /* Gender.swift */; };
 		692C940F254700FC0075BD92 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C940E254700FC0075BD92 /* NetworkManager.swift */; };
 		692C94132547025D0075BD92 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C94122547025D0075BD92 /* Category.swift */; };
@@ -43,7 +45,6 @@
 		6986611B25700ED2008F94CA /* Double+asTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986611A25700ED2008F94CA /* Double+asTime.swift */; };
 		6986612125704F1A008F94CA /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986612025704F1A008F94CA /* UIImage+resize.swift */; };
 		6986612825705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986612725705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift */; };
-		6986612E25706378008F94CA /* BrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986612D25706378008F94CA /* BrandCell.swift */; };
 		6986613325706B6B008F94CA /* BrandsViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986613225706B6B008F94CA /* BrandsViewController+UICollectionViewDelegate.swift */; };
 		6986613B25707A61008F94CA /* BrandedImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986613A25707A61008F94CA /* BrandedImage.swift */; };
 		698990D22323808B002DCA29 /* PinnableScrollViews+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D12323808B002DCA29 /* PinnableScrollViews+Extension.swift */; };
@@ -90,6 +91,8 @@
 		690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		69248FFC25503F2F00106681 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		6924900025504DFD00106681 /* DispatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchManager.swift; sourceTree = "<group>"; };
+		69297C5025EB852700A8684E /* BrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCell.swift; sourceTree = "<group>"; };
+		69297C5125EB852700A8684E /* BrandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = BrandCell.xib; sourceTree = "<group>"; };
 		692C94092546FB8D0075BD92 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		692C940E254700FC0075BD92 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		692C94122547025D0075BD92 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -123,7 +126,6 @@
 		6986611A25700ED2008F94CA /* Double+asTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+asTime.swift"; sourceTree = "<group>"; };
 		6986612025704F1A008F94CA /* UIImage+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
 		6986612725705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
-		6986612D25706378008F94CA /* BrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCell.swift; sourceTree = "<group>"; };
 		6986613225706B6B008F94CA /* BrandsViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		6986613A25707A61008F94CA /* BrandedImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandedImage.swift; sourceTree = "<group>"; };
 		698990D12323808B002DCA29 /* PinnableScrollViews+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollViews+Extension.swift"; sourceTree = "<group>"; };
@@ -253,6 +255,7 @@
 				69ECB1A62323746F00FB42B9 /* PinnableScrollView */,
 				698990D023238065002DCA29 /* PinnableScrollViews */,
 				69A6F70822BA38FB002A3B49 /* Storyboards */,
+				69D0FDA825EB697F00FC15F6 /* XIBs */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -280,7 +283,7 @@
 		6986612C25706355008F94CA /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				6986612D25706378008F94CA /* BrandCell.swift */,
+				69297C5025EB852700A8684E /* BrandCell.swift */,
 				69C3697025E7D127000A8E5E /* ItemCell.swift */,
 				69C3697325E80676000A8E5E /* OutfitCell.swift */,
 			);
@@ -433,6 +436,14 @@
 			path = ProfileViewController;
 			sourceTree = "<group>";
 		};
+		69D0FDA825EB697F00FC15F6 /* XIBs */ = {
+			isa = PBXGroup;
+			children = (
+				69297C5125EB852700A8684E /* BrandCell.xib */,
+			);
+			path = XIBs;
+			sourceTree = "<group>";
+		};
 		69DB6A5425E81AF700EC4CDE /* WishlistViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -541,6 +552,7 @@
 				696E876A25647BF20061802E /* Screenshot06.png in Resources */,
 				696E876F25647C0F0061802E /* README.md in Resources */,
 				69A6F6FB22BA26BA002A3B49 /* Assets.xcassets in Resources */,
+				69297C5325EB852700A8684E /* BrandCell.xib in Resources */,
 				696E876925647BF20061802E /* Screenshot03.png in Resources */,
 				69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */,
 				699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */,
@@ -593,7 +605,6 @@
 				69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */,
 				69560EC82587E5D400337F35 /* Branded.swift in Sources */,
 				698990D42323885C002DCA29 /* OutfitViewController+UIImagePickerControllerDelegate.swift in Sources */,
-				6986612E25706378008F94CA /* BrandCell.swift in Sources */,
 				69739EB222BA64E40077E45D /* OutfitViewController+Gestures.swift in Sources */,
 				69727EFF25E84EC000457A58 /* UINavigationController+findViewController.swift in Sources */,
 				6986612825705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift in Sources */,
@@ -613,6 +624,7 @@
 				698990D22323808B002DCA29 /* PinnableScrollViews+Extension.swift in Sources */,
 				6986612125704F1A008F94CA /* UIImage+resize.swift in Sources */,
 				69C3697125E7D127000A8E5E /* ItemCell.swift in Sources */,
+				69297C5225EB852700A8684E /* BrandCell.swift in Sources */,
 				69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */,
 				69AEC9E825BF014100183E15 /* GenderButton.swift in Sources */,
 				69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */,
