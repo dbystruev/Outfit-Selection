@@ -9,13 +9,30 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    // MARK: - Stored Properties
+    /// The set of brand tags previously selected by the user
+    let selectedBrands = BrandManager.shared.selectedBrands
     
+    // MARK: - Inherited Properties
+    /// The view controller associated with the currently selected tab item
     override var selectedViewController: UIViewController? {
         get {
             super.selectedViewController
         }
         set {
+            // Switch the tab to the new view controller
             super.selectedViewController = newValue
+            
+            // If the user has selected differnt brands go back to progress view controller
+            guard BrandManager.shared.selectedBrands == selectedBrands else {
+                // Saved currently selected index
+                navigationController?.findViewController(ofType: ProgressViewController.self)?.selectedTabBarIndex = selectedIndex
+                
+                // Pop to previous (progress) view controller
+                navigationController?.popViewController(animated: true)
+                
+                return
+            }
             
             // Configure navigation item title to the currently selected view controller
             let title = selectedViewController?.title ?? ""

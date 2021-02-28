@@ -86,6 +86,7 @@
 		69D0FDA525EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */; };
 		69DB6A5625E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */; };
 		69DB6A5A25E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6A5925E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift */; };
+		69EB8BB525EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */; };
 		69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */; };
 		69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FBB20622F1ABE000187562 /* GenderViewController.swift */; };
 /* End PBXBuildFile section */
@@ -172,6 +173,7 @@
 		69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69DB6A5925E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
+		69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnableScrollView.swift; sourceTree = "<group>"; };
 		69FBB20622F1ABE000187562 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -448,6 +450,7 @@
 			children = (
 				69D0FD9E25EB621800FC15F6 /* ProfileViewController.swift */,
 				69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */,
+				69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */,
 				69297C5925EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift */,
 			);
 			path = ProfileViewController;
@@ -601,6 +604,7 @@
 				69D0FD9F25EB621800FC15F6 /* ProfileViewController.swift in Sources */,
 				69C3695E25E7812D000A8E5E /* OccasionsViewController+UIPickerViewDelegate.swift in Sources */,
 				698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */,
+				69EB8BB525EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift in Sources */,
 				69739EB022BA5DF80077E45D /* PinnableScrollView+Extension.swift in Sources */,
 				699ABB5F25E6D54A00E388FC /* TabBarController.swift in Sources */,
 				694E7BEE25DBFFFB006607CD /* UIView+findSuperview.swift in Sources */,

@@ -16,32 +16,30 @@ class ProgressViewController: UIViewController {
     // MARK: - Properties
     /// The collection of brand images
     let brandedImages = BrandManager.shared.brandedImages
+    
+    /// Switch to tab bar index after the move to tab bar view controller
+    var selectedTabBarIndex = 0
 
     // MARK: - Methods
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         
-        // Hide navigation bar on top
+        // Hide navigation bar on top (needed when returning from profile view controller)
         navigationController?.navigationBar.isHidden = true
         
         // Initiate progress with 0
         progressView.progress = 0
 
-        // Instantiate the Outfit View Controller
+        // Instantiate the tab bar controller
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = mainStoryboard.instantiateViewController(withIdentifier: "tabBarController")
         guard let tabBarController = controller as? UITabBarController else {
             debug("WARNING: Can't get Tab Bar Controller from the storyboard", mainStoryboard)
             return
         }
-        guard let navigationController = tabBarController.viewControllers?.first as? UINavigationController else {
-            debug("WARNING: Can't get Naviation Controller from the storyboard")
-            return
-        }
-        guard let outfitViewController = navigationController.viewControllers.first as? OutfitViewController else {
-            debug("WARNING: Can't get Outfit View Controller from the storyboard", mainStoryboard)
-            return
-        }
+        
+        // Switch to tab saved in previous version of tab bar controller
+        tabBarController.selectedIndex = selectedTabBarIndex
         
         // Get brand names to filter by
         let brandNames = brandedImages.compactMap { $0.isSelected ? $0.brandName : nil }
@@ -59,9 +57,6 @@ class ProgressViewController: UIViewController {
             
             debug(itemsTotal, "images are loaded from the server into view models in", passedTime.asTime, "seconds")
             
-            // Save selected brands (do not use brand names as the user could have changed the selection while waiting)
-            outfitViewController.brandNames = self.brandedImages.compactMap { $0.isSelected ? $0.brandName : nil }
-            
             // Save brand images for future selection change
             BrandManager.shared.brandedImages = self.brandedImages
             
@@ -73,6 +68,5 @@ class ProgressViewController: UIViewController {
                 self.navigationController?.pushViewController(tabBarController, animated: true)
             }
         }
-
     }
 }

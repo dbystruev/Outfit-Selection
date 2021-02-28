@@ -62,7 +62,7 @@ extension OutfitViewController {
     /// - Parameter items: the items to scroll the scroll views to
     func scrollTo(items: [Item]) {
         let tags = items.map { $0.itemIndex }
-        scrollViews.scrollToElements(withTags: tags)
+        scrollViews?.scrollToElements(withTags: tags)
     }
     
     func setupUI() {

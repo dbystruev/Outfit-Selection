@@ -8,7 +8,12 @@
 
 import UIKit
 
+// MARK: - UICollectionViewDelegate
 extension BrandsViewController: UICollectionViewDelegate {
+    /// Perform an action when a user taps an item in the brands collection view
+    /// - Parameters:
+    ///   - collectionView: the brands collection view
+    ///   - indexPath: item index path the user has tapped on
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let brandCell = collectionView.cellForItem(at: indexPath) as? BrandCell else { return }
         let brandedImage = brandedImages[indexPath.row]

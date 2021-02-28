@@ -37,6 +37,11 @@ class BrandManager {
         }
     }
     
+    /// Short names of available brand logos (e. g. ["burberry", "chanel", "fendi", "giorgio armani", "gucci", "hermès", "louis vuitton", "prada", "ralph lauren", "versace"])
+    var brandNames: [String] {
+        fullNames.map { $0.lastComponent.dropExtension }
+    }
+    
     /// Sorted full file names of images with brand logos
     var fullNames: [String] {
         let bundleURL = Bundle.main.bundleURL.appendingPathComponent("Brands.bundle")
@@ -46,8 +51,8 @@ class BrandManager {
         return names.map({ $0.path }).sorted()
     }
     
-    /// Short names of available brand logos (e. g. ["burberry", "chanel", "fendi", "giorgio armani", "gucci", "hermès", "louis vuitton", "prada", "ralph lauren", "versace"])
-    var brandNames: [String] {
-        fullNames.map { $0.lastComponent.dropExtension }
+    /// Obtain brands currently selected by the user
+    var selectedBrands: Set<String> {
+        Set(brandedImages.compactMap { $0.isSelected ? $0.brandName : nil })
     }
 }
