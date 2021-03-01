@@ -23,40 +23,37 @@ class TabBarController: UITabBarController {
             // Switch the tab to the new view controller
             super.selectedViewController = newValue
             
-            // If the user has selected differnt brands go back to progress view controller
-            guard BrandManager.shared.selectedBrands == selectedBrands else {
-                // Saved currently selected index
-                navigationController?.findViewController(ofType: ProgressViewController.self)?.selectedTabBarIndex = selectedIndex
-                
-                // Pop to previous (progress) view controller
-                navigationController?.popViewController(animated: true)
-                
-                return
-            }
-            
-            // Configure navigation item title to the currently selected view controller
-            let title = selectedViewController?.title ?? ""
-            if title.isEmpty {
-                navigationController?.isNavigationBarHidden = true
-            } else {
-                navigationController?.isNavigationBarHidden = false
-                navigationItem.title = title
-            }
-            
-            // Configure navigation item right bar button items to the currently selected view controller
-            navigationItem.rightBarButtonItems = selectedViewController?.navigationItem.rightBarButtonItems
+            // Check if the brands were changed
+            popToProgressIfBrandsChanged()
         }
     }
-
+    
+    // MARK: - Custom Methods
+    /// Pop to progress view controller if the user has changed the selection of brands
+    func popToProgressIfBrandsChanged() {
+        // Don't pop if there is no change in brands selection
+        guard BrandManager.shared.selectedBrands != selectedBrands else { return }
+        
+        // Save currently selected index
+        navigationController?.findViewController(ofType: ProgressViewController.self)?.selectedTabBarIndex = selectedIndex
+        
+        // Pop to previous (progress) view controller
+        navigationController?.popViewController(animated: true)
+    }
+    
+    // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Hide back button in navigation bar
-        navigationItem.hidesBackButton = true
         
         // Set tab bar icon colors
         UITabBar.appearance().tintColor = #colorLiteral(red: 66 / 255, green: 66 / 255, blue: 66 / 255, alpha: 1)
         UITabBar.appearance().unselectedItemTintColor = #colorLiteral(red: 66 / 255, green: 66 / 255, blue: 66 / 255, alpha: 0.5)
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Hide navigation bar
+        navigationController?.isNavigationBarHidden = true
+    }
 }

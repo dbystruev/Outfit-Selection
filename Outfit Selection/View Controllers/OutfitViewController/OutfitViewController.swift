@@ -25,9 +25,6 @@ class OutfitViewController: UIViewController {
     /// Scroll to items in this list if there are any
     var scrollToItems: [Item] = []
     
-    /// True if last like / dislike was about item, false if it was about outfit, nil if no likes/dislikes were given
-    var wasLastEmotionAboutItem: Bool?
-    
     // MARK: - Computed Properties
     var itemCount: Int {
         scrollViews.reduce(0) { $0 + $1.itemCount }

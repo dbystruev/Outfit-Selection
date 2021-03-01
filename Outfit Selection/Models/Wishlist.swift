@@ -14,6 +14,9 @@ struct Wishlist: Codable {
     /// List of items added by the user to the wishlist
     private(set) static var items = [Wishlist]()
     
+    /// If true items should be selected next time, if false — outfits
+    static var itemsTabSuggested = true
+    
     /// Dictinary (map) of outfits added by the user to the wishlist
     private static var outfitsDictionary = [String: [Item]]()
     

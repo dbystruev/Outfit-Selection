@@ -32,11 +32,10 @@ class ItemViewController: UIViewController {
         vendorLabel.text = item?.vendor?.uppercased()
     }
     
-    /// Set last emotion in outfit view controller to item
-    func setLastEmotionToItem() {
+    /// Set last emotion in wish list to items
+    func setLastEmotionToItems() {
         // Set most recent like/dislike to item
-        let outfitViewController = navigationController?.findViewController(ofType: OutfitViewController.self)
-        outfitViewController?.wasLastEmotionAboutItem = true
+        Wishlist.itemsTabSuggested = true
     }
     
     // MARK: - Inherited Methods
@@ -58,14 +57,14 @@ class ItemViewController: UIViewController {
             dislikeButtonTapped(sender)
         } else {
             sender.isSelected = true
-            setLastEmotionToItem()
+            setLastEmotionToItems()
             Wishlist.add(item)
         }
     }
     
     @IBAction func dislikeButtonTapped(_ sender: UIButton) {
         addToWishlistButton.isSelected = false
-        setLastEmotionToItem()
+        setLastEmotionToItems()
         Wishlist.remove(item)
     }
     

@@ -17,6 +17,12 @@ class WishlistViewController: UIViewController {
     @IBOutlet weak var wishlistCollectionView: UICollectionView!
     
     // MARK: - Computed Properties
+    /// Get outfit view controller
+    var outfitViewController: OutfitViewController? {
+        let navigationController = tabBarController?.viewControllers?.first as? UINavigationController
+        return navigationController?.viewControllers.first as? OutfitViewController
+    }
+    
     /// Either items or outfits wishlist depending on whether the items tab is selected
     var wishlist: [Wishlist] {
         itemsTabSelected ? Wishlist.items : Wishlist.outfits
@@ -33,30 +39,16 @@ class WishlistViewController: UIViewController {
     
     /// True when items tab is selected, false when outfits tab is selected
     var itemsTabSelected = true {
-        didSet { updateUI() }
+        didSet {
+            Wishlist.itemsTabSuggested = itemsTabSelected
+            updateUI()
+        }
     }
     
     // MARK: - Custom Methods
-    /// Select non-empty tab, but if both are empty or both are not empty do not change selected tab
-    func selectNonEmptyTab() {
-        // If last emotion in outfit view controller is not nil select the corresponding tab
-        let navigationController = tabBarController?.viewControllers?.first as? UINavigationController
-        let outfitViewController = navigationController?.viewControllers.first as? OutfitViewController
-        if let wasLastEmotionAboutItem = outfitViewController?.wasLastEmotionAboutItem {
-            itemsTabSelected = wasLastEmotionAboutItem
-            outfitViewController?.wasLastEmotionAboutItem = nil
-            return
-        }
-        
-        // Otherwise select a non-empty tab
-        let itemsCount = Wishlist.items.count
-        let outfitsCount = Wishlist.outfits.count
-        
-        if itemsCount == 0 && 0 < outfitsCount {
-            itemsTabSelected = false
-        } else if 0 < itemsCount && outfitsCount == 0 {
-            itemsTabSelected = true
-        }
+    /// Select the suggested tab
+    func selectSuggestedTab() {
+        itemsTabSelected = Wishlist.itemsTabSuggested
     }
     
     /// Update items or outfits displayed depending on items selected state
@@ -99,7 +91,7 @@ class WishlistViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        selectNonEmptyTab()
+        selectSuggestedTab()
         updateUI()
     }
     
