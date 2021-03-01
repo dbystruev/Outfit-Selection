@@ -850,11 +850,44 @@
                         <outlet property="nameLabel" destination="q3W-h9-jQb" id="Qfq-uF-dtP"/>
                         <outlet property="orderButton" destination="dpo-Qn-AYN" id="kqi-hR-5gW"/>
                         <outlet property="vendorLabel" destination="YCt-8s-sZN" id="zt4-XX-3zq"/>
+                        <segue destination="yyA-cp-gHe" kind="show" identifier="intermediaryViewControllerSegue" id="RyC-eI-zOS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2094" y="183"/>
+        </scene>
+        <!--Intermediary View Controller-->
+        <scene sceneID="ghJ-co-hsA">
+            <objects>
+                <viewController id="yyA-cp-gHe" customClass="IntermediaryViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="4kv-rr-PEJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now taking you to FARFETCH..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uRL-C2-pey">
+                                <rect key="frame" x="16" y="419" width="343" height="20.333333333333314"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="15"/>
+                                <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Y71-DK-W7Q"/>
+                        <color key="backgroundColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="uRL-C2-pey" firstAttribute="centerY" secondItem="4kv-rr-PEJ" secondAttribute="centerY" multiplier="406 : 384" id="H2a-vn-GyF"/>
+                            <constraint firstAttribute="trailing" secondItem="uRL-C2-pey" secondAttribute="trailing" constant="16" id="Zzf-cL-sn1"/>
+                            <constraint firstItem="uRL-C2-pey" firstAttribute="leading" secondItem="Y71-DK-W7Q" secondAttribute="leading" constant="16" id="we6-Qz-yyI"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="AHd-wZ-A3n"/>
+                    <connections>
+                        <outlet property="takingYouLabel" destination="uRL-C2-pey" id="KQx-XD-IxG"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G27-GN-qNh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2909.5999999999999" y="182.51231527093597"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kA0-0v-X04">
@@ -917,7 +950,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Rw2-uy-7Iw"/>
+        <segue reference="YhA-rh-zAa"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="backslash" width="22" height="22"/>

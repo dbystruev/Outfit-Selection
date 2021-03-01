@@ -6,7 +6,7 @@
 //  Copyright © 2020 Denis Bystruev. All rights reserved.
 //
 
-import SafariServices
+import UIKit
 
 class ItemViewController: UIViewController {
     
@@ -21,6 +21,9 @@ class ItemViewController: UIViewController {
     var image: UIImage?
     var item: Item?
     var itemIndex = -1
+    
+    /// Item url to present at Intermediary view controller
+    var url: URL?
 
     // MARK: - Custom Methods
     /// Fill labels with item data
@@ -39,6 +42,12 @@ class ItemViewController: UIViewController {
     }
     
     // MARK: - Inherited Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        guard segue.identifier == "intermediaryViewControllerSegue" else { return }
+        let intermediaryViewController = segue.destination as? IntermediaryViewController
+        intermediaryViewController?.url = url
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -70,13 +79,7 @@ class ItemViewController: UIViewController {
     
     @IBAction func orderButtonTapped(_ sender: UIButton) {
         guard let url = item?.url else { return }
-        
-        let config = SFSafariViewController.Configuration()
-        config.barCollapsingEnabled = false
-        
-        let controller = SFSafariViewController(url: url, configuration: config)
-        present(controller, animated: true)
-        
-        debug(url)
+        self.url = url
+        performSegue(withIdentifier: "intermediaryViewControllerSegue", sender: sender)
     }
 }
