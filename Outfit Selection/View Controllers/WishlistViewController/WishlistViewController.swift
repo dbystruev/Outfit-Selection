@@ -44,6 +44,7 @@ class WishlistViewController: UIViewController {
         let outfitViewController = navigationController?.viewControllers.first as? OutfitViewController
         if let wasLastEmotionAboutItem = outfitViewController?.wasLastEmotionAboutItem {
             itemsTabSelected = wasLastEmotionAboutItem
+            outfitViewController?.wasLastEmotionAboutItem = nil
             return
         }
         

@@ -24,9 +24,9 @@ extension Branded {
         guard !brandNames.isEmpty else { return true }
         
         // If brand names are given but vendor is nil nothing matches
-        guard let brand = brand?.lowercased() else { return false }
+        guard let brand = brand?.lowercasedLetters else { return false }
         
         // Otherwise check if brand contains one of the brand names
-        return brandNames.contains { brand.contains($0.lowercased()) }
+        return brandNames.contains { brand.contains($0.lowercasedLetters) }
     }
 }

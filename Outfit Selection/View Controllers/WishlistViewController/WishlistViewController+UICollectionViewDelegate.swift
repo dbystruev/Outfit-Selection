@@ -28,7 +28,7 @@ extension WishlistViewController: UICollectionViewDelegate {
             tabBarController?.selectedIndex = 0
             
             // Scroll to the items in the current outfit
-            outfitViewController.scrollTo(items: wishlist[indexPath.row].items)
+            outfitViewController.scrollToItems = wishlist[indexPath.row].items
         }
     }
 }

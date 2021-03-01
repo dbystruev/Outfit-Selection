@@ -43,6 +43,9 @@ class ItemManager {
         // Clear all view models
         clearViewModels()
         
+        // Get all wishlist items
+        let allWishlistItems = Wishlist.allItems
+        
         // Create a dispatch group to stop when all images are loaded
         let group = DispatchGroup()
         
@@ -59,7 +62,7 @@ class ItemManager {
             let categoryIds = categories.map { $0.id }
             
             // Select only the items which belong to one of the categories given
-            let categoryFilteredItems = Item.all.filter {
+            let categoryFilteredItems = (allWishlistItems + Item.all).filter {
                 // Check that the item has category id attached, else filter it out
                 guard let itemCategoryId = $0.categoryId else { return false }
                 
@@ -68,7 +71,7 @@ class ItemManager {
             }
             
             // Filter category items by the brand given
-            let brandFilteredItems = categoryFilteredItems.filter { $0.branded(brandNames) }
+            let brandFilteredItems = categoryFilteredItems.filter { $0.wishlisted == true || $0.branded(brandNames) }
             
             // If brand filtering brought us an empty list, discard it
             let items = brandFilteredItems.isEmpty ? categoryFilteredItems : brandFilteredItems
@@ -85,7 +88,7 @@ class ItemManager {
                     continue
                 }
                 
-                // Check that there is no item with the same name already in the list
+                // Check that there is no item with the same name already in the list, unless it is wishlisted
                 guard !loadedItemNames.contains(itemName) else {
                     // Items with similar names - that's not an error, but a warning
                     //debug("WARNING: \(itemName) already loaded in category \(category.name)")

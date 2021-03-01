@@ -65,6 +65,19 @@ extension OutfitViewController {
         scrollViews?.scrollToElements(withTags: tags)
     }
     
+    /// Scroll to random items
+    /// - Parameter duration: duration of each scroll, 1 second by default
+    func scrollToRandomItems(duration: TimeInterval = 1) {
+        scrollViews.forEach {
+            if !$0.isPinned {
+                $0.scrollToRandomElement(duration: duration)
+            }
+        }
+        
+        // Update like button and price
+        updateUI()
+    }
+    
     func setupUI() {
         // Hide all like buttons
         likeButtons.forEach { $0.isHidden = true }

@@ -19,6 +19,12 @@ class OutfitViewController: UIViewController {
     // MARK: - Stored Properties
     var assetCount = 0
     
+    /// First appearance for view will appear
+    var firstAppearance = true
+    
+    /// Scroll to items in this list if there are any
+    var scrollToItems: [Item] = []
+    
     /// True if last like / dislike was about item, false if it was about outfit, nil if no likes/dislikes were given
     var wasLastEmotionAboutItem: Bool?
     

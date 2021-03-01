@@ -37,6 +37,21 @@ extension OutfitViewController {
         loadImages()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // Scroll to wishlist items or random elements on first appearance
+        if scrollToItems.isEmpty {
+            if firstAppearance {
+                scrollToRandomItems()
+            }
+        } else {
+            scrollTo(items: scrollToItems)
+            scrollToItems.removeAll()
+        }
+        
+        firstAppearance = false
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {

@@ -15,7 +15,7 @@ func debug(line: Int = #line,
     let file = file.lastComponent.dropExtension
     let message = messages.reduce("") { "\($0) \($1?.description ?? "nil")" }
     #if DEBUG
-    print("\(line) \(file).\(function)\(message)")
+    print("\(line) \(file).\(function)\(message.prefix(1024))")
     #endif
 }
 

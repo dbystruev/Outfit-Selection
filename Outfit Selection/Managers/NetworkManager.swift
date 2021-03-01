@@ -64,7 +64,7 @@ class NetworkManager {
             
             guard let decodedData = try? JSON.decoder.decode(T.self, from: data) else {
                 let message = String(data: data, encoding: .utf8) ?? "Unknown data format"
-                print("\(#line) \(Self.self).\(#function) ERROR decoding \(data): \(message)")
+                debug("ERROR decoding \(data): \(message)")
                 completion(nil)
                 return
             }

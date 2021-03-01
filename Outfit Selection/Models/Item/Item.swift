@@ -26,6 +26,12 @@ struct Item: Codable {
         }
     }
     
+    // MARK: - Static Methods
+    /// Clears all items
+    static func removeAll() {
+        all.removeAll()
+    }
+    
     // MARK: - Stored Properties
     /// Item's category id
     let categoryId: Int?
@@ -47,6 +53,9 @@ struct Item: Codable {
     
     /// The item vendor
     let vendor: String?
+
+    /// True if item is in any wishlist, false otherwise (default)
+    var wishlisted: Bool? = false
     
     // MARK: - Computed Properties
     /// If item name starts with vendor (brand) drop that brand and capitalize the first letter of remaining string
@@ -57,8 +66,10 @@ struct Item: Codable {
     }
     
     // MARK: - Methods
-    /// Clears all items
-    static func removeAll() {
-        all.removeAll()
+    /// Set item's wishlist property to true or false
+    /// - Parameter value: the value to set the wishlist property to, true by default
+    func setWishlisted(to value: Bool = true) {
+        guard let itemIndex = itemIndex else { return }
+        Item.all[itemIndex].wishlisted = value
     }
 }

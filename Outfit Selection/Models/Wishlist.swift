@@ -18,9 +18,29 @@ struct Wishlist: Codable {
     private static var outfitsDictionary = [String: [Item]]()
     
     // MARK: - Computed Static Properties
+    /// Set of item indexes in both item wishlist and outfit wishlist
+    static var allItemIndexes: Set<Int> {
+        itemIndexes.union(outfitsItemIndexes)
+    }
+    
+    /// All items in both item wishlist and outfit wishlist
+    static var allItems: [Item] {
+        allItemIndexes.map { Item.all[$0] }
+    }
+    
+    /// Set of item indexes in item wishlist
+    static var itemIndexes: Set<Int> {
+        Set(items.compactMap { $0.item?.itemIndex })
+    }
+    
     /// List of outfits added by the user to the wishlist
     static var outfits: [Wishlist] {
         outfitsDictionary.map { Wishlist($0.value, occasion: $0.key) }
+    }
+    
+    /// Set of item indexes found in outfits
+    static var outfitsItemIndexes: Set<Int> {
+        Set(outfitsDictionary.values.flatMap({ $0 }).compactMap { $0.itemIndex })
     }
     
     // MARK: - Static Methods
@@ -32,6 +52,9 @@ struct Wishlist: Codable {
         
         // Append the item to the end of the items wishlist
         items.append(Wishlist(item))
+        
+        // Remember that item is in the wishlist
+        item.setWishlisted()
     }
     
     /// Add items to the outfit wishlist if they are not present there
@@ -47,10 +70,14 @@ struct Wishlist: Codable {
         
         // Append the new outfit to the end of the outfits wishlist
         outfitsDictionary[occasion] = items
+        
+        // Set each item's wishlisted property
+        items.forEach { $0.setWishlisted() }
     }
     
     /// Returns true if item is contained in the items wishlist already, false otherwise
-    /// - Parameter item: item to check for inclusion into the collection
+    /// - Parameters:
+    ///   - item: item to check for inclusion into the collection
     /// - Returns: true if item is contained in the items wishlist, false if not, nil if item or its itemIndex is nil
     static func contains(_ item: Item?) -> Bool? {
         guard let itemIndex = item?.itemIndex else { return nil }
@@ -95,14 +122,26 @@ struct Wishlist: Codable {
         outfitsDictionary[occasion] != nil
     }
     
+    /// Returns true if item is found in outfit wishlist, false otherwise
+    /// - Parameter item: item to check for inclusion into the outfit wishlist
+    /// - Returns: true if item is found in outfit wishlist, false otherwise, nil if item or its itemIndex is nil
+    static func contains(itemInOutfits item: Item?) -> Bool? {
+        guard let itemIndex = item?.itemIndex else { return nil }
+        return outfitsItemIndexes.contains(itemIndex)
+    }
+    
     /// Remove an item from the items wishlist if it is present there
     /// - Parameter item: the item to remove from the item wishlist
     static func remove(_ item: Item?) {
-        // Make sure the item amd its index are not nil
+        // Make sure the item and its index are not nil
         guard let itemIndex = item?.itemIndex else { return }
         
         // Remove all items with given itemIndex
         items.removeAll { $0.item?.itemIndex == itemIndex }
+        
+        // Clear wishlisted status if not found in outfit wishlist
+        guard contains(itemInOutfits: item) != true else { return }
+        item?.setWishlisted(to: false)
     }
     
     /// Remove items from the outfit wishlist if they are present there
@@ -112,6 +151,18 @@ struct Wishlist: Codable {
         for occasion in outfitsDictionary.keys {
             if contains(items, occasion: occasion) == true {
                 outfitsDictionary[occasion] = nil
+                
+                // Clear wishlisted status
+                items.forEach {
+                    // Check that the item is not in the item wishlist
+                    guard contains($0) != true else { return }
+                    
+                    // Confirm that the item is not in the outfit wishlist
+                    guard contains(itemInOutfits: $0) != true else { return }
+                    
+                    // Clear wishlisted status
+                    $0.setWishlisted(to: false)
+                }
             }
         }
     }

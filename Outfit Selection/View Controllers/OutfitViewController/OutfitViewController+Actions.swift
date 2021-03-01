@@ -32,14 +32,7 @@ extension OutfitViewController {
     }
     
     @IBAction func refreshButtonTapped(_ sender: UIButton) {
-        scrollViews.forEach {
-            if !$0.isPinned {
-                $0.scrollToRandomElement()
-            }
-        }
-        
-        // Update like button and price
-        updateUI()
+        scrollToRandomItems()
     }
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
