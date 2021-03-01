@@ -170,6 +170,12 @@ struct Wishlist: Codable {
         }
     }
     
+    /// Clear both items and outfit wishlists
+    static func removeAll() {
+        items.removeAll()
+        outfitsDictionary.removeAll()
+    }
+    
     // MARK: - Stored Properties
     /// The list of items or a single item in the wishlist element
     private(set) var items: [Item]

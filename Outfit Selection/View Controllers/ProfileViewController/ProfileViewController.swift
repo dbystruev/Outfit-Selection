@@ -16,6 +16,9 @@ class ProfileViewController: UIViewController {
     /// Brands view controller to use as profile collection view data source
     var brandsViewController: BrandsViewController?
     
+    /// Gender to show in the collection view
+    var shownGender: Gender?
+    
     // MARK: - Inhertited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,6 +34,16 @@ class ProfileViewController: UIViewController {
         profileCollectionView.register(ProfileSectionHeaderView.nib,
                                        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                        withReuseIdentifier: ProfileSectionHeaderView.reuseId)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // If shown gender is different from current gender adjust it and reload gender section
+        if shownGender != Gender.current {
+            shownGender = Gender.current
+            profileCollectionView.reloadSections([0])
+        }
     }
     
     override func viewWillLayoutSubviews() {

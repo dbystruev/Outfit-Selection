@@ -23,12 +23,27 @@ class TabBarController: UITabBarController {
             // Switch the tab to the new view controller
             super.selectedViewController = newValue
             
+            // Check if the gender has changed
+            popToBrandsIfGenderChanged()
+            
             // Check if the brands were changed
             popToProgressIfBrandsChanged()
         }
     }
     
     // MARK: - Custom Methods
+    /// Pop to brands view controller if the user has changed the gender
+    func popToBrandsIfGenderChanged() {
+        // Don't pop if there is no change in gender
+        guard let newGender = findViewController(ofType: ProfileViewController.self)?.shownGender else { return }
+        guard Gender.current != newGender else { return }
+        
+        // Pop to brands view controller — don't change Gender.current as it uses it to decide to clear items and wish lists
+        guard let brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self) else { return }
+        brandsViewController.gender = newGender
+        navigationController?.popToViewController(brandsViewController, animated: true)
+    }
+    
     /// Pop to progress view controller if the user has changed the selection of brands
     func popToProgressIfBrandsChanged() {
         // Don't pop if there is no change in brands selection

@@ -24,7 +24,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         case 0:
             // Section 0 is gender - configure gender cell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenderCell.reuseId, for: indexPath)
-            (cell as? GenderCell)?.configure(gender: Gender.allCases[indexPath.row], selected: Gender.current)
+            (cell as? GenderCell)?.configure(gender: Gender.allCases[indexPath.row], selected: shownGender)
             return cell
         case 1:
             // Section 1 is brands - use brands view controller section 0 to answer

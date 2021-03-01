@@ -32,12 +32,13 @@ class GenderViewController: UIViewController {
     
     // MARK: - Methods
     /// Performs segue to brands view controller
-    /// - Parameter sender: the object which caused the segue
-    func performSegueToBrandsViewController(sender: Any?) {
-        // Show navigation bar on top
-        navigationController?.navigationBar.isHidden = false
+    /// - Parameter gender: gender to pass to brands view controller
+    func performSegueToBrandsViewController(gender: Gender) {
+        // Save the gender — don't update Gender.current as it is used to reload items
+        self.gender = gender
         
-        performSegue(withIdentifier: "BrandsViewControllerSegue", sender: sender)
+        // Segue to brands view controller
+        performSegue(withIdentifier: "BrandsViewControllerSegue", sender: self)
     }
     
     // MARK: - Inherited Methods
@@ -63,7 +64,7 @@ class GenderViewController: UIViewController {
         navigationController?.navigationBar.barStyle = .black
         
         // Hide navigation bar on top
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.isNavigationBarHidden = true
     }
     
     /// Return navigation controller bar style back to normal
@@ -106,19 +107,16 @@ class GenderViewController: UIViewController {
     /// Called when the female button is tapped
     /// - Parameter sender: the gesture recognizer which was tapped
     @IBAction func femaleSelected(_ sender: GenderButton) {
-        gender = .female
-        performSegueToBrandsViewController(sender: sender)
+        performSegueToBrandsViewController(gender: .female)
     }
     
     /// Called when the male button is tapped
     /// - Parameter sender: the gesture recognizer which was tapped
     @IBAction func maleSelected(_ sender: GenderButton) {
-        gender = .male
-        performSegueToBrandsViewController(sender: sender)
+        performSegueToBrandsViewController(gender: .male)
     }
     
     @IBAction func otherSelected(_ sender: GenderButton) {
-        gender = .other
-        performSegueToBrandsViewController(sender: sender)
+        performSegueToBrandsViewController(gender: .other)
     }
 }

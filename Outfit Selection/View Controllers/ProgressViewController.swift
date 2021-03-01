@@ -25,7 +25,7 @@ class ProgressViewController: UIViewController {
         super.viewWillAppear(animated)
         
         // Hide navigation bar on top (needed when returning from profile view controller)
-        navigationController?.navigationBar.isHidden = true
+        navigationController?.isNavigationBarHidden = true
         
         // Initiate progress with 0
         progressView.progress = 0
@@ -62,7 +62,7 @@ class ProgressViewController: UIViewController {
             
             DispatchQueue.main.async {
                 // Unhide top navigation bar
-                self.navigationController?.navigationBar.isHidden = false
+                self.navigationController?.isNavigationBarHidden = false
 
                 // Push to outfit view controller
                 self.navigationController?.pushViewController(tabBarController, animated: true)

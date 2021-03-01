@@ -30,6 +30,9 @@ class BrandsViewController: UIViewController {
             
             // Clear all loaded items
             Item.removeAll()
+            
+            // Clear all wish lists
+            Wishlist.removeAll()
         }
     }
     
@@ -40,9 +43,18 @@ class BrandsViewController: UIViewController {
     let brandedImages = BrandManager.shared.brandedImages
     
     // MARK: - Inherited Methods
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Show navigation bar on top
+        navigationController?.isNavigationBarHidden = false
+        
+        // Load items if needed
+        configureItems()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureItems()
         configureLayout()
     }
     

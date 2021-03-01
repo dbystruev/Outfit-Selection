@@ -46,6 +46,7 @@
 		6978202F2587BCAA007D4CCB /* ImageCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978202E2587BCAA007D4CCB /* ImageCollectionViewModel.swift */; };
 		697A3CFB25EACCCB007158B4 /* String+firstCapitalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697A3CFA25EACCCB007158B4 /* String+firstCapitalized.swift */; };
 		697A3CFE25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697A3CFD25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift */; };
+		697E1FDD25ECF0E8008C85C9 /* UITabBarController+findViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */; };
 		6986611B25700ED2008F94CA /* Double+asTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986611A25700ED2008F94CA /* Double+asTime.swift */; };
 		6986612125704F1A008F94CA /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986612025704F1A008F94CA /* UIImage+resize.swift */; };
 		6986612825705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986612725705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift */; };
@@ -132,6 +133,7 @@
 		6978202E2587BCAA007D4CCB /* ImageCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewModel.swift; sourceTree = "<group>"; };
 		697A3CFA25EACCCB007158B4 /* String+firstCapitalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+firstCapitalized.swift"; sourceTree = "<group>"; };
 		697A3CFD25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
+		697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+findViewController.swift"; sourceTree = "<group>"; };
 		6986611A25700ED2008F94CA /* Double+asTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+asTime.swift"; sourceTree = "<group>"; };
 		6986612025704F1A008F94CA /* UIImage+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
 		6986612725705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
@@ -224,6 +226,7 @@
 				69AE954C2563B87000850210 /* String+lastComponent.swift */,
 				694BFA2A25ECA6F100FBC27C /* String+letters.swift */,
 				69727EFE25E84EC000457A58 /* UINavigationController+findViewController.swift */,
+				697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */,
 				694E7BED25DBFFFB006607CD /* UIView+findSuperview.swift */,
 				69B539FC257FBC6800116F98 /* UIViewController */,
 				692C9416254708830075BD92 /* URL+withQueries.swift */,
@@ -643,6 +646,7 @@
 				69248FFD25503F2F00106681 /* JSON.swift in Sources */,
 				694BFA2B25ECA6F100FBC27C /* String+letters.swift in Sources */,
 				692C941B25470B8F0075BD92 /* Item.swift in Sources */,
+				697E1FDD25ECF0E8008C85C9 /* UITabBarController+findViewController.swift in Sources */,
 				69AE955F256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift in Sources */,
 				6924900125504DFD00106681 /* DispatchManager.swift in Sources */,
 				69C3695B25E780F8000A8E5E /* OccasionsViewController+UIPickerViewDataSource.swift in Sources */,
