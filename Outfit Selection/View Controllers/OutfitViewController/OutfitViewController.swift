@@ -10,11 +10,13 @@ import UIKit
 
 class OutfitViewController: UIViewController {
     // MARK: - Outlets
+    @IBOutlet weak var iconsStackView: UIStackView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet var likeButtons: [UIButton]!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet var scrollViews: [PinnableScrollView]!
+    @IBOutlet weak var topStackView: UIStackView!
     
     // MARK: - Stored Properties
     var assetCount = 0

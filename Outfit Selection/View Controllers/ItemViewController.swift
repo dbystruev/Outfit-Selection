@@ -63,7 +63,7 @@ class ItemViewController: UIViewController {
     
     /// Update UI properties when screen rotates
     /// - Parameter isHorizontal: true in landscape mode, false in portrait
-    func updateUIOnLayout(isHorizontal: Bool) {
+    func updateLayout(isHorizontal: Bool) {
         // Update stack views axis and items' visibility
         rightLabelsStackView.isHidden = !isHorizontal
         topLabelsStackView.isHidden = isHorizontal
@@ -125,7 +125,7 @@ class ItemViewController: UIViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         let frame = view.frame
-        updateUIOnLayout(isHorizontal: frame.height < frame.width)
+        updateLayout(isHorizontal: frame.height < frame.width)
     }
     
     // MARK: - Actions

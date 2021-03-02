@@ -64,4 +64,10 @@ extension OutfitViewController {
         super.viewWillAppear(animated)
         updateUI()
     }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        let frame = view.frame
+        updateLayout(isHorizontal: frame.height < frame.width)
+    }
 }

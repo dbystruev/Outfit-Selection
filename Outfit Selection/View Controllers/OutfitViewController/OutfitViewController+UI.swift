@@ -98,6 +98,17 @@ extension OutfitViewController {
         updateUI()
     }
     
+    /// Update layout when rotating
+    /// - Parameter isHorizontal: true if layout should be horizontal, false otherwise
+    func updateLayout(isHorizontal: Bool) {
+        iconsStackView.alignment = isHorizontal ? .center : .fill
+        iconsStackView.axis = isHorizontal ? .vertical : .horizontal
+        iconsStackView.distribution = isHorizontal ? .fillEqually : .fill
+        topStackView.alignment = isHorizontal ? .center : .fill
+        topStackView.axis = isHorizontal ? .horizontal : .vertical
+        topStackView.distribution = isHorizontal ? .fillEqually : .fill
+    }
+    
     /// Updates like button
     func updateLikeButton() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
