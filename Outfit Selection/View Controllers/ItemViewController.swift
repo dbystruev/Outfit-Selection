@@ -10,9 +10,6 @@ import UIKit
 
 class ItemViewController: UIViewController {
     // MARK: - Constants
-    /// Margins on the left (16) and on the right (16) of the order button
-    let orderButtonMargins: CGFloat = 32
-    
     /// Maximum width of order button: design screen width (375) - left (16) and right (16) margins
     let maxOrderButtonWidth: CGFloat = 343
     
@@ -21,9 +18,13 @@ class ItemViewController: UIViewController {
     @IBOutlet var orderButtonHorizontalConstraints: [NSLayoutConstraint]!
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet var nameLabels: [UILabel]!
     @IBOutlet weak var orderButton: UIButton!
-    @IBOutlet weak var vendorLabel: UILabel!
+    @IBOutlet weak var rightLabelsStackView: UIStackView!
+    @IBOutlet weak var topLabelsStackView: UIStackView!
+    @IBOutlet weak var topStackView: UIStackView!
+    @IBOutlet weak var trailingStackView: UIStackView!
+    @IBOutlet var vendorLabels: [UILabel]!
     
     // MARK: - Stored Properties
     /// First item image
@@ -60,13 +61,26 @@ class ItemViewController: UIViewController {
         }
     }
     
+    /// Update UI properties when screen rotates
+    /// - Parameter isHorizontal: true in landscape mode, false in portrait
+    func updateUIOnLayout(isHorizontal: Bool) {
+        // Update stack views axis and items' visibility
+        rightLabelsStackView.isHidden = !isHorizontal
+        topLabelsStackView.isHidden = isHorizontal
+        topStackView.axis = isHorizontal ? .horizontal : .vertical
+        topStackView.distribution = isHorizontal ? .fillEqually : .fill
+        
+        // Update order button constraints
+        updateOrderButtonConstraints()
+    }
+    
     /// Makes sure the button width does not exceed ItemViewController.maxOrderButtonWidth
     func updateOrderButtonConstraints() {
         // Calculate order button width if its constraints zeroed
-        let viewWidthWithoutMargins = view.safeAreaLayoutGuide.layoutFrame.width - orderButtonMargins
+        let orderButtonWidth = trailingStackView.frame.width
         
         // Calculate order button constraints so its width does not exceed maxOrderButtonWidth
-        let constant =  viewWidthWithoutMargins < maxOrderButtonWidth ? 0 : (viewWidthWithoutMargins - maxOrderButtonWidth) / 2
+        let constant =  orderButtonWidth < maxOrderButtonWidth ? 0 : (orderButtonWidth - maxOrderButtonWidth) / 2
         
         // Assign order button constraints
         orderButtonHorizontalConstraints.forEach { $0.constant = constant }
@@ -75,10 +89,12 @@ class ItemViewController: UIViewController {
     /// Fill labels with item data
     func updateUI() {
         addToWishlistButton.isSelected = Wishlist.contains(item) ?? false
-        nameLabel.text = item?.nameWithoutVendor
+        let nameWithoutVendor = item?.nameWithoutVendor
+        nameLabels.forEach { $0.text = nameWithoutVendor }
         orderButton.isHidden = item?.url == nil
         title = item?.price?.asPrice
-        vendorLabel.text = item?.vendor?.uppercased()
+        let vendorUppercased = item?.vendor?.uppercased()
+        vendorLabels.forEach { $0.text = vendorUppercased }
     }
     
     /// Set last emotion in wish list to items
@@ -108,7 +124,8 @@ class ItemViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        updateOrderButtonConstraints()
+        let frame = view.frame
+        updateUIOnLayout(isHorizontal: frame.height < frame.width)
     }
     
     // MARK: - Actions
