@@ -773,9 +773,7 @@
                                         <constraints>
                                             <constraint firstItem="vrQ-gZ-9Lm" firstAttribute="leading" secondItem="sf6-vi-jaT" secondAttribute="leading" id="60o-pg-eK4"/>
                                             <constraint firstItem="vrQ-gZ-9Lm" firstAttribute="top" secondItem="sf6-vi-jaT" secondAttribute="top" id="DIn-mJ-O9d"/>
-                                            <constraint firstItem="Tez-9P-gqj" firstAttribute="height" secondItem="FKm-kA-Pen" secondAttribute="height" id="FJz-EU-rpl"/>
                                             <constraint firstItem="vrQ-gZ-9Lm" firstAttribute="bottom" secondItem="sf6-vi-jaT" secondAttribute="bottom" id="FVC-gY-r2j"/>
-                                            <constraint firstItem="Tez-9P-gqj" firstAttribute="width" secondItem="FKm-kA-Pen" secondAttribute="width" id="gh7-hR-z8i"/>
                                             <constraint firstItem="vrQ-gZ-9Lm" firstAttribute="trailing" secondItem="sf6-vi-jaT" secondAttribute="trailing" id="uIm-5x-paO"/>
                                         </constraints>
                                         <viewLayoutGuide key="contentLayoutGuide" id="jpz-4i-TSM"/>
@@ -850,6 +848,10 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" secondItem="Tez-9P-gqj" secondAttribute="height" constant="232" id="Cr5-Wh-hCh"/>
+                                    <constraint firstItem="Tez-9P-gqj" firstAttribute="width" secondItem="jnZ-Z3-pXL" secondAttribute="width" id="ZcJ-5v-PfD"/>
+                                </constraints>
                             </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="ttT-PL-VLh"/>

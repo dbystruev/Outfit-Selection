@@ -39,6 +39,27 @@ class ItemViewController: UIViewController {
     var url: URL?
 
     // MARK: - Custom Methods
+    /// Load item pictures to image view and image stack view
+    func loadImages() {
+        // Load the first image
+        imageView.image = image
+        
+        // Get the URLs for the second and all other images
+        guard let imageURLs = item?.pictures, 1 < imageURLs.count else { return }
+        
+        // Load images into stack view
+        for imageURL in imageURLs.dropFirst() {
+            NetworkManager.shared.getImage(imageURL) { image in
+                guard let image = image else { return }
+                DispatchQueue.main.async {
+                    let imageView = UIImageView(image: image)
+                    imageView.contentMode = .scaleAspectFit
+                    self.imageStackView.addArrangedSubview(imageView)
+                }
+            }
+        }
+    }
+    
     /// Makes sure the button width does not exceed ItemViewController.maxOrderButtonWidth
     func updateOrderButtonConstraints() {
         // Calculate order button width if its constraints zeroed
@@ -76,8 +97,8 @@ class ItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        imageView.image = image
         item = 0 <= itemIndex && itemIndex < Item.all.count ? Item.all[itemIndex] : nil
+        loadImages()
     }
     
     override func viewWillAppear(_ animated: Bool) {
