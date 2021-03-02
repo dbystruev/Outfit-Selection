@@ -758,9 +758,29 @@
                                             </label>
                                         </subviews>
                                     </stackView>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Tez-9P-gqj">
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sf6-vi-jaT">
                                         <rect key="frame" x="0.0" y="70" width="343" height="369"/>
-                                    </imageView>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vrQ-gZ-9Lm">
+                                                <rect key="frame" x="0.0" y="0.0" width="343" height="369"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Tez-9P-gqj">
+                                                        <rect key="frame" x="0.0" y="0.0" width="343" height="369"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="vrQ-gZ-9Lm" firstAttribute="leading" secondItem="sf6-vi-jaT" secondAttribute="leading" id="60o-pg-eK4"/>
+                                            <constraint firstItem="vrQ-gZ-9Lm" firstAttribute="top" secondItem="sf6-vi-jaT" secondAttribute="top" id="DIn-mJ-O9d"/>
+                                            <constraint firstItem="Tez-9P-gqj" firstAttribute="height" secondItem="FKm-kA-Pen" secondAttribute="height" id="FJz-EU-rpl"/>
+                                            <constraint firstItem="vrQ-gZ-9Lm" firstAttribute="bottom" secondItem="sf6-vi-jaT" secondAttribute="bottom" id="FVC-gY-r2j"/>
+                                            <constraint firstItem="Tez-9P-gqj" firstAttribute="width" secondItem="FKm-kA-Pen" secondAttribute="width" id="gh7-hR-z8i"/>
+                                            <constraint firstItem="vrQ-gZ-9Lm" firstAttribute="trailing" secondItem="sf6-vi-jaT" secondAttribute="trailing" id="uIm-5x-paO"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="jpz-4i-TSM"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="FKm-kA-Pen"/>
+                                    </scrollView>
                                     <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E47-cd-6bH">
                                         <rect key="frame" x="0.0" y="455" width="343" height="69"/>
                                         <subviews>
@@ -806,7 +826,6 @@
                                                 <color key="backgroundColor" red="0.31575974820000002" green="0.38078895210000002" blue="0.37285700440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="61" id="ljH-nF-1BF"/>
-                                                    <constraint firstAttribute="width" priority="750" constant="343" id="u6H-U4-NGE"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="17"/>
                                                 <state key="normal" title="Shop now">
@@ -824,10 +843,9 @@
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
-                                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="tuz-mA-INp" secondAttribute="leading" id="7xO-tM-cl4"/>
-                                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="centerX" secondItem="tuz-mA-INp" secondAttribute="centerX" id="NiJ-0h-LWk"/>
-                                            <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="dpo-Qn-AYN" secondAttribute="trailing" id="Q5J-x3-M5x"/>
                                             <constraint firstItem="dpo-Qn-AYN" firstAttribute="top" secondItem="tuz-mA-INp" secondAttribute="top" id="TaV-I9-CWg"/>
+                                            <constraint firstAttribute="trailing" secondItem="dpo-Qn-AYN" secondAttribute="trailing" id="ekq-Xd-sh5"/>
+                                            <constraint firstItem="dpo-Qn-AYN" firstAttribute="leading" secondItem="tuz-mA-INp" secondAttribute="leading" id="r5R-fY-8xv"/>
                                             <constraint firstAttribute="bottom" secondItem="dpo-Qn-AYN" secondAttribute="bottom" id="ykY-HK-r1K"/>
                                         </constraints>
                                     </view>
@@ -846,10 +864,13 @@
                     <navigationItem key="navigationItem" id="by0-GS-4kH"/>
                     <connections>
                         <outlet property="addToWishlistButton" destination="w8C-LO-Yd8" id="HA3-bo-fWH"/>
+                        <outlet property="imageStackView" destination="vrQ-gZ-9Lm" id="zSI-cA-QeG"/>
                         <outlet property="imageView" destination="Tez-9P-gqj" id="NF6-q8-GWd"/>
                         <outlet property="nameLabel" destination="q3W-h9-jQb" id="Qfq-uF-dtP"/>
                         <outlet property="orderButton" destination="dpo-Qn-AYN" id="kqi-hR-5gW"/>
                         <outlet property="vendorLabel" destination="YCt-8s-sZN" id="zt4-XX-3zq"/>
+                        <outletCollection property="orderButtonHorizontalConstraints" destination="r5R-fY-8xv" collectionClass="NSMutableArray" id="3kg-e4-Szq"/>
+                        <outletCollection property="orderButtonHorizontalConstraints" destination="ekq-Xd-sh5" collectionClass="NSMutableArray" id="9y4-OM-kaV"/>
                         <segue destination="yyA-cp-gHe" kind="show" identifier="intermediaryViewControllerSegue" id="RyC-eI-zOS"/>
                     </connections>
                 </viewController>

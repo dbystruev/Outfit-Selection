@@ -9,28 +9,53 @@
 import UIKit
 
 class ItemViewController: UIViewController {
+    // MARK: - Constants
+    /// Margins on the left (16) and on the right (16) of the order button
+    let orderButtonMargins: CGFloat = 32
+    
+    /// Maximum width of order button: design screen width (375) - left (16) and right (16) margins
+    let maxOrderButtonWidth: CGFloat = 343
     
     // MARK: - Outlets
     @IBOutlet weak var addToWishlistButton: UIButton!
+    @IBOutlet var orderButtonHorizontalConstraints: [NSLayoutConstraint]!
+    @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var orderButton: UIButton!
     @IBOutlet weak var vendorLabel: UILabel!
     
-    // MARK: - Properties
+    // MARK: - Stored Properties
+    /// First item image
     var image: UIImage?
+    
+    /// Item model to show
     var item: Item?
+    
+    /// Item index in Item.all array
     var itemIndex = -1
     
     /// Item url to present at Intermediary view controller
     var url: URL?
 
     // MARK: - Custom Methods
+    /// Makes sure the button width does not exceed ItemViewController.maxOrderButtonWidth
+    func updateOrderButtonConstraints() {
+        // Calculate order button width if its constraints zeroed
+        let viewWidthWithoutMargins = view.safeAreaLayoutGuide.layoutFrame.width - orderButtonMargins
+        
+        // Calculate order button constraints so its width does not exceed maxOrderButtonWidth
+        let constant =  viewWidthWithoutMargins < maxOrderButtonWidth ? 0 : (viewWidthWithoutMargins - maxOrderButtonWidth) / 2
+        
+        // Assign order button constraints
+        orderButtonHorizontalConstraints.forEach { $0.constant = constant }
+    }
+    
     /// Fill labels with item data
     func updateUI() {
         addToWishlistButton.isSelected = Wishlist.contains(item) ?? false
         nameLabel.text = item?.nameWithoutVendor
-        orderButton.isHidden = item == nil
+        orderButton.isHidden = item?.url == nil
         title = item?.price?.asPrice
         vendorLabel.text = item?.vendor?.uppercased()
     }
@@ -58,6 +83,11 @@ class ItemViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        updateOrderButtonConstraints()
     }
     
     // MARK: - Actions
