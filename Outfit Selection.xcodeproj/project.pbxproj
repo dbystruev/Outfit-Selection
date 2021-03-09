@@ -47,6 +47,7 @@
 		695367F425F7AC430024EC8B /* Character+isDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695367F325F7AC430024EC8B /* Character+isDigit.swift */; };
 		695367F825F7AFAC0024EC8B /* AppDelegate+UIApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695367F725F7AFAC0024EC8B /* AppDelegate+UIApplicationDelegate.swift */; };
 		695367FB25F7B0AA0024EC8B /* AppDelegate+UNUserNotificationCenterDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695367FA25F7B0AA0024EC8B /* AppDelegate+UNUserNotificationCenterDelegate.swift */; };
+		6953680225F7B5590024EC8B /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 6953680125F7B5590024EC8B /* .gitignore */; };
 		69560EC82587E5D400337F35 /* Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560EC72587E5D400337F35 /* Branded.swift */; };
 		69560ECC2587E7C700337F35 /* Item+Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560ECB2587E7C700337F35 /* Item+Branded.swift */; };
 		69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */; };
@@ -149,6 +150,7 @@
 		695367F325F7AC430024EC8B /* Character+isDigit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+isDigit.swift"; sourceTree = "<group>"; };
 		695367F725F7AFAC0024EC8B /* AppDelegate+UIApplicationDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UIApplicationDelegate.swift"; sourceTree = "<group>"; };
 		695367FA25F7B0AA0024EC8B /* AppDelegate+UNUserNotificationCenterDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+UNUserNotificationCenterDelegate.swift"; sourceTree = "<group>"; };
+		6953680125F7B5590024EC8B /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
 		69560EC72587E5D400337F35 /* Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Branded.swift; sourceTree = "<group>"; };
 		69560ECB2587E7C700337F35 /* Item+Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Branded.swift"; sourceTree = "<group>"; };
 		69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandedImage+Branded.swift"; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 		69A6F6E722BA26B7002A3B49 = {
 			isa = PBXGroup;
 			children = (
+				6953680125F7B5590024EC8B /* .gitignore */,
 				695367E825F7A8E50024EC8B /* AppsFlyerLib.framework */,
 				696E876E25647C0F0061802E /* README.md */,
 				69A6F6F222BA26B7002A3B49 /* Outfit Selection */,
@@ -645,6 +648,7 @@
 				69535A4525EDF6AA00E9D816 /* Screenshot11.png in Resources */,
 				69535A4F25EDF6AA00E9D816 /* Screenshot12.png in Resources */,
 				699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */,
+				6953680225F7B5590024EC8B /* .gitignore in Resources */,
 				69535A4725EDF6AA00E9D816 /* Screenshot09.png in Resources */,
 				69535A5025EDF6AA00E9D816 /* Screenshot04.png in Resources */,
 				69535A4B25EDF6AA00E9D816 /* Screenshot07.png in Resources */,
