@@ -14,7 +14,18 @@ class ItemViewController: UIViewController {
     let maxOrderButtonWidth: CGFloat = 343
     
     // MARK: - Outlets
-    @IBOutlet weak var addToWishlistButton: UIButton!
+    @IBOutlet weak var addToWishlistButton: UIButton! {
+        didSet {
+            addShadow(for: addToWishlistButton, cornerRadius: 18)
+        }
+    }
+    
+    @IBOutlet weak var dislikeButton: UIButton! {
+        didSet {
+            addShadow(for: dislikeButton, cornerRadius: 20, inset: 10)
+        }
+    }
+    
     @IBOutlet var orderButtonHorizontalConstraints: [NSLayoutConstraint]!
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
@@ -40,6 +51,22 @@ class ItemViewController: UIViewController {
     var url: URL?
 
     // MARK: - Custom Methods
+    /// Add shadow to the layer with given corner radius
+    /// - Parameters:
+    ///   - view: view to add shadow to
+    ///   - cornerRadius: view corner radius to use
+    ///   - shadowRadius: shadow radius to use
+    ///   - inset: inset for shadow path, 0 be default
+    func addShadow(for view: UIView, cornerRadius: CGFloat, inset: CGFloat = 0) {
+        let grade: CGFloat = 151 / 255
+        let layer = view.layer
+        layer.cornerRadius = cornerRadius
+        layer.shadowColor = UIColor(red: grade, green: grade, blue: grade, alpha: 0.2).cgColor
+        layer.shadowOpacity = 1
+        layer.shadowPath = UIBezierPath(roundedRect: view.bounds.insetBy(dx: inset, dy: inset), cornerRadius: cornerRadius).cgPath
+        layer.shadowRadius = 10
+    }
+    
     /// Load item pictures to image view and image stack view
     func loadImages() {
         // Load the first image
@@ -126,28 +153,5 @@ class ItemViewController: UIViewController {
         super.viewWillLayoutSubviews()
         let frame = view.frame
         updateLayout(isHorizontal: frame.height < frame.width)
-    }
-    
-    // MARK: - Actions
-    @IBAction func addToWishlistButtonTapped(_ sender: UIButton) {
-        if Wishlist.contains(item) == true {
-            dislikeButtonTapped(sender)
-        } else {
-            sender.isSelected = true
-            setLastEmotionToItems()
-            Wishlist.add(item)
-        }
-    }
-    
-    @IBAction func dislikeButtonTapped(_ sender: UIButton) {
-        addToWishlistButton.isSelected = false
-        setLastEmotionToItems()
-        Wishlist.remove(item)
-    }
-    
-    @IBAction func orderButtonTapped(_ sender: UIButton) {
-        guard let url = item?.url else { return }
-        self.url = url
-        performSegue(withIdentifier: "intermediaryViewControllerSegue", sender: sender)
     }
 }

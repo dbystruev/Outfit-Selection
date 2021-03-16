@@ -21,6 +21,7 @@
 		692C9417254708830075BD92 /* URL+withQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C9416254708830075BD92 /* URL+withQueries.swift */; };
 		692C941B25470B8F0075BD92 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C941A25470B8F0075BD92 /* Item.swift */; };
 		69322E2826007C5500CAFBFA /* AppsFlyerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69322E2726007C5500CAFBFA /* AppsFlyerLib.framework */; };
+		69322E2B26008CDD00CAFBFA /* ItemViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69322E2A26008CDD00CAFBFA /* ItemViewController+Actions.swift */; };
 		693D7286256BF1EA00540C10 /* Brands.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 693D7285256BF1EA00540C10 /* Brands.bundle */; };
 		693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7289256BF3FB00540C10 /* BrandsViewController.swift */; };
 		693D728E256BF4CA00540C10 /* BrandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D728D256BF4CA00540C10 /* BrandManager.swift */; };
@@ -124,6 +125,7 @@
 		692C9416254708830075BD92 /* URL+withQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+withQueries.swift"; sourceTree = "<group>"; };
 		692C941A25470B8F0075BD92 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		69322E2726007C5500CAFBFA /* AppsFlyerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppsFlyerLib.framework; sourceTree = "<group>"; };
+		69322E2A26008CDD00CAFBFA /* ItemViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemViewController+Actions.swift"; sourceTree = "<group>"; };
 		693D7285256BF1EA00540C10 /* Brands.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Brands.bundle; sourceTree = "<group>"; };
 		693D7289256BF3FB00540C10 /* BrandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
 		693D728D256BF4CA00540C10 /* BrandManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandManager.swift; sourceTree = "<group>"; };
@@ -267,6 +269,15 @@
 				692C9416254708830075BD92 /* URL+withQueries.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		69322E2D26008EEF00CAFBFA /* ItemViewController */ = {
+			isa = PBXGroup;
+			children = (
+				69AE95582563D43700850210 /* ItemViewController.swift */,
+				69322E2A26008CDD00CAFBFA /* ItemViewController+Actions.swift */,
+			);
+			path = ItemViewController;
 			sourceTree = "<group>";
 		};
 		695367EB25F7AA3B0024EC8B /* AppDelegate */ = {
@@ -439,7 +450,7 @@
 				6986612525705F45008F94CA /* BrandsViewController */,
 				69FBB20522F1ABC000187562 /* GenderViewController */,
 				697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */,
-				69AE95582563D43700850210 /* ItemViewController.swift */,
+				69322E2D26008EEF00CAFBFA /* ItemViewController */,
 				69C3695825E780E2000A8E5E /* OccasionsViewController */,
 				69FBB20422F1A86700187562 /* OutfitViewController */,
 				69D0FDA225EB64C600FC15F6 /* ProfileViewController */,
@@ -692,6 +703,7 @@
 				69AE95502563B8FB00850210 /* String+dropExtension.swift in Sources */,
 				69A6F70A22BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift in Sources */,
 				69AE95562563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift in Sources */,
+				69322E2B26008CDD00CAFBFA /* ItemViewController+Actions.swift in Sources */,
 				6986613B25707A61008F94CA /* BrandedImage.swift in Sources */,
 				69DB6A5A25E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				69C3697425E80676000A8E5E /* OutfitCell.swift in Sources */,
@@ -921,6 +933,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.3.5;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

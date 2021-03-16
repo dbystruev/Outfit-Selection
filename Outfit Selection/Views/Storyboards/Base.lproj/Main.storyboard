@@ -828,11 +828,15 @@
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E47-cd-6bH">
                                                 <rect key="frame" x="0.0" y="70" width="343" height="69"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="qmk-y1-NPB" userLabel="Buttons Stack View">
-                                                        <rect key="frame" x="65.666666666666686" y="4.6666666666666288" width="212" height="60"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="qmk-y1-NPB" userLabel="Buttons Stack View">
+                                                        <rect key="frame" x="70.666666666666686" y="4.6666666666666288" width="202" height="60"/>
                                                         <subviews>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZR-VQ-dzE" userLabel="Dislike Button">
                                                                 <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="pZR-VQ-dzE" secondAttribute="height" id="6QG-LU-dNa"/>
+                                                                    <constraint firstAttribute="height" constant="60" id="6zV-oi-Vu7"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
                                                                 <state key="normal" image="dislike">
                                                                     <color key="titleColor" red="0.25958698990000001" green="0.2596296072" blue="0.259577632" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -842,8 +846,13 @@
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8C-LO-Yd8">
-                                                                <rect key="frame" x="90" y="0.0" width="122" height="60"/>
+                                                                <rect key="frame" x="60" y="8" width="142" height="44"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="44" id="sB5-Hj-Aeu"/>
+                                                                </constraints>
                                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
+                                                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                                 <state key="normal" title=" Add to wish list" image="wishlist">
                                                                     <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
@@ -907,9 +916,16 @@
                             <constraint firstItem="ttT-PL-VLh" firstAttribute="bottom" secondItem="jnZ-Z3-pXL" secondAttribute="bottom" constant="24" id="pJr-9s-wQQ"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="by0-GS-4kH"/>
+                    <navigationItem key="navigationItem" id="by0-GS-4kH">
+                        <barButtonItem key="rightBarButtonItem" image="share" id="9jn-Ak-jkl">
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="Uns-Sh-QHX" id="WjM-gU-SKl"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="addToWishlistButton" destination="w8C-LO-Yd8" id="HA3-bo-fWH"/>
+                        <outlet property="dislikeButton" destination="pZR-VQ-dzE" id="GmU-bh-VvT"/>
                         <outlet property="imageStackView" destination="vrQ-gZ-9Lm" id="zSI-cA-QeG"/>
                         <outlet property="imageView" destination="Tez-9P-gqj" id="NF6-q8-GWd"/>
                         <outlet property="orderButton" destination="dpo-Qn-AYN" id="kqi-hR-5gW"/>
