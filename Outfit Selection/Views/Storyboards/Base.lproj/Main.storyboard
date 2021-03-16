@@ -701,14 +701,18 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vEv-g6-6ax">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="48"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose the occasion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwF-7x-wa1">
-                                                <rect key="frame" x="0.0" y="0.0" width="307" height="48"/>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eSe-3O-dIq">
+                                                <rect key="frame" x="0.0" y="0.0" width="57.666666666666664" height="48"/>
+                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </view>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" text="Choose the occasion" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WwF-7x-wa1">
+                                                <rect key="frame" x="57.666666666666657" y="0.0" width="259.66666666666674" height="48"/>
                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                                 <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xLI-2y-iWG">
-                                                <rect key="frame" x="307" y="0.0" width="68" height="48"/>
+                                                <rect key="frame" x="317.33333333333331" y="0.0" width="57.666666666666686" height="48"/>
                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                                 <state key="normal" title="Save">
                                                     <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -721,6 +725,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="48" id="VWO-S3-tcz"/>
                                             <constraint firstItem="xLI-2y-iWG" firstAttribute="width" secondItem="WwF-7x-wa1" secondAttribute="width" multiplier="68 : 307" id="lF1-ug-jBg"/>
+                                            <constraint firstItem="eSe-3O-dIq" firstAttribute="width" secondItem="xLI-2y-iWG" secondAttribute="width" id="rp6-Mz-nEI"/>
                                         </constraints>
                                     </stackView>
                                     <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JZP-LX-1Xz">
