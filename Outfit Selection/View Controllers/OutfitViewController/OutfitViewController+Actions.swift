@@ -52,20 +52,16 @@ extension OutfitViewController {
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
-        // Hide like buttons
-        likeButtons.forEach { $0.isHidden = true }
+        // Get the images and check that all of them are not nil
+        let images = scrollViews.compactMap { $0.getImageView()?.image }
+        guard images.count == scrollViews.count else { return }
         
-        // Make screenshot
-        let possibleScreenshot = getScreenshot(of: view)
+        // Create a view for screenshot
+        let shareView = ShareView.instanceFromNib()
+        shareView.configure(with: images)
         
-        // Restore like buttons
-        for (likeButton, scrollView) in zip(likeButtons, scrollViews) {
-            likeButton.isHidden = !scrollView.isPinned
-        }
-        
-        guard let screenshot = possibleScreenshot else { return }
-        
-        let activityController = UIActivityViewController(activityItems: [screenshot], applicationActivities: nil)
+        // Share the image
+        let activityController = UIActivityViewController(activityItems: [shareView.asImage], applicationActivities: nil)
         activityController.popoverPresentationController?.sourceView = sender.customView
         present(activityController, animated: true)
     }

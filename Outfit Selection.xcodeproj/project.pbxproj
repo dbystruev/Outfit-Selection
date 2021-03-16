@@ -15,6 +15,9 @@
 		69297C5A25EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69297C5925EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift */; };
 		69297C5F25EBC9FE00A8684E /* GenderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69297C5D25EBC9FE00A8684E /* GenderCell.swift */; };
 		69297C6025EBC9FE00A8684E /* GenderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69297C5E25EBC9FE00A8684E /* GenderCell.xib */; };
+		692AF3CB260113C300D37269 /* ShareView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692AF3CA260113C300D37269 /* ShareView.swift */; };
+		692AF3CE260113DB00D37269 /* ShareView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 692AF3CD260113DB00D37269 /* ShareView.xib */; };
+		692AF3D22601209700D37269 /* UIView+asImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692AF3D12601209700D37269 /* UIView+asImage.swift */; };
 		692C940A2546FB8D0075BD92 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C94092546FB8D0075BD92 /* Gender.swift */; };
 		692C940F254700FC0075BD92 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C940E254700FC0075BD92 /* NetworkManager.swift */; };
 		692C94132547025D0075BD92 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C94122547025D0075BD92 /* Category.swift */; };
@@ -119,6 +122,9 @@
 		69297C5925EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
 		69297C5D25EBC9FE00A8684E /* GenderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderCell.swift; sourceTree = "<group>"; };
 		69297C5E25EBC9FE00A8684E /* GenderCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GenderCell.xib; sourceTree = "<group>"; };
+		692AF3CA260113C300D37269 /* ShareView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareView.swift; sourceTree = "<group>"; };
+		692AF3CD260113DB00D37269 /* ShareView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ShareView.xib; sourceTree = "<group>"; };
+		692AF3D12601209700D37269 /* UIView+asImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+asImage.swift"; sourceTree = "<group>"; };
 		692C94092546FB8D0075BD92 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		692C940E254700FC0075BD92 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		692C94122547025D0075BD92 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -228,6 +234,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		692AF3D4260120A100D37269 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				692AF3D12601209700D37269 /* UIView+asImage.swift */,
+				694E7BED25DBFFFB006607CD /* UIView+findSuperview.swift */,
+			);
+			path = UIView;
+			sourceTree = "<group>";
+		};
 		692C94082546FB7A0075BD92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -264,7 +279,7 @@
 				694BFA2A25ECA6F100FBC27C /* String+letters.swift */,
 				69727EFE25E84EC000457A58 /* UINavigationController+findViewController.swift */,
 				697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */,
-				694E7BED25DBFFFB006607CD /* UIView+findSuperview.swift */,
+				692AF3D4260120A100D37269 /* UIView */,
 				69B539FC257FBC6800116F98 /* UIViewController */,
 				692C9416254708830075BD92 /* URL+withQueries.swift */,
 			);
@@ -325,6 +340,7 @@
 				6986613925707A2F008F94CA /* Images */,
 				69ECB1A62323746F00FB42B9 /* PinnableScrollView */,
 				698990D023238065002DCA29 /* PinnableScrollViews */,
+				692AF3CA260113C300D37269 /* ShareView.swift */,
 				69A6F70822BA38FB002A3B49 /* Storyboards */,
 				69D0FDA825EB697F00FC15F6 /* XIBs */,
 			);
@@ -536,6 +552,7 @@
 				69297C5125EB852700A8684E /* BrandCell.xib */,
 				69297C5E25EBC9FE00A8684E /* GenderCell.xib */,
 				69C3A4BD25EC07E800F8F968 /* ProfileSectionHeaderView.xib */,
+				692AF3CD260113DB00D37269 /* ShareView.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -651,6 +668,7 @@
 				69535A4C25EDF6AA00E9D816 /* Screenshot06.png in Resources */,
 				69535A4425EDF6AA00E9D816 /* Screenshot02.png in Resources */,
 				69297C6025EBC9FE00A8684E /* GenderCell.xib in Resources */,
+				692AF3CE260113DB00D37269 /* ShareView.xib in Resources */,
 				69535A4625EDF6AA00E9D816 /* Screenshot13.png in Resources */,
 				69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */,
 				69535A4D25EDF6AA00E9D816 /* Screenshot01.png in Resources */,
@@ -699,8 +717,10 @@
 				69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */,
 				692C9417254708830075BD92 /* URL+withQueries.swift in Sources */,
 				693D728E256BF4CA00540C10 /* BrandManager.swift in Sources */,
+				692AF3D22601209700D37269 /* UIView+asImage.swift in Sources */,
 				695EE0042586449E00E2BB57 /* BrandsViewController+Actions.swift in Sources */,
 				69AE95502563B8FB00850210 /* String+dropExtension.swift in Sources */,
+				692AF3CB260113C300D37269 /* ShareView.swift in Sources */,
 				69A6F70A22BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift in Sources */,
 				69AE95562563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift in Sources */,
 				69322E2B26008CDD00CAFBFA /* ItemViewController+Actions.swift in Sources */,
