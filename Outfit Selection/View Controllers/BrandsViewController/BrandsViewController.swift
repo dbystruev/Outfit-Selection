@@ -42,6 +42,13 @@ class BrandsViewController: UIViewController {
     /// The collection of brand images
     let brandedImages = BrandManager.shared.brandedImages
     
+    /// True if we should enable go button — either all items are loaded or timed out for refresh
+    var shouldEnableGoButton = false {
+        didSet {
+            configureGoButton()
+        }
+    }
+    
     // MARK: - Inherited Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -67,13 +74,9 @@ class BrandsViewController: UIViewController {
     /// Set go button backgroun color and enable / disable it depending on number of brands selected
     func configureGoButton() {
         let brandsSelected = BrandManager.shared.selectedBrands.count
-        if brandsSelected < 3 {
-            getOutfitButton.backgroundColor = #colorLiteral(red: 0.638679564, green: 0.6545599103, blue: 0.6587830186, alpha: 1)
-            getOutfitButton.isEnabled = false
-        } else {
-            getOutfitButton.backgroundColor = #colorLiteral(red: 0.3205250204, green: 0.3743517399, blue: 0.3797602355, alpha: 1)
-            getOutfitButton.isEnabled = true
-        }
+        let shouldEnable = 0 < brandsSelected && shouldEnableGoButton
+        getOutfitButton.backgroundColor = shouldEnable ? #colorLiteral(red: 0.3205250204, green: 0.3743517399, blue: 0.3797602355, alpha: 1) : #colorLiteral(red: 0.638679564, green: 0.6545599103, blue: 0.6587830186, alpha: 1)
+        getOutfitButton.isEnabled = shouldEnable
     }
     
     /// Start loading items from the server
@@ -83,16 +86,16 @@ class BrandsViewController: UIViewController {
         guard !allItemsLoaded else { return }
         
         // Load items if none are found
-        getOutfitButton.isHidden = true
+        shouldEnableGoButton = false
         ItemManager.shared.loadItems(filteredBy: gender) { success in
             // Update the title for go button
             self.allItemsLoaded = success == true
             let title = self.allItemsLoaded ? "Get Outfit" : "Reload"
             
-            // Unhide go button when items are loaded
+            // Enable go button when all items are loaded or reload is needed
             DispatchQueue.main.async {
-                self.getOutfitButton.isHidden = false
                 self.getOutfitButton.setTitle(title, for: .normal)
+                self.shouldEnableGoButton = true
             }
         }
     }
