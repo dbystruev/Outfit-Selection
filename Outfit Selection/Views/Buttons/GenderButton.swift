@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Gender selection buttons at gender selection screen
 class GenderButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -21,5 +22,13 @@ class GenderButton: UIButton {
     
     func configure() {
         layer.cornerRadius = 10
+    }
+    
+    /// Fix the vertical alignment of button title by setting top edge inset margin of 7
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        if titleEdgeInsets == UIEdgeInsets.zero {
+            titleEdgeInsets = UIEdgeInsets(top: 7, left: 0, bottom: 0, right: 0)
+        }
     }
 }
