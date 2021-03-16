@@ -21,6 +21,7 @@ extension BrandsViewController {
         }
         
         brandsCollectionView.reloadData()
+        configureGoButton()
     }
     
     /// Called when Get Outfit button is tapped

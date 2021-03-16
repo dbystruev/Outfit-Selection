@@ -1047,7 +1047,7 @@
         <image name="hanger" width="32" height="23.333333969116211"/>
         <image name="heart" width="28" height="28"/>
         <image name="outfit" width="24" height="24"/>
-        <image name="profile" width="24" height="23"/>
+        <image name="profile" width="24" height="24"/>
         <image name="refresh" width="28" height="28"/>
         <image name="share" width="33" height="27"/>
         <image name="wishlist" width="24" height="24"/>

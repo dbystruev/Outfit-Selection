@@ -64,6 +64,18 @@ class BrandsViewController: UIViewController {
     }
     
     // MARK: - Methods
+    /// Set go button backgroun color and enable / disable it depending on number of brands selected
+    func configureGoButton() {
+        let brandsSelected = BrandManager.shared.selectedBrands.count
+        if brandsSelected < 3 {
+            getOutfitButton.backgroundColor = #colorLiteral(red: 0.638679564, green: 0.6545599103, blue: 0.6587830186, alpha: 1)
+            getOutfitButton.isEnabled = false
+        } else {
+            getOutfitButton.backgroundColor = #colorLiteral(red: 0.3205250204, green: 0.3743517399, blue: 0.3797602355, alpha: 1)
+            getOutfitButton.isEnabled = true
+        }
+    }
+    
     /// Start loading items from the server
     func configureItems() {
         // Check that there are no loaded items
@@ -90,5 +102,6 @@ class BrandsViewController: UIViewController {
         brandsCollectionView.dataSource = self
         brandsCollectionView.delegate = self
         brandsCollectionView.register(BrandCell.nib, forCellWithReuseIdentifier: BrandCell.reuseId)
+        configureGoButton()
     }
 }

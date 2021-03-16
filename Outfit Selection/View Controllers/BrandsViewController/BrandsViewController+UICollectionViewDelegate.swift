@@ -21,5 +21,8 @@ extension BrandsViewController: UICollectionViewDelegate {
         // Toggle alpha between 0.25 and 1
         brandedImage.isSelected.toggle()
         brandCell.configureBackground(isSelected: brandedImage.isSelected)
+        
+        // Configure get outfit button
+        configureGoButton()
     }
 }
