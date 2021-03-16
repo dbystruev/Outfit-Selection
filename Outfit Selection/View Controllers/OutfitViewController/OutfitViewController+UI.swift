@@ -10,6 +10,23 @@ import UIKit
 
 // MARK: - UI
 extension OutfitViewController {
+    /// Configure hanger buttons visibility and opacity
+    func configureHangerButtons() {
+        // Show or hide all hanger buttons
+        hangerButtons.forEach { $0.isHidden = !showHangerButtons }
+        
+        if showHangerButtons {
+            // Make pinned scroll view's hanger buttons fully opaque
+            for (hangerButton, scrollView) in zip(hangerButtons, scrollViews) {
+                hangerButton.alpha = scrollView.isPinned ? 1 : 0.5
+            }
+        } else {
+            // If hanger buttons are hidden don't pin any scroll views
+            scrollViews.unpin()
+        }
+        
+    }
+
     /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
     func loadImages() {
         // Clear scroll views
@@ -47,13 +64,8 @@ extension OutfitViewController {
         updateUI()
     }
     
-    func setupUI() {
-        // Hide all like buttons
-        likeButtons.forEach { $0.isHidden = true }
-    }
-    
     func unpin() {
-        likeButtons.forEach { $0.isSelected = false }
+        hangerButtons.forEach { $0.isSelected = false }
         refreshButton.isEnabled = true
         scrollViews.unpin()
     }

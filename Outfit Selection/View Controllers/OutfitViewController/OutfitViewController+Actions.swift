@@ -10,25 +10,26 @@ import UIKit
 
 // MARK: - Actions
 extension OutfitViewController {
+    /// Called when hanger bar button in navigation brat is tapped
+    /// - Parameter sender: the hanger bar button which was tapped
     @IBAction func hangerBarButtonItemTapped(_ sender: UIBarButtonItem) {
-        let shouldUnpin = scrollViews.allPinned
-        likeButtons.forEach { $0.isHidden = shouldUnpin }
-        if shouldUnpin {
-            scrollViews.unpin()
-        } else {
-            scrollViews.pin()
-        }
-        refreshButton.isEnabled = shouldUnpin
+        showHangerButtons.toggle()
     }
     
+    /// Called when one of individual hanger buttons in a scroll view is tapped
+    /// - Parameter sender: the hanger button which was tapped
     @IBAction func hangerButtonTapped(_ sender: UIButton) {
-        guard let selectedIndex = likeButtons.firstIndex(of: sender) else { return }
+        // Find the index of scroll view whose hanger button is tapped
+        guard let selectedIndex = hangerButtons.firstIndex(of: sender) else { return }
         
-        let scrollView = scrollViews[selectedIndex]
-        scrollView.toggle()
+        // Toggle (pin/unpin) selected scroll view
+        scrollViews[selectedIndex].toggle()
         
-        likeButtons[selectedIndex].isHidden = !scrollView.isPinned
+        // Disable refresh button if all scroll views are pinned
         refreshButton.isEnabled = !scrollViews.allPinned
+        
+        // Update hanger buttons opacity
+        configureHangerButtons()
     }
     
     @IBAction func refreshButtonTapped(_ sender: UIButton) {

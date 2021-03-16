@@ -31,7 +31,7 @@ extension OutfitViewController {
         assetCount = 0 // ItemManager.shared.loadImagesFromAssets(into: scrollViews)
         scrollViews.forEach { $0.delegate = self }
         setupGestures()
-        setupUI()
+        configureHangerButtons()
         
         // Load images into the outfit view controller's scroll views
         loadImages()

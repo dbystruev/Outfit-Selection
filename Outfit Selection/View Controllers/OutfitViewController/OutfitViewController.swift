@@ -10,9 +10,9 @@ import UIKit
 
 class OutfitViewController: UIViewController {
     // MARK: - Outlets
+    @IBOutlet var hangerButtons: [UIButton]!
     @IBOutlet weak var iconsStackView: UIStackView!
     @IBOutlet weak var likeButton: UIButton!
-    @IBOutlet var likeButtons: [UIButton]!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet var scrollViews: [PinnableScrollView]!
@@ -26,6 +26,13 @@ class OutfitViewController: UIViewController {
     
     /// Scroll to items in this list if there are any
     var scrollToItems: [Item] = []
+    
+    /// True if hanger buttons should be shown, false otherwise
+    var showHangerButtons = false {
+        didSet {
+            configureHangerButtons()
+        }
+    }
     
     // MARK: - Computed Properties
     var itemCount: Int {

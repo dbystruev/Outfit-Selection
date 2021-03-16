@@ -362,11 +362,11 @@
                         <outlet property="priceLabel" destination="TjY-vq-NEy" id="a2R-Fu-TWq"/>
                         <outlet property="refreshButton" destination="EUS-GK-b31" id="15N-Hx-Phk"/>
                         <outlet property="topStackView" destination="Mpa-x0-hSn" id="aVy-AV-ZbG"/>
-                        <outletCollection property="likeButtons" destination="r2m-cA-WkI" collectionClass="NSMutableArray" id="mAy-bj-M5C"/>
-                        <outletCollection property="likeButtons" destination="0yi-5U-Vzn" collectionClass="NSMutableArray" id="13X-iv-hnX"/>
-                        <outletCollection property="likeButtons" destination="3oI-QJ-jlu" collectionClass="NSMutableArray" id="M79-48-wvS"/>
-                        <outletCollection property="likeButtons" destination="PdK-GK-Ra7" collectionClass="NSMutableArray" id="T5E-dc-dke"/>
-                        <outletCollection property="likeButtons" destination="NT3-Ff-VD4" collectionClass="NSMutableArray" id="jrA-Yn-e6E"/>
+                        <outletCollection property="hangerButtons" destination="r2m-cA-WkI" collectionClass="NSMutableArray" id="mAy-bj-M5C"/>
+                        <outletCollection property="hangerButtons" destination="0yi-5U-Vzn" collectionClass="NSMutableArray" id="13X-iv-hnX"/>
+                        <outletCollection property="hangerButtons" destination="3oI-QJ-jlu" collectionClass="NSMutableArray" id="M79-48-wvS"/>
+                        <outletCollection property="hangerButtons" destination="PdK-GK-Ra7" collectionClass="NSMutableArray" id="T5E-dc-dke"/>
+                        <outletCollection property="hangerButtons" destination="NT3-Ff-VD4" collectionClass="NSMutableArray" id="jrA-Yn-e6E"/>
                         <outletCollection property="scrollViews" destination="e2j-61-yTt" collectionClass="NSMutableArray" id="pWd-qU-1vn"/>
                         <outletCollection property="scrollViews" destination="McV-FV-yxk" collectionClass="NSMutableArray" id="k3I-Mm-67G"/>
                         <outletCollection property="scrollViews" destination="nrI-94-QGh" collectionClass="NSMutableArray" id="RPn-yf-T3J"/>
