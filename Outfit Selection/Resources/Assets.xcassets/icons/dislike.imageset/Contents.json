@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "backslash.png",
+      "filename" : "dislike.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "backslash@2x.png",
+      "filename" : "dislike@2x.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "backslash@3x.png",
+      "filename" : "dislike@3x.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

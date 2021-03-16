@@ -824,17 +824,20 @@
                                                 <rect key="frame" x="0.0" y="70" width="343" height="69"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="30" translatesAutoresizingMaskIntoConstraints="NO" id="qmk-y1-NPB" userLabel="Buttons Stack View">
-                                                        <rect key="frame" x="83.666666666666686" y="22.666666666666629" width="176" height="24"/>
+                                                        <rect key="frame" x="65.666666666666686" y="4.6666666666666288" width="212" height="60"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZR-VQ-dzE">
-                                                                <rect key="frame" x="0.0" y="0.0" width="24" height="24"/>
-                                                                <state key="normal" image="wishlist" backgroundImage="backslash"/>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZR-VQ-dzE" userLabel="Dislike Button">
+                                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
+                                                                <state key="normal" image="dislike">
+                                                                    <color key="titleColor" red="0.25958698990000001" green="0.2596296072" blue="0.259577632" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
                                                                 <connections>
                                                                     <action selector="dislikeButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="pmr-rg-aEe"/>
                                                                 </connections>
                                                             </button>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8C-LO-Yd8">
-                                                                <rect key="frame" x="53.999999999999986" y="0.0" width="122.00000000000001" height="24"/>
+                                                                <rect key="frame" x="90" y="0.0" width="122" height="60"/>
                                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
                                                                 <state key="normal" title=" Add to wish list" image="wishlist">
                                                                     <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -845,9 +848,6 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="24" id="2Bh-Y6-uxy"/>
-                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -1021,13 +1021,13 @@
         <segue reference="YhA-rh-zAa"/>
     </inferredMetricsTieBreakers>
     <resources>
-        <image name="backslash" width="22" height="22"/>
+        <image name="dislike" width="60" height="60"/>
         <image name="hanger" width="32" height="23.333333969116211"/>
         <image name="heart" width="28" height="28"/>
-        <image name="outfit" width="14.666666984558105" height="24"/>
+        <image name="outfit" width="24" height="24"/>
         <image name="profile" width="24" height="23"/>
         <image name="refresh" width="28" height="28"/>
-        <image name="share" width="21.666666030883789" height="22.333333969116211"/>
+        <image name="share" width="33" height="27"/>
         <image name="wishlist" width="24" height="24"/>
         <image name="wishlist_filled" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
