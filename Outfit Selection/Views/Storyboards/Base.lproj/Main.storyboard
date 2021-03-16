@@ -882,6 +882,7 @@
                                                             <constraint firstAttribute="height" constant="61" id="ljH-nF-1BF"/>
                                                         </constraints>
                                                         <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="17"/>
+                                                        <inset key="titleEdgeInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
                                                         <state key="normal" title="Shop now">
                                                             <color key="titleColor" systemColor="systemBackgroundColor"/>
                                                         </state>
