@@ -39,6 +39,7 @@ extension ShareViewController: UITableViewDataSource {
         // Configure cell
         cell.accessoryView?.tintColor = color
         cell.accessoryView?.alpha = 0.5
+        cell.selectionStyle = .none
         cell.textLabel?.font = UIFont(name: "NotoSans-Regular", size: 15)
         cell.textLabel?.text = cellTitles[row]
         cell.textLabel?.textColor = color

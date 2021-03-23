@@ -9,6 +9,14 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSans-Medium.ttf">
+            <string>NotoSans-Medium</string>
+        </array>
+        <array key="NotoSans-SemiBold.ttf">
+            <string>NotoSans-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Outfit-->
         <scene sceneID="tne-QT-ifu">
@@ -398,21 +406,21 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="106" height="169"/>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5C7-Yp-u9k">
-                                                <rect key="frame" x="130" y="63.333333333333343" width="197" height="42.333333333333343"/>
+                                                <rect key="frame" x="130" y="63.333333333333343" width="197" height="42.666666666666657"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnN-97-yUU">
-                                                        <rect key="frame" x="0.0" y="0.0" width="197" height="20.333333333333332"/>
-                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="15"/>
-                                                        <nil key="textColor"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="197" height="20.666666666666668"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="15"/>
+                                                        <color key="textColor" red="0.22820454840000001" green="0.22824296359999999" blue="0.2281961143" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="GET OUTFIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTY-H1-Lz0">
-                                                        <rect key="frame" x="0.0" y="20.333333333333314" width="197" height="22"/>
+                                                        <rect key="frame" x="0.0" y="20.666666666666657" width="197" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="Dp1-d9-zSB"/>
                                                         </constraints>
-                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="9"/>
-                                                        <nil key="textColor"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="9"/>
+                                                        <color key="textColor" red="0.22820454840000001" green="0.22824296359999999" blue="0.2281961143" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
@@ -426,7 +434,7 @@
                                         <rect key="frame" x="0.0" y="169" width="375" height="472"/>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shareCellReuseId" id="UzR-iz-ocY">
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="shareCellReuseId" id="UzR-iz-ocY">
                                                 <rect key="frame" x="0.0" y="28" width="375" height="43.666667938232422"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="UzR-iz-ocY" id="CqO-gW-exG">

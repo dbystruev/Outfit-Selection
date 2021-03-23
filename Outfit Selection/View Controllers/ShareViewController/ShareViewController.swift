@@ -16,6 +16,7 @@ class ShareViewController: UIViewController {
     @IBOutlet weak var shareTableView: UITableView! {
         didSet {
             shareTableView.dataSource = self
+            shareTableView.delegate = self
         }
     }
     
