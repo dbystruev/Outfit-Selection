@@ -24,13 +24,19 @@ class ShareView: UIView {
         UINib(nibName: "\(Self.self)", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! Self
     }
     
+    // MARK: - Stored Properties
+    var items: [Item] = []
+    
     // MARK: - Custom Functions
     /// Configure share view with the list of images
-    /// - Parameter images: the list of images — from top to bottom, from left to right
-    func configureContent(with images: [UIImage?]) {
+    /// - Parameters:
+    ///   - images: the list of images — from top to bottom, from left to right
+    ///   - items: items corresponding to the images
+    func configureContent(with images: [UIImage?], items: [Item]) {
         for (image, pictureImageView) in zip(images, pictureImageViews) {
             pictureImageView.image = image
         }
+        self.items = items
     }
     
     /// Configure logo visibility, size and margins for logo and outfit

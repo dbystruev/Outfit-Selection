@@ -133,6 +133,16 @@ struct Wishlist: Codable {
         return outfitsItemIndexes.contains(itemIndex)
     }
     
+    /// Finds given items in the wishlist and returns occasion name for them, or nil if there are no such items in the wishlist
+    /// - Parameter outfit: the collection of items to search for in the wishlist
+    /// - Returns: occasion name for the given items, or nil if there are no occasion with such items
+    static func occasion(_ outfit: [Item]) -> String? {
+        for occasion in outfitsDictionary.keys {
+            if contains(outfit, occasion: occasion) == true { return occasion }
+        }
+        return nil
+    }
+    
     /// Remove an item from the items wishlist if it is present there
     /// - Parameter item: the item to remove from the item wishlist
     static func remove(_ item: Item?) {

@@ -54,12 +54,14 @@ extension OutfitViewController {
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         // Get the images and check that all of them are not nil
-        let images = scrollViews.compactMap { $0.getImageView()?.image }
-        guard images.count == scrollViews.count else { return }
+        let imageViews = scrollViews.compactMap { $0.getImageView() }
+        let images = imageViews.compactMap { $0.image }
+        let items = imageViews.compactMap { Item.all[safe: $0.tag] }
+        guard images.count == scrollViews.count && images.count == items.count else { return }
         
         // Create a view for screenshot
         shareView = ShareView.instanceFromNib()
-        shareView?.configureContent(with: images)
+        shareView?.configureContent(with: images, items: items)
         
         // Segue to share view controller
         performSegue(withIdentifier: "shareViewControllerSegue", sender: self)

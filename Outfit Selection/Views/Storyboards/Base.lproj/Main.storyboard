@@ -391,24 +391,36 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eCL-sv-fQD">
                                 <rect key="frame" x="0.0" y="88" width="375" height="641"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="atM-pq-gmD">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="atM-pq-gmD" userLabel="Full Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="FJ6-Sy-aAv">
-                                                <rect key="frame" x="0.0" y="0.0" width="375" height="169"/>
+                                            <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="FJ6-Sy-aAv">
+                                                <rect key="frame" x="24" y="0.0" width="327" height="169"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xss-a3-dcq" customClass="ShareView" customModule="Outfit_Selection" customModuleProvider="target">
-                                                        <rect key="frame" x="0.0" y="0.0" width="125" height="169"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="105.66666666666667" height="169"/>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3c7-4L-daz">
-                                                        <rect key="frame" x="125" y="0.0" width="125" height="169"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJB-8V-drJ">
-                                                        <rect key="frame" x="250" y="0.0" width="125" height="169"/>
-                                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                                    </view>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5C7-Yp-u9k">
+                                                        <rect key="frame" x="129.66666666666663" y="63.333333333333343" width="197.33333333333337" height="42.333333333333343"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnN-97-yUU">
+                                                                <rect key="frame" x="0.0" y="0.0" width="197.33333333333334" height="20.333333333333332"/>
+                                                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="15"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="GET OUTFIT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTY-H1-Lz0">
+                                                                <rect key="frame" x="0.0" y="20.333333333333314" width="56" height="22"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="22" id="Dp1-d9-zSB"/>
+                                                                    <constraint firstAttribute="width" constant="56" id="vxQ-Ex-6wQ"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="9"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="169" id="Qya-dj-20O"/>
@@ -432,13 +444,16 @@
                         <constraints>
                             <constraint firstItem="E86-JF-hV1" firstAttribute="trailing" secondItem="eCL-sv-fQD" secondAttribute="trailing" id="2ta-uX-zm5"/>
                             <constraint firstItem="E86-JF-hV1" firstAttribute="bottom" secondItem="eCL-sv-fQD" secondAttribute="bottom" id="3JW-3t-d8x"/>
-                            <constraint firstItem="FJ6-Sy-aAv" firstAttribute="width" secondItem="E86-JF-hV1" secondAttribute="width" id="6xG-vG-6oK"/>
+                            <constraint firstItem="E86-JF-hV1" firstAttribute="width" secondItem="FJ6-Sy-aAv" secondAttribute="width" constant="48" id="6xG-vG-6oK"/>
+                            <constraint firstItem="E86-JF-hV1" firstAttribute="centerX" secondItem="uTY-H1-Lz0" secondAttribute="centerX" constant="6" id="Bli-Tt-tBK"/>
                             <constraint firstItem="eCL-sv-fQD" firstAttribute="leading" secondItem="E86-JF-hV1" secondAttribute="leading" id="Qqf-9I-Mqy"/>
+                            <constraint firstItem="atM-pq-gmD" firstAttribute="width" secondItem="E86-JF-hV1" secondAttribute="width" id="ee0-4M-YQp"/>
                             <constraint firstItem="eCL-sv-fQD" firstAttribute="top" secondItem="E86-JF-hV1" secondAttribute="top" id="uXd-ox-iuX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Share" id="JPe-Xv-A0p"/>
                     <connections>
+                        <outlet property="occasionLabel" destination="jnN-97-yUU" id="O0L-pj-6Dv"/>
                         <outlet property="topStackView" destination="FJ6-Sy-aAv" id="bMA-qe-usk"/>
                     </connections>
                 </viewController>
@@ -1108,7 +1123,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="YhA-rh-zAa"/>
+        <segue reference="Rw2-uy-7Iw"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="dislike" width="60" height="60"/>

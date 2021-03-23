@@ -11,6 +11,8 @@ import UIKit
 class ShareViewController: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var occasionLabel: UILabel!
+    
     @IBOutlet weak var topStackView: UIStackView! {
         didSet {
             // Replace first arranged subview with share view
@@ -32,14 +34,26 @@ class ShareViewController: UIViewController {
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        debug(outfitView.pictureImageViews.count)
+        
+        // Configure occasion label text (could be nil)
+        let text = Wishlist.occasion(outfitView.items)
+        occasionLabel.isHidden = text == nil
+        occasionLabel.text = text
     }
     
     /// Hide bottom tab bar when this view appears
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Hide tab bar at the bottom
+        // Hide bottom tab bar
         hideTabBar()
+    }
+    
+    /// Show bottom tab bar when this view disappears
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Show bottom tab bar
+        showTabBar()
     }
 }
