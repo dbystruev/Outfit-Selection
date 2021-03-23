@@ -13,6 +13,12 @@ class ShareViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var occasionLabel: UILabel!
     
+    @IBOutlet weak var shareTableView: UITableView! {
+        didSet {
+            shareTableView.dataSource = self
+        }
+    }
+    
     @IBOutlet weak var topStackView: UIStackView! {
         didSet {
             // Replace first arranged subview with share view

@@ -31,3 +31,5 @@ Make sure [TestFlight App](https://apps.apple.com/app/testflight/id899247664) is
 ## Acknowledgments
 
 Get Outfit [Team](https://www.getoutfit.ru/aboutus) for invaluable contributions.
+
+Noto Sans [font](https://fonts.google.com/specimen/Noto+Sans) designed by Google.
