@@ -13,14 +13,18 @@ class ProgressViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var progressView: UIProgressView!
     
-    // MARK: - Properties
+    // MARK: - Stored Properties
     /// The collection of brand images
     let brandedImages = BrandManager.shared.brandedImages
     
     /// Switch to tab bar index after the move to tab bar view controller
     var selectedTabBarIndex = 0
+    
+    // MARK: - Inherited Properties
+    /// Hide status bar during progress screen
+    override var prefersStatusBarHidden: Bool { true }
 
-    // MARK: - Methods
+    // MARK: - Inherited Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
