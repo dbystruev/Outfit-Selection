@@ -30,7 +30,11 @@ class GenderViewController: UIViewController {
     /// Gender selected by user (not using Gender.current to save old value)
     var gender: Gender = .other
     
-    // MARK: - Methods
+    // MARK: - Inherited Properties
+    /// Make status bar text light
+    override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
+    
+    // MARK: - Custom Methods
     /// Performs segue to brands view controller
     /// - Parameter gender: gender to pass to brands view controller
     func performSegueToBrandsViewController(gender: Gender) {
@@ -59,9 +63,6 @@ class GenderViewController: UIViewController {
         
         // Hide toolbar at the bottom
         navigationController?.isToolbarHidden = true
-        
-        // Make navigation controller bar style dark in order for status bar to become light
-        navigationController?.navigationBar.barStyle = .black
         
         // Hide navigation bar on top
         navigationController?.isNavigationBarHidden = true
