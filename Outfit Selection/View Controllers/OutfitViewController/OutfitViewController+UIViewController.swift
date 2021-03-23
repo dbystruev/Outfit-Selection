@@ -11,14 +11,23 @@ import UIKit
 // MARK: - UIViewController
 extension OutfitViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "itemViewControllerSegue" else { return }
-        guard let destination = segue.destination as? ItemViewController else { return }
-        guard let recognizer = sender as? UIGestureRecognizer else { return }
-        guard let scrollView = recognizer.view as? PinnableScrollView else { return }
-        guard let imageView = scrollView.getImageView() else { return }
+        switch segue.identifier {
         
-        destination.image = imageView.image
-        destination.itemIndex = imageView.tag
+        case "itemViewControllerSegue":
+            guard let destination = segue.destination as? ItemViewController else { return }
+            guard let recognizer = sender as? UIGestureRecognizer else { return }
+            guard let scrollView = recognizer.view as? PinnableScrollView else { return }
+            guard let imageView = scrollView.getImageView() else { return }
+            destination.image = imageView.image
+            destination.itemIndex = imageView.tag
+            
+        case "shareViewControllerSegue":
+            guard let destination = segue.destination as? ShareViewController else { return }
+            destination.shareView = shareView
+            
+        default:
+            return
+        }
     }
     
     override func setEditing(_ editing: Bool, animated: Bool) {

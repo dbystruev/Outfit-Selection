@@ -373,11 +373,28 @@
                         <outletCollection property="scrollViews" destination="YAH-LD-FOj" collectionClass="NSMutableArray" id="A59-kh-663"/>
                         <outletCollection property="scrollViews" destination="7mM-sh-37O" collectionClass="NSMutableArray" id="jU0-gS-uur"/>
                         <segue destination="Uns-Sh-QHX" kind="show" identifier="itemViewControllerSegue" id="YhA-rh-zAa"/>
+                        <segue destination="zS2-Fi-i4G" kind="show" identifier="shareViewControllerSegue" id="eq6-fh-lkt"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1311" y="494"/>
+        </scene>
+        <!--Share-->
+        <scene sceneID="kNA-Ue-Zj7">
+            <objects>
+                <viewController title="Share" id="zS2-Fi-i4G" customClass="ShareViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Yxc-Dx-qXJ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="E86-JF-hV1"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Share" id="JPe-Xv-A0p"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NlK-cc-Nq5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2089" y="494"/>
         </scene>
         <!--Wish list-->
         <scene sceneID="QuB-zm-Xxz">
@@ -946,7 +963,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2089" y="183"/>
+            <point key="canvasLocation" x="2090" y="-156"/>
         </scene>
         <!--Intermediary View Controller-->
         <scene sceneID="ghJ-co-hsA">
@@ -978,7 +995,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G27-GN-qNh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2909.5999999999999" y="182.51231527093597"/>
+            <point key="canvasLocation" x="2855" y="-157"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kA0-0v-X04">

@@ -104,6 +104,7 @@
 		69C3697425E80676000A8E5E /* OutfitCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3697325E80676000A8E5E /* OutfitCell.swift */; };
 		69C3A4BE25EC07E800F8F968 /* ProfileSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3A4BC25EC07E800F8F968 /* ProfileSectionHeaderView.swift */; };
 		69C3A4BF25EC07E800F8F968 /* ProfileSectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69C3A4BD25EC07E800F8F968 /* ProfileSectionHeaderView.xib */; };
+		69C5CBD62609E39100DE22E6 /* ShareViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5CBD52609E39100DE22E6 /* ShareViewController.swift */; };
 		69D0FD9F25EB621800FC15F6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D0FD9E25EB621800FC15F6 /* ProfileViewController.swift */; };
 		69D0FDA525EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */; };
 		69DB6A5625E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */; };
@@ -213,6 +214,7 @@
 		69C3697325E80676000A8E5E /* OutfitCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitCell.swift; sourceTree = "<group>"; };
 		69C3A4BC25EC07E800F8F968 /* ProfileSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSectionHeaderView.swift; sourceTree = "<group>"; };
 		69C3A4BD25EC07E800F8F968 /* ProfileSectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ProfileSectionHeaderView.xib; sourceTree = "<group>"; };
+		69C5CBD52609E39100DE22E6 /* ShareViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareViewController.swift; sourceTree = "<group>"; };
 		69D0FD9E25EB621800FC15F6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
@@ -471,6 +473,7 @@
 				69FBB20422F1A86700187562 /* OutfitViewController */,
 				69D0FDA225EB64C600FC15F6 /* ProfileViewController */,
 				69BA640325E66EDE00C805B6 /* ProgressViewController.swift */,
+				69C5CBD52609E39100DE22E6 /* ShareViewController.swift */,
 				699ABB5E25E6D54A00E388FC /* TabBarController.swift */,
 				69DB6A5425E81AF700EC4CDE /* WishlistViewController */,
 			);
@@ -761,6 +764,7 @@
 				69297C5A25EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				69297C5225EB852700A8684E /* BrandCell.swift in Sources */,
 				69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */,
+				69C5CBD62609E39100DE22E6 /* ShareViewController.swift in Sources */,
 				69AEC9E825BF014100183E15 /* GenderButton.swift in Sources */,
 				69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */,
 				69AB228C22BA4BE400C7FA8D /* OutfitViewController+Actions.swift in Sources */,

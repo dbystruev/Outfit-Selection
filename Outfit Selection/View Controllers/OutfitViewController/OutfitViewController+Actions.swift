@@ -58,12 +58,10 @@ extension OutfitViewController {
         guard images.count == scrollViews.count else { return }
         
         // Create a view for screenshot
-        let shareView = ShareView.instanceFromNib()
-        shareView.configure(with: images)
+        shareView = ShareView.instanceFromNib()
+        shareView?.configure(with: images)
         
-        // Share the image
-        let activityController = UIActivityViewController(activityItems: [shareView.asImage], applicationActivities: nil)
-        activityController.popoverPresentationController?.sourceView = sender.customView
-        present(activityController, animated: true)
+        // Segue to share view controller
+        performSegue(withIdentifier: "shareViewControllerSegue", sender: self)
     }
 }

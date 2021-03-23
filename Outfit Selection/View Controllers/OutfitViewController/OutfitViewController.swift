@@ -27,6 +27,9 @@ class OutfitViewController: UIViewController {
     /// Scroll to items in this list if there are any
     var scrollToItems: [Item] = []
     
+    /// Share view with current outfit
+    var shareView: ShareView?
+    
     /// True if hanger buttons should be shown, false otherwise
     var showHangerButtons = false {
         didSet {
