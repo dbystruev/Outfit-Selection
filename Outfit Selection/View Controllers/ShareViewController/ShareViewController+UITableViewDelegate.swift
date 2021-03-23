@@ -15,8 +15,12 @@ extension ShareViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
         switch cellTitles[indexPath.row].lowercased() {
+        case "instagram stories":
+            shareToInstagramStories(selectedCell)
+        case "instagram post":
+            shareToInstagramPost(selectedCell)
         case "more":
-            moreSelected(selectedCell)
+            shareImage(selectedCell)
         default:
             debug("Selected row \(indexPath.row)")
         }

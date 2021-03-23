@@ -113,6 +113,7 @@
 		69C5CBF8260A1EF000DE22E6 /* NotoSans-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C5CBF7260A1EF000DE22E6 /* NotoSans-Medium.ttf */; };
 		69C5CBFF260A1F2200DE22E6 /* NotoSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 69C5CBFE260A1F2200DE22E6 /* NotoSans-Regular.ttf */; };
 		69C5CC03260A224200DE22E6 /* ShareViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5CC02260A224200DE22E6 /* ShareViewController+Actions.swift */; };
+		69C5CC08260A3B4F00DE22E6 /* ShareViewController+UIDocumentInteractionControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5CC07260A3B4F00DE22E6 /* ShareViewController+UIDocumentInteractionControllerDelegate.swift */; };
 		69D0FD9F25EB621800FC15F6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D0FD9E25EB621800FC15F6 /* ProfileViewController.swift */; };
 		69D0FDA525EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */; };
 		69DB6A5625E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */; };
@@ -231,6 +232,7 @@
 		69C5CBF7260A1EF000DE22E6 /* NotoSans-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Medium.ttf"; sourceTree = "<group>"; };
 		69C5CBFE260A1F2200DE22E6 /* NotoSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Regular.ttf"; sourceTree = "<group>"; };
 		69C5CC02260A224200DE22E6 /* ShareViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareViewController+Actions.swift"; sourceTree = "<group>"; };
+		69C5CC07260A3B4F00DE22E6 /* ShareViewController+UIDocumentInteractionControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareViewController+UIDocumentInteractionControllerDelegate.swift"; sourceTree = "<group>"; };
 		69D0FD9E25EB621800FC15F6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 			children = (
 				69C5CBD52609E39100DE22E6 /* ShareViewController.swift */,
 				69C5CC02260A224200DE22E6 /* ShareViewController+Actions.swift */,
+				69C5CC07260A3B4F00DE22E6 /* ShareViewController+UIDocumentInteractionControllerDelegate.swift */,
 				69C5CBDF260A12D900DE22E6 /* ShareViewController+UITableViewDataSource.swift */,
 				69C5CBF0260A1D5E00DE22E6 /* ShareViewController+UITableViewDelegate.swift */,
 			);
@@ -746,6 +749,7 @@
 				69AE95592563D43700850210 /* ItemViewController.swift in Sources */,
 				69C5CBDA260A045A00DE22E6 /* Collection+safeIndex.swift in Sources */,
 				695367FB25F7B0AA0024EC8B /* AppDelegate+UNUserNotificationCenterDelegate.swift in Sources */,
+				69C5CC08260A3B4F00DE22E6 /* ShareViewController+UIDocumentInteractionControllerDelegate.swift in Sources */,
 				6986611B25700ED2008F94CA /* Double+asTime.swift in Sources */,
 				69D0FDA525EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift in Sources */,
 				694E7BF225DC1D9D006607CD /* BrandsViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
@@ -980,7 +984,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.7;
+				MARKETING_VERSION = 0.3.8;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1005,7 +1009,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.7;
+				MARKETING_VERSION = 0.3.8;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "$(TARGET_NAME)";

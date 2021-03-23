@@ -19,6 +19,18 @@ class ShareView: UIView {
     @IBOutlet weak var outfitWidthConstraint: NSLayoutConstraint!
     @IBOutlet var pictureImageViews: [UIImageView]!
     
+    // MARK: - Type enum
+    enum ShareType {
+        case instagramStories
+        case instagramPost
+        case pinterest
+        case telegram
+        case whatsApp
+        case facebook
+        case copy
+        case more
+    }
+    
     // MARK: - Class Functions
     class func instanceFromNib() -> ShareView {
         UINib(nibName: "\(Self.self)", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! Self
@@ -39,8 +51,59 @@ class ShareView: UIView {
         self.items = items
     }
     
+    /// Configure logo visibility, size and margins depending on type of share
+    /// - Parameter type: type of share to configure the view for
+    func configureLayout(forType type: ShareView.ShareType) {
+        switch type {
+        
+        case .instagramStories: configureLayout(frameWidth: 1080,
+                                                frameHeight: 1920,
+                                                logoVisible: true,
+                                                logoHeight: 38,
+                                                logoTopMargin: 282,
+                                                logoWidth: 196,
+                                                outfitBottomMargin: 283,
+                                                outfitTopMargin: 373,
+                                                outfitWidth: 854)
+            
+        case .instagramPost: configureLayout(frameWidth: 1080,
+                                             frameHeight: 1080,
+                                             logoVisible: true,
+                                             logoHeight: 22,
+                                             logoTopMargin: 73,
+                                             logoWidth: 114,
+                                             outfitBottomMargin: 74,
+                                             outfitTopMargin: 142,
+                                             outfitWidth: 549)
+            
+        case .pinterest: configureLayout(frameWidth: 800,
+                                         frameHeight: 1200,
+                                         logoVisible: true,
+                                         logoHeight: 28,
+                                         logoTopMargin: 97,
+                                         logoWidth: 142,
+                                         outfitBottomMargin: 97,
+                                         outfitTopMargin: 178,
+                                         outfitWidth: 624)
+            
+        case .facebook: configureLayout(frameWidth: 1200,
+                                        frameHeight: 630,
+                                        logoVisible: true,
+                                        logoHeight: 22,
+                                        logoTopMargin: 50,
+                                        logoWidth: 95,
+                                        outfitBottomMargin: 51,
+                                        outfitTopMargin: 125,
+                                        outfitWidth: 306)
+            
+        default: configureLayout(logoVisible: true)
+        }
+    }
+    
     /// Configure logo visibility, size and margins for logo and outfit
     /// - Parameters:
+    ///   - frameWidth: frame width, nil for storyboard value (1080)
+    ///   - frameHeight: frame height, nil for storyboard value (1080)
     ///   - logoVisible: true if logo should be visible, false otherwise
     ///   - logoHeight: logo height, nil for storyboard value (22)
     ///   - logoTopMargin: logo top margin, nil for storyboard value (73)
@@ -49,6 +112,8 @@ class ShareView: UIView {
     ///   - outfitTopMargin: outfit top margin, nil for storyboard value (142)
     ///   - outfitWidth: outfit width, nil for storyboard value (549)
     func configureLayout(
+        frameWidth: CGFloat? = nil,
+        frameHeight: CGFloat? = nil,
         logoVisible: Bool,
         logoHeight: CGFloat? = nil,
         logoTopMargin: CGFloat? = nil,
@@ -58,11 +123,72 @@ class ShareView: UIView {
         outfitWidth: CGFloat? = nil
     ) {
         logoImageView.isHidden = !logoVisible
+        if let frameWidth = frameWidth { frame.size.width = frameWidth }
+        if let frameHeight = frameHeight { frame.size.height = frameHeight }
         if let logoHeight = logoHeight { logoHeightConstraint.constant = logoHeight }
         if let logoTopMargin = logoTopMargin { logoTopMarginConstraint.constant = logoTopMargin }
         if let logoWidth = logoWidth { logoWidthConstraint.constant = logoWidth }
         if let outfitBottomMargin = outfitBottomMargin { outfitBottomMarginConstraint.constant = outfitBottomMargin }
         if let outfitTopMargin = outfitTopMargin { outfitTopMarginConstraint.constant = outfitTopMargin }
         if let outfitWidth = outfitWidth { outfitWidthConstraint.constant = outfitWidth }
+    }
+    
+    /// Create a copy of existing share view and configure it for given share type
+    /// - Parameter type: type of share to configure the view for
+    /// - Returns: copy of existing share view configured for given share type
+    func layout(forType type: ShareView.ShareType) -> ShareView {
+        // Create new share view
+        let newShareView = ShareView.instanceFromNib()
+        
+        // Configure new share view layout
+        newShareView.configureLayout(forType: type)
+        
+        // Configure new share view content
+        newShareView.configureContent(with: pictureImageViews.map { $0.image }, items: items)
+        
+        return newShareView
+    }
+    
+    /// Create a copy of existing share view
+    /// - Parameters:
+    ///   - frameWidth: frame width, nil for storyboard value (1080)
+    ///   - frameHeight: frame height, nil for storyboard value (1080)
+    ///   - logoVisible: true if logo should be visible, false otherwise
+    ///   - logoHeight: logo height, nil for storyboard value (22)
+    ///   - logoTopMargin: logo top margin, nil for storyboard value (73)
+    ///   - logoWidth: logo width, nil for storyboard value (114)
+    ///   - outfitBottomMargin: outfit bottom margin, nil for storyboard value (87)
+    ///   - outfitTopMargin: outfit top margin, nil for storyboard value (142)
+    ///   - outfitWidth: outfit width, nil for storyboard value (549)
+    /// - Returns: copy of existing share view with new layout
+    func layout(
+        frameWidth: CGFloat? = nil,
+        frameHeight: CGFloat? = nil,
+        logoVisible: Bool,
+        logoHeight: CGFloat? = nil,
+        logoTopMargin: CGFloat? = nil,
+        logoWidth: CGFloat? = nil,
+        outfitBottomMargin: CGFloat? = nil,
+        outfitTopMargin: CGFloat? = nil,
+        outfitWidth: CGFloat? = nil
+    ) -> ShareView {
+        // Create new share view
+        let newShareView = ShareView.instanceFromNib()
+        
+        // Configure new share view layout
+        newShareView.configureLayout(frameWidth: frameWidth,
+                                     frameHeight: frameHeight,
+                                     logoVisible: logoVisible,
+                                     logoHeight: logoHeight,
+                                     logoTopMargin: logoTopMargin,
+                                     logoWidth: logoWidth,
+                                     outfitBottomMargin: outfitBottomMargin,
+                                     outfitTopMargin: outfitTopMargin,
+                                     outfitWidth: outfitWidth)
+        
+        // Configure new share view content
+        newShareView.configureContent(with: pictureImageViews.map { $0.image }, items: items)
+        
+        return newShareView
     }
 }
