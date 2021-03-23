@@ -13,6 +13,12 @@ extension ShareViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { 60 }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        debug(indexPath.row)
+        guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
+        switch cellTitles[indexPath.row].lowercased() {
+        case "more":
+            moreSelected(selectedCell)
+        default:
+            debug("Selected row \(indexPath.row)")
+        }
     }
 }
