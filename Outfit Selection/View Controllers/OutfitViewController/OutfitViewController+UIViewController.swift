@@ -23,7 +23,7 @@ extension OutfitViewController {
             
         case "shareViewControllerSegue":
             guard let destination = segue.destination as? ShareViewController else { return }
-            destination.shareView = shareView
+            destination.outfitView = shareView
             
         default:
             return

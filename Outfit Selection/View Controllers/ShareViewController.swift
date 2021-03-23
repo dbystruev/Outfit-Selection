@@ -10,14 +10,29 @@ import UIKit
 
 class ShareViewController: UIViewController {
     
+    // MARK: - Outlets
+    @IBOutlet weak var topStackView: UIStackView! {
+        didSet {
+            // Replace first arranged subview with share view
+            if let firstArrangedSubview = topStackView.arrangedSubviews.first {
+                topStackView.removeArrangedSubview(firstArrangedSubview)
+            }
+            topStackView.insertArrangedSubview(outfitView, at: 0)
+        }
+    }
+    
     // MARK: - Stored Properties
     /// Share view with outfit to share
-    var shareView: ShareView!
+    var outfitView: ShareView! {
+        didSet {
+            outfitView.configureLayout(logoVisible: false, outfitBottomMargin: 8, outfitTopMargin: 8, outfitWidth: 115)
+        }
+    }
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        debug(shareView.pictureImageViews.count)
+        debug(outfitView.pictureImageViews.count)
     }
     
     /// Hide bottom tab bar when this view appears
