@@ -33,6 +33,7 @@ extension OutfitViewController {
     }
     
     @IBAction func refreshButtonTapped(_ sender: UIButton) {
+        showRefreshBubble = false
         scrollToRandomItems()
     }
     

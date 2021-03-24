@@ -14,15 +14,18 @@ extension ShareViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         guard let selectedCell = tableView.cellForRow(at: indexPath) else { return }
-        switch cellTitles[indexPath.row].lowercased() {
-        case "instagram stories":
+        
+        let cellType = cellTypes[indexPath.row]
+        switch cellType {
+        
+        case .instagramStories:
             shareToInstagramStories(selectedCell)
-        case "instagram post":
+            
+        case .instagramPost:
             shareToInstagramPost(selectedCell)
-        case "more":
-            shareImage(selectedCell)
+            
         default:
-            debug("Selected row \(indexPath.row)")
+            shareImage(for: cellType, selectedCell)
         }
     }
 }

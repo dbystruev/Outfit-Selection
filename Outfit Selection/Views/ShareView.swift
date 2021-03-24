@@ -20,14 +20,14 @@ class ShareView: UIView {
     @IBOutlet var pictureImageViews: [UIImageView]!
     
     // MARK: - Type enum
-    enum ShareType {
-        case instagramStories
-        case instagramPost
+    enum ShareType: String, CaseIterable {
+        case instagramStories = "Instagram Stories"
+        case instagramPost = "Instagram Post"
         case pinterest
         case telegram
         case whatsApp
         case facebook
-        case copy
+        case copyLink = "Copy Link"
         case more
     }
     
@@ -53,7 +53,7 @@ class ShareView: UIView {
     
     /// Configure logo visibility, size and margins depending on type of share
     /// - Parameter type: type of share to configure the view for
-    func configureLayout(forType type: ShareView.ShareType) {
+    func configureLayout(for type: ShareView.ShareType) {
         switch type {
         
         case .instagramStories: configureLayout(frameWidth: 1080,
@@ -136,12 +136,12 @@ class ShareView: UIView {
     /// Create a copy of existing share view and configure it for given share type
     /// - Parameter type: type of share to configure the view for
     /// - Returns: copy of existing share view configured for given share type
-    func layout(forType type: ShareView.ShareType) -> ShareView {
+    func layout(for type: ShareView.ShareType) -> ShareView {
         // Create new share view
         let newShareView = ShareView.instanceFromNib()
         
         // Configure new share view layout
-        newShareView.configureLayout(forType: type)
+        newShareView.configureLayout(for: type)
         
         // Configure new share view content
         newShareView.configureContent(with: pictureImageViews.map { $0.image }, items: items)

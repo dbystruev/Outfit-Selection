@@ -14,6 +14,19 @@ class OutfitViewController: UIViewController {
     @IBOutlet weak var iconsStackView: UIStackView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var refreshBubble: RefreshBubble! {
+        didSet {
+            refreshBubble.alpha = 0
+            refreshBubble.text = "Check out the next outfit"
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                guard self.showRefreshBubble else { return }
+                UIView.animate(withDuration: 2) {
+                    self.refreshBubble.alpha = 1
+                }
+            }
+        }
+    }
     @IBOutlet weak var refreshButton: UIButton!
     @IBOutlet var scrollViews: [PinnableScrollView]!
     @IBOutlet weak var topStackView: UIStackView!
@@ -34,6 +47,13 @@ class OutfitViewController: UIViewController {
     var showHangerButtons = false {
         didSet {
             configureHangerButtons()
+        }
+    }
+    
+    /// True when we want to show refresh bubble, false otherwise
+    var showRefreshBubble = true {
+        didSet {
+            refreshBubble.isHidden = !showRefreshBubble
         }
     }
     

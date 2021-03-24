@@ -33,10 +33,12 @@ extension ShareViewController {
     }
     
     /// Called when more cell is selected
-    /// - Parameter sender: the cell which was selected by the user
-    func shareImage(_ sender: UITableViewCell) {
+    /// - Parameters:
+    ///   - type: type of the image to share
+    ///   - sender: the cell which was selected by the user
+    func shareImage(for type: ShareView.ShareType, _ sender: UITableViewCell) {
         // Create an image from a copy of outfit view
-        let shareImage = outfitView.layout(logoVisible: true).asImage
+        let shareImage = outfitView.layout(for: type).asImage
         
         // Share the image
         let activityController = UIActivityViewController(activityItems: [shareImage], applicationActivities: nil)
@@ -49,7 +51,7 @@ extension ShareViewController {
     /// - Parameter sender: the cell which was selected by the user
     /// https://stackoverflow.com/a/38550562/7851379
     func shareToInstagramPost(_ sender: UITableViewCell) {
-        let image = outfitView.layout(forType: .instagramPost).asImage
+        let image = outfitView.layout(for: .instagramPost).asImage
         UIImageWriteToSavedPhotosAlbum(image, self, #selector(image(_:didFinishSavingWithError:contextInfo:)), nil)
         navigationController?.popViewController(animated: true)
     }
@@ -65,7 +67,7 @@ extension ShareViewController {
         
         guard let scheme = URL(string: "instagram-stories://share") else { return }
         guard UIApplication.shared.canOpenURL(scheme) else { return }
-        guard let imageData = outfitView.layout(forType: .instagramStories).asImage.pngData() else { return }
+        guard let imageData = outfitView.layout(for: .instagramStories).asImage.pngData() else { return }
         
         let items = [["com.instagram.sharedSticker.backgroundImage": imageData]]
         let pasteboardOptions = [UIPasteboard.OptionsKey.expirationDate: Date().addingTimeInterval(60 * 5)]

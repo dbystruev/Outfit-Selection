@@ -7,6 +7,10 @@ Install via TestFlight: [testflight.apple.com/join/xNvAtbhx](https://testflight.
 
 Make sure [TestFlight App](https://apps.apple.com/app/testflight/id899247664) is installed.
 
+## Design
+
+[Figma](https://www.figma.com/file/RPuD2yffxN2n1K28h71dhj/GetOutfit?node-id=5%3A0)
+
 ## Screenshots
 
 ![Logo](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screenshot01.png?raw=true)

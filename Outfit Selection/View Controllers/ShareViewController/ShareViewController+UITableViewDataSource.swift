@@ -11,24 +11,15 @@ import UIKit
 // MARK: - UITableViewDataSource
 extension ShareViewController: UITableViewDataSource {
     /// Titles of the cells
-    var cellTitles: [String] {[
-        "Instagram Stories",
-        "Instagram Post",
-        "Pinterest",
-        "Telegram",
-        "WhatsApp",
-        "Facebook",
-        "Copy Link",
-        "More",
-    ]}
+    var cellTypes: [ShareView.ShareType] { ShareView.ShareType.allCases }
     
     /// Names of the images
     var imageNames: [String] {
-        cellTitles.map { $0.firstWord.lowercased() }
+        cellTypes.map { $0.rawValue.firstWord.lowercased() }
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        cellTitles.count
+        cellTypes.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,7 +32,7 @@ extension ShareViewController: UITableViewDataSource {
         cell.accessoryView?.alpha = 0.5
         cell.selectionStyle = .none
         cell.textLabel?.font = UIFont(name: "NotoSans-Regular", size: 15)
-        cell.textLabel?.text = cellTitles[row]
+        cell.textLabel?.text = cellTypes[row].rawValue.firstCapitalized
         cell.textLabel?.textColor = color
         cell.imageView?.image = UIImage(named: imageNames[row])
         
