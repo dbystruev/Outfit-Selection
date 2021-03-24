@@ -12,8 +12,14 @@ import UIKit
 extension OutfitViewController {
     /// Called when hanger bar button in navigation brat is tapped
     /// - Parameter sender: the hanger bar button which was tapped
-    @IBAction func hangerBarButtonItemTapped(_ sender: UIBarButtonItem) {
+    @IBAction func hangerBarButtonItemTapped(_ sender: Any) {
+        showHangerBubble = false
         showHangerButtons.toggle()
+    }
+    
+    /// Called when the user taps hanger bubble
+    @objc func hangerBubbleTapped() {
+        showHangerBubble = false
     }
     
     /// Called when one of individual hanger buttons in a scroll view is tapped
@@ -32,7 +38,12 @@ extension OutfitViewController {
         configureHangerButtons()
     }
     
-    @IBAction func refreshButtonTapped(_ sender: UIButton) {
+    /// Called when the user taps refresh bubble
+    @objc func refreshBubbleTapped() {
+        showRefreshBubble = false
+    }
+    
+    @IBAction func refreshButtonTapped(_ sender: Any) {
         showRefreshBubble = false
         scrollToRandomItems()
     }

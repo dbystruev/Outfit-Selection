@@ -10,6 +10,46 @@ import UIKit
 
 // MARK: - UI
 extension OutfitViewController {
+    /// Configure helper bubble next to hanger icon
+    func configureHangerBubble() {
+        guard let navigationController = navigationController else { return }
+        
+        // Add hidden prompt bubble on top of the screen, above navigation controller
+        hangerBubble.alpha = 0
+        hangerBubble.frame = CGRect(x: 0, y: 0, width: 238, height: 58)
+        hangerBubble.text = "Pin an item you like!"
+        navigationController.view.addSubview(hangerBubble)
+        
+        // Setup hanger bubble constraints
+        hangerBubble.translatesAutoresizingMaskIntoConstraints = false
+        hangerBubbleCenterYConstraint = hangerBubble.centerYAnchor.constraint(equalTo: navigationController.view.topAnchor)
+        hangerBubbleTrailingConstraint = hangerBubble.trailingAnchor.constraint(equalTo: navigationController.view.leadingAnchor)
+        NSLayoutConstraint.activate([
+            hangerBubbleCenterYConstraint,
+            hangerBubble.heightAnchor.constraint(equalToConstant: 58),
+            hangerBubbleTrailingConstraint,
+            hangerBubble.widthAnchor.constraint(equalToConstant: 238),
+        ])
+        
+        // Add tap gesture on hanger bubble
+        hangerBubble.addTapOnce(target: self, action: #selector(hangerBubbleTapped))
+    }
+    
+    /// Configure hanger icon in navigation bar
+    func configureHangerBarButtonItem() {
+        let customView = UIImageView(image: UIImage(named: "hanger"))
+        hangerBarButtonItem.customView = customView
+        customView.addTapOnce(target: self, action: #selector(hangerBarButtonItemTapped(_:)))
+    }
+    
+    /// Configure constraints for hanger bubble
+    func configureHangerBubbleConstraints() {
+        guard let hangerView = hangerBarButtonItem.customView else { return }
+        let point = hangerView.convert(CGPoint(x: -2, y: hangerView.center.y + 1), to: navigationController?.view)
+        hangerBubbleCenterYConstraint.constant = point.y
+        hangerBubbleTrailingConstraint.constant = point.x
+    }
+    
     /// Configure hanger buttons visibility and opacity
     func configureHangerButtons() {
         // Show or hide all hanger buttons
@@ -26,7 +66,23 @@ extension OutfitViewController {
         }
         
     }
-
+    
+    /// Configure refresh bubble once in the beginning
+    func configureRefreshBubble() {
+        refreshBubble.alpha = 0
+        refreshBubble.text = "Check out the next outfit"
+        
+        // Add tap gesture on refresh bubble
+        refreshBubble.addTapOnce(target: self, action: #selector(refreshBubbleTapped))
+    }
+    
+    /// Hide hanger and refresh bubbles immediately
+    func hideBubbles() {
+        shouldHideBubbles = true
+        hangerBubble.alpha = 0
+        refreshBubble.alpha = 0
+    }
+    
     /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
     func loadImages() {
         // Clear scroll views
@@ -62,6 +118,29 @@ extension OutfitViewController {
         
         // Update like button and price
         updateUI()
+    }
+    
+    /// Show hanger and refresh bubbles after initial pause
+    /// - Parameter pause: initial pause in seconds to wait before showing the bubbles
+    func showBubbles(after pause: TimeInterval = 2) {
+        shouldHideBubbles = false
+        
+        // Show hanger bubble in 2 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + pause) {
+            // Check that outfit view controller is visible
+            guard !self.shouldHideBubbles else { return }
+
+            if self.showHangerBubble {
+                UIView.animate(withDuration: 2) {
+                    self.hangerBubble.alpha = 1
+                }
+            }
+            if self.showRefreshBubble {
+                UIView.animate(withDuration: 2) {
+                    self.refreshBubble.alpha = 1
+                }
+            }
+        }
     }
     
     func unpin() {

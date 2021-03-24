@@ -366,14 +366,11 @@
                                     <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="q04-4G-p2d"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem image="hanger" id="ka5-GL-mJm">
-                                <connections>
-                                    <action selector="hangerBarButtonItemTapped:" destination="BYZ-38-t0r" id="BWA-2Z-RUP"/>
-                                </connections>
-                            </barButtonItem>
+                            <barButtonItem title="Item" image="hanger" id="ka5-GL-mJm"/>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="hangerBarButtonItem" destination="ka5-GL-mJm" id="IvH-vr-Biu"/>
                         <outlet property="iconsStackView" destination="Ggf-Jf-cb6" id="bfG-jS-Zh5"/>
                         <outlet property="likeButton" destination="kYh-UG-gmm" id="aT9-7N-MF8"/>
                         <outlet property="priceLabel" destination="TjY-vq-NEy" id="a2R-Fu-TWq"/>
@@ -390,6 +387,7 @@
                         <outletCollection property="scrollViews" destination="nrI-94-QGh" collectionClass="NSMutableArray" id="RPn-yf-T3J"/>
                         <outletCollection property="scrollViews" destination="YAH-LD-FOj" collectionClass="NSMutableArray" id="A59-kh-663"/>
                         <outletCollection property="scrollViews" destination="7mM-sh-37O" collectionClass="NSMutableArray" id="jU0-gS-uur"/>
+                        <outletCollection property="hangerBarButtonItem" destination="ka5-GL-mJm" collectionClass="NSMutableArray" id="lRQ-Xx-Gea"/>
                         <segue destination="Uns-Sh-QHX" kind="show" identifier="itemViewControllerSegue" id="YhA-rh-zAa"/>
                         <segue destination="zS2-Fi-i4G" kind="show" identifier="shareViewControllerSegue" id="eq6-fh-lkt"/>
                     </connections>

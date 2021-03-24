@@ -37,13 +37,18 @@ extension OutfitViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        assetCount = 0 // ItemManager.shared.loadImagesFromAssets(into: scrollViews)
         scrollViews.forEach { $0.delegate = self }
         setupGestures()
         configureHangerButtons()
         
         // Load images into the outfit view controller's scroll views
         loadImages()
+        
+        // Configure hanger icon in navigation bar
+        configureHangerBarButtonItem()
+        
+        // Configure the bubble next to hanger icon
+        configureHangerBubble()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,11 +72,20 @@ extension OutfitViewController {
             self.scrollViews.forEach { $0.scrollToCurrentElement() }
             self.updateUI()
         }
+        
+        // Configure constraints for hanger bubble
+        configureHangerBubbleConstraints()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         updateUI()
+        showBubbles()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        hideBubbles()
     }
     
     override func viewWillLayoutSubviews() {

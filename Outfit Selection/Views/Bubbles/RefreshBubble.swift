@@ -18,7 +18,7 @@ class RefreshBubble: Bubble {
         // Main buble
         let bubble = super.bezierPath
         
-        // Right tail
+        // Right tail up
         let tail = UIBezierPath()
         tail.move(to: CGPoint(x: 229.61, y: 20.29))
         tail.addLine(to: CGPoint(x: 222, y: 33.25))

@@ -10,21 +10,14 @@ import UIKit
 
 class OutfitViewController: UIViewController {
     // MARK: - Outlets
+    @IBOutlet weak var hangerBarButtonItem: UIBarButtonItem!
     @IBOutlet var hangerButtons: [UIButton]!
     @IBOutlet weak var iconsStackView: UIStackView!
     @IBOutlet weak var likeButton: UIButton!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var refreshBubble: RefreshBubble! {
         didSet {
-            refreshBubble.alpha = 0
-            refreshBubble.text = "Check out the next outfit"
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                guard self.showRefreshBubble else { return }
-                UIView.animate(withDuration: 2) {
-                    self.refreshBubble.alpha = 1
-                }
-            }
+            configureRefreshBubble()
         }
     }
     @IBOutlet weak var refreshButton: UIButton!
@@ -32,16 +25,33 @@ class OutfitViewController: UIViewController {
     @IBOutlet weak var topStackView: UIStackView!
     
     // MARK: - Stored Properties
-    var assetCount = 0
-    
     /// First appearance for view will appear
     var firstAppearance = true
+    
+    /// Heper bubble next to hanger icon
+    let hangerBubble = HangerBubble()
+    
+    /// Constraint for the vertical center of hanger bubble
+    var hangerBubbleCenterYConstraint: NSLayoutConstraint!
+    
+    /// Confstraint for the trailing of hanger bubble
+    var hangerBubbleTrailingConstraint: NSLayoutConstraint!
     
     /// Scroll to items in this list if there are any
     var scrollToItems: [Item] = []
     
     /// Share view with current outfit
     var shareView: ShareView?
+    
+    /// True when both hanger and refresh bubbles should be hidden
+    var shouldHideBubbles = false
+    
+    /// True if hanger bubble should be shown, false otherwise
+    var showHangerBubble = true {
+        didSet {
+            hangerBubble.isHidden = !showHangerBubble
+        }
+    }
     
     /// True if hanger buttons should be shown, false otherwise
     var showHangerButtons = false {

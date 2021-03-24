@@ -93,9 +93,5 @@ class Bubble: UIView {
         label.textAlignment = .center
         textColor = .white
         addSubview(label)
-        
-        debug("autoresizesSubviews =", autoresizesSubviews,
-              "label.autoresizingMask =", label.autoresizingMask.rawValue,
-              "label.translatesAutoresizingMaskIntoConstraints =", label.translatesAutoresizingMaskIntoConstraints)
     }
 }
