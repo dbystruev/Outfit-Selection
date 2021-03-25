@@ -63,6 +63,9 @@ class BrandsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         configureLayout()
+        
+        // Configure navigation controller's bar font
+        navigationController?.configureFont()
     }
     
     override func viewWillLayoutSubviews() {

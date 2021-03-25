@@ -49,6 +49,9 @@ extension OutfitViewController {
         
         // Configure the bubble next to hanger icon
         configureHangerBubble()
+        
+        // Configure navigation controller's bar font
+        navigationController?.configureFont()
     }
     
     override func viewDidAppear(_ animated: Bool) {

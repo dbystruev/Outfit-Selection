@@ -85,6 +85,11 @@ class WishlistViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Configure navigation controller's bar font
+        navigationController?.configureFont()
+        
+        // Set data source and delegate for wish list
         wishlistCollectionView.dataSource = self
         wishlistCollectionView.delegate = self
     }

@@ -394,7 +394,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1311" y="494"/>
+            <point key="canvasLocation" x="1310" y="494"/>
         </scene>
         <!--Share-->
         <scene sceneID="kNA-Ue-Zj7">
@@ -476,7 +476,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NlK-cc-Nq5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2088.8000000000002" y="493.5960591133005"/>
+            <point key="canvasLocation" x="2089" y="494"/>
         </scene>
         <!--Wish list-->
         <scene sceneID="QuB-zm-Xxz">
@@ -750,13 +750,13 @@
         <!--Profile-->
         <scene sceneID="hoZ-Mh-dts">
             <objects>
-                <viewController title="Profile" id="FjR-QX-jdW" customClass="ProfileViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="FjR-QX-jdW" customClass="ProfileViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="kus-8u-CNT">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OCY-3v-5de">
-                                <rect key="frame" x="4" y="52" width="367" height="677"/>
+                                <rect key="frame" x="4" y="100" width="367" height="629"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-16" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Tzy-9V-j6n">
@@ -773,18 +773,18 @@
                         <constraints>
                             <constraint firstItem="a4g-r6-dhU" firstAttribute="trailing" secondItem="OCY-3v-5de" secondAttribute="trailing" constant="4" id="AcJ-2F-C5O"/>
                             <constraint firstItem="a4g-r6-dhU" firstAttribute="bottom" secondItem="OCY-3v-5de" secondAttribute="bottom" id="I2T-ES-VRO"/>
-                            <constraint firstItem="OCY-3v-5de" firstAttribute="top" secondItem="a4g-r6-dhU" secondAttribute="top" constant="8" id="db3-uO-dxv"/>
+                            <constraint firstItem="OCY-3v-5de" firstAttribute="top" secondItem="a4g-r6-dhU" secondAttribute="top" constant="12" id="db3-uO-dxv"/>
                             <constraint firstItem="OCY-3v-5de" firstAttribute="leading" secondItem="a4g-r6-dhU" secondAttribute="leading" constant="4" id="gqb-CF-tfo"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="6ox-Td-a2p"/>
+                    <navigationItem key="navigationItem" title="Profile" id="VJJ-HS-8bP"/>
                     <connections>
                         <outlet property="profileCollectionView" destination="OCY-3v-5de" id="QC0-qt-qWj"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHv-UT-keA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-287" y="891"/>
+            <point key="canvasLocation" x="505" y="1326"/>
         </scene>
         <!--Occasions View Controller-->
         <scene sceneID="L4D-s5-Wfa">
@@ -1093,12 +1093,12 @@
                     <connections>
                         <segue destination="GxA-0B-2jL" kind="relationship" relationship="viewControllers" id="jBC-ny-lRj"/>
                         <segue destination="FC2-yZ-683" kind="relationship" relationship="viewControllers" id="TXd-ae-D09"/>
-                        <segue destination="FjR-QX-jdW" kind="relationship" relationship="viewControllers" id="wBg-fv-Blj"/>
+                        <segue destination="GIB-wO-m89" kind="relationship" relationship="viewControllers" id="wBg-fv-Blj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qbE-wz-sTg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-286" y="137"/>
+            <point key="canvasLocation" x="-286" y="494"/>
         </scene>
         <!--Outfit-->
         <scene sceneID="wQy-hR-ILy">
@@ -1137,6 +1137,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7Jm-gg-mMc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="505" y="-175"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="3ui-go-UxA">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="GIB-wO-m89" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Profile" image="profile" id="6ox-Td-a2p"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="w3g-gG-fvf">
+                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="FjR-QX-jdW" kind="relationship" relationship="rootViewController" id="Jij-z7-G9T"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9Al-Xg-1Xr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-286" y="1326"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

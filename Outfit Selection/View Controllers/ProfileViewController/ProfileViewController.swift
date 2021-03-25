@@ -24,7 +24,10 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         // Find and configure brands view controller
-        brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self)
+        brandsViewController = navigationController?.navigationController?.findViewController(ofType: BrandsViewController.self)
+        
+        // Configure navigation controller's bar font
+        navigationController?.configureFont()
         
         // Setup profile collection view
         profileCollectionView.dataSource = self

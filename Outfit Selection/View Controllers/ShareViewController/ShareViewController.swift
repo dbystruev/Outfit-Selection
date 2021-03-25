@@ -42,6 +42,9 @@ class ShareViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Configure navigation controller's bar font
+        navigationController?.configureFont()
+        
         // Configure occasion label text (could be nil)
         let text = Wishlist.occasion(outfitView.items)
         occasionLabel.isHidden = text == nil

@@ -19,7 +19,7 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: collectionView.bounds.width, height: 40)
+        CGSize(width: collectionView.bounds.width, height: section == 0 ? 32 : 24)
     }
     
     /// Provides the size for item in given profile collection view
@@ -32,7 +32,7 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         switch indexPath.section {
         case 0:
             // Section 0 is gender - 1 item per row
-            return CGSize(width: collectionView.bounds.width, height: 44)
+            return CGSize(width: collectionView.bounds.width, height: 47)
         case 1:
             // Section 1 is brands — reuse brands view controller to answer
             return brandsViewController?.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath) ?? CGSize.zero
