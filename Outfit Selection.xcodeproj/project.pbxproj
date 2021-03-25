@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */; };
+		690491F6260C732A0098F1FD /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */; };
 		690B1F9825BEF54E000CDD51 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */; };
 		6910BDE4260B6D7B00A26F90 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910BDE3260B6D7B00A26F90 /* Bubble.swift */; };
 		69248FFD25503F2F00106681 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69248FFC25503F2F00106681 /* JSON.swift */; };
@@ -129,6 +130,7 @@
 
 /* Begin PBXFileReference section */
 		690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+configureFont.swift"; sourceTree = "<group>"; };
+		690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.ttf"; sourceTree = "<group>"; };
 		690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6910BDE3260B6D7B00A26F90 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		69248FFC25503F2F00106681 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
@@ -594,6 +596,7 @@
 		69C5CBE6260A191700DE22E6 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */,
 				69C5CBF7260A1EF000DE22E6 /* NotoSans-Medium.ttf */,
 				69C5CBFE260A1F2200DE22E6 /* NotoSans-Regular.ttf */,
 				69C5CBF4260A1ED800DE22E6 /* NotoSans-SemiBold.ttf */,
@@ -741,6 +744,7 @@
 				69535A4925EDF6AA00E9D816 /* Screenshot03.png in Resources */,
 				69C3A4BF25EC07E800F8F968 /* ProfileSectionHeaderView.xib in Resources */,
 				69535A4525EDF6AA00E9D816 /* Screenshot11.png in Resources */,
+				690491F6260C732A0098F1FD /* NotoSans-Bold.ttf in Resources */,
 				69535A4F25EDF6AA00E9D816 /* Screenshot12.png in Resources */,
 				699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */,
 				6953680225F7B5590024EC8B /* .gitignore in Resources */,
@@ -1008,7 +1012,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.9;
+				MARKETING_VERSION = 0.4.1;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1033,7 +1037,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.3.9;
+				MARKETING_VERSION = 0.4.1;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "$(TARGET_NAME)";

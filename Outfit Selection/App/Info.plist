@@ -40,6 +40,7 @@
 	<string>Please allow access to photo library to save outfits</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>NotoSans-Bold.ttf</string>
 		<string>NotoSans-Medium.ttf</string>
 		<string>NotoSans-Regular.ttf</string>
 		<string>NotoSans-SemiBold.ttf</string>
