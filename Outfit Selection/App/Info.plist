@@ -2,19 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIAppFonts</key>
-	<array>
-		<string>NotoSans-Medium.ttf</string>
-		<string>NotoSans-Regular.ttf</string>
-		<string>NotoSans-SemiBold.ttf</string>
-	</array>
-	<key>NSPhotoLibraryUsageDescription</key>
-	<string>Please allow access to photo library to save outfits</string>
-	<key>LSApplicationQueriesSchemes</key>
-	<array>
-		<string>instagram</string>
-		<string>instagram-stories</string>
-	</array>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
@@ -33,6 +20,11 @@
 	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleVersion</key>
 	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>instagram</string>
+		<string>instagram-stories</string>
+	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSAppTransportSecurity</key>
@@ -44,6 +36,14 @@
 	<string>Please allow to use camera to add clothes</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
 	<string>Please allow to save your outfit</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Please allow access to photo library to save outfits</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>NotoSans-Medium.ttf</string>
+		<string>NotoSans-Regular.ttf</string>
+		<string>NotoSans-SemiBold.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>remote-notification</string>

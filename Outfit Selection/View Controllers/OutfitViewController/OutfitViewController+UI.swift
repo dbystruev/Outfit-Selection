@@ -56,12 +56,16 @@ extension OutfitViewController {
         hangerButtons.forEach { $0.isHidden = !showHangerButtons }
         
         if showHangerButtons {
+            // Make unpinned scroll views half transparent
+            scrollViews.setUnpinned(alpha: 0.5)
+            
             // Make pinned scroll view's hanger buttons fully opaque
             for (hangerButton, scrollView) in zip(hangerButtons, scrollViews) {
                 hangerButton.alpha = scrollView.isPinned ? 1 : 0.5
             }
         } else {
-            // If hanger buttons are hidden don't pin any scroll views
+            // If hanger buttons are hidden make scroll views fully visible and don't pin any scroll views
+            scrollViews.setUnpinned(alpha: 1)
             scrollViews.unpin()
         }
         
