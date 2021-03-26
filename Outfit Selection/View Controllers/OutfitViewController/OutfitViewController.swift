@@ -63,7 +63,7 @@ class OutfitViewController: UIViewController {
     /// True when we want to show refresh bubble, false otherwise
     var showRefreshBubble = true {
         didSet {
-            refreshBubble.isHidden = !showRefreshBubble
+            refreshBubble?.isHidden = !showRefreshBubble
         }
     }
     

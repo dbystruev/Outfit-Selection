@@ -73,18 +73,18 @@ extension OutfitViewController {
     
     /// Configure refresh bubble once in the beginning
     func configureRefreshBubble() {
-        refreshBubble.alpha = 0
-        refreshBubble.text = "Check out the next outfit"
+        refreshBubble?.alpha = 0
+        refreshBubble?.text = "Check out the next outfit"
         
         // Add tap gesture on refresh bubble
-        refreshBubble.addTapOnce(target: self, action: #selector(refreshBubbleTapped))
+        refreshBubble?.addTapOnce(target: self, action: #selector(refreshBubbleTapped))
     }
     
     /// Hide hanger and refresh bubbles immediately
     func hideBubbles() {
         shouldHideBubbles = true
         hangerBubble.alpha = 0
-        refreshBubble.alpha = 0
+        refreshBubble?.alpha = 0
     }
     
     /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
@@ -141,7 +141,7 @@ extension OutfitViewController {
             }
             if self.showRefreshBubble {
                 UIView.animate(withDuration: 2) {
-                    self.refreshBubble.alpha = 1
+                    self.refreshBubble?.alpha = 1
                 }
             }
         }
