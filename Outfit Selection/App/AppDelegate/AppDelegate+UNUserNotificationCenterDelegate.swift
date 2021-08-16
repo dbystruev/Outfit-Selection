@@ -28,6 +28,6 @@ extension AppDelegate: UNUserNotificationCenterDelegate {
     func userNotificationCenter(_ center: UNUserNotificationCenter,
                                 willPresent notification: UNNotification,
                                 withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
-        appsFlyer(handlePushNotificationWith: notification.request.content.userInfo)
+//        appsFlyer(handlePushNotificationWith: notification.request.content.userInfo)
     }
 }

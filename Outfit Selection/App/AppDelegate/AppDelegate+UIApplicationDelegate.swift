@@ -20,7 +20,7 @@ extension AppDelegate: UIApplicationDelegate {
                      continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         // Log deep links with OneLink
-        appsFlyer(continue: userActivity)
+//        appsFlyer(continue: userActivity)
         return true
     }
     
@@ -52,7 +52,7 @@ extension AppDelegate: UIApplicationDelegate {
         URLCache.shared = URLCache(memoryCapacity: 25_000_000, diskCapacity: 50_000_000, diskPath: temporaryDirectory)
         
         // Configure AppsFlyer
-        appsFlyer(configureFor: application)
+//        appsFlyer(configureFor: application)
         
         // Configure current notification center
         userNotificationCenter(configureFor: application)
@@ -70,7 +70,7 @@ extension AppDelegate: UIApplicationDelegate {
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         if userInfo["af"] != nil {
             // Enables AppsFlyer to handle push notification
-            appsFlyer(handlePushNotificationWith: userInfo)
+//            appsFlyer(handlePushNotificationWith: userInfo)
         }
     }
     
@@ -82,7 +82,7 @@ extension AppDelegate: UIApplicationDelegate {
     /// - Returns: true to indicate the successful handling of the request
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         // Handle deep linking with AppsFlyer
-        appsFlyer(handleOpen: url, options: options)
+//        appsFlyer(handleOpen: url, options: options)
         return true
     }
     
@@ -90,6 +90,6 @@ extension AppDelegate: UIApplicationDelegate {
     /// - Parameter application: the singleton app object
     func applicationDidBecomeActive(_ application: UIApplication) {
         // Initializes AppsFlyer
-        initAppsFlyer()
+//        initAppsFlyer()
     }
 }
