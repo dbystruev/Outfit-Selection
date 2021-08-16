@@ -65,7 +65,7 @@ extension AppDelegate: AppsFlyerLibDelegate {
     /// - Returns: true if appsFlyerDevKey and appleAppID are set, false otherwise
     func checkAppsFlyer(line: Int = #line, file: String = #file, function: String = #function) -> Bool {
         guard AppDelegate.appsFlyerDevKey.hasDigits && AppDelegate.appleAppID.hasDigits else {
-            debug(line: line, file: file, function: function, "WARNING: No appsFlyerDevKey and/or appleAppID is set")
+//            debug(line: line, file: file, function: function, "WARNING: No appsFlyerDevKey and/or appleAppID is set")
             return false
         }
         
