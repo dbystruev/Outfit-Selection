@@ -33,7 +33,7 @@ class ShareView: UIView {
     
     // MARK: - Class Functions
     class func instanceFromNib() -> ShareView {
-        UINib(nibName: "\(Self.self)", bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! Self
+        UINib(nibName: String(describing: Self.self), bundle: nil).instantiate(withOwner: nil, options: nil)[0] as! Self
     }
     
     // MARK: - Stored Properties

@@ -10,57 +10,58 @@ import UIKit
 
 extension UIBarButtonItem.SystemItem: CustomStringConvertible {
     public var description: String {
+        let prefix = String(describing: Self.self)
         switch self {
         case .done:
-            return "\(Self.self).done"
+            return "\(prefix).done"
         case .cancel:
-            return "\(Self.self).cancel"
+            return "\(prefix).cancel"
         case .edit:
-            return "\(Self.self).edit"
+            return "\(prefix).edit"
         case .save:
-            return "\(Self.self).save"
+            return "\(prefix).save"
         case .add:
-            return "\(Self.self).add"
+            return "\(prefix).add"
         case .flexibleSpace:
-            return "\(Self.self).flexibleSpace"
+            return "\(prefix).flexibleSpace"
         case .fixedSpace:
-            return "\(Self.self).fixedSpace"
+            return "\(prefix).fixedSpace"
         case .compose:
-            return "\(Self.self).compose"
+            return "\(prefix).compose"
         case .reply:
-            return "\(Self.self).reply"
+            return "\(prefix).reply"
         case .action:
-            return "\(Self.self).action"
+            return "\(prefix).action"
         case .organize:
-            return "\(Self.self).organize"
+            return "\(prefix).organize"
         case .bookmarks:
-            return "\(Self.self).bookmarks"
+            return "\(prefix).bookmarks"
         case .search:
-            return "\(Self.self).search"
+            return "\(prefix).search"
         case .refresh:
-            return "\(Self.self).refresh"
+            return "\(prefix).refresh"
         case .stop:
-            return "\(Self.self).stop"
+            return "\(prefix).stop"
         case .camera:
-            return "\(Self.self).camera"
+            return "\(prefix).camera"
         case .trash:
-            return "\(Self.self).trash"
+            return "\(prefix).trash"
         case .play:
-            return "\(Self.self).play"
+            return "\(prefix).play"
         case .pause:
-            return "\(Self.self).pause"
+            return "\(prefix).pause"
         case .rewind:
-            return "\(Self.self).rewind"
+            return "\(prefix).rewind"
         case .fastForward:
-            return "\(Self.self).fastForward"
+            return "\(prefix).fastForward"
         case .undo:
-            return "\(Self.self).undo"
+            return "\(prefix).undo"
         case .redo:
-            return "\(Self.self).redo"
+            return "\(prefix).redo"
         case .pageCurl:
-            return "\(Self.self).pageCurl"
+            return "\(prefix).pageCurl"
         case .close:
-            return "\(Self.self).close"
+            return "\(prefix).close"
         default:
             return "Unknown UIBarButtonItem.SystemItem"
         }
