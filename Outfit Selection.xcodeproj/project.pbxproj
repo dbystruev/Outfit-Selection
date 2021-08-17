@@ -126,6 +126,7 @@
 		69DB6A5A25E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6A5925E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift */; };
 		69EB8BB525EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */; };
 		69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */; };
+		69F78DF626CBF047007843C4 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F78DF526CBF047007843C4 /* Feed.storyboard */; };
 		69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FBB20622F1ABE000187562 /* GenderViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -251,6 +252,7 @@
 		69DB6A5925E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
 		69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnableScrollView.swift; sourceTree = "<group>"; };
+		69F78DF526CBF047007843C4 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		69FBB20622F1ABE000187562 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -530,6 +532,7 @@
 		69A6F70822BA38FB002A3B49 /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				69F78DF526CBF047007843C4 /* Feed.storyboard */,
 				690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */,
 				69A6F6F722BA26B7002A3B49 /* Main.storyboard */,
 				699ABB5A25E6CA3900E388FC /* Welcome.storyboard */,
@@ -752,6 +755,7 @@
 				699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */,
 				6953680225F7B5590024EC8B /* .gitignore in Resources */,
 				69535A4725EDF6AA00E9D816 /* Screenshot09.png in Resources */,
+				69F78DF626CBF047007843C4 /* Feed.storyboard in Resources */,
 				69535A5025EDF6AA00E9D816 /* Screenshot04.png in Resources */,
 				69C5CBFF260A1F2200DE22E6 /* NotoSans-Regular.ttf in Resources */,
 				69535A4B25EDF6AA00E9D816 /* Screenshot07.png in Resources */,
