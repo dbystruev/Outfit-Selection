@@ -16,7 +16,7 @@ class ImageCollectionViewModel {
     
     // MARK: - Stored Properties
     /// Images stored in view model
-    private var images = [BrandedImage]()
+    private var images = BrandedImages()
         
     // MARK: - Computed properties
     /// The number of images stored in view model
@@ -44,7 +44,7 @@ class ImageCollectionViewModel {
     /// Filter images by given brands
     /// - Parameter brandNames: brand names to filter images by
     /// - Returns: filtered branded image array
-    func branded(_ brandNames: [String]) -> [BrandedImage] {
+    func branded(_ brandNames: [String]) -> BrandedImages {
         images.filter { $0.branded(brandNames) }
     }
     

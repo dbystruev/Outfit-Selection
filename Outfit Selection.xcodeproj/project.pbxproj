@@ -11,6 +11,7 @@
 		690491F6260C732A0098F1FD /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */; };
 		690B1F9825BEF54E000CDD51 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */; };
 		6910BDE4260B6D7B00A26F90 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910BDE3260B6D7B00A26F90 /* Bubble.swift */; };
+		69162D9826103EEA001C97A9 /* BrandedImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69162D9726103EEA001C97A9 /* BrandedImages.swift */; };
 		69248FFD25503F2F00106681 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69248FFC25503F2F00106681 /* JSON.swift */; };
 		6924900125504DFD00106681 /* DispatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924900025504DFD00106681 /* DispatchManager.swift */; };
 		69297C5225EB852700A8684E /* BrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69297C5025EB852700A8684E /* BrandCell.swift */; };
@@ -133,6 +134,7 @@
 		690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.ttf"; sourceTree = "<group>"; };
 		690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		6910BDE3260B6D7B00A26F90 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
+		69162D9726103EEA001C97A9 /* BrandedImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandedImages.swift; sourceTree = "<group>"; };
 		69248FFC25503F2F00106681 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		6924900025504DFD00106681 /* DispatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchManager.swift; sourceTree = "<group>"; };
 		69297C5025EB852700A8684E /* BrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCell.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 			isa = PBXGroup;
 			children = (
 				69560ED32587E80B00337F35 /* BrandedImage */,
+				69162D9726103EEA001C97A9 /* BrandedImages.swift */,
 				6986612025704F1A008F94CA /* UIImage+resize.swift */,
 			);
 			path = Images;
@@ -852,6 +855,7 @@
 				6978202F2587BCAA007D4CCB /* ImageCollectionViewModel.swift in Sources */,
 				692C940A2546FB8D0075BD92 /* Gender.swift in Sources */,
 				69C3696725E79ED3000A8E5E /* WishlistViewController.swift in Sources */,
+				69162D9826103EEA001C97A9 /* BrandedImages.swift in Sources */,
 				6941BDEC260B565F003D5EE7 /* RefreshBubble.swift in Sources */,
 				69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */,
 				692C94132547025D0075BD92 /* Category.swift in Sources */,
@@ -997,7 +1001,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2021.03.26;
+				CURRENT_PROJECT_VERSION = 2021.03.28;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = arm64;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "";
@@ -1012,7 +1016,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.2;
+				MARKETING_VERSION = 0.4.3;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1025,7 +1029,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2021.03.26;
+				CURRENT_PROJECT_VERSION = 2021.03.28;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1037,7 +1041,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.4.2;
+				MARKETING_VERSION = 0.4.3;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "$(TARGET_NAME)";
