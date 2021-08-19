@@ -10,19 +10,16 @@ import Foundation
 
 class Logger {
     // MARK: - Stored Properties
+    /// Flag which turns to true when Logger has read its cache files
+    private static var initialized = false
+    
     /// The URL of the directory for logging — nil if failed to create
     private static var logDirectory: URL? = {
-        // Create log directory if it does not exist
-        do {
-            try FileManager.default.createDirectory(at: logDirectoryURL, withIntermediateDirectories: true)
-        } catch {
-            debug(error.localizedDescription)
-            return nil
-        }
+        // Don't initialize twice
+        guard !initialized else { return logDirectoryURL }
         
         // Restore the logs
         logs = savedLogs
-        debug("Loaded \(logs.count) records from \(logDirectoryURL)")
         
         return logDirectoryURL
     }()
@@ -36,6 +33,17 @@ class Logger {
     // MARK: - Computed Properties
     /// Runs once at the beginning to restore saved logs
     private static var savedLogs: [String: String] {
+        // Create log directory if it does not exist
+        do {
+            try FileManager.default.createDirectory(at: logDirectoryURL, withIntermediateDirectories: true)
+        } catch {
+            debug(error.localizedDescription)
+            return [:]
+        }
+        
+        // Event if we fail after that make sure we've flagged the fact we have initialized
+        initialized = true
+        
         // Content of files to be returned at the end
         var logFilesContent: [String: String] = [:]
         
@@ -68,13 +76,25 @@ class Logger {
             }
         }
         
+        debug("Loaded \(logFilesContent.count) records from \(logDirectoryURL)")
         return logFilesContent
     }
     
     // MARK: - Methods
+    /// Getter to the private logs
+    /// - Parameter key: the key
+    /// - Returns: message stored under the key
+    static func get(for key: String) -> String? {
+        // Check first if we have loaded the cache files
+        if !initialized { logs = savedLogs }
+        
+        return logs[key]
+    }
+    
+    
     /// Log messages into file system
     /// - Parameters:
-    ///   - key: the key to store the messages
+    ///   - key: the key to store the messages for
     ///   - messages: messages to store under the key
     static func log(key: String, _ messages: CustomStringConvertible?...) {
         // Make sure we have a filename to write to
@@ -89,10 +109,10 @@ class Logger {
         // Combine all messages into one string
         let message = messages.reduce("") { ($0.isEmpty ? "" : $0 + "\n") + String(describing: $1 ?? "") }
         
-        // Hash by first name
+        // Hash by the key
         logs[key] = message
         
-        // Write the message to log
+        // Write the key and the message to the log
         try? "\(key)\n\(message)".write(to: filename, atomically: true, encoding: .utf8)
     }
 }

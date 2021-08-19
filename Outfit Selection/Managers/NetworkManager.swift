@@ -30,6 +30,19 @@ class NetworkManager {
         self.url = url ?? NetworkManager.defaultURL
     }
     
+    /// Decode the data given with JSON
+    /// - Parameter data: the data received from the server or from the cache
+    /// - Returns: decoded data as Codable type if success, nil in case of fail
+    func decode<T: Codable>(_ data: Data) -> T? {
+        guard let decodedData = try? JSON.decoder.decode(T.self, from: data) else {
+            let message = String(data: data, encoding: .utf8) ?? "Unknown data format"
+            debug("ERROR decoding \(data): \(message)")
+            return nil
+        }
+        
+        return decodedData
+    }
+    
     // MARK: - Methods
     /// Send get request with parameters and call completion when done
     /// - Parameters:
@@ -41,6 +54,12 @@ class NetworkManager {
         // Compose the request URL
         let requestPath = url.appendingPathComponent(path)
         let request = parameters.isEmpty ? requestPath : requestPath.withQueries(parameters)
+        
+        // Check if we already may have the needed request in the cache
+        if let response = Logger.get(for: request.absoluteString), let data = response.data(using: .utf8), let decodedData: T = decode(data) {
+            completion(decodedData)
+            return
+        }
         
         // Check that we don't run more than allowed number of get requests in parallel
         guard numberOfRequestsRunning < maxRequestsInParallel else {
@@ -55,6 +74,7 @@ class NetworkManager {
             
             self.numberOfRequestsRunning -= 1
             
+            // Check if we haven't received nil
             guard let data = data else {
                 let message = error?.localizedDescription ?? "No data"
                 debug("ERROR requesting \(request): \(message)")
@@ -62,15 +82,15 @@ class NetworkManager {
                 return
             }
             
-            let message = String(data: data, encoding: .utf8) ?? "Unknown data format"
-            Logger.log(key: "GET \(request.absoluteString)", "RESPONSE \(message)")
-            
-            guard let decodedData = try? JSON.decoder.decode(T.self, from: data) else {
-                debug("ERROR decoding \(data): \(message)")
+            // Decode the received data
+            guard let decodedData: T = self.decode(data) else {
                 completion(nil)
                 return
             }
             
+            // Store the message in logger cache
+            let message = String(data: data, encoding: .utf8)
+            Logger.log(key: request.absoluteString, message)
             completion(decodedData)
         }
         
