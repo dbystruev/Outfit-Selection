@@ -31,13 +31,13 @@ class Logger {
     private static var logDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent("Logger")
     
     /// Variable which stores different log messages to avoid doubling
-    private static var logs: Set<String> = []
+    private static var logs: [String: String] = [:]
     
     // MARK: - Computed Properties
     /// Runs once at the beginning to restore saved logs
-    private static var savedLogs: Set<String> {
+    private static var savedLogs: [String: String] {
         // Content of files to be returned at the end
-        var logFilesContent: Set<String> = []
+        var logFilesContent: [String: String] = [:]
         
         // Get the filest enumerator for the directory
         let files = FileManager.default.enumerator(at: logDirectoryURL, includingPropertiesForKeys: [URLResourceKey.isRegularFileKey])
@@ -49,7 +49,20 @@ class Logger {
             
             // Load content of all files into returned variable
             do {
-                logFilesContent.insert(try String(contentsOf: file as URL))
+                // Get file content and split it by lines
+                let content = try String(contentsOf: file as URL)
+                let contentLines = content.split(separator: "\n")
+                
+                // Skip files with less than 2 lines
+                guard 1 < contentLines.count else { continue }
+                
+                // The first line is the key, the rest are the message
+                let key = String(contentLines[0])
+                let message = contentLines.dropFirst().joined(separator: "\n")
+                
+                // Save restored content
+                logFilesContent[key] = message
+                
             } catch {
                 debug(error.localizedDescription)
             }
@@ -60,22 +73,26 @@ class Logger {
     
     // MARK: - Methods
     /// Log messages into file system
-    /// - Parameter messages: messages passed
-    static func log(_ messages: CustomStringConvertible?...) {
+    /// - Parameters:
+    ///   - key: the key to store the messages
+    ///   - messages: messages to store under the key
+    static func log(key: String, _ messages: CustomStringConvertible?...) {
         // Make sure we have a filename to write to
         guard let filename = logDirectory?.appendingPathComponent(String(describing: Date().timeIntervalSince1970)).appendingPathExtension("txt") else {
             debug("ERROR creating filename for the log")
             return
         }
         
-        // Combine all messages into one string
-        let message = messages.reduce("") { ($0.isEmpty ? "" : $0 + " ") + String(describing: $1 ?? "") }
+        // Don't write to the same key twice
+        guard logs[key] == nil else { return }
         
-        // Don't log if we already have it
-        guard !logs.contains(message) else { return }
-        logs.insert(message)
+        // Combine all messages into one string
+        let message = messages.reduce("") { ($0.isEmpty ? "" : $0 + "\n") + String(describing: $1 ?? "") }
+        
+        // Hash by first name
+        logs[key] = message
         
         // Write the message to log
-        try? message.write(to: filename, atomically: true, encoding: .utf8)
+        try? "\(key)\n\(message)".write(to: filename, atomically: true, encoding: .utf8)
     }
 }

@@ -38,8 +38,9 @@ class NetworkManager {
     ///   - completion: closure called after request is finished, with data if successfull, or with nil if not
     func get<T: Codable>(_ path: String, parameters: [String: Any] = [:], completion: @escaping (T?) -> Void) {
         
-        
-        let request = url.appendingPathComponent(path).withQueries(parameters)
+        // Compose the request URL
+        let requestPath = url.appendingPathComponent(path)
+        let request = parameters.isEmpty ? requestPath : requestPath.withQueries(parameters)
         
         // Check that we don't run more than allowed number of get requests in parallel
         guard numberOfRequestsRunning < maxRequestsInParallel else {
@@ -62,8 +63,7 @@ class NetworkManager {
             }
             
             let message = String(data: data, encoding: .utf8) ?? "Unknown data format"
-            Logger.log("GET", request.absoluteString);
-            Logger.log("RESPONSE", message)
+            Logger.log(key: "GET \(request.absoluteString)", "RESPONSE \(message)")
             
             guard let decodedData = try? JSON.decoder.decode(T.self, from: data) else {
                 debug("ERROR decoding \(data): \(message)")
