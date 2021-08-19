@@ -10,14 +10,11 @@ import Foundation
 
 class Logger {
     // MARK: - Stored Properties
-    /// The directory where all logs are stored
-    static var logDirectory: URL? = {
-        debug(Date())
-        let directory = FileManager.default.temporaryDirectory.appendingPathComponent("Logger")
-        
+    /// The URL of the directory for logging — nil if failed to create
+    private static var logDirectory: URL? = {
         // Create log directory if it does not exist
         do {
-            try FileManager.default.createDirectory(at: directory, withIntermediateDirectories: true)
+            try FileManager.default.createDirectory(at: logDirectoryURL, withIntermediateDirectories: true)
         } catch {
             debug(error.localizedDescription)
             return nil
@@ -25,9 +22,13 @@ class Logger {
         
         // Restore the logs
         logs = savedLogs
+        debug("Loaded \(logs.count) records from \(logDirectoryURL)")
         
-        return directory
+        return logDirectoryURL
     }()
+    
+    /// The actual URL of log directory not checking if the directory exists
+    private static var logDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent("Logger")
     
     /// Variable which stores different log messages to avoid doubling
     private static var logs: Set<String> = []
@@ -35,8 +36,26 @@ class Logger {
     // MARK: - Computed Properties
     /// Runs once at the beginning to restore saved logs
     private static var savedLogs: Set<String> {
-        // TODO: Implement
-        return []
+        // Content of files to be returned at the end
+        var logFilesContent: Set<String> = []
+        
+        // Get the filest enumerator for the directory
+        let files = FileManager.default.enumerator(at: logDirectoryURL, includingPropertiesForKeys: [URLResourceKey.isRegularFileKey])
+        
+        // Go through all the files in the directory
+        while let file = files?.nextObject() as? NSURL {
+            // Skip all non-txt files
+            guard file.pathExtension == "txt" else { continue }
+            
+            // Load content of all files into returned variable
+            do {
+                logFilesContent.insert(try String(contentsOf: file as URL))
+            } catch {
+                debug(error.localizedDescription)
+            }
+        }
+        
+        return logFilesContent
     }
     
     // MARK: - Methods
@@ -58,7 +77,5 @@ class Logger {
         
         // Write the message to log
         try? message.write(to: filename, atomically: true, encoding: .utf8)
-        
-        debug(filename)
     }
 }
