@@ -20,7 +20,7 @@ extension URL {
         var queryItems: [URLQueryItem] = []
         
         // Go through all queries one by one
-        for query in queries {
+        for query in queries.sorted(by: { $0.key < $1.key }) {
             // String representation of query value
             let value: String
             
