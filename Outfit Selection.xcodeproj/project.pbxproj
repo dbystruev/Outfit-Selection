@@ -74,6 +74,8 @@
 		697CCE5D26CFA47E00B69763 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CCE5B26CFA47E00B69763 /* FeedCell.xib */; };
 		697CCE6026CFBCA900B69763 /* FeedViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CCE5F26CFBCA900B69763 /* FeedViewController+UITableViewDelegate.swift */; };
 		697CCE6226CFCA6600B69763 /* FeedViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CCE6126CFCA6600B69763 /* FeedViewController+UITableViewDataSource.swift */; };
+		697CCE6426CFF1ED00B69763 /* ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CCE6326CFF1ED00B69763 /* ButtonDelegate.swift */; };
+		697CCE6626CFF22900B69763 /* DelegatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CCE6526CFF22900B69763 /* DelegatedButton.swift */; };
 		697E1FDD25ECF0E8008C85C9 /* UITabBarController+findViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */; };
 		697E1FE125ED01A6008C85C9 /* IntermediaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */; };
 		6986611B25700ED2008F94CA /* Double+asTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6986611A25700ED2008F94CA /* Double+asTime.swift */; };
@@ -208,6 +210,8 @@
 		697CCE5B26CFA47E00B69763 /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
 		697CCE5F26CFBCA900B69763 /* FeedViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		697CCE6126CFCA6600B69763 /* FeedViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
+		697CCE6326CFF1ED00B69763 /* ButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDelegate.swift; sourceTree = "<group>"; };
+		697CCE6526CFF22900B69763 /* DelegatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelegatedButton.swift; sourceTree = "<group>"; };
 		697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+findViewController.swift"; sourceTree = "<group>"; };
 		697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediaryViewController.swift; sourceTree = "<group>"; };
 		6986611A25700ED2008F94CA /* Double+asTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+asTime.swift"; sourceTree = "<group>"; };
@@ -379,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				69560EC72587E5D400337F35 /* Branded.swift */,
+				697CCE6326CFF1ED00B69763 /* ButtonDelegate.swift */,
 			);
 			path = Protocols;
 			sourceTree = "<group>";
@@ -451,11 +456,11 @@
 			isa = PBXGroup;
 			children = (
 				69297C5025EB852700A8684E /* BrandCell.swift */,
+				697CCE5A26CFA47E00B69763 /* FeedCell.swift */,
 				69297C5D25EBC9FE00A8684E /* GenderCell.swift */,
 				69C3697025E7D127000A8E5E /* ItemCell.swift */,
 				69C3697325E80676000A8E5E /* OutfitCell.swift */,
 				69C3A4BC25EC07E800F8F968 /* ProfileSectionHeaderView.swift */,
-				697CCE5A26CFA47E00B69763 /* FeedCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -473,6 +478,7 @@
 		698990CF23238051002DCA29 /* Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				697CCE6526CFF22900B69763 /* DelegatedButton.swift */,
 				69AEC9E725BF014100183E15 /* GenderButton.swift */,
 				69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */,
 				69AE95552563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift */,
@@ -853,6 +859,7 @@
 				695EE0042586449E00E2BB57 /* BrandsViewController+Actions.swift in Sources */,
 				69AE95502563B8FB00850210 /* String+dropExtension.swift in Sources */,
 				692AF3CB260113C300D37269 /* ShareView.swift in Sources */,
+				697CCE6626CFF22900B69763 /* DelegatedButton.swift in Sources */,
 				69A6F70A22BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift in Sources */,
 				69AE95562563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift in Sources */,
 				690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */,
@@ -864,6 +871,7 @@
 				697E1FE125ED01A6008C85C9 /* IntermediaryViewController.swift in Sources */,
 				69672AE922F1D06A0053FB85 /* OutfitViewController+present.swift in Sources */,
 				693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */,
+				697CCE6426CFF1ED00B69763 /* ButtonDelegate.swift in Sources */,
 				695367EE25F7AA520024EC8B /* AppDelegate+AppsFlyerLibDelegate.swift in Sources */,
 				693D7292256BFDD700540C10 /* ItemManager.swift in Sources */,
 				695367F825F7AFAC0024EC8B /* AppDelegate+UIApplicationDelegate.swift in Sources */,

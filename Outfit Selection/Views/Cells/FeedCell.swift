@@ -10,6 +10,8 @@ import UIKit
 
 class FeedCell: UITableViewCell {
     // MARK: - Outlets
+    @IBOutlet weak var itemStackView: UIStackView!
+    @IBOutlet weak var seeAllButton: DelegatedButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     // MARK: - Class Properties
@@ -22,7 +24,7 @@ class FeedCell: UITableViewCell {
     
     // MARK: - Stored Properties
     /// Delegate to call when see all button is tapped
-    var delegate: Any?
+    var delegate: ButtonDelegate?
 
     // MARK: - Class Methods
     /// Registers the cell with the table view
@@ -41,11 +43,11 @@ class FeedCell: UITableViewCell {
     }
     
     func configureLayout() {
-        debug()
+        debug("itemStackView.arrangedSubviews.count =", itemStackView.arrangedSubviews.count)
     }
     
     // MARK: - Actions
-    @IBAction func seeAllButtonTapped(_ sender: UIButton) {
-        debug(sender)
+    @IBAction func seeAllButtonTapped(_ sender: DelegatedButton) {
+        delegate?.buttonTapped(sender)
     }
 }

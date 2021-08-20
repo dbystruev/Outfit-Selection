@@ -32,7 +32,7 @@
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLn-2e-ZI2">
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLn-2e-ZI2" customClass="DelegatedButton" customModule="Outfit_Selection" customModuleProvider="target">
                         <rect key="frame" x="314" y="24" width="37" height="29"/>
                         <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
                         <state key="normal" title="See all">
@@ -77,6 +77,8 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="itemStackView" destination="t9y-OF-EYx" id="ZRH-Fb-nk3"/>
+                <outlet property="seeAllButton" destination="pLn-2e-ZI2" id="lpv-Rj-0BW"/>
                 <outlet property="titleLabel" destination="pxZ-Qe-vcs" id="jGv-YO-j1D"/>
             </connections>
             <point key="canvasLocation" x="78" y="72"/>

@@ -212,19 +212,6 @@ class ItemManager {
             
             debug(Item.all.count, "items are loaded from the server in", passedTime.asTime, "seconds")
             
-            // Debug modified time and old price
-            var modifiedTimeCount = 0
-            var oldPriceCount = 0
-            for item in Item.all {
-                guard let modifiedTime = item.modifiedTime else { continue }
-                modifiedTimeCount += 1
-                debug("Item", item.itemIndex, "time is", Date(timeIntervalSince1970: modifiedTime))
-                guard let oldPrice = item.oldPrice else { continue }
-                oldPriceCount += 1
-                debug("Old price is", oldPrice, "Price is", item.price)
-            }
-            debug("Modified time items:", modifiedTimeCount, "Old price items:", oldPriceCount, "Total items:", Item.all.count)
-            
             completion(true)
         }
     }
