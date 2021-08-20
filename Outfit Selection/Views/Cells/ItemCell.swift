@@ -26,8 +26,7 @@ class ItemCell: UICollectionViewCell {
         vendorLabel.text = item.vendor
         
         // Load the picture
-        guard let url = item.pictures?.first else { return }
-        pictureImageView.configure(with: url)
+        pictureImageView.configure(with: item.pictures?.first)
     }
     
 }

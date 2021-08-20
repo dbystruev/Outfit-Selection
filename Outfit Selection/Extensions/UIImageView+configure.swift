@@ -11,8 +11,9 @@ import UIKit
 extension UIImageView {
     /// Load image from URL
     /// - Parameter url: the URL to load image from
-    func configure(with url: URL) {
+    func configure(with url: URL?) {
         image = nil
+        guard let url = url else { return }
         NetworkManager.shared.getImage(url) { image in
             guard let image = image else { return }
             DispatchQueue.main.async { self.image = image }

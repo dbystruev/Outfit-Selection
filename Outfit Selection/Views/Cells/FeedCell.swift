@@ -16,6 +16,8 @@ class FeedCell: UITableViewCell {
     
     // MARK: - Static Constants
     /// Default cell's height
+    static let itemHeight: CGFloat = 206
+    static let itemWidth: CGFloat = 120
     static let height: CGFloat = 282
     
     // MARK: - Class Properties
@@ -37,11 +39,7 @@ class FeedCell: UITableViewCell {
     var delegate: ButtonDelegate?
     
     /// Items to display in the item stack view
-    var items: [Item] = [] {
-        didSet {
-            debug("items.count =", items.count)
-        }
-    }
+    var items: [Item] = []
     
     /// Kind of this cell
     var kind: Kind = .sale
@@ -80,6 +78,34 @@ class FeedCell: UITableViewCell {
     }
     
     // MARK: - Custom Methods
+    /// Called after items has been assigned
+    func configureItems() {
+        // Remove xib subview to allow space for new items
+        guard 0 < items.count else { return }
+        itemStackView.subviews.forEach { $0.removeFromSuperview() }
+        
+        // Add new items to the items stack view
+        for item in items {
+            // Insert feed item subviews into item stack view
+            guard let feedItem = FeedItem.instanceFromNib() else {
+                debug("Can't instantiate FeedItem from Nib")
+                return
+            }
+            itemStackView.addArrangedSubview(feedItem)
+            feedItem.configureContent(with: item, showSale: kind == .sale)
+        }
+        
+        // Configure constraints for the first item — the rest will follow suit
+        guard let item = itemStackView.arrangedSubviews.first else { return }
+        let heightConstraint = NSLayoutConstraint(
+            item: item, attribute: .height, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 1, constant: FeedCell.itemHeight
+        )
+        let widthConstraint = NSLayoutConstraint(
+            item: item, attribute: .width, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 1, constant: FeedCell.itemWidth
+        )
+        NSLayoutConstraint.activate([heightConstraint, widthConstraint])
+    }
+    
     /// Called when we know for sure what items we want to display
     /// - Parameters:
     ///   - kind: cell's type
@@ -92,16 +118,13 @@ class FeedCell: UITableViewCell {
         
         // Configure outlets
         titleLabel.text = title
-        guard let feedItem = FeedItem.instanceFromNib() else {
-            debug("Can't instantiate FeedItem from Nib")
-            return
-        }
-        itemStackView.addArrangedSubview(feedItem)
+        configureItems()
     }
     
     /// Called from awakeFromNib() in the beggining, when we don't know yet what to display
     func configureLayout() {
-        // Nothing to do here yet
+        // No selection style be default
+        selectionStyle = .none
     }
     
     // MARK: - Actions

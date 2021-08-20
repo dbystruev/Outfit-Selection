@@ -25,8 +25,7 @@ class OutfitCell: UICollectionViewCell {
         // Configure pictures
         for (item, pictureImageView) in zip(outfit.items, pictureImageViews) {
             pictureImageView.image = nil
-            guard let url = item.pictures?.first else { continue }
-            pictureImageView.configure(with: url)
+            pictureImageView.configure(with: item.pictures?.first)
         }
     }
 }

@@ -35,7 +35,12 @@ class FeedItem: UIView {
     ///   - item: the item to configure content for
     ///   - showSale: if true show strikethrough old price if available
     func configureContent(with item: Item, showSale: Bool = false) {
-        
+        brandLabel.text = item.brand
+        itemImageView.configure(with: item.pictures?.first)
+        nameLabel.text = item.nameWithoutVendor
+        oldPriceLabel.isHidden = !showSale
+        oldPriceLabel.text = item.oldPrice?.asPrice
+        priceLabel.text = item.price?.asPrice
     }
     
     // MARK: - Actions
