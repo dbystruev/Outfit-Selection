@@ -39,8 +39,14 @@ struct Item: Codable {
     /// Index in Item.all array
     var itemIndex: Int?
     
+    /// Time when offer was last modified
+    let modifiedTime: TimeInterval? // since 1970.01.01
+    
     /// Item's name
     let name: String?
+    
+    /// The item's previous price
+    let oldPrice: Double?
     
     /// The collection of URLs to load item images from
     let pictures: [URL]?
@@ -56,6 +62,19 @@ struct Item: Codable {
 
     /// True if item is in any wishlist, false otherwise (default)
     var wishlisted: Bool? = false
+    
+    enum CodingKeys: String, CodingKey {
+        case categoryId
+//        case itemIndex
+        case modifiedTime = "modified_time"
+        case name
+        case oldPrice = "oldprice"
+        case pictures
+        case price
+        case url
+        case vendor
+//        case wishlisted
+    }
     
     // MARK: - Computed Properties
     /// If item name starts with vendor (brand) drop that brand and capitalize the first letter of remaining string
