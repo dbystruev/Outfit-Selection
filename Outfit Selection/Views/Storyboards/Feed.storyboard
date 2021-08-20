@@ -16,11 +16,27 @@
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zSh-sE-otJ">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <sections/>
+                            </tableView>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="zSh-sE-otJ" secondAttribute="bottom" id="9u7-6J-iUr"/>
+                            <constraint firstItem="zSh-sE-otJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="E6k-9d-exW"/>
+                            <constraint firstItem="zSh-sE-otJ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="EDy-VA-ObF"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zSh-sE-otJ" secondAttribute="trailing" id="bPr-jM-E0F"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Feed" id="Cyf-S5-7ao"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="feedTableView" destination="zSh-sE-otJ" id="Q3K-VB-HRy"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
