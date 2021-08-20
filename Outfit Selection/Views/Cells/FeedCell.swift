@@ -14,20 +14,34 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var seeAllButton: DelegatedButton!
     @IBOutlet weak var titleLabel: UILabel!
     
+    // MARK: - Static Constants
+    /// Default cell's height
+    static let height: CGFloat = 282
+    
     // MARK: - Class Properties
     class var identifier: String { nib }
     class var nib: String { String(describing: Self.self) }
     
-    // MARK: - Static Constants
-    /// Default cell's height
-    static let height: CGFloat = 250
+    // MARK: - Class Methods
+    /// Registers the cell with the table view
+    /// - Parameter tableView: the table view to register with
+    /// - Returns: (optional) returns cell identifier, also available as MessageListCell.identifier
+    @discardableResult class func register(with tableView: UITableView?) -> String {
+        let aNib = UINib(nibName: nib, bundle: nil)
+        tableView?.register(aNib, forCellReuseIdentifier: identifier)
+        return identifier
+    }
     
     // MARK: - Stored Properties
     /// Delegate to call when see all button is tapped
     var delegate: ButtonDelegate?
     
     /// Items to display in the item stack view
-    var items: [Item] = []
+    var items: [Item] = [] {
+        didSet {
+            debug("items.count =", items.count)
+        }
+    }
     
     /// Kind of this cell
     var kind: Kind = .sale
@@ -52,16 +66,6 @@ class FeedCell: UITableViewCell {
     
     // MARK: - Computed Properties
     var title: String { kind.title }
-
-    // MARK: - Class Methods
-    /// Registers the cell with the table view
-    /// - Parameter tableView: the table view to register with
-    /// - Returns: (optional) returns cell identifier, also available as MessageListCell.identifier
-    @discardableResult class func register(with tableView: UITableView?) -> String {
-        let aNib = UINib(nibName: nib, bundle: nil)
-        tableView?.register(aNib, forCellReuseIdentifier: identifier)
-        return identifier
-    }
     
     // MARK: - Inherited Methods
     override func awakeFromNib() {
@@ -83,10 +87,16 @@ class FeedCell: UITableViewCell {
     func configureContent(for kind: Kind, items: [Item]) {
         // Configure variables
         self.kind = kind
-        self.items = items
+        let numberOfItems = min(Int.random(in: 20...30), items.count)
+        self.items = Array(items.sorted(by: { $0.time > $1.time })[...numberOfItems])
         
         // Configure outlets
         titleLabel.text = title
+        guard let feedItem = FeedItem.instanceFromNib() else {
+            debug("Can't instantiate FeedItem from Nib")
+            return
+        }
+        itemStackView.addArrangedSubview(feedItem)
     }
     
     /// Called from awakeFromNib() in the beggining, when we don't know yet what to display

@@ -27,7 +27,7 @@ extension FeedViewController: UITableViewDataSource {
         }()
         
         // Configure the feed cell and return it
-        cell.configureContent(for: kind, items: [])
+        cell.configureContent(for: kind, items: Item.all)
         return cell
     }
 }

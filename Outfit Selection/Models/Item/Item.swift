@@ -84,6 +84,9 @@ struct Item: Codable {
         return name.dropFirst(vendor.count).trimmingCharacters(in: .whitespacesAndNewlines).firstCapitalized
     }
     
+    /// Non-optional time for sorting operations
+    var time: TimeInterval { modifiedTime ?? Date(timeIntervalSince1970: 0).timeIntervalSinceReferenceDate }
+    
     // MARK: - Methods
     /// Set item's wishlist property to true or false
     /// - Parameter value: the value to set the wishlist property to, true by default

@@ -68,7 +68,7 @@ class TabBarController: UITabBarController {
         
         // Don't pop if there is no change in brands selection
         guard BrandManager.shared.selectedBrands != selectedBrands else {
-            debug("DEBUG: Brands has not changed")
+            debug("DEBUG: Brands have not changed")
             return
         }
         
