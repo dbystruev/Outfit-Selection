@@ -139,11 +139,13 @@ extension OutfitViewController {
                     self.hangerBubble.alpha = 1
                 }
             }
+            
             if self.showRefreshBubble {
                 UIView.animate(withDuration: 2) {
                     self.refreshBubble?.alpha = 1
                 }
             }
+
         }
     }
     

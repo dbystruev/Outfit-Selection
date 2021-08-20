@@ -20,6 +20,8 @@ extension OutfitViewController {
     /// Called when the user taps hanger bubble
     @objc func hangerBubbleTapped() {
         showHangerBubble = false
+        showRefreshBubble = true
+        showBubbles()
     }
     
     /// Called when one of individual hanger buttons in a scroll view is tapped
