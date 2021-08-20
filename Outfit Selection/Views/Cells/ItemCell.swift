@@ -25,14 +25,9 @@ class ItemCell: UICollectionViewCell {
         priceLabel.text = item.price?.asPrice
         vendorLabel.text = item.vendor
         
-        // Configure picture
+        // Load the picture
         guard let url = item.pictures?.first else { return }
-        NetworkManager.shared.getImage(url) { picture in
-            guard let picture = picture else { return }
-            DispatchQueue.main.async {
-                self.pictureImageView.image = picture
-            }
-        }
+        pictureImageView.configure(with: url)
     }
     
 }

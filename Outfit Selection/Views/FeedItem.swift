@@ -29,6 +29,15 @@ class FeedItem: UIView {
     // MARK: - Stored Properties
     var delegate: ButtonDelegate?
     
+    // MARK: - Custom Methods
+    /// Configure view content based on the item given
+    /// - Parameters:
+    ///   - item: the item to configure content for
+    ///   - showSale: if true show strikethrough old price if available
+    func configureContent(with item: Item, showSale: Bool = false) {
+        
+    }
+    
     // MARK: - Actions
     @IBAction func likeButtonTapped(_ sender: DelegatedButton) {
         delegate?.buttonTapped(sender)

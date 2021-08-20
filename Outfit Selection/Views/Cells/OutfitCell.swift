@@ -26,12 +26,7 @@ class OutfitCell: UICollectionViewCell {
         for (item, pictureImageView) in zip(outfit.items, pictureImageViews) {
             pictureImageView.image = nil
             guard let url = item.pictures?.first else { continue }
-            NetworkManager.shared.getImage(url) { picture in
-                guard let picture = picture else { return }
-                DispatchQueue.main.async {
-                    pictureImageView.image = picture
-                }
-            }
+            pictureImageView.configure(with: url)
         }
     }
 }
