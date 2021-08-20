@@ -9,9 +9,9 @@
 import Foundation
 
 class Logger {
-    // MARK: - Stored Properties
+    // MARK: - Constants
     /// Load logs from bundled files
-    private static var bundledLogs: [String: String] = {
+    private static let bundledLogs: [String: String] = {
         // The cache files which should be in the bundle
         let bundledFiles = ["categories", "female", "male", "other", "server"]
         
@@ -31,7 +31,7 @@ class Logger {
     }()
     
     /// Load logs from filesystem files
-    private static var filesystemLogs: [String: String] = {
+    private static let filesystemLogs: [String: String] = {
         // Content of files to be returned at the end
         var logFilesContent: [String: String] = [:]
         
@@ -60,12 +60,9 @@ class Logger {
         debug("Loaded \(logFilesContent.count) records from \(logDirectoryURL)")
         return logFilesContent
     }()
-
-    /// Flag which turns to true when Logger has read its cache files
-    private static var initialized = false
     
     /// The URL of the directory for logging — nil if failed to create
-    private static var logDirectory: URL? = {
+    private static let logDirectory: URL? = {
         // Don't initialize twice
         guard !initialized else { return logDirectoryURL }
         
@@ -75,14 +72,8 @@ class Logger {
         return logDirectoryURL
     }()
     
-    /// The actual URL of log directory not checking if the directory exists
-    private static var logDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent("Logger")
-    
-    /// Variable which stores different log messages to avoid doubling
-    private static var logs: [String: String] = [:]
-    
     /// Runs once at the beginning to restore saved logs
-    private static var savedLogs: [String: String] = {
+    private static let savedLogs: [String: String] = {
         // Create log directory if it does not exist
         do {
             try FileManager.default.createDirectory(at: logDirectoryURL, withIntermediateDirectories: true)
@@ -96,6 +87,16 @@ class Logger {
 
         return bundledLogs.merging(filesystemLogs) { _, new in new }
     }()
+    
+    /// The actual URL of log directory not checking if the directory exists
+    private static let logDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent("Logger")
+    
+    // MARK: - Stored Properties
+    /// Flag which turns to true when Logger has read its cache files
+    private static var initialized = false
+    
+    /// Variable which stores different log messages to avoid doubling
+    private static var logs: [String: String] = [:]
     
     // MARK: - Methods
     /// Decode file content into the key and the value
@@ -132,14 +133,17 @@ class Logger {
     ///   - key: the key to store the messages for
     ///   - messages: messages to store under the key
     static func log(key: String, _ messages: CustomStringConvertible?...) {
+        // Excluded keys we never cache
+        let excluded = [NetworkManager.defaultURL.absoluteString + "/server"]
+        
         // Make sure we have a filename to write to
         guard let filename = logDirectory?.appendingPathComponent(String(describing: Date().timeIntervalSince1970)).appendingPathExtension("txt") else {
             debug("ERROR creating filename for the log")
             return
         }
         
-        // Don't write to the same key twice
-        guard logs[key] == nil else { return }
+        // Don't write to the same key twice and skip excluded keys
+        guard logs[key] == nil && !excluded.contains(key) else { return }
         
         // Combine all messages into one string
         let message = messages.reduce("") { ($0.isEmpty ? "" : $0 + "\n") + String(describing: $1 ?? "") }

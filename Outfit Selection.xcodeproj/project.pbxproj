@@ -86,7 +86,6 @@
 		699ABB5F25E6D54A00E388FC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699ABB5E25E6D54A00E388FC /* TabBarController.swift */; };
 		69A252D126CED95100630EDA /* male.txt in Resources */ = {isa = PBXBuildFile; fileRef = 69A252CC26CED95000630EDA /* male.txt */; };
 		69A252D226CED95100630EDA /* female.txt in Resources */ = {isa = PBXBuildFile; fileRef = 69A252CD26CED95000630EDA /* female.txt */; };
-		69A252D326CED95100630EDA /* server.txt in Resources */ = {isa = PBXBuildFile; fileRef = 69A252CE26CED95000630EDA /* server.txt */; };
 		69A252D426CED95100630EDA /* categories.txt in Resources */ = {isa = PBXBuildFile; fileRef = 69A252CF26CED95000630EDA /* categories.txt */; };
 		69A252D526CED95100630EDA /* other.txt in Resources */ = {isa = PBXBuildFile; fileRef = 69A252D026CED95100630EDA /* other.txt */; };
 		69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */; };
@@ -217,7 +216,6 @@
 		699ABB5E25E6D54A00E388FC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		69A252CC26CED95000630EDA /* male.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = male.txt; sourceTree = "<group>"; };
 		69A252CD26CED95000630EDA /* female.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = female.txt; sourceTree = "<group>"; };
-		69A252CE26CED95000630EDA /* server.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = server.txt; sourceTree = "<group>"; };
 		69A252CF26CED95000630EDA /* categories.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = categories.txt; sourceTree = "<group>"; };
 		69A252D026CED95100630EDA /* other.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = other.txt; sourceTree = "<group>"; };
 		69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outfit Selection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -478,7 +476,6 @@
 				69A252CD26CED95000630EDA /* female.txt */,
 				69A252CC26CED95000630EDA /* male.txt */,
 				69A252D026CED95100630EDA /* other.txt */,
-				69A252CE26CED95000630EDA /* server.txt */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -791,7 +788,6 @@
 				69C5CBFF260A1F2200DE22E6 /* NotoSans-Regular.ttf in Resources */,
 				69535A4B25EDF6AA00E9D816 /* Screenshot07.png in Resources */,
 				69A252D126CED95100630EDA /* male.txt in Resources */,
-				69A252D326CED95100630EDA /* server.txt in Resources */,
 				690B1F9825BEF54E000CDD51 /* Launch Screen.storyboard in Resources */,
 				69C5CBF5260A1ED800DE22E6 /* NotoSans-SemiBold.ttf in Resources */,
 				69535A5125EDF6AA00E9D816 /* Screenshot05.png in Resources */,
@@ -1041,7 +1037,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2021.08.19;
+				CURRENT_PROJECT_VERSION = 2021.08.20;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = arm64;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "";
@@ -1069,7 +1065,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2021.08.19;
+				CURRENT_PROJECT_VERSION = 2021.08.20;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

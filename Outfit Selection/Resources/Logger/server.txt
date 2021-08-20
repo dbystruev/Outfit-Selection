@@ -1,2 +1,0 @@
-http://server.getoutfit.ru/server
-{"server":"http:\/\/server.getoutfit.ru"}
