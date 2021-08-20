@@ -114,8 +114,7 @@ class FeedCell: UITableViewCell {
         // Configure variables
         self.kind = kind
         let numberOfItems = min(Int.random(in: 20...30), items.count)
-        self.items = Array(items.sorted(by: { $0.time > $1.time })[...numberOfItems])
-        
+        self.items = Array(items.filter({ $0.price != nil && $0.oldPrice != nil }).shuffled()[...numberOfItems])
         // Configure outlets
         titleLabel.text = title
         configureItems()
