@@ -9,18 +9,25 @@
 import UIKit
 
 extension FeedViewController: UITableViewDataSource {
-    var feedCellTitles: [String] {["Favorite brands", "New items for you", "Sales"]}
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return feedCellTitles.count
+        return FeedCell.Kind.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier) as? FeedCell else {
-            debug("Can't dequeue \(FeedCell.identifier) cell")
-            return FeedCell()
-        }
-        cell.titleLabel.text = feedCellTitles[indexPath.row]
+        // Choose which kind the cell will have
+        let kind = FeedCell.Kind.allCases[indexPath.row]
+        
+        // Obtain a feed cell
+        let cell: FeedCell = {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier) as? FeedCell else {
+                debug("Can't dequeue \(FeedCell.identifier) cell")
+                return FeedCell()
+            }
+            return cell
+        }()
+        
+        // Configure the feed cell and return it
+        cell.configureContent(for: kind, items: [])
         return cell
     }
 }
