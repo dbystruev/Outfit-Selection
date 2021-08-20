@@ -46,7 +46,7 @@
         <scene sceneID="zAV-bp-sx6">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="tgY-lx-hfU" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Feed" image="feed" id="LcR-XH-bIR"/>
+                    <tabBarItem key="tabBarItem" title="Feed" image="home" id="LcR-XH-bIR"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="10S-c2-9Z5">
@@ -64,7 +64,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="feed" width="24" height="24"/>
+        <image name="home" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
