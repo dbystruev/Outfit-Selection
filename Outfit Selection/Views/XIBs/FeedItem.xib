@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -23,94 +23,106 @@
             <rect key="frame" x="0.0" y="0.0" width="120" height="206"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YOT-Vd-R6y">
-                    <rect key="frame" x="12" y="12" width="96" height="112.5"/>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6D-cU-iOv" customClass="DelegatedButton" customModule="Outfit_Selection" customModuleProvider="target">
-                    <rect key="frame" x="96" y="4" width="20" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="20" id="adS-sC-ian"/>
-                        <constraint firstAttribute="height" constant="20" id="bbI-sj-RKt"/>
-                    </constraints>
-                    <state key="normal" title="Button" image="wishlist"/>
-                    <connections>
-                        <action selector="likeButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="aVF-Yc-0vc"/>
-                    </connections>
-                </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Louis Vuitton" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P64-3e-fcu">
-                    <rect key="frame" x="12" y="132.5" width="96" height="19.5"/>
-                    <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="14"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leather jacket" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUt-v0-Mo6">
-                    <rect key="frame" x="12" y="156" width="96" height="16.5"/>
-                    <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
-                    <nil key="textColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vFY-bX-wSa">
-                    <rect key="frame" x="12" y="184.5" width="96" height="17.5"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ve-1R-AUQ">
+                    <rect key="frame" x="0.0" y="0.0" width="120" height="206"/>
                     <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxa-Qy-UTQ">
-                            <rect key="frame" x="0.0" y="0.0" width="48" height="17.5"/>
-                            <attributedString key="attributedText">
-                                <fragment content="$">
-                                    <attributes>
-                                        <font key="NSFont" size="12" name=".SFNS-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="2 540">
-                                    <attributes>
-                                        <font key="NSFont" size="12" name="NotoSansKannada-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
+                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YOT-Vd-R6y">
+                            <rect key="frame" x="12" y="12" width="96" height="112"/>
+                        </imageView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6D-cU-iOv" customClass="DelegatedButton" customModule="Outfit_Selection" customModuleProvider="target">
+                            <rect key="frame" x="96" y="4" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="adS-sC-ian"/>
+                                <constraint firstAttribute="height" constant="20" id="bbI-sj-RKt"/>
+                            </constraints>
+                            <state key="normal" title="Button" image="wishlist"/>
+                            <connections>
+                                <action selector="likeButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="aVF-Yc-0vc"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Louis Vuitton" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="P64-3e-fcu">
+                            <rect key="frame" x="12" y="132" width="96" height="19.5"/>
+                            <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="14"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHq-Iz-SY2">
-                            <rect key="frame" x="48" y="0.0" width="48" height="17.5"/>
-                            <attributedString key="attributedText">
-                                <fragment content="$">
-                                    <attributes>
-                                        <color key="NSColor" systemColor="systemRedColor"/>
-                                        <font key="NSFont" size="12" name=".SFNS-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                                <fragment content="2 540">
-                                    <attributes>
-                                        <color key="NSColor" systemColor="systemRedColor"/>
-                                        <font key="NSFont" size="12" name="NotoSansKannada-Regular"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Leather jacket" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUt-v0-Mo6">
+                            <rect key="frame" x="12" y="155.5" width="96" height="16.5"/>
+                            <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
+                            <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="vFY-bX-wSa">
+                            <rect key="frame" x="12" y="184" width="96" height="18"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oxa-Qy-UTQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="48" height="18"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="$">
+                                            <attributes>
+                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="2 540">
+                                            <attributes>
+                                                <font key="NSFont" size="12" name="NotoSansKannada-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VHq-Iz-SY2">
+                                    <rect key="frame" x="48" y="0.0" width="48" height="18"/>
+                                    <attributedString key="attributedText">
+                                        <fragment content="$">
+                                            <attributes>
+                                                <color key="NSColor" systemColor="systemRedColor"/>
+                                                <font key="NSFont" metaFont="cellTitle"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                        <fragment content="2 540">
+                                            <attributes>
+                                                <color key="NSColor" systemColor="systemRedColor"/>
+                                                <font key="NSFont" size="12" name="NotoSansKannada-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                        </stackView>
                     </subviews>
-                </stackView>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="YOT-Vd-R6y" firstAttribute="leading" secondItem="4Ve-1R-AUQ" secondAttribute="leading" constant="12" id="0ug-u9-pvy"/>
+                        <constraint firstItem="P64-3e-fcu" firstAttribute="top" secondItem="YOT-Vd-R6y" secondAttribute="bottom" constant="8" id="3BF-Zv-CbE"/>
+                        <constraint firstAttribute="trailing" secondItem="YOT-Vd-R6y" secondAttribute="trailing" constant="12" id="3fx-cf-Qg0"/>
+                        <constraint firstAttribute="trailing" secondItem="vFY-bX-wSa" secondAttribute="trailing" constant="12" id="8Zm-vJ-Lp9"/>
+                        <constraint firstItem="gUt-v0-Mo6" firstAttribute="top" secondItem="P64-3e-fcu" secondAttribute="bottom" constant="4" id="Dvu-vN-FTg"/>
+                        <constraint firstItem="P64-3e-fcu" firstAttribute="leading" secondItem="4Ve-1R-AUQ" secondAttribute="leading" constant="12" id="Grd-AK-gkb"/>
+                        <constraint firstAttribute="bottom" secondItem="vFY-bX-wSa" secondAttribute="bottom" constant="4" id="Ij3-s0-hhj"/>
+                        <constraint firstItem="vFY-bX-wSa" firstAttribute="top" secondItem="gUt-v0-Mo6" secondAttribute="bottom" constant="12" id="SIV-eM-2m7"/>
+                        <constraint firstAttribute="trailing" secondItem="gUt-v0-Mo6" secondAttribute="trailing" constant="12" id="a7a-mk-WEO"/>
+                        <constraint firstItem="YOT-Vd-R6y" firstAttribute="top" secondItem="4Ve-1R-AUQ" secondAttribute="top" constant="12" id="biP-c8-cYz"/>
+                        <constraint firstItem="gUt-v0-Mo6" firstAttribute="leading" secondItem="4Ve-1R-AUQ" secondAttribute="leading" constant="12" id="hFe-p9-JoK"/>
+                        <constraint firstItem="y6D-cU-iOv" firstAttribute="top" secondItem="4Ve-1R-AUQ" secondAttribute="top" constant="4" id="lbf-WE-9UV"/>
+                        <constraint firstItem="vFY-bX-wSa" firstAttribute="leading" secondItem="4Ve-1R-AUQ" secondAttribute="leading" constant="12" id="lwN-0U-ErW"/>
+                        <constraint firstAttribute="trailing" secondItem="y6D-cU-iOv" secondAttribute="trailing" constant="4" id="nQa-0V-0yI"/>
+                        <constraint firstAttribute="trailing" secondItem="P64-3e-fcu" secondAttribute="trailing" constant="12" id="x6t-Fb-Kpf"/>
+                    </constraints>
+                </view>
             </subviews>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
-            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="vFY-bX-wSa" firstAttribute="top" secondItem="gUt-v0-Mo6" secondAttribute="bottom" constant="12" id="6f1-vT-g4N"/>
-                <constraint firstAttribute="trailing" secondItem="y6D-cU-iOv" secondAttribute="trailing" constant="4" id="8qX-vK-hMV"/>
-                <constraint firstItem="vFY-bX-wSa" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="DPM-Zr-NAv"/>
-                <constraint firstAttribute="trailing" secondItem="gUt-v0-Mo6" secondAttribute="trailing" constant="12" id="MNj-Nq-0BA"/>
-                <constraint firstItem="P64-3e-fcu" firstAttribute="top" secondItem="YOT-Vd-R6y" secondAttribute="bottom" constant="8" id="MPG-fj-uRl"/>
-                <constraint firstItem="YOT-Vd-R6y" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="NVA-8j-ytg"/>
-                <constraint firstAttribute="trailing" secondItem="vFY-bX-wSa" secondAttribute="trailing" constant="12" id="SNR-01-E9e"/>
-                <constraint firstAttribute="trailing" secondItem="YOT-Vd-R6y" secondAttribute="trailing" constant="12" id="fAD-u4-N3A"/>
-                <constraint firstItem="gUt-v0-Mo6" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="kSb-Mc-SSG"/>
-                <constraint firstAttribute="bottom" secondItem="vFY-bX-wSa" secondAttribute="bottom" constant="4" id="lGK-cf-b5g"/>
-                <constraint firstAttribute="trailing" secondItem="P64-3e-fcu" secondAttribute="trailing" constant="12" id="s2O-wV-gjE"/>
-                <constraint firstItem="P64-3e-fcu" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="saX-Ov-t1f"/>
-                <constraint firstItem="gUt-v0-Mo6" firstAttribute="top" secondItem="P64-3e-fcu" secondAttribute="bottom" constant="4" id="sm0-9t-Hvg"/>
-                <constraint firstItem="YOT-Vd-R6y" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="xu4-ET-DCD"/>
-                <constraint firstItem="y6D-cU-iOv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="4" id="z2d-GL-5XZ"/>
+                <constraint firstAttribute="trailing" secondItem="4Ve-1R-AUQ" secondAttribute="trailing" id="CoO-m3-uZy"/>
+                <constraint firstAttribute="bottom" secondItem="4Ve-1R-AUQ" secondAttribute="bottom" id="JrC-X2-xWo"/>
+                <constraint firstItem="4Ve-1R-AUQ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="dNB-Ag-Tm5"/>
+                <constraint firstItem="4Ve-1R-AUQ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="uBL-t6-Sjy"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
@@ -120,15 +132,13 @@
                 <outlet property="nameLabel" destination="gUt-v0-Mo6" id="3e3-G5-sSM"/>
                 <outlet property="oldPriceLabel" destination="VHq-Iz-SY2" id="349-W6-eB9"/>
                 <outlet property="priceLabel" destination="oxa-Qy-UTQ" id="2y6-Z6-1bH"/>
+                <outlet property="shadows" destination="4Ve-1R-AUQ" id="sHg-T6-SfA"/>
             </connections>
             <point key="canvasLocation" x="-14.492753623188406" y="75"/>
         </view>
     </objects>
     <resources>
         <image name="wishlist" width="24" height="24"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

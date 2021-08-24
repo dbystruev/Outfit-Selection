@@ -22,6 +22,9 @@ class FeedViewController: UIViewController {
         // Set self as feed table view data source and delegate
         feedTableView.dataSource = self
         feedTableView.delegate = self
+        
+        // Remove separator lines between the cells
+        feedTableView.separatorStyle = .none
     }
     
 }
