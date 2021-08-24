@@ -15,10 +15,14 @@ class FeedCell: UITableViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     // MARK: - Static Constants
+    static let designFactor: CGFloat = 1.25
+    
+    /// Default item sizes
+    static let itemHeight: CGFloat = 206 * designFactor
+    static let itemWidth: CGFloat = 120 * designFactor
+    
     /// Default cell's height
-    static let itemHeight: CGFloat = 206
-    static let itemWidth: CGFloat = 120
-    static let height: CGFloat = 282
+    static let height: CGFloat = 282 * designFactor
     
     // MARK: - Class Properties
     class var identifier: String { nib }
