@@ -1,5 +1,5 @@
 //
-//  FeedCell.swift
+//  FeedItemCell.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 20.08.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedCell: UITableViewCell {
+class FeedItemCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var itemStackView: UIStackView!
     @IBOutlet weak var seeAllButton: DelegatedButton!
@@ -102,10 +102,10 @@ class FeedCell: UITableViewCell {
         // Configure constraints for the first item — the rest will follow suit
         guard let item = itemStackView.arrangedSubviews.first else { return }
         let heightConstraint = NSLayoutConstraint(
-            item: item, attribute: .height, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 1, constant: FeedCell.itemHeight
+            item: item, attribute: .height, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 1, constant: FeedItemCell.itemHeight
         )
         let widthConstraint = NSLayoutConstraint(
-            item: item, attribute: .width, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 1, constant: FeedCell.itemWidth
+            item: item, attribute: .width, relatedBy: .equal, toItem: .none, attribute: .notAnAttribute, multiplier: 1, constant: FeedItemCell.itemWidth
         )
         NSLayoutConstraint.activate([heightConstraint, widthConstraint])
     }

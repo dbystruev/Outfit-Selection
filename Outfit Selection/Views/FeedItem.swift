@@ -20,7 +20,7 @@ class FeedItem: UIView {
     @IBOutlet weak var shadows: UIView!
     
     // MARK: - Static Constants
-    static let designFactor = FeedCell.designFactor
+    static let designFactor = FeedItemCell.designFactor
     
     // MARK: - Class Properties
     class var nib: String { String(describing: Self.self) }

@@ -10,18 +10,18 @@ import UIKit
 
 extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FeedCell.Kind.allCases.count
+        return FeedItemCell.Kind.allCases.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Choose which kind the cell will have
-        let kind = FeedCell.Kind.allCases[indexPath.row]
+        let kind = FeedItemCell.Kind.allCases[indexPath.row]
         
         // Obtain a feed cell
-        let cell: FeedCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedCell.identifier) as? FeedCell else {
-                debug("Can't dequeue \(FeedCell.identifier) cell")
-                return FeedCell()
+        let cell: FeedItemCell = {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedItemCell.identifier) as? FeedItemCell else {
+                debug("Can't dequeue \(FeedItemCell.identifier) cell")
+                return FeedItemCell()
             }
             return cell
         }()

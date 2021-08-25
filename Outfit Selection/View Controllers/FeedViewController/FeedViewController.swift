@@ -17,7 +17,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
         
         // Register feed cell with feed table view
-        FeedCell.register(with: feedTableView)
+        FeedItemCell.register(with: feedTableView)
         
         // Set self as feed table view data source and delegate
         feedTableView.dataSource = self

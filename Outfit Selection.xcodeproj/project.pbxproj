@@ -70,8 +70,8 @@
 		6978202F2587BCAA007D4CCB /* ImageCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6978202E2587BCAA007D4CCB /* ImageCollectionViewModel.swift */; };
 		697A3CFB25EACCCB007158B4 /* String+firstCapitalized.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697A3CFA25EACCCB007158B4 /* String+firstCapitalized.swift */; };
 		697A3CFE25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697A3CFD25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift */; };
-		697CCE5C26CFA47E00B69763 /* FeedCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CCE5A26CFA47E00B69763 /* FeedCell.swift */; };
-		697CCE5D26CFA47E00B69763 /* FeedCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CCE5B26CFA47E00B69763 /* FeedCell.xib */; };
+		697CCE5C26CFA47E00B69763 /* FeedItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CCE5A26CFA47E00B69763 /* FeedItemCell.swift */; };
+		697CCE5D26CFA47E00B69763 /* FeedItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CCE5B26CFA47E00B69763 /* FeedItemCell.xib */; };
 		697CCE6026CFBCA900B69763 /* FeedViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CCE5F26CFBCA900B69763 /* FeedViewController+UITableViewDelegate.swift */; };
 		697CCE6226CFCA6600B69763 /* FeedViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CCE6126CFCA6600B69763 /* FeedViewController+UITableViewDataSource.swift */; };
 		697CCE6426CFF1ED00B69763 /* ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CCE6326CFF1ED00B69763 /* ButtonDelegate.swift */; };
@@ -209,8 +209,8 @@
 		6978202E2587BCAA007D4CCB /* ImageCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewModel.swift; sourceTree = "<group>"; };
 		697A3CFA25EACCCB007158B4 /* String+firstCapitalized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+firstCapitalized.swift"; sourceTree = "<group>"; };
 		697A3CFD25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
-		697CCE5A26CFA47E00B69763 /* FeedCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCell.swift; sourceTree = "<group>"; };
-		697CCE5B26CFA47E00B69763 /* FeedCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedCell.xib; sourceTree = "<group>"; };
+		697CCE5A26CFA47E00B69763 /* FeedItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemCell.swift; sourceTree = "<group>"; };
+		697CCE5B26CFA47E00B69763 /* FeedItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedItemCell.xib; sourceTree = "<group>"; };
 		697CCE5F26CFBCA900B69763 /* FeedViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		697CCE6126CFCA6600B69763 /* FeedViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		697CCE6326CFF1ED00B69763 /* ButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonDelegate.swift; sourceTree = "<group>"; };
@@ -480,7 +480,7 @@
 			isa = PBXGroup;
 			children = (
 				69297C5025EB852700A8684E /* BrandCell.swift */,
-				697CCE5A26CFA47E00B69763 /* FeedCell.swift */,
+				697CCE5A26CFA47E00B69763 /* FeedItemCell.swift */,
 				69297C5D25EBC9FE00A8684E /* GenderCell.swift */,
 				69C3697025E7D127000A8E5E /* ItemCell.swift */,
 				69C3697325E80676000A8E5E /* OutfitCell.swift */,
@@ -700,7 +700,7 @@
 			isa = PBXGroup;
 			children = (
 				69297C5125EB852700A8684E /* BrandCell.xib */,
-				697CCE5B26CFA47E00B69763 /* FeedCell.xib */,
+				697CCE5B26CFA47E00B69763 /* FeedItemCell.xib */,
 				697CCE6926D0039800B69763 /* FeedItem.xib */,
 				69297C5E25EBC9FE00A8684E /* GenderCell.xib */,
 				69C3A4BD25EC07E800F8F968 /* ProfileSectionHeaderView.xib */,
@@ -831,7 +831,7 @@
 				690491F6260C732A0098F1FD /* NotoSans-Bold.ttf in Resources */,
 				69535A4F25EDF6AA00E9D816 /* Screenshot12.png in Resources */,
 				69A252D426CED95100630EDA /* categories.txt in Resources */,
-				697CCE5D26CFA47E00B69763 /* FeedCell.xib in Resources */,
+				697CCE5D26CFA47E00B69763 /* FeedItemCell.xib in Resources */,
 				697CCE6A26D0039800B69763 /* FeedItem.xib in Resources */,
 				699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */,
 				6953680225F7B5590024EC8B /* .gitignore in Resources */,
@@ -914,7 +914,7 @@
 				692C940F254700FC0075BD92 /* NetworkManager.swift in Sources */,
 				69AE954D2563B87000850210 /* String+lastComponent.swift in Sources */,
 				69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */,
-				697CCE5C26CFA47E00B69763 /* FeedCell.swift in Sources */,
+				697CCE5C26CFA47E00B69763 /* FeedItemCell.swift in Sources */,
 				69B539FA257FBC3C00116F98 /* UIViewController+tabBar.swift in Sources */,
 				69248FFD25503F2F00106681 /* JSON.swift in Sources */,
 				699AAB8026CD72AE001F6522 /* Logger.swift in Sources */,
