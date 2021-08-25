@@ -56,7 +56,8 @@ class FeedItem: UIView {
     
     /// One-time layer configuration after estabishing instance
     func configureLayer() {
-        configureShadows()
+        // Don't add shadows for now
+        // configureShadows()
     }
     
     /// One-time shadows configuraion after estabishing an instance
