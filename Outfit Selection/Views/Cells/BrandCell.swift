@@ -94,19 +94,6 @@ class BrandCell: UICollectionViewCell {
     var verticalPaddingConstraints: [NSLayoutConstraint] { [bottomPaddingConstraint, topPaddingConstraint] }
     
     // MARK: - Methods
-    /// Configure cell's background depending on whether the image is selected or not
-    /// - Parameter isSelected: true if image is selected, false otherwise
-    func configureBackground(isSelected: Bool) {
-        // Set container view background color
-        brandImageContainerView.backgroundColor = isSelected ? #colorLiteral(red: 0.7878249884, green: 0.8170605302, blue: 0.8061822057, alpha: 1) : .clear
-        
-        // Make corners round
-        brandImageContainerView.layer.cornerRadius = brandImageContainerView.frame.size.width / 2
-        
-        // Show / hide checkmark image view depending on selection
-        checkmarkImageView.isHidden = !isSelected
-    }
-    
     /// Configure brand cell with given branded image
     /// - Parameters:
     ///   - brandedImage: the branded image to configure the brand cell with
@@ -128,7 +115,29 @@ class BrandCell: UICollectionViewCell {
         // Need to layout constraints before configuring cell background
         layoutIfNeeded()
         
-        // Configure cell background
+        // Configure cell background and border
         configureBackground(isSelected: brandedImage.isSelected)
+    }
+    
+    /// Configure cell's background depending on whether the image is selected or not
+    /// - Parameter isSelected: true if image is selected, false otherwise
+    func configureBackground(isSelected: Bool) {
+        // Set container view background color
+        brandImageContainerView.backgroundColor = isSelected ? #colorLiteral(red: 0.7878249884, green: 0.8170605302, blue: 0.8061822057, alpha: 1) : .clear
+        
+        // Make corners round
+        brandImageContainerView.layer.cornerRadius = brandImageContainerView.frame.size.width / 2
+        
+        // Show / hide checkmark image view depending on selection
+        checkmarkImageView.isHidden = !isSelected
+        
+        // Configure border
+        configureBorder(isSelected: isSelected)
+    }
+    
+    /// Configure the visibility of border around brand
+    /// - Parameter isSelected: true if image is selected, false otherwise
+    func configureBorder(isSelected: Bool) {
+        brandImageContainerView.layer.borderWidth = isSelected ? 0 : 0.5
     }
 }
