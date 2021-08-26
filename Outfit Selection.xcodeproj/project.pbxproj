@@ -141,7 +141,6 @@
 		69DA85D426D5FA5000D16B25 /* FeedBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */; };
 		69DA85D726D5FD2F00D16B25 /* FeedBrandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */; };
 		69DA85DB26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */; };
-		69DA85DF26D60B9B00D16B25 /* FeedBrandCell+UICollectiionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85DE26D60B9B00D16B25 /* FeedBrandCell+UICollectiionViewDelegate.swift */; };
 		69DA85E226D60CCF00D16B25 /* FeedBrandCell+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85E126D60CCF00D16B25 /* FeedBrandCell+UICollectionViewDataSource.swift */; };
 		69DB6A5625E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */; };
 		69DB6A5A25E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6A5925E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift */; };
@@ -288,7 +287,6 @@
 		69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBrandCell.swift; sourceTree = "<group>"; };
 		69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedBrandCell.xib; sourceTree = "<group>"; };
 		69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
-		69DA85DE26D60B9B00D16B25 /* FeedBrandCell+UICollectiionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectiionViewDelegate.swift"; sourceTree = "<group>"; };
 		69DA85E126D60CCF00D16B25 /* FeedBrandCell+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69DB6A5925E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
@@ -434,6 +432,16 @@
 				69D0FDA825EB697F00FC15F6 /* XIBs */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		6976232126D763DE00504F31 /* FeedBrandCell */ = {
+			isa = PBXGroup;
+			children = (
+				69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */,
+				69DA85E126D60CCF00D16B25 /* FeedBrandCell+UICollectionViewDataSource.swift */,
+				69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */,
+			);
+			path = FeedBrandCell;
 			sourceTree = "<group>";
 		};
 		6978202D2587BC7A007D4CCB /* View Models */ = {
@@ -725,10 +733,7 @@
 		69DA85D126D5FA2800D16B25 /* FeedCell */ = {
 			isa = PBXGroup;
 			children = (
-				69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */,
-				69DA85DE26D60B9B00D16B25 /* FeedBrandCell+UICollectiionViewDelegate.swift */,
-				69DA85E126D60CCF00D16B25 /* FeedBrandCell+UICollectionViewDataSource.swift */,
-				69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */,
+				6976232126D763DE00504F31 /* FeedBrandCell */,
 				6976231D26D75F3A00504F31 /* FeedCell.swift */,
 				697CCE5A26CFA47E00B69763 /* FeedItemCell.swift */,
 			);
@@ -937,7 +942,6 @@
 				69C3A4BE25EC07E800F8F968 /* ProfileSectionHeaderView.swift in Sources */,
 				69727EFF25E84EC000457A58 /* UINavigationController+findViewController.swift in Sources */,
 				69C5CBE3260A147400DE22E6 /* StringProtocol+byWords.swift in Sources */,
-				69DA85DF26D60B9B00D16B25 /* FeedBrandCell+UICollectiionViewDelegate.swift in Sources */,
 				6976231E26D75F3A00504F31 /* FeedCell.swift in Sources */,
 				6986612825705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift in Sources */,
 				69BA640B25E6BB2000C805B6 /* SelectableButtonItem.swift in Sources */,
