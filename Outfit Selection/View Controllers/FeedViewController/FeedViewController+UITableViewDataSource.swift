@@ -19,9 +19,10 @@ extension FeedViewController: UITableViewDataSource {
         
         // Obtain a feed cell
         let cell: FeedItemCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: FeedItemCell.identifier) as? FeedItemCell else {
-                debug("Can't dequeue \(FeedItemCell.identifier) cell")
-                return FeedItemCell()
+            let identifier = kind == .brands ? FeedBrandCell.identifier : FeedItemCell.identifier
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? FeedItemCell else {
+                debug("Can't dequeue \(identifier) cell")
+                return kind == .brands ? FeedBrandCell() : FeedItemCell()
             }
             return cell
         }()

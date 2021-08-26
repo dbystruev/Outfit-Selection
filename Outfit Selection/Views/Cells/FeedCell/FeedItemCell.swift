@@ -14,20 +14,19 @@ class FeedItemCell: UITableViewCell {
     @IBOutlet weak var seeAllButton: DelegatedButton!
     @IBOutlet weak var titleLabel: UILabel!
     
-    // MARK: - Static Constants
-    static let designFactor: CGFloat = 1.25
-    
-    /// Default item sizes
-    static let itemHeight: CGFloat = 206 * designFactor
-    static let itemWidth: CGFloat = 120 * designFactor
+    // MARK: - Class Properties
+    class var designFactor: CGFloat { 1.25 }
     
     /// Default cell's height
-    static let height: CGFloat = 282 * designFactor
-    
-    // MARK: - Class Properties
+    class var height: CGFloat { 282 * designFactor }
+
     class var identifier: String { nib }
     class var nib: String { String(describing: Self.self) }
     
+    /// Default item sizes
+    class var itemHeight: CGFloat { 206 * designFactor }
+    class var itemWidth: CGFloat { 120 * designFactor }
+
     // MARK: - Class Methods
     /// Registers the cell with the table view
     /// - Parameter tableView: the table view to register with
@@ -78,7 +77,7 @@ class FeedItemCell: UITableViewCell {
     /// Make sure to remove item stack view subviews
     override func prepareForReuse() {
         super.prepareForReuse()
-        itemStackView.subviews.forEach { $0.removeFromSuperview() }
+        itemStackView?.subviews.forEach { $0.removeFromSuperview() }
     }
     
     // MARK: - Custom Methods

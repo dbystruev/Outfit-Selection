@@ -9,5 +9,10 @@
 import UIKit
 
 extension FeedViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { FeedItemCell.height }
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        // Choose which kind the cell will have
+        let kind = FeedItemCell.Kind.allCases[indexPath.row]
+        
+        return kind == .brands ? FeedBrandCell.height : FeedItemCell.height
+    }
 }

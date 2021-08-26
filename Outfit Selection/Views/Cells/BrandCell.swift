@@ -11,10 +11,10 @@ import UIKit
 class BrandCell: UICollectionViewCell {
     // MARK: - Static Properties
     /// Horizontal margin between brand image view container and the cell
-    static let horizontalMargin: CGFloat = 12
+    static var horizontalMargin: CGFloat = 12
     
     /// Horizontal padding around brand image view and its container
-    static let horizontalPadding: CGFloat = 8
+    static var horizontalPadding: CGFloat = 8
     
     /// The nib object containing this cell
     static let nib = UINib(nibName: "BrandCell", bundle: nil)
@@ -23,10 +23,10 @@ class BrandCell: UICollectionViewCell {
     static let reuseId = "brandCell"
     
     /// Vertical margin between brand image view container and the container
-    static let verticalMargin: CGFloat = 8
+    static var verticalMargin: CGFloat = 8
     
     /// Vertical padding around brand image view and its container
-    static let verticalPadding: CGFloat = 24
+    static var verticalPadding: CGFloat = 24
     
     // MARK: - Static Methods
     /// Returns the number of cells to fit in one row

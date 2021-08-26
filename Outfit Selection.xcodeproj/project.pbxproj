@@ -137,6 +137,11 @@
 		69C5CC03260A224200DE22E6 /* ShareViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C5CC02260A224200DE22E6 /* ShareViewController+Actions.swift */; };
 		69D0FD9F25EB621800FC15F6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D0FD9E25EB621800FC15F6 /* ProfileViewController.swift */; };
 		69D0FDA525EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */; };
+		69DA85D426D5FA5000D16B25 /* FeedBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */; };
+		69DA85D726D5FD2F00D16B25 /* FeedBrandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */; };
+		69DA85DB26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */; };
+		69DA85DF26D60B9B00D16B25 /* FeedBrandCell+UICollectiionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85DE26D60B9B00D16B25 /* FeedBrandCell+UICollectiionViewDelegate.swift */; };
+		69DA85E226D60CCF00D16B25 /* FeedBrandCell+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85E126D60CCF00D16B25 /* FeedBrandCell+UICollectionViewDataSource.swift */; };
 		69DB6A5625E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */; };
 		69DB6A5A25E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DB6A5925E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift */; };
 		69EB8BB525EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */; };
@@ -278,6 +283,11 @@
 		69C5CC02260A224200DE22E6 /* ShareViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ShareViewController+Actions.swift"; sourceTree = "<group>"; };
 		69D0FD9E25EB621800FC15F6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
+		69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBrandCell.swift; sourceTree = "<group>"; };
+		69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedBrandCell.xib; sourceTree = "<group>"; };
+		69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
+		69DA85DE26D60B9B00D16B25 /* FeedBrandCell+UICollectiionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectiionViewDelegate.swift"; sourceTree = "<group>"; };
+		69DA85E126D60CCF00D16B25 /* FeedBrandCell+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69DB6A5925E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
 		69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
@@ -480,7 +490,7 @@
 			isa = PBXGroup;
 			children = (
 				69297C5025EB852700A8684E /* BrandCell.swift */,
-				697CCE5A26CFA47E00B69763 /* FeedItemCell.swift */,
+				69DA85D126D5FA2800D16B25 /* FeedCell */,
 				69297C5D25EBC9FE00A8684E /* GenderCell.swift */,
 				69C3697025E7D127000A8E5E /* ItemCell.swift */,
 				69C3697325E80676000A8E5E /* OutfitCell.swift */,
@@ -700,13 +710,26 @@
 			isa = PBXGroup;
 			children = (
 				69297C5125EB852700A8684E /* BrandCell.xib */,
-				697CCE5B26CFA47E00B69763 /* FeedItemCell.xib */,
+				69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */,
 				697CCE6926D0039800B69763 /* FeedItem.xib */,
+				697CCE5B26CFA47E00B69763 /* FeedItemCell.xib */,
 				69297C5E25EBC9FE00A8684E /* GenderCell.xib */,
 				69C3A4BD25EC07E800F8F968 /* ProfileSectionHeaderView.xib */,
 				692AF3CD260113DB00D37269 /* ShareView.xib */,
 			);
 			path = XIBs;
+			sourceTree = "<group>";
+		};
+		69DA85D126D5FA2800D16B25 /* FeedCell */ = {
+			isa = PBXGroup;
+			children = (
+				69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */,
+				69DA85DE26D60B9B00D16B25 /* FeedBrandCell+UICollectiionViewDelegate.swift */,
+				69DA85E126D60CCF00D16B25 /* FeedBrandCell+UICollectionViewDataSource.swift */,
+				69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */,
+				697CCE5A26CFA47E00B69763 /* FeedItemCell.swift */,
+			);
+			path = FeedCell;
 			sourceTree = "<group>";
 		};
 		69DB6A5425E81AF700EC4CDE /* WishlistViewController */ = {
@@ -812,6 +835,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				69DA85D726D5FD2F00D16B25 /* FeedBrandCell.xib in Resources */,
 				696E876F25647C0F0061802E /* README.md in Resources */,
 				69A6F6FB22BA26BA002A3B49 /* Assets.xcassets in Resources */,
 				69A252D226CED95100630EDA /* female.txt in Resources */,
@@ -864,6 +888,7 @@
 				69C5CBDA260A045A00DE22E6 /* Collection+safeIndex.swift in Sources */,
 				695367FB25F7B0AA0024EC8B /* AppDelegate+UNUserNotificationCenterDelegate.swift in Sources */,
 				6986611B25700ED2008F94CA /* Double+asTime.swift in Sources */,
+				69DA85E226D60CCF00D16B25 /* FeedBrandCell+UICollectionViewDataSource.swift in Sources */,
 				69D0FDA525EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift in Sources */,
 				694E7BF225DC1D9D006607CD /* BrandsViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				698990D82323B9B0002DCA29 /* OutfitViewController+Shake.swift in Sources */,
@@ -879,6 +904,7 @@
 				697A3CFE25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift in Sources */,
 				697A3CFB25EACCCB007158B4 /* String+firstCapitalized.swift in Sources */,
 				69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */,
+				69DA85D426D5FA5000D16B25 /* FeedBrandCell.swift in Sources */,
 				69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */,
 				692C9417254708830075BD92 /* URL+withQueries.swift in Sources */,
 				693D728E256BF4CA00540C10 /* BrandManager.swift in Sources */,
@@ -908,6 +934,7 @@
 				69C3A4BE25EC07E800F8F968 /* ProfileSectionHeaderView.swift in Sources */,
 				69727EFF25E84EC000457A58 /* UINavigationController+findViewController.swift in Sources */,
 				69C5CBE3260A147400DE22E6 /* StringProtocol+byWords.swift in Sources */,
+				69DA85DF26D60B9B00D16B25 /* FeedBrandCell+UICollectiionViewDelegate.swift in Sources */,
 				6986612825705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift in Sources */,
 				69BA640B25E6BB2000C805B6 /* SelectableButtonItem.swift in Sources */,
 				69C3695525E77549000A8E5E /* OccasionsViewController.swift in Sources */,
@@ -955,6 +982,7 @@
 				6941BDEC260B565F003D5EE7 /* RefreshBubble.swift in Sources */,
 				69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */,
 				692C94132547025D0075BD92 /* Category.swift in Sources */,
+				69DA85DB26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				69560ECC2587E7C700337F35 /* Item+Branded.swift in Sources */,
 				69AE7662260BCE2C009CF863 /* UIView+addGestureOnce.swift in Sources */,
 			);
