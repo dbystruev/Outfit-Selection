@@ -48,10 +48,13 @@ class FeedCell: UITableViewCell {
     var kind: Kind = .sale
     
     /// There are 3 kinds of feed cell so far
-    enum Kind: CaseIterable {
+    enum Kind: String, CaseIterable, CustomStringConvertible {
         case brands
         case newItems
         case sale
+        
+        // CustomStringConvertible
+        var description: String { rawValue }
         
         var title: String {
             switch self {
@@ -83,6 +86,6 @@ class FeedCell: UITableViewCell {
     
     // MARK: - Actions
     @IBAction func seeAllButtonTapped(_ sender: DelegatedButton) {
-        delegate?.buttonTapped(sender)
+        delegate?.buttonTapped(kind)
     }
 }

@@ -38,6 +38,7 @@ extension FeedViewController: UITableViewDataSource {
             return kind == .brands ? FeedBrandCell() : FeedItemCell()
         }()
         
+        cell.delegate = self
         return cell
     }
 }

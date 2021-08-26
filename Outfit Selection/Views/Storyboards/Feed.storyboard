@@ -1,13 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tgY-lx-hfU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tgY-lx-hfU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSans-SemiBold.ttf">
+            <string>NotoSans-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Feed-->
         <scene sceneID="s0d-6b-0kx">
@@ -36,11 +42,68 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="feedTableView" destination="zSh-sE-otJ" id="Q3K-VB-HRy"/>
+                        <segue destination="sXO-jE-vg3" kind="show" identifier="feedItemViewControllerSegue" id="eQ7-pl-bYp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="892.75362318840587" y="104.46428571428571"/>
+        </scene>
+        <!--Feed Item View Controller-->
+        <scene sceneID="2lq-O3-dbm">
+            <objects>
+                <viewController id="sXO-jE-vg3" customClass="FeedItemViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iRU-hz-Xhk">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New items for you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrC-1i-09K">
+                                <rect key="frame" x="24" y="100" width="143" height="22"/>
+                                <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="16"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="yQn-b3-YtV">
+                                <rect key="frame" x="24" y="142" width="366" height="671"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="wqu-PB-Tz2">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Jjt-08-TZZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="mHi-hG-g2l">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="MTN-nF-Tsj"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="MTN-nF-Tsj" firstAttribute="bottom" secondItem="yQn-b3-YtV" secondAttribute="bottom" id="2rp-w5-FtK"/>
+                            <constraint firstItem="yQn-b3-YtV" firstAttribute="leading" secondItem="MTN-nF-Tsj" secondAttribute="leading" constant="24" id="MJI-rp-Umu"/>
+                            <constraint firstItem="yQn-b3-YtV" firstAttribute="top" secondItem="MrC-1i-09K" secondAttribute="bottom" constant="20" id="Ye1-y5-J6Z"/>
+                            <constraint firstItem="MrC-1i-09K" firstAttribute="leading" secondItem="MTN-nF-Tsj" secondAttribute="leading" constant="24" id="Z55-9o-HHN"/>
+                            <constraint firstItem="MrC-1i-09K" firstAttribute="top" secondItem="MTN-nF-Tsj" secondAttribute="top" constant="12" id="mEP-9D-xLH"/>
+                            <constraint firstItem="MTN-nF-Tsj" firstAttribute="trailing" secondItem="yQn-b3-YtV" secondAttribute="trailing" constant="24" id="w3m-If-sqD"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="MjH-OZ-4Ld"/>
+                    <connections>
+                        <outlet property="itemCollectionView" destination="yQn-b3-YtV" id="z7b-t5-6yJ"/>
+                        <outlet property="titleLabel" destination="MrC-1i-09K" id="ZK0-Of-05o"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wzf-jv-yyO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1832" y="104"/>
         </scene>
         <!--Feed-->
         <scene sceneID="zAV-bp-sx6">
