@@ -18,17 +18,26 @@ extension FeedViewController: UITableViewDataSource {
         let kind = FeedItemCell.Kind.allCases[indexPath.row]
         
         // Obtain a feed cell
-        let cell: FeedItemCell = {
+        let cell: FeedCell = {
+            // Try to dequeue feed brand or item cell
             let identifier = kind == .brands ? FeedBrandCell.identifier : FeedItemCell.identifier
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: identifier) as? FeedItemCell else {
-                debug("Can't dequeue \(identifier) cell")
-                return kind == .brands ? FeedBrandCell() : FeedItemCell()
+            let cell = tableView.dequeueReusableCell(withIdentifier: identifier)
+            
+            // Check which one of the two was dequeued
+            if let brandCell = cell as? FeedBrandCell {
+                brandCell.configureContent()
+                return brandCell
+                
+            } else if let feedCell = cell as? FeedItemCell {
+                feedCell.configureContent(for: kind, items: Item.all)
+                return feedCell
             }
-            return cell
+            
+            // If none — warn and create a new feed cell
+            debug("Can't dequeue \(identifier) cell")
+            return kind == .brands ? FeedBrandCell() : FeedItemCell()
         }()
         
-        // Configure the feed cell and return it
-        cell.configureContent(for: kind, items: Item.all)
         return cell
     }
 }

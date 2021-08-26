@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedBrandCell: FeedItemCell {
+class FeedBrandCell: FeedCell {
     // MARK: - Outlets
     @IBOutlet weak var brandsCollectionView: UICollectionView!
     
@@ -31,17 +31,9 @@ class FeedBrandCell: FeedItemCell {
     /// - Parameters:
     ///   - kind: cell's type
     ///   - items: the brands which needs to be displayed in the item stack view
-    override func configureContent(for kind: FeedItemCell.Kind, items: [Item]) {
-        // Check that we indeed were passed brands kind, otherwise configure with super
-        guard kind == .brands else {
-            super.configureContent(for: kind, items: items)
-            return
-        }
-        
+    func configureContent() {
         // Configure variables
-        self.kind = kind
-        
-        // Items could be ignored for feed brand cell
+        self.kind = .brands
         
         // Configure outlets
         titleLabel.text = title
