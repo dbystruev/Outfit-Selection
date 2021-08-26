@@ -13,14 +13,14 @@ class FeedBrandCell: FeedItemCell {
     @IBOutlet weak var brandsCollectionView: UICollectionView!
     
     // MARK: - Class Properties
-    class override var designFactor: CGFloat { 1.25 }
+    class override var designFactor: CGFloat { 1 }
     
     /// Default item sizes
     class override var itemHeight: CGFloat { 98 * designFactor }
     class override var itemWidth: CGFloat { 98 * designFactor }
     
     /// Default cell's height
-    class override var height: CGFloat { 174 * designFactor }
+    class override var height: CGFloat { 282 * designFactor }
     
     // MARK: - Stored Properties
     /// The collection of brand images

@@ -9,6 +9,10 @@
 import UIKit
 
 class BrandCell: UICollectionViewCell {
+    // MARK: - Class Properties
+    /// Nib name is the same as the class name
+    class var nibName: String { String(describing: Self.self) }
+    
     // MARK: - Static Properties
     /// Horizontal margin between brand image view container and the cell
     static var horizontalMargin: CGFloat = 12
@@ -16,8 +20,8 @@ class BrandCell: UICollectionViewCell {
     /// Horizontal padding around brand image view and its container
     static var horizontalPadding: CGFloat = 8
     
-    /// The nib object containing this cell
-    static let nib = UINib(nibName: "BrandCell", bundle: nil)
+    /// The nib object containing this brand cell
+    static let nib = UINib(nibName: nibName, bundle: nil)
     
     /// The reuse identifier to associate with this cell's nib file
     static let reuseId = "brandCell"

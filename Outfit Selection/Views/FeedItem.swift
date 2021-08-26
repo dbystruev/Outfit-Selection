@@ -18,16 +18,20 @@ class FeedItem: UIView {
     @IBOutlet weak var oldPriceLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var shadows: UIView!
-    
-    // MARK: - Static Constants
+        
+    // MARK: - Class Properties
+    /// Nib name is the same as the class name
+    class var nibName: String { String(describing: Self.self) }
+
+    // MARK: - Static Properties
     static let designFactor = FeedItemCell.designFactor
     
-    // MARK: - Class Properties
-    class var nib: String { String(describing: Self.self) }
+    /// The nib object containing this feed item
+    static let nib = UINib(nibName: nibName, bundle: nil)    
     
     // MARK: - Class Methods
     class func instanceFromNib() -> FeedItem? {
-        let feedItem = UINib(nibName: nib, bundle: nil).instantiate(withOwner: nil, options: nil).first as? FeedItem
+        let feedItem = nib.instantiate(withOwner: nil, options: nil).first as? FeedItem
         feedItem?.configureLayer()
         return feedItem
     }

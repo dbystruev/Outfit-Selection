@@ -37,10 +37,10 @@ class FeedViewController: UIViewController {
         
         // Set margins and paddings for brand cell
         savedConstants = (BrandCell.horizontalMargin, BrandCell.horizontalPadding, BrandCell.verticalMargin, BrandCell.verticalPadding)
-        BrandCell.horizontalMargin = 0
-        BrandCell.horizontalPadding = 16 * FeedBrandCell.designFactor
-        BrandCell.verticalMargin = 0
-        BrandCell.verticalPadding = 16 * FeedBrandCell.designFactor
+        BrandCell.horizontalMargin = 0 * FeedBrandCell.designFactor
+        BrandCell.horizontalPadding = 20 * FeedBrandCell.designFactor
+        BrandCell.verticalMargin = 0 * FeedBrandCell.designFactor
+        BrandCell.verticalPadding = 20 * FeedBrandCell.designFactor
     }
     
     override func viewWillDisappear(_ animated: Bool) {

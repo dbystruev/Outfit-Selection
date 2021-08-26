@@ -20,8 +20,13 @@ class FeedItemCell: UITableViewCell {
     /// Default cell's height
     class var height: CGFloat { 282 * designFactor }
 
-    class var identifier: String { nib }
-    class var nib: String { String(describing: Self.self) }
+    class var identifier: String { nibName }
+    
+    /// The nib object containing this feed item cell
+    class var nib: UINib { UINib(nibName: nibName, bundle: nil) }
+    
+    /// Nib name is the same as the class name
+    class var nibName: String { String(describing: Self.self) }
     
     /// Default item sizes
     class var itemHeight: CGFloat { 206 * designFactor }
@@ -32,8 +37,7 @@ class FeedItemCell: UITableViewCell {
     /// - Parameter tableView: the table view to register with
     /// - Returns: (optional) returns cell identifier, also available as MessageListCell.identifier
     @discardableResult class func register(with tableView: UITableView?) -> String {
-        let aNib = UINib(nibName: nib, bundle: nil)
-        tableView?.register(aNib, forCellReuseIdentifier: identifier)
+        tableView?.register(nib, forCellReuseIdentifier: identifier)
         return identifier
     }
     

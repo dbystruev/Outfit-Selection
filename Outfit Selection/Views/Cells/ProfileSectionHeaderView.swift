@@ -9,9 +9,13 @@
 import UIKit
 
 class ProfileSectionHeaderView: UICollectionReusableView {
+    // MARK: - Class Properties
+    /// Nib name is the same as the class name
+    class var nibName: String { String(describing: Self.self) }
+    
     // MARK: - Static Properties
     /// The nib object containing this section header
-    static let nib = UINib(nibName: "ProfileSectionHeaderView", bundle: nil)
+    static let nib = UINib(nibName: nibName, bundle: nil)
     
     /// The reuse identifier to associate with this section header nib file
     static let reuseId = "profileHeader"

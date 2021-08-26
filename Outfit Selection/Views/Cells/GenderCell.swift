@@ -9,9 +9,13 @@
 import UIKit
 
 class GenderCell: UICollectionViewCell {
+    // MARK: - Class Properties
+    /// Nib name is the same as the class name
+    class var nibName: String { String(describing: Self.self) }
+    
     // MARK: - Static Properties
-    /// The nib object containing this cell
-    static let nib = UINib(nibName: "GenderCell", bundle: nil)
+    /// The nib object containing this gender cell
+    static let nib = UINib(nibName: nibName, bundle: nil)
     
     /// The reuse identifier to associate with this cell's nib file
     static let reuseId = "genderCell"
