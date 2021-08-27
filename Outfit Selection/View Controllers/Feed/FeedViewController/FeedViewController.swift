@@ -17,6 +17,29 @@ class FeedViewController: UIViewController {
     var savedConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
     
     // MARK: - Inherited Methods
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        // Perform different preparations depending on segue ids sent
+        switch segue.identifier {
+        
+        case FeedItemViewController.segueIdentifier:
+            guard let feedItemCell = sender as? FeedItemCell else {
+                debug("Can't cast \(String(describing: sender)) to FeedItemCell")
+                return
+            }
+            
+            guard let feedItemViewController = segue.destination as? FeedItemViewController else {
+                debug("Can't cast \(segue.destination) to FeedItemViewController")
+                return
+            }
+            
+            feedItemViewController.items = feedItemCell.items
+            
+        default:
+            debug("Unknown segue id \(String(describing: segue.identifier))")
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

@@ -17,14 +17,11 @@ class FeedItemViewController: UIViewController {
     // MARK: - Static Properties
     static let segueIdentifier = "feedItemViewControllerSegue"
     
-    // MARK: - Inherited Methods
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        debug(segue.identifier)
+    // MARK: - Stored Properties
+    /// Items to display in the item collection view
+    var items: [Item] = [] {
+        didSet {
+            debug("items.count = \(items.count)")
+        }
     }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-
 }

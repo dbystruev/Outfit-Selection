@@ -86,6 +86,6 @@ class FeedCell: UITableViewCell {
     
     // MARK: - Actions
     @IBAction func seeAllButtonTapped(_ sender: DelegatedButton) {
-        delegate?.buttonTapped(kind)
+        delegate?.buttonTapped(self)
     }
 }

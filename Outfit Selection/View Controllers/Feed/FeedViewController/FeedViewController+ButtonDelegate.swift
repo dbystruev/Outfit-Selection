@@ -8,9 +8,19 @@
 
 extension FeedViewController: ButtonDelegate {
     func buttonTapped(_ sender: Any) {
-        guard let kind = sender as? FeedCell.Kind else { return }
+        // Obtain the feed cell where the button was tapped
+        guard let feedCell = sender as? FeedCell else { return }
         
-        debug(kind)
-        performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: kind)
+        // Perform different segues based on feed cell type (kind)
+        switch feedCell.kind {
+        
+        case .brands:
+            break
+            
+        case .newItems, .sale:
+            // Check that indeed we have feed item cell before performing the segue
+            guard let feedItemCell = feedCell as? FeedItemCell else { return }
+            performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: feedItemCell)
+        }
     }
 }
