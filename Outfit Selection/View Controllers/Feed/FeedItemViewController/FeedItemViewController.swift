@@ -24,4 +24,15 @@ class FeedItemViewController: UIViewController {
             debug("items.count = \(items.count)")
         }
     }
+    
+    // MARK: - Inherited Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Register feed item collection view cell for dequeue
+        itemCollectionView.register(FeedItemCollectionViewCell.self, forCellWithReuseIdentifier: FeedItemCollectionViewCell.reuseId)
+        
+        itemCollectionView.dataSource = self
+        itemCollectionView.delegate = self
+    }
 }
