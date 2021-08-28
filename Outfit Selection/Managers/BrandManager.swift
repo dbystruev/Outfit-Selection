@@ -51,8 +51,13 @@ class BrandManager {
         return names.map({ $0.path }).sorted()
     }
     
-    /// Obtain brands currently selected by the user
+    /// Brands currently selected by the user
     var selectedBrands: Set<String> {
         Set(brandedImages.compactMap { $0.isSelected ? $0.brandName : nil })
+    }
+    
+    /// Brands currently not  selected by the user
+    var unselectedBrands: Set<String> {
+        Set(brandedImages.compactMap { $0.isSelected ? nil : $0.brandName })
     }
 }

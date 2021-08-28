@@ -8,6 +8,15 @@
 
 /// Class which consist of branded images
 class BrandedImages {
+    /// Define the `+` operator for branded images
+    /// - Parameters:
+    ///   - lhs: left side of the operator
+    ///   - rhs: right side of the operator
+    /// - Returns: result of `+` operation
+    static func + (lhs: BrandedImages, rhs: BrandedImages) -> BrandedImages {
+        BrandedImages(lhs.images + rhs.images)
+    }
+    
     // MARK: - Properties
     /// Internal collection which holds branded images
     private var images: [BrandedImage]
@@ -16,8 +25,17 @@ class BrandedImages {
     /// The number of images in the internal collection
     var count: Int { images.count }
     
+    /// Branded images currently selected by the user
+    var selected: BrandedImages { filter { $0.isSelected }}
+    
+    /// All branded images sorted by selected first
+    var selectedFirst: BrandedImages { selected + unselected }
+    
     /// Image of the internal array with a given index
     subscript(index: Int) -> BrandedImage { images[index] }
+    
+    /// Branded images currently unselected by the user
+    var unselected: BrandedImages { filter { !$0.isSelected }}
     
     // MARK: - Init
     /// Initializes the internal collection of images

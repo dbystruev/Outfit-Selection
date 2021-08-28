@@ -24,7 +24,7 @@ class FeedBrandCell: FeedCell {
     
     // MARK: - Stored Properties
     /// The collection of brand images
-    let brandedImages = BrandManager.shared.brandedImages
+    let brandedImages = BrandManager.shared.brandedImages.selectedFirst
     
     // MARK: - Inherited Methods
     /// Called when we know for sure what items we want to display
