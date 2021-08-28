@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6900142126DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900142026DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift */; };
+		6900142326DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900142226DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift */; };
 		690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */; };
 		690491F6260C732A0098F1FD /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */; };
 		690B1F9825BEF54E000CDD51 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */; };
@@ -118,7 +120,6 @@
 		69AEC9E825BF014100183E15 /* GenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AEC9E725BF014100183E15 /* GenderButton.swift */; };
 		69B539F2257F9C7A00116F98 /* UIViewController+dismissRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B539F1257F9C7A00116F98 /* UIViewController+dismissRoot.swift */; };
 		69B539FA257FBC3C00116F98 /* UIViewController+tabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B539F9257FBC3C00116F98 /* UIViewController+tabBar.swift */; };
-		69B86BB726D8B5B100E1C868 /* FeedItemViewController+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B86BB626D8B5B100E1C868 /* FeedItemViewController+UICollectionViewDelegateFlowLayout.swift */; };
 		69B86BB926D8B68700E1C868 /* FeedItemCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B86BB826D8B68700E1C868 /* FeedItemCollectionViewCell.swift */; };
 		69B86BBB26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */; };
 		69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640325E66EDE00C805B6 /* ProgressViewController.swift */; };
@@ -156,6 +157,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6900142026DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContentMode+CustomStringConvertible.swift"; sourceTree = "<group>"; };
+		6900142226DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemCollectionViewLayout.swift; sourceTree = "<group>"; };
 		690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+configureFont.swift"; sourceTree = "<group>"; };
 		690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.ttf"; sourceTree = "<group>"; };
 		690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -269,7 +272,6 @@
 		69AEC9E725BF014100183E15 /* GenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderButton.swift; sourceTree = "<group>"; };
 		69B539F1257F9C7A00116F98 /* UIViewController+dismissRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+dismissRoot.swift"; sourceTree = "<group>"; };
 		69B539F9257FBC3C00116F98 /* UIViewController+tabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+tabBar.swift"; sourceTree = "<group>"; };
-		69B86BB626D8B5B100E1C868 /* FeedItemViewController+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedItemViewController+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
 		69B86BB826D8B68700E1C868 /* FeedItemCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemCollectionViewCell.swift; sourceTree = "<group>"; };
 		69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedItemViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69BA640325E66EDE00C805B6 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
@@ -321,9 +323,10 @@
 		692AF3D4260120A100D37269 /* UIView */ = {
 			isa = PBXGroup;
 			children = (
+				69AE7661260BCE2C009CF863 /* UIView+addGestureOnce.swift */,
 				692AF3D12601209700D37269 /* UIView+asImage.swift */,
 				694E7BED25DBFFFB006607CD /* UIView+findSuperview.swift */,
-				69AE7661260BCE2C009CF863 /* UIView+addGestureOnce.swift */,
+				6900142026DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift */,
 			);
 			path = UIView;
 			sourceTree = "<group>";
@@ -466,9 +469,9 @@
 		6976232926D76E7B00504F31 /* FeedItemViewController */ = {
 			isa = PBXGroup;
 			children = (
+				6900142226DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift */,
 				6976232426D76E6700504F31 /* FeedItemViewController.swift */,
 				69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */,
-				69B86BB626D8B5B100E1C868 /* FeedItemViewController+UICollectionViewDelegateFlowLayout.swift */,
 			);
 			path = FeedItemViewController;
 			sourceTree = "<group>";
@@ -958,6 +961,7 @@
 				690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */,
 				69322E2B26008CDD00CAFBFA /* ItemViewController+Actions.swift in Sources */,
 				6986613B25707A61008F94CA /* BrandedImage.swift in Sources */,
+				6900142326DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift in Sources */,
 				69DB6A5A25E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				69C3697425E80676000A8E5E /* OutfitCell.swift in Sources */,
 				695367F125F7ABF90024EC8B /* String+digits.swift in Sources */,
@@ -971,6 +975,7 @@
 				695367F825F7AFAC0024EC8B /* AppDelegate+UIApplicationDelegate.swift in Sources */,
 				69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */,
 				69560EC82587E5D400337F35 /* Branded.swift in Sources */,
+				6900142126DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift in Sources */,
 				69B86BB926D8B68700E1C868 /* FeedItemCollectionViewCell.swift in Sources */,
 				69739EB222BA64E40077E45D /* OutfitViewController+Gestures.swift in Sources */,
 				69C3A4BE25EC07E800F8F968 /* ProfileSectionHeaderView.swift in Sources */,
@@ -998,7 +1003,6 @@
 				69C5CBF1260A1D5E00DE22E6 /* ShareViewController+UITableViewDelegate.swift in Sources */,
 				697CCE6826D0035C00B69763 /* FeedItem.swift in Sources */,
 				6976232526D76E6700504F31 /* FeedItemViewController.swift in Sources */,
-				69B86BB726D8B5B100E1C868 /* FeedItemViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				69C3695B25E780F8000A8E5E /* OccasionsViewController+UIPickerViewDataSource.swift in Sources */,
 				697CCE6226CFCA6600B69763 /* FeedViewController+UITableViewDataSource.swift in Sources */,
 				69C5CC03260A224200DE22E6 /* ShareViewController+Actions.swift in Sources */,
@@ -1169,7 +1173,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2021.08.26;
+				CURRENT_PROJECT_VERSION = 2021.08.28;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = arm64;
 				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "";
@@ -1197,7 +1201,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2021.08.26;
+				CURRENT_PROJECT_VERSION = 2021.08.28;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",

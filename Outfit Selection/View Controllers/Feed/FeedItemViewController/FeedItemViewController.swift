@@ -19,11 +19,10 @@ class FeedItemViewController: UIViewController {
     
     // MARK: - Stored Properties
     /// Items to display in the item collection view
-    var items: [Item] = [] {
-        didSet {
-            debug("items.count = \(items.count)")
-        }
-    }
+    var items: [Item] = []
+    
+    /// Kind (type) of the items
+    var kind: FeedCell.Kind = .newItems
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {
@@ -32,7 +31,10 @@ class FeedItemViewController: UIViewController {
         // Register feed item collection view cell for dequeue
         itemCollectionView.register(FeedItemCollectionViewCell.self, forCellWithReuseIdentifier: FeedItemCollectionViewCell.reuseId)
         
+        // Use self as source for data
         itemCollectionView.dataSource = self
-        itemCollectionView.delegate = self
+        
+        // Set custom collection view layout
+        itemCollectionView.setCollectionViewLayout(FeedItemCollectionViewLayout(), animated: false)
     }
 }

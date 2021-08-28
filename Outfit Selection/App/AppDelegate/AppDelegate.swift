@@ -8,6 +8,14 @@
 
 import UIKit
 
+#if DEBUG
+/// Last line used in debug
+var lastDebugLine: String?
+
+/// How many times the line was repeat
+var lastDebugLineRepeatCount = 0
+#endif
+
 /// Log a debug message to the console
 /// - Parameters:
 ///   - line: current line, #line by default
@@ -18,10 +26,20 @@ func debug(line: Int = #line,
            file: String = #file,
            function: String = #function,
            _ messages: CustomStringConvertible?...) {
+    #if DEBUG
     let file = file.lastComponent.dropExtension
     let message = messages.reduce("") { "\($0) \($1?.description ?? "nil")" }
-    #if DEBUG
-    print("\(line) \(file).\(function)\(message.prefix(1024))")
+    let newLine = "\(line) \(file).\(function)\(message.prefix(1024))"
+    if (lastDebugLine == newLine) {
+        lastDebugLineRepeatCount += 1
+    } else {
+        if 1 < lastDebugLineRepeatCount {
+            print("Previous line repeated \(lastDebugLineRepeatCount) times")
+        }
+        print(newLine)
+        lastDebugLine = newLine
+        lastDebugLineRepeatCount = 1
+    }
     #endif
 }
 

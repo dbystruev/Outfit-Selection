@@ -34,6 +34,7 @@ class FeedViewController: UIViewController {
             }
             
             feedItemViewController.items = feedItemCell.items
+            feedItemViewController.kind = feedItemCell.kind
             
         default:
             debug("Unknown segue id \(String(describing: segue.identifier))")

@@ -16,7 +16,9 @@ extension UIImageView {
         guard let url = url else { return }
         NetworkManager.shared.getImage(url) { image in
             guard let image = image else { return }
-            DispatchQueue.main.async { self.image = image }
+            DispatchQueue.main.async {
+                self.image = image
+            }
         }
     }
 }

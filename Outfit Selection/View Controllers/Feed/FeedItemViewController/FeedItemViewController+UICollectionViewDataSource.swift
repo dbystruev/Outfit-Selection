@@ -26,7 +26,7 @@ extension FeedItemViewController: UICollectionViewDataSource {
         }()
         
         // Configure the cell with matching item and return
-        itemCell.configureContent(item: items[indexPath.row])
+        itemCell.configureContent(kind: kind, item: items[indexPath.row])
         return itemCell
     }
     
