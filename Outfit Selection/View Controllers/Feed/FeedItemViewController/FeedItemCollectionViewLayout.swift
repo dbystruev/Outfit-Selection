@@ -10,18 +10,22 @@
 import UIKit
 
 class FeedItemCollectionViewLayout: UICollectionViewFlowLayout {
+    /// New size set by viewWillTransition(to:with:)
+    var sizeViewWillTransitionTo: CGSize?
+    
     /// Called before each layout update
     override func prepare() {
         super.prepare()
         guard let collectionView = collectionView else { return }
         
         let availableWidth = collectionView.bounds.inset(by: collectionView.layoutMargins).width
-        let maxNumColumns = FeedItemCollectionViewCell.cellsPerRow(for: collectionView.contentSize)
-        let cellWidth = (availableWidth / CGFloat(maxNumColumns)).rounded(.down)
+        let maxNumColumns = FeedItemCollectionViewCell.cellsPerRow(for: sizeViewWillTransitionTo ?? collectionView.bounds.size)
+        minimumInteritemSpacing = 16
+        let cellWidth = (availableWidth / CGFloat(maxNumColumns) - minimumInteritemSpacing).rounded(.down)
         let cellHeight = 217 * cellWidth / 155
         
         itemSize = CGSize(width: cellWidth, height: cellHeight)
-        sectionInset = UIEdgeInsets(top: minimumInteritemSpacing, left: 0.0, bottom: 0.0, right: 0.0)
+        sectionInset = UIEdgeInsets(top: minimumInteritemSpacing, left: 0, bottom: 0, right: 0)
         sectionInsetReference = .fromSafeArea
     }
     

@@ -18,6 +18,9 @@ class FeedItemViewController: UIViewController {
     static let segueIdentifier = "feedItemViewControllerSegue"
     
     // MARK: - Stored Properties
+    /// Collection view layout for the item collection view
+    let itemCollectionViewLayout = FeedItemCollectionViewLayout()
+    
     /// Items to display in the item collection view
     var items: [Item] = []
     
@@ -25,6 +28,11 @@ class FeedItemViewController: UIViewController {
     var kind: FeedCell.Kind = .newItems
     
     // MARK: - Inherited Methods
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        itemCollectionViewLayout.sizeViewWillTransitionTo = size
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,6 +43,6 @@ class FeedItemViewController: UIViewController {
         itemCollectionView.dataSource = self
         
         // Set custom collection view layout
-        itemCollectionView.setCollectionViewLayout(FeedItemCollectionViewLayout(), animated: false)
+        itemCollectionView.setCollectionViewLayout(itemCollectionViewLayout, animated: false)
     }
 }
