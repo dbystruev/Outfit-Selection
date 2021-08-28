@@ -131,14 +131,5 @@ class BrandCell: UICollectionViewCell {
         
         // Show / hide checkmark image view depending on selection
         checkmarkImageView.isHidden = !isSelected
-        
-        // Configure border
-        configureBorder(isSelected: isSelected)
-    }
-    
-    /// Configure the visibility of border around brand
-    /// - Parameter isSelected: true if image is selected, false otherwise
-    func configureBorder(isSelected: Bool) {
-        brandImageContainerView.layer.borderWidth = isSelected ? 0 : 0.5
     }
 }
