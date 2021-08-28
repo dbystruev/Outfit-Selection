@@ -16,6 +16,15 @@ class FeedViewController: UIViewController {
     /// Saved brand cell margins and paddings
     var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
     
+    /// Selected brand names to be changed every time the brand is selected / unselected
+    var selectedBrandNames = BrandManager.shared.brandedImages.selected.brandNames
+    
+    // MARK: - Custom Methods
+    func reloadData() {
+        selectedBrandNames = BrandManager.shared.brandedImages.selected.brandNames
+        feedTableView.reloadData()
+    }
+    
     // MARK: - Inherited Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

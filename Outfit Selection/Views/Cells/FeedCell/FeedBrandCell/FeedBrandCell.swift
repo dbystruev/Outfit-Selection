@@ -23,7 +23,7 @@ class FeedBrandCell: FeedCell {
     class override var height: CGFloat { 174 * designFactor }
     
     // MARK: - Stored Properties
-    /// The collection of brand images
+    /// The collection of branded images
     let brandedImages = BrandManager.shared.brandedImages.selectedFirst
     
     // MARK: - Inherited Methods
