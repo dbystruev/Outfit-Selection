@@ -62,7 +62,9 @@ class FeedItemCell: FeedCell {
         self.kind = kind
         let filteredItems = items.filter({ $0.price != nil && $0.oldPrice != nil })
         let numberOfItems = min(Int.random(in: 20...30), filteredItems.count)
-        self.items = Array(filteredItems.shuffled()[...numberOfItems])
+        self.items = Array(filteredItems.shuffled()[..<numberOfItems]).sorted {
+            $0.brand ?? "" < $1.brand ?? ""
+        }
         
         // Configure outlets
         titleLabel.text = title

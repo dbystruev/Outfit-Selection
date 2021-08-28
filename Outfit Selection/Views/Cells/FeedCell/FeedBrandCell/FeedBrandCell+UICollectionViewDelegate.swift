@@ -20,6 +20,9 @@ extension FeedBrandCell: UICollectionViewDelegate {
         // Toggle alpha between 0.25 and 1
         brandedImage.isSelected.toggle()
         brandCell.configureBackground(isSelected: brandedImage.isSelected)
+        
+        // Make feed item cells reload
+        delegate?.buttonTapped(self)
     }
 }
 

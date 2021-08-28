@@ -11,11 +11,13 @@ extension FeedViewController: ButtonDelegate {
         // Obtain the feed cell where the button was tapped
         guard let feedCell = sender as? FeedCell else { return }
         
-        // Perform different segues based on feed cell type (kind)
+        // Perform different actions based on feed cell type (kind)
         switch feedCell.kind {
         
         case .brands:
-            break
+            // Check that feed brand cell is sending this message
+            guard feedCell is FeedBrandCell else { return }
+            reloadData()
             
         case .newItems, .sale:
             // Check that indeed we have feed item cell before performing the segue
