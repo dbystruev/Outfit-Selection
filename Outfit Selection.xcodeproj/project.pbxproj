@@ -364,13 +364,13 @@
 				69C5CBD9260A045A00DE22E6 /* Collection+safeIndex.swift */,
 				697CCE6C26D010AB00B69763 /* Double */,
 				697CCE6B26D0109F00B69763 /* String */,
+				697CCE6D26D010D000B69763 /* UIImageView+configure.swift */,
 				690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */,
 				69727EFE25E84EC000457A58 /* UINavigationController+findViewController.swift */,
 				697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */,
 				692AF3D4260120A100D37269 /* UIView */,
 				69B539FC257FBC6800116F98 /* UIViewController */,
 				692C9416254708830075BD92 /* URL+withQueries.swift */,
-				697CCE6D26D010D000B69763 /* UIImageView+configure.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
