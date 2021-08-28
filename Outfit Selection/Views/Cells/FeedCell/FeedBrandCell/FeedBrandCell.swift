@@ -20,7 +20,7 @@ class FeedBrandCell: FeedCell {
     class override var itemWidth: CGFloat { 98 * designFactor }
     
     /// Default cell's height
-    class override var height: CGFloat { 282 * designFactor }
+    class override var height: CGFloat { 174 * designFactor }
     
     // MARK: - Stored Properties
     /// The collection of brand images

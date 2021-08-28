@@ -14,7 +14,7 @@ class FeedViewController: UIViewController {
     
     // MARK: - Stored Properties
     /// Saved brand cell margins and paddings
-    var savedConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
+    var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
     
     // MARK: - Inherited Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -57,10 +57,10 @@ class FeedViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+        super.viewWillAppear(animated)
         
         // Set margins and paddings for brand cell
-        savedConstants = (BrandCell.horizontalMargin, BrandCell.horizontalPadding, BrandCell.verticalMargin, BrandCell.verticalPadding)
+        savedBrandCellConstants = (BrandCell.horizontalMargin, BrandCell.horizontalPadding, BrandCell.verticalMargin, BrandCell.verticalPadding)
         BrandCell.horizontalMargin = 0 * FeedBrandCell.designFactor
         BrandCell.horizontalPadding = 20 * FeedBrandCell.designFactor
         BrandCell.verticalMargin = 0 * FeedBrandCell.designFactor
@@ -71,7 +71,6 @@ class FeedViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         // Restore margins and paddings for brand cell
-        (BrandCell.horizontalMargin, BrandCell.horizontalPadding, BrandCell.verticalMargin, BrandCell.verticalPadding) = savedConstants
+        (BrandCell.horizontalMargin, BrandCell.horizontalPadding, BrandCell.verticalMargin, BrandCell.verticalPadding) = savedBrandCellConstants
     }
-    
 }

@@ -10,7 +10,6 @@ import UIKit
 
 class FeedCell: UITableViewCell {
     // MARK: - Outlets
-    @IBOutlet weak var seeAllButton: DelegatedButton!
     @IBOutlet weak var titleLabel: UILabel!
     
     // MARK: - Class Properties
@@ -19,6 +18,7 @@ class FeedCell: UITableViewCell {
     /// Default cell's height
     class var height: CGFloat { 282 * designFactor }
 
+    /// Feed cell identifier, which matches nib and class name
     class var identifier: String { nibName }
     
     /// The nib object containing this feed item cell
@@ -41,9 +41,9 @@ class FeedCell: UITableViewCell {
     }
     
     // MARK: - Stored Properties
-    /// Delegate to call when see all button is tapped
+    /// Delegate to call when something inside is tapped (for use in child classes)
     var delegate: ButtonDelegate?
-    
+
     /// Kind of this cell
     var kind: Kind = .sale
     
@@ -82,10 +82,5 @@ class FeedCell: UITableViewCell {
     func configureLayout() {
         // No selection style be default
         selectionStyle = .none
-    }
-    
-    // MARK: - Actions
-    @IBAction func seeAllButtonTapped(_ sender: DelegatedButton) {
-        delegate?.buttonTapped(self)
     }
 }

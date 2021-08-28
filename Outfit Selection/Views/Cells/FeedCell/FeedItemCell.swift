@@ -11,6 +11,7 @@ import UIKit
 class FeedItemCell: FeedCell {
     // MARK: - Outlets
     @IBOutlet weak var itemStackView: UIStackView!
+    @IBOutlet weak var seeAllButton: DelegatedButton!
     
     // MARK: - Stored Properties
     /// Items to display in the item stack view
@@ -66,5 +67,10 @@ class FeedItemCell: FeedCell {
         // Configure outlets
         titleLabel.text = title
         configureItems()
+    }
+    
+    // MARK: - Actions
+    @IBAction func seeAllButtonTapped(_ sender: DelegatedButton) {
+        delegate?.buttonTapped(self)
     }
 }

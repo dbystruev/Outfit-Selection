@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,28 +17,17 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="FeedBrandCell" customModule="Outfit_Selection" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="282"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="174"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Favorite Brands" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RGG-TD-EUf">
-                    <rect key="frame" x="24" y="120" width="123.5" height="22"/>
+                    <rect key="frame" x="24" y="12" width="123.5" height="22"/>
                     <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="16"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pRq-Sg-0p5" customClass="DelegatedButton" customModule="Outfit_Selection" customModuleProvider="target">
-                    <rect key="frame" x="331" y="120" width="20" height="20"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="20" id="akz-VC-F4Z"/>
-                        <constraint firstAttribute="width" constant="20" id="alL-qw-n1a"/>
-                    </constraints>
-                    <state key="normal" image="add_teal"/>
-                    <connections>
-                        <action selector="seeAllButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="0rt-pK-9vz"/>
-                    </connections>
-                </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="AiU-ds-smx">
-                    <rect key="frame" x="24" y="162" width="351" height="112"/>
+                    <rect key="frame" x="24" y="54" width="351" height="112"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="16" id="Q8h-Sc-3mI">
                         <size key="itemSize" width="98" height="98"/>
@@ -55,22 +44,18 @@
                 <constraint firstItem="AiU-ds-smx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="6EN-Gc-BcB"/>
                 <constraint firstAttribute="trailing" secondItem="AiU-ds-smx" secondAttribute="trailing" id="HDM-cG-72J"/>
                 <constraint firstItem="RGG-TD-EUf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="24" id="Nbc-7E-9qm"/>
-                <constraint firstItem="pRq-Sg-0p5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="120" id="OPB-mn-Rse"/>
                 <constraint firstAttribute="bottom" secondItem="AiU-ds-smx" secondAttribute="bottom" constant="8" id="R8H-2J-5f3"/>
-                <constraint firstAttribute="trailing" secondItem="pRq-Sg-0p5" secondAttribute="trailing" constant="24" id="csE-kn-2cO"/>
-                <constraint firstItem="RGG-TD-EUf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="120" id="mdO-2T-ZBl"/>
+                <constraint firstItem="RGG-TD-EUf" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="12" id="mdO-2T-ZBl"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="brandsCollectionView" destination="AiU-ds-smx" id="UXf-9Z-nND"/>
-                <outlet property="seeAllButton" destination="pRq-Sg-0p5" id="JJ2-dP-cQ6"/>
                 <outlet property="titleLabel" destination="RGG-TD-EUf" id="Di1-mb-gqn"/>
             </connections>
             <point key="canvasLocation" x="39.855072463768117" y="82.366071428571431"/>
         </view>
     </objects>
     <resources>
-        <image name="add_teal" width="20" height="20"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
