@@ -32,7 +32,7 @@ class FeedItem: UIView {
     }
     
     // MARK: - Stored Properties
-    /// Button delegate to send a message to when like button is tapped
+    /// Button delegate to send a message when something was tapped
     var delegate: ButtonDelegate?
     
     /// The item being currently displayed
@@ -47,10 +47,14 @@ class FeedItem: UIView {
         // Set the item being currently displayed
         self.item = item
         
-        // Configure buttons, labels, and images
-        brandLabel.text = item.brand
+        // Configure the view of like button depending on item being in wish list
         configureLikeButton()
+        
+        // Load the first picture for item into item image view
         itemImageView.configure(with: item.pictures?.first)
+        
+        // Configure labels
+        brandLabel.text = item.brand
         nameLabel.text = item.nameWithoutVendor
         oldPriceLabel.isHidden = !showSale
         priceLabel.text = item.price?.asPrice
@@ -71,7 +75,6 @@ class FeedItem: UIView {
     /// Called when user taps anywhere except like (wislist) button
     /// - Parameter sender: the item button which was tapped
     @IBAction func itemButtonTapped(_ sender: DelegatedButton) {
-        debug(item?.name)
         delegate?.buttonTapped(self)
     }
     

@@ -17,6 +17,17 @@ class FeedItemCell: FeedCell {
     /// Items to display in the item stack view
     var items: [Item] = []
     
+    // MARK: - Inherited Properties
+    override var delegate: ButtonDelegate? {
+        get { super.delegate }
+        set {
+            super.delegate = newValue
+            itemStackView.arrangedSubviews.forEach {
+                ($0 as? FeedItem)?.delegate = newValue
+            }
+        }
+    }
+    
     // MARK: - Inherited Methods
     /// Make sure to remove item stack view subviews
     override func prepareForReuse() {

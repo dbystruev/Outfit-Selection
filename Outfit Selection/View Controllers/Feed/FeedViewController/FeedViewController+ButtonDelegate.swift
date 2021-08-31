@@ -8,9 +8,22 @@
 
 extension FeedViewController: ButtonDelegate {
     func buttonTapped(_ sender: Any) {
-        // Obtain the feed cell where the button was tapped
-        guard let feedCell = sender as? FeedCell else { return }
+        // Check if the the button was tapped in the feed cell
+        if let feedCell = sender as? FeedCell {
+            seeAllButtonTapped(in: feedCell)
+            return
+        }
         
+        // Check if the button was tapped in the feed item
+        guard let feedItem = sender as? FeedItem else { return }
+        
+        debug(feedItem.item?.name)
+
+    }
+    
+    /// Called when `see all` button was tapped in the feed cell
+    /// - Parameter feedCell: feed cell in which the `see all` button was tapped
+    func seeAllButtonTapped(in feedCell: FeedCell) {
         // Perform different actions based on feed cell type (kind)
         switch feedCell.kind {
         
