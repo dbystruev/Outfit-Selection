@@ -11,7 +11,7 @@ import UIKit
 extension WishlistViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if itemsTabSelected {
-            performSegue(withIdentifier: "itemViewControllerSegue", sender: self)
+            performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: self)
         } else {
             // Get the navigation controller for the outfit view controller
             guard let navigationController = tabBarController?.viewControllers?.first as? UINavigationController else { return }

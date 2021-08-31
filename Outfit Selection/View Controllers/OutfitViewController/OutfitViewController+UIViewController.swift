@@ -13,7 +13,7 @@ extension OutfitViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         
-        case "itemViewControllerSegue":
+        case ItemViewController.segueIdentifier:
             guard let destination = segue.destination as? ItemViewController else { return }
             guard let recognizer = sender as? UIGestureRecognizer else { return }
             guard let scrollView = recognizer.view as? PinnableScrollView else { return }

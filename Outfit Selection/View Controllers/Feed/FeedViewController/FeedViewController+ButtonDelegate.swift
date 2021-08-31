@@ -16,9 +16,7 @@ extension FeedViewController: ButtonDelegate {
         
         // Check if the button was tapped in the feed item
         guard let feedItem = sender as? FeedItem else { return }
-        
-        debug(feedItem.item?.name)
-
+        performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: feedItem)
     }
     
     /// Called when `see all` button was tapped in the feed cell

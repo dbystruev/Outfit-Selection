@@ -866,7 +866,7 @@
         <!--Item View Controller-->
         <scene sceneID="wZr-ET-Xq5">
             <objects>
-                <viewController id="Uns-Sh-QHX" customClass="ItemViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="itemViewController" id="Uns-Sh-QHX" customClass="ItemViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uN6-6g-WHf">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1055,7 +1055,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2090" y="-156"/>
+            <point key="canvasLocation" x="2089" y="-175"/>
         </scene>
         <!--Intermediary View Controller-->
         <scene sceneID="ghJ-co-hsA">

@@ -28,11 +28,6 @@ class FeedItemViewController: UIViewController {
     var kind: FeedCell.Kind = .newItems
     
     // MARK: - Inherited Methods
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        itemCollectionViewLayout.sizeViewWillTransitionTo = size
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -44,5 +39,19 @@ class FeedItemViewController: UIViewController {
         
         // Set custom collection view layout
         itemCollectionView.setCollectionViewLayout(itemCollectionViewLayout, animated: false)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Make sure like buttons are updated when we come back from item screen
+        itemCollectionView.visibleCells.forEach {
+            ($0 as? FeedItemCollectionViewCell)?.configureLikeButton()
+        }
+    }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        itemCollectionViewLayout.sizeViewWillTransitionTo = size
     }
 }

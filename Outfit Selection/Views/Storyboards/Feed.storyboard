@@ -42,6 +42,7 @@
                     <connections>
                         <outlet property="feedTableView" destination="zSh-sE-otJ" id="Q3K-VB-HRy"/>
                         <segue destination="sXO-jE-vg3" kind="show" identifier="feedItemViewControllerSegue" id="eQ7-pl-bYp"/>
+                        <segue destination="AyZ-Yg-HPR" kind="show" identifier="itemViewControllerSegue" id="WlN-5p-cgq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -94,6 +95,16 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzf-jv-yyO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1832" y="104"/>
+        </scene>
+        <!--itemViewController-->
+        <scene sceneID="UdD-7k-PbK">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="itemViewController" id="AyZ-Yg-HPR" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="4qg-Xz-JMX"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ubu-VI-GBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="893" y="526"/>
         </scene>
         <!--Feed-->
         <scene sceneID="zAV-bp-sx6">

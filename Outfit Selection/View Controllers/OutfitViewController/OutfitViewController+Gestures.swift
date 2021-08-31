@@ -43,7 +43,7 @@ extension OutfitViewController {
                 debug("imageView.image =", imageView.image, "imageView.tag =", imageView.tag)
                 return
             }
-            performSegue(withIdentifier: "itemViewControllerSegue", sender: sender)
+            performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: sender)
         } else {
             pinImage(sender)
         }

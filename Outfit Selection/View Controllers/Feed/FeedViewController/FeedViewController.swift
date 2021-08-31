@@ -45,6 +45,25 @@ class FeedViewController: UIViewController {
             feedItemViewController.items = feedItemCell.items
             feedItemViewController.kind = feedItemCell.kind
             
+        case ItemViewController.segueIdentifier:
+            guard let destination = segue.destination as? ItemViewController else {
+                debug("Can't cast \(segue.destination) to ItemViewController")
+                return
+            }
+            
+            guard let feedItem = sender as? FeedItem else {
+                debug("Can't cast \(String(describing: sender)) to FeedItem")
+                return
+            }
+            
+            guard let itemIndex = feedItem.item?.itemIndex else {
+                debug("Can't get an item index from \(feedItem)")
+                return
+            }
+            
+            destination.image = feedItem.itemImageView.image
+            destination.itemIndex = itemIndex
+            
         default:
             debug("Unknown segue id \(String(describing: segue.identifier))")
         }

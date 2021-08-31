@@ -53,6 +53,7 @@ class FeedItemCollectionViewCell: UICollectionViewCell {
         feedItem?.configureContent(with: item, showSale: kind == .sale)
     }
     
+    /// Get feed item from xib and add it as subview of this cell
     func configureLayout() {
         // Obtain feed item from xib
         guard let feedItem = FeedItem.instanceFromNib() else {
@@ -72,5 +73,10 @@ class FeedItemCollectionViewCell: UICollectionViewCell {
             feedItem.topAnchor.constraint(equalTo: contentView.topAnchor),
             feedItem.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
         ])
+    }
+    
+    /// Configure the view of feed item's like button depending on item being in wish list
+    func configureLikeButton() {
+        feedItem.configureLikeButton()
     }
 }

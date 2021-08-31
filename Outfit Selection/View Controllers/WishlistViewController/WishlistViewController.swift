@@ -71,7 +71,7 @@ class WishlistViewController: UIViewController {
     // MARK: - Inherited Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
-        case "itemViewControllerSegue":
+        case ItemViewController.segueIdentifier:
             guard let destination = segue.destination as? ItemViewController else { return }
             guard let selectedIndexPath = wishlistCollectionView.indexPathsForSelectedItems?.first else { return }
             guard let itemCell = wishlistCollectionView.cellForItem(at: selectedIndexPath) as? ItemCell else { return }
