@@ -8,31 +8,18 @@
 
 extension FeedViewController: ButtonDelegate {
     func buttonTapped(_ sender: Any) {
-        // Check if the the button was tapped in the feed cell
-        if let feedCell = sender as? FeedCell {
-            seeAllButtonTapped(in: feedCell)
-            return
-        }
+        // Check if the button was tapped in the feed brand cell
+        if let brandedImage = sender as? BrandedImage {
+            reloadData(first: brandedImage.isSelected ? brandedImage.brandName : nil)
+        } else
         
-        // Check if the button was tapped in the feed item
-        guard let feedItem = sender as? FeedItem else { return }
-        performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: feedItem)
-    }
-    
-    /// Called when `see all` button was tapped in the feed cell
-    /// - Parameter feedCell: feed cell in which the `see all` button was tapped
-    func seeAllButtonTapped(in feedCell: FeedCell) {
-        // Perform different actions based on feed cell type (kind)
-        switch feedCell.kind {
+        // Check if the button was tapped in the feed item cell
+        if let feedItem = sender as? FeedItem {
+            performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: feedItem)
+        } else
         
-        case .brands:
-            // Check that feed brand cell is sending this message
-            guard feedCell is FeedBrandCell else { return }
-            reloadData()
-            
-        case .newItems, .sale:
-            // Check that indeed we have feed item cell before performing the segue
-            guard let feedItemCell = feedCell as? FeedItemCell else { return }
+        // Check if `see all` button was tapped in the feed item cell
+        if let feedItemCell = sender as? FeedItemCell {
             performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: feedItemCell)
         }
     }

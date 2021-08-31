@@ -29,7 +29,8 @@ extension FeedViewController: UITableViewDataSource {
                 return brandCell
                 
             } else if let feedCell = cell as? FeedItemCell {
-                feedCell.configureContent(for: kind, items: Item.all.filter { $0.branded(selectedBrandNames) })
+                let items = Item.all.filter { $0.branded(selectedBrandNames) }
+                feedCell.configureContent(for: kind, items: items, brandName: selectedBrandNames.first ?? "")
                 return feedCell
             }
             

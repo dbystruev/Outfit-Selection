@@ -68,14 +68,15 @@ class FeedItemCell: FeedCell {
     /// - Parameters:
     ///   - kind: cell's type
     ///   - items: the items which needs to be displayed in the item stack view
-    func configureContent(for kind: Kind, items: [Item]) {
+    ///   - brandName: put items with given brand name first
+    func configureContent(for kind: Kind, items: [Item], brandName: String) {
         // Configure variables
         self.kind = kind
         let filteredItems = items.filter({ $0.price != nil && $0.oldPrice != nil })
         let numberOfItems = min(Int.random(in: 20...30), filteredItems.count)
-        self.items = Array(filteredItems.shuffled()[..<numberOfItems]).sorted {
-            $0.brand ?? "" < $1.brand ?? ""
-        }
+        self.items = Array(filteredItems.shuffled().sorted {
+            $0.branded([brandName]) || $0.brand ?? "" < $1.brand ?? ""
+        }[..<numberOfItems])
         
         // Configure outlets
         titleLabel.text = title

@@ -20,8 +20,13 @@ class FeedViewController: UIViewController {
     var selectedBrandNames = BrandManager.shared.brandedImages.selected.brandNames
     
     // MARK: - Custom Methods
-    func reloadData() {
+    /// Reload data in feed table view, putting brand name to the beginning if it is not nil
+    /// - Parameter brandName: brand name, nil be default
+    func reloadData(first brandName: String? = nil) {
         selectedBrandNames = BrandManager.shared.brandedImages.selected.brandNames
+        if let brandName = brandName {
+            selectedBrandNames.sort { $0 == brandName || $0 < $1 }
+        }
         feedTableView.reloadData()
     }
     

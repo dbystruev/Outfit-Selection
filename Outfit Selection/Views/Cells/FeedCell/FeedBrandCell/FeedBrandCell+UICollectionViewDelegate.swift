@@ -22,7 +22,7 @@ extension FeedBrandCell: UICollectionViewDelegate {
         brandCell.configureBackground(isSelected: brandedImage.isSelected)
         
         // Make feed item cells reload
-        delegate?.buttonTapped(self)
+        delegate?.buttonTapped(brandedImage)
     }
 }
 
