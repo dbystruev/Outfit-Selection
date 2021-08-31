@@ -12,6 +12,7 @@ class FeedItem: UIView {
     
     // MARK: - Outlets
     @IBOutlet weak var brandLabel: UILabel!
+    @IBOutlet weak var itemButton: DelegatedButton!
     @IBOutlet weak var itemImageView: UIImageView!
     @IBOutlet weak var likeButton: WishlistButton!
     @IBOutlet weak var nameLabel: UILabel!
@@ -67,6 +68,15 @@ class FeedItem: UIView {
     }
     
     // MARK: - Actions
+    /// Called when user taps anywhere except like (wislist) button
+    /// - Parameter sender: the item button which was tapped
+    @IBAction func itemButtonTapped(_ sender: DelegatedButton) {
+        debug(item?.name)
+        delegate?.buttonTapped(self)
+    }
+    
+    /// Called when user taps on like (wishlist) button
+    /// - Parameter sender: the like (wishlist) button which was tapped
     @IBAction func likeButtonTapped(_ sender: WishlistButton) {
         sender.addToWishlistButtonTapped(for: item)
     }

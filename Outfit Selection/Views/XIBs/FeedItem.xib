@@ -26,6 +26,12 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Ve-1R-AUQ">
                     <rect key="frame" x="0.0" y="0.0" width="155" height="217"/>
                     <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8J2-42-asM" customClass="DelegatedButton" customModule="Outfit_Selection" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="155" height="217"/>
+                            <connections>
+                                <action selector="itemButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="fMo-2B-sV8"/>
+                            </connections>
+                        </button>
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YOT-Vd-R6y">
                             <rect key="frame" x="12" y="12" width="131" height="123"/>
                         </imageView>
@@ -102,10 +108,14 @@
                         <constraint firstItem="YOT-Vd-R6y" firstAttribute="leading" secondItem="4Ve-1R-AUQ" secondAttribute="leading" constant="12" id="0ug-u9-pvy"/>
                         <constraint firstItem="P64-3e-fcu" firstAttribute="top" secondItem="YOT-Vd-R6y" secondAttribute="bottom" constant="8" id="3BF-Zv-CbE"/>
                         <constraint firstAttribute="trailing" secondItem="YOT-Vd-R6y" secondAttribute="trailing" constant="12" id="3fx-cf-Qg0"/>
+                        <constraint firstItem="8J2-42-asM" firstAttribute="leading" secondItem="4Ve-1R-AUQ" secondAttribute="leading" id="4gg-oI-zkB"/>
+                        <constraint firstAttribute="bottom" secondItem="8J2-42-asM" secondAttribute="bottom" id="5fw-Yg-qQ5"/>
                         <constraint firstAttribute="trailing" secondItem="vFY-bX-wSa" secondAttribute="trailing" constant="12" id="8Zm-vJ-Lp9"/>
+                        <constraint firstAttribute="trailing" secondItem="8J2-42-asM" secondAttribute="trailing" id="9KV-Tk-ykg"/>
                         <constraint firstItem="gUt-v0-Mo6" firstAttribute="top" secondItem="P64-3e-fcu" secondAttribute="bottom" constant="4" id="Dvu-vN-FTg"/>
                         <constraint firstItem="P64-3e-fcu" firstAttribute="leading" secondItem="4Ve-1R-AUQ" secondAttribute="leading" constant="12" id="Grd-AK-gkb"/>
                         <constraint firstAttribute="bottom" secondItem="vFY-bX-wSa" secondAttribute="bottom" constant="4" id="Ij3-s0-hhj"/>
+                        <constraint firstItem="8J2-42-asM" firstAttribute="top" secondItem="4Ve-1R-AUQ" secondAttribute="top" id="P4w-Kg-uiq"/>
                         <constraint firstItem="vFY-bX-wSa" firstAttribute="top" secondItem="gUt-v0-Mo6" secondAttribute="bottom" constant="12" id="SIV-eM-2m7"/>
                         <constraint firstAttribute="trailing" secondItem="gUt-v0-Mo6" secondAttribute="trailing" constant="12" id="a7a-mk-WEO"/>
                         <constraint firstItem="YOT-Vd-R6y" firstAttribute="top" secondItem="4Ve-1R-AUQ" secondAttribute="top" constant="12" id="biP-c8-cYz"/>
@@ -128,6 +138,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="brandLabel" destination="P64-3e-fcu" id="YrO-l6-Crz"/>
+                <outlet property="itemButton" destination="8J2-42-asM" id="pey-Bv-tJc"/>
                 <outlet property="itemImageView" destination="YOT-Vd-R6y" id="WSD-xD-58r"/>
                 <outlet property="likeButton" destination="y6D-cU-iOv" id="lDV-47-Lz5"/>
                 <outlet property="nameLabel" destination="gUt-v0-Mo6" id="3e3-G5-sSM"/>
