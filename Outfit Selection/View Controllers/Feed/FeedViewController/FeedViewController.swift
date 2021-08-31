@@ -74,6 +74,11 @@ class FeedViewController: UIViewController {
         BrandCell.horizontalPadding = 20 * FeedBrandCell.designFactor
         BrandCell.verticalMargin = 0 * FeedBrandCell.designFactor
         BrandCell.verticalPadding = 20 * FeedBrandCell.designFactor
+        
+        // Make sure like buttons are updated when we come back from see all screen
+        feedTableView.visibleCells.forEach {
+            ($0 as? FeedItemCell)?.configureLikeButtons()
+        }
     }
     
     override func viewWillDisappear(_ animated: Bool) {

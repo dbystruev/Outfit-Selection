@@ -29,13 +29,14 @@
                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YOT-Vd-R6y">
                             <rect key="frame" x="12" y="12" width="131" height="123"/>
                         </imageView>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6D-cU-iOv" customClass="DelegatedButton" customModule="Outfit_Selection" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y6D-cU-iOv" customClass="WishlistButton" customModule="Outfit_Selection" customModuleProvider="target">
                             <rect key="frame" x="131" y="4" width="20" height="20"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="20" id="adS-sC-ian"/>
                                 <constraint firstAttribute="height" constant="20" id="bbI-sj-RKt"/>
                             </constraints>
                             <state key="normal" title="Button" image="wishlist"/>
+                            <state key="selected" image="wishlist_filled"/>
                             <connections>
                                 <action selector="likeButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="aVF-Yc-0vc"/>
                             </connections>
@@ -138,6 +139,7 @@
     </objects>
     <resources>
         <image name="wishlist" width="24" height="24"/>
+        <image name="wishlist_filled" width="24" height="24"/>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>

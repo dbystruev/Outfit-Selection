@@ -71,6 +71,13 @@ class FeedItemCell: FeedCell {
         configureItems()
     }
     
+    /// Configure the view of like buttons depending on their items being in wish list
+    func configureLikeButtons() {
+        itemStackView.arrangedSubviews.forEach {
+            ($0 as? FeedItem)?.configureLikeButton()
+        }
+    }
+    
     // MARK: - Actions
     @IBAction func seeAllButtonTapped(_ sender: DelegatedButton) {
         delegate?.buttonTapped(self)

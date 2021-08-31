@@ -118,19 +118,13 @@ class ItemViewController: UIViewController {
     
     /// Fill labels with item data
     func updateUI() {
-        addToWishlistButton.isSelected = Wishlist.contains(item) ?? false
+        addToWishlistButton.configure(for: item)
         let nameWithoutVendor = item?.nameWithoutVendor
         nameLabels.forEach { $0.text = nameWithoutVendor }
         orderButton.isHidden = item?.url == nil
         title = item?.price?.asPrice
         let vendorUppercased = item?.vendor?.uppercased()
         vendorLabels.forEach { $0.text = vendorUppercased }
-    }
-    
-    /// Set last emotion in wish list to items
-    func setLastEmotionToItems() {
-        // Set most recent like/dislike to item
-        Wishlist.itemsTabSuggested = true
     }
     
     // MARK: - Inherited Methods

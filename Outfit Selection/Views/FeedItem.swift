@@ -13,7 +13,7 @@ class FeedItem: UIView {
     // MARK: - Outlets
     @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var itemImageView: UIImageView!
-    @IBOutlet weak var likeButton: DelegatedButton!
+    @IBOutlet weak var likeButton: WishlistButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var oldPriceLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
@@ -46,8 +46,9 @@ class FeedItem: UIView {
         // Set the item being currently displayed
         self.item = item
         
-        // Configure labels and images
+        // Configure buttons, labels, and images
         brandLabel.text = item.brand
+        configureLikeButton()
         itemImageView.configure(with: item.pictures?.first)
         nameLabel.text = item.nameWithoutVendor
         oldPriceLabel.isHidden = !showSale
@@ -60,9 +61,14 @@ class FeedItem: UIView {
         oldPriceLabel.attributedText = attributedOldPrice
     }
     
+    /// Configure the view of like button depending on item being in wish list
+    func configureLikeButton() {
+        likeButton.configure(for: item)
+    }
+    
     // MARK: - Actions
-    @IBAction func likeButtonTapped(_ sender: DelegatedButton) {
-        delegate?.buttonTapped(self)
+    @IBAction func likeButtonTapped(_ sender: WishlistButton) {
+        sender.addToWishlistButtonTapped(for: item)
     }
     
 }

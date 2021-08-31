@@ -11,11 +11,11 @@ import UIKit
 // MARK: - Actions
 extension ItemViewController {
     @IBAction func addToWishlistButtonTapped(_ sender: WishlistButton) {
-        sender.addToWishlistButtonTapped(item: item)
+        sender.addToWishlistButtonTapped(for: item)
     }
     
     @IBAction func dislikeButtonTapped(_ sender: WishlistButton) {
-        sender.dislikeButtonTapped(item: item)
+        sender.dislikeButtonTapped(for: item)
     }
     
     @IBAction func orderButtonTapped(_ sender: UIButton) {
