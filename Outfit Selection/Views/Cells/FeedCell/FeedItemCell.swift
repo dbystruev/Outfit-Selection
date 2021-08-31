@@ -79,8 +79,8 @@ class FeedItemCell: FeedCell {
         
         // Filter items by presense of price, old price and brand, and shuffle them
         let filteredItems = Item.all.filter {  $0.price != nil && $0.oldPrice != nil && $0.branded(brandNames) }
-        var shuffledItems = filteredItems.shuffled()
-        let numberOfItems = min(Int.random(in: 20...30), shuffledItems.count)
+        let shuffledItems = filteredItems.shuffled()
+        let numberOfItems = min(42, shuffledItems.count)
         
         // Make sure brand names are not empty
         guard !brandNames.isEmpty else {
@@ -88,17 +88,16 @@ class FeedItemCell: FeedCell {
             return
         }
         
+        // Compose roughly the similar number of items in each brand
+        let maxItemsPerBrand = numberOfItems / brandNames.count + 1
+        
         // Compose the items in the same order as brand names
-        var brandIndex = 0
         var items = [Item]()
-        while items.count < numberOfItems && !shuffledItems.isEmpty {
-            // Get next brand name
-            let brandName = brandNames[brandIndex]
-            brandIndex = (brandIndex + 1) % brandNames.count
-            
-            // Get next item matching the brand name
-            let itemIndex = shuffledItems.firstIndex { $0.branded([brandName]) } ?? 0
-            items.append(shuffledItems.remove(at: itemIndex))
+        for brandName in brandNames {
+            let brandedItems = shuffledItems.filter { $0.branded([brandName]) }
+            let brandedItemsCount = min(brandedItems.count, maxItemsPerBrand)
+            guard 0 < brandedItemsCount else { continue }
+            items.append(contentsOf: brandedItems[..<brandedItemsCount])
         }
         
         configure(items: items)
