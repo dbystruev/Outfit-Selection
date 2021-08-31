@@ -10,20 +10,12 @@ import UIKit
 
 // MARK: - Actions
 extension ItemViewController {
-    @IBAction func addToWishlistButtonTapped(_ sender: UIButton) {
-        if Wishlist.contains(item) == true {
-            dislikeButtonTapped(sender)
-        } else {
-            sender.isSelected = true
-            setLastEmotionToItems()
-            Wishlist.add(item)
-        }
+    @IBAction func addToWishlistButtonTapped(_ sender: WishlistButton) {
+        sender.addToWishlistButtonTapped(item: item)
     }
     
-    @IBAction func dislikeButtonTapped(_ sender: UIButton) {
-        addToWishlistButton.isSelected = false
-        setLastEmotionToItems()
-        Wishlist.remove(item)
+    @IBAction func dislikeButtonTapped(_ sender: WishlistButton) {
+        sender.dislikeButtonTapped(item: item)
     }
     
     @IBAction func orderButtonTapped(_ sender: UIButton) {

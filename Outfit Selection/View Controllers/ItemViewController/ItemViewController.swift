@@ -14,15 +14,18 @@ class ItemViewController: UIViewController {
     let maxOrderButtonWidth: CGFloat = 343
     
     // MARK: - Outlets
-    @IBOutlet weak var addToWishlistButton: UIButton! {
+    @IBOutlet weak var addToWishlistButton: WishlistButton! {
         didSet {
             addShadow(for: addToWishlistButton, cornerRadius: 18)
         }
     }
     
-    @IBOutlet weak var dislikeButton: UIButton! {
+    @IBOutlet weak var dislikeButton: WishlistButton! {
         didSet {
             addShadow(for: dislikeButton, cornerRadius: 20, inset: 10)
+            
+            // Need to know which button to change when dislike button is tapped
+            dislikeButton.addToWishlistButton = addToWishlistButton
         }
     }
     
