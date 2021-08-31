@@ -36,10 +36,14 @@ class FeedItemCell: FeedCell {
     }
     
     // MARK: - Custom Methods
-    /// Called after the items have been assigned
-    func configureItems() {
-        // Remove xib subview to allow space for new items
+    /// Add items to item stack view
+    /// - Parameter items: items to add
+    func configure(items: [Item]) {
+        // Make sure items are not empty
         guard 0 < items.count else { return }
+        self.items = items
+        
+        // Remove xib subview to allow space for new items
         itemStackView.subviews.forEach { $0.removeFromSuperview() }
         
         // Add new items to the items stack view
@@ -67,20 +71,37 @@ class FeedItemCell: FeedCell {
     /// Called when we know for sure what items we want to display
     /// - Parameters:
     ///   - kind: cell's type
-    ///   - items: the items which needs to be displayed in the item stack view
-    ///   - brandName: put items with given brand name first
-    func configureContent(for kind: Kind, items: [Item], brandName: String) {
-        // Configure variables
+    ///   - brandNames: put items with given brand names first
+    func configureContent(for kind: Kind, brandNames: [String]) {
+        // Configure title based on type (kind)
         self.kind = kind
-        let filteredItems = items.filter({ $0.price != nil && $0.oldPrice != nil })
-        let numberOfItems = min(Int.random(in: 20...30), filteredItems.count)
-        self.items = Array(filteredItems.shuffled().sorted {
-            $0.branded([brandName]) || $0.brand ?? "" < $1.brand ?? ""
-        }[..<numberOfItems])
-        
-        // Configure outlets
         titleLabel.text = title
-        configureItems()
+        
+        // Filter items by presense of price, old price and brand, and shuffle them
+        let filteredItems = Item.all.filter {  $0.price != nil && $0.oldPrice != nil && $0.branded(brandNames) }
+        var shuffledItems = filteredItems.shuffled()
+        let numberOfItems = min(Int.random(in: 20...30), shuffledItems.count)
+        
+        // Make sure brand names are not empty
+        guard !brandNames.isEmpty else {
+            configure(items: Array(shuffledItems[..<numberOfItems]))
+            return
+        }
+        
+        // Compose the items in the same order as brand names
+        var brandIndex = 0
+        var items = [Item]()
+        while items.count < numberOfItems && !shuffledItems.isEmpty {
+            // Get next brand name
+            let brandName = brandNames[brandIndex]
+            brandIndex = (brandIndex + 1) % brandNames.count
+            
+            // Get next item matching the brand name
+            let itemIndex = shuffledItems.firstIndex { $0.branded([brandName]) } ?? 0
+            items.append(shuffledItems.remove(at: itemIndex))
+        }
+        
+        configure(items: items)
     }
     
     /// Configure the view of like buttons depending on their items being in wish list
