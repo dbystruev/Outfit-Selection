@@ -27,6 +27,14 @@ struct Item: Codable {
     }
     
     // MARK: - Static Methods
+    /// Dislikes given item in Item.all
+    /// - Parameter item: the item to be disliked
+    static func dislike(_ item: Item?) {
+        guard let itemIndex = item?.itemIndex else { return }
+        guard let index = Item.all.firstIndex(where: { $0.itemIndex == itemIndex }) else { return }
+        Item.all[index].disliked = true
+    }
+    
     /// Clears all items
     static func removeAll() {
         all.removeAll()
@@ -35,6 +43,9 @@ struct Item: Codable {
     // MARK: - Stored Properties
     /// Item's category id
     let categoryId: Int?
+    
+    /// Whether an item has been disliked
+    var disliked = false
     
     /// Index in Item.all array
     var itemIndex: Int?
@@ -65,7 +76,6 @@ struct Item: Codable {
     
     enum CodingKeys: String, CodingKey {
         case categoryId
-//        case itemIndex
         case modifiedTime = "modified_time"
         case name
         case oldPrice = "oldprice"
@@ -73,7 +83,6 @@ struct Item: Codable {
         case price
         case url
         case vendor
-//        case wishlisted
     }
     
     // MARK: - Computed Properties

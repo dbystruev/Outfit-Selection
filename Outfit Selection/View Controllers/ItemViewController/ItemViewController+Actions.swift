@@ -15,7 +15,10 @@ extension ItemViewController {
     }
     
     @IBAction func dislikeButtonTapped(_ sender: WishlistButton) {
-        sender.dislikeButtonTapped(for: item)
+        present(Alert.dislike(item, handler: { _ in
+            sender.dislikeButtonTapped(for: self.item)
+            self.navigationController?.popViewController(animated: true)
+        }), animated: true)
     }
     
     @IBAction func orderButtonTapped(_ sender: UIButton) {
