@@ -937,38 +937,68 @@
                                             <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E47-cd-6bH">
                                                 <rect key="frame" x="0.0" y="70" width="343" height="69"/>
                                                 <subviews>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="qmk-y1-NPB" userLabel="Buttons Stack View">
-                                                        <rect key="frame" x="69.666666666666686" y="4.6666666666666288" width="204" height="60"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="qmk-y1-NPB" userLabel="Buttons Stack View">
+                                                        <rect key="frame" x="45.666666666666657" y="14.666666666666629" width="251.99999999999997" height="40"/>
                                                         <subviews>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZR-VQ-dzE" userLabel="Dislike Button" customClass="WishlistButton" customModule="Outfit_Selection" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oqw-8O-3pt">
+                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pZR-VQ-dzE" userLabel="Dislike Button" customClass="WishlistButton" customModule="Outfit_Selection" customModuleProvider="target">
+                                                                        <rect key="frame" x="-6" y="-6" width="52" height="52"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" secondItem="pZR-VQ-dzE" secondAttribute="height" id="6QG-LU-dNa"/>
+                                                                            <constraint firstAttribute="height" constant="52" id="6zV-oi-Vu7"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
+                                                                        <state key="normal" image="dislike">
+                                                                            <color key="titleColor" red="0.25958698990000001" green="0.2596296072" blue="0.259577632" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="dislikeButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="pmr-rg-aEe"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" secondItem="pZR-VQ-dzE" secondAttribute="height" id="6QG-LU-dNa"/>
-                                                                    <constraint firstAttribute="height" constant="60" id="6zV-oi-Vu7"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="pZR-VQ-dzE" secondAttribute="trailing" constant="-6" id="6py-dt-VSW"/>
+                                                                    <constraint firstItem="pZR-VQ-dzE" firstAttribute="top" secondItem="oqw-8O-3pt" secondAttribute="top" constant="-6" id="a0g-Bd-uxT"/>
+                                                                    <constraint firstItem="pZR-VQ-dzE" firstAttribute="leading" secondItem="oqw-8O-3pt" secondAttribute="leading" constant="-6" id="bPt-Ju-zhD"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="pZR-VQ-dzE" secondAttribute="bottom" constant="-6" id="je1-r9-kCY"/>
                                                                 </constraints>
-                                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
-                                                                <state key="normal" image="dislike">
-                                                                    <color key="titleColor" red="0.25958698990000001" green="0.2596296072" blue="0.259577632" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                                </state>
-                                                                <connections>
-                                                                    <action selector="dislikeButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="pmr-rg-aEe"/>
-                                                                </connections>
-                                                            </button>
+                                                            </view>
                                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="w8C-LO-Yd8" customClass="WishlistButton" customModule="Outfit_Selection" customModuleProvider="target">
-                                                                <rect key="frame" x="62" y="8" width="142" height="44"/>
+                                                                <rect key="frame" x="52" y="0.0" width="40" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="height" constant="44" id="sB5-Hj-Aeu"/>
+                                                                    <constraint firstAttribute="width" secondItem="w8C-LO-Yd8" secondAttribute="height" id="SCK-Ga-5wk"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="sB5-Hj-Aeu"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
                                                                 <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                                                 <inset key="titleEdgeInsets" minX="4" minY="7" maxX="-4" maxY="0.0"/>
-                                                                <state key="normal" title=" Add to wish list" image="wishlist">
+                                                                <state key="normal" image="wishlist">
                                                                     <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 </state>
                                                                 <state key="selected" image="wishlist_filled"/>
                                                                 <connections>
                                                                     <action selector="addToWishlistButtonTapped:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="4Vd-cV-N7T"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z7q-eu-h6r">
+                                                                <rect key="frame" x="104" y="0.0" width="148" height="40"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="YdV-11-1Gb"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
+                                                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                                <inset key="titleEdgeInsets" minX="4" minY="7" maxX="-4" maxY="0.0"/>
+                                                                <state key="normal" title=" Add to collection" image="add_teal">
+                                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <state key="selected" image="wishlist_filled"/>
+                                                                <connections>
+                                                                    <action selector="addToCollectionButton:" destination="Uns-Sh-QHX" eventType="touchUpInside" id="gRX-lA-0ot"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -1035,7 +1065,9 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addToCollectionButton" destination="Z7q-eu-h6r" id="Qgj-XJ-b7n"/>
                         <outlet property="addToWishlistButton" destination="w8C-LO-Yd8" id="HA3-bo-fWH"/>
+                        <outlet property="buttonsStackView" destination="qmk-y1-NPB" id="A2Q-bL-wN5"/>
                         <outlet property="dislikeButton" destination="pZR-VQ-dzE" id="GmU-bh-VvT"/>
                         <outlet property="imageStackView" destination="vrQ-gZ-9Lm" id="zSI-cA-QeG"/>
                         <outlet property="imageView" destination="Tez-9P-gqj" id="NF6-q8-GWd"/>
@@ -1173,6 +1205,7 @@
         <segue reference="Rw2-uy-7Iw"/>
     </inferredMetricsTieBreakers>
     <resources>
+        <image name="add_teal" width="20" height="20"/>
         <image name="dislike" width="60" height="60"/>
         <image name="hanger" width="32" height="23.333333969116211"/>
         <image name="heart" width="28" height="28"/>

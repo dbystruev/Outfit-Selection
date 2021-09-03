@@ -10,6 +10,10 @@ import UIKit
 
 // MARK: - Actions
 extension ItemViewController {
+    @IBAction func addToCollectionButton(_ sender: UIButton) {
+        debug(item?.name)
+    }
+    
     @IBAction func addToWishlistButtonTapped(_ sender: WishlistButton) {
         sender.addToWishlistButtonTapped(for: item)
     }

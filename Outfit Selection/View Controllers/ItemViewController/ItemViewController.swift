@@ -17,21 +17,30 @@ class ItemViewController: UIViewController {
     let maxOrderButtonWidth: CGFloat = 343
     
     // MARK: - Outlets
+    @IBOutlet weak var addToCollectionButton: UIButton! {
+        didSet {
+            addShadow(for: addToCollectionButton, cornerRadius: 20)
+        }
+    }
+    
     @IBOutlet weak var addToWishlistButton: WishlistButton! {
         didSet {
-            addShadow(for: addToWishlistButton, cornerRadius: 18)
+            addToWishlistButton.imageView?.contentMode = .scaleAspectFit
+            addShadow(for: addToWishlistButton, cornerRadius: 20)
         }
     }
     
     @IBOutlet weak var dislikeButton: WishlistButton! {
         didSet {
-            addShadow(for: dislikeButton, cornerRadius: 20, inset: 10)
+            dislikeButton.imageView?.contentMode = .scaleAspectFit
+            addShadow(for: dislikeButton.superview!, cornerRadius: 20)
             
             // Need to know which button to change when dislike button is tapped
             dislikeButton.addToWishlistButton = addToWishlistButton
         }
     }
     
+    @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet var orderButtonHorizontalConstraints: [NSLayoutConstraint]!
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
