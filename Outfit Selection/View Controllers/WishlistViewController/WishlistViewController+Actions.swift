@@ -12,7 +12,7 @@ import UIKit
 extension WishlistViewController {
     @IBAction func createCollectionButtonTapped(_ sender: UIBarButtonItem) {
         // Check that wishlist is not empty
-        guard !Wishlist.items.isEmpty else {
+        guard !wishlist.isEmpty else {
             present(Alert.noItems, animated: true)
             return
         }
@@ -22,15 +22,15 @@ extension WishlistViewController {
     }
     
     @IBAction func collectionsButtonTapped(_ sender: UIButton) {
-        tabSelected = .collections
+        tabSelected = .collection
     }
     
     @IBAction func itemsButtonTapped(_ sender: UIButton) {
-        tabSelected = .items
+        tabSelected = .item
     }
     
     @IBAction func outfitsButtonTapped(_ sender: UIButton) {
-        tabSelected = .outfits
+        tabSelected = .outfit
     }
 }
 

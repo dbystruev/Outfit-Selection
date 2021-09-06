@@ -50,6 +50,6 @@ enum Alert {
     
     // MARK: - Static Computed Properties
     static var noItems: UIAlertController {
-        configure("Can't create collection", message: "Please add some items to wishlist by liking them before creating a collection")
+        configure("Can't create collection", message: "Please add some items or outfits to the wishlists by liking them before creating a collection")
     }
 }

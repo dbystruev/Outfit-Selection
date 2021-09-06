@@ -56,6 +56,6 @@ class WishlistButton: UIButton {
     /// Set last emotion in wish list to items
     func setLastEmotionToItems() {
         // Set most recent like/dislike to item
-        Wishlist.tabSuggested = .items
+        Wishlist.tabSuggested = .item
     }
 }

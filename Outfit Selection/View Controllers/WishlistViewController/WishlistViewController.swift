@@ -29,11 +29,11 @@ class WishlistViewController: UIViewController {
     /// Either items or outfits wishlist depending on whether the items tab is selected
     var wishlist: [Wishlist] {
         switch tabSelected {
-        case .collections:
+        case .collection:
             return []
-        case .items:
+        case .item:
             return Wishlist.items
-        case .outfits:
+        case .outfit:
             return Wishlist.outfits
         }
     }
@@ -41,11 +41,11 @@ class WishlistViewController: UIViewController {
     /// Either items or outfit cell depending on whether the items tab is selected
     var wishlistCellId: String {
         switch tabSelected {
-        case .collections:
+        case .collection:
             return "collectionItemCell"
-        case .items:
+        case .item:
             return "itemCell"
-        case .outfits:
+        case .outfit:
             return "outfitCell"
         }
     }
@@ -55,7 +55,7 @@ class WishlistViewController: UIViewController {
     var cellsPerRow = 2
     
     /// Contains the currently selected tab: collections, items, or outfits
-    var tabSelected: Wishlist.Tab = .items {
+    var tabSelected: Wishlist.Tab = .item {
         didSet {
             Wishlist.tabSuggested = tabSelected
             updateUI()
@@ -76,15 +76,15 @@ class WishlistViewController: UIViewController {
         cellsPerRow = isHorizontal ? 4 : 2
         
         // Update buttons visibility
-        collectionsButton.titleLabel?.alpha = tabSelected == .collections ? 1 : 0.5
-        collectionsUnderline.isHidden = tabSelected != .collections
-        itemsButton.titleLabel?.alpha = tabSelected == .items ? 1 : 0.5
-        itemsUnderline.isHidden = tabSelected != .items
-        outfitsButton.titleLabel?.alpha = tabSelected == .outfits ? 1 : 0.5
-        outfitsUnderline.isHidden = tabSelected != .outfits
+        collectionsButton.titleLabel?.alpha = tabSelected == .collection ? 1 : 0.5
+        collectionsUnderline.isHidden = tabSelected != .collection
+        itemsButton.titleLabel?.alpha = tabSelected == .item ? 1 : 0.5
+        itemsUnderline.isHidden = tabSelected != .item
+        outfitsButton.titleLabel?.alpha = tabSelected == .outfit ? 1 : 0.5
+        outfitsUnderline.isHidden = tabSelected != .outfit
         
         // Remove / add create collection button from / to toolbar depending on presense of wishlist items / outfits
-        if tabSelected == .items && Wishlist.items.isEmpty || tabSelected == .outfits && Wishlist.outfits.isEmpty || tabSelected == .collections {
+        if wishlist.isEmpty {
             navigationItem.rightBarButtonItems?.removeAll { $0 == createCollectionButton }
         } else if navigationItem.rightBarButtonItems?.contains(createCollectionButton) == false {
             navigationItem.rightBarButtonItems?.append(createCollectionButton)
@@ -97,6 +97,7 @@ class WishlistViewController: UIViewController {
     // MARK: - Inherited Methods
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
+        
         case ItemViewController.segueIdentifier:
             guard let destination = segue.destination as? ItemViewController else { return }
             guard let selectedIndexPath = wishlistCollectionView.indexPathsForSelectedItems?.first else { return }
@@ -104,6 +105,16 @@ class WishlistViewController: UIViewController {
             guard let itemIndex = wishlist[selectedIndexPath.row].item?.itemIndex else { return }
             destination.image = itemCell.pictureImageView.image
             destination.itemIndex = itemIndex
+            
+        case CollectionsViewController.segueIdentifier:
+            guard let destination = segue.destination as? CollectionsViewController else {
+                debug("WARNING: \(segue.destination) is not CollectionsViewController")
+                return
+            }
+            
+            // Use wishlist items or outfits to create new collection items
+            destination.collectionItems = wishlist.compactMap { $0.kind == .item ? CollectionItem($0.item) : CollectionItem($0.items) }
+            
         default:
             debug("WARNING: Unknown segue identifier", segue.identifier)
         }

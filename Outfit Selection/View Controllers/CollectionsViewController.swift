@@ -40,7 +40,11 @@ class CollectionsViewController: UIViewController {
     
     // MARK: - Stored Properties
     /// Items which potentially could be added to newly created collection if the user selects them
-    var collectionItems: [CollectionItem] = []
+    var collectionItems: [CollectionItem] = [] {
+        didSet {
+            debug(collectionItems.count, collectionItems.map { ($0.kind, $0.items.count) })
+        }
+    }
     
     // MARK: - Inherited Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -73,7 +77,7 @@ class CollectionsViewController: UIViewController {
         
         // Check that we have non-empty name
         guard let collectionName = nameTextField.text, !collectionName.isEmpty else {
-            debug("Collection name is empty")
+            debug("WARNING: Collection name is empty")
             dismiss(animated: true)
             return
         }

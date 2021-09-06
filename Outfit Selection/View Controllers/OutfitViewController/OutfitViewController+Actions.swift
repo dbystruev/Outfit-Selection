@@ -52,7 +52,7 @@ extension OutfitViewController {
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
         // Set most recent like/dislike to outfits
-        Wishlist.tabSuggested = .outfits
+        Wishlist.tabSuggested = .outfit
         
         // Dislike if we already liked it, or like if we didn't
         if Wishlist.contains(items) == true {

@@ -26,13 +26,15 @@ struct Collection {
     /// - Parameter item: an item to check for
     /// - Returns: true or false depending on result
     func contains(_ item: Item) -> Bool {
-        contains(CollectionItem(item: item))
+        guard let collectionItem = CollectionItem(item) else { return false }
+        return contains(collectionItem)
     }
     
     /// Returns true or false depending on whether collection contains a look
     /// - Parameter look: collection items to check for
     /// - Returns: true or false depending on result
-    func contains(_ look: [Item]) -> Bool {
-        contains(CollectionItem(look: look))
+    func contains(_ outfit: [Item]) -> Bool {
+        guard let collectionOutfit = CollectionItem(outfit) else { return false }
+        return contains(collectionOutfit)
     }
 }

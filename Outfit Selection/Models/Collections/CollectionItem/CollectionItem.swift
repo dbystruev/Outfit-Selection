@@ -12,7 +12,7 @@ struct CollectionItem {
     /// There are 2 types of collections: with items or with looks of items
     enum Kind: CustomStringConvertible {
         case item
-        case look
+        case outfit
         
         // CustomStringConvertible
         var description: String {
@@ -21,8 +21,8 @@ struct CollectionItem {
             case .item:
                 return ".item"
                 
-            case .look:
-                return ".look"
+            case .outfit:
+                return ".outfit"
             }
         }
     }
@@ -35,13 +35,15 @@ struct CollectionItem {
     let items: [Item]
     
     // MARK: - Init
-    init(item: Item) {
+    init?(_ item: Item?) {
+        guard let item = item else { return nil }
         kind = .item
         items = [item]
     }
     
-    init(look: [Item]) {
-        kind = .look
-        items = look
+    init?(_ outfit: [Item]?) {
+        guard let outfit = outfit, !outfit.isEmpty else { return nil }
+        kind = .outfit
+        items = outfit
     }
 }
