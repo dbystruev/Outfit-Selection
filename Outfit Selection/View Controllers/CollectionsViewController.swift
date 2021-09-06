@@ -37,4 +37,8 @@ class CollectionsViewController: UIViewController {
     @IBAction func addItemsButtonTapped(_ sender: UIButton) {
         debug()
     }
+    
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
+        dismiss(animated: true)
+    }
 }

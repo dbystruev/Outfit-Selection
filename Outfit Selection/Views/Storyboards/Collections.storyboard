@@ -59,16 +59,29 @@
                                     <action selector="addItemsButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SjE-Hg-goQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FvE-el-sJT">
+                                <rect key="frame" x="374" y="60" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="4Yq-ro-RGI"/>
+                                    <constraint firstAttribute="width" constant="24" id="rqM-EU-ihQ"/>
+                                </constraints>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dxF-tL-pLS"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mfb-mU-t6l" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="44" id="1si-As-tvI"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mfb-mU-t6l" secondAttribute="trailing" constant="44" id="CSQ-Qt-p28"/>
+                            <constraint firstItem="FvE-el-sJT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="Ceb-LZ-Dq1"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wh4-Fk-apv" secondAttribute="bottom" constant="24" id="G2f-Kb-3Z7"/>
                             <constraint firstItem="TPe-fP-9Rk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="44" id="Hf1-Y1-kpx"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TPe-fP-9Rk" secondAttribute="trailing" constant="44" id="Jf7-2J-aNh"/>
                             <constraint firstItem="TPe-fP-9Rk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="104" id="KMr-yQ-taz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FvE-el-sJT" secondAttribute="trailing" constant="16" id="Vkm-83-mdR"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wh4-Fk-apv" secondAttribute="trailing" constant="24" id="cTS-4g-JiR"/>
                             <constraint firstItem="wh4-Fk-apv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="i8D-Hc-8hH"/>
                             <constraint firstItem="mfb-mU-t6l" firstAttribute="top" secondItem="TPe-fP-9Rk" secondAttribute="bottom" constant="72" id="ygO-El-4JQ"/>
@@ -86,6 +99,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="close" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
