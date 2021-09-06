@@ -493,7 +493,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yfc-xn-YQy">
-                                                <rect key="frame" x="0.0" y="0.0" width="187.66666666666666" height="44"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="125" height="44"/>
                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                                 <state key="normal" title="Items">
                                                     <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -503,13 +503,23 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0zx-Gt-g9k">
-                                                <rect key="frame" x="187.66666666666663" y="0.0" width="187.33333333333337" height="44"/>
+                                                <rect key="frame" x="125" y="0.0" width="125" height="44"/>
                                                 <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                                 <state key="normal" title="Outfits">
                                                     <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
                                                 <connections>
                                                     <action selector="outfitsButtonTapped:" destination="BzB-Fk-lRv" eventType="touchUpInside" id="hyd-wY-WvX"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LOK-B7-n6H">
+                                                <rect key="frame" x="250" y="0.0" width="125" height="44"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <state key="normal" title="Collections">
+                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="collectionsButtonTapped:" destination="BzB-Fk-lRv" eventType="touchUpInside" id="sNe-Si-fgl"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -519,7 +529,7 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fzv-Sd-NHd">
-                                        <rect key="frame" x="63.333333333333343" y="43" width="61" height="1"/>
+                                        <rect key="frame" x="32" y="43" width="61" height="1"/>
                                         <color key="backgroundColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="61" id="cIT-9l-z95"/>
@@ -527,18 +537,28 @@
                                         </constraints>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="flf-XD-PcW">
-                                        <rect key="frame" x="250.66666666666663" y="43" width="61" height="1"/>
+                                        <rect key="frame" x="157" y="43" width="61" height="1"/>
                                         <color key="backgroundColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="61" id="95Z-ab-PwV"/>
                                             <constraint firstAttribute="height" constant="1" id="j0n-TD-7Nm"/>
                                         </constraints>
                                     </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gPg-vr-7dK">
+                                        <rect key="frame" x="272" y="43" width="81" height="1"/>
+                                        <color key="backgroundColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="ABb-iH-29R"/>
+                                            <constraint firstAttribute="width" constant="81" id="qin-zw-yd5"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="NFh-XI-bog" firstAttribute="leading" secondItem="29n-JH-U61" secondAttribute="leading" id="1x1-qG-CjX"/>
+                                    <constraint firstItem="gPg-vr-7dK" firstAttribute="bottom" secondItem="29n-JH-U61" secondAttribute="bottom" id="7mJ-nN-nsu"/>
                                     <constraint firstAttribute="trailing" secondItem="NFh-XI-bog" secondAttribute="trailing" id="P6p-R6-W2s"/>
+                                    <constraint firstItem="gPg-vr-7dK" firstAttribute="centerX" secondItem="LOK-B7-n6H" secondAttribute="centerX" id="PtF-zN-3O5"/>
                                     <constraint firstAttribute="bottom" secondItem="NFh-XI-bog" secondAttribute="bottom" id="jaw-T1-VhI"/>
                                     <constraint firstItem="NFh-XI-bog" firstAttribute="top" secondItem="29n-JH-U61" secondAttribute="top" id="obr-Et-iUr"/>
                                     <constraint firstAttribute="bottom" secondItem="fzv-Sd-NHd" secondAttribute="bottom" id="rh9-bR-J42"/>
@@ -735,10 +755,12 @@
                     </view>
                     <navigationItem key="navigationItem" title="Wish list" id="gG6-27-ece"/>
                     <connections>
+                        <outlet property="collectionsButton" destination="LOK-B7-n6H" id="2U3-iU-eFC"/>
+                        <outlet property="collectionsUnderline" destination="gPg-vr-7dK" id="Fvx-OY-07J"/>
                         <outlet property="itemsButton" destination="yfc-xn-YQy" id="kCj-et-gKA"/>
                         <outlet property="itemsUnderline" destination="fzv-Sd-NHd" id="wkm-po-9kr"/>
-                        <outlet property="outletsButton" destination="0zx-Gt-g9k" id="ckW-pi-oeQ"/>
-                        <outlet property="outletsUnderline" destination="flf-XD-PcW" id="jZH-hi-Wha"/>
+                        <outlet property="outfitsButton" destination="0zx-Gt-g9k" id="ckW-pi-oeQ"/>
+                        <outlet property="outfitsUnderline" destination="flf-XD-PcW" id="jZH-hi-Wha"/>
                         <outlet property="wishlistCollectionView" destination="9Or-GK-FyM" id="vQ3-YU-CU0"/>
                         <segue destination="Uns-Sh-QHX" kind="show" identifier="itemViewControllerSegue" id="Rw2-uy-7Iw"/>
                     </connections>

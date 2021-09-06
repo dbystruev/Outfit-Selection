@@ -10,11 +10,20 @@ import UIKit
 
 class WishlistViewController: UIViewController {
     // MARK: - Outlets
+    @IBOutlet weak var collectionsButton: UIButton!
+    @IBOutlet weak var collectionsUnderline: UIView!
     @IBOutlet weak var itemsButton: UIButton!
     @IBOutlet weak var itemsUnderline: UIView!
-    @IBOutlet weak var outletsButton: UIButton!
-    @IBOutlet weak var outletsUnderline: UIView!
+    @IBOutlet weak var outfitsButton: UIButton!
+    @IBOutlet weak var outfitsUnderline: UIView!
     @IBOutlet weak var wishlistCollectionView: UICollectionView!
+    
+    // MARK: - Types
+    enum TabSelected {
+        case collections
+        case items
+        case outfits
+    }
     
     // MARK: - Computed Properties
     /// Get outfit view controller
@@ -25,12 +34,26 @@ class WishlistViewController: UIViewController {
     
     /// Either items or outfits wishlist depending on whether the items tab is selected
     var wishlist: [Wishlist] {
-        itemsTabSelected ? Wishlist.items : Wishlist.outfits
+        switch tabSelected {
+        case .collections:
+            return []
+        case .items:
+            return Wishlist.items
+        case .outfits:
+            return Wishlist.outfits
+        }
     }
     
     /// Either items or outfit cell depending on whether the items tab is selected
     var wishlistCellId: String {
-        itemsTabSelected ? "itemCell" : "outfitCell"
+        switch tabSelected {
+        case .collections:
+            return "collectionItemCell"
+        case .items:
+            return "itemCell"
+        case .outfits:
+            return "outfitCell"
+        }
     }
     
     // MARK: - Stored Properties
@@ -38,9 +61,9 @@ class WishlistViewController: UIViewController {
     var cellsPerRow = 2
     
     /// True when items tab is selected, false when outfits tab is selected
-    var itemsTabSelected = true {
+    var tabSelected: TabSelected = .items {
         didSet {
-            Wishlist.itemsTabSuggested = itemsTabSelected
+            Wishlist.itemsTabSuggested = tabSelected == .items
             updateUI()
         }
     }
@@ -48,7 +71,12 @@ class WishlistViewController: UIViewController {
     // MARK: - Custom Methods
     /// Select the suggested tab
     func selectSuggestedTab() {
-        itemsTabSelected = Wishlist.itemsTabSuggested
+        switch Wishlist.itemsTabSuggested {
+        case true:
+            tabSelected = .items
+        case false:
+            tabSelected = .outfits
+        }
     }
     
     /// Update items or outfits displayed depending on items selected state
@@ -59,10 +87,12 @@ class WishlistViewController: UIViewController {
         cellsPerRow = isHorizontal ? 4 : 2
         
         // Update buttons visibility
-        itemsButton.titleLabel?.alpha = itemsTabSelected ? 1 : 0.5
-        itemsUnderline.isHidden = !itemsTabSelected
-        outletsButton.titleLabel?.alpha = itemsTabSelected ? 0.5 : 1
-        outletsUnderline.isHidden = itemsTabSelected
+        collectionsButton.titleLabel?.alpha = tabSelected == .collections ? 1 : 0.5
+        collectionsUnderline.isHidden = tabSelected != .collections
+        itemsButton.titleLabel?.alpha = tabSelected == .items ? 1 : 0.5
+        itemsUnderline.isHidden = tabSelected != .items
+        outfitsButton.titleLabel?.alpha = tabSelected == .outfits ? 1 : 0.5
+        outfitsUnderline.isHidden = tabSelected != .outfits
         
         // Reload collection view
         wishlistCollectionView.reloadData()
@@ -106,11 +136,15 @@ class WishlistViewController: UIViewController {
     }
     
     // MARK: - Actions
+    @IBAction func collectionsButtonTapped(_ sender: UIButton) {
+        tabSelected = .collections
+    }
+    
     @IBAction func itemsButtonTapped(_ sender: UIButton) {
-        itemsTabSelected = true
+        tabSelected = .items
     }
     
     @IBAction func outfitsButtonTapped(_ sender: UIButton) {
-        itemsTabSelected = false
+        tabSelected = .outfits
     }
 }

@@ -10,9 +10,15 @@ import UIKit
 
 extension WishlistViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if itemsTabSelected {
+        switch tabSelected {
+        
+        case .collections:
+            debug("Not implemented for .collections")
+        
+        case .items:
             performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: self)
-        } else {
+            
+        case .outfits:
             // Get the navigation controller for the outfit view controller
             guard let navigationController = tabBarController?.viewControllers?.first as? UINavigationController else { return }
             
