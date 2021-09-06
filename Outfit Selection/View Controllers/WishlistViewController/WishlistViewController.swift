@@ -12,6 +12,7 @@ class WishlistViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var collectionsButton: UIButton!
     @IBOutlet weak var collectionsUnderline: UIView!
+    @IBOutlet var createCollectionButton: UIBarButtonItem! // strong in order to add / delete
     @IBOutlet weak var itemsButton: UIButton!
     @IBOutlet weak var itemsUnderline: UIView!
     @IBOutlet weak var outfitsButton: UIButton!
@@ -82,6 +83,13 @@ class WishlistViewController: UIViewController {
         outfitsButton.titleLabel?.alpha = tabSelected == .outfits ? 1 : 0.5
         outfitsUnderline.isHidden = tabSelected != .outfits
         
+        // Remove create collection button from toolbar if there are no wishlist items
+        if Wishlist.items.isEmpty {
+            navigationItem.rightBarButtonItems?.removeAll { $0 == createCollectionButton }
+        } else if navigationItem.rightBarButtonItems?.contains(createCollectionButton) == false {
+            navigationItem.rightBarButtonItems?.append(createCollectionButton)
+        }
+        
         // Reload collection view
         wishlistCollectionView.reloadData()
     }
@@ -121,29 +129,5 @@ class WishlistViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         updateUI(isHorizontal: size.height < size.width)
-    }
-    
-    // MARK: - Actions
-    @IBAction func createCollectionButtonTapped(_ sender: UIBarButtonItem) {
-        // Check that wishlist is not empty
-        guard !Wishlist.items.isEmpty else {
-            present(Alert.noItems, animated: true)
-            return
-        }
-        
-        // If not — jump to creating new collection
-        performSegue(withIdentifier: CollectionsViewController.segueIdentifier, sender: self)
-    }
-    
-    @IBAction func collectionsButtonTapped(_ sender: UIButton) {
-        tabSelected = .collections
-    }
-    
-    @IBAction func itemsButtonTapped(_ sender: UIButton) {
-        tabSelected = .items
-    }
-    
-    @IBAction func outfitsButtonTapped(_ sender: UIButton) {
-        tabSelected = .outfits
     }
 }

@@ -771,6 +771,7 @@
                     <connections>
                         <outlet property="collectionsButton" destination="LOK-B7-n6H" id="2U3-iU-eFC"/>
                         <outlet property="collectionsUnderline" destination="gPg-vr-7dK" id="Fvx-OY-07J"/>
+                        <outlet property="createCollectionButton" destination="d5V-kS-OTz" id="c5I-b0-HXF"/>
                         <outlet property="itemsButton" destination="yfc-xn-YQy" id="kCj-et-gKA"/>
                         <outlet property="itemsUnderline" destination="fzv-Sd-NHd" id="wkm-po-9kr"/>
                         <outlet property="outfitsButton" destination="0zx-Gt-g9k" id="ckW-pi-oeQ"/>
