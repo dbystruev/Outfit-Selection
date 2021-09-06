@@ -1,0 +1,618 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CJ9-RQ-HGM">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--collectionSelectViewController-->
+        <scene sceneID="LUm-fY-zv3">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Collections" referencedIdentifier="collectionSelectViewController" id="dpK-T5-oF1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Osl-nF-E3m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1593" y="234"/>
+        </scene>
+        <!--Collections-->
+        <scene sceneID="mAx-UR-IEa">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Collections" id="82V-RC-D2e" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iVC-gc-6qS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1025" y="234"/>
+        </scene>
+        <!--Wish list-->
+        <scene sceneID="g4H-qc-Zga">
+            <objects>
+                <viewController id="Dz6-5H-rll" customClass="WishlistViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8s2-kM-Bbc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="faM-NQ-s9p">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="goK-Ih-gRt">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXU-ae-I4h">
+                                                <rect key="frame" x="0.0" y="0.0" width="138" height="44"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <state key="normal" title="Items">
+                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="itemsButtonTapped:" destination="Dz6-5H-rll" eventType="touchUpInside" id="JUz-mZ-nX9"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jae-n2-Kh4">
+                                                <rect key="frame" x="138" y="0.0" width="138" height="44"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <state key="normal" title="Outfits">
+                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="outfitsButtonTapped:" destination="Dz6-5H-rll" eventType="touchUpInside" id="g62-Ri-kQW"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bml-DR-8nI">
+                                                <rect key="frame" x="276" y="0.0" width="138" height="44"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <state key="normal" title="Collections">
+                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                                <connections>
+                                                    <action selector="collectionsButtonTapped:" destination="Dz6-5H-rll" eventType="touchUpInside" id="mjq-LK-0Nz"/>
+                                                </connections>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="m5K-LX-eTe"/>
+                                        </constraints>
+                                    </stackView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dgj-SM-ANi">
+                                        <rect key="frame" x="38.5" y="43" width="61" height="1"/>
+                                        <color key="backgroundColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="XYM-In-TS3"/>
+                                            <constraint firstAttribute="width" constant="61" id="Xvy-cN-qy3"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="07h-s1-ydp">
+                                        <rect key="frame" x="176.5" y="43" width="61" height="1"/>
+                                        <color key="backgroundColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="61" id="baq-oz-Lqa"/>
+                                            <constraint firstAttribute="height" constant="1" id="oIt-6c-OTR"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g2c-VK-m5s">
+                                        <rect key="frame" x="304.5" y="43" width="81" height="1"/>
+                                        <color key="backgroundColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="81" id="GGG-oj-91p"/>
+                                            <constraint firstAttribute="height" constant="1" id="pc5-Yp-bEy"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="07h-s1-ydp" secondAttribute="bottom" id="5y0-jT-rBK"/>
+                                    <constraint firstAttribute="bottom" secondItem="goK-Ih-gRt" secondAttribute="bottom" id="8g3-Xi-udO"/>
+                                    <constraint firstAttribute="bottom" secondItem="dgj-SM-ANi" secondAttribute="bottom" id="C04-E7-RSv"/>
+                                    <constraint firstAttribute="trailing" secondItem="goK-Ih-gRt" secondAttribute="trailing" id="CJ2-DL-78b"/>
+                                    <constraint firstItem="goK-Ih-gRt" firstAttribute="leading" secondItem="faM-NQ-s9p" secondAttribute="leading" id="Dx3-bf-jy3"/>
+                                    <constraint firstItem="g2c-VK-m5s" firstAttribute="centerX" secondItem="bml-DR-8nI" secondAttribute="centerX" id="Wpx-4S-4Mt"/>
+                                    <constraint firstItem="goK-Ih-gRt" firstAttribute="top" secondItem="faM-NQ-s9p" secondAttribute="top" id="XfQ-fQ-QMT"/>
+                                    <constraint firstItem="g2c-VK-m5s" firstAttribute="bottom" secondItem="faM-NQ-s9p" secondAttribute="bottom" id="f3d-Dj-rKp"/>
+                                    <constraint firstItem="07h-s1-ydp" firstAttribute="centerX" secondItem="jae-n2-Kh4" secondAttribute="centerX" id="gaf-Yl-mA6"/>
+                                    <constraint firstItem="dgj-SM-ANi" firstAttribute="centerX" secondItem="hXU-ae-I4h" secondAttribute="centerX" id="k84-Ee-bBa"/>
+                                </constraints>
+                            </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2iW-5g-YbS">
+                                <rect key="frame" x="16" y="148" width="382" height="665"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="16" minimumInteritemSpacing="28" id="dzZ-1d-N0h">
+                                    <size key="itemSize" width="184" height="276"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCell" id="sDn-Oz-EWR" customClass="ItemCell" customModule="Outfit_Selection" customModuleProvider="target">
+                                        <rect key="frame" x="99" y="0.0" width="184" height="276"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Nb-Es-81f">
+                                            <rect key="frame" x="0.0" y="0.0" width="184" height="276"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lya-cI-xqk">
+                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="224"/>
+                                                </imageView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n0e-UL-OyY">
+                                                    <rect key="frame" x="0.0" y="228" width="184" height="48"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Louis Vuitton" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2A-HP-2lw">
+                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="18"/>
+                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="13"/>
+                                                            <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cotton shirt" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akK-pw-Dlp">
+                                                            <rect key="frame" x="0.0" y="18" width="184" height="15"/>
+                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="11"/>
+                                                            <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199 500 ₽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8O-59-tFQ">
+                                                            <rect key="frame" x="0.0" y="33" width="184" height="15"/>
+                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="11"/>
+                                                            <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Lya-cI-xqk" firstAttribute="top" secondItem="6Nb-Es-81f" secondAttribute="top" id="6zg-XZ-VMI"/>
+                                                <constraint firstItem="n0e-UL-OyY" firstAttribute="leading" secondItem="6Nb-Es-81f" secondAttribute="leading" id="IRG-qA-vea"/>
+                                                <constraint firstItem="Lya-cI-xqk" firstAttribute="leading" secondItem="6Nb-Es-81f" secondAttribute="leading" id="MOf-qk-Ic6"/>
+                                                <constraint firstItem="n0e-UL-OyY" firstAttribute="top" secondItem="Lya-cI-xqk" secondAttribute="bottom" constant="4" id="fPf-XY-Yy1"/>
+                                                <constraint firstAttribute="trailing" secondItem="n0e-UL-OyY" secondAttribute="trailing" id="fvo-LD-kvB"/>
+                                                <constraint firstAttribute="trailing" secondItem="Lya-cI-xqk" secondAttribute="trailing" id="gSS-2Z-Rhs"/>
+                                                <constraint firstAttribute="bottom" secondItem="n0e-UL-OyY" secondAttribute="bottom" id="oDy-pE-Du9"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="nameLabel" destination="akK-pw-Dlp" id="PEy-5b-bqo"/>
+                                            <outlet property="pictureImageView" destination="Lya-cI-xqk" id="v3I-aZ-D09"/>
+                                            <outlet property="priceLabel" destination="Y8O-59-tFQ" id="gcJ-Ya-I1T"/>
+                                            <outlet property="vendorLabel" destination="d2A-HP-2lw" id="9yq-3Z-yLu"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="outfitCell" id="BLs-Zw-Z2Y" customClass="OutfitCell" customModule="Outfit_Selection" customModuleProvider="target">
+                                        <rect key="frame" x="99" y="292" width="184" height="276"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5cU-Zr-chq">
+                                            <rect key="frame" x="0.0" y="0.0" width="184" height="276"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2VU-Ws-6jP" userLabel="Images Stack View">
+                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="236"/>
+                                                    <subviews>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="o5s-5w-ze9">
+                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="236"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y8y-yI-XYn">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="78.5"/>
+                                                                </imageView>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hcb-Rl-A6i">
+                                                                    <rect key="frame" x="0.0" y="78.5" width="92" height="157.5"/>
+                                                                </imageView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="Hcb-Rl-A6i" firstAttribute="height" secondItem="y8y-yI-XYn" secondAttribute="height" multiplier="2" id="u0V-9l-zzb"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5S3-ml-VD0">
+                                                            <rect key="frame" x="92" y="0.0" width="92" height="236"/>
+                                                            <subviews>
+                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QkK-mR-XRd">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="78.5"/>
+                                                                </imageView>
+                                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="i4J-YU-DjY">
+                                                                    <rect key="frame" x="0.0" y="78.5" width="92" height="157.5"/>
+                                                                    <subviews>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGT-3e-e3s">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="79"/>
+                                                                            <subviews>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EUH-QK-4UB">
+                                                                                    <rect key="frame" x="8" y="16" width="76" height="63"/>
+                                                                                </imageView>
+                                                                            </subviews>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="trailing" secondItem="EUH-QK-4UB" secondAttribute="trailing" constant="8" id="8Zy-d8-Zl4"/>
+                                                                                <constraint firstItem="EUH-QK-4UB" firstAttribute="leading" secondItem="XGT-3e-e3s" secondAttribute="leading" constant="8" id="k4r-rG-9TB"/>
+                                                                                <constraint firstItem="EUH-QK-4UB" firstAttribute="top" secondItem="XGT-3e-e3s" secondAttribute="top" constant="16" id="mbU-gc-sVe"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="EUH-QK-4UB" secondAttribute="bottom" id="oy3-5w-6Ao"/>
+                                                                            </constraints>
+                                                                        </view>
+                                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oM6-9L-vyh">
+                                                                            <rect key="frame" x="0.0" y="79" width="92" height="78.5"/>
+                                                                            <subviews>
+                                                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yqW-UW-xxW">
+                                                                                    <rect key="frame" x="8" y="0.0" width="76" height="62.5"/>
+                                                                                </imageView>
+                                                                            </subviews>
+                                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                            <constraints>
+                                                                                <constraint firstItem="yqW-UW-xxW" firstAttribute="top" secondItem="oM6-9L-vyh" secondAttribute="top" id="8MO-D3-srY"/>
+                                                                                <constraint firstAttribute="trailing" secondItem="yqW-UW-xxW" secondAttribute="trailing" constant="8" id="Syj-JN-dEz"/>
+                                                                                <constraint firstItem="yqW-UW-xxW" firstAttribute="leading" secondItem="oM6-9L-vyh" secondAttribute="leading" constant="8" id="mXI-TJ-65G"/>
+                                                                                <constraint firstAttribute="bottom" secondItem="yqW-UW-xxW" secondAttribute="bottom" constant="16" id="qmg-5C-QkX"/>
+                                                                            </constraints>
+                                                                        </view>
+                                                                    </subviews>
+                                                                </stackView>
+                                                            </subviews>
+                                                            <constraints>
+                                                                <constraint firstItem="i4J-YU-DjY" firstAttribute="height" secondItem="QkK-mR-XRd" secondAttribute="height" multiplier="2" id="g5b-cu-J8S"/>
+                                                            </constraints>
+                                                        </stackView>
+                                                    </subviews>
+                                                </stackView>
+                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="26l-yP-xUM" userLabel="Labels Stack View">
+                                                    <rect key="frame" x="0.0" y="235" width="184" height="33"/>
+                                                    <subviews>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYF-b3-BkJ">
+                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="18"/>
+                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="13"/>
+                                                            <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199 500 ₽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7A-GE-xy4">
+                                                            <rect key="frame" x="0.0" y="18" width="184" height="15"/>
+                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="11"/>
+                                                            <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="26l-yP-xUM" secondAttribute="trailing" id="38J-Go-vNg"/>
+                                                <constraint firstItem="26l-yP-xUM" firstAttribute="bottom" secondItem="2VU-Ws-6jP" secondAttribute="bottom" constant="32" id="42c-8Z-Aes"/>
+                                                <constraint firstItem="26l-yP-xUM" firstAttribute="leading" secondItem="5cU-Zr-chq" secondAttribute="leading" id="B6Z-or-I4e"/>
+                                                <constraint firstItem="2VU-Ws-6jP" firstAttribute="top" secondItem="5cU-Zr-chq" secondAttribute="top" id="BAq-6K-Ai6"/>
+                                                <constraint firstAttribute="trailing" secondItem="2VU-Ws-6jP" secondAttribute="trailing" id="Xz2-HK-h3t"/>
+                                                <constraint firstItem="2VU-Ws-6jP" firstAttribute="leading" secondItem="5cU-Zr-chq" secondAttribute="leading" id="ddh-Aj-0Ty"/>
+                                                <constraint firstAttribute="bottom" secondItem="26l-yP-xUM" secondAttribute="bottom" constant="8" id="y9f-qP-83S"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="occasionLabel" destination="OYF-b3-BkJ" id="teO-cN-ICC"/>
+                                            <outlet property="priceLabel" destination="p7A-GE-xy4" id="y2R-1S-V0v"/>
+                                            <outletCollection property="pictureImageViews" destination="y8y-yI-XYn" collectionClass="NSMutableArray" id="qrS-ci-LBK"/>
+                                            <outletCollection property="pictureImageViews" destination="Hcb-Rl-A6i" collectionClass="NSMutableArray" id="dSp-6e-X5y"/>
+                                            <outletCollection property="pictureImageViews" destination="QkK-mR-XRd" collectionClass="NSMutableArray" id="kST-h8-6oV"/>
+                                            <outletCollection property="pictureImageViews" destination="EUH-QK-4UB" collectionClass="NSMutableArray" id="2F7-bs-CNm"/>
+                                            <outletCollection property="pictureImageViews" destination="yqW-UW-xxW" collectionClass="NSMutableArray" id="OR6-lM-Wmd"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="DZC-hx-Hgw"/>
+                        <color key="backgroundColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="faM-NQ-s9p" firstAttribute="trailing" secondItem="DZC-hx-Hgw" secondAttribute="trailing" id="3uc-jZ-dKo"/>
+                            <constraint firstItem="DZC-hx-Hgw" firstAttribute="bottom" secondItem="2iW-5g-YbS" secondAttribute="bottom" id="EGN-BM-wNw"/>
+                            <constraint firstItem="2iW-5g-YbS" firstAttribute="top" secondItem="faM-NQ-s9p" secondAttribute="bottom" constant="16" id="RDx-rf-ZZa"/>
+                            <constraint firstItem="DZC-hx-Hgw" firstAttribute="trailing" secondItem="2iW-5g-YbS" secondAttribute="trailing" constant="16" id="YnV-o5-yJy"/>
+                            <constraint firstItem="faM-NQ-s9p" firstAttribute="leading" secondItem="DZC-hx-Hgw" secondAttribute="leading" id="daY-V8-o9k"/>
+                            <constraint firstItem="2iW-5g-YbS" firstAttribute="leading" secondItem="DZC-hx-Hgw" secondAttribute="leading" constant="16" id="lC0-2P-Apd"/>
+                            <constraint firstItem="faM-NQ-s9p" firstAttribute="top" secondItem="DZC-hx-Hgw" secondAttribute="top" id="miY-8o-DYY"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Wish list" id="qJk-1t-eWX">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="hy9-Fh-5Xn">
+                            <connections>
+                                <action selector="createCollectionButtonTapped:" destination="Dz6-5H-rll" id="LGx-c0-ja6"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collectionsButton" destination="bml-DR-8nI" id="omG-Ia-cD0"/>
+                        <outlet property="collectionsUnderline" destination="g2c-VK-m5s" id="Ggo-dN-tL9"/>
+                        <outlet property="createCollectionButton" destination="hy9-Fh-5Xn" id="zhy-2z-tpQ"/>
+                        <outlet property="itemsButton" destination="hXU-ae-I4h" id="3Ee-Mp-mQB"/>
+                        <outlet property="itemsUnderline" destination="dgj-SM-ANi" id="9F7-15-WDs"/>
+                        <outlet property="outfitsButton" destination="jae-n2-Kh4" id="d8W-TT-iLh"/>
+                        <outlet property="outfitsUnderline" destination="07h-s1-ydp" id="kAU-h6-Iw6"/>
+                        <outlet property="wishlistCollectionView" destination="2iW-5g-YbS" id="fgV-03-Pci"/>
+                        <segue destination="893-Rv-iVe" kind="show" identifier="itemViewControllerSegue" id="auX-w6-qgR"/>
+                        <segue destination="82V-RC-D2e" kind="presentation" identifier="collectionNameViewControllerSegue" id="WxI-ut-xRH"/>
+                        <segue destination="dpK-T5-oF1" kind="presentation" identifier="collectionSelectViewControllerSegue" id="fY1-fq-HdE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wYW-gk-QCk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1309" y="-175"/>
+        </scene>
+        <!--Item View Controller-->
+        <scene sceneID="DKu-iH-gqv">
+            <objects>
+                <viewController storyboardIdentifier="itemViewController" id="893-Rv-iVe" customClass="ItemViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="XEi-hE-Ldh">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="iv6-cp-IiR">
+                                <rect key="frame" x="16" y="104" width="382" height="685"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zyi-Sk-1UV" userLabel="Labels Stack View">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="387"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="LOUIS VUITTON" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHh-JS-zDH">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="27"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="20"/>
+                                                <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text=" Cotton Shirt" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1Z-23-l1J">
+                                                <rect key="frame" x="0.0" y="27" width="382" height="360"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="20"/>
+                                                <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                    </stackView>
+                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJ7-P9-8sb">
+                                        <rect key="frame" x="0.0" y="403" width="382" height="50"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="akp-i8-v2R">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                                <subviews>
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="8e5-lJ-Xm5">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="50"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <constraints>
+                                            <constraint firstItem="8e5-lJ-Xm5" firstAttribute="width" secondItem="Ios-Ge-3VR" secondAttribute="width" id="AdT-dx-6Rr"/>
+                                            <constraint firstItem="akp-i8-v2R" firstAttribute="trailing" secondItem="6XE-SV-PPF" secondAttribute="trailing" id="Nfn-Pb-PaG"/>
+                                            <constraint firstItem="akp-i8-v2R" firstAttribute="leading" secondItem="6XE-SV-PPF" secondAttribute="leading" id="ahY-qy-MsO"/>
+                                            <constraint firstItem="akp-i8-v2R" firstAttribute="top" secondItem="6XE-SV-PPF" secondAttribute="top" id="c9v-62-CSl"/>
+                                            <constraint firstItem="akp-i8-v2R" firstAttribute="bottom" secondItem="6XE-SV-PPF" secondAttribute="bottom" id="daI-aP-gt3"/>
+                                            <constraint firstItem="8e5-lJ-Xm5" firstAttribute="height" secondItem="Ios-Ge-3VR" secondAttribute="height" id="iTd-n9-Bqe"/>
+                                        </constraints>
+                                        <viewLayoutGuide key="contentLayoutGuide" id="6XE-SV-PPF"/>
+                                        <viewLayoutGuide key="frameLayoutGuide" id="Ios-Ge-3VR"/>
+                                    </scrollView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="4Fq-h8-zMT">
+                                        <rect key="frame" x="0.0" y="469" width="382" height="216"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uqL-aG-vXq">
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="54"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOUIS VUITTON" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUw-qT-H7L">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="27"/>
+                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="20"/>
+                                                        <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" Cotton Shirt" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5c-mB-Tvd">
+                                                        <rect key="frame" x="0.0" y="27" width="382" height="27"/>
+                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="20"/>
+                                                        <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <nil key="highlightedColor"/>
+                                                    </label>
+                                                </subviews>
+                                            </stackView>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ncg-v4-Oyd">
+                                                <rect key="frame" x="0.0" y="70" width="382" height="69"/>
+                                                <subviews>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="YYO-z0-tKJ" userLabel="Buttons Stack View">
+                                                        <rect key="frame" x="65" y="14.5" width="252" height="40"/>
+                                                        <subviews>
+                                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvm-ZV-PB7">
+                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmW-tW-0Rp" userLabel="Dislike Button" customClass="WishlistButton" customModule="Outfit_Selection" customModuleProvider="target">
+                                                                        <rect key="frame" x="-6" y="-6" width="52" height="52"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="52" id="qus-lH-IlT"/>
+                                                                            <constraint firstAttribute="width" secondItem="CmW-tW-0Rp" secondAttribute="height" id="xMV-ok-1Px"/>
+                                                                        </constraints>
+                                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
+                                                                        <state key="normal" image="dislike">
+                                                                            <color key="titleColor" red="0.25958698990000001" green="0.2596296072" blue="0.259577632" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                        </state>
+                                                                        <connections>
+                                                                            <action selector="dislikeButtonTapped:" destination="893-Rv-iVe" eventType="touchUpInside" id="dYV-Sv-Kn0"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                                <constraints>
+                                                                    <constraint firstItem="CmW-tW-0Rp" firstAttribute="leading" secondItem="jvm-ZV-PB7" secondAttribute="leading" constant="-6" id="7ks-4L-4N7"/>
+                                                                    <constraint firstItem="CmW-tW-0Rp" firstAttribute="top" secondItem="jvm-ZV-PB7" secondAttribute="top" constant="-6" id="Wsx-qo-R2i"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="CmW-tW-0Rp" secondAttribute="bottom" constant="-6" id="hJ7-Ct-e3w"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="CmW-tW-0Rp" secondAttribute="trailing" constant="-6" id="zcZ-ar-5tb"/>
+                                                                </constraints>
+                                                            </view>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycc-SW-MX5" customClass="WishlistButton" customModule="Outfit_Selection" customModuleProvider="target">
+                                                                <rect key="frame" x="52" y="0.0" width="40" height="40"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" secondItem="ycc-SW-MX5" secondAttribute="height" id="3Vf-Zk-Y39"/>
+                                                                    <constraint firstAttribute="height" constant="40" id="waD-PI-L9C"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
+                                                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                                <inset key="titleEdgeInsets" minX="4" minY="7" maxX="-4" maxY="0.0"/>
+                                                                <state key="normal" image="wishlist">
+                                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <state key="selected" image="wishlist_filled"/>
+                                                                <connections>
+                                                                    <action selector="addToWishlistButtonTapped:" destination="893-Rv-iVe" eventType="touchUpInside" id="n7N-gD-PMD"/>
+                                                                </connections>
+                                                            </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHM-YP-a8l">
+                                                                <rect key="frame" x="104" y="0.0" width="148" height="40"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="rvY-aK-1DV"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
+                                                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                                <inset key="titleEdgeInsets" minX="4" minY="7" maxX="-4" maxY="0.0"/>
+                                                                <state key="normal" title=" Add to collection" image="add_teal">
+                                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <state key="selected" image="wishlist_filled"/>
+                                                                <connections>
+                                                                    <action selector="addToCollectionButton:" destination="893-Rv-iVe" eventType="touchUpInside" id="Xl0-HX-uCf"/>
+                                                                </connections>
+                                                            </button>
+                                                        </subviews>
+                                                    </stackView>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="YYO-z0-tKJ" firstAttribute="centerX" secondItem="ncg-v4-Oyd" secondAttribute="centerX" id="JsU-xV-skC"/>
+                                                    <constraint firstItem="YYO-z0-tKJ" firstAttribute="centerY" secondItem="ncg-v4-Oyd" secondAttribute="centerY" id="PKz-yw-tdu"/>
+                                                    <constraint firstAttribute="height" constant="69" id="Xrb-AY-qlq"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="S1R-TY-gOZ">
+                                                <rect key="frame" x="0.0" y="155" width="382" height="61"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bhy-eM-JDA">
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="61"/>
+                                                        <color key="backgroundColor" red="0.31575974820000002" green="0.38078895210000002" blue="0.37285700440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="61" id="qBe-N3-k6w"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="17"/>
+                                                        <inset key="titleEdgeInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
+                                                        <state key="normal" title="Shop now">
+                                                            <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                                        </state>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                                                <integer key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                        <connections>
+                                                            <action selector="orderButtonTapped:" destination="893-Rv-iVe" eventType="touchUpInside" id="foR-pt-TTA"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                <constraints>
+                                                    <constraint firstItem="bhy-eM-JDA" firstAttribute="top" secondItem="S1R-TY-gOZ" secondAttribute="top" id="7Nj-Ls-W97"/>
+                                                    <constraint firstAttribute="bottom" secondItem="bhy-eM-JDA" secondAttribute="bottom" id="Tm7-Wy-CgT"/>
+                                                    <constraint firstAttribute="trailing" secondItem="bhy-eM-JDA" secondAttribute="trailing" id="UOc-bk-rdK"/>
+                                                    <constraint firstItem="bhy-eM-JDA" firstAttribute="leading" secondItem="S1R-TY-gOZ" secondAttribute="leading" id="nrF-BB-7gh"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="m9X-8b-cdO"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iv6-cp-IiR" firstAttribute="leading" secondItem="m9X-8b-cdO" secondAttribute="leading" constant="16" id="Gnp-8A-yU5"/>
+                            <constraint firstItem="m9X-8b-cdO" firstAttribute="bottom" secondItem="iv6-cp-IiR" secondAttribute="bottom" constant="24" id="JlB-3R-vh1"/>
+                            <constraint firstItem="m9X-8b-cdO" firstAttribute="trailing" secondItem="iv6-cp-IiR" secondAttribute="trailing" constant="16" id="KEC-eS-i89"/>
+                            <constraint firstItem="iv6-cp-IiR" firstAttribute="top" secondItem="m9X-8b-cdO" secondAttribute="top" constant="16" id="h4F-YN-kNX"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="OPH-ye-Ie6">
+                        <barButtonItem key="rightBarButtonItem" image="share" id="qvY-RK-8Hr">
+                            <connections>
+                                <action selector="shareButtonTapped:" destination="893-Rv-iVe" id="mA5-ca-RQk"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addToCollectionButton" destination="uHM-YP-a8l" id="Ysl-UD-LP1"/>
+                        <outlet property="addToWishlistButton" destination="ycc-SW-MX5" id="GxB-Tt-dhw"/>
+                        <outlet property="buttonsStackView" destination="YYO-z0-tKJ" id="qvW-Xa-0rW"/>
+                        <outlet property="dislikeButton" destination="CmW-tW-0Rp" id="sfo-6F-5zG"/>
+                        <outlet property="imageStackView" destination="akp-i8-v2R" id="IKX-ns-jbp"/>
+                        <outlet property="imageView" destination="8e5-lJ-Xm5" id="rd8-wY-um8"/>
+                        <outlet property="orderButton" destination="bhy-eM-JDA" id="QgH-lz-Ro0"/>
+                        <outlet property="rightLabelsStackView" destination="uqL-aG-vXq" id="N4x-3j-kUq"/>
+                        <outlet property="topLabelsStackView" destination="Zyi-Sk-1UV" id="T7s-Oe-Guh"/>
+                        <outlet property="topStackView" destination="iv6-cp-IiR" id="cLl-kt-Yc2"/>
+                        <outlet property="trailingStackView" destination="4Fq-h8-zMT" id="1eF-8W-QDE"/>
+                        <outletCollection property="orderButtonHorizontalConstraints" destination="UOc-bk-rdK" collectionClass="NSMutableArray" id="pVL-TM-BLX"/>
+                        <outletCollection property="orderButtonHorizontalConstraints" destination="nrF-BB-7gh" collectionClass="NSMutableArray" id="kwy-xV-wSM"/>
+                        <outletCollection property="vendorLabels" destination="WHh-JS-zDH" collectionClass="NSMutableArray" id="8ZF-2Z-lOH"/>
+                        <outletCollection property="vendorLabels" destination="LUw-qT-H7L" collectionClass="NSMutableArray" id="tzC-gi-WBX"/>
+                        <outletCollection property="nameLabels" destination="a1Z-23-l1J" collectionClass="NSMutableArray" id="c8w-Go-HeT"/>
+                        <outletCollection property="nameLabels" destination="K5c-mB-Tvd" collectionClass="NSMutableArray" id="Rbs-yk-d5N"/>
+                        <segue destination="C0E-kp-KJb" kind="show" identifier="intermediaryViewControllerSegue" id="cI0-oM-XQO"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pfc-rV-XgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2152" y="-175"/>
+        </scene>
+        <!--Intermediary View Controller-->
+        <scene sceneID="s3n-bu-j52">
+            <objects>
+                <viewController id="C0E-kp-KJb" customClass="IntermediaryViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="MrD-fC-0Wx">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Now taking you to FARFETCH..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVC-wd-Fqz">
+                                <rect key="frame" x="16" y="463.5" width="382" height="20.5"/>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="15"/>
+                                <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XGu-Hj-qvl"/>
+                        <color key="backgroundColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hVC-wd-Fqz" secondAttribute="trailing" constant="16" id="4nc-4r-mvU"/>
+                            <constraint firstItem="hVC-wd-Fqz" firstAttribute="centerY" secondItem="MrD-fC-0Wx" secondAttribute="centerY" multiplier="406 : 384" id="Cn9-ZF-4yc"/>
+                            <constraint firstItem="hVC-wd-Fqz" firstAttribute="leading" secondItem="XGu-Hj-qvl" secondAttribute="leading" constant="16" id="Ogp-WL-jQB"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DcT-dZ-OUs"/>
+                    <connections>
+                        <outlet property="takingYouLabel" destination="hVC-wd-Fqz" id="tVm-fC-4gB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mmo-wa-bPh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3026" y="-175"/>
+        </scene>
+        <!--Wish list-->
+        <scene sceneID="QYj-Ix-HHn">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="CJ9-RQ-HGM" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Wish list" image="wishlist" id="KAX-o3-svL"/>
+                    <toolbarItems/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="b3G-2w-ybH">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Dz6-5H-rll" kind="relationship" relationship="rootViewController" id="NH6-c1-gM0"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bi2-ZI-8FW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="505" y="-175"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="add_teal" width="20" height="20"/>
+        <image name="dislike" width="60" height="60"/>
+        <image name="share" width="33" height="27"/>
+        <image name="wishlist" width="24" height="24"/>
+        <image name="wishlist_filled" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

@@ -1,5 +1,5 @@
 //
-//  CollectionsViewController.swift
+//  CollectionNameViewController.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 06.09.2021.
@@ -8,9 +8,10 @@
 
 import UIKit
 
-class CollectionsViewController: UIViewController {
+class CollectionNameViewController: CollectionBaseViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var addItemsButton: UIButton!
     @IBOutlet weak var addItemsButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var labelBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var labelTopConstraint: NSLayoutConstraint!
@@ -28,11 +29,14 @@ class CollectionsViewController: UIViewController {
             // Align text to the center
             nameTextField.contentVerticalAlignment = .top // actually default
             nameTextField.textAlignment = .center
+            
+            // Set self as UITextFieldDelegate
+            nameTextField.delegate = self
         }
     }
     
     // MARK: - Static Properties
-    static let segueIdentifier = "collectionsViewControllerSegue"
+    static let segueIdentifier = "collectionNameViewControllerSegue"
     
     // MARK: - Inherited Properties
     override var keyboardObject: Any? { addItemsButtonBottomConstraint }
@@ -46,6 +50,9 @@ class CollectionsViewController: UIViewController {
         }
     }
     
+    /// View controller which modally presented ourselves
+    var source: UIViewController?
+    
     // MARK: - Inherited Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -55,6 +62,7 @@ class CollectionsViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         registerForKeyboardNotifications()
+        updateUI()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -71,26 +79,39 @@ class CollectionsViewController: UIViewController {
         labelTopConstraint.constant = isHorizontal ? 24 : 104
     }
     
+    // MARK: - Custom Methods
+    /// Show `add items button` when `name text field` is not empty
+    func updateUI() {
+        addItemsButton.isHidden = nameTextField.text?.isEmpty != false
+    }
+    
     // MARK: - Actions
     @IBAction func addItemsButtonTapped(_ sender: UIButton) {
         nameTextField.endEditing(true)
         
+        defer {
+            dismiss(animated: true)
+        }
+        
         // Check that we have non-empty name
         guard let collectionName = nameTextField.text, !collectionName.isEmpty else {
             debug("WARNING: Collection name is empty")
-            dismiss(animated: true)
             return
         }
         
         // Check that we have a new collection prepared
         guard !collectionItems.isEmpty else {
-            debug("No new collection available")
-            dismiss(animated: true)
+            debug("WARNING: No new collection available")
             return
+        }
+        
+        // Present collection select view controller
+        dismiss(animated: true) {
+            self.source?.performSegue(withIdentifier: CollectionSelectViewController.segueIdentifier, sender: self.source)
         }
     }
     
-    @IBAction func closeButtonTapped(_ sender: UIButton) {
-        dismiss(animated: true)
+    @IBAction func collectionNameEditingChanged(_ sender: UITextField) {
+        updateUI()
     }
 }

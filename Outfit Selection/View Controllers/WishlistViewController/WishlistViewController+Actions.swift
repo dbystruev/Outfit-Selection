@@ -18,7 +18,7 @@ extension WishlistViewController {
         }
         
         // If not — jump to creating new collection
-        performSegue(withIdentifier: CollectionsViewController.segueIdentifier, sender: self)
+        performSegue(withIdentifier: CollectionNameViewController.segueIdentifier, sender: self)
     }
     
     @IBAction func collectionsButtonTapped(_ sender: UIButton) {

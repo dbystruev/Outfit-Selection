@@ -99,7 +99,7 @@
         <!--itemViewController-->
         <scene sceneID="UdD-7k-PbK">
             <objects>
-                <viewControllerPlaceholder storyboardName="Main" referencedIdentifier="itemViewController" id="AyZ-Yg-HPR" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Wishlist" referencedIdentifier="itemViewController" id="AyZ-Yg-HPR" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="4qg-Xz-JMX"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubu-VI-GBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

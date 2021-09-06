@@ -17,27 +17,30 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Collections View Controller-->
+        <!--Collection Name View Controller-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController id="Y6W-OH-hqX" customClass="CollectionsViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Y6W-OH-hqX" customClass="CollectionNameViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The name for your collection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPe-fP-9Rk">
-                                <rect key="frame" x="44" y="148" width="326" height="28"/>
+                                <rect key="frame" x="44" y="148" width="326" height="27.5"/>
                                 <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="20"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfb-mU-t6l">
-                                <rect key="frame" x="44" y="248" width="326" height="28"/>
+                                <rect key="frame" x="44" y="247.5" width="326" height="28"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="ZGB-Wa-rJo"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="16"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <action selector="collectionNameEditingChanged:" destination="Y6W-OH-hqX" eventType="editingChanged" id="9nN-dC-iTG"/>
+                                </connections>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wh4-Fk-apv">
                                 <rect key="frame" x="24" y="777" width="366" height="61"/>
@@ -89,6 +92,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="addItemsButton" destination="wh4-Fk-apv" id="o2c-u7-Tzo"/>
                         <outlet property="addItemsButtonBottomConstraint" destination="G2f-Kb-3Z7" id="Daz-fJ-DVy"/>
                         <outlet property="labelBottomConstraint" destination="ygO-El-4JQ" id="JqZ-LD-oP0"/>
                         <outlet property="labelTopConstraint" destination="KMr-yQ-taz" id="azG-Jo-ZF3"/>
@@ -98,6 +102,39 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4" y="74"/>
+        </scene>
+        <!--Collection Select View Controller-->
+        <scene sceneID="pD4-kT-d28">
+            <objects>
+                <viewController storyboardIdentifier="collectionSelectViewController" id="t8f-d5-fMr" customClass="CollectionSelectViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="r5x-3N-dyz">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rTP-mr-QO7" userLabel="Close Button">
+                                <rect key="frame" x="366" y="68" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="340-2l-5jO"/>
+                                    <constraint firstAttribute="width" constant="24" id="zjG-Uk-HhX"/>
+                                </constraints>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="t8f-d5-fMr" eventType="touchUpInside" id="fn9-vB-kJF"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="XfB-p4-jQw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="rTP-mr-QO7" firstAttribute="top" secondItem="XfB-p4-jQw" secondAttribute="top" constant="24" id="Fdb-7p-NRe"/>
+                            <constraint firstItem="XfB-p4-jQw" firstAttribute="trailing" secondItem="rTP-mr-QO7" secondAttribute="trailing" constant="24" id="nEU-wD-23Z"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="2Mr-xL-Bmh"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z1L-7f-rcu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="877" y="74"/>
         </scene>
     </scenes>
     <resources>
