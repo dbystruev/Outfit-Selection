@@ -15,6 +15,7 @@
 		6906A99526E608C400386267 /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906A99426E608C400386267 /* CollectionItem.swift */; };
 		6906A99726E60C8D00386267 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906A99626E60C8D00386267 /* Collections.swift */; };
 		6906A99A26E60ED900386267 /* CollectionItem+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906A99926E60ED900386267 /* CollectionItem+Equatable.swift */; };
+		6906A99E26E616F600386267 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6906A99D26E616F600386267 /* Profile.storyboard */; };
 		690B1F9825BEF54E000CDD51 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */; };
 		690B42B226DD7601000C683B /* WishlistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690B42B126DD7601000C683B /* WishlistButton.swift */; };
 		6910BDE4260B6D7B00A26F90 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910BDE3260B6D7B00A26F90 /* Bubble.swift */; };
@@ -171,6 +172,7 @@
 		6906A99426E608C400386267 /* CollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItem.swift; sourceTree = "<group>"; };
 		6906A99626E60C8D00386267 /* Collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
 		6906A99926E60ED900386267 /* CollectionItem+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionItem+Equatable.swift"; sourceTree = "<group>"; };
+		6906A99D26E616F600386267 /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		690B42B126DD7601000C683B /* WishlistButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistButton.swift; sourceTree = "<group>"; };
 		6910BDE3260B6D7B00A26F90 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
@@ -698,6 +700,7 @@
 				69F78DF526CBF047007843C4 /* Feed.storyboard */,
 				690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */,
 				69A6F6F722BA26B7002A3B49 /* Main.storyboard */,
+				6906A99D26E616F600386267 /* Profile.storyboard */,
 				699ABB5A25E6CA3900E388FC /* Welcome.storyboard */,
 			);
 			path = Storyboards;
@@ -931,6 +934,7 @@
 				690491F6260C732A0098F1FD /* NotoSans-Bold.ttf in Resources */,
 				69535A4F25EDF6AA00E9D816 /* Screenshot12.png in Resources */,
 				69A252D426CED95100630EDA /* categories.txt in Resources */,
+				6906A99E26E616F600386267 /* Profile.storyboard in Resources */,
 				697CCE5D26CFA47E00B69763 /* FeedItemCell.xib in Resources */,
 				697CCE6A26D0039800B69763 /* FeedItem.xib in Resources */,
 				699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */,
