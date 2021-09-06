@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Item: Codable {
+struct Item: Codable, Hashable {
     // MARK: - Static Properties
     /// All items loaded from the server
     private(set) static var all = [Item]()
