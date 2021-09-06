@@ -83,8 +83,8 @@ class WishlistViewController: UIViewController {
         outfitsButton.titleLabel?.alpha = tabSelected == .outfits ? 1 : 0.5
         outfitsUnderline.isHidden = tabSelected != .outfits
         
-        // Remove create collection button from toolbar if there are no wishlist items
-        if Wishlist.items.isEmpty {
+        // Remove / add create collection button from / to toolbar depending on presense of wishlist items / outfits
+        if tabSelected == .items && Wishlist.items.isEmpty || tabSelected == .outfits && Wishlist.outfits.isEmpty || tabSelected == .collections {
             navigationItem.rightBarButtonItems?.removeAll { $0 == createCollectionButton }
         } else if navigationItem.rightBarButtonItems?.contains(createCollectionButton) == false {
             navigationItem.rightBarButtonItems?.append(createCollectionButton)
