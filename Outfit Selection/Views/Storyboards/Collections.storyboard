@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSans-Medium.ttf">
+            <string>NotoSans-Medium</string>
+        </array>
+        <array key="NotoSans-SemiBold.ttf">
+            <string>NotoSans-SemiBold</string>
+        </array>
+    </customFonts>
+    <scenes>
+        <!--Collections View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController id="Y6W-OH-hqX" customClass="CollectionsViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The name for your collection" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TPe-fP-9Rk">
+                                <rect key="frame" x="44" y="148" width="326" height="28"/>
+                                <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mfb-mU-t6l">
+                                <rect key="frame" x="44" y="248" width="326" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="ZGB-Wa-rJo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="16"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wh4-Fk-apv">
+                                <rect key="frame" x="24" y="777" width="366" height="61"/>
+                                <color key="backgroundColor" red="0.31575974820000002" green="0.38078895210000002" blue="0.37285700440000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="61" id="HVw-A4-FLY"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="17"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="7" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Add Items">
+                                    <color key="titleColor" systemColor="systemBackgroundColor"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="10"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="addItemsButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="SjE-Hg-goQ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mfb-mU-t6l" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="44" id="1si-As-tvI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mfb-mU-t6l" secondAttribute="trailing" constant="44" id="CSQ-Qt-p28"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="wh4-Fk-apv" secondAttribute="bottom" constant="24" id="G2f-Kb-3Z7"/>
+                            <constraint firstItem="TPe-fP-9Rk" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="44" id="Hf1-Y1-kpx"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="TPe-fP-9Rk" secondAttribute="trailing" constant="44" id="Jf7-2J-aNh"/>
+                            <constraint firstItem="TPe-fP-9Rk" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="104" id="KMr-yQ-taz"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wh4-Fk-apv" secondAttribute="trailing" constant="24" id="cTS-4g-JiR"/>
+                            <constraint firstItem="wh4-Fk-apv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="i8D-Hc-8hH"/>
+                            <constraint firstItem="mfb-mU-t6l" firstAttribute="top" secondItem="TPe-fP-9Rk" secondAttribute="bottom" constant="72" id="ygO-El-4JQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="labelBottomConstraint" destination="ygO-El-4JQ" id="JqZ-LD-oP0"/>
+                        <outlet property="labelTopConstraint" destination="KMr-yQ-taz" id="azG-Jo-ZF3"/>
+                        <outlet property="nameTextField" destination="mfb-mU-t6l" id="5gX-QR-H8s"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4" y="74"/>
+        </scene>
+    </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>

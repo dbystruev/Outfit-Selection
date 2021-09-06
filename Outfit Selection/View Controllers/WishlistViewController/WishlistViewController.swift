@@ -124,6 +124,17 @@ class WishlistViewController: UIViewController {
     }
     
     // MARK: - Actions
+    @IBAction func createCollectionButtonTapped(_ sender: UIBarButtonItem) {
+        // Check that wishlist is not empty
+        guard !Wishlist.items.isEmpty else {
+            present(Alert.noItems, animated: true)
+            return
+        }
+        
+        // If not — jump to creating new collection
+        performSegue(withIdentifier: CollectionsViewController.segueIdentifier, sender: self)
+    }
+    
     @IBAction func collectionsButtonTapped(_ sender: UIButton) {
         tabSelected = .collections
     }

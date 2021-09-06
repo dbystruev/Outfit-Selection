@@ -476,7 +476,15 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NlK-cc-Nq5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2089" y="494"/>
+            <point key="canvasLocation" x="2286" y="494"/>
+        </scene>
+        <!--Collections-->
+        <scene sceneID="dS7-Ds-sSi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Collections" id="Cjh-1V-vqI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0A4-VB-dwP" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1875" y="-550"/>
         </scene>
         <!--Wish list-->
         <scene sceneID="QuB-zm-Xxz">
@@ -753,7 +761,13 @@
                             <constraint firstItem="29n-JH-U61" firstAttribute="leading" secondItem="CPt-Fb-Gp2" secondAttribute="leading" id="mUP-Az-VGf"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Wish list" id="gG6-27-ece"/>
+                    <navigationItem key="navigationItem" title="Wish list" id="gG6-27-ece">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="d5V-kS-OTz">
+                            <connections>
+                                <action selector="createCollectionButtonTapped:" destination="BzB-Fk-lRv" id="AGq-Yf-Atw"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionsButton" destination="LOK-B7-n6H" id="2U3-iU-eFC"/>
                         <outlet property="collectionsUnderline" destination="gPg-vr-7dK" id="Fvx-OY-07J"/>
@@ -763,6 +777,7 @@
                         <outlet property="outfitsUnderline" destination="flf-XD-PcW" id="jZH-hi-Wha"/>
                         <outlet property="wishlistCollectionView" destination="9Or-GK-FyM" id="vQ3-YU-CU0"/>
                         <segue destination="Uns-Sh-QHX" kind="show" identifier="itemViewControllerSegue" id="Rw2-uy-7Iw"/>
+                        <segue destination="Cjh-1V-vqI" kind="presentation" identifier="collectionsViewControllerSegue" id="mKL-QD-12M"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9sa-oM-7Is" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -1080,7 +1095,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eub-cd-e3B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2089" y="-175"/>
+            <point key="canvasLocation" x="2287" y="-175"/>
         </scene>
         <!--Intermediary View Controller-->
         <scene sceneID="ghJ-co-hsA">
@@ -1112,7 +1127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G27-GN-qNh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2855" y="-157"/>
+            <point key="canvasLocation" x="3122" y="-175"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="kA0-0v-X04">
