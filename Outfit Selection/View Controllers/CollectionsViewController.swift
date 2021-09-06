@@ -33,6 +33,19 @@ class CollectionsViewController: UIViewController {
     // MARK: - Static Properties
     static let segueIdentifier = "collectionsViewControllerSegue"
     
+    // MARK - Inherited Methods
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        let horizontal = size.height < size.width
+        if horizontal {
+            labelBottomConstraint.constant = 24
+            labelTopConstraint.constant = 24
+        }  else {
+            labelBottomConstraint.constant = 72
+            labelTopConstraint.constant = 104
+        }
+    }
+    
     // MARK: - Actions
     @IBAction func addItemsButtonTapped(_ sender: UIButton) {
         debug()
