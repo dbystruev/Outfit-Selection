@@ -18,13 +18,6 @@ class WishlistViewController: UIViewController {
     @IBOutlet weak var outfitsUnderline: UIView!
     @IBOutlet weak var wishlistCollectionView: UICollectionView!
     
-    // MARK: - Types
-    enum TabSelected {
-        case collections
-        case items
-        case outfits
-    }
-    
     // MARK: - Computed Properties
     /// Get outfit view controller
     var outfitViewController: OutfitViewController? {
@@ -60,10 +53,10 @@ class WishlistViewController: UIViewController {
     /// Number of cells to show per row: 2 for vertical and 4 for horizontal orientations
     var cellsPerRow = 2
     
-    /// True when items tab is selected, false when outfits tab is selected
-    var tabSelected: TabSelected = .items {
+    /// Contains the currently selected tab: collections, items, or outfits
+    var tabSelected: Wishlist.Tab = .items {
         didSet {
-            Wishlist.itemsTabSuggested = tabSelected == .items
+            Wishlist.tabSuggested = tabSelected
             updateUI()
         }
     }
@@ -71,12 +64,7 @@ class WishlistViewController: UIViewController {
     // MARK: - Custom Methods
     /// Select the suggested tab
     func selectSuggestedTab() {
-        switch Wishlist.itemsTabSuggested {
-        case true:
-            tabSelected = .items
-        case false:
-            tabSelected = .outfits
-        }
+        tabSelected = Wishlist.tabSuggested
     }
     
     /// Update items or outfits displayed depending on items selected state
