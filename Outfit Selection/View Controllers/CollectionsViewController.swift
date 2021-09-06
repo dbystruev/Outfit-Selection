@@ -11,6 +11,7 @@ import UIKit
 class CollectionsViewController: UIViewController {
     
     // MARK: - Outlets
+    @IBOutlet weak var addItemsButtonBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var labelBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var labelTopConstraint: NSLayoutConstraint!
     
@@ -33,22 +34,39 @@ class CollectionsViewController: UIViewController {
     // MARK: - Static Properties
     static let segueIdentifier = "collectionsViewControllerSegue"
     
-    // MARK - Inherited Methods
+    // MARK: - Inherited Properties
+    override var keyboardObject: Any? { addItemsButtonBottomConstraint }
+    override var keyboardTextField: UITextField? { nameTextField }
+    
+    // MARK: - Inherited Methods
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        super.touchesBegan(touches, with: event)
+        nameTextField.endEditing(true)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        registerForKeyboardNotifications()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        unregisterFromKeyboardNotifications()
+    }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        let horizontal = size.height < size.width
-        if horizontal {
-            labelBottomConstraint.constant = 24
-            labelTopConstraint.constant = 24
-        }  else {
-            labelBottomConstraint.constant = 72
-            labelTopConstraint.constant = 104
-        }
+        
+        // Stretch space in case we are in landscape (horizontal) mode
+        let isHorizontal = size.height < size.width
+        labelBottomConstraint.constant = isHorizontal ? 24 : 72
+        labelTopConstraint.constant = isHorizontal ? 24 : 104
     }
     
     // MARK: - Actions
     @IBAction func addItemsButtonTapped(_ sender: UIButton) {
-        debug()
+        nameTextField.endEditing(true)
+        dismiss(animated: true)
     }
     
     @IBAction func closeButtonTapped(_ sender: UIButton) {
