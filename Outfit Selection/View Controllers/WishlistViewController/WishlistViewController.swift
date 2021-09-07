@@ -58,7 +58,11 @@ class WishlistViewController: UIViewController {
     var cellsPerRow = 2
     
     /// Collections the user creates
-    var collections: [Collection] = []
+    var collections: [Collection] = [] {
+        didSet {
+            debug("\(collections.count): \(collections.map { $0.name })")
+        }
+    }
     
     /// Contains the currently selected tab: collections, items, or outfits
     var tabSelected: Wishlist.Tab = .item {
@@ -69,6 +73,13 @@ class WishlistViewController: UIViewController {
     }
     
     // MARK: - Custom Methods
+    /// Check if last collection is empty and remove it
+    func removeLastCollectionIfEmpty() {
+        guard let lastCollection = collections.last else { return }
+        guard lastCollection.isEmpty else { return }
+        collections.removeLast()
+    }
+    
     /// Select the suggested tab
     func selectSuggestedTab() {
         tabSelected = Wishlist.tabSuggested
@@ -98,79 +109,5 @@ class WishlistViewController: UIViewController {
         
         // Reload collection view
         wishlistCollectionView.reloadData()
-    }
-    
-    // MARK: - Inherited Methods
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-        
-        case ItemViewController.segueIdentifier:
-            guard let destination = segue.destination as? ItemViewController else { return }
-            guard let selectedIndexPath = wishlistCollectionView.indexPathsForSelectedItems?.first else { return }
-            guard let itemCell = wishlistCollectionView.cellForItem(at: selectedIndexPath) as? WishlistItemCell else { return }
-            guard let itemIndex = wishlist[selectedIndexPath.row].item?.itemIndex else { return }
-            destination.image = itemCell.pictureImageView.image
-            destination.itemIndex = itemIndex
-            
-        case CollectionNameViewController.segueIdentifier:
-            guard let destination = segue.destination as? CollectionNameViewController else {
-                debug("WARNING: \(segue.destination) is not CollectionsViewController")
-                return
-            }
-            
-            // Use wishlist items or outfits to create new collection items
-            destination.wishlistViewController = self
-            
-        case CollectionSelectViewController.segueIdentifier:
-            guard let destination = segue.destination as? CollectionSelectViewController else {
-                debug("WARNING: \(segue.destination) is not CollectionSelectViewController")
-                return
-            }
-            
-            guard let sender = sender as? CollectionNameViewController else {
-                debug("WARNING: \(String(describing: sender)) is not CollectionNameViewController")
-                return
-            }
-            
-            guard let collectionName = sender.collectionName, !collectionName.isEmpty else {
-                debug("WARNING: \(sender).collectionName is nil or empty")
-                return
-            }
-            
-            // Use wishlist items or outfits to create new collection items
-            destination.collectionName = collectionName
-            destination.wishlistViewController = self
-            
-            // Create new collection
-            collections.append(Collection(collectionName))
-            
-            // Save collection name label to update it from button delegate
-            collectionNameLabel = destination.collectionNameLabel
-            
-        default:
-            debug("WARNING: Unknown segue identifier", segue.identifier)
-        }
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Configure navigation controller's bar font
-        navigationController?.configureFont()
-        
-        // Set data source and delegate for wish list
-        wishlistCollectionView.dataSource = self
-        wishlistCollectionView.delegate = self
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        selectSuggestedTab()
-        updateUI()
-    }
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        updateUI(isHorizontal: size.height < size.width)
     }
 }

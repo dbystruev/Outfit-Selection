@@ -38,5 +38,10 @@ extension WishlistViewController: ButtonDelegate {
         } else {
             lastCollection.append(collectionItem)
         }
+        
+        // Update collection name label
+        let count = lastCollection.count
+        let textCount = count == 0 ? "None" : "\(count)"
+        collectionNameLabel?.text = "\(textCount) selected for \(lastCollection.name)"
     }
 }

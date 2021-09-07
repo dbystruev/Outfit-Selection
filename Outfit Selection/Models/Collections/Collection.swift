@@ -9,14 +9,14 @@
 class Collection {
     // MARK: - Stored Properties
     /// Collection items
-    private var items: [CollectionItem] = [] {
-        didSet {
-            debug("\(name): \(items.count) collection items")
-        }
-    }
+    private var items: [CollectionItem] = []
     
     /// Collection name
     let name: String
+    
+    // MARK: - Computed Propeties
+    var count: Int { items.count }
+    var isEmpty: Bool { items.isEmpty }
     
     // MARK: - Init
     /// Initialize a collection with empty set of items and given name

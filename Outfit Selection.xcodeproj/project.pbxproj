@@ -32,6 +32,7 @@
 		691C5F3C26E764F200DF0758 /* CGSize+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F3B26E764F200DF0758 /* CGSize+CustomStringConvertible.swift */; };
 		691C5F4226E7950900DF0758 /* WishlistBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F4126E7950900DF0758 /* WishlistBaseCell.swift */; };
 		691C5F4426E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F4326E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift */; };
+		691C5F4626E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F4526E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift */; };
 		69248FFD25503F2F00106681 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69248FFC25503F2F00106681 /* JSON.swift */; };
 		6924900125504DFD00106681 /* DispatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924900025504DFD00106681 /* DispatchManager.swift */; };
 		69297C5225EB852700A8684E /* BrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69297C5025EB852700A8684E /* BrandCell.swift */; };
@@ -201,6 +202,7 @@
 		691C5F3B26E764F200DF0758 /* CGSize+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		691C5F4126E7950900DF0758 /* WishlistBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistBaseCell.swift; sourceTree = "<group>"; };
 		691C5F4326E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+ButtonDelegate.swift"; sourceTree = "<group>"; };
+		691C5F4526E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UIViewController.swift"; sourceTree = "<group>"; };
 		69248FFC25503F2F00106681 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		6924900025504DFD00106681 /* DispatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchManager.swift; sourceTree = "<group>"; };
 		69297C5025EB852700A8684E /* BrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCell.swift; sourceTree = "<group>"; };
@@ -886,6 +888,7 @@
 				69DB6A5525E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift */,
 				697A3CFD25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift */,
 				69DB6A5925E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift */,
+				691C5F4526E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift */,
 			);
 			path = WishlistViewController;
 			sourceTree = "<group>";
@@ -1048,6 +1051,7 @@
 				69C3695E25E7812D000A8E5E /* OccasionsViewController+UIPickerViewDelegate.swift in Sources */,
 				697CCE6E26D010D000B69763 /* UIImageView+configure.swift in Sources */,
 				698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */,
+				691C5F4626E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift in Sources */,
 				69EB8BB525EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift in Sources */,
 				69B86BBB26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift in Sources */,
 				69739EB022BA5DF80077E45D /* PinnableScrollView+Extension.swift in Sources */,

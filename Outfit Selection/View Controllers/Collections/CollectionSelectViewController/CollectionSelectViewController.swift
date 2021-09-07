@@ -10,7 +10,12 @@ import UIKit
 
 class CollectionSelectViewController: CollectionBaseViewController {
     // MARK: - Outlets
-    @IBOutlet weak var collectionNameLabel: UILabel!
+    @IBOutlet weak var collectionNameLabel: UILabel! {
+        didSet {
+            wishlistViewController?.collectionNameLabel = collectionNameLabel
+        }
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Static Properties
@@ -19,12 +24,12 @@ class CollectionSelectViewController: CollectionBaseViewController {
     // MARK: - Inherited Methods
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        debug()
+        wishlistViewController?.removeLastCollectionIfEmpty()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionNameLabel.text = "Select items or outfits for \(collectionName ?? "collection")"
+        collectionNameLabel.text = "Add something to collection \(collectionName ?? "collection")"
         
         // Set data source and flow layout delegate for collection view
         collectionView.dataSource = wishlistViewController
