@@ -115,6 +115,10 @@
                                     <constraint firstItem="dgj-SM-ANi" firstAttribute="centerX" secondItem="hXU-ae-I4h" secondAttribute="centerX" id="k84-Ee-bBa"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Gne-pu-V53">
+                                <rect key="frame" x="0.0" y="132" width="414" height="681"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </tableView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2iW-5g-YbS">
                                 <rect key="frame" x="16" y="148" width="382" height="665"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -324,11 +328,15 @@
                         <constraints>
                             <constraint firstItem="faM-NQ-s9p" firstAttribute="trailing" secondItem="DZC-hx-Hgw" secondAttribute="trailing" id="3uc-jZ-dKo"/>
                             <constraint firstItem="DZC-hx-Hgw" firstAttribute="bottom" secondItem="2iW-5g-YbS" secondAttribute="bottom" id="EGN-BM-wNw"/>
+                            <constraint firstItem="Gne-pu-V53" firstAttribute="top" secondItem="faM-NQ-s9p" secondAttribute="bottom" id="JNq-pc-VlK"/>
                             <constraint firstItem="2iW-5g-YbS" firstAttribute="top" secondItem="faM-NQ-s9p" secondAttribute="bottom" constant="16" id="RDx-rf-ZZa"/>
                             <constraint firstItem="DZC-hx-Hgw" firstAttribute="trailing" secondItem="2iW-5g-YbS" secondAttribute="trailing" constant="16" id="YnV-o5-yJy"/>
                             <constraint firstItem="faM-NQ-s9p" firstAttribute="leading" secondItem="DZC-hx-Hgw" secondAttribute="leading" id="daY-V8-o9k"/>
                             <constraint firstItem="2iW-5g-YbS" firstAttribute="leading" secondItem="DZC-hx-Hgw" secondAttribute="leading" constant="16" id="lC0-2P-Apd"/>
                             <constraint firstItem="faM-NQ-s9p" firstAttribute="top" secondItem="DZC-hx-Hgw" secondAttribute="top" id="miY-8o-DYY"/>
+                            <constraint firstItem="DZC-hx-Hgw" firstAttribute="trailing" secondItem="Gne-pu-V53" secondAttribute="trailing" id="o4j-g9-qmf"/>
+                            <constraint firstItem="Gne-pu-V53" firstAttribute="leading" secondItem="DZC-hx-Hgw" secondAttribute="leading" id="vFa-PD-nNX"/>
+                            <constraint firstItem="DZC-hx-Hgw" firstAttribute="bottom" secondItem="Gne-pu-V53" secondAttribute="bottom" id="vJb-qw-8Rr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Wish list" id="qJk-1t-eWX">
@@ -340,6 +348,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="collectionsButton" destination="bml-DR-8nI" id="omG-Ia-cD0"/>
+                        <outlet property="collectionsTableView" destination="Gne-pu-V53" id="hgh-sr-MQx"/>
                         <outlet property="collectionsUnderline" destination="g2c-VK-m5s" id="Ggo-dN-tL9"/>
                         <outlet property="createCollectionButton" destination="hy9-Fh-5Xn" id="zhy-2z-tpQ"/>
                         <outlet property="itemsButton" destination="hXU-ae-I4h" id="3Ee-Mp-mQB"/>

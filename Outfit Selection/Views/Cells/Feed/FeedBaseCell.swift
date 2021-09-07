@@ -1,5 +1,5 @@
 //
-//  FeedCell.swift
+//  FeedBaseCell.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 26.08.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedCell: UITableViewCell {
+class FeedBaseCell: UITableViewCell {
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     

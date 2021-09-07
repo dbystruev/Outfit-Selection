@@ -49,7 +49,7 @@ class FeedItemCollectionViewCell: UICollectionViewCell {
     /// - Parameters:
     ///   - kind: the type (kind) of item to configure content for
     ///   - showSale: if true show strikethrough old price if available
-    func configureContent(kind: FeedCell.Kind, item: Item) {
+    func configureContent(kind: FeedBaseCell.Kind, item: Item) {
         feedItem?.configureContent(with: item, showSale: kind == .sale)
     }
     

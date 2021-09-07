@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedItemCell: FeedCell {
+class FeedItemCell: FeedBaseCell {
     // MARK: - Outlets
     @IBOutlet weak var itemStackView: UIStackView!
     @IBOutlet weak var seeAllButton: DelegatedButton!
@@ -71,8 +71,9 @@ class FeedItemCell: FeedCell {
     /// Called when we know for sure what items we want to display
     /// - Parameters:
     ///   - kind: cell's type
+    ///   - title: cell's title
     ///   - brandNames: put items with given brand names first
-    func configureContent(for kind: Kind, brandNames: [String]) {
+    func configureContent(for kind: Kind, title: String, brandNames: [String]) {
         // Configure title based on type (kind)
         self.kind = kind
         titleLabel.text = title

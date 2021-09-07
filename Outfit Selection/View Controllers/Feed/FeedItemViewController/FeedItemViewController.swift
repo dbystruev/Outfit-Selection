@@ -25,7 +25,7 @@ class FeedItemViewController: UIViewController {
     var items: [Item] = []
     
     /// Kind (type) of the items
-    var kind: FeedCell.Kind = .newItems
+    var kind: FeedBaseCell.Kind = .newItems
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {

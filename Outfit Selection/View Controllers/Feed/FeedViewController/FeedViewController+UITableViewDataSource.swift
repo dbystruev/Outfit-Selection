@@ -10,35 +10,35 @@ import UIKit
 
 extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return FeedItemCell.Kind.allCases.count
+        return cells.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Choose which kind the cell will have
-        let kind = FeedItemCell.Kind.allCases[indexPath.row]
+        let cell = cells[indexPath.row]
         
         // Obtain a feed cell
-        let cell: FeedCell = {
+        let feedBaseCell: FeedBaseCell = {
             // Try to dequeue feed brand or item cell
-            let identifier = kind == .brands ? FeedBrandCell.identifier : FeedItemCell.identifier
-            let cell = tableView.dequeueReusableCell(withIdentifier: identifier)
+            let identifier = cell.kind == .brands ? FeedBrandCell.identifier : FeedItemCell.identifier
+            let feedBaseCell = tableView.dequeueReusableCell(withIdentifier: identifier)
             
             // Check which one of the two was dequeued
-            if let brandCell = cell as? FeedBrandCell {
+            if let brandCell = feedBaseCell as? FeedBrandCell {
                 brandCell.configureContent()
                 return brandCell
                 
-            } else if let feedCell = cell as? FeedItemCell {
-                feedCell.configureContent(for: kind, brandNames: selectedBrandNames)
+            } else if let feedCell = feedBaseCell as? FeedItemCell {
+                feedCell.configureContent(for: cell.kind, title: cell.title, brandNames: selectedBrandNames)
                 return feedCell
             }
             
             // If none — warn and create a new feed cell
             debug("Can't dequeue \(identifier) cell")
-            return kind == .brands ? FeedBrandCell() : FeedItemCell()
+            return cell.kind == .brands ? FeedBrandCell() : FeedItemCell()
         }()
         
-        cell.delegate = self
-        return cell
+        feedBaseCell.delegate = self
+        return feedBaseCell
     }
 }

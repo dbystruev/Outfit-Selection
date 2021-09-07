@@ -11,6 +11,7 @@ import UIKit
 class WishlistViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var collectionsButton: UIButton!
+    @IBOutlet weak var collectionsTableView: UITableView!
     @IBOutlet weak var collectionsUnderline: UIView!
     @IBOutlet var createCollectionButton: UIBarButtonItem! // strong in order to add / delete
     @IBOutlet weak var itemsButton: UIButton!
@@ -64,6 +65,9 @@ class WishlistViewController: UIViewController {
         }
     }
     
+    /// Feed view controller used as data source and table delegate for collection table view
+    let feedController = FeedViewController()
+    
     /// Contains the currently selected tab: collections, items, or outfits
     var tabSelected: Wishlist.Tab = .item {
         didSet {
@@ -73,11 +77,18 @@ class WishlistViewController: UIViewController {
     }
     
     // MARK: - Custom Methods
-    /// Check if last collection is empty and remove it
-    func removeLastCollectionIfEmpty() {
+    /// Called when user finished selecting items or outfits for new collection
+    func finishSelectingCollectionItems() {
         guard let lastCollection = collections.last else { return }
-        guard lastCollection.isEmpty else { return }
-        collections.removeLast()
+        
+        // Check if last collection is empty and remove it
+        guard !lastCollection.isEmpty else {
+            collections.removeLast()
+            return
+        }
+        
+        // Add new collection to collection table view source
+        feedController.cells.append((kind: .newItems, title: lastCollection.name))
     }
     
     /// Select the suggested tab
@@ -107,7 +118,13 @@ class WishlistViewController: UIViewController {
             navigationItem.rightBarButtonItems?.append(createCollectionButton)
         }
         
-        // Reload collection view
-        wishlistCollectionView.reloadData()
+        // Make visible and reload either collection table view or wishlist collection view
+        collectionsTableView.isHidden = tabSelected != .collection
+        wishlistCollectionView.isHidden = tabSelected == .collection
+        if tabSelected == .collection {
+            collectionsTableView.reloadData()
+        } else {
+            wishlistCollectionView.reloadData()
+        }
     }
 }

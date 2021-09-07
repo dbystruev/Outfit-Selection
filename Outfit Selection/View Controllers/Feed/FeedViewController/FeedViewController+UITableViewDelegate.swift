@@ -11,8 +11,8 @@ import UIKit
 extension FeedViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // Choose which kind the cell will have
-        let kind = FeedItemCell.Kind.allCases[indexPath.row]
+        let cell = cells[indexPath.row]
         
-        return kind == .brands ? FeedBrandCell.height : FeedItemCell.height
+        return cell.kind == .brands ? FeedBrandCell.height : FeedItemCell.height
     }
 }

@@ -64,7 +64,10 @@ extension WishlistViewController {
         // Configure navigation controller's bar font
         navigationController?.configureFont()
         
-        // Set data source and delegate for wish list
+        // Register cells, set data source and delegate for collections table view
+        feedController.setup(collectionsTableView, kinds: [])
+        
+        // Set data source and delegate for wish list collection view
         wishlistCollectionView.dataSource = self
         wishlistCollectionView.delegate = self
     }

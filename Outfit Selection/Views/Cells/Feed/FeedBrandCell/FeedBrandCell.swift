@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedBrandCell: FeedCell {
+class FeedBrandCell: FeedBaseCell {
     // MARK: - Outlets
     @IBOutlet weak var brandsCollectionView: UICollectionView!
     

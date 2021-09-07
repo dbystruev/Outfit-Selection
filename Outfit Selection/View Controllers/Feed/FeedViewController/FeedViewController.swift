@@ -13,6 +13,9 @@ class FeedViewController: UIViewController {
     @IBOutlet weak var feedTableView: UITableView!
     
     // MARK: - Stored Properties
+    /// Types and titles of cells to show in table view
+    var cells: [(kind: FeedBaseCell.Kind, title: String)] = []
+    
     /// Saved brand cell margins and paddings
     var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
     
@@ -28,6 +31,24 @@ class FeedViewController: UIViewController {
             selectedBrandNames.sort { $0 == brandName || $0 < $1 }
         }
         feedTableView.reloadData()
+    }
+    
+    /// Register cells, set data source and delegate for a given table view
+    /// - Parameter tableView: table view to setup
+    func setup(_ tableView: UITableView, kinds: [FeedBaseCell.Kind]) {
+        // Register feed cell with feed table view
+        FeedBrandCell.register(with: tableView)
+        FeedItemCell.register(with: tableView)
+        
+        // Type and number of cells to show in table view
+        cells = kinds.map {(kind: $0, title: $0.title)}
+        
+        // Set self as feed table view data source and delegate
+        tableView.dataSource = self
+        tableView.delegate = self
+        
+        // Remove separator lines between the cells
+        tableView.separatorStyle = .none
     }
     
     // MARK: - Inherited Methods
@@ -77,16 +98,8 @@ class FeedViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Register feed cell with feed table view
-        FeedBrandCell.register(with: feedTableView)
-        FeedItemCell.register(with: feedTableView)
-        
-        // Set self as feed table view data source and delegate
-        feedTableView.dataSource = self
-        feedTableView.delegate = self
-        
-        // Remove separator lines between the cells
-        feedTableView.separatorStyle = .none
+        // Register cells, set data source and delegate for a feed table view
+        setup(feedTableView, kinds: FeedItemCell.Kind.allCases)
     }
     
     override func viewWillAppear(_ animated: Bool) {
