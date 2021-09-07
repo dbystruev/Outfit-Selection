@@ -43,13 +43,6 @@ class CollectionNameViewController: CollectionBaseViewController {
     override var keyboardTextField: UITextField? { nameTextField }
     
     // MARK: - Stored Properties
-    /// Items which potentially could be added to newly created collection if the user selects them
-    var collectionItems: [CollectionItem] = [] {
-        didSet {
-            debug(collectionItems.count, collectionItems.map { ($0.kind, $0.items.count) })
-        }
-    }
-    
     /// View controller which modally presented ourselves
     var source: UIViewController?
     
@@ -89,25 +82,26 @@ class CollectionNameViewController: CollectionBaseViewController {
     @IBAction func addItemsButtonTapped(_ sender: UIButton) {
         nameTextField.endEditing(true)
         
-        defer {
-            dismiss(animated: true)
-        }
-        
         // Check that we have non-empty name
         guard let collectionName = nameTextField.text, !collectionName.isEmpty else {
             debug("WARNING: Collection name is empty")
+            dismiss(animated: true)
             return
         }
         
         // Check that we have a new collection prepared
         guard !collectionItems.isEmpty else {
             debug("WARNING: No new collection available")
+            dismiss(animated: true)
             return
         }
         
+        // Save collection name entered by the user
+        self.collectionName = collectionName
+        
         // Present collection select view controller
         dismiss(animated: true) {
-            self.source?.performSegue(withIdentifier: CollectionSelectViewController.segueIdentifier, sender: self.source)
+            self.source?.performSegue(withIdentifier: CollectionSelectViewController.segueIdentifier, sender: self)
         }
     }
     

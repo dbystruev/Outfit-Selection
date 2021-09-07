@@ -116,6 +116,21 @@ class WishlistViewController: UIViewController {
             destination.collectionItems = wishlist.compactMap { $0.kind == .item ? CollectionItem($0.item) : CollectionItem($0.items) }
             destination.source = self
             
+        case CollectionSelectViewController.segueIdentifier:
+            guard let destination = segue.destination as? CollectionSelectViewController else {
+                debug("WARNING: \(segue.destination) is not CollectionSelectViewController")
+                return
+            }
+            
+            guard let sender = sender as? CollectionNameViewController else {
+                debug("WARNING: \(String(describing: sender)) is not CollectionNameViewController")
+                return
+            }
+            
+            // Use wishlist items or outfits to create new collection items
+            destination.collectionItems = sender.collectionItems
+            destination.collectionName = sender.collectionName
+            
         default:
             debug("WARNING: Unknown segue identifier", segue.identifier)
         }

@@ -100,8 +100,6 @@ class BrandCell: UICollectionViewCell {
     ///   - brandedImage: the branded image to configure the brand cell with
     ///   - cellSize: the size of the branded collection view cell
     func configure(brandedImage: BrandedImage, cellSize: CGSize) {
-        debug(cellSize, contentView.bounds.size, BrandCell.horizontalMargin, BrandCell.horizontalPadding, BrandCell.verticalMargin, BrandCell.verticalPadding)
-        
         // Configure brand image view
         brandImageView.image = brandedImage
         

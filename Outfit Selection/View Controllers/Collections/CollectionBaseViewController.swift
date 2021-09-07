@@ -10,6 +10,21 @@ import UIKit
 
 class CollectionBaseViewController: UIViewController {
 
+    // MARK: - Stored Properties
+    /// Items which potentially could be added to newly created collection if the user selects them
+    var collectionItems: [CollectionItem] = [] {
+        didSet {
+            debug(collectionItems.count, collectionItems.map { ($0.kind, $0.items.count) })
+        }
+    }
+    
+    /// Collection name entered by the user
+    var collectionName: String? {
+        didSet {
+            debug(collectionName)
+        }
+    }
+
     // MARK: - Actions
     @IBAction func closeButtonTapped(_ sender: UIButton) {
         debug()
