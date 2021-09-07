@@ -1,5 +1,5 @@
 //
-//  ItemCell.swift
+//  WishlistItemCell.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 25.02.2021.
@@ -9,7 +9,8 @@
 import UIKit
 
 /// Cell for wishlist items tab
-class ItemCell: UICollectionViewCell {
+class WishlistItemCell: WishlistBaseCell {
+    
     // MARK: - Outlets
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var pictureImageView: UIImageView!
@@ -18,8 +19,13 @@ class ItemCell: UICollectionViewCell {
     
     // MARK: - Methods
     /// Configure item cell content with a given item
-    /// - Parameter item: item to configure cell content with
-    func configure(with item: Item) {
+    /// - Parameters:
+    ///   - item:  item to configure cell content with
+    ///   - delegate: delegate to send message about select button tap, nil by default
+    func configure(with item: Item, delegate: ButtonDelegate? = nil) {
+        // Save the delegate and the item
+        super.configure(with: item, delegate: delegate)
+        
         // Configure labels
         nameLabel.text = item.nameWithoutVendor
         priceLabel.text = item.price?.asPrice
@@ -28,5 +34,4 @@ class ItemCell: UICollectionViewCell {
         // Load the picture
         pictureImageView.configure(with: item.pictures?.first)
     }
-    
 }

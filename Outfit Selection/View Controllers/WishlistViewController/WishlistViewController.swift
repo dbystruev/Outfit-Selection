@@ -101,7 +101,7 @@ class WishlistViewController: UIViewController {
         case ItemViewController.segueIdentifier:
             guard let destination = segue.destination as? ItemViewController else { return }
             guard let selectedIndexPath = wishlistCollectionView.indexPathsForSelectedItems?.first else { return }
-            guard let itemCell = wishlistCollectionView.cellForItem(at: selectedIndexPath) as? ItemCell else { return }
+            guard let itemCell = wishlistCollectionView.cellForItem(at: selectedIndexPath) as? WishlistItemCell else { return }
             guard let itemIndex = wishlist[selectedIndexPath.row].item?.itemIndex else { return }
             destination.image = itemCell.pictureImageView.image
             destination.itemIndex = itemIndex

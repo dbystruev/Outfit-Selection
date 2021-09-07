@@ -125,7 +125,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCell" id="sDn-Oz-EWR" customClass="ItemCell" customModule="Outfit_Selection" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCell" id="sDn-Oz-EWR" customClass="WishlistItemCell" customModule="Outfit_Selection" customModuleProvider="target">
                                         <rect key="frame" x="99" y="0.0" width="184" height="276"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Nb-Es-81f">
@@ -135,6 +135,17 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lya-cI-xqk">
                                                     <rect key="frame" x="0.0" y="0.0" width="184" height="224"/>
                                                 </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnP-aa-imh">
+                                                    <rect key="frame" x="164" y="0.0" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="MTT-bM-5iF"/>
+                                                        <constraint firstAttribute="height" constant="20" id="cpM-MM-JZr"/>
+                                                    </constraints>
+                                                    <state key="normal" image="add_teal"/>
+                                                    <connections>
+                                                        <action selector="selectButtonTapped:" destination="sDn-Oz-EWR" eventType="touchUpInside" id="jtO-3X-L2S"/>
+                                                    </connections>
+                                                </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n0e-UL-OyY">
                                                     <rect key="frame" x="0.0" y="228" width="184" height="48"/>
                                                     <subviews>
@@ -160,9 +171,11 @@
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="tnP-aa-imh" firstAttribute="top" secondItem="6Nb-Es-81f" secondAttribute="top" id="40Y-tk-bDc"/>
                                                 <constraint firstItem="Lya-cI-xqk" firstAttribute="top" secondItem="6Nb-Es-81f" secondAttribute="top" id="6zg-XZ-VMI"/>
                                                 <constraint firstItem="n0e-UL-OyY" firstAttribute="leading" secondItem="6Nb-Es-81f" secondAttribute="leading" id="IRG-qA-vea"/>
                                                 <constraint firstItem="Lya-cI-xqk" firstAttribute="leading" secondItem="6Nb-Es-81f" secondAttribute="leading" id="MOf-qk-Ic6"/>
+                                                <constraint firstAttribute="trailing" secondItem="tnP-aa-imh" secondAttribute="trailing" id="dTu-Mi-Aj6"/>
                                                 <constraint firstItem="n0e-UL-OyY" firstAttribute="top" secondItem="Lya-cI-xqk" secondAttribute="bottom" constant="4" id="fPf-XY-Yy1"/>
                                                 <constraint firstAttribute="trailing" secondItem="n0e-UL-OyY" secondAttribute="trailing" id="fvo-LD-kvB"/>
                                                 <constraint firstAttribute="trailing" secondItem="Lya-cI-xqk" secondAttribute="trailing" id="gSS-2Z-Rhs"/>
@@ -173,10 +186,11 @@
                                             <outlet property="nameLabel" destination="akK-pw-Dlp" id="PEy-5b-bqo"/>
                                             <outlet property="pictureImageView" destination="Lya-cI-xqk" id="v3I-aZ-D09"/>
                                             <outlet property="priceLabel" destination="Y8O-59-tFQ" id="gcJ-Ya-I1T"/>
+                                            <outlet property="selectButton" destination="tnP-aa-imh" id="CM5-jG-RUd"/>
                                             <outlet property="vendorLabel" destination="d2A-HP-2lw" id="9yq-3Z-yLu"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="outfitCell" id="BLs-Zw-Z2Y" customClass="OutfitCell" customModule="Outfit_Selection" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="outfitCell" id="BLs-Zw-Z2Y" customClass="WishlistOutfitCell" customModule="Outfit_Selection" customModuleProvider="target">
                                         <rect key="frame" x="99" y="292" width="184" height="276"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5cU-Zr-chq">
@@ -248,6 +262,17 @@
                                                         </stackView>
                                                     </subviews>
                                                 </stackView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SoW-tq-hCk">
+                                                    <rect key="frame" x="164" y="0.0" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="CST-0L-XCB"/>
+                                                        <constraint firstAttribute="width" constant="20" id="KHI-a6-OUg"/>
+                                                    </constraints>
+                                                    <state key="normal" image="add_teal"/>
+                                                    <connections>
+                                                        <action selector="selectButtonTapped:" destination="BLs-Zw-Z2Y" eventType="touchUpInside" id="Xve-yK-6Nm"/>
+                                                    </connections>
+                                                </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="26l-yP-xUM" userLabel="Labels Stack View">
                                                     <rect key="frame" x="0.0" y="235" width="184" height="33"/>
                                                     <subviews>
@@ -273,12 +298,15 @@
                                                 <constraint firstItem="2VU-Ws-6jP" firstAttribute="top" secondItem="5cU-Zr-chq" secondAttribute="top" id="BAq-6K-Ai6"/>
                                                 <constraint firstAttribute="trailing" secondItem="2VU-Ws-6jP" secondAttribute="trailing" id="Xz2-HK-h3t"/>
                                                 <constraint firstItem="2VU-Ws-6jP" firstAttribute="leading" secondItem="5cU-Zr-chq" secondAttribute="leading" id="ddh-Aj-0Ty"/>
+                                                <constraint firstItem="SoW-tq-hCk" firstAttribute="top" secondItem="5cU-Zr-chq" secondAttribute="top" id="jFT-5b-Z9Y"/>
+                                                <constraint firstAttribute="trailing" secondItem="SoW-tq-hCk" secondAttribute="trailing" id="jkE-A4-MzO"/>
                                                 <constraint firstAttribute="bottom" secondItem="26l-yP-xUM" secondAttribute="bottom" constant="8" id="y9f-qP-83S"/>
                                             </constraints>
                                         </collectionViewCellContentView>
                                         <connections>
                                             <outlet property="occasionLabel" destination="OYF-b3-BkJ" id="teO-cN-ICC"/>
                                             <outlet property="priceLabel" destination="p7A-GE-xy4" id="y2R-1S-V0v"/>
+                                            <outlet property="selectButton" destination="SoW-tq-hCk" id="ehM-EG-zpq"/>
                                             <outletCollection property="pictureImageViews" destination="y8y-yI-XYn" collectionClass="NSMutableArray" id="qrS-ci-LBK"/>
                                             <outletCollection property="pictureImageViews" destination="Hcb-Rl-A6i" collectionClass="NSMutableArray" id="dSp-6e-X5y"/>
                                             <outletCollection property="pictureImageViews" destination="QkK-mR-XRd" collectionClass="NSMutableArray" id="kST-h8-6oV"/>
