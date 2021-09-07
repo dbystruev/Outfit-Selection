@@ -20,6 +20,11 @@ class ProfileViewController: UIViewController {
     var shownGender: Gender?
     
     // MARK: - Inhertited Methods
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        profileCollectionView.collectionViewLayout.invalidateLayout()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

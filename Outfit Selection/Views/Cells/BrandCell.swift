@@ -100,6 +100,8 @@ class BrandCell: UICollectionViewCell {
     ///   - brandedImage: the branded image to configure the brand cell with
     ///   - cellSize: the size of the branded collection view cell
     func configure(brandedImage: BrandedImage, cellSize: CGSize) {
+        debug(cellSize, contentView.bounds.size, BrandCell.horizontalMargin, BrandCell.horizontalPadding, BrandCell.verticalMargin, BrandCell.verticalPadding)
+        
         // Configure brand image view
         brandImageView.image = brandedImage
         
@@ -127,7 +129,7 @@ class BrandCell: UICollectionViewCell {
         brandImageContainerView.backgroundColor = isSelected ? #colorLiteral(red: 0.7878249884, green: 0.8170605302, blue: 0.8061822057, alpha: 1) : .clear
         
         // Make corners round
-        brandImageContainerView.layer.cornerRadius = brandImageContainerView.frame.size.width / 2
+        brandImageContainerView.layer.cornerRadius = brandImageContainerView.bounds.size.width / 2
         
         // Show / hide checkmark image view depending on selection
         checkmarkImageView.isHidden = !isSelected
