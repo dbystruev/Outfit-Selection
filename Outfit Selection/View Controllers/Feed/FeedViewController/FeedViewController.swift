@@ -14,7 +14,7 @@ class FeedViewController: UIViewController {
     
     // MARK: - Stored Properties
     /// Types and titles of cells to show in table view
-    var cells: [(kind: FeedBaseCell.Kind, title: String)] = []
+    var cellDatas: [(kind: FeedBaseCell.Kind, title: String, items: [Item])] = []
     
     /// Saved brand cell margins and paddings
     var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
@@ -41,7 +41,7 @@ class FeedViewController: UIViewController {
         FeedItemCell.register(with: tableView)
         
         // Type and number of cells to show in table view
-        cells = kinds.map {(kind: $0, title: $0.title)}
+        cellDatas = kinds.map {(kind: $0, title: $0.title, items: [])}
         
         // Set self as feed table view data source and delegate
         tableView.dataSource = self

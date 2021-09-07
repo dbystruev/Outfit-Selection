@@ -9,14 +9,17 @@
 class Collection {
     // MARK: - Stored Properties
     /// Collection items
-    private var items: [CollectionItem] = []
+    private var collectionItems: [CollectionItem] = []
     
     /// Collection name
     let name: String
     
     // MARK: - Computed Propeties
-    var count: Int { items.count }
-    var isEmpty: Bool { items.isEmpty }
+    var count: Int { collectionItems.count }
+    var isEmpty: Bool { collectionItems.isEmpty }
+    var items: [Item] {
+        collectionItems.flatMap { $0.items }
+    }
     
     // MARK: - Init
     /// Initialize a collection with empty set of items and given name
@@ -31,14 +34,14 @@ class Collection {
             debug("WARNING: item is nil")
             return
         }
-        items.append(item)
+        collectionItems.append(item)
     }
     
     /// Returns true or false depending on whether collection constains a collection item
     /// - Parameter item: collection item to check for
     /// - Returns: true or false depending on result
     func contains(_ item: CollectionItem) -> Bool {
-        items.contains(item)
+        collectionItems.contains(item)
     }
     
     /// Returns true or false depending on whether collection contains an item
@@ -60,6 +63,6 @@ class Collection {
     /// Removes given collection item from the collection
     /// - Parameter item: collection item to be removed
     func remove(_ item: CollectionItem) {
-        items.removeAll { $0 == item }
+        collectionItems.removeAll { $0 == item }
     }
 }

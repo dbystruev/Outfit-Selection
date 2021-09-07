@@ -10,17 +10,17 @@ import UIKit
 
 extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return cells.count
+        return cellDatas.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Choose which kind the cell will have
-        let cell = cells[indexPath.row]
+        let cellData = cellDatas[indexPath.row]
         
         // Obtain a feed cell
         let feedBaseCell: FeedBaseCell = {
             // Try to dequeue feed brand or item cell
-            let identifier = cell.kind == .brands ? FeedBrandCell.identifier : FeedItemCell.identifier
+            let identifier = cellData.kind == .brands ? FeedBrandCell.identifier : FeedItemCell.identifier
             let feedBaseCell = tableView.dequeueReusableCell(withIdentifier: identifier)
             
             // Check which one of the two was dequeued
@@ -29,13 +29,14 @@ extension FeedViewController: UITableViewDataSource {
                 return brandCell
                 
             } else if let feedCell = feedBaseCell as? FeedItemCell {
-                feedCell.configureContent(for: cell.kind, title: cell.title, brandNames: selectedBrandNames, isInteractive: tableView == feedTableView)
+                let isInteractive = tableView == feedTableView
+                feedCell.configureContent(for: cellData.kind, title: cellData.title, brandNames: selectedBrandNames, items: cellData.items, isInteractive: isInteractive)
                 return feedCell
             }
             
             // If none — warn and create a new feed cell
             debug("Can't dequeue \(identifier) cell")
-            return cell.kind == .brands ? FeedBrandCell() : FeedItemCell()
+            return cellData.kind == .brands ? FeedBrandCell() : FeedItemCell()
         }()
         
         feedBaseCell.delegate = tableView == feedTableView ? self : nil

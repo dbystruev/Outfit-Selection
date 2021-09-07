@@ -88,7 +88,7 @@ class WishlistViewController: UIViewController {
         }
         
         // Add new collection to collection table view source
-        feedController.cells.append((kind: .newItems, title: lastCollection.name))
+        feedController.cellDatas.append((kind: .newItems, title: lastCollection.name, items: lastCollection.items))
     }
     
     /// Select the suggested tab

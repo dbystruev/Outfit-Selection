@@ -75,14 +75,21 @@ class FeedItemCell: FeedBaseCell {
     ///   - kind: cell's type
     ///   - title: cell's title
     ///   - brandNames: put items with given brand names first
-    ///   - interactive: if true allow clicks on buttons and items, if not — disable them
-    func configureContent(for kind: Kind, title: String, brandNames: [String], isInteractive: Bool) {
+    ///   - items: the items to configure the content for
+    ///   - isInteractive: if true allow clicks on buttons and items, if not — disable them
+    func configureContent(for kind: Kind, title: String, brandNames: [String], items: [Item], isInteractive: Bool) {
         // Configure kind, title, and `see all` button visibility
         self.kind = kind
         seeAllButton.isHidden = !isInteractive
         titleLabel.text = title
         
-        // Filter items by presense of price, old price and brand
+        // If items are given skip further configuration
+        guard items.isEmpty else {
+            configure(items: items, isInteractive: isInteractive)
+            return
+        }
+        
+        // Get items from Item.all and filter them by presense of price, old price and brand
         let itemsWithPrices = Item.all.filter { $0.price != nil && $0.oldPrice != nil }
         let itemsWithPricesByBrands = itemsWithPrices.filter { $0.branded(brandNames) }
         let filteredItems = itemsWithPricesByBrands.isEmpty ? itemsWithPrices : itemsWithPricesByBrands
@@ -101,15 +108,15 @@ class FeedItemCell: FeedBaseCell {
         let maxItemsPerBrand = numberOfItems / brandNames.count + 1
         
         // Compose the items in the same order as brand names
-        var items = [Item]()
+        var orderedItems = [Item]()
         for brandName in brandNames {
             let brandedItems = shuffledItems.filter { $0.branded([brandName]) }
             let brandedItemsCount = min(brandedItems.count, maxItemsPerBrand)
             guard 0 < brandedItemsCount else { continue }
-            items.append(contentsOf: brandedItems[..<brandedItemsCount])
+            orderedItems.append(contentsOf: brandedItems[..<brandedItemsCount])
         }
         
-        configure(items: items, isInteractive: isInteractive)
+        configure(items: orderedItems, isInteractive: isInteractive)
     }
     
     /// Configure the view of like buttons depending on their items being in wish list
