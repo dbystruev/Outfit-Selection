@@ -85,13 +85,6 @@ class CollectionNameViewController: CollectionBaseViewController {
             return
         }
         
-        // Check that we have a new collection prepared
-        guard !collectionItems.isEmpty else {
-            debug("WARNING: No new collection available")
-            dismiss(animated: true)
-            return
-        }
-        
         // Save collection name entered by the user
         self.collectionName = collectionName
         

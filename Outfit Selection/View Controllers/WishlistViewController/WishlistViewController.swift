@@ -19,6 +19,9 @@ class WishlistViewController: UIViewController {
     @IBOutlet weak var outfitsUnderline: UIView!
     @IBOutlet weak var wishlistCollectionView: UICollectionView!
     
+    // CollectionSelectViewController outlet
+    weak var collectionNameLabel: UILabel?
+    
     // MARK: - Computed Properties
     /// Get outfit view controller
     var outfitViewController: OutfitViewController? {
@@ -53,6 +56,9 @@ class WishlistViewController: UIViewController {
     // MARK: - Stored Properties
     /// Number of cells to show per row: 2 for vertical and 4 for horizontal orientations
     var cellsPerRow = 2
+    
+    /// Collections the user creates
+    var collections: [Collection] = []
     
     /// Contains the currently selected tab: collections, items, or outfits
     var tabSelected: Wishlist.Tab = .item {
@@ -113,7 +119,6 @@ class WishlistViewController: UIViewController {
             }
             
             // Use wishlist items or outfits to create new collection items
-            destination.collectionItems = wishlist.compactMap { $0.kind == .item ? CollectionItem($0.item) : CollectionItem($0.items) }
             destination.wishlistViewController = self
             
         case CollectionSelectViewController.segueIdentifier:
@@ -127,10 +132,20 @@ class WishlistViewController: UIViewController {
                 return
             }
             
+            guard let collectionName = sender.collectionName, !collectionName.isEmpty else {
+                debug("WARNING: \(sender).collectionName is nil or empty")
+                return
+            }
+            
             // Use wishlist items or outfits to create new collection items
-            destination.collectionItems = sender.collectionItems
-            destination.collectionName = sender.collectionName
+            destination.collectionName = collectionName
             destination.wishlistViewController = self
+            
+            // Create new collection
+            collections.append(Collection(collectionName))
+            
+            // Save collection name label to update it from button delegate
+            collectionNameLabel = destination.collectionNameLabel
             
         default:
             debug("WARNING: Unknown segue identifier", segue.identifier)

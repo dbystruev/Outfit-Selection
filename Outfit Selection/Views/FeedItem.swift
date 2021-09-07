@@ -68,7 +68,7 @@ class FeedItem: UIView {
     
     /// Configure the view of like button depending on item being in wish list
     func configureLikeButton() {
-        likeButton.configure(for: item)
+        likeButton?.configure(for: item)
     }
     
     // MARK: - Actions

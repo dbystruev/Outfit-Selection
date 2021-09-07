@@ -77,8 +77,12 @@ class FeedItemCell: FeedCell {
         self.kind = kind
         titleLabel.text = title
         
-        // Filter items by presense of price, old price and brand, and shuffle them
-        let filteredItems = Item.all.filter {  $0.price != nil && $0.oldPrice != nil && $0.branded(brandNames) }
+        // Filter items by presense of price, old price and brand
+        let itemsWithPrices = Item.all.filter { $0.price != nil && $0.oldPrice != nil }
+        let itemsWithPricesByBrands = itemsWithPrices.filter { $0.branded(brandNames) }
+        let filteredItems = itemsWithPricesByBrands.isEmpty ? itemsWithPrices : itemsWithPricesByBrands
+        
+        // Shuffle the items and make sure we don't have more than 42 of them
         let shuffledItems = filteredItems.shuffled()
         let numberOfItems = min(42, shuffledItems.count)
         

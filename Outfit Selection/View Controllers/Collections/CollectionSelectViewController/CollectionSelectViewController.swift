@@ -17,13 +17,17 @@ class CollectionSelectViewController: CollectionBaseViewController {
     static let segueIdentifier = "collectionSelectViewControllerSegue"
     
     // MARK: - Inherited Methods
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        debug()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionNameLabel.text = "Select items for \(collectionName ?? "collection")"
+        collectionNameLabel.text = "Select items or outfits for \(collectionName ?? "collection")"
         
         // Set data source and flow layout delegate for collection view
         collectionView.dataSource = wishlistViewController
         collectionView.delegate = wishlistViewController
     }
-
 }
