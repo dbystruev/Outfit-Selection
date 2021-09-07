@@ -9,6 +9,9 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    /// Temporaty flag to debug TabBarController
+    let debugging = false
+    
     // MARK: - Stored Properties
     /// The set of brand tags previously selected by the user
     let selectedBrands = BrandManager.shared.selectedBrands
@@ -34,19 +37,23 @@ class TabBarController: UITabBarController {
     // MARK: - Custom Methods
     /// Pop to brands view controller if the user has changed the gender
     func popToBrandsIfGenderChanged() {
-        debug("DEBUG: Enter")
+        if debugging {
+            debug("DEBUG: Enter")
+        }
         
         // Find profile view controller and its stored gender
         guard let newGender = findViewController(ofType: ProfileViewController.self)?.shownGender else {
-            if viewControllers?.count != 3 || viewControllers?[2] != nil {
-                debug("WARNING: Can't find profile view controller, view controllers count =", viewControllers?.count)
-            }
+            debug("WARNING: No profile view controller, view controllers =", viewControllers?.count, "children =", viewControllers?.compactMap{
+                ($0 as? UINavigationController)?.viewControllers.count
+            })
             return
         }
         
         // Don't pop if there is no change in gender
         guard Gender.current != newGender else {
-            debug("DEBUG: No gender change")
+            if debugging {
+                debug("DEBUG: No gender change")
+            }
             return
         }
         
@@ -59,16 +66,22 @@ class TabBarController: UITabBarController {
         brandsViewController.gender = newGender
         navigationController?.popToViewController(brandsViewController, animated: true)
         
-        debug("DEBUG: Leave")
+        if debugging {
+            debug("DEBUG: Leave")
+        }
     }
     
     /// Pop to progress view controller if the user has changed the selection of brands
     func popToProgressIfBrandsChanged() {
-        debug("DEBUG: Enter")
+        if debugging {
+            debug("DEBUG: Enter")
+        }
         
         // Don't pop if there is no change in brands selection
         guard BrandManager.shared.selectedBrands != selectedBrands else {
-            debug("DEBUG: Brands have not changed")
+            if debugging {
+                debug("DEBUG: Brands have not changed")
+            }
             return
         }
         
@@ -78,7 +91,9 @@ class TabBarController: UITabBarController {
         // Pop to previous (progress) view controller
         navigationController?.popViewController(animated: true)
         
-        debug("DEBUG: Leave")
+        if debugging {
+            debug("DEBUG: Leave")
+        }
     }
     
     // MARK: - Inherited Methods
