@@ -24,6 +24,9 @@ class CollectionBaseViewController: UIViewController {
             debug(collectionName)
         }
     }
+    
+    /// Wishlist view controller which modally presented ourselves
+    var wishlistViewController: WishlistViewController?
 
     // MARK: - Actions
     @IBAction func closeButtonTapped(_ sender: UIButton) {

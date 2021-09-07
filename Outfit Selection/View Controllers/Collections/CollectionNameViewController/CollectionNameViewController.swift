@@ -42,10 +42,6 @@ class CollectionNameViewController: CollectionBaseViewController {
     override var keyboardObject: Any? { addItemsButtonBottomConstraint }
     override var keyboardTextField: UITextField? { nameTextField }
     
-    // MARK: - Stored Properties
-    /// View controller which modally presented ourselves
-    var source: UIViewController?
-    
     // MARK: - Inherited Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         super.touchesBegan(touches, with: event)
@@ -101,7 +97,7 @@ class CollectionNameViewController: CollectionBaseViewController {
         
         // Present collection select view controller
         dismiss(animated: true) {
-            self.source?.performSegue(withIdentifier: CollectionSelectViewController.segueIdentifier, sender: self)
+            self.wishlistViewController?.performSegue(withIdentifier: CollectionSelectViewController.segueIdentifier, sender: self)
         }
     }
     

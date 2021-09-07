@@ -12,6 +12,9 @@
         <array key="NotoSans-Medium.ttf">
             <string>NotoSans-Medium</string>
         </array>
+        <array key="NotoSans-Regular.ttf">
+            <string>NotoSans-Regular</string>
+        </array>
         <array key="NotoSans-SemiBold.ttf">
             <string>NotoSans-SemiBold</string>
         </array>
@@ -122,15 +125,43 @@
                                     <action selector="closeButtonTapped:" destination="t8f-d5-fMr" eventType="touchUpInside" id="fn9-vB-kJF"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The best shirts for Autumn 2021" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="faL-ZC-27A">
+                                <rect key="frame" x="8" y="845.5" width="398" height="16.5"/>
+                                <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="epC-TZ-qLe">
+                                <rect key="frame" x="16" y="108" width="382" height="721.5"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="VIA-Dc-WJy">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells/>
+                            </collectionView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="XfB-p4-jQw"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="rTP-mr-QO7" firstAttribute="top" secondItem="XfB-p4-jQw" secondAttribute="top" constant="24" id="Fdb-7p-NRe"/>
+                            <constraint firstItem="XfB-p4-jQw" firstAttribute="trailing" secondItem="epC-TZ-qLe" secondAttribute="trailing" constant="16" id="ThD-9M-0nS"/>
+                            <constraint firstItem="XfB-p4-jQw" firstAttribute="trailing" secondItem="faL-ZC-27A" secondAttribute="trailing" constant="8" id="ahV-zb-k6h"/>
+                            <constraint firstItem="faL-ZC-27A" firstAttribute="leading" secondItem="XfB-p4-jQw" secondAttribute="leading" constant="8" id="gB4-A9-qbZ"/>
+                            <constraint firstItem="faL-ZC-27A" firstAttribute="top" secondItem="epC-TZ-qLe" secondAttribute="bottom" constant="16" id="ka1-mg-pV4"/>
+                            <constraint firstItem="epC-TZ-qLe" firstAttribute="top" secondItem="XfB-p4-jQw" secondAttribute="top" constant="64" id="ltN-Dr-EU3"/>
                             <constraint firstItem="XfB-p4-jQw" firstAttribute="trailing" secondItem="rTP-mr-QO7" secondAttribute="trailing" constant="24" id="nEU-wD-23Z"/>
+                            <constraint firstItem="epC-TZ-qLe" firstAttribute="leading" secondItem="XfB-p4-jQw" secondAttribute="leading" constant="16" id="nEi-Zd-4j7"/>
+                            <constraint firstItem="XfB-p4-jQw" firstAttribute="bottom" secondItem="faL-ZC-27A" secondAttribute="bottom" id="prg-yO-9lM"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="2Mr-xL-Bmh"/>
+                    <connections>
+                        <outlet property="collectionNameLabel" destination="faL-ZC-27A" id="E79-09-ZpT"/>
+                        <outlet property="collectionView" destination="epC-TZ-qLe" id="0ZD-PR-xzg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z1L-7f-rcu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

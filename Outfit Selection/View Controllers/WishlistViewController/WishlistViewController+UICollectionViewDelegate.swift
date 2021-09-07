@@ -10,6 +10,9 @@ import UIKit
 
 extension WishlistViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        // Don't select anything in case we are not on wishlist screen
+        guard collectionView == wishlistCollectionView else { return }
+        
         switch tabSelected {
         
         case .collection:

@@ -378,7 +378,7 @@
 			children = (
 				6906A9AF26E68CEB00386267 /* CollectionBaseViewController.swift */,
 				6906A9AC26E68C6200386267 /* CollectionNameViewController */,
-				6906A9AD26E68C7C00386267 /* CollectionSelectViewController.swift */,
+				691C5F3D26E7755F00DF0758 /* CollectionSelectViewController */,
 			);
 			path = Collections;
 			sourceTree = "<group>";
@@ -390,6 +390,14 @@
 				6906A9AA26E6853700386267 /* CollectionNameViewController+UITextFieldDelegate.swift */,
 			);
 			path = CollectionNameViewController;
+			sourceTree = "<group>";
+		};
+		691C5F3D26E7755F00DF0758 /* CollectionSelectViewController */ = {
+			isa = PBXGroup;
+			children = (
+				6906A9AD26E68C7C00386267 /* CollectionSelectViewController.swift */,
+			);
+			path = CollectionSelectViewController;
 			sourceTree = "<group>";
 		};
 		692AF3D4260120A100D37269 /* UIView */ = {
