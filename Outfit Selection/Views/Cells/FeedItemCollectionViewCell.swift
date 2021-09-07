@@ -48,9 +48,10 @@ class FeedItemCollectionViewCell: UICollectionViewCell {
     /// Configure feed item content based on the item given
     /// - Parameters:
     ///   - kind: the type (kind) of item to configure content for
-    ///   - showSale: if true show strikethrough old price if available
-    func configureContent(kind: FeedBaseCell.Kind, item: Item) {
-        feedItem?.configureContent(with: item, showSale: kind == .sale)
+    ///   - item: item to configure feed item for
+    ///   - isInteractive: allow clicks if true, don't if false
+    func configureContent(kind: FeedBaseCell.Kind, item: Item, isInteractive: Bool) {
+        feedItem?.configureContent(with: item, showSale: kind == .sale, isInteractive: isInteractive)
     }
     
     /// Get feed item from xib and add it as subview of this cell
@@ -77,6 +78,6 @@ class FeedItemCollectionViewCell: UICollectionViewCell {
     
     /// Configure the view of feed item's like button depending on item being in wish list
     func configureLikeButton() {
-        feedItem.configureLikeButton()
+        feedItem.configureLikeButton(isInteractive: true)
     }
 }

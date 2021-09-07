@@ -37,8 +37,10 @@ class FeedItemCell: FeedBaseCell {
     
     // MARK: - Custom Methods
     /// Add items to item stack view
-    /// - Parameter items: items to add
-    func configure(items: [Item]) {
+    /// - Parameters:
+    ///   - items: items to add
+    ///   - isInteractive: if true allow clicks on buttons and items, if not — disable them
+    func configure(items: [Item], isInteractive: Bool) {
         // Make sure items are not empty
         guard 0 < items.count else { return }
         self.items = items
@@ -54,7 +56,7 @@ class FeedItemCell: FeedBaseCell {
                 return
             }
             itemStackView.addArrangedSubview(feedItem)
-            feedItem.configureContent(with: item, showSale: kind == .sale)
+            feedItem.configureContent(with: item, showSale: kind == .sale, isInteractive: isInteractive)
         }
         
         // Configure constraints for the first item — the rest will follow suit
@@ -73,9 +75,11 @@ class FeedItemCell: FeedBaseCell {
     ///   - kind: cell's type
     ///   - title: cell's title
     ///   - brandNames: put items with given brand names first
-    func configureContent(for kind: Kind, title: String, brandNames: [String]) {
-        // Configure title based on type (kind)
+    ///   - interactive: if true allow clicks on buttons and items, if not — disable them
+    func configureContent(for kind: Kind, title: String, brandNames: [String], isInteractive: Bool) {
+        // Configure kind, title, and `see all` button visibility
         self.kind = kind
+        seeAllButton.isHidden = !isInteractive
         titleLabel.text = title
         
         // Filter items by presense of price, old price and brand
@@ -89,7 +93,7 @@ class FeedItemCell: FeedBaseCell {
         
         // Make sure brand names are not empty
         guard !brandNames.isEmpty else {
-            configure(items: Array(shuffledItems[..<numberOfItems]))
+            configure(items: Array(shuffledItems[..<numberOfItems]), isInteractive: isInteractive)
             return
         }
         
@@ -105,13 +109,13 @@ class FeedItemCell: FeedBaseCell {
             items.append(contentsOf: brandedItems[..<brandedItemsCount])
         }
         
-        configure(items: items)
+        configure(items: items, isInteractive: isInteractive)
     }
     
     /// Configure the view of like buttons depending on their items being in wish list
     func configureLikeButtons() {
         itemStackView.arrangedSubviews.forEach {
-            ($0 as? FeedItem)?.configureLikeButton()
+            ($0 as? FeedItem)?.configureLikeButton(isInteractive: true)
         }
     }
     

@@ -43,12 +43,13 @@ class FeedItem: UIView {
     /// - Parameters:
     ///   - item: the item to configure content for
     ///   - showSale: if true show strikethrough old price if available
-    func configureContent(with item: Item, showSale: Bool = false) {
+    ///   - isInteractive: if true allow clicks on buttons and items, if not — disable them
+    func configureContent(with item: Item, showSale: Bool = false, isInteractive: Bool) {
         // Set the item being currently displayed
         self.item = item
         
         // Configure the view of like button depending on item being in wish list
-        configureLikeButton()
+        configureLikeButton(isInteractive: isInteractive)
         
         // Load the first picture for item into item image view
         itemImageView.configure(with: item.pictures?.first)
@@ -67,8 +68,12 @@ class FeedItem: UIView {
     }
     
     /// Configure the view of like button depending on item being in wish list
-    func configureLikeButton() {
-        likeButton?.configure(for: item)
+    /// - Parameter isInteractive: if true allow clicks, if not — disable it
+    func configureLikeButton(isInteractive: Bool) {
+        likeButton.isHidden = !isInteractive
+        if !isInteractive {
+            likeButton?.configure(for: item)
+        }
     }
     
     // MARK: - Actions

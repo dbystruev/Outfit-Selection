@@ -29,7 +29,7 @@ extension FeedViewController: UITableViewDataSource {
                 return brandCell
                 
             } else if let feedCell = feedBaseCell as? FeedItemCell {
-                feedCell.configureContent(for: cell.kind, title: cell.title, brandNames: selectedBrandNames)
+                feedCell.configureContent(for: cell.kind, title: cell.title, brandNames: selectedBrandNames, isInteractive: tableView == feedTableView)
                 return feedCell
             }
             
@@ -38,7 +38,7 @@ extension FeedViewController: UITableViewDataSource {
             return cell.kind == .brands ? FeedBrandCell() : FeedItemCell()
         }()
         
-        feedBaseCell.delegate = self
+        feedBaseCell.delegate = tableView == feedTableView ? self : nil
         return feedBaseCell
     }
 }
