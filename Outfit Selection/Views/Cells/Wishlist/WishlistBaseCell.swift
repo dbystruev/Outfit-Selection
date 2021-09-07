@@ -19,6 +19,16 @@ class WishlistBaseCell: UICollectionViewCell {
     /// Item or outfit currently being displayed
     var element: Any?
     
+    // MARK: - Inherited Properties
+    /// Changes button appearance when this cell is selected
+    override var isSelected: Bool {
+        get { super.isSelected }
+        set {
+            super.isSelected = newValue
+            selectButton.isSelected = newValue
+        }
+    }
+    
     // MARK: - Methods
     /// Save delegate and element of this cell
     /// - Parameters:
@@ -35,7 +45,6 @@ class WishlistBaseCell: UICollectionViewCell {
     
     // MARK: - Actions
     @IBAction func selectButtonTapped(_ sender: UIButton) {
-        guard let element = element else { return }
-        delegate?.buttonTapped(element)
+        delegate?.buttonTapped(self)
     }
 }
