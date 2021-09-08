@@ -57,6 +57,9 @@ extension AppDelegate: UIApplicationDelegate {
         // Configure current notification center
         userNotificationCenter(configureFor: application)
         
+        // Restore user wishlists if any
+        Wishlist.load()
+        
         return true
     }
     

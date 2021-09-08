@@ -15,9 +15,9 @@ struct Wishlist: Codable {
     static var tabSuggested: WishlistItem.Kind = .item
     
     /// Wishlist items added by the user to the wishlist
-    private static var wishlistItems: [WishlistItem] = [] {
+    private static var _wishlistItems: [WishlistItem]? {
         didSet {
-            debug(wishlistItems.count, wishlistItems.map {( $0.kind, $0.name )})
+            debug(_wishlistItems?.count, _wishlistItems?.map {( $0.gender, $0.kind, $0.name )})
         }
     }
     
@@ -72,6 +72,16 @@ struct Wishlist: Codable {
         Set(outfitsItems.compactMap { $0.itemIndex })
     }
     
+    /// Wishlist items saved to user default every time they are updated
+    private static var wishlistItems: [WishlistItem] {
+        get { _wishlistItems?.filter { $0.gender == Gender.current } ?? [] }
+        set {
+            guard newValue != _wishlistItems else { return }
+            _wishlistItems = newValue
+            save()
+        }
+    }
+    
     // MARK: - Static Methods
     /// Add an item to the items wishlist if it is not present there
     /// - Parameter item: the item to add to the item wishlist
@@ -80,7 +90,11 @@ struct Wishlist: Codable {
         guard let item = item, contains(item) == false else { return }
         
         // Append the item to the end of the wishlist items
-        wishlistItems.append(WishlistItem(kind: .item, items: [item], name: item.name))
+        guard let gender = Gender.current else {
+            debug("WARNING: Gender.current is empty")
+            return
+        }
+        wishlistItems.append(WishlistItem(gender: gender, kind: .item, items: [item], name: item.name))
         
         // Remember that item is in the wishlist
         item.setWishlisted()
@@ -98,7 +112,11 @@ struct Wishlist: Codable {
         remove(items)
         
         // Append the new outfit to the end of the outfits wishlist
-        wishlistItems.append(WishlistItem(kind: .outfit, items: items, name: occasion))
+        guard let gender = Gender.current else {
+            debug("WARNING: Gender.current is empty")
+            return
+        }
+        wishlistItems.append(WishlistItem(gender: gender, kind: .outfit, items: items, name: occasion))
         
         // Set each item's wishlisted property
         items.forEach { $0.setWishlisted() }
@@ -208,5 +226,39 @@ struct Wishlist: Codable {
     /// Clear both items and outfit wishlists
     static func removeAll() {
         wishlistItems.removeAll()
+    }
+}
+
+// MARK: - User Defaults
+extension Wishlist {
+    // MARK: - Static Constants
+    /// User defaults key
+    static let userDefaultsKey = "GetOutfitWishlistKey"
+    
+    // MARK: - Methods
+    /// Load wishlist from user defaults
+    static func load() {
+        guard let data = UserDefaults.standard.object(forKey: userDefaultsKey) as? Data else {
+            debug("WARNING: Can't find data from user defaults for key \(userDefaultsKey)")
+            return
+        }
+        
+        guard let wishlistItems = try? PList.decoder.decode([WishlistItem].self, from: data) else {
+            debug("WARNING: Can't decode \(data) from user defaults to [WishlistItem] for key \(userDefaultsKey)")
+            return
+            
+        }
+        
+        _wishlistItems = wishlistItems
+    }
+    
+    /// Save wishlist to user defaults
+    static func save() {
+        guard let data = try? PList.encoder.encode(wishlistItems) else {
+            debug("WARNING: Can't encode \(wishlistItems.count) wishlist items for key \(userDefaultsKey)")
+            return
+        }
+        
+        UserDefaults.standard.set(data, forKey: userDefaultsKey)
     }
 }

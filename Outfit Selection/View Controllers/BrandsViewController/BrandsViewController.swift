@@ -35,7 +35,7 @@ class BrandsViewController: UIViewController {
             Item.removeAll()
             
             // Clear all wish lists
-            Wishlist.removeAll()
+//            Wishlist.removeAll()
         }
     }
     

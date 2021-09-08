@@ -7,7 +7,7 @@
 //
 
 /// Gender selected by the user
-enum Gender: String {
+enum Gender: String, Codable {
     // MARK: - Static Properties
     /// Currently selected gender
     static var current: Gender?

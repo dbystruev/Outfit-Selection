@@ -34,6 +34,9 @@ struct WishlistItem: Codable {
     }
     
     // MARK: - Stored Properties
+    /// Gender of wishlist item
+    var gender: Gender
+    
     /// Type (kind) of wishlist item
     var kind: Kind
     
