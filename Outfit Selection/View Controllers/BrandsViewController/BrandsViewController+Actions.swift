@@ -11,14 +11,13 @@ import UIKit
 // MARK: - Actions
 extension BrandsViewController {
     @IBAction func selectAllButtonTapped(_ sender: SelectableButtonItem) {
+        // Switch the selection
         sender.isSelected.toggle()
-        
         let isSelected = sender.isSelected
-        sender.title = isSelected ? "Clear all" : "Select all"
         
-        brandedImages.forEach {
-            $0.isSelected = isSelected
-        }
+        // Select / deselect all branded images and save the selectionto permanent storage
+        brandedImages.forEach { $0._isSelected = isSelected }
+        BrandManager.shared.saveSelectedBrands()
         
         brandsCollectionView.reloadData()
         configureGoButton()

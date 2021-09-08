@@ -11,5 +11,9 @@ import UIKit
 /// UIBarButtonItem with isSelected property
 class SelectableButtonItem: UIBarButtonItem {
     /// True if button is selected, false otherwise
-    var isSelected = false
+    var isSelected = false {
+        didSet {
+            title = isSelected ? "Clear all" : "Select all"
+        }
+    }
 }

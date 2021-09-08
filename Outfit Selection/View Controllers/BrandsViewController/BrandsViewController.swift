@@ -11,6 +11,9 @@ import UIKit
 class BrandsViewController: UIViewController {
     
     // MARK: - Outlets
+    /// Top right button to clear or select all brands
+    @IBOutlet weak var allButton: SelectableButtonItem!
+    
     /// Collection view with brand logos
     @IBOutlet weak var brandsCollectionView: UICollectionView!
     
@@ -76,6 +79,11 @@ class BrandsViewController: UIViewController {
     }
     
     // MARK: - Methods
+    /// Set top right button to clear or select all
+    func configureAllButton() {
+        allButton.isSelected = brandedImages.unselected.count < brandedImages.selected.count
+    }
+    
     /// Set go button backgroun color and enable / disable it depending on number of brands selected
     func configureGoButton() {
         let brandsSelected = BrandManager.shared.selectedBrands.count
@@ -107,9 +115,13 @@ class BrandsViewController: UIViewController {
     
     /// Configure brands collection view layout
     func configureLayout() {
+        // Configure the brands collection view
         brandsCollectionView.dataSource = self
         brandsCollectionView.delegate = self
         brandsCollectionView.register(BrandCell.nib, forCellWithReuseIdentifier: BrandCell.reuseId)
+        
+        // Configure the buttons
+        configureAllButton()
         configureGoButton()
     }
 }
