@@ -19,11 +19,13 @@ extension WishlistViewController: UICollectionViewDataSource {
         let delegate = collectionView == wishlistCollectionView ? nil : self
         
         // Configure an item or an outfit
-        let wishlistElement = wishlist[indexPath.row]
-        if let itemCell = cell as? WishlistItemCell, let item = wishlistElement.item {
+        let wishlistItem = wishlist[indexPath.row]
+        if let itemCell = cell as? WishlistItemCell, let item = wishlistItem.item {
             itemCell.configure(with: item, delegate: delegate)
         } else if let outfitCell = cell as? WishlistOutfitCell {
-            outfitCell.configure(with: wishlistElement, delegate: delegate)
+            outfitCell.configure(with: wishlistItem, delegate: delegate)
+        } else {
+            debug("WARNING: Can't convert wishlist item to an item or outfit cell")
         }
         return cell
     }

@@ -71,7 +71,7 @@ class FeedItem: UIView {
     /// - Parameter isInteractive: if true allow clicks, if not — disable it
     func configureLikeButton(isInteractive: Bool) {
         likeButton.isHidden = !isInteractive
-        if !isInteractive {
+        if isInteractive {
             likeButton?.configure(for: item)
         }
     }

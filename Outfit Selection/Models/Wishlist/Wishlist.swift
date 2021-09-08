@@ -11,39 +11,65 @@ import Foundation
 /// Element of a wishlist
 struct Wishlist: Codable {
     // MARK: - Stored Static Properties
-    /// List of items added by the user to the wishlist
-    private(set) static var items = [Wishlist]()
-    
-    /// Dictinary (map) of outfits added by the user to the wishlist
-    private static var outfitsDictionary = [String: [Item]]()
-    
     /// Suggests what to select next time when opening wishlist
     static var tabSuggested: WishlistItem.Kind = .item
     
-    // MARK: - Computed Static Properties
-    /// Set of item indexes in both item wishlist and outfit wishlist
-    static var allItemIndexes: Set<Int> {
-        itemIndexes.union(outfitsItemIndexes)
+    /// Wishlist items added by the user to the wishlist
+    private static var wishlistItems: [WishlistItem] = [] {
+        didSet {
+            debug(wishlistItems.count, wishlistItems.map {( $0.kind, $0.name )})
+        }
     }
     
+    // MARK: - Computed Static Properties
     /// All items in both item wishlist and outfit wishlist
     static var allItems: [Item] {
-        allItemIndexes.map { Item.all[$0] }
+        allItemsIndexes.map { Item.all[$0] }
     }
     
-    /// Set of item indexes in item wishlist
-    static var itemIndexes: Set<Int> {
+    /// Set of item indexes in both item wishlist and outfit wishlist
+    static var allItemsIndexes: Set<Int> {
+        collectionsItemsIndexesSet.union(itemsIndexesSet.union(outfitsItemsIndexesSet))
+    }
+    
+    /// Wishlist items with type .collection
+    static var collections: [WishlistItem] {
+        wishlistItems.filter { $0.kind == .collection }
+    }
+    
+    /// The items inside all collections
+    static var collectionsItems: [Item] {
+        collections.flatMap { $0.items }
+    }
+    
+    /// Set of item indexes found in collections
+    static var collectionsItemsIndexesSet: Set<Int> {
+        Set(collectionsItems.compactMap { $0.itemIndex })
+    }
+    
+    /// Wishlist items with type .item
+    static var items: [WishlistItem] {
+        wishlistItems.filter { $0.kind == .item }
+    }
+    
+    /// Set of item indexes found in items
+    static var itemsIndexesSet: Set<Int> {
         Set(items.compactMap { $0.item?.itemIndex })
     }
     
-    /// List of outfits added by the user to the wishlist
-    static var outfits: [Wishlist] {
-        outfitsDictionary.map { Wishlist($0.value, occasion: $0.key) }
+    /// Wishlist items with type .outfit
+    static var outfits: [WishlistItem] {
+        wishlistItems.filter { $0.kind == .outfit }
+    }
+    
+    /// The items inside all outfits
+    static var outfitsItems: [Item] {
+        outfits.flatMap { $0.items }
     }
     
     /// Set of item indexes found in outfits
-    static var outfitsItemIndexes: Set<Int> {
-        Set(outfitsDictionary.values.flatMap({ $0 }).compactMap { $0.itemIndex })
+    static var outfitsItemsIndexesSet: Set<Int> {
+        Set(outfitsItems.compactMap { $0.itemIndex })
     }
     
     // MARK: - Static Methods
@@ -53,8 +79,8 @@ struct Wishlist: Codable {
         // Make sure we don't have item added already
         guard let item = item, contains(item) == false else { return }
         
-        // Append the item to the end of the items wishlist
-        items.append(Wishlist(item))
+        // Append the item to the end of the wishlist items
+        wishlistItems.append(WishlistItem(kind: .item, items: [item], name: item.name))
         
         // Remember that item is in the wishlist
         item.setWishlisted()
@@ -72,7 +98,7 @@ struct Wishlist: Codable {
         remove(items)
         
         // Append the new outfit to the end of the outfits wishlist
-        outfitsDictionary[occasion] = items
+        wishlistItems.append(WishlistItem(kind: .outfit, items: items, name: occasion))
         
         // Set each item's wishlisted property
         items.forEach { $0.setWishlisted() }
@@ -89,40 +115,39 @@ struct Wishlist: Codable {
     
     /// Returns true if outfit is contained in the outfit wishlist already, false otherwise
     /// - Parameters:
-    ///   - newOutfit: the collection of items in the new outfit
+    ///   - items: the items in the new outfit
     ///   - occasion: the occasion for the outfit, if nil search all occasions
     /// - Returns: true if outfit is contained in the outfit wishlist, false if not, nil if items or occasion are empty
-    static func contains(_ newOutfit: [Item], occasion: String? = nil) -> Bool? {
+    static func contains(_ items: [Item], occasion: String? = nil) -> Bool? {
         // Return nil if new items or occasion is empty
-        let newOutfitCount = newOutfit.count
-        guard 0 < newOutfitCount && occasion?.isEmpty != true else { return nil }
+        let itemsCount = items.count
+        guard 0 < itemsCount && occasion?.isEmpty != true else { return nil }
         
         // If occasion is nil search for all occasions
         guard let occasion = occasion else {
-            for occasion in outfitsDictionary.keys {
-                if contains(newOutfit, occasion: occasion) == true { return true }
+            for outfit in outfits {
+                if contains(items, occasion: outfit.name) == true { return true }
             }
             return false
         }
         
         // Return false if there is no outfit for the occasion present
-        guard let outfit = outfitsDictionary[occasion] else { return false }
+        guard let outfit = outfits.first(where: { $0.name == occasion }) else { return false }
         
         // Return false if the number of items in the outfits differ
-        guard newOutfitCount == outfit.count else { return false }
+        guard itemsCount == outfitsItems.count else { return false }
         
         // Make two sets of outfit item indexes
-        let newOutfitSet = Set(newOutfit.compactMap { $0.itemIndex })
-        let outfitSet = Set(outfit.compactMap { $0.itemIndex })
+        let newOutfitSet = Set(items.compactMap { $0.itemIndex })
         
         // Compare two sets of outfit item indexes
-        return newOutfitCount == newOutfitSet.count && newOutfitSet == outfitSet
+        return newOutfitSet == outfit.itemsIndexesSet
     }
     
     /// Returns true if occasion exists in outfits dictionary, false otherwise
     /// - Parameter occasion: the occasion to search for
     static func contains(_ occasion: String) -> Bool {
-        outfitsDictionary[occasion] != nil
+        outfits.first { $0.name == occasion } != nil
     }
     
     /// Returns true if item is found in outfit wishlist, false otherwise
@@ -130,15 +155,15 @@ struct Wishlist: Codable {
     /// - Returns: true if item is found in outfit wishlist, false otherwise, nil if item or its itemIndex is nil
     static func contains(itemInOutfits item: Item?) -> Bool? {
         guard let itemIndex = item?.itemIndex else { return nil }
-        return outfitsItemIndexes.contains(itemIndex)
+        return outfitsItemsIndexesSet.contains(itemIndex)
     }
     
     /// Finds given items in the wishlist and returns occasion name for them, or nil if there are no such items in the wishlist
-    /// - Parameter outfit: the collection of items to search for in the wishlist
+    /// - Parameter items: the collection of items to search for in the wishlist
     /// - Returns: occasion name for the given items, or nil if there are no occasion with such items
-    static func occasion(_ outfit: [Item]) -> String? {
-        for occasion in outfitsDictionary.keys {
-            if contains(outfit, occasion: occasion) == true { return occasion }
+    static func occasion(_ items: [Item]) -> String? {
+        for outfit in outfits {
+            if contains(items, occasion: outfit.name) == true { return outfit.name }
         }
         return nil
     }
@@ -150,7 +175,7 @@ struct Wishlist: Codable {
         guard let itemIndex = item?.itemIndex else { return }
         
         // Remove all items with given itemIndex
-        items.removeAll { $0.item?.itemIndex == itemIndex }
+        wishlistItems.removeAll { $0.kind == .item && $0.items.first?.itemIndex == itemIndex }
         
         // Clear wishlisted status if not found in outfit wishlist
         guard contains(itemInOutfits: item) != true else { return }
@@ -161,9 +186,9 @@ struct Wishlist: Codable {
     /// - Parameter items: the items in outfit to remove
     static func remove(_ items: [Item]) {
         // Check all occasions and remove similar items from them
-        for occasion in outfitsDictionary.keys {
-            if contains(items, occasion: occasion) == true {
-                outfitsDictionary[occasion] = nil
+        for outfit in outfits {
+            if contains(items, occasion: outfit.name) == true {
+                wishlistItems.removeAll { $0 == outfit }
                 
                 // Clear wishlisted status
                 items.forEach {
@@ -182,52 +207,6 @@ struct Wishlist: Codable {
     
     /// Clear both items and outfit wishlists
     static func removeAll() {
-        items.removeAll()
-        outfitsDictionary.removeAll()
-    }
-    
-    // MARK: - Stored Properties
-    /// The list of items or a single item in the wishlist element
-    private(set) var items: [Item]
-    
-    /// Occasion for the list of items
-    private(set) var occasion: String?
-    
-    // MARK: - Computed Properties
-    /// Single item in the wishlist element
-    private(set) var item: Item? {
-        get { items.first }
-        set {
-            // If new value is nil, clear the array of items
-            guard let newValue = newValue else {
-                items.removeAll()
-                return
-            }
-            if 0 < items.count {
-                items[0] = newValue
-            } else {
-                items.append(newValue)
-            }
-        }
-    }
-    
-    /// Wishlist kind depending on whether the occasion was set and wishlist only has one item
-    var kind: WishlistItem.Kind {
-        occasion == nil && items.count == 1 ? .item : .outfit
-    }
-    
-    /// Calculate wishlist items price
-    var price: Double {
-        items.reduce(0) { $0 + ($1.price ?? 0) }
-    }
-    
-    // MARK: - Init
-    private init(_ item: Item) {
-        items = [item]
-    }
-    
-    private init(_ items: [Item], occasion: String) {
-        self.items = items
-        self.occasion = occasion
+        wishlistItems.removeAll()
     }
 }

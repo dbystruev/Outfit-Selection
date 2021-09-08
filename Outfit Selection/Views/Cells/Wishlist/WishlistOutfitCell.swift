@@ -20,12 +20,12 @@ class WishlistOutfitCell: WishlistBaseCell {
     /// - Parameters:
     ///   - outfit: the wishlist outfit
     ///   - delegate: delegate to send message about select button tap, nil by default
-    func configure(with outfit: Wishlist, delegate: ButtonDelegate? = nil) {
+    func configure(with outfit: WishlistItem, delegate: ButtonDelegate? = nil) {
         // Save the delegate and the outfit
         super.configure(with: outfit, delegate: delegate)
         
         // Configure labels
-        occasionLabel.text = outfit.occasion
+        occasionLabel.text = outfit.name
         priceLabel.text = outfit.price.asPrice
         
         // Configure pictures

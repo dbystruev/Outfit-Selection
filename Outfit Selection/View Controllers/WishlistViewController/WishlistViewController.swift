@@ -30,11 +30,11 @@ class WishlistViewController: UIViewController {
         return navigationController?.viewControllers.first as? OutfitViewController
     }
     
-    /// Either items or outfits wishlist depending on whether the items tab is selected
-    var wishlist: [Wishlist] {
+    /// Either collections, items, or outfits depending on which tab is selected
+    var wishlist: [WishlistItem] {
         switch tabSelected {
         case .collection:
-            return []
+            return Wishlist.collections
         case .item:
             return Wishlist.items
         case .outfit:

@@ -40,6 +40,20 @@ struct WishlistItem: Codable {
     /// The list of items (or one item in case of .item type)
     var items: [Item]
     
-    /// Name for collection or occasion for outfit
+    /// Name for collection, item, or occasion for outfit
     var name: String?
+    
+    // MARK: - Computed Properties
+    /// The first item of the items array
+    var item: Item? { items.first }
+    
+    /// The set of items indexes
+    var itemsIndexesSet: Set<Int> { Set(items.compactMap { $0.itemIndex })}
+    
+    /// Calculate wishlist items price
+    var price: Double {
+        items.reduce(0) { $0 + ($1.price ?? 0) }
+    }
 }
+
+extension WishlistItem: Equatable {}
