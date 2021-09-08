@@ -10,13 +10,17 @@ import Foundation
 
 extension Collection {
     /// All collections created by the user
-    static var _all: [Collection]?
+    private static var _collections: [Gender: [Collection]] = [:]
     
-    static var all: [Collection] {
-        get { _all ?? [] }
+    static var collections: [Collection] {
+        get {
+            guard let gender = Gender.current else { return [] }
+            return _collections[gender] ?? []
+        }
         set {
-            guard _all?.count != newValue.count else { return }
-            _all = newValue
+            guard let gender = Gender.current else { return }
+            guard _collections[gender]?.count != newValue.count else { return }
+            _collections[gender] = newValue
             save()
         }
     }
@@ -36,19 +40,19 @@ extension Collection {
             return
         }
         
-        guard let collections = try? PList.decoder.decode([Collection].self, from: data) else {
+        guard let collections = try? PList.decoder.decode([Gender: [Collection]].self, from: data) else {
             debug("WARNING: Can't decode \(data) from user defaults to [Collection] for key \(userDefaultsKey)")
             return
             
         }
         
-        _all = collections
+        _collections = collections
     }
     
     /// Save wishlist to user defaults
     static func save() {
-        guard let data = try? PList.encoder.encode(all) else {
-            debug("WARNING: Can't encode \(all.count) collections for key \(userDefaultsKey)")
+        guard let data = try? PList.encoder.encode(_collections) else {
+            debug("WARNING: Can't encode \(_collections.count) collections for key \(userDefaultsKey)")
             return
         }
         

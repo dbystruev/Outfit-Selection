@@ -11,6 +11,9 @@ class Collection: Codable {
     /// Collection items
     private var collectionItems: [CollectionItem] = []
     
+    /// Collection gender
+    var gender: Gender
+    
     /// Collection name
     let name: String
     
@@ -23,8 +26,11 @@ class Collection: Codable {
     
     // MARK: - Init
     /// Initialize a collection with empty set of items and given name
-    /// - Parameter name: the name of the collection
-    init(_ name: String) {
+    /// - Parameters:
+    ///   - gender: collection gender
+    ///   - name: the name of the collection
+    init(_ gender: Gender?, _ name: String) {
+        self.gender = gender ?? .other
         self.name = name
     }
     

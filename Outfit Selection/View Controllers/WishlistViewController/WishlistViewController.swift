@@ -58,13 +58,6 @@ class WishlistViewController: UIViewController {
     /// Number of cells to show per row: 2 for vertical and 4 for horizontal orientations
     var cellsPerRow = 2
     
-    /// Collections the user creates
-    var collections: [Collection] = [] {
-        didSet {
-            debug("\(collections.count): \(collections.map { $0.name })")
-        }
-    }
-    
     /// Feed view controller used as data source and table delegate for collection table view
     let feedController = FeedViewController()
     
@@ -79,11 +72,11 @@ class WishlistViewController: UIViewController {
     // MARK: - Custom Methods
     /// Called when user finished selecting items or outfits for new collection
     func finishSelectingCollectionItems() {
-        guard let lastCollection = collections.last else { return }
+        guard let lastCollection = Collection.collections.last else { return }
         
         // Check if last collection is empty and remove it
         guard !lastCollection.isEmpty else {
-            collections.removeLast()
+            Collection.collections.removeLast()
             return
         }
         

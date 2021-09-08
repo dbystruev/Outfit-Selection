@@ -11,7 +11,7 @@ extension WishlistViewController: ButtonDelegate {
     /// - Parameter sender: item or outfit selected
     func buttonTapped(_ sender: Any) {
         // Get the most current collection
-        guard let lastCollection = collections.last else {
+        guard let lastCollection = Collection.collections.last else {
             debug("WARNING: collections is empty")
             return
         }

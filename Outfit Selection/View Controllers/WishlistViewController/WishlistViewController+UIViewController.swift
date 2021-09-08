@@ -51,7 +51,7 @@ extension WishlistViewController {
             destination.wishlistViewController = self
             
             // Create new collection
-            collections.append(Collection(collectionName))
+            Collection.collections.append(Collection(Gender.current, collectionName))
             
         default:
             debug("WARNING: Unknown segue identifier", segue.identifier)
