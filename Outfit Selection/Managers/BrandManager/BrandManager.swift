@@ -28,6 +28,7 @@ class BrandManager {
                     brandedImage?.brandName = $0.lastComponent.dropExtension
                     return brandedImage
                 })
+                loadSelectedBrands(into: _brandedImages)
                 return _brandedImages ?? BrandedImages()
             }
             return brandedImages
@@ -56,7 +57,7 @@ class BrandManager {
         Set(brandedImages.compactMap { $0.isSelected ? $0.brandName : nil })
     }
     
-    /// Brands currently not  selected by the user
+    /// Brands currently not selected by the user
     var unselectedBrands: Set<String> {
         Set(brandedImages.compactMap { $0.isSelected ? nil : $0.brandName })
     }

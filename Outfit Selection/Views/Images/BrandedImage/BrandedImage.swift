@@ -13,7 +13,11 @@ class BrandedImage: UIImage {
     var brandName = ""
     
     /// Whether this brand image is selected
-    var isSelected = false
+    var isSelected = false {
+        didSet {
+            BrandManager.shared.saveSelectedBrands()
+        }
+    }
     
     /// Tag for the scroll view
     var tag = 0
