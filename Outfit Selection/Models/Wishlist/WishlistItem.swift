@@ -36,4 +36,10 @@ struct WishlistItem: Codable {
     // MARK: - Stored Properties
     /// Type (kind) of wishlist item
     var kind: Kind
+    
+    /// The list of items (or one item in case of .item type)
+    var items: [Item]
+    
+    /// Name for collection or occasion for outfit
+    var name: String?
 }
