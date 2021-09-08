@@ -11,9 +11,29 @@ import Foundation
 struct WishlistItem: Codable {
     // MARK: - Types
     /// Type (kind) of wishlist item
-    enum Kind {
+    enum Kind: Int, Codable, CustomStringConvertible {
         case collection
         case item
         case outfit
+        
+        // MARK: - CustomStringConvertible
+        var description: String {
+            switch self {
+            
+            case .collection:
+                return ".collection"
+                
+            case .item:
+                return ".item"
+                
+            case .outfit:
+                return ".outfit"
+                
+            }
+        }
     }
+    
+    // MARK: - Stored Properties
+    /// Type (kind) of wishlist item
+    var kind: Kind
 }

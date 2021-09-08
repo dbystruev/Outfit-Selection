@@ -6,11 +6,11 @@
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
-struct CollectionItem {
+struct CollectionItem: Codable {
     
     // MARK: - Types
     /// There are 2 types of collections: with items or with looks of items
-    enum Kind: CustomStringConvertible {
+    enum Kind: Int, Codable, CustomStringConvertible {
         case item
         case outfit
         
@@ -23,6 +23,7 @@ struct CollectionItem {
                 
             case .outfit:
                 return ".outfit"
+                
             }
         }
     }
