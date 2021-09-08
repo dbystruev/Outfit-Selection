@@ -6,7 +6,7 @@
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
-class Collection {
+class Collection: Codable {
     // MARK: - Stored Properties
     /// Collection items
     private var collectionItems: [CollectionItem] = []
