@@ -69,7 +69,7 @@ class WishlistViewController: UIViewController {
     let feedController = FeedViewController()
     
     /// Contains the currently selected tab: collections, items, or outfits
-    var tabSelected: Wishlist.Tab = .item {
+    var tabSelected: WishlistItem.Kind = .item {
         didSet {
             Wishlist.tabSuggested = tabSelected
             updateUI()

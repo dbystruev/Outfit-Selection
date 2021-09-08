@@ -10,13 +10,6 @@ import Foundation
 
 /// Element of a wishlist
 struct Wishlist: Codable {
-    // MARK: - Types
-    enum Tab {
-        case collection
-        case item
-        case outfit
-    }
-    
     // MARK: - Stored Static Properties
     /// List of items added by the user to the wishlist
     private(set) static var items = [Wishlist]()
@@ -25,7 +18,7 @@ struct Wishlist: Codable {
     private static var outfitsDictionary = [String: [Item]]()
     
     /// Suggests what to select next time when opening wishlist
-    static var tabSuggested: Tab = .item
+    static var tabSuggested: WishlistItem.Kind = .item
     
     // MARK: - Computed Static Properties
     /// Set of item indexes in both item wishlist and outfit wishlist
@@ -219,7 +212,7 @@ struct Wishlist: Codable {
     }
     
     /// Wishlist kind depending on whether the occasion was set and wishlist only has one item
-    var kind: Tab {
+    var kind: WishlistItem.Kind {
         occasion == nil && items.count == 1 ? .item : .outfit
     }
     

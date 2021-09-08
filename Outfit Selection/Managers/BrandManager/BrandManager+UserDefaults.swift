@@ -9,9 +9,11 @@
 import Foundation
 
 extension BrandManager {
-    // MARK: - Static Properties
+    // MARK: - Static Constants
+    /// User defaults key
     static let userDefaultsKey = "GetOutfitSelectedBrandsKey"
     
+    // MARK: - Methods
     /// Load selected brands from user defaults and update branded images
     func loadSelectedBrands(into brandedImages: BrandedImages?) {
         guard let selectedBrands = UserDefaults.standard.object(forKey: BrandManager.userDefaultsKey) as? [String] else { return }
