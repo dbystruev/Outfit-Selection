@@ -18,5 +18,7 @@ class OccasionsViewController: UIViewController {
         super.viewDidLoad()
         
         occasionsTableView.dataSource = self
+        occasionsTableView.delegate = self
+        occasionsTableView.separatorStyle = .none
     }
 }

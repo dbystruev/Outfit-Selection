@@ -321,18 +321,18 @@
                                             <rect key="frame" x="0.0" y="0.0" width="343" height="24.333333969116211"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rhv-G5-MCl">
+                                                <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rhv-G5-MCl">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="24.333333333333332"/>
                                                     <subviews>
                                                         <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked" highlightedImage="checked" translatesAutoresizingMaskIntoConstraints="NO" id="v6E-q1-MrU">
-                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24.333333333333332"/>
+                                                            <rect key="frame" x="0.0" y="0.33333333333333393" width="24" height="24"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="24" id="Eg9-v3-ykj"/>
                                                                 <constraint firstAttribute="width" constant="24" id="k8C-HO-WYP"/>
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B-day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-NA-IVE">
-                                                            <rect key="frame" x="32" y="0.0" width="311" height="24.333333333333332"/>
+                                                            <rect key="frame" x="32" y="2" width="311" height="20.333333333333332"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>

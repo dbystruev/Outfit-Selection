@@ -20,7 +20,9 @@ extension OccasionsViewController: UITableViewDataSource {
             return cell
         }()
         
-        occasionCell.configure(with: Occasion.all[indexPath.row])
+        occasionCell.configureContent(with: Occasion.all[indexPath.row])
         return occasionCell
     }
+    
+    
 }

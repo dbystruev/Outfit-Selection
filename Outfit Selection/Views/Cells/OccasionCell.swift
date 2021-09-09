@@ -10,27 +10,30 @@ import UIKit
 
 class OccasionCell: UITableViewCell {
 
+    // MARK: - Outlets
     @IBOutlet weak var checkBoxImageView: UIImageView!
     @IBOutlet weak var occasionNameLabel: UILabel!
+    
+    // MARK: - Static Constants
+    static let heigth: CGFloat = 40
     
     // MARK: - Inherited Methods
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        configureLayout()
     }
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
-    
     // MARK: - Custom Methods
     /// Configures this cell with a given occasion
     /// - Parameter occasion: the occasion to configure this cell with
-    func configure(with occasion: Occasion) {
+    func configureContent(with occasion: Occasion) {
         checkBoxImageView.isHighlighted = occasion.isSelected
         occasionNameLabel.text = occasion.name
+    }
+    
+    /// Configure the cell's look and feel once at the beginning
+    func configureLayout() {
+        selectionStyle = .none
     }
 
 }
