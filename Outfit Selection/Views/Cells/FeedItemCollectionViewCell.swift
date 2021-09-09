@@ -12,10 +12,6 @@ class FeedItemCollectionViewCell: UICollectionViewCell {
     // MARK: - Outlets
     var feedItem: FeedItem!
     
-    // MARK: - Static Properties
-    /// The reuse identifier to associate with this cell
-    static let reuseId = "feedItemCollectionViewCell"
-    
     // MARK: - Static Methods
     /// Returns the number of cells to fit in one row
     /// - Parameter size: size of a view to determine landscape or portrait orientation

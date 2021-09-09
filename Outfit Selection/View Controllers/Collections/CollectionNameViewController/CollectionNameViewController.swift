@@ -35,9 +35,6 @@ class CollectionNameViewController: CollectionBaseViewController {
         }
     }
     
-    // MARK: - Static Properties
-    static let segueIdentifier = "collectionNameViewControllerSegue"
-    
     // MARK: - Inherited Properties
     override var keyboardObject: Any? { addItemsButtonBottomConstraint }
     override var keyboardTextField: UITextField? { nameTextField }

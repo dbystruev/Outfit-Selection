@@ -17,9 +17,6 @@ class GenderCell: UICollectionViewCell {
     /// The nib object containing this gender cell
     static let nib = UINib(nibName: nibName, bundle: nil)
     
-    /// The reuse identifier to associate with this cell's nib file
-    static let reuseId = "genderCell"
-    
     // MARK: - Outlets
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var radioImageView: UIImageView!
@@ -30,7 +27,7 @@ class GenderCell: UICollectionViewCell {
     ///   - gender: the gender to confiture cell with
     ///   - selected: gender which is currently selected
     func configure(gender: Gender, selected: Gender?) {
-        genderLabel.text = gender.rawValue.firstCapitalized
+        genderLabel.text = gender.rawValue.capitalizingFirstLetter
         radioImageView.isHidden = gender != selected
     }
 }

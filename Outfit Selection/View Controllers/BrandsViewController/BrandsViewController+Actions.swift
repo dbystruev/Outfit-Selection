@@ -33,6 +33,6 @@ extension BrandsViewController {
         }
         
         // Transition to the progress view controller
-        performSegue(withIdentifier: "ProgressViewControllerSegue", sender: sender)
+        performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)
     }
 }

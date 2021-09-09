@@ -18,9 +18,6 @@ class CollectionSelectViewController: CollectionBaseViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
-    // MARK: - Static Properties
-    static let segueIdentifier = "collectionSelectViewControllerSegue"
-    
     // MARK: - Inherited Methods
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)

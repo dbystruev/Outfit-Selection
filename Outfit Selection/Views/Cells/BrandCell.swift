@@ -23,9 +23,6 @@ class BrandCell: UICollectionViewCell {
     /// The nib object containing this brand cell
     static let nib = UINib(nibName: nibName, bundle: nil)
     
-    /// The reuse identifier to associate with this cell's nib file
-    static let reuseId = "brandCell"
-    
     /// Vertical margin between brand image view container and the container
     static var verticalMargin: CGFloat = 8
     

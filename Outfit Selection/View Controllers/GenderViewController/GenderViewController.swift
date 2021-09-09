@@ -42,7 +42,7 @@ class GenderViewController: UIViewController {
         self.gender = gender
         
         // Segue to brands view controller
-        performSegue(withIdentifier: "BrandsViewControllerSegue", sender: self)
+        performSegue(withIdentifier: BrandsViewController.segueIdentifier, sender: self)
     }
     
     // MARK: - Inherited Methods
@@ -52,7 +52,7 @@ class GenderViewController: UIViewController {
     ///   - sender: the object that initiated the segue
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        guard segue.identifier == "BrandsViewControllerSegue" else { return }
+        guard segue.identifier == BrandsViewController.segueIdentifier else { return }
         guard let destination = segue.destination as? BrandsViewController else { return }
         destination.gender = gender
     }

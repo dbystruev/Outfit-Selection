@@ -90,7 +90,7 @@ struct Item: Codable, Hashable {
     var nameWithoutVendor: String? {
         guard let name = name?.lowercased() else { return nil }
         guard let vendor = vendor?.lowercased(), name.starts(with: vendor) else { return name }
-        return name.dropFirst(vendor.count).trimmingCharacters(in: .whitespacesAndNewlines).firstCapitalized
+        return name.dropFirst(vendor.count).trimmingCharacters(in: .whitespacesAndNewlines).capitalizingFirstLetter
     }
     
     /// Non-optional time for sorting operations

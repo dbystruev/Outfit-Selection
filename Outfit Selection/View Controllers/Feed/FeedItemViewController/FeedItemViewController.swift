@@ -14,9 +14,6 @@ class FeedItemViewController: UIViewController {
     @IBOutlet weak var itemCollectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    // MARK: - Static Properties
-    static let segueIdentifier = "feedItemViewControllerSegue"
-    
     // MARK: - Stored Properties
     /// Collection view layout for the item collection view
     let itemCollectionViewLayout = FeedItemCollectionViewLayout()

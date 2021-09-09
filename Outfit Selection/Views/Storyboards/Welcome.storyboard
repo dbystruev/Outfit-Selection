@@ -5,8 +5,14 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="18093"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSans-Medium.ttf">
+            <string>NotoSans-Medium</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Navigation Controller-->
         <scene sceneID="fZH-RT-1j2">
@@ -133,7 +139,7 @@
                         <outlet property="descriptionLabel" destination="TuD-oz-zdU" id="p9h-k8-viF"/>
                         <outlet property="logoImageView" destination="fXx-uJ-geP" id="DjQ-nH-dN1"/>
                         <outlet property="startingLogoImageView" destination="JzR-RJ-jCH" id="8P4-2X-Rq7"/>
-                        <segue destination="K50-Fg-dgI" kind="show" identifier="BrandsViewControllerSegue" id="dF4-wM-JWl"/>
+                        <segue destination="K50-Fg-dgI" kind="show" identifier="brandsViewControllerSegue" id="dF4-wM-JWl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-JP-tfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -187,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4H-oc-phH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-274" y="137"/>
+            <point key="canvasLocation" x="610" y="137"/>
         </scene>
         <!--Tell us your favourites-->
         <scene sceneID="Jxn-eD-PxF">
@@ -217,7 +223,7 @@
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nkP-pd-enc">
                                 <rect key="frame" x="16" y="652" width="343" height="61"/>
-                                <color key="backgroundColor" red="0.32052502040000003" green="0.37435173989999998" blue="0.37976023549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.45485085250000001" green="0.54120540620000002" blue="0.51757693289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="lessThanOrEqual" constant="343" id="LTG-lB-63U"/>
                                     <constraint firstAttribute="height" constant="61" id="kPD-9b-A1B"/>
@@ -229,7 +235,7 @@
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="6"/>
+                                        <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -264,15 +270,122 @@
                         <outlet property="allButton" destination="Gwb-FF-9cf" id="I0V-2C-OO6"/>
                         <outlet property="brandsCollectionView" destination="Juc-Ac-YEM" id="25l-Xo-Zve"/>
                         <outlet property="getOutfitButton" destination="nkP-pd-enc" id="XGp-qR-0m4"/>
-                        <segue destination="Y68-Zi-Cgh" kind="show" identifier="ProgressViewControllerSegue" id="eNe-qQ-2b1"/>
+                        <segue destination="21c-yn-AfK" kind="show" identifier="occasionsViewControllerSegue" id="wHC-E6-Atd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="928-mx-uAn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1174" y="137"/>
         </scene>
+        <!--Occasions you like-->
+        <scene sceneID="Uax-un-n1R">
+            <objects>
+                <viewController id="21c-yn-AfK" customClass="OccasionsViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hps-a7-gX1">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hZS-Fj-0sN">
+                                <rect key="frame" x="24" y="649" width="327" height="56"/>
+                                <color key="backgroundColor" red="0.45485085250000001" green="0.54120540620000002" blue="0.51757693289999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="dT4-30-u50"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="16"/>
+                                <state key="normal" title="Next">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <segue destination="Y68-Zi-Cgh" kind="show" id="Nk9-sR-D98"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your favourite occasions " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7I-pz-nl1">
+                                <rect key="frame" x="16" y="104" width="343" height="21.666666666666671"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VQg-j8-dsL">
+                                <rect key="frame" x="16" y="133.66666666666666" width="343" height="507.33333333333337"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="occasionCellReuseId" id="gqL-78-SBm" customClass="OccasionCell" customModule="Outfit_Selection" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="343" height="24.333333969116211"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="gqL-78-SBm" id="Rbr-wD-aHl">
+                                            <rect key="frame" x="0.0" y="0.0" width="343" height="24.333333969116211"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Rhv-G5-MCl">
+                                                    <rect key="frame" x="0.0" y="0.0" width="343" height="24.333333333333332"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="unchecked" highlightedImage="checked" translatesAutoresizingMaskIntoConstraints="NO" id="v6E-q1-MrU">
+                                                            <rect key="frame" x="0.0" y="0.0" width="24" height="24.333333333333332"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="24" id="Eg9-v3-ykj"/>
+                                                                <constraint firstAttribute="width" constant="24" id="k8C-HO-WYP"/>
+                                                            </constraints>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B-day" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-NA-IVE">
+                                                            <rect key="frame" x="32" y="0.0" width="311" height="24.333333333333332"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <nil key="textColor"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                </stackView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="Rhv-G5-MCl" secondAttribute="bottom" id="1Zz-ak-Asl"/>
+                                                <constraint firstItem="Rhv-G5-MCl" firstAttribute="top" secondItem="Rbr-wD-aHl" secondAttribute="top" id="3gI-Yx-7tk"/>
+                                                <constraint firstAttribute="trailing" secondItem="Rhv-G5-MCl" secondAttribute="trailing" id="Ncv-4O-DCj"/>
+                                                <constraint firstItem="Rhv-G5-MCl" firstAttribute="leading" secondItem="Rbr-wD-aHl" secondAttribute="leading" id="OPm-2N-vqu"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="checkBoxImageView" destination="v6E-q1-MrU" id="2SX-Hy-dmW"/>
+                                            <outlet property="occasionNameLabel" destination="XtT-NA-IVE" id="dba-IR-wZJ"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="aJ0-6q-khG"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="VQg-j8-dsL" firstAttribute="leading" secondItem="aJ0-6q-khG" secondAttribute="leading" constant="16" id="0uc-Vu-Oiu"/>
+                            <constraint firstItem="O7I-pz-nl1" firstAttribute="top" secondItem="aJ0-6q-khG" secondAttribute="top" constant="16" id="1i3-tN-HNl"/>
+                            <constraint firstItem="O7I-pz-nl1" firstAttribute="leading" secondItem="aJ0-6q-khG" secondAttribute="leading" constant="16" id="Csd-UQ-8DA"/>
+                            <constraint firstItem="VQg-j8-dsL" firstAttribute="top" secondItem="O7I-pz-nl1" secondAttribute="bottom" constant="8" id="FhT-9u-6qg"/>
+                            <constraint firstItem="hZS-Fj-0sN" firstAttribute="top" secondItem="VQg-j8-dsL" secondAttribute="bottom" constant="8" id="Rbi-Aa-7Vf"/>
+                            <constraint firstItem="aJ0-6q-khG" firstAttribute="trailing" secondItem="hZS-Fj-0sN" secondAttribute="trailing" constant="24" id="Wly-dw-kG0"/>
+                            <constraint firstItem="aJ0-6q-khG" firstAttribute="trailing" secondItem="O7I-pz-nl1" secondAttribute="trailing" constant="16" id="gGt-jn-QhF"/>
+                            <constraint firstItem="aJ0-6q-khG" firstAttribute="bottom" secondItem="hZS-Fj-0sN" secondAttribute="bottom" constant="24" id="hA1-Nn-03q"/>
+                            <constraint firstItem="aJ0-6q-khG" firstAttribute="trailing" secondItem="VQg-j8-dsL" secondAttribute="trailing" constant="16" id="nYb-lg-qtL"/>
+                            <constraint firstItem="hZS-Fj-0sN" firstAttribute="leading" secondItem="aJ0-6q-khG" secondAttribute="leading" constant="24" id="oJO-ac-hJN"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Occasions you like" id="om5-eO-dyh"/>
+                    <connections>
+                        <outlet property="occasionsTableView" destination="VQg-j8-dsL" id="bIN-fl-bKy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Rl7-1r-IRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-278" y="137"/>
+        </scene>
     </scenes>
     <resources>
+        <image name="checked" width="18" height="18"/>
         <image name="logo_white" width="299" height="96"/>
+        <image name="unchecked" width="24" height="24"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
     </resources>
 </document>
