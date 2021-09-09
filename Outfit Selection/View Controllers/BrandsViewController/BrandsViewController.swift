@@ -87,9 +87,9 @@ class BrandsViewController: UIViewController {
     /// Set go button backgroun color and enable / disable it depending on number of brands selected
     func configureGoButton() {
         let brandsSelected = BrandManager.shared.selectedBrands.count
-        let shouldEnable = 0 < brandsSelected && shouldEnableGoButton
-        getOutfitButton.backgroundColor = shouldEnable ? #colorLiteral(red: 0.3205250204, green: 0.3743517399, blue: 0.3797602355, alpha: 1) : #colorLiteral(red: 0.638679564, green: 0.6545599103, blue: 0.6587830186, alpha: 1)
-        getOutfitButton.isEnabled = shouldEnable
+        let isEnabled = 0 < brandsSelected && shouldEnableGoButton
+        getOutfitButton.backgroundColor = isEnabled ? Globals.Color.Button.enabled : Globals.Color.Button.disabled
+        getOutfitButton.isEnabled = isEnabled
     }
     
     /// Start loading items from the server

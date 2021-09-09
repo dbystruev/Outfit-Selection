@@ -10,6 +10,7 @@
 		6900142126DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900142026DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift */; };
 		6900142326DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900142226DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift */; };
 		6900142526DA4BDC007F1A44 /* FeedBrandCell+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900142426DA4BDC007F1A44 /* FeedBrandCell+UICollectionViewDelegate.swift */; };
+		69007CEA26EA2F95001170D0 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CE926EA2F95001170D0 /* Globals.swift */; };
 		690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */; };
 		690491F6260C732A0098F1FD /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */; };
 		6906A99526E608C400386267 /* CollectionItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906A99426E608C400386267 /* CollectionItem.swift */; };
@@ -184,6 +185,7 @@
 		6900142026DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContentMode+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		6900142226DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemCollectionViewLayout.swift; sourceTree = "<group>"; };
 		6900142426DA4BDC007F1A44 /* FeedBrandCell+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
+		69007CE926EA2F95001170D0 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+configureFont.swift"; sourceTree = "<group>"; };
 		690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.ttf"; sourceTree = "<group>"; };
 		6906A99426E608C400386267 /* CollectionItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionItem.swift; sourceTree = "<group>"; };
@@ -439,10 +441,11 @@
 			isa = PBXGroup;
 			children = (
 				692C94122547025D0075BD92 /* Category.swift */,
+				698A7F9026E8E49B006C36FD /* Coders */,
 				6906A99326E6070200386267 /* Collections */,
 				69C3A4B325EBCF3100F8F968 /* Gender */,
+				69007CE926EA2F95001170D0 /* Globals.swift */,
 				69560ECE2587E7D300337F35 /* Item */,
-				698A7F9026E8E49B006C36FD /* Coders */,
 				698A7F8D26E8E26B006C36FD /* Wishlists */,
 			);
 			path = Models;
@@ -1125,6 +1128,7 @@
 				69672AE922F1D06A0053FB85 /* OutfitViewController+present.swift in Sources */,
 				6906A99726E60C8D00386267 /* Collection.swift in Sources */,
 				693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */,
+				69007CEA26EA2F95001170D0 /* Globals.swift in Sources */,
 				697CCE6426CFF1ED00B69763 /* ButtonDelegate.swift in Sources */,
 				695367EE25F7AA520024EC8B /* AppDelegate+AppsFlyerLibDelegate.swift in Sources */,
 				6976232D26D7720B00504F31 /* FeedViewController+ButtonDelegate.swift in Sources */,
