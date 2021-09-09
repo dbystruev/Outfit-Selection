@@ -8,6 +8,6 @@
 
 import UIKit
 
-extension OccasionsViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { occasions[row] }
+extension OccasionsPopupViewController: UIPickerViewDelegate {
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { occasionNames[row] }
 }

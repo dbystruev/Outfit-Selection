@@ -1,5 +1,5 @@
 //
-//  OccasionsViewController.swift
+//  OccasionsPopupViewController.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 25.02.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OccasionsViewController: UIViewController {
+class OccasionsPopupViewController: UIViewController {
     // MARK: - Outlets
     @IBOutlet weak var occasionPickerView: UIPickerView!
     
@@ -16,42 +16,7 @@ class OccasionsViewController: UIViewController {
     /// Items in the current outfit
     var items = [Item]()
     
-    let occasions = [
-        "Daily",
-        "Basic",
-        "Trendy",
-        "Casual",
-        "Business",
-        "Cocktail",
-        "Party",
-        "Night",
-        "Zoom",
-        "Home",
-        "Photoshoot",
-        "Cute",
-        "Chic",
-        "Brunch",
-        "Eco-friendly",
-        "Date",
-        "School",
-        "College",
-        "B-day",
-        "Yoga",
-        "Street style",
-        "Summer",
-        "Winter",
-        "Barbecue",
-        "Boss",
-        "Startup",
-        "Mommy",
-        "Sport",
-        "Urban",
-        "Burning man",
-        "Coachella",
-        "Black Tie",
-        "Wedding",
-        "New Year",
-    ].sorted()
+    let occasionNames = Occasion.names.sorted()
     
     // MARK: - Inherited Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -66,10 +31,10 @@ class OccasionsViewController: UIViewController {
         occasionPickerView.delegate = self
         
         // Find the first non-occupied index
-        if var shouldSelectRow = occasions.firstIndex(of: "Daily") {
-            let occasionsCount = occasions.count
+        if var shouldSelectRow = occasionNames.firstIndex(of: "Daily") {
+            let occasionsCount = occasionNames.count
             if Wishlist.outfits.count < occasionsCount {
-                while Wishlist.contains(occasions[shouldSelectRow]) {
+                while Wishlist.contains(occasionNames[shouldSelectRow]) {
                     shouldSelectRow = (shouldSelectRow + 1) % occasionsCount
                 }
             }
@@ -80,8 +45,8 @@ class OccasionsViewController: UIViewController {
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         let occasionIndex = occasionPickerView.selectedRow(inComponent: 0)
-        guard 0 <= occasionIndex && occasionIndex < occasions.count else { return }
-        Wishlist.add(items, occasion: occasions[occasionIndex])
+        guard 0 <= occasionIndex && occasionIndex < occasionNames.count else { return }
+        Wishlist.add(items, occasion: occasionNames[occasionIndex])
         
         dismiss(animated: true)
         
