@@ -204,13 +204,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose one or more brands you like " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MB4-2h-AF5">
-                                <rect key="frame" x="16" y="104" width="343" height="21.666666666666671"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="16" y="104" width="343" height="24.666666666666657"/>
+                                <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Juc-Ac-YEM">
-                                <rect key="frame" x="4" y="133.66666666666666" width="367" height="510.33333333333337"/>
+                                <rect key="frame" x="4" y="136.66666666666666" width="367" height="507.33333333333337"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-16" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gWM-CS-4u0">
@@ -277,7 +277,7 @@
             </objects>
             <point key="canvasLocation" x="-1174" y="137"/>
         </scene>
-        <!--Occasions you like-->
+        <!--Occasions-->
         <scene sceneID="Uax-un-n1R">
             <objects>
                 <viewController id="21c-yn-AfK" customClass="OccasionsViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
@@ -305,13 +305,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your favourite occasions " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7I-pz-nl1">
-                                <rect key="frame" x="16" y="104" width="343" height="21.666666666666671"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <rect key="frame" x="16" y="104" width="343" height="24.666666666666657"/>
+                                <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="VQg-j8-dsL">
-                                <rect key="frame" x="16" y="133.66666666666666" width="343" height="507.33333333333337"/>
+                                <rect key="frame" x="16" y="136.66666666666666" width="343" height="504.33333333333337"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="occasionCellReuseId" id="gqL-78-SBm" customClass="OccasionCell" customModule="Outfit_Selection" customModuleProvider="target">
@@ -370,7 +370,7 @@
                             <constraint firstItem="hZS-Fj-0sN" firstAttribute="leading" secondItem="aJ0-6q-khG" secondAttribute="leading" constant="24" id="oJO-ac-hJN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Occasions you like" id="om5-eO-dyh"/>
+                    <navigationItem key="navigationItem" title="Occasions" id="om5-eO-dyh"/>
                     <connections>
                         <outlet property="occasionsTableView" destination="VQg-j8-dsL" id="bIN-fl-bKy"/>
                     </connections>
