@@ -11,12 +11,7 @@ import Foundation
 extension Wishlist {
     // MARK: - Stored Static Properties
     /// Wishlist items added by the user to the wishlist
-    private static var _all: [Gender: [WishlistItem]] = [:] {
-        didSet {
-            guard let gender = Gender.current else { return }
-            debug(_all[gender]?.count, _all[gender]?.map {( $0.gender, $0.kind, $0.name )})
-        }
-    }
+    private static var _all: [Gender: [WishlistItem]] = [:]
     
     /// Wishlist items saved to user default every time they are updated
     private(set) static var all: [WishlistItem] {

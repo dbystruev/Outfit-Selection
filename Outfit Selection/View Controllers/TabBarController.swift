@@ -37,10 +37,6 @@ class TabBarController: UITabBarController {
     // MARK: - Custom Methods
     /// Pop to brands view controller if the user has changed the gender
     func popToBrandsIfGenderChanged() {
-        if debugging {
-            debug("DEBUG: Enter")
-        }
-        
         // Find profile view controller and its stored gender
         guard let newGender = findViewController(ofType: ProfileViewController.self)?.shownGender else {
             debug("WARNING: No profile view controller, view controllers =", viewControllers?.count, "children =", viewControllers?.compactMap{
@@ -50,12 +46,7 @@ class TabBarController: UITabBarController {
         }
         
         // Don't pop if there is no change in gender
-        guard Gender.current != newGender else {
-            if debugging {
-                debug("DEBUG: No gender change")
-            }
-            return
-        }
+        guard Gender.current != newGender else { return }
         
         // Pop to brands view controller — don't change Gender.current as it uses it to decide to clear items and wish lists
         guard let brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self) else {
@@ -65,35 +56,18 @@ class TabBarController: UITabBarController {
         
         brandsViewController.gender = newGender
         navigationController?.popToViewController(brandsViewController, animated: true)
-        
-        if debugging {
-            debug("DEBUG: Leave")
-        }
     }
     
     /// Pop to progress view controller if the user has changed the selection of brands
     func popToProgressIfBrandsChanged() {
-        if debugging {
-            debug("DEBUG: Enter")
-        }
-        
         // Don't pop if there is no change in brands selection
-        guard BrandManager.shared.selectedBrands != selectedBrands else {
-            if debugging {
-                debug("DEBUG: Brands have not changed")
-            }
-            return
-        }
+        guard BrandManager.shared.selectedBrands != selectedBrands else { return }
         
         // Save currently selected index
         navigationController?.findViewController(ofType: ProgressViewController.self)?.selectedTabBarIndex = selectedIndex
         
         // Pop to previous (progress) view controller
         navigationController?.popViewController(animated: true)
-        
-        if debugging {
-            debug("DEBUG: Leave")
-        }
     }
     
     // MARK: - Inherited Methods
