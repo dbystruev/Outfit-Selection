@@ -48,18 +48,18 @@ extension Occasion {
     // MARK: - Static Methods
     /// Load selected occasion names from user defaults and updated Occasion.all
     static func loadSelectedOccasions() {
-        guard let selectedNames = UserDefaults.standard.object(forKey: Occasion.userDefaultsKey) as? [String] else { return }
-        guard !selectedNames.isEmpty else { return }
+        guard let selectedNamesRestored = UserDefaults.standard.object(forKey: Occasion.userDefaultsKey) as? [String] else { return }
+        guard !selectedNamesRestored.isEmpty else { return }
         
         for (index, occasion) in Occasion.all.enumerated() {
-            guard selectedNames.contains(occasion.name.lowercased()) else { continue }
+            guard selectedNamesRestored.contains(occasion.name.lowercased()) else { continue }
             Occasion.all[index]._isSelected = true
         }
     }
     
     /// Save selected occasion names to user defaults
     static func saveSelectedOccasions() {
-        let selectedNames = Occasion.all.compactMap { $0.isSelected ? $0.name.lowercased() : nil }
-        UserDefaults.standard.set(selectedNames, forKey: Occasion.userDefaultsKey)
+        let selectedNamesLowercased = self.selectedNames.map { $0.lowercased() }
+        UserDefaults.standard.set(selectedNamesLowercased, forKey: Occasion.userDefaultsKey)
     }
 }

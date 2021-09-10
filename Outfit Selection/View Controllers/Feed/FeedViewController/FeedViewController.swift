@@ -70,6 +70,7 @@ class FeedViewController: UIViewController {
             
             feedItemViewController.items = feedItemCell.items
             feedItemViewController.kind = feedItemCell.kind
+            feedItemViewController.name = feedItemCell.name
             
         case ItemViewController.segueIdentifier:
             guard let destination = segue.destination as? ItemViewController else {
@@ -100,6 +101,21 @@ class FeedViewController: UIViewController {
         
         // Register cells, set data source and delegate for a feed table view
         setup(feedTableView, kinds: FeedItemCell.Kind.allCases)
+        
+        // Go through the list of seleced occasions and add them to feed table view
+        Occasion.selected.forEach {
+            // Suggest items for the occasion (temporary random)
+            let shuffledItems = Item.all.shuffled()
+            
+            // Make sure we don't have more than 42 of them
+            let numberOfItems = min(42, shuffledItems.count)
+            
+            // Take the first number of items for the occasion
+            let items = Array(shuffledItems[..<numberOfItems])
+            
+            // Append the occasion to the list of cells
+            cellDatas.append((kind: .newItems, title: "Occasion: \($0.name)", items: items))
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

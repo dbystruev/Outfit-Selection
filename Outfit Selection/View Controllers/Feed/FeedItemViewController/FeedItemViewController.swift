@@ -24,6 +24,9 @@ class FeedItemViewController: UIViewController {
     /// Kind (type) of the items
     var kind: FeedBaseCell.Kind = .newItems
     
+    /// Name of the feed
+    var name: String?
+    
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +39,9 @@ class FeedItemViewController: UIViewController {
         
         // Set custom collection view layout
         itemCollectionView.setCollectionViewLayout(itemCollectionViewLayout, animated: false)
+        
+        // Update the name of the feed
+        titleLabel.text = name
     }
     
     override func viewWillAppear(_ animated: Bool) {

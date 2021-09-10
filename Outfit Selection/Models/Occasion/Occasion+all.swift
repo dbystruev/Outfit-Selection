@@ -49,5 +49,13 @@ extension Occasion {
         Occasion("New Year"),
     ]
     
+    // MARK: - Computed Properties
+    /// The names of all occasions
     static var names: [String] { all.map { $0.name } }
+    
+    /// The list of selected occasions
+    static var selected: [Occasion] { all.filter { $0.isSelected }}
+    
+    /// The names of selected occasions
+    static var selectedNames: [String] { selected.map { $0.name }}
 }

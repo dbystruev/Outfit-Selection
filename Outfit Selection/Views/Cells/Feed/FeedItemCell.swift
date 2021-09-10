@@ -17,6 +17,9 @@ class FeedItemCell: FeedBaseCell {
     /// Items to display in the item stack view
     var items: [Item] = []
     
+    /// The name of the feed
+    var name: String?
+    
     // MARK: - Inherited Properties
     override var delegate: ButtonDelegate? {
         get { super.delegate }
@@ -26,6 +29,10 @@ class FeedItemCell: FeedBaseCell {
                 ($0 as? FeedItem)?.delegate = newValue
             }
         }
+    }
+    
+    override var title: String {
+        get { name ?? super.title }
     }
     
     // MARK: - Inherited Methods
@@ -80,6 +87,7 @@ class FeedItemCell: FeedBaseCell {
     func configureContent(for kind: Kind, title: String, brandNames: [String], items: [Item], isInteractive: Bool) {
         // Configure kind, title, and `see all` button visibility
         self.kind = kind
+        name = title
         seeAllButton.isHidden = !isInteractive
         titleLabel.text = title
         
