@@ -54,7 +54,7 @@ struct Item: Encodable, Hashable {
     var itemIndex: Int?
     
     /// Date and time when offer was last modified
-    let modifiedTime: Date?
+    var modifiedTime: Date?
     
     /// Item's name
     let name: String?
@@ -90,6 +90,21 @@ struct Item: Encodable, Hashable {
     }
     
     // MARK: - Computed Properties
+    var modifiedTimestamp: String? {
+        get {
+            guard let modifiedTime = modifiedTime else { return nil }
+            return Timestamp.formatter.string(from: modifiedTime)
+        }
+        set {
+            guard let newValue = newValue else {
+                modifiedTime = nil
+                return
+            }
+            
+            modifiedTime = Timestamp.formatter.date(from: newValue)
+        }
+    }
+    
     /// If item name starts with vendor (brand) drop that brand and capitalize the first letter of remaining string
     var nameWithoutVendor: String? {
         guard let name = name?.lowercased() else { return nil }

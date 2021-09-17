@@ -45,6 +45,7 @@
 		691C5F4426E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F4326E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift */; };
 		691C5F4626E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F4526E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift */; };
 		691C7B3F26F4CBC70080C707 /* Item+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C7B3E26F4CBC70080C707 /* Item+Decodable.swift */; };
+		691C7B4226F4D1A50080C707 /* Timestamp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C7B4126F4D1A50080C707 /* Timestamp.swift */; };
 		69248FFD25503F2F00106681 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69248FFC25503F2F00106681 /* JSON.swift */; };
 		6924900125504DFD00106681 /* DispatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924900025504DFD00106681 /* DispatchManager.swift */; };
 		69297C5225EB852700A8684E /* BrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69297C5025EB852700A8684E /* BrandCell.swift */; };
@@ -231,6 +232,7 @@
 		691C5F4326E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+ButtonDelegate.swift"; sourceTree = "<group>"; };
 		691C5F4526E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UIViewController.swift"; sourceTree = "<group>"; };
 		691C7B3E26F4CBC70080C707 /* Item+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Decodable.swift"; sourceTree = "<group>"; };
+		691C7B4126F4D1A50080C707 /* Timestamp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timestamp.swift; sourceTree = "<group>"; };
 		69248FFC25503F2F00106681 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		6924900025504DFD00106681 /* DispatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchManager.swift; sourceTree = "<group>"; };
 		69297C5025EB852700A8684E /* BrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCell.swift; sourceTree = "<group>"; };
@@ -763,6 +765,7 @@
 			children = (
 				69248FFC25503F2F00106681 /* JSON.swift */,
 				698A7F9126E8E4B1006C36FD /* PList.swift */,
+				691C7B4126F4D1A50080C707 /* Timestamp.swift */,
 			);
 			path = Coders;
 			sourceTree = "<group>";
@@ -1266,6 +1269,7 @@
 				6978202F2587BCAA007D4CCB /* ImageCollectionViewModel.swift in Sources */,
 				692C940A2546FB8D0075BD92 /* Gender.swift in Sources */,
 				69C3696725E79ED3000A8E5E /* WishlistViewController.swift in Sources */,
+				691C7B4226F4D1A50080C707 /* Timestamp.swift in Sources */,
 				69162D9826103EEA001C97A9 /* BrandedImages.swift in Sources */,
 				6941BDEC260B565F003D5EE7 /* RefreshBubble.swift in Sources */,
 				69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */,
