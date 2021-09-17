@@ -176,7 +176,7 @@ class NetworkManager {
                 group.enter()
                 
                 // Request the items in the current category
-                get("offers", parameters: parameters) { (items: [Item]?) in
+                get("items", parameters: parameters) { (items: [Item]?) in
                     // Add items to all items if we got any
                     if let items = items {
                         allItems.append(contentsOf: items)
@@ -210,7 +210,10 @@ class NetworkManager {
         // Prepare parameters
         var parameters: [String: Any] = ["limit": Item.maxCount]
         parameters["category_id"] = categories.isEmpty ? nil : "in.(\(categories.map { "\($0.id)" }.joined(separator: ",")))"
-        parameters["vendor"] = vendors.isEmpty ? nil : "in.(\(vendors.joined(separator: ",")))"
+        
+        // Make vendors alphanumeric and lowercased
+        let lowercasedVendors = vendors.map { $0.lowercased().components(separatedBy: .alphanumerics.inverted).joined() }
+        parameters["vendor"] = vendors.isEmpty ? nil : "in.(\(lowercasedVendors.joined(separator: ",")))"
         
         // Add gender in parameter
         parameters["gender"] = gender
