@@ -70,7 +70,7 @@ class FeedItem: UIView {
     /// Configure the view of like button depending on item being in wish list
     /// - Parameter isInteractive: if true allow clicks, if not — disable it
     func configureLikeButton(isInteractive: Bool) {
-        likeButton.isHidden = !isInteractive
+        likeButton?.isHidden = !isInteractive
         if isInteractive {
             likeButton?.configure(for: item)
         }

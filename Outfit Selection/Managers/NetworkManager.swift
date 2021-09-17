@@ -11,7 +11,8 @@ import UIKit
 class NetworkManager {
     // MARK: - Static Properties
 //    static let defaultURL = URL(string: "http://api.getoutfit.co")!
-    static let defaultURL = URL(string: "http://server.getoutfit.ru")!
+//    static let defaultURL = URL(string: "http://server.getoutfit.ru")!
+    static let defaultURL = URL(string: "http://spb.getoutfit.co:3000")!
     static let shared = NetworkManager()
     
     // MARK: - Stored Properties
@@ -33,7 +34,12 @@ class NetworkManager {
     /// - Parameter data: the data received from the server or from the cache
     /// - Returns: decoded data as Codable type if success, nil in case of fail
     func decode<T: Codable>(_ data: Data) -> T? {
-        guard let decodedData = try? JSON.decoder.decode(T.self, from: data) else {
+        // Try to decode as value or as first element of an array
+        let decodedValue = try? JSON.decoder.decode(T.self, from: data)
+        let decodedArray = try? JSON.decoder.decode([T].self, from: data).first
+        
+        // If both failed show error message
+        guard let decodedData = decodedValue ?? decodedArray else {
             let message = String(data: data, encoding: .utf8) ?? "Unknown data format"
             debug("ERROR decoding \(data): \(message)")
             return nil
@@ -55,7 +61,11 @@ class NetworkManager {
         let request = parameters.isEmpty ? requestPath : requestPath.withQueries(parameters)
         
         // Check if we already may have the needed request in the cache
-        if let response = Logger.get(for: request.absoluteString), let data = response.data(using: .utf8), let decodedData: T = decode(data) {
+        if
+            let response = Logger.get(for: request.absoluteString),
+            let data = response.data(using: .utf8),
+            let decodedData: T = decode(data)
+        {
             completion(decodedData)
             return
         }
@@ -72,6 +82,8 @@ class NetworkManager {
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             
             self.numberOfRequestsRunning -= 1
+            
+            debug(request.absoluteString)
             
             // Check if we haven't received nil
             guard let data = data else {
@@ -147,7 +159,7 @@ class NetworkManager {
             let parameters = getParameters(inCategories: categories, filteredBy: gender, forVendors: vendors)
             
             // Run signle request
-            get("offers", parameters: parameters, completion: completion)
+            get("items", parameters: parameters, completion: completion)
         } else {
             // The array of items we will collect the result in
             var allItems = [Item]()
@@ -197,18 +209,11 @@ class NetworkManager {
                     forVendors vendors: [String] = []) -> [String: Any] {
         // Prepare parameters
         var parameters: [String: Any] = ["limit": Item.maxCount]
-        parameters["categoryId"] = categories.isEmpty ? nil : categories.map { $0.id }
-        parameters["vendor"] = vendors.isEmpty ? nil : vendors
+        parameters["category_id"] = categories.isEmpty ? nil : "in.(\(categories.map { "\($0.id)" }.joined(separator: ",")))"
+        parameters["vendor"] = vendors.isEmpty ? nil : "in.(\(vendors.joined(separator: ",")))"
         
         // Add gender in parameter
-        switch gender {
-        case .female:
-            parameters["пол"] = "женский"
-        case .male:
-            parameters["пол"] = "мужской"
-        case .other, nil:
-            break
-        }
+        parameters["gender"] = gender
         
         return parameters
     }
@@ -224,7 +229,7 @@ class NetworkManager {
             }
             
             self.url = url
-            debug("Updated server url to \(url)")
+            debug("INFO: Updated server url to \(url)")
             completion(true)
         }
     }

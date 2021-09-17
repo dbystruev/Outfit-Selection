@@ -44,6 +44,7 @@
 		691C5F4226E7950900DF0758 /* WishlistBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F4126E7950900DF0758 /* WishlistBaseCell.swift */; };
 		691C5F4426E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F4326E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift */; };
 		691C5F4626E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F4526E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift */; };
+		691C7B3F26F4CBC70080C707 /* Item+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C7B3E26F4CBC70080C707 /* Item+Decodable.swift */; };
 		69248FFD25503F2F00106681 /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69248FFC25503F2F00106681 /* JSON.swift */; };
 		6924900125504DFD00106681 /* DispatchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6924900025504DFD00106681 /* DispatchManager.swift */; };
 		69297C5225EB852700A8684E /* BrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69297C5025EB852700A8684E /* BrandCell.swift */; };
@@ -229,6 +230,7 @@
 		691C5F4126E7950900DF0758 /* WishlistBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistBaseCell.swift; sourceTree = "<group>"; };
 		691C5F4326E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+ButtonDelegate.swift"; sourceTree = "<group>"; };
 		691C5F4526E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+UIViewController.swift"; sourceTree = "<group>"; };
+		691C7B3E26F4CBC70080C707 /* Item+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Decodable.swift"; sourceTree = "<group>"; };
 		69248FFC25503F2F00106681 /* JSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		6924900025504DFD00106681 /* DispatchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DispatchManager.swift; sourceTree = "<group>"; };
 		69297C5025EB852700A8684E /* BrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandCell.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 			children = (
 				692C941A25470B8F0075BD92 /* Item.swift */,
 				69560ECB2587E7C700337F35 /* Item+Branded.swift */,
+				691C7B3E26F4CBC70080C707 /* Item+Decodable.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -1212,6 +1215,7 @@
 				69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */,
 				6906A9AB26E6853700386267 /* CollectionNameViewController+UITextFieldDelegate.swift in Sources */,
 				69007CFB26EA7323001170D0 /* UICollectionViewCell+reuseId.swift in Sources */,
+				691C7B3F26F4CBC70080C707 /* Item+Decodable.swift in Sources */,
 				697CCE5C26CFA47E00B69763 /* FeedItemCell.swift in Sources */,
 				691C5F4426E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift in Sources */,
 				69B539FA257FBC3C00116F98 /* UIViewController+tabBar.swift in Sources */,

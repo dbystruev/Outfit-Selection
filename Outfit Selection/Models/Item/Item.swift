@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Item: Codable, Hashable {
+struct Item: Encodable, Hashable {
     // MARK: - Static Properties
     /// All items loaded from the server
     private(set) static var all = [Item]()
@@ -41,6 +41,9 @@ struct Item: Codable, Hashable {
     }
     
     // MARK: - Stored Properties
+    /// Item's id
+    let id: String?
+    
     /// Item's category id
     let categoryId: Int?
     
@@ -50,8 +53,8 @@ struct Item: Codable, Hashable {
     /// Index in Item.all array
     var itemIndex: Int?
     
-    /// Time when offer was last modified
-    let modifiedTime: TimeInterval? // since 1970.01.01
+    /// Date and time when offer was last modified
+    let modifiedTime: Date?
     
     /// Item's name
     let name: String?
@@ -75,10 +78,11 @@ struct Item: Codable, Hashable {
     var wishlisted: Bool? = false
     
     enum CodingKeys: String, CodingKey {
-        case categoryId
+        case categoryId = "category_id"
+        case id
         case modifiedTime = "modified_time"
         case name
-        case oldPrice = "oldprice"
+        case oldPrice = "old_price"
         case pictures
         case price
         case url
@@ -94,7 +98,7 @@ struct Item: Codable, Hashable {
     }
     
     /// Non-optional time for sorting operations
-    var time: TimeInterval { modifiedTime ?? Date(timeIntervalSince1970: 0).timeIntervalSinceReferenceDate }
+    var time: TimeInterval { (modifiedTime ?? Date(timeIntervalSince1970: 0)).timeIntervalSinceReferenceDate }
     
     // MARK: - Methods
     /// Set item's wishlist property to true or false
