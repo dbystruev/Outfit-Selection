@@ -21,22 +21,7 @@ extension ProfileViewController: UICollectionViewDelegate {
             let newGender = Gender.allCases[indexPath.row]
             guard let currentGender = Gender.current, newGender != shownGender else { return }
             if currentGender != newGender {
-                let message = "Gender change will clear wishlists"
-                let title = "Change to \(newGender.rawValue)"
-                let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                let cancel = UIAlertAction(title: "Don't", style: .cancel) { _ in
-                    // Keep gender to current
-                    self.shownGender = Gender.current
-                    collectionView.reloadSections([0])
-                }
-                let ok = UIAlertAction(title: "Clear", style: .destructive) { _ in
-                    // Reload gender section with new gender
-                    self.shownGender = newGender
-                    collectionView.reloadSections([0])
-                }
-                alert.addAction(ok)
-                alert.addAction(cancel)
-                present(alert, animated: true)
+                present(Alert.genderChange(to: newGender, sender: self), animated: true)
             } else {
                 if newGender != shownGender {
                     shownGender = newGender

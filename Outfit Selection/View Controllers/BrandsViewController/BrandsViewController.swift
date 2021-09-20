@@ -52,6 +52,10 @@ class BrandsViewController: UIViewController {
         
         // Show navigation bar on top
         navigationController?.isNavigationBarHidden = false
+        
+        // Configure the buttons
+        configureAllButton()
+        configureGoButton()
     }
     
     override func viewDidLoad() {
@@ -89,9 +93,5 @@ class BrandsViewController: UIViewController {
         brandsCollectionView.dataSource = self
         brandsCollectionView.delegate = self
         brandsCollectionView.register(BrandCell.nib, forCellWithReuseIdentifier: BrandCell.reuseId)
-        
-        // Configure the buttons
-        configureAllButton()
-        configureGoButton()
     }
 }

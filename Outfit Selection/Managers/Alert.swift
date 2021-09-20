@@ -48,6 +48,32 @@ enum Alert {
         }
     }
     
+    static func genderChange(
+        to newGender: Gender,
+        sender: ProfileViewController
+    ) -> UIAlertController {
+        let message = "Gender change will reload items"
+        let title = "Change to \(newGender.rawValue)"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let cancel = UIAlertAction(title: "Don't", style: .cancel) { _ in
+            // Keep gender to current
+            sender.shownGender = Gender.current
+            sender.profileCollectionView.reloadSections([0])
+        }
+        let ok = UIAlertAction(title: "Change", style: .destructive) { _ in
+            // Reload gender section with new gender
+            Gender.current = newGender
+            guard let tabBarController = sender.tabBarController as? TabBarController else {
+                debug("Error: can't cast", sender.tabBarController, "to TabBarConroller")
+                return
+            }
+            tabBarController.popToProgress()
+        }
+        alert.addAction(ok)
+        alert.addAction(cancel)
+        return alert
+    }
+    
     // MARK: - Static Computed Properties
     static var noItems: UIAlertController {
         configure("Can't create collection", message: "Please add some items or outfits to the wishlists by liking them before creating a collection")
