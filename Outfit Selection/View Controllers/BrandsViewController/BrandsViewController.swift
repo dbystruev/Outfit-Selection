@@ -31,9 +31,6 @@ class BrandsViewController: UIViewController {
             // Set current gender
             Gender.current = newValue
             
-            // Clear all loaded items
-            Item.removeAll()
-            
             // Clear all wish lists
 //            Wishlist.removeAll()
         }
@@ -84,14 +81,6 @@ class BrandsViewController: UIViewController {
         let isEnabled = 0 < brandsSelected
         getOutfitButton.backgroundColor = isEnabled ? Globals.Color.Button.enabled : Globals.Color.Button.disabled
         getOutfitButton.isEnabled = isEnabled
-    }
-    
-    /// Start loading items from the server
-    func loadItems() {
-        // Load items if none are found
-        ItemManager.shared.loadItems(filteredBy: gender) { success in
-            debug(success)
-        }
     }
     
     /// Configure brands collection view layout

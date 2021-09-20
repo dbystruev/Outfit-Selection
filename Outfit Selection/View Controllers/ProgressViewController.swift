@@ -45,12 +45,9 @@ class ProgressViewController: UIViewController {
         // Switch to tab saved in previous version of tab bar controller
         tabBarController.selectedIndex = selectedTabBarIndex
         
-        // Get brand names to filter by
-        let brandNames = brandedImages.compactMap { $0.isSelected ? $0.brandName : nil }
-        
         // Load view models with the new images
         let startTime = Date().timeIntervalSince1970
-        ItemManager.shared.loadImages(filteredBy: Gender.current, andBy: brandNames) { itemsLoaded, itemsTotal in
+        ItemManager.shared.loadImages(filteredBy: Gender.current) { itemsLoaded, itemsTotal in
             // If not all items loaded — update progress view and continue
             DispatchQueue.main.async {
                 self.progressView.progress = itemsTotal == 0 ? 0 : Float(itemsLoaded) / Float(itemsTotal)

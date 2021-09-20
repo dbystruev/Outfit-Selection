@@ -19,6 +19,9 @@ class ItemManager {
     /// imagePrefixes should correspond to scrollViews
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
     
+    // Dispatch group to run network requests in parallel
+    let networkGroup = DispatchGroup()
+    
     /// Array of category image collection view models
     let viewModels: [ImageCollectionViewModel] = (0 ..< Category.all.count).map { _ in ImageCollectionViewModel.empty }
     
@@ -39,15 +42,15 @@ class ItemManager {
     ///   - gender: gender to filter images by
     ///   - brandNames: brand names to filter images by
     ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
-    func loadImages(filteredBy gender: Gender?, andBy brandNames: [String], completion: @escaping (_ current: Int, _ total: Int) -> Void) {
+    func loadImages(filteredBy gender: Gender?, andBy brandNames: [String] = [], completion: @escaping (_ current: Int, _ total: Int) -> Void) {
         // Clear all view models
         clearViewModels()
         
         // Get all wishlist items
         let allWishlistItems = Wishlist.allItems
         
-        // Create a dispatch group to stop when all images are loaded
-        let group = DispatchGroup()
+        // Wait for network group load images to finish
+        networkGroup.wait()
         
         // Counts for progress view update
         var current = 0
@@ -110,7 +113,7 @@ class ItemManager {
                 loadedItemNames.append(itemName)
                 
                 // Enter the dispatch group for the next get image request
-                group.enter()
+                networkGroup.enter()
                 
                 // Update the number of total images
                 total += 1
@@ -118,7 +121,7 @@ class ItemManager {
                 // Try to get an image for the current item
                 NetworkManager.shared.getImage(pictureURL) { optionalImage in
                     // Make sure we always leave the group
-                    defer { group.leave() }
+                    defer { self.networkGroup.leave() }
                     
                     // Didn't get the image — that's an error
                     guard let image = optionalImage, let itemIndex = item.itemIndex else {
@@ -153,7 +156,7 @@ class ItemManager {
         }
         
         // Get here when all image network requests are finished
-        group.notify(queue: DispatchQueue.global(qos: .background)) {
+        networkGroup.notify(queue: DispatchQueue.global(qos: .background)) {
             completion(self.count, self.count)
         }
     }
@@ -204,10 +207,12 @@ class ItemManager {
         let allCategories = Category.filtered(by: gender)
         let selectedBrandNames = BrandManager.shared.selectedBrandNames
         
-        // Create dispatch group to run network requests in parallel
-        let group = DispatchGroup()
+        // Remove all items before loading them again
+        Item.removeAll()
+        
+        // Run network requests for different corners in parallel
         for categories in allCategories {
-            group.enter()
+            networkGroup.enter()
             NetworkManager.shared.getOffers(
                 inCategories: categories,
                 filteredBy: gender,
@@ -220,12 +225,12 @@ class ItemManager {
                     success = false
                 }
                 
-                group.leave()
+                self.networkGroup.leave()
             }
         }
         
         // Complete when all dispatch group tasks are finished
-        group.notify(queue: .main) {
+        networkGroup.notify(queue: .main) {
             let endTime = Date()
             let passedTime = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
             

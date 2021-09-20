@@ -27,7 +27,7 @@ extension BrandsViewController {
     /// - Parameter sender: the get outfit button which was tapped
     @IBAction func getOutfitButtonTapped(_ sender: UIButton) {
         // Start loading items
-        loadItems()
+        NetworkManager.shared.reloadItems(for: gender) { _ in }
         
         // Transition to the progress view controller
         performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)

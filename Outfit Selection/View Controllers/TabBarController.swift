@@ -63,6 +63,9 @@ class TabBarController: UITabBarController {
         // Don't pop if there is no change in brands selection
         guard BrandManager.shared.selectedBrands != selectedBrands else { return }
         
+        // Reload items with new brands
+        NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+        
         // Save currently selected index
         navigationController?.findViewController(ofType: ProgressViewController.self)?.selectedTabBarIndex = selectedIndex
         

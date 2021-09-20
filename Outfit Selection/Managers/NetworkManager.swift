@@ -20,11 +20,7 @@ class NetworkManager {
     let maxRequestsInParallel = 10
     
     /// Number of get requests currently running (image loading is not counted)
-    var numberOfRequestsRunning = 0 {
-        didSet {
-            debug(numberOfRequestsRunning)
-        }
-    }
+    var numberOfRequestsRunning = 0
     
     // API server URL
     var url: URL
@@ -223,6 +219,15 @@ class NetworkManager {
         parameters["gender"] = gender
         
         return parameters
+    }
+    
+    /// Load (or reload) items from the server first time or when something has changed
+    /// - Parameters:
+    ///   - gender: gender to load the items for
+    ///   - completion: closure called when all requests are finished, with true if successfull or false otherwise
+    func reloadItems(for gender: Gender?, completion: @escaping (Bool?) -> Void) {
+        // Load items if none are found
+        ItemManager.shared.loadItems(filteredBy: gender, completion: completion)
     }
     
     /// Update the main url we have to use in the future
