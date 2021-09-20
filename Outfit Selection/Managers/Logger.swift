@@ -9,7 +9,7 @@
 import Foundation
 
 class Logger {
-    // MARK: - Constants
+    // MARK: - Static Constants
     /// Load logs from bundled files
     private static let bundledLogs: [String: String] = {
         // The cache files which should be in the bundle
@@ -91,12 +91,15 @@ class Logger {
     /// The actual URL of log directory not checking if the directory exists
     private static let logDirectoryURL = FileManager.default.temporaryDirectory.appendingPathComponent("Logger")
     
-    // MARK: - Stored Properties
+    // MARK: - Static Stored Properties
     /// Flag which turns to true when Logger has read its cache files
     private static var initialized = false
     
     /// Variable which stores different log messages to avoid doubling
     private static var logs: [String: String] = [:]
+    
+    /// Whether the logger should log (cache) network requests
+    public static var shouldLog = false
     
     // MARK: - Methods
     /// Decode file content into the key and the value
@@ -133,6 +136,9 @@ class Logger {
     ///   - key: the key to store the messages for
     ///   - messages: messages to store under the key
     static func log(key: String, _ messages: CustomStringConvertible?...) {
+        // Check if we should log at all
+        guard shouldLog else { return }
+        
         // Excluded keys we never cache
         let excluded = [NetworkManager.defaultURL.absoluteString + "/server"]
         

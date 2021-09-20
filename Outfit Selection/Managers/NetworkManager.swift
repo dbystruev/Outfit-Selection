@@ -224,15 +224,18 @@ class NetworkManager {
     /// Update the main url we have to use in the future
     /// - Parameter completion: closure called when request is finished, with true if request is succesfull, and false if not
     func updateURL(completion: @escaping (_ success: Bool) -> Void) {
-        get("server") { (decodedData: [String: URL]?) in
-            guard let url = decodedData?["server"] else {
-                debug("ERROR: Can't find server in decoded data", decodedData)
+        get("server") { (server: Server?) in
+            guard let server = server else {
+                debug("ERROR: Can't find server in \(String(describing: server))")
                 completion(false)
                 return
             }
             
-            self.url = url
-            debug("INFO: Updated server url to \(url)")
+            // Update server URL and logger's should log
+            self.url = server.url
+            Logger.shouldLog = server.shouldLog ?? false
+            debug("INFO: Updated server url to \(server.url) and logger's should log to \(Logger.shouldLog)")
+            
             completion(true)
         }
     }
