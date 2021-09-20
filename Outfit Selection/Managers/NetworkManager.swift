@@ -17,10 +17,14 @@ class NetworkManager {
     
     // MARK: - Stored Properties
     /// Maximum number of simultaneous get requests (image loading is not counted)
-    let maxRequestsInParallel = 5
+    let maxRequestsInParallel = 10
     
     /// Number of get requests currently running (image loading is not counted)
-    var numberOfRequestsRunning = 0
+    var numberOfRequestsRunning = 0 {
+        didSet {
+            debug("INFO: \(numberOfRequestsRunning)")
+        }
+    }
     
     // API server URL
     var url: URL
@@ -111,7 +115,7 @@ class NetworkManager {
     /// Add /categories?limit=999999 to server URL and call the API
     /// - Parameter completion: closure called after the request is finished, with list of categories if successfull, or with nil if not
     func getCategories(completion: @escaping (_ categories: [Category]?) -> Void) {
-        get("categories", parameters: ["limit": 999999], completion: completion)
+        get("categories", completion: completion)
     }
     
     /// Download image from the given URL
@@ -234,7 +238,7 @@ class NetworkManager {
             // Update server URL and logger's should log
             self.url = server.url
             Logger.shouldLog = server.shouldLog ?? false
-            debug("INFO: Updated server url to \(server.url) and logger's should log to \(Logger.shouldLog)")
+            debug("INFO: Updated server to \(server.url) and `should log` to \(Logger.shouldLog)")
             
             completion(true)
         }
