@@ -22,7 +22,7 @@ class NetworkManager {
     /// Number of get requests currently running (image loading is not counted)
     var numberOfRequestsRunning = 0 {
         didSet {
-            debug("INFO: \(numberOfRequestsRunning)")
+            debug(numberOfRequestsRunning)
         }
     }
     
@@ -75,8 +75,8 @@ class NetworkManager {
         }
         
         // Check that we don't run more than allowed number of get requests in parallel
-        guard numberOfRequestsRunning < maxRequestsInParallel else {
-            debug("ERROR: the number of requests \(numberOfRequestsRunning) is not lower than maximum \(maxRequestsInParallel)")
+        guard numberOfRequestsRunning <= maxRequestsInParallel else {
+            debug("ERROR: the number of network get requests should not exceed \(maxRequestsInParallel)")
             completion(nil)
             return
         }

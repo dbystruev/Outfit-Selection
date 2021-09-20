@@ -39,9 +39,6 @@ class BrandsViewController: UIViewController {
         }
     }
     
-    /// Flag which changes to true when all items are loaded from the server
-    var allItemsLoaded = false
-    
     /// The collection of brand images
     let brandedImages = BrandManager.shared.brandedImages
     
@@ -58,9 +55,6 @@ class BrandsViewController: UIViewController {
         
         // Show navigation bar on top
         navigationController?.isNavigationBarHidden = false
-        
-        // Load items if needed
-        configureItems()
     }
     
     override func viewDidLoad() {
@@ -87,29 +81,16 @@ class BrandsViewController: UIViewController {
     /// Set go button backgroun color and enable / disable it depending on number of brands selected
     func configureGoButton() {
         let brandsSelected = BrandManager.shared.selectedBrands.count
-        let isEnabled = 0 < brandsSelected && shouldEnableGoButton
+        let isEnabled = 0 < brandsSelected
         getOutfitButton.backgroundColor = isEnabled ? Globals.Color.Button.enabled : Globals.Color.Button.disabled
         getOutfitButton.isEnabled = isEnabled
     }
     
     /// Start loading items from the server
-    func configureItems() {
-        // Check that there are no loaded items
-        allItemsLoaded = 0 < Item.all.count
-        guard !allItemsLoaded else { return }
-        
+    func loadItems() {
         // Load items if none are found
-        shouldEnableGoButton = false
         ItemManager.shared.loadItems(filteredBy: gender) { success in
-            // Update the title for go button
-            self.allItemsLoaded = success == true
-            let title = self.allItemsLoaded ? "Get Outfit" : "Reload"
-            
-            // Enable go button when all items are loaded or reload is needed
-            DispatchQueue.main.async {
-                self.getOutfitButton.setTitle(title, for: .normal)
-                self.shouldEnableGoButton = true
-            }
+            debug(success)
         }
     }
     

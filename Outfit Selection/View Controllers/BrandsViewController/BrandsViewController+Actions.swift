@@ -26,11 +26,8 @@ extension BrandsViewController {
     /// Called when Get Outfit button is tapped
     /// - Parameter sender: the get outfit button which was tapped
     @IBAction func getOutfitButtonTapped(_ sender: UIButton) {
-        // Check that items were loaded, otherwise reload them
-        guard allItemsLoaded else {
-            configureItems()
-            return
-        }
+        // Start loading items
+        loadItems()
         
         // Transition to the progress view controller
         performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)

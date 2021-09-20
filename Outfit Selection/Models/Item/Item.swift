@@ -13,8 +13,8 @@ struct Item: Encodable, Hashable {
     /// All items loaded from the server
     private(set) static var all = [Item]()
     
-    /// The maximum number of items for all categories together, not all of them displayed
-    static let maxCount = 10000
+    /// The maximum number of items for one outfit  corner
+    static let maxCount = 100
     
     // MARK: - Static Methods
     /// Appends items to Item.all. Mimics generic collection's method append(contentsOf:) while saving current index in itemIndex property of each item

@@ -51,8 +51,8 @@ struct Category: Codable {
         ["Броги", "Броги и оксфорды", "Лоферы", "Сапоги"],
     ]
     
-    /// The maximum number of items in one category, all of them displayed
-    static let maxItemCount = BrandManager.shared.brandedImages.count
+    /// The maximum number of items in one corner, all of them displayed
+    static let maxCornerCount = 100
     
     // MARK: - Computed Static Properties
     /// Female categories filtered by chosen female category names

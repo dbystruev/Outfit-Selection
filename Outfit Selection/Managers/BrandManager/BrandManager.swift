@@ -52,6 +52,11 @@ class BrandManager {
         return names.map({ $0.path }).sorted()
     }
     
+    /// Short names of selected brand logos (e. g. ["burberry", "chanel", "fendi", "giorgio armani", "gucci", "hermès", "louis vuitton", "prada", "ralph lauren", "versace"])
+    var selectedBrandNames: [String] {
+        selectedBrands.sorted()
+    }
+    
     /// Brands currently selected by the user
     var selectedBrands: Set<String> {
         Set(brandedImages.compactMap { $0.isSelected ? $0.brandName : nil })

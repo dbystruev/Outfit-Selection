@@ -77,7 +77,7 @@ class ItemManager {
             let items = brandFilteredItems.isEmpty ? categoryFilteredItems : brandFilteredItems
             
             // The maximum number of network image loads in one corner
-            var remainingLoads = Category.maxItemCount
+            var remainingLoads = Category.maxCornerCount
             
             // Loop all items in given category
             for item in items {
@@ -194,25 +194,46 @@ class ItemManager {
     /// - Parameter gender: load female, male or other items only
     /// - Parameter completion: closure with bool parameter which is called with true in case of success, with false otherwise
     func loadItems(filteredBy gender: Gender?, completion: @escaping (_ success: Bool?) -> Void) {
+        // Measure the accumulated time of all item requests
         let startTime = Date()
-        let categories = Category.filtered(by: gender).flatMap { $0 }
-        NetworkManager.shared.getOffers(inCategories: categories,
-                                        filteredBy: gender,
-                                        forVendors: BrandManager.shared.brandNames) { items in
-            let endTime = Date()
-            
-            guard let items = items else {
-                completion(nil)
-                return
+        
+        // Assume all requests went fine until told otherwise
+        var success = true
+        
+        // Prepare all categories and selected brand names for parallel network requests
+        let allCategories = Category.filtered(by: gender)
+        let selectedBrandNames = BrandManager.shared.selectedBrandNames
+        
+        // Create dispatch group to run network requests in parallel
+        let group = DispatchGroup()
+        for categories in allCategories {
+            group.enter()
+            NetworkManager.shared.getOffers(
+                inCategories: categories,
+                filteredBy: gender,
+                forVendors: selectedBrandNames
+            ) { items in
+                // Check if any items were loaded
+                if let items = items {
+                    Item.append(contentsOf: items)
+                } else {
+                    success = false
+                }
+                
+                group.leave()
             }
-            
-            Item.append(contentsOf: items)
-            
+        }
+        
+        // Complete when all dispatch group tasks are finished
+        group.notify(queue: .main) {
+            let endTime = Date()
             let passedTime = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
             
-            debug(Item.all.count, "items are loaded from the server in", passedTime.asTime, "seconds")
+            if success {
+                debug(Item.all.count, "items are loaded from the server in", passedTime.asTime, "seconds")
+            }
             
-            completion(true)
+            completion(success)
         }
     }
     
