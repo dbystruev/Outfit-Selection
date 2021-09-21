@@ -134,8 +134,8 @@
 		699AAB8026CD72AE001F6522 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699AAB7F26CD72AE001F6522 /* Logger.swift */; };
 		699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 699ABB5A25E6CA3900E388FC /* Welcome.storyboard */; };
 		699ABB5F25E6D54A00E388FC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699ABB5E25E6D54A00E388FC /* TabBarController.swift */; };
-		69A2E20226FA8055002B4046 /* WishlistItem+Decodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A2E20126FA8055002B4046 /* WishlistItem+Decodable.swift */; };
 		69A2E20526FA831B002B4046 /* WishlistItem+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A2E20426FA831B002B4046 /* WishlistItem+Encodable.swift */; };
+		69A2E20726FA8EEE002B4046 /* WishlistItem+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A2E20626FA8EEE002B4046 /* WishlistItem+Equatable.swift */; };
 		69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */; };
 		69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F522BA26B7002A3B49 /* OutfitViewController.swift */; };
 		69A6F6F922BA26B7002A3B49 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A6F6F722BA26B7002A3B49 /* Main.storyboard */; };
@@ -322,8 +322,8 @@
 		699AAB7F26CD72AE001F6522 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		699ABB5A25E6CA3900E388FC /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
 		699ABB5E25E6D54A00E388FC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		69A2E20126FA8055002B4046 /* WishlistItem+Decodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistItem+Decodable.swift"; sourceTree = "<group>"; };
 		69A2E20426FA831B002B4046 /* WishlistItem+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistItem+Encodable.swift"; sourceTree = "<group>"; };
+		69A2E20626FA8EEE002B4046 /* WishlistItem+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistItem+Equatable.swift"; sourceTree = "<group>"; };
 		69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outfit Selection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69A6F6F522BA26B7002A3B49 /* OutfitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitViewController.swift; sourceTree = "<group>"; };
@@ -785,8 +785,8 @@
 			isa = PBXGroup;
 			children = (
 				698A7F9526E8E8DB006C36FD /* WishlistItem.swift */,
-				69A2E20126FA8055002B4046 /* WishlistItem+Decodable.swift */,
 				69A2E20426FA831B002B4046 /* WishlistItem+Encodable.swift */,
+				69A2E20626FA8EEE002B4046 /* WishlistItem+Equatable.swift */,
 			);
 			path = WishlistItem;
 			sourceTree = "<group>";
@@ -1170,6 +1170,7 @@
 				697CCE6E26D010D000B69763 /* UIImageView+configure.swift in Sources */,
 				698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */,
 				691C5F4626E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift in Sources */,
+				69A2E20726FA8EEE002B4046 /* WishlistItem+Equatable.swift in Sources */,
 				69EB8BB525EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift in Sources */,
 				69B86BBB26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift in Sources */,
 				69007CF926EA727E001170D0 /* UITableViewCell+reuseId.swift in Sources */,
@@ -1182,7 +1183,6 @@
 				697A3CFB25EACCCB007158B4 /* String+firstLetter.swift in Sources */,
 				69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */,
 				69DA85D426D5FA5000D16B25 /* FeedBrandCell.swift in Sources */,
-				69A2E20226FA8055002B4046 /* WishlistItem+Decodable.swift in Sources */,
 				69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */,
 				692C9417254708830075BD92 /* URL+withQueries.swift in Sources */,
 				693D728E256BF4CA00540C10 /* BrandManager.swift in Sources */,

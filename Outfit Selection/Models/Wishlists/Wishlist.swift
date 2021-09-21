@@ -32,7 +32,7 @@ struct Wishlist: Codable {
     
     /// The items inside all collections
     static var collectionsItems: [Item] {
-        collections.flatMap { $0.items }
+        collections.flatMap { $0.items.values }
     }
     
     /// Set of item indexes found in collections
@@ -57,7 +57,7 @@ struct Wishlist: Codable {
     
     /// The items inside all outfits
     static var outfitsItems: [Item] {
-        outfits.flatMap { $0.items }
+        outfits.flatMap { $0.items.values }
     }
     
     /// Set of item indexes found in outfits
@@ -171,7 +171,7 @@ struct Wishlist: Codable {
     /// - Parameter item: the item to remove from the item wishlist
     static func remove(_ item: Item) {
         // Remove items with given item id
-        Wishlist.removeAll { $0.kind == .item && $0.items.first?.id == item.id }
+        Wishlist.removeAll { $0.kind == .item && $0.items.values.first?.id == item.id }
         
         // Clear wishlisted status if not found in outfit wishlist
         guard !contains(itemInOutfits: item) else { return }

@@ -29,7 +29,7 @@ class WishlistOutfitCell: WishlistBaseCell {
         priceLabel.text = outfit.price.asPrice
         
         // Configure pictures
-        for (item, pictureImageView) in zip(outfit.items, pictureImageViews) {
+        for (item, pictureImageView) in zip(outfit.items.values, pictureImageViews) {
             pictureImageView.image = nil
             pictureImageView.configure(with: item.pictures.first)
         }

@@ -139,6 +139,15 @@ class NetworkManager {
         task.resume()
     }
     
+    /// Get  items with given ids
+    /// - Parameters:
+    ///   - ids: items ids
+    ///   - completion: closure called when request is finished, with items if successfull, or with nil if not
+    func getItems(_ ids: [String], completion: @escaping ([Item]?) -> Void) {
+        let parameters = [ "id": "in.(\(ids.joined(separator: ",")))"]
+        get("items", parameters: parameters, completion: completion)
+    }
+    
     /// Add /offers?categoryId=...&categoryId=...&vendor=...&vendor=...&limit=... to server URL and call the API
     /// - Parameters:
     ///   - categories: the list of categories to filter items by, should not be empty
