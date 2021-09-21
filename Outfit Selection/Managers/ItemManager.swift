@@ -89,7 +89,7 @@ class ItemManager {
                 }
                 
                 // Get the item picture url
-                guard let pictureURL = item.pictures?.first else {
+                guard let pictureURL = item.pictures.first else {
                     // No picture — that's an error
                     debug("ERROR: No picture URLs for the item", item.name, item.url)
                     continue

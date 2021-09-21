@@ -31,7 +31,7 @@ class WishlistOutfitCell: WishlistBaseCell {
         // Configure pictures
         for (item, pictureImageView) in zip(outfit.items, pictureImageViews) {
             pictureImageView.image = nil
-            pictureImageView.configure(with: item.pictures?.first)
+            pictureImageView.configure(with: item.pictures.first)
         }
     }
 }

@@ -32,6 +32,6 @@ class WishlistItemCell: WishlistBaseCell {
         vendorLabel.text = item.vendor
         
         // Load the picture
-        pictureImageView.configure(with: item.pictures?.first)
+        pictureImageView.configure(with: item.pictures.first)
     }
 }

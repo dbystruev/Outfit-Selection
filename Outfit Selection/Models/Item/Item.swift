@@ -61,7 +61,7 @@ final class Item: Decodable, Encodable {
     let oldPrice: Double?
     
     /// The collection of URLs to load item images from
-    let pictures: [URL]?
+    let pictures: [URL]
     
     /// The item's current price
     let price: Double?

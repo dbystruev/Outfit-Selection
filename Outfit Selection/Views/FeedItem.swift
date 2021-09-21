@@ -52,7 +52,7 @@ class FeedItem: UIView {
         configureLikeButton(isInteractive: isInteractive)
         
         // Load the first picture for item into item image view
-        itemImageView.configure(with: item.pictures?.first)
+        itemImageView.configure(with: item.pictures.first)
         
         // Configure labels
         brandLabel.text = item.brand
