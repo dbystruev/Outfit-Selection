@@ -55,7 +55,7 @@ final class Item: Decodable, Encodable {
     var modifiedTime: Date
     
     /// Item's name
-    let name: String?
+    let name: String
     
     /// The item's previous price
     let oldPrice: Double?
@@ -104,9 +104,9 @@ final class Item: Decodable, Encodable {
     
     /// If item name starts with vendor (brand) drop that brand and capitalize the first letter of remaining string
     var nameWithoutVendor: String? {
-        guard let name = name?.lowercased() else { return nil }
-        guard name.starts(with: vendor.lowercased()) else { return name }
-        return name.dropFirst(vendor.count).trimmingCharacters(in: .whitespacesAndNewlines).capitalizingFirstLetter
+        let lowercasedName = name.lowercased()
+        guard lowercasedName.starts(with: vendor.lowercased()) else { return lowercasedName }
+        return lowercasedName.dropFirst(vendor.count).trimmingCharacters(in: .whitespacesAndNewlines).capitalizingFirstLetter
     }
     
     /// Non-optional time for sorting operations

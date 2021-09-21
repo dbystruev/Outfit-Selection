@@ -81,15 +81,8 @@ class ItemManager {
             
             // Loop all items in given category
             for item in items {
-                // Don't load items with names similar to already loaded
-                guard let itemName = item.name else {
-                    // No item name - that's an error
-                    debug("ERROR: no item name for item in categories \(categories)")
-                    continue
-                }
-                
                 // Check that there is no item with the same name already in the list, unless it is wishlisted
-                guard !loadedItemNames.contains(itemName) else {
+                guard !loadedItemNames.contains(item.name) else {
                     // Items with similar names - that's not an error, but a warning
                     //debug("WARNING: \(itemName) already loaded in category \(category.name)")
                     continue
@@ -107,7 +100,7 @@ class ItemManager {
                 remainingLoads -= 1
                 
                 // Pretend that we have succesfully loaded an item with given name
-                loadedItemNames.append(itemName)
+                loadedItemNames.append(item.name)
                 
                 // Enter the dispatch group for the next get image request
                 networkGroup.enter()
@@ -128,7 +121,7 @@ class ItemManager {
                         debug("ERROR: Can't get an \(message) for the item", item.name, item.url)
                         
                         // Remove item name already added to the array of loaded item names
-                        if let itemNameIndex = loadedItemNames.firstIndex(of: itemName) {
+                        if let itemNameIndex = loadedItemNames.firstIndex(of: item.name) {
                             loadedItemNames.remove(at: itemNameIndex)
                         }
                         
