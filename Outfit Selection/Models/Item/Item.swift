@@ -13,7 +13,7 @@ final class Item: Decodable, Encodable {
     /// All items loaded from the server
     private(set) static var all = [String: Item]()
     
-    /// The maximum number of items for one outfit  corner
+    /// The maximum number of items for one outfit corner
     static let maxCount = 100
     
     // MARK: - Static Methods
@@ -52,7 +52,7 @@ final class Item: Decodable, Encodable {
     let gender: Gender
     
     /// Date and time when offer was last modified
-    var modifiedTime: Date?
+    var modifiedTime: Date
     
     /// Item's name
     let name: String?
@@ -94,18 +94,11 @@ final class Item: Decodable, Encodable {
     }
     
     // MARK: - Computed Properties
-    var modifiedTimestamp: String? {
-        get {
-            guard let modifiedTime = modifiedTime else { return nil }
-            return Timestamp.formatter.string(from: modifiedTime)
-        }
+    var modifiedTimestamp: String {
+        get { Timestamp.formatter.string(from: modifiedTime) }
         set {
-            guard let newValue = newValue else {
-                modifiedTime = nil
-                return
-            }
-            
-            modifiedTime = Timestamp.formatter.date(from: newValue)
+            guard let newTime = Timestamp.formatter.date(from: newValue) else { return }
+            modifiedTime = newTime
         }
     }
     
@@ -117,7 +110,7 @@ final class Item: Decodable, Encodable {
     }
     
     /// Non-optional time for sorting operations
-    var time: TimeInterval { (modifiedTime ?? Date(timeIntervalSince1970: 0)).timeIntervalSinceReferenceDate }
+    var time: TimeInterval { modifiedTime.timeIntervalSinceReferenceDate }
     
     // MARK: - Init
     init(from decoder: Decoder) throws {
@@ -129,6 +122,8 @@ final class Item: Decodable, Encodable {
         color = try values.decode(String.self, forKey: .color)
         gender = try values.decode(Gender.self, forKey: .gender)
         id = try values.decode(String.self, forKey: .id)
+        let modifiedTimestamp = try values.decode(String.self, forKey: .modifiedTime)
+        modifiedTime = Timestamp.formatter.date(from: modifiedTimestamp) ?? Date()
         name = try values.decode(String.self, forKey: .name)
         oldPrice = try? values.decode(Double.self, forKey: .oldPrice)
         pictures = try values.decode([URL].self, forKey: .pictures)
@@ -136,9 +131,6 @@ final class Item: Decodable, Encodable {
         size = try values.decode(String.self, forKey: .size)
         url = try values.decode(URL.self, forKey: .url)
         vendor = try values.decode(String.self, forKey: .vendor)
-        
-        // Will change modifiedTime
-        modifiedTimestamp = try values.decode(String.self, forKey: .modifiedTime)
     }
     
     // MARK: - Methods
