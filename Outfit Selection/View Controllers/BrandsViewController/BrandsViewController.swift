@@ -76,7 +76,7 @@ class BrandsViewController: UIViewController {
     // MARK: - Methods
     /// Set top right button to clear or select all
     func configureAllButton() {
-        allButton.isSelected = brandedImages.unselected.count < brandedImages.selected.count
+        allButton.isButtonSelected = brandedImages.unselected.count < brandedImages.selected.count
     }
     
     /// Set go button backgroun color and enable / disable it depending on number of brands selected
