@@ -36,7 +36,7 @@ class FeedItem: UIView {
     var delegate: ButtonDelegate?
     
     /// The item being currently displayed
-    var item: Item?
+    weak var item: Item?
     
     // MARK: - Custom Methods
     /// Configure view content based on the item given
@@ -71,7 +71,7 @@ class FeedItem: UIView {
     /// - Parameter isInteractive: if true allow clicks, if not — disable it
     func configureLikeButton(isInteractive: Bool) {
         likeButton?.isHidden = !isInteractive
-        if isInteractive {
+        if let item = item, isInteractive {
             likeButton?.configure(for: item)
         }
     }
@@ -86,6 +86,7 @@ class FeedItem: UIView {
     /// Called when user taps on like (wishlist) button
     /// - Parameter sender: the like (wishlist) button which was tapped
     @IBAction func likeButtonTapped(_ sender: WishlistButton) {
+        guard let item = item else { return }
         sender.addToWishlistButtonTapped(for: item)
     }
     

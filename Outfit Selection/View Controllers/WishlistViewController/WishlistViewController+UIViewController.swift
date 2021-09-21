@@ -17,9 +17,8 @@ extension WishlistViewController {
             guard let destination = segue.destination as? ItemViewController else { return }
             guard let selectedIndexPath = wishlistCollectionView.indexPathsForSelectedItems?.first else { return }
             guard let itemCell = wishlistCollectionView.cellForItem(at: selectedIndexPath) as? WishlistItemCell else { return }
-            guard let itemIndex = wishlist[selectedIndexPath.row].item?.itemIndex else { return }
             destination.image = itemCell.pictureImageView.image
-            destination.itemIndex = itemIndex
+            destination.item = wishlist[selectedIndexPath.row].item
             
         case CollectionNameViewController.segueIdentifier:
             guard let destination = segue.destination as? CollectionNameViewController else {

@@ -8,10 +8,10 @@
 
 import Foundation
 
-struct Item: Encodable, Hashable {
+final class Item: Decodable, Encodable {
     // MARK: - Static Properties
     /// All items loaded from the server
-    private(set) static var all = [Item]()
+    private(set) static var all = [String: Item]()
     
     /// The maximum number of items for one outfit  corner
     static let maxCount = 100
@@ -20,19 +20,14 @@ struct Item: Encodable, Hashable {
     /// Appends items to Item.all. Mimics generic collection's method append(contentsOf:) while saving current index in itemIndex property of each item
     /// - Parameter newItems: collection of new items to be added to the Item.all
     static func append(contentsOf newItems: [Item]) {
-        for var newItem in newItems {
-            newItem.itemIndex = all.count
-            all.append(newItem)
-        }
+        newItems.forEach { all[$0.id] = $0 }
     }
     
     // MARK: - Static Methods
     /// Dislikes given item in Item.all
     /// - Parameter item: the item to be disliked
     static func dislike(_ item: Item?) {
-        guard let itemIndex = item?.itemIndex else { return }
-        guard let index = Item.all.firstIndex(where: { $0.itemIndex == itemIndex }) else { return }
-        Item.all[index].disliked = true
+        item?.disliked = true
     }
     
     /// Clears all items
@@ -45,19 +40,16 @@ struct Item: Encodable, Hashable {
     let color: String
     
     /// Item's id
-    let id: String?
+    let id: String
     
     /// Item's category id
-    let categoryId: Int?
+    let categoryId: Int
     
     /// Whether an item has been disliked
     var disliked = false
     
     /// Item's gender
     let gender: Gender
-    
-    /// Index in Item.all array
-    var itemIndex: Int?
     
     /// Date and time when offer was last modified
     var modifiedTime: Date?
@@ -81,7 +73,7 @@ struct Item: Encodable, Hashable {
     let url: URL?
     
     /// The item vendor
-    let vendor: String?
+    let vendor: String
 
     /// True if item is in any wishlist, false otherwise (default)
     var wishlisted: Bool? = false
@@ -120,18 +112,39 @@ struct Item: Encodable, Hashable {
     /// If item name starts with vendor (brand) drop that brand and capitalize the first letter of remaining string
     var nameWithoutVendor: String? {
         guard let name = name?.lowercased() else { return nil }
-        guard let vendor = vendor?.lowercased(), name.starts(with: vendor) else { return name }
+        guard name.starts(with: vendor.lowercased()) else { return name }
         return name.dropFirst(vendor.count).trimmingCharacters(in: .whitespacesAndNewlines).capitalizingFirstLetter
     }
     
     /// Non-optional time for sorting operations
     var time: TimeInterval { (modifiedTime ?? Date(timeIntervalSince1970: 0)).timeIntervalSinceReferenceDate }
     
+    // MARK: - Init
+    init(from decoder: Decoder) throws {
+        // Get values from the container
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // Decode each of the properties
+        categoryId = try values.decode(Int.self, forKey: .categoryId)
+        color = try values.decode(String.self, forKey: .color)
+        gender = try values.decode(Gender.self, forKey: .gender)
+        id = try values.decode(String.self, forKey: .id)
+        name = try values.decode(String.self, forKey: .name)
+        oldPrice = try? values.decode(Double.self, forKey: .oldPrice)
+        pictures = try values.decode([URL].self, forKey: .pictures)
+        price = try values.decode(Double.self, forKey: .price)
+        size = try values.decode(String.self, forKey: .size)
+        url = try values.decode(URL.self, forKey: .url)
+        vendor = try values.decode(String.self, forKey: .vendor)
+        
+        // Will change modifiedTime
+        modifiedTimestamp = try values.decode(String.self, forKey: .modifiedTime)
+    }
+    
     // MARK: - Methods
     /// Set item's wishlist property to true or false
     /// - Parameter value: the value to set the wishlist property to, true by default
     func setWishlisted(to value: Bool = true) {
-        guard let itemIndex = itemIndex else { return }
-        Item.all[itemIndex].wishlisted = value
+        wishlisted = value
     }
 }

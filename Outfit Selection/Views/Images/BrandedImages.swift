@@ -24,7 +24,7 @@ class BrandedImages {
     // MARK: - Computed Properties
     /// The  names of the branded images
     var brandNames: [String] {
-        images.map { $0.brandName }
+        images.compactMap { $0.brandName }
     }
     
     /// The number of images in the internal collection

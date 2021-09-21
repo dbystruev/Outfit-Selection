@@ -83,13 +83,8 @@ class FeedViewController: UIViewController {
                 return
             }
             
-            guard let itemIndex = feedItem.item?.itemIndex else {
-                debug("Can't get an item index from \(feedItem)")
-                return
-            }
-            
             destination.image = feedItem.itemImageView.image
-            destination.itemIndex = itemIndex
+            destination.item = feedItem.item
             
         default:
             debug("Unknown segue id \(String(describing: segue.identifier))")
@@ -105,7 +100,7 @@ class FeedViewController: UIViewController {
         // Go through the list of seleced occasions and add them to feed table view
         Occasion.selected.forEach {
             // Suggest items for the occasion (temporary random)
-            let shuffledItems = Item.all.shuffled()
+            let shuffledItems = Item.all.values.shuffled()
             
             // Make sure we don't have more than 42 of them
             let numberOfItems = min(42, shuffledItems.count)

@@ -15,12 +15,14 @@ extension ItemViewController {
     }
     
     @IBAction func addToWishlistButtonTapped(_ sender: WishlistButton) {
+        guard let item = item else { return }
         sender.addToWishlistButtonTapped(for: item)
     }
     
     @IBAction func dislikeButtonTapped(_ sender: WishlistButton) {
+        guard let item = item else { return }
         present(Alert.dislike(item, handler: { _ in
-            sender.dislikeButtonTapped(for: self.item)
+            sender.dislikeButtonTapped(for: item)
             self.navigationController?.popViewController(animated: true)
         }), animated: true)
     }

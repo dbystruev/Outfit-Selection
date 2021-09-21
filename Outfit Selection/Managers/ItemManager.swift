@@ -65,12 +65,9 @@ class ItemManager {
             let categoryIds = categories.map { $0.id }
             
             // Select only the items which belong to one of the categories given
-            let categoryFilteredItems = (allWishlistItems + Item.all).filter {
-                // Check that the item has category id attached, else filter it out
-                guard let itemCategoryId = $0.categoryId else { return false }
-                
+            let categoryFilteredItems = (allWishlistItems + Item.all.values).filter {
                 // Check that item's category id is in the list of category ids looked for
-                return categoryIds.contains(itemCategoryId)
+                categoryIds.contains($0.categoryId)
             }
             
             // Filter category items by the brand given
@@ -124,7 +121,7 @@ class ItemManager {
                     defer { self.networkGroup.leave() }
                     
                     // Didn't get the image — that's an error
-                    guard let image = optionalImage, let itemIndex = item.itemIndex else {
+                    guard let image = optionalImage else {
                         // Compose error message
                         let message = optionalImage == nil ? "image" : "item index"
                         
@@ -142,7 +139,7 @@ class ItemManager {
                     }
                     
                     // Append image to the end of corresponding image collection view model
-                    viewModel.append(image.halved, tag: itemIndex, vendor: item.vendor)
+                    viewModel.append(image.halved, item: item)
                     
                     // Update the number of currently loaded images
                     current += 1
@@ -170,7 +167,7 @@ class ItemManager {
             // Loop all items in given category filtered by brands
             for index in 0 ..< viewModel.count {
                 let image = viewModel[index]
-                scrollView.insert(image: image).tag = image.tag
+                scrollView.insert(image: image).item = image.item
             }
         }
     }

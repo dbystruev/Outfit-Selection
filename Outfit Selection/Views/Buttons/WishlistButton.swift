@@ -29,7 +29,7 @@ class WishlistButton: UIButton {
     // MARK: - Methods
     /// Called when add to wishlist button is tapped
     /// - Parameter item: the item on which the add to wishlist button is tapped
-    func addToWishlistButtonTapped(for item: Item?) {
+    func addToWishlistButtonTapped(for item: Item) {
         if Wishlist.contains(item) == true {
             dislikeButtonTapped(for: item)
         } else {
@@ -41,13 +41,13 @@ class WishlistButton: UIButton {
     
     /// Configure the view of wishlist button depending on item being in wishlist
     /// - Parameter item: the item this wishlist button is attached to
-    func configure(for item: Item?) {
-        isSelected = Wishlist.contains(item) ?? false
+    func configure(for item: Item) {
+        isSelected = Wishlist.contains(item)
     }
     
     /// Called when dislike button is tapped
     /// - Parameter item: the item on which the dislike button is tapped
-    func dislikeButtonTapped(for item: Item?) {
+    func dislikeButtonTapped(for item: Item) {
         addToWishlistButton?.isSelected = false
         setLastEmotionToItems()
         Wishlist.remove(item)

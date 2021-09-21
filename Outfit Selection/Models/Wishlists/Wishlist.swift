@@ -17,12 +17,12 @@ struct Wishlist: Codable {
     // MARK: - Computed Static Properties
     /// All items in both item wishlist and outfit wishlist
     static var allItems: [Item] {
-        allItemsIndexes.map { Item.all[$0] }
+        allItemsIdSet.compactMap { Item.all[$0] }
     }
     
     /// Set of item indexes in both item wishlist and outfit wishlist
-    static var allItemsIndexes: Set<Int> {
-        collectionsItemsIndexesSet.union(itemsIndexesSet.union(outfitsItemsIndexesSet))
+    static var allItemsIdSet: Set<String> {
+        collectionsItemsIdSet.union(itemsIdSet.union(outfitsItemsIdSet))
     }
     
     /// Wishlist items with type .collection
@@ -36,8 +36,8 @@ struct Wishlist: Codable {
     }
     
     /// Set of item indexes found in collections
-    static var collectionsItemsIndexesSet: Set<Int> {
-        Set(collectionsItems.compactMap { $0.itemIndex })
+    static var collectionsItemsIdSet: Set<String> {
+        Set(collectionsItems.compactMap { $0.id })
     }
     
     /// Wishlist items with type .item
@@ -46,8 +46,8 @@ struct Wishlist: Codable {
     }
     
     /// Set of item indexes found in items
-    static var itemsIndexesSet: Set<Int> {
-        Set(items.compactMap { $0.item?.itemIndex })
+    static var itemsIdSet: Set<String> {
+        Set(items.compactMap { $0.item?.id })
     }
     
     /// Wishlist items with type .outfit
@@ -61,8 +61,8 @@ struct Wishlist: Codable {
     }
     
     /// Set of item indexes found in outfits
-    static var outfitsItemsIndexesSet: Set<Int> {
-        Set(outfitsItems.compactMap { $0.itemIndex })
+    static var outfitsItemsIdSet: Set<String> {
+        Set(outfitsItems.compactMap { $0.id })
     }
     
     // MARK: - Static Methods
@@ -108,10 +108,9 @@ struct Wishlist: Codable {
     /// Returns true if item is contained in the items wishlist already, false otherwise
     /// - Parameters:
     ///   - item: item to check for inclusion into the collection
-    /// - Returns: true if item is contained in the items wishlist, false if not, nil if item or its itemIndex is nil
-    static func contains(_ item: Item?) -> Bool? {
-        guard let itemIndex = item?.itemIndex else { return nil }
-        return items.contains { $0.item?.itemIndex == itemIndex }
+    /// - Returns: true if item is contained in the items wishlist, false if not
+    static func contains(_ item: Item) -> Bool {
+        itemsIdSet.contains(item.id)
     }
     
     /// Returns true if outfit is contained in the outfit wishlist already, false otherwise
@@ -139,10 +138,10 @@ struct Wishlist: Codable {
         guard itemsCount == outfitsItems.count else { return false }
         
         // Make two sets of outfit item indexes
-        let newOutfitSet = Set(items.compactMap { $0.itemIndex })
+        let newOutfitSet = Set(items.map { $0.id })
         
         // Compare two sets of outfit item indexes
-        return newOutfitSet == outfit.itemsIndexesSet
+        return newOutfitSet == outfit.itemsIdSet
     }
     
     /// Returns true if occasion exists in outfits dictionary, false otherwise
@@ -153,10 +152,9 @@ struct Wishlist: Codable {
     
     /// Returns true if item is found in outfit wishlist, false otherwise
     /// - Parameter item: item to check for inclusion into the outfit wishlist
-    /// - Returns: true if item is found in outfit wishlist, false otherwise, nil if item or its itemIndex is nil
-    static func contains(itemInOutfits item: Item?) -> Bool? {
-        guard let itemIndex = item?.itemIndex else { return nil }
-        return outfitsItemsIndexesSet.contains(itemIndex)
+    /// - Returns: true if item is found in outfit wishlist, false otherwise
+    static func contains(itemInOutfits item: Item) -> Bool {
+        outfitsItemsIdSet.contains(item.id)
     }
     
     /// Finds given items in the wishlist and returns occasion name for them, or nil if there are no such items in the wishlist
@@ -171,16 +169,13 @@ struct Wishlist: Codable {
     
     /// Remove an item from the items wishlist if it is present there
     /// - Parameter item: the item to remove from the item wishlist
-    static func remove(_ item: Item?) {
-        // Make sure the item and its index are not nil
-        guard let itemIndex = item?.itemIndex else { return }
-        
-        // Remove all items with given itemIndex
-        Wishlist.removeAll { $0.kind == .item && $0.items.first?.itemIndex == itemIndex }
+    static func remove(_ item: Item) {
+        // Remove items with given item id
+        Wishlist.removeAll { $0.kind == .item && $0.items.first?.id == item.id }
         
         // Clear wishlisted status if not found in outfit wishlist
-        guard contains(itemInOutfits: item) != true else { return }
-        item?.setWishlisted(to: false)
+        guard !contains(itemInOutfits: item) else { return }
+        item.setWishlisted(to: false)
     }
     
     /// Remove items from the outfit wishlist if they are present there

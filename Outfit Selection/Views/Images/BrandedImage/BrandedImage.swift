@@ -11,10 +11,10 @@ import UIKit
 class BrandedImage: UIImage {
     // MARK: - Stored Properties
     /// The name of the brand
-    var brandName = ""
+    var brandName: String?
     
     /// Sets whether this brand image is selected without updating user defaults
-    var _isSelected: Bool?
+    private var _isSelected: Bool?
     
     /// Sets whether this brand image is selected and update user defaults
     var isSelected: Bool {
@@ -26,6 +26,4 @@ class BrandedImage: UIImage {
         }
     }
     
-    /// Tag for the scroll view
-    var tag = 0
 }

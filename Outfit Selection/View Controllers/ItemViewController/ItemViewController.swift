@@ -53,11 +53,8 @@ class ItemViewController: UIViewController {
     /// First item image
     var image: UIImage?
     
-    /// Item model to show
-    var item: Item?
-    
-    /// Item index in Item.all array
-    var itemIndex = -1
+    /// Item  to show
+    weak var item: Item?
     
     /// Item url to present at Intermediary view controller
     var url: URL?
@@ -127,12 +124,13 @@ class ItemViewController: UIViewController {
     
     /// Fill labels with item data
     func updateUI() {
+        guard let item = item else { return }
         addToWishlistButton.configure(for: item)
-        let nameWithoutVendor = item?.nameWithoutVendor
+        let nameWithoutVendor = item.nameWithoutVendor
         nameLabels.forEach { $0.text = nameWithoutVendor }
-        orderButton.isHidden = item?.url == nil
-        title = item?.price?.asPrice
-        let vendorUppercased = item?.vendor?.uppercased()
+        orderButton.isHidden = item.url == nil
+        title = item.price?.asPrice
+        let vendorUppercased = item.vendor.uppercased()
         vendorLabels.forEach { $0.text = vendorUppercased }
     }
     
@@ -146,7 +144,6 @@ class ItemViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        item = 0 <= itemIndex && itemIndex < Item.all.count ? Item.all[itemIndex] : nil
         loadImages()
     }
     

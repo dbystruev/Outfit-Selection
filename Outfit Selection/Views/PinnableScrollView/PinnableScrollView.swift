@@ -35,12 +35,7 @@ class PinnableScrollView: UIScrollView {
     // MARK: - Computed Properties
     /// Item which this scroll view is currently showing
     var item: Item? {
-        itemIndex == nil || itemIndex! < 0 || Item.all.count <= itemIndex! ? nil : Item.all[itemIndex!]
-    }
-    
-    /// Index of an item which this scroll view is currently showing
-    var itemIndex: Int? {
-        getImageView()?.tag
+        getImageView()?.item
     }
     
     // MARK: - Methods

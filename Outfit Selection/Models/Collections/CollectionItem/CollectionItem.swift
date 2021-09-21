@@ -35,6 +35,12 @@ struct CollectionItem: Codable {
     /// Single item or a few items depending on collection item type
     let items: [Item]
     
+    // MARK: - Computed Properties
+    /// The list of item ids
+    var itemIds: [String] {
+        items.map { $0.id }
+    }
+    
     // MARK: - Init
     init?(_ item: Item?) {
         guard let item = item else { return nil }

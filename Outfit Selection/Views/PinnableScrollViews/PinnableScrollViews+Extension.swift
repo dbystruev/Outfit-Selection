@@ -45,10 +45,9 @@ extension PinnableScrollViews {
     
     /// Scroll its views to the given tags
     /// - Parameter tags: the tags to scroll the scroll views to
-    func scrollToElements(withTags tags: [Int?]) {
-        for (scrollView, tag) in zip(self, tags) {
-            guard let tag = tag else { continue }
-            scrollView.scrollToElement(withTag: tag)
+    func scrollToElements(with ids: [String]) {
+        for (scrollView, id) in zip(self, ids) {
+            scrollView.scrollToElement(with: id)
         }
     }
     

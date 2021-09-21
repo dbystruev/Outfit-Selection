@@ -50,8 +50,8 @@ struct WishlistItem: Codable {
     /// The first item of the items array
     var item: Item? { items.first }
     
-    /// The set of items indexes
-    var itemsIndexesSet: Set<Int> { Set(items.compactMap { $0.itemIndex })}
+    /// The set of items ids
+    var itemsIdSet: Set<String> { Set(items.map { $0.id })}
     
     /// Calculate wishlist items price
     var price: Double {

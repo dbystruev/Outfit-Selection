@@ -19,7 +19,7 @@ extension OutfitViewController {
             guard let scrollView = recognizer.view as? PinnableScrollView else { return }
             guard let imageView = scrollView.getImageView() else { return }
             destination.image = imageView.image
-            destination.itemIndex = imageView.tag
+            destination.item = imageView.item
             
         case "shareViewControllerSegue":
             guard let destination = segue.destination as? ShareViewController else { return }

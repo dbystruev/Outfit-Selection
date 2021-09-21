@@ -107,8 +107,7 @@ extension OutfitViewController {
     /// Scroll outfit's scroll views to the given items
     /// - Parameter items: the items to scroll the scroll views to
     func scrollTo(items: [Item]) {
-        let tags = items.map { $0.itemIndex }
-        scrollViews?.scrollToElements(withTags: tags)
+        scrollViews?.scrollToElements(with: items.map { $0.id })
     }
     
     /// Scroll to random items
