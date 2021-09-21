@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct WishlistItem: Codable {
+struct WishlistItem {
     // MARK: - Types
     /// Type (kind) of wishlist item
     enum Kind: Int, Codable, CustomStringConvertible {

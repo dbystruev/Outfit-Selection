@@ -76,7 +76,7 @@ final class Item: Decodable, Encodable {
     let vendor: String
 
     /// True if item is in any wishlist, false otherwise (default)
-    var wishlisted: Bool? = false
+    var wishlisted = false
     
     enum CodingKeys: String, CodingKey {
         case categoryId = "category_id"
@@ -112,7 +112,7 @@ final class Item: Decodable, Encodable {
     /// Non-optional time for sorting operations
     var time: TimeInterval { modifiedTime.timeIntervalSinceReferenceDate }
     
-    // MARK: - Init
+    // MARK: - Decodable
     init(from decoder: Decoder) throws {
         // Get values from the container
         let values = try decoder.container(keyedBy: CodingKeys.self)

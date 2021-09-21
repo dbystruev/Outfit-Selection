@@ -52,22 +52,26 @@ extension Wishlist {
             return
         }
         
-        guard let wishlistItems = try? PList.decoder.decode([Gender: [WishlistItem]].self, from: data) else {
+        guard let wishlistItems = try? PList.decoder.decode([WishlistItem].self, from: data) else {
             debug("WARNING: Can't decode \(data) from user defaults to [WishlistItem] for key \(userDefaultsKey)")
             return
             
         }
         
-        _all = wishlistItems
+        for gender in Gender.allCases {
+            _all[gender] = wishlistItems.filter { $0.gender == gender }
+        }
     }
     
     /// Save wishlist to user defaults
     static func save() {
-        guard let data = try? PList.encoder.encode(_all) else {
+        let wishlistItems = _all.values.flatMap { $0 }
+        guard let data = try? PList.encoder.encode(wishlistItems) else {
             debug("WARNING: Can't encode \(all.count) wishlist items for key \(userDefaultsKey)")
             return
         }
         
+        debug("DEBUG: Saving \(data) for \(userDefaultsKey)")
         UserDefaults.standard.set(data, forKey: userDefaultsKey)
     }
 }
