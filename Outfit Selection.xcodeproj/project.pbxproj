@@ -178,7 +178,6 @@
 		69D0FD9F25EB621800FC15F6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D0FD9E25EB621800FC15F6 /* ProfileViewController.swift */; };
 		69D0FDA525EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */; };
 		69D3FEAD26F8D73200D31A5F /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D3FEAC26F8D73200D31A5F /* Server.swift */; };
-		69D3FEAF26F8DF2000D31A5F /* categories.txt in Resources */ = {isa = PBXBuildFile; fileRef = 69D3FEAE26F8DF2000D31A5F /* categories.txt */; };
 		69DA85D426D5FA5000D16B25 /* FeedBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */; };
 		69DA85D726D5FD2F00D16B25 /* FeedBrandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */; };
 		69DA85DB26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */; };
@@ -365,7 +364,6 @@
 		69D0FD9E25EB621800FC15F6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69D3FEAC26F8D73200D31A5F /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
-		69D3FEAE26F8DF2000D31A5F /* categories.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = categories.txt; sourceTree = "<group>"; };
 		69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBrandCell.swift; sourceTree = "<group>"; };
 		69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedBrandCell.xib; sourceTree = "<group>"; };
 		69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
@@ -770,7 +768,6 @@
 		69A252CB26CED93700630EDA /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				69D3FEAE26F8DF2000D31A5F /* categories.txt */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -1103,7 +1100,6 @@
 				699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */,
 				6906A9B226E68FF400386267 /* Wishlist.storyboard in Resources */,
 				6953680225F7B5590024EC8B /* .gitignore in Resources */,
-				69D3FEAF26F8DF2000D31A5F /* categories.txt in Resources */,
 				69535A4725EDF6AA00E9D816 /* Screenshot09.png in Resources */,
 				69F78DF626CBF047007843C4 /* Feed.storyboard in Resources */,
 				69535A5025EDF6AA00E9D816 /* Screenshot04.png in Resources */,

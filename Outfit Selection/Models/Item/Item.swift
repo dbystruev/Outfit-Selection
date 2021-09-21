@@ -41,6 +41,9 @@ struct Item: Encodable, Hashable {
     }
     
     // MARK: - Stored Properties
+    /// Item's color
+    let color: String
+    
     /// Item's id
     let id: String?
     
@@ -49,6 +52,9 @@ struct Item: Encodable, Hashable {
     
     /// Whether an item has been disliked
     var disliked = false
+    
+    /// Item's gender
+    let gender: Gender
     
     /// Index in Item.all array
     var itemIndex: Int?
@@ -68,6 +74,9 @@ struct Item: Encodable, Hashable {
     /// The item's current price
     let price: Double?
     
+    /// Item's size
+    let size: String?
+    
     /// The item URL to purchase
     let url: URL?
     
@@ -79,12 +88,15 @@ struct Item: Encodable, Hashable {
     
     enum CodingKeys: String, CodingKey {
         case categoryId = "category_id"
+        case color
+        case gender
         case id
         case modifiedTime = "modified_time"
         case name
         case oldPrice = "old_price"
         case pictures
         case price
+        case size
         case url
         case vendor
     }

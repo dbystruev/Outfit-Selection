@@ -15,11 +15,14 @@ extension Item: Decodable {
         
         // Decode each of the properties
         categoryId = try values.decode(Int.self, forKey: .categoryId)
+        color = try values.decode(String.self, forKey: .color)
+        gender = try values.decode(Gender.self, forKey: .gender)
         id = try values.decode(String.self, forKey: .id)
         name = try values.decode(String.self, forKey: .name)
         oldPrice = try? values.decode(Double.self, forKey: .oldPrice)
         pictures = try values.decode([URL].self, forKey: .pictures)
         price = try values.decode(Double.self, forKey: .price)
+        size = try values.decode(String.self, forKey: .size)
         url = try values.decode(URL.self, forKey: .url)
         vendor = try values.decode(String.self, forKey: .vendor)
         
