@@ -28,7 +28,7 @@ class WishlistItemCell: WishlistBaseCell {
         
         // Configure labels
         nameLabel.text = item.nameWithoutVendor
-        priceLabel.text = item.price?.asPrice
+        priceLabel.text = item.price.asPrice
         vendorLabel.text = item.vendor
         
         // Load the picture

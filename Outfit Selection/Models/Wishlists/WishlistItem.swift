@@ -55,7 +55,7 @@ struct WishlistItem: Codable {
     
     /// Calculate wishlist items price
     var price: Double {
-        items.reduce(0) { $0 + ($1.price ?? 0) }
+        items.reduce(0) { $0 + $1.price }
     }
 }
 

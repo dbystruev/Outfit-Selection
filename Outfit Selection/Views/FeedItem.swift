@@ -58,7 +58,7 @@ class FeedItem: UIView {
         brandLabel.text = item.brand
         nameLabel.text = item.nameWithoutVendor
         oldPriceLabel.isHidden = !showSale
-        priceLabel.text = item.price?.asPrice
+        priceLabel.text = item.price.asPrice
         
         // Set strikethrough red font for old price
         guard let oldPrice = item.oldPrice?.asPrice else { return }

@@ -64,13 +64,13 @@ final class Item: Decodable, Encodable {
     let pictures: [URL]
     
     /// The item's current price
-    let price: Double?
+    let price: Double
     
     /// Item's size
-    let size: String?
+    let size: String
     
     /// The item URL to purchase
-    let url: URL?
+    let url: URL
     
     /// The item vendor
     let vendor: String

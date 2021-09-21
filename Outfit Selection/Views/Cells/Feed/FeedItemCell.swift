@@ -98,9 +98,9 @@ class FeedItemCell: FeedBaseCell {
         }
         
         // Get items from Item.all and filter them by presense of price, old price and brand
-        let itemsWithPrices = Item.all.values.filter { $0.price != nil && $0.oldPrice != nil }
-        let itemsWithPricesByBrands = itemsWithPrices.filter { $0.branded(brandNames) }
-        let filteredItems = itemsWithPricesByBrands.isEmpty ? itemsWithPrices : itemsWithPricesByBrands
+        let itemsWithOldPrices = Item.all.values.filter { $0.oldPrice != nil }
+        let itemsWithOldPricesByBrands = itemsWithOldPrices.filter { $0.branded(brandNames) }
+        let filteredItems = itemsWithOldPricesByBrands.isEmpty ? itemsWithOldPrices : itemsWithOldPricesByBrands
         
         // Shuffle the items and make sure we don't have more than 42 of them
         let shuffledItems = filteredItems.shuffled()
