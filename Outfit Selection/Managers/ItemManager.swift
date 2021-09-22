@@ -48,6 +48,7 @@ class ItemManager {
         
         // Get all wishlist items
         let allWishlistItems = Wishlist.allItems
+        debug("allWishlistItems:", allWishlistItems.count)
         
         // Wait for network group load images to finish
         networkGroup.wait()

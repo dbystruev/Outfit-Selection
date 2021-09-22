@@ -99,7 +99,7 @@ class WishlistItem: Decodable {
         
         // Load new wishlist items not present in the items
         let newItemIDs = itemIDs.filter { items[$0] == nil }
-        NetworkManager.shared.getItems(newItemIDs) { newItems in
+        NetworkManager.shared.getItems(newItemIDs) { [self] newItems in
             newItems?.forEach { self.items[$0.id] = $0 }
         }
 

@@ -57,9 +57,9 @@ class TabBarController: UITabBarController {
     func popToProgressIfGenderHasChanged() {
         // Find profile view controller and its stored gender
         guard let newGender = findViewController(ofType: ProfileViewController.self)?.shownGender else {
-            debug("WARNING: No profile view controller, view controllers =", viewControllers?.count, "children =", viewControllers?.compactMap{
-                ($0 as? UINavigationController)?.viewControllers.count
-            })
+//            debug("WARNING: No profile view controller, view controllers =", viewControllers?.count, "children =", viewControllers?.compactMap{
+//                ($0 as? UINavigationController)?.viewControllers.count
+//            })
             return
         }
         

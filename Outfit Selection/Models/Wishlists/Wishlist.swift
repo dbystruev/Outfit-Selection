@@ -15,9 +15,10 @@ struct Wishlist: Codable {
     static var tabSuggested: WishlistItem.Kind = .item
         
     // MARK: - Computed Static Properties
-    /// All items in both item wishlist and outfit wishlist
+    /// All items in collections, item wishlist, and outfit wishlist
     static var allItems: [Item] {
-        allItemsIdSet.compactMap { Item.all[$0] }
+        let items = all.flatMap { $0.items.values }
+        return items
     }
     
     /// Set of item indexes in both item wishlist and outfit wishlist
@@ -135,7 +136,7 @@ struct Wishlist: Codable {
         guard let outfit = outfits.first(where: { $0.name == occasion }) else { return false }
         
         // Return false if the number of items in the outfits differ
-        guard itemsCount == outfitsItems.count else { return false }
+        guard itemsCount == outfit.items.count else { return false }
         
         // Make two sets of outfit item indexes
         let newOutfitSet = Set(items.map { $0.id })

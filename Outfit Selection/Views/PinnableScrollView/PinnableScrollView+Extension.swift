@@ -134,7 +134,7 @@ extension PinnableScrollView {
     
     /// Scroll to element with the given tag
     /// - Parameter id: the id to search for and scroll to
-    func scrollToElement(with id: String) {
+    func scrollToElementIfPresent(with id: String) {
         guard let index = index(of: id) else { return }
         scrollToElement(withIndex: index)
     }

@@ -108,6 +108,9 @@ extension OutfitViewController {
     /// - Parameter items: the items to scroll the scroll views to
     func scrollTo(items: [Item]) {
         scrollViews?.scrollToElements(with: items.map { $0.id })
+        
+        // Update like button and price
+        updateUI()
     }
     
     /// Scroll to random items
