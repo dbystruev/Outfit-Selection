@@ -17,7 +17,7 @@ class NetworkManager {
     
     // MARK: - Stored Properties
     /// Maximum number of simultaneous get requests (image loading is not counted)
-    let maxRequestsInParallel = 256
+    let maxRequestsInParallel = 1024
     
     /// Number of get requests currently running (image loading is not counted)
     var numberOfRequestsRunning = 0

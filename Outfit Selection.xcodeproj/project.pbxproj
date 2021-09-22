@@ -130,7 +130,6 @@
 		698A7F9626E8E8DB006C36FD /* WishlistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A7F9526E8E8DB006C36FD /* WishlistItem.swift */; };
 		698A7F9826E92106006C36FD /* Wishlist+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A7F9726E92106006C36FD /* Wishlist+all.swift */; };
 		699139E926E11188004B18AA /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699139E826E11188004B18AA /* Alert.swift */; };
-		6993D47D26FAE89E0048054E /* Gender+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6993D47C26FAE89E0048054E /* Gender+CustomStringConvertible.swift */; };
 		699AAB7E26CD5B5B001F6522 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699AAB7D26CD5B5B001F6522 /* FeedViewController.swift */; };
 		699AAB8026CD72AE001F6522 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699AAB7F26CD72AE001F6522 /* Logger.swift */; };
 		699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 699ABB5A25E6CA3900E388FC /* Welcome.storyboard */; };
@@ -319,7 +318,6 @@
 		698A7F9526E8E8DB006C36FD /* WishlistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItem.swift; sourceTree = "<group>"; };
 		698A7F9726E92106006C36FD /* Wishlist+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wishlist+all.swift"; sourceTree = "<group>"; };
 		699139E826E11188004B18AA /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
-		6993D47C26FAE89E0048054E /* Gender+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gender+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		699AAB7D26CD5B5B001F6522 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		699AAB7F26CD72AE001F6522 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		699ABB5A25E6CA3900E388FC /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
@@ -929,7 +927,6 @@
 			isa = PBXGroup;
 			children = (
 				692C94092546FB8D0075BD92 /* Gender.swift */,
-				6993D47C26FAE89E0048054E /* Gender+CustomStringConvertible.swift */,
 			);
 			path = Gender;
 			sourceTree = "<group>";
@@ -1256,7 +1253,6 @@
 				697E1FDD25ECF0E8008C85C9 /* UITabBarController+findViewController.swift in Sources */,
 				698A7F9826E92106006C36FD /* Wishlist+all.swift in Sources */,
 				69AE955F256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift in Sources */,
-				6993D47D26FAE89E0048054E /* Gender+CustomStringConvertible.swift in Sources */,
 				69E0641D26FA4E2B00C68A6A /* Item+Equatable.swift in Sources */,
 				6924900125504DFD00106681 /* DispatchManager.swift in Sources */,
 				69C5CBF1260A1D5E00DE22E6 /* ShareViewController+UITableViewDelegate.swift in Sources */,

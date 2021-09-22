@@ -15,65 +15,64 @@ struct Category: Codable {
         }
     }
     
+    /// Female categories filtered by chosen female category names
+    static let femaleCategories: [[Category]] = {
+        femaleCategoryNames.map { words in
+            all.filter { category in
+                let categoryName = category.name.lowercased()
+                return words.contains { categoryName.contains($0) }
+            }
+        }
+    }()
+    
     /// Female category names
-    static let femaleNames: [[String]] = [
+    static let femaleCategoryNames: [[String]] = [
         // Top left
-        ["Топы"],
+        ["топы"],
         
         // Bottom left
-        ["Брюки", "Деним", "Юбки"],
+        ["брюки", "деним", "юбки"],
         
         // Top right
-        ["Куртки и пиджаки", "Пальто", "Свитеры и трикотаж"],
+        ["куртки", "пиджаки", "пальто", "свитеры", "трикотаж"],
         
         // Middle right
-        ["Клатчи", "Колье", "Колье и ожерелья", "Кольца", "Маски", "Серьги", "Сумки", "Сумки-тоут", "Сумки на плечо"],
+        ["клатчи", "колье", "ожерелья", "кольца", "маски", "серьги", "сумки"],
         
         // Bottom right
-        ["Ботинки на шнурках", "Мюли", "Сапоги", "Туфли-лодочки"],
+        ["ботинки", "мюли", "сапоги", "туфли"],
     ]
     
+    /// Male categories filtered by chosen male category names
+    static let maleCategories: [[Category]] = {
+        maleCategoryNames.map { words in
+            all.filter { category in
+                let categoryName = category.name.lowercased()
+                return words.contains { categoryName.contains($0) }
+            }
+        }
+    }()
+    
     /// Male category names
-    static let maleNames: [[String]] = [
+    static let maleCategoryNames: [[String]] = [
         // Top left
-        ["Футболки и майки"],
+        ["футболки", "майки"],
         
         // Bottom left
-        ["Брюки", "Деним"],
+        ["брюки", "деним"],
         
         // Top right
-        ["Куртки", "Куртки и пиджаки", "Пальто", "Рубашки", "Трикотаж"],
+        ["куртки", "пиджаки", "пальто", "рубашки", "трикотаж"],
         
         // Middle right
-        ["Головные уборы", "Маски"],
+        ["головные", "уборы", "маски"],
         
         // Bottom right
-        ["Броги", "Броги и оксфорды", "Лоферы", "Сапоги"],
+        ["броги", "оксфорды", "лоферы", "сапоги"],
     ]
     
     /// The maximum number of items in one corner, all of them displayed
     static let maxCornerCount = 100
-    
-    // MARK: - Computed Static Properties
-    /// Female categories filtered by chosen female category names
-    static var female: [[Category]] {
-        femaleNames.map { categoryNames in
-            let categoryNamesLowerased = categoryNames.map { $0.lowercased() }
-            return all.filter { category in
-                categoryNamesLowerased.contains(category.name.lowercased())
-            }
-        }
-    }
-    
-    /// Male categories filtered by chosen male category names
-    static var male: [[Category]] {
-        maleNames.map { categoryNames in
-            let categoryNamesLowerased = categoryNames.map { $0.lowercased() }
-            return all.filter { category in
-                categoryNamesLowerased.contains(category.name.lowercased())
-            }
-        }
-    }
     
     // MARK: - Static Methods
     /// Return the list of the category lists filtered by gender
@@ -82,11 +81,11 @@ struct Category: Codable {
     static func filtered(by gender: Gender?) -> [[Category]] {
         switch gender {
         case .female:
-            return female
+            return femaleCategories
         case .male:
-            return male
+            return maleCategories
         case .other, nil:
-            return female + male
+            return femaleCategories + maleCategories
         }
     }
     
