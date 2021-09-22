@@ -8,7 +8,7 @@
 
 import UIKit
 
-class WishlistViewController: UIViewController {
+class WishlistViewController: LoggingViewController {
     // MARK: - Outlets
     @IBOutlet weak var collectionsButton: UIButton!
     @IBOutlet weak var collectionsTableView: UITableView!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OccasionsPopupViewController: UIViewController {
+class OccasionsPopupViewController: LoggingViewController {
     // MARK: - Outlets
     @IBOutlet weak var occasionPickerView: UIPickerView!
     

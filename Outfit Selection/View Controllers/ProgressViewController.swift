@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProgressViewController: UIViewController {
+class ProgressViewController: LoggingViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var progressView: UIProgressView!

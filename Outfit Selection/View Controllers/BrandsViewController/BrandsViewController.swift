@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BrandsViewController: UIViewController {
+class BrandsViewController: LoggingViewController {
     
     // MARK: - Outlets
     /// Top right button to clear or select all brands

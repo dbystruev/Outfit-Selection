@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ShareViewController: UIViewController {
+class ShareViewController: LoggingViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var occasionLabel: UILabel!

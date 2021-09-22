@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedViewController: UIViewController {
+class FeedViewController: LoggingViewController {
     // MARK: - Outlets
     @IBOutlet weak var feedTableView: UITableView!
     

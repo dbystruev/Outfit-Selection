@@ -8,7 +8,7 @@
 
 import UIKit
 
-class CollectionBaseViewController: UIViewController {
+class CollectionBaseViewController: LoggingViewController {
 
     // MARK: - Stored Properties
     /// Collection name entered by the user

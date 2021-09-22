@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GenderViewController: UIViewController {
+class GenderViewController: LoggingViewController {
     
     // MARK: - Outlets
     /// Gender selection buttons stack view

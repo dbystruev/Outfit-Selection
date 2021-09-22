@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: LoggingViewController {
     // MARK: - Outlets
     @IBOutlet weak var profileCollectionView: UICollectionView!
     

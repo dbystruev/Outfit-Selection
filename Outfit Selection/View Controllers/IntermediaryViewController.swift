@@ -8,7 +8,7 @@
 
 import SafariServices
 
-class IntermediaryViewController: UIViewController {
+class IntermediaryViewController: LoggingViewController {
     // MARK: - Outlets
     @IBOutlet weak var takingYouLabel: UILabel!
     

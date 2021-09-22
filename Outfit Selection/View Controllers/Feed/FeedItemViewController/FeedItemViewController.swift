@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedItemViewController: UIViewController {
+class FeedItemViewController: LoggingViewController {
 
     // MARK: - Outlets
     @IBOutlet weak var itemCollectionView: UICollectionView!

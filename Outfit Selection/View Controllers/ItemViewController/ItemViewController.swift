@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemViewController: UIViewController {
+class ItemViewController: LoggingViewController {
     // MARK: - Constants
     /// Maximum width of order button: design screen width (375) - left (16) and right (16) margins
     let maxOrderButtonWidth: CGFloat = 343

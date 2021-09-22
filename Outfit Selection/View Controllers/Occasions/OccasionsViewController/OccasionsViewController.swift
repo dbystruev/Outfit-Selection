@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OccasionsViewController: UIViewController {
+class OccasionsViewController: LoggingViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var occasionsTableView: UITableView!

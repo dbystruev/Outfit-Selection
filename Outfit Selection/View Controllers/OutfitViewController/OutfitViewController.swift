@@ -8,7 +8,7 @@
 
 import UIKit
 
-class OutfitViewController: UIViewController {
+class OutfitViewController: LoggingViewController {
     // MARK: - Outlets
     @IBOutlet weak var hangerBarButtonItem: UIBarButtonItem!
     @IBOutlet var hangerButtons: [UIButton]!
