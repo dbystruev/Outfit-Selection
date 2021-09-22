@@ -58,9 +58,14 @@ extension Wishlist {
             
         }
         
+        var messages: [String] = []
         for gender in Gender.allCases {
             _all[gender] = wishlistItems.filter { $0.gender == gender }
+            guard let items = _all[gender] else { continue }
+            let count = items.reduce(0) { $0 + $1.itemIDs.count }
+            messages.append("\(count) \(gender)")
         }
+        debug("\(userDefaultsKey):", messages.joined(separator: ", "), "item ids loaded")
     }
     
     /// Save wishlist to user defaults
