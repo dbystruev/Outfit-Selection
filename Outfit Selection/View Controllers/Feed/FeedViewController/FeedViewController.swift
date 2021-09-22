@@ -26,12 +26,16 @@ class FeedViewController: UIViewController {
     /// Reload data in feed table view, putting brand name to the beginning if it is not nil
     /// - Parameter brandName: brand name, nil be default
     func reloadData(first brandName: String? = nil) {
-        debug(brandName)
         selectedBrandNames = BrandManager.shared.brandedImages.selected.brandNames
         if let brandName = brandName {
             selectedBrandNames.sort { $0 == brandName || $0 < $1 }
         }
-        feedTableView.reloadData()
+        NetworkManager.shared.reloadItems(for: Gender.current) { success in
+            guard success == true else { return }
+            DispatchQueue.main.async {
+                self.feedTableView.reloadData()
+            }
+        }
     }
     
     /// Register cells, set data source and delegate for a given table view

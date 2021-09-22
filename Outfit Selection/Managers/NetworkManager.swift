@@ -83,8 +83,6 @@ class NetworkManager {
             
             self.numberOfRequestsRunning -= 1
             
-            debug(request.absoluteString)
-            
             // Check if we haven't received nil
             guard let data = data else {
                 let message = error?.localizedDescription ?? "No data"

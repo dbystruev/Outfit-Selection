@@ -225,7 +225,8 @@ class ItemManager {
             let passedTime = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
             
             if success {
-                debug(Item.all.count, "items are loaded from the server in", passedTime.asTime, "seconds")
+                let categoriesCount = allCategories.flatMap { $0 }.count
+                debug(Item.all.count, gender?.rawValue, "items from \(categoriesCount) categories loaded in", passedTime.asTime, "s")
             }
             
             completion(success)
