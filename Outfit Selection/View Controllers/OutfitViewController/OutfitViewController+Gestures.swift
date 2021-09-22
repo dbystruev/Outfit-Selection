@@ -39,8 +39,8 @@ extension OutfitViewController {
         if sender.numberOfTouches == 1 {
             guard let scrollView = sender.view as? PinnableScrollView else { return }
             guard let imageView = scrollView.getImageView() else { return }
-            guard imageView.image != nil && 0 <= imageView.tag else {
-                debug("imageView.image =", imageView.image, "imageView.tag =", imageView.tag)
+            guard imageView.item != nil else {
+                debug("ERROR: Can't get an item from \(imageView)")
                 return
             }
             performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: sender)
