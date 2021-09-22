@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -60,7 +60,6 @@
 		692C94132547025D0075BD92 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C94122547025D0075BD92 /* Category.swift */; };
 		692C9417254708830075BD92 /* URL+withQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C9416254708830075BD92 /* URL+withQueries.swift */; };
 		692C941B25470B8F0075BD92 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C941A25470B8F0075BD92 /* Item.swift */; };
-		69322E2826007C5500CAFBFA /* AppsFlyerLib.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 69322E2726007C5500CAFBFA /* AppsFlyerLib.framework */; };
 		69322E2B26008CDD00CAFBFA /* ItemViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69322E2A26008CDD00CAFBFA /* ItemViewController+Actions.swift */; };
 		693D7286256BF1EA00540C10 /* Brands.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 693D7285256BF1EA00540C10 /* Brands.bundle */; };
 		693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7289256BF3FB00540C10 /* BrandsViewController.swift */; };
@@ -95,6 +94,7 @@
 		69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */; };
 		695EE0042586449E00E2BB57 /* BrandsViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695EE0032586449E00E2BB57 /* BrandsViewController+Actions.swift */; };
 		6962099D26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6962099C26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift */; };
+		696209A026FB927E00B46FE8 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 6962099F26FB927E00B46FE8 /* AppsFlyerLib */; };
 		69672AE922F1D06A0053FB85 /* OutfitViewController+present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69672AE822F1D06A0053FB85 /* OutfitViewController+present.swift */; };
 		696E875B256463160061802E /* Double+asPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696E875A256463160061802E /* Double+asPrice.swift */; };
 		696E876F25647C0F0061802E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 696E876E25647C0F0061802E /* README.md */; };
@@ -249,7 +249,6 @@
 		692C94122547025D0075BD92 /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		692C9416254708830075BD92 /* URL+withQueries.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+withQueries.swift"; sourceTree = "<group>"; };
 		692C941A25470B8F0075BD92 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		69322E2726007C5500CAFBFA /* AppsFlyerLib.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AppsFlyerLib.framework; sourceTree = "<group>"; };
 		69322E2A26008CDD00CAFBFA /* ItemViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemViewController+Actions.swift"; sourceTree = "<group>"; };
 		693D7285256BF1EA00540C10 /* Brands.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Brands.bundle; sourceTree = "<group>"; };
 		693D7289256BF3FB00540C10 /* BrandsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsViewController.swift; sourceTree = "<group>"; };
@@ -391,7 +390,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				69322E2826007C5500CAFBFA /* AppsFlyerLib.framework in Frameworks */,
+				696209A026FB927E00B46FE8 /* AppsFlyerLib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -796,7 +795,6 @@
 		69A6F6E722BA26B7002A3B49 = {
 			isa = PBXGroup;
 			children = (
-				69322E2726007C5500CAFBFA /* AppsFlyerLib.framework */,
 				6953680125F7B5590024EC8B /* .gitignore */,
 				696E876E25647C0F0061802E /* README.md */,
 				69A6F6F222BA26B7002A3B49 /* Outfit Selection */,
@@ -1064,6 +1062,9 @@
 			dependencies = (
 			);
 			name = "Outfit Selection";
+			packageProductDependencies = (
+				6962099F26FB927E00B46FE8 /* AppsFlyerLib */,
+			);
 			productName = "Outfit Selection";
 			productReference = 69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */;
 			productType = "com.apple.product-type.application";
@@ -1092,6 +1093,9 @@
 				Base,
 			);
 			mainGroup = 69A6F6E722BA26B7002A3B49;
+			packageReferences = (
+				6962099E26FB927E00B46FE8 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+			);
 			productRefGroup = 69A6F6F122BA26B7002A3B49 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1512,6 +1516,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6962099E26FB927E00B46FE8 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.4.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6962099F26FB927E00B46FE8 /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6962099E26FB927E00B46FE8 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 69A6F6E822BA26B7002A3B49 /* Project object */;
 }

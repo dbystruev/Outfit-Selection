@@ -52,7 +52,7 @@ extension AppDelegate: UIApplicationDelegate {
         URLCache.shared = URLCache(memoryCapacity: 25_000_000, diskCapacity: 50_000_000, diskPath: temporaryDirectory)
         
         // Configure AppsFlyer
-//        appsFlyer(configureFor: application)
+        appsFlyer(configureFor: application)
         
         // Configure current notification center
         userNotificationCenter(configureFor: application)
