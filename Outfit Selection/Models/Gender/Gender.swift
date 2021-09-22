@@ -15,7 +15,7 @@ enum Gender: String, Codable {
     // MARK: - Cases
     case female
     case male
-    case other
+    case other = "unisex"
 }
 
 // MARK: - Case Iterable

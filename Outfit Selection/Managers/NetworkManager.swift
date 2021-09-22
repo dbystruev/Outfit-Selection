@@ -10,14 +10,14 @@ import UIKit
 
 class NetworkManager {
     // MARK: - Static Properties
-//    static let defaultURL = URL(string: "http://api.getoutfit.co")!
-//    static let defaultURL = URL(string: "http://server.getoutfit.ru")!
+    //    static let defaultURL = URL(string: "http://api.getoutfit.co")!
+    //    static let defaultURL = URL(string: "http://server.getoutfit.ru")!
     static let defaultURL = URL(string: "http://spb.getoutfit.co:3000")!
     static let shared = NetworkManager()
     
     // MARK: - Stored Properties
     /// Maximum number of simultaneous get requests (image loading is not counted)
-    let maxRequestsInParallel = 10
+    let maxRequestsInParallel = 256
     
     /// Number of get requests currently running (image loading is not counted)
     var numberOfRequestsRunning = 0
@@ -148,74 +148,36 @@ class NetworkManager {
         get("items", parameters: parameters, completion: completion)
     }
     
-    /// Add /offers?categoryId=...&categoryId=...&vendor=...&vendor=...&limit=... to server URL and call the API
+    /// Add /items?categoryId=in.(..., ...)&vendor=in.(..., ...)&limit=... to server URL and call the API
     /// - Parameters:
     ///   - categories: the list of categories to filter items by, should not be empty
-    ///   - gender: load female or male items only, both if nil
+    ///   - gender: load female. male, or other (all) items
     ///   - vendors: the list of vendors to filter items by
-    ///   - singleRequest: true — run one single request, false — separate request for each category in parallel, nil — decide based on gender
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
-    func getOffers(inCategories categories: [Category],
-                   filteredBy gender: Gender? = nil,
-                   forVendors vendors: [String] = [],
-                   withSingleRequest singleRequest: Bool? = true,
-                   completion: @escaping ([Item]?) -> Void) {
-        // Run single request if said so, or if not defined and gender is male
-        let singleRequest = singleRequest ?? false
+    func getItems(
+        in categories: [Category],
+        for gender: Gender?,
+        filteredBy vendors: [String] = [],
+        completion: @escaping ([Item]?) -> Void)
+    {
+        // Prepare parameters
+        let parameters = getParameters(in: categories, for: gender, filteredBy: vendors)
         
-        if singleRequest {
-            // Prepare parameters
-            let parameters = getParameters(inCategories: categories, filteredBy: gender, forVendors: vendors)
-            
-            // Run signle request
-            get("items", parameters: parameters, completion: completion)
-        } else {
-            // The array of items we will collect the result in
-            var allItems = [Item]()
-            
-            // Make several category requests in parallel
-            let group = DispatchGroup()
-            
-            // Create a separate request for each category and each vendor
-            for category in categories {
-                // Prepare parameters
-                let parameters = getParameters(inCategories: [category], filteredBy: gender, forVendors: vendors)
-                
-                // Enter the dispatch group before the request
-                group.enter()
-                
-                // Request the items in the current category
-                get("items", parameters: parameters) { (items: [Item]?) in
-                    // Add items to all items if we got any
-                    if let items = items {
-                        allItems.append(contentsOf: items)
-                    }
-                    
-                    // Leave the dispatch group when request is completed
-                    group.leave()
-                }
-            }
-            
-            // When all requests are finished make sure items are not nil
-            group.notify(queue: .main) {
-                guard !allItems.isEmpty else {
-                    completion(nil)
-                    return
-                }
-                completion(allItems)
-            }
-        }
+        // Request the items in the current category
+        get("items", parameters: parameters, completion: completion)
     }
     
     /// Prepare parameters dictionary for given categories, gender, and vendors
     /// - Parameters:
     ///   - categories: the list of categories to filter items by
-    ///   - gender: load female or male items only, both if nil or other
+    ///   - gender: load female, male, or other items
     ///   - vendors: the list of vendors to filter items by
     /// - Returns: dictionary with parameters suitable to call get()
-    func getParameters(inCategories categories: [Category] = [],
-                    filteredBy gender: Gender? = nil,
-                    forVendors vendors: [String] = []) -> [String: Any] {
+    func getParameters(
+        in categories: [Category] = [],
+        for gender: Gender?,
+        filteredBy vendors: [String] = []
+    ) -> [String: Any] {
         // Prepare parameters
         var parameters: [String: Any] = ["limit": Item.maxCount]
         parameters["category_id"] = categories.isEmpty ? nil : "in.(\(categories.map { "\($0.id)" }.joined(separator: ",")))"
@@ -224,8 +186,11 @@ class NetworkManager {
         let lowercasedVendors = vendors.map { $0.lowercased().components(separatedBy: .alphanumerics.inverted).joined() }
         parameters["vendor"] = vendors.isEmpty ? nil : "in.(\(lowercasedVendors.joined(separator: ",")))"
         
-        // Add gender in parameter
-        parameters["gender"] = gender
+        // Add gender to parameters
+        if let gender = gender {
+            let genders = [gender == .other ? "\(Gender.male),\(Gender.female)" : gender.rawValue, "\(Gender.other)"]
+            parameters["gender"] = "in.(\(genders.joined(separator: ",")))"
+        }
         
         return parameters
     }
@@ -236,7 +201,7 @@ class NetworkManager {
     ///   - completion: closure called when all requests are finished, with true if successfull or false otherwise
     func reloadItems(for gender: Gender?, completion: @escaping (Bool?) -> Void) {
         // Load items if none are found
-        ItemManager.shared.loadItems(filteredBy: gender, completion: completion)
+        ItemManager.shared.loadItems(for: gender, completion: completion)
     }
     
     /// Update the main url we have to use in the future

@@ -186,7 +186,7 @@ class ItemManager {
     /// Load items from the server to Item.all array
     /// - Parameter gender: load female, male or other items only
     /// - Parameter completion: closure with bool parameter which is called with true in case of success, with false otherwise
-    func loadItems(filteredBy gender: Gender?, completion: @escaping (_ success: Bool?) -> Void) {
+    func loadItems(for gender: Gender?, completion: @escaping (_ success: Bool?) -> Void) {
         // Measure the accumulated time of all item requests
         let startTime = Date()
         
@@ -203,10 +203,10 @@ class ItemManager {
         // Run network requests for different corners in parallel
         for categories in allCategories {
             networkGroup.enter()
-            NetworkManager.shared.getOffers(
-                inCategories: categories,
-                filteredBy: gender,
-                forVendors: selectedBrandNames
+            NetworkManager.shared.getItems(
+                in: categories,
+                for: gender,
+                filteredBy: selectedBrandNames
             ) { items in
                 // Check if any items were loaded
                 if let items = items {
