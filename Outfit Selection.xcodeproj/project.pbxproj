@@ -132,6 +132,8 @@
 		698A7F9626E8E8DB006C36FD /* WishlistItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A7F9526E8E8DB006C36FD /* WishlistItem.swift */; };
 		698A7F9826E92106006C36FD /* Wishlist+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A7F9726E92106006C36FD /* Wishlist+all.swift */; };
 		699139E926E11188004B18AA /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699139E826E11188004B18AA /* Alert.swift */; };
+		699632A726FCA42100841B6F /* AppDelegate+updateCategories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699632A626FCA42100841B6F /* AppDelegate+updateCategories.swift */; };
+		699632A926FCA48300841B6F /* debug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699632A826FCA48300841B6F /* debug.swift */; };
 		699AAB7E26CD5B5B001F6522 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699AAB7D26CD5B5B001F6522 /* FeedViewController.swift */; };
 		699AAB8026CD72AE001F6522 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699AAB7F26CD72AE001F6522 /* Logger.swift */; };
 		699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 699ABB5A25E6CA3900E388FC /* Welcome.storyboard */; };
@@ -321,6 +323,8 @@
 		698A7F9526E8E8DB006C36FD /* WishlistItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItem.swift; sourceTree = "<group>"; };
 		698A7F9726E92106006C36FD /* Wishlist+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wishlist+all.swift"; sourceTree = "<group>"; };
 		699139E826E11188004B18AA /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
+		699632A626FCA42100841B6F /* AppDelegate+updateCategories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+updateCategories.swift"; sourceTree = "<group>"; };
+		699632A826FCA48300841B6F /* debug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = debug.swift; sourceTree = "<group>"; };
 		699AAB7D26CD5B5B001F6522 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		699AAB7F26CD72AE001F6522 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		699ABB5A25E6CA3900E388FC /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
@@ -572,6 +576,7 @@
 				695367ED25F7AA520024EC8B /* AppDelegate+AppsFlyerLibDelegate.swift */,
 				695367F725F7AFAC0024EC8B /* AppDelegate+UIApplicationDelegate.swift */,
 				695367FA25F7B0AA0024EC8B /* AppDelegate+UNUserNotificationCenterDelegate.swift */,
+				699632A626FCA42100841B6F /* AppDelegate+updateCategories.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -816,6 +821,7 @@
 			isa = PBXGroup;
 			children = (
 				69A6F70522BA38B3002A3B49 /* App */,
+				699632A826FCA48300841B6F /* debug.swift */,
 				692C9415254708670075BD92 /* Extensions */,
 				692C940D254700E40075BD92 /* Managers */,
 				692C94082546FB7A0075BD92 /* Models */,
@@ -1220,6 +1226,7 @@
 				693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */,
 				69007CEA26EA2F95001170D0 /* Globals.swift in Sources */,
 				69007CF326EA6A4B001170D0 /* OccasionsViewController.swift in Sources */,
+				699632A926FCA48300841B6F /* debug.swift in Sources */,
 				697CCE6426CFF1ED00B69763 /* ButtonDelegate.swift in Sources */,
 				695367EE25F7AA520024EC8B /* AppDelegate+AppsFlyerLibDelegate.swift in Sources */,
 				6976232D26D7720B00504F31 /* FeedViewController+ButtonDelegate.swift in Sources */,
@@ -1296,6 +1303,7 @@
 				69B539F2257F9C7A00116F98 /* UIViewController+dismissRoot.swift in Sources */,
 				69297C5F25EBC9FE00A8684E /* GenderCell.swift in Sources */,
 				6986613325706B6B008F94CA /* BrandsViewController+UICollectionViewDelegate.swift in Sources */,
+				699632A726FCA42100841B6F /* AppDelegate+updateCategories.swift in Sources */,
 				6978202F2587BCAA007D4CCB /* ImageCollectionViewModel.swift in Sources */,
 				692C940A2546FB8D0075BD92 /* Gender.swift in Sources */,
 				69C3696725E79ED3000A8E5E /* WishlistViewController.swift in Sources */,
