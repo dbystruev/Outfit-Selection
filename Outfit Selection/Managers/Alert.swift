@@ -62,7 +62,7 @@ enum Alert {
     ) -> UIAlertController {
         configured(
             "Change to \(newGender)",
-            message: "Wishlists will reload too",
+            message: "Will reload items and wishlists",
             actionTitles: ["Don't", "Change"],
             styles: [.cancel, .destructive],
             handlers: [{ _ in

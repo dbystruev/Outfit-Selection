@@ -16,7 +16,7 @@ extension WishlistViewController: UICollectionViewDelegate {
         switch tabSelected {
         
         case .collection:
-            debug("Not implemented for .collections")
+            debug("ERROR: not implemented for .collections")
         
         case .item:
             performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: self)
@@ -38,6 +38,9 @@ extension WishlistViewController: UICollectionViewDelegate {
             
             // Scroll to the items in the current outfit
             outfitViewController.scrollToItems = wishlist[indexPath.row].items.values.map { $0 }
+            
+        case nil:
+            debug("ERROR: selected tab should not be nil")
         }
     }
 }

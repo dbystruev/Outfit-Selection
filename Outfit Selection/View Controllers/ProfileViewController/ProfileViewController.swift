@@ -47,11 +47,12 @@ class ProfileViewController: LoggingViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // If shown gender is different from current gender adjust it and reload gender section
-        if shownGender != Gender.current {
-            shownGender = Gender.current
-            profileCollectionView.reloadSections([0])
-        }
+        // Make sure shown brands and gender match current brands and gender
+        (tabBarController as? TabBarController)?.selectedBrands = BrandManager.shared.selectedBrands
+        shownGender = Gender.current
+        
+        // Reload brand and gender data
+        profileCollectionView.reloadData()
     }
     
     override func viewWillLayoutSubviews() {

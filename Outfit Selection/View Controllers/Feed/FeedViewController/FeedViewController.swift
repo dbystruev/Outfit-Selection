@@ -61,7 +61,7 @@ class FeedViewController: LoggingViewController {
         
         // Perform different preparations depending on segue ids sent
         switch segue.identifier {
-        
+            
         case FeedItemViewController.segueIdentifier:
             guard let feedItemCell = sender as? FeedItemCell else {
                 debug("Can't cast \(String(describing: sender)) to FeedItemCell")

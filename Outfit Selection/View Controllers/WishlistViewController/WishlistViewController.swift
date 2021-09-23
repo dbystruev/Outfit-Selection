@@ -32,25 +32,31 @@ class WishlistViewController: LoggingViewController {
     
     /// Either collections, items, or outfits depending on which tab is selected
     var wishlist: [WishlistItem] {
-        switch tabSelected {
+        let kind = tabSelected ?? Wishlist.largestKind
+        switch kind {
         case .collection:
             return Wishlist.collections
         case .item:
             return Wishlist.items
         case .outfit:
             return Wishlist.outfits
+        case nil:
+            return []
         }
     }
     
     /// Either items or outfit cell depending on whether the items tab is selected
-    var wishlistCellId: String {
-        switch tabSelected {
+    var wishlistCellId: String? {
+        let kind = tabSelected ?? Wishlist.largestKind
+        switch kind {
         case .collection:
             return "collectionItemCell"
         case .item:
             return "itemCell"
         case .outfit:
             return "outfitCell"
+        case nil:
+            return nil
         }
     }
     
@@ -62,8 +68,11 @@ class WishlistViewController: LoggingViewController {
     let feedController = FeedViewController()
     
     /// Contains the currently selected tab: collections, items, or outfits
-    var tabSelected: WishlistItem.Kind = .item {
+    var tabSelected: WishlistItem.Kind? {
         didSet {
+            if tabSelected == nil {
+                tabSelected = Wishlist.largestKind ?? .item
+            }
             Wishlist.tabSuggested = tabSelected
             updateUI()
         }

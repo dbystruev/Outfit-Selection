@@ -12,8 +12,12 @@ extension WishlistViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { wishlist.count }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        // Obtain the cell from wishilist collection view
-        let cell = wishlistCollectionView.dequeueReusableCell(withReuseIdentifier: wishlistCellId, for: indexPath)
+        // Obtain the cell from wishlist collection view
+        guard let cellId = wishlistCellId else {
+            debug("ERROR: Can't get wishlist cell id")
+            return UICollectionViewCell()
+        }
+        let cell = wishlistCollectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         
         // If we are not serving for ourselves, use self as button delegate
         let delegate = collectionView == wishlistCollectionView ? nil : self

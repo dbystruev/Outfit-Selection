@@ -11,7 +11,7 @@ import UIKit
 class TabBarController: UITabBarController {
     // MARK: - Stored Properties
     /// The set of brand tags previously selected by the user
-    let selectedBrands = BrandManager.shared.selectedBrands
+    var selectedBrands = BrandManager.shared.selectedBrands
     
     // MARK: - Computed Properties
     /// True if brand selection has changed
@@ -50,25 +50,19 @@ class TabBarController: UITabBarController {
     
     /// Reload the items if brands selection or gender have changed
     func reloadItems() {
-        debug("Changed brands: \(haveBrandsChanged), gender: \(hasGenderChanged)")
-        
-        // Don't do anything if there are no change in brands or gender
+        // Don't do anything if there are no changes in brands or gender
         guard haveBrandsChanged || hasGenderChanged else { return }
         
         // Start reloading the items
         NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
         
-        // Pop to progress view controller if gender has changed
-        guard !hasGenderChanged else {
-            popToProgress()
-            return
+        // If gender has been changed avoid extra checks
+        if !hasGenderChanged {
+            // Don't pop if we have changed to profile view controller
+            guard let navigationController = selectedViewController as? UINavigationController else { return }
+            guard let firstViewController = navigationController.viewControllers.first else { return }
+            guard !(firstViewController is ProfileViewController) else { return }
         }
-        
-        // Pop to progress view controller if we changed to outfit view controller
-        guard let navigationController = selectedViewController as? UINavigationController else { return }
-        guard let firstViewController = navigationController.viewControllers.first else { return }
-        debug("selected view controller: \(firstViewController)")
-        guard firstViewController is OutfitViewController else { return }
         
         // Pop to progress view controller
         popToProgress()

@@ -12,7 +12,7 @@ import Foundation
 struct Wishlist: Codable {
     // MARK: - Stored Static Properties
     /// Suggests what to select next time when opening wishlist
-    static var tabSuggested: WishlistItem.Kind = .item
+    static var tabSuggested: WishlistItem.Kind?
         
     // MARK: - Computed Static Properties
     /// All items in collections, item wishlist, and outfit wishlist
@@ -49,6 +49,13 @@ struct Wishlist: Codable {
     /// Set of item indexes found in items
     static var itemsIdSet: Set<String> {
         Set(items.compactMap { $0.item?.id })
+    }
+    
+    /// Returns the type (kind) of the largerst wishlist
+    static var largestKind: WishlistItem.Kind? {
+        let sortedWishlists = [collections, items, outfits].sorted { $1.count < $0.count }
+        let largestWishlist = sortedWishlists[0]
+        return largestWishlist.first?.kind
     }
     
     /// Wishlist items with type .outfit

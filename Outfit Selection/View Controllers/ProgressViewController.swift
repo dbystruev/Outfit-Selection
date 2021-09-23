@@ -45,6 +45,9 @@ class ProgressViewController: LoggingViewController {
         // Switch to tab saved in previous version of tab bar controller
         tabBarController.selectedIndex = selectedTabBarIndex
         
+        // Suggest the wishlist tab with the largest number of items
+        Wishlist.tabSuggested = Wishlist.largestKind
+        
         // Load view models with the new images
         let startTime = Date().timeIntervalSince1970
         ItemManager.shared.loadImages(filteredBy: Gender.current) { itemsLoaded, itemsTotal in

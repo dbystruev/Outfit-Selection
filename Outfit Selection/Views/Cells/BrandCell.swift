@@ -15,19 +15,35 @@ class BrandCell: UICollectionViewCell {
     
     // MARK: - Static Properties
     /// Horizontal margin between brand image view container and the cell
-    static var horizontalMargin: CGFloat = 12
+    static var horizontalMargin: CGFloat = 12 {
+        didSet {
+            debug(horizontalMargin)
+        }
+    }
     
     /// Horizontal padding around brand image view and its container
-    static var horizontalPadding: CGFloat = 8
+    static var horizontalPadding: CGFloat = 8 {
+        didSet {
+            debug(horizontalPadding)
+        }
+    }
     
     /// The nib object containing this brand cell
     static let nib = UINib(nibName: nibName, bundle: nil)
     
     /// Vertical margin between brand image view container and the container
-    static var verticalMargin: CGFloat = 8
+    static var verticalMargin: CGFloat = 8 {
+        didSet {
+            debug(verticalMargin)
+        }
+    }
     
     /// Vertical padding around brand image view and its container
-    static var verticalPadding: CGFloat = 24
+    static var verticalPadding: CGFloat = 24 {
+        didSet {
+            debug(verticalPadding)
+        }
+    }
     
     // MARK: - Static Methods
     /// Returns the number of cells to fit in one row
