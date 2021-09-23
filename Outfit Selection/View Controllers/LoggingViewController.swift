@@ -31,7 +31,6 @@ class LoggingViewController: UIViewController {
         ]
         let names = String(describing: Self.self).drop(suffix: "ViewController").splitBefore { $0.isUppercased }
         let name = String(names.joined(separator: " "))
-        debug(name, dictinary)
         AppsFlyerLib.shared().logEvent(name, withValues: dictinary)
     }
     

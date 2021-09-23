@@ -62,7 +62,7 @@ enum Alert {
     ) -> UIAlertController {
         configured(
             "Change to \(newGender)",
-            message: "Gender change will reload items",
+            message: "Wishlists will reload too",
             actionTitles: ["Don't", "Change"],
             styles: [.cancel, .destructive],
             handlers: [{ _ in
@@ -76,7 +76,7 @@ enum Alert {
                     debug("Error: can't cast", sender.tabBarController, "to TabBarConroller")
                     return
                 }
-                tabBarController.popToProgress()
+                tabBarController.reloadItems()
             }]
         )
     }

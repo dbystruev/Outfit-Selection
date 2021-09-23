@@ -22,7 +22,8 @@ class TabBarController: UITabBarController {
     /// True if gender has been changed by the user
     var hasGenderChanged: Bool {
         // Find profile view controller and its stored gender
-        Gender.current != findViewController(ofType: ProfileViewController.self)?.shownGender
+        guard let shownGender = findViewController(ofType: ProfileViewController.self)?.shownGender else { return false }
+        return Gender.current != shownGender
     }
     
     // MARK: - Inherited Properties
@@ -32,17 +33,8 @@ class TabBarController: UITabBarController {
             // Switch the tab to the new view controller
             super.selectedViewController = newValue
             
-            // Don't do anything if there are no change in brands or gender
-            guard haveBrandsChanged || hasGenderChanged else { return }
-            
-            // Start reloading the items
-            NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
-            
-            // Only go to progress if we changed to outfit view contorller
-            guard newValue is OutfitViewController else { return }
-            
-            // Pop to progress view controller
-            popToProgress()
+            // Check for brands / gender change and reload
+            reloadItems()
         }
     }
     
@@ -54,6 +46,32 @@ class TabBarController: UITabBarController {
         
         // Pop to previous (progress) view controller
         navigationController?.popViewController(animated: true)
+    }
+    
+    /// Reload the items if brands selection or gender have changed
+    func reloadItems() {
+        debug("Changed brands: \(haveBrandsChanged), gender: \(hasGenderChanged)")
+        
+        // Don't do anything if there are no change in brands or gender
+        guard haveBrandsChanged || hasGenderChanged else { return }
+        
+        // Start reloading the items
+        NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+        
+        // Pop to progress view controller if gender has changed
+        guard !hasGenderChanged else {
+            popToProgress()
+            return
+        }
+        
+        // Pop to progress view controller if we changed to outfit view controller
+        guard let navigationController = selectedViewController as? UINavigationController else { return }
+        guard let firstViewController = navigationController.viewControllers.first else { return }
+        debug("selected view controller: \(firstViewController)")
+        guard firstViewController is OutfitViewController else { return }
+        
+        // Pop to progress view controller
+        popToProgress()
     }
     
     // MARK: - Inherited Methods
