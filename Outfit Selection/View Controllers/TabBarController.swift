@@ -9,12 +9,21 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    /// Temporaty flag to debug TabBarController
-    let debugging = false
-    
     // MARK: - Stored Properties
     /// The set of brand tags previously selected by the user
     let selectedBrands = BrandManager.shared.selectedBrands
+    
+    // MARK: - Computed Properties
+    /// True if brand selection has changed
+    var haveBrandsChanged: Bool {
+        BrandManager.shared.selectedBrands != selectedBrands
+    }
+    
+    /// True if gender has been changed by the user
+    var hasGenderChanged: Bool {
+        // Find profile view controller and its stored gender
+        Gender.current != findViewController(ofType: ProfileViewController.self)?.shownGender
+    }
     
     // MARK: - Inherited Properties
     override var selectedViewController: UIViewController? {
@@ -23,51 +32,28 @@ class TabBarController: UITabBarController {
             // Switch the tab to the new view controller
             super.selectedViewController = newValue
             
-            // Check if the gender has changed
-            popToProgressIfGenderHasChanged()
+            // Don't do anything if there are no change in brands or gender
+            guard haveBrandsChanged || hasGenderChanged else { return }
             
-            // Check if the brands were changed
-            popToProgressIfBrandsHaveChanged()
+            // Start reloading the items
+            NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+            
+            // Only go to progress if we changed to outfit view contorller
+            guard newValue is OutfitViewController else { return }
+            
+            // Pop to progress view controller
+            popToProgress()
         }
     }
     
     // MARK: - Custom Methods
-    /// Reload items and pop to progress view controller without conditions
+    /// Pop to progress view controller without conditions
     func popToProgress() {
-        // Reload items with new brands or gender
-        NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
-        
         // Save currently selected index
         navigationController?.findViewController(ofType: ProgressViewController.self)?.selectedTabBarIndex = selectedIndex
         
         // Pop to previous (progress) view controller
         navigationController?.popViewController(animated: true)
-    }
-    
-    /// Pop to progress view controller if the user has changed the selection of brands
-    func popToProgressIfBrandsHaveChanged() {
-        // Don't pop if there is no change in brands selection
-        guard BrandManager.shared.selectedBrands != selectedBrands else { return }
-        
-        // Pop to progress view controller and reload items with new brands selection
-        popToProgress()
-    }
-    
-    /// Pop to progress view controller if the user has changed the gender
-    func popToProgressIfGenderHasChanged() {
-        // Find profile view controller and its stored gender
-        guard let newGender = findViewController(ofType: ProfileViewController.self)?.shownGender else {
-//            debug("WARNING: No profile view controller, view controllers =", viewControllers?.count, "children =", viewControllers?.compactMap{
-//                ($0 as? UINavigationController)?.viewControllers.count
-//            })
-            return
-        }
-        
-        // Don't pop if there is no change in gender
-        guard Gender.current != newGender else { return }
-        
-        // Pop to progress view controller and reload items with new gender
-        popToProgress()
     }
     
     // MARK: - Inherited Methods
