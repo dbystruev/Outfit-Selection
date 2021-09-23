@@ -22,13 +22,17 @@ class LoggingViewController: UIViewController {
     
     // MARK: - Custom Methods
     func log() {
-        AppsFlyerLib.shared().logEvent(String(describing: Self.self), withValues: [
+        let dictinary = [
             "brands": BrandManager.shared.selectedBrandNames,
             "collections": Wishlist.collections.count,
             "items": Wishlist.items.count,
             "outfits": Wishlist.outfits.count,
             "uuid": LoggingViewController.uuid as Any
-        ])
+        ]
+        let names = String(describing: Self.self).drop(suffix: "ViewController").splitBefore { $0.isUppercased }
+        let name = String(names.joined(separator: " "))
+        debug(name, dictinary)
+        AppsFlyerLib.shared().logEvent(name, withValues: dictinary)
     }
     
     // MARK: - Inherited Methods
