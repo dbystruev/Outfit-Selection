@@ -30,6 +30,12 @@ class BrandedImages {
     /// The number of images in the internal collection
     var count: Int { images.count }
     
+    /// Filter brand names by this string
+    var filter = ""
+    
+    /// Branded images filtere by brand
+    var filtered: BrandedImages { filter { filter.isEmpty ? true : $0.branded([filter]) } }
+    
     /// Branded images currently selected by the user
     var selected: BrandedImages { filter { $0.isSelected }}
     

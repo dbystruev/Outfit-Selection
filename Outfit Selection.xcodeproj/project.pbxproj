@@ -16,8 +16,7 @@
 		69007CF126EA6619001170D0 /* Occasion+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CF026EA6619001170D0 /* Occasion+Comparable.swift */; };
 		69007CF326EA6A4B001170D0 /* OccasionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CF226EA6A4B001170D0 /* OccasionsViewController.swift */; };
 		69007CF626EA6ABC001170D0 /* UIViewController+segueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CF526EA6ABC001170D0 /* UIViewController+segueIdentifier.swift */; };
-		69007CF926EA727E001170D0 /* UITableViewCell+reuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CF826EA727E001170D0 /* UITableViewCell+reuseId.swift */; };
-		69007CFB26EA7323001170D0 /* UICollectionViewCell+reuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CFA26EA7323001170D0 /* UICollectionViewCell+reuseId.swift */; };
+		69007CFB26EA7323001170D0 /* UIView+reuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CFA26EA7323001170D0 /* UIView+reuseId.swift */; };
 		69007CFD26EA7462001170D0 /* OccasionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CFC26EA7462001170D0 /* OccasionCell.swift */; };
 		69007D0026EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CFF26EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift */; };
 		69007D0226EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007D0126EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift */; };
@@ -197,6 +196,8 @@
 		69E0641F26FA57B900C68A6A /* ItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E0641E26FA57B900C68A6A /* ItemImage.swift */; };
 		69EB8BB525EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */; };
 		69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */; };
+		69F046F726FDD1D2002E16C0 /* BrandsSearchCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F046F626FDD1D2002E16C0 /* BrandsSearchCollectionView.swift */; };
+		69F046F926FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F046F826FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift */; };
 		69F78DF626CBF047007843C4 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F78DF526CBF047007843C4 /* Feed.storyboard */; };
 		69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FBB20622F1ABE000187562 /* GenderViewController.swift */; };
 /* End PBXBuildFile section */
@@ -211,8 +212,7 @@
 		69007CF026EA6619001170D0 /* Occasion+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occasion+Comparable.swift"; sourceTree = "<group>"; };
 		69007CF226EA6A4B001170D0 /* OccasionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsViewController.swift; sourceTree = "<group>"; };
 		69007CF526EA6ABC001170D0 /* UIViewController+segueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+segueIdentifier.swift"; sourceTree = "<group>"; };
-		69007CF826EA727E001170D0 /* UITableViewCell+reuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableViewCell+reuseId.swift"; sourceTree = "<group>"; };
-		69007CFA26EA7323001170D0 /* UICollectionViewCell+reuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionViewCell+reuseId.swift"; sourceTree = "<group>"; };
+		69007CFA26EA7323001170D0 /* UIView+reuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+reuseId.swift"; sourceTree = "<group>"; };
 		69007CFC26EA7462001170D0 /* OccasionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionCell.swift; sourceTree = "<group>"; };
 		69007CFF26EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OccasionsViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		69007D0126EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OccasionsViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
@@ -393,6 +393,8 @@
 		69E0641E26FA57B900C68A6A /* ItemImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImage.swift; sourceTree = "<group>"; };
 		69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnableScrollView.swift; sourceTree = "<group>"; };
+		69F046F626FDD1D2002E16C0 /* BrandsSearchCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsSearchCollectionView.swift; sourceTree = "<group>"; };
+		69F046F826FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+UISearchBarDelegate.swift"; sourceTree = "<group>"; };
 		69F78DF526CBF047007843C4 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		69FBB20622F1ABE000187562 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -500,6 +502,7 @@
 				69AE7661260BCE2C009CF863 /* UIView+addGestureOnce.swift */,
 				692AF3D12601209700D37269 /* UIView+asImage.swift */,
 				694E7BED25DBFFFB006607CD /* UIView+findSuperview.swift */,
+				69007CFA26EA7323001170D0 /* UIView+reuseId.swift */,
 				6900142026DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift */,
 			);
 			path = UIView;
@@ -543,13 +546,11 @@
 				697CCE6C26D010AB00B69763 /* Double */,
 				699632AA26FCB04000841B6F /* Sequence+splitBefore.swift */,
 				697CCE6B26D0109F00B69763 /* String */,
-				69007CFA26EA7323001170D0 /* UICollectionViewCell+reuseId.swift */,
 				6986612025704F1A008F94CA /* UIImage+resize.swift */,
 				69E0642026FA58C500C68A6A /* UIImageView */,
 				690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */,
 				69727EFE25E84EC000457A58 /* UINavigationController+findViewController.swift */,
 				697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */,
-				69007CF826EA727E001170D0 /* UITableViewCell+reuseId.swift */,
 				692AF3D4260120A100D37269 /* UIView */,
 				69B539FC257FBC6800116F98 /* UIViewController */,
 				692C9416254708830075BD92 /* URL+withQueries.swift */,
@@ -619,6 +620,7 @@
 		69739EAE22BA5DCD0077E45D /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				69F046F626FDD1D2002E16C0 /* BrandsSearchCollectionView.swift */,
 				6941BDEA260B5640003D5EE7 /* Bubbles */,
 				698990CF23238051002DCA29 /* Buttons */,
 				6986612C25706355008F94CA /* Cells */,
@@ -713,6 +715,7 @@
 				6986612725705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift */,
 				6986613225706B6B008F94CA /* BrandsViewController+UICollectionViewDelegate.swift */,
 				694E7BF125DC1D9D006607CD /* BrandsViewController+UICollectionViewDelegateFlowLayout.swift */,
+				69F046F826FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift */,
 			);
 			path = BrandsViewController;
 			sourceTree = "<group>";
@@ -1206,10 +1209,10 @@
 				69A2E20726FA8EEE002B4046 /* WishlistItem+Equatable.swift in Sources */,
 				69EB8BB525EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift in Sources */,
 				69B86BBB26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift in Sources */,
-				69007CF926EA727E001170D0 /* UITableViewCell+reuseId.swift in Sources */,
 				69739EB022BA5DF80077E45D /* PinnableScrollView+Extension.swift in Sources */,
 				699ABB5F25E6D54A00E388FC /* TabBarController.swift in Sources */,
 				6906A9A226E6414C00386267 /* CollectionNameViewController.swift in Sources */,
+				69F046F726FDD1D2002E16C0 /* BrandsSearchCollectionView.swift in Sources */,
 				694E7BEE25DBFFFB006607CD /* UIView+findSuperview.swift in Sources */,
 				696E875B256463160061802E /* Double+asPrice.swift in Sources */,
 				697A3CFE25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift in Sources */,
@@ -1270,7 +1273,8 @@
 				69AE954D2563B87000850210 /* String+lastComponent.swift in Sources */,
 				69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */,
 				6906A9AB26E6853700386267 /* CollectionNameViewController+UITextFieldDelegate.swift in Sources */,
-				69007CFB26EA7323001170D0 /* UICollectionViewCell+reuseId.swift in Sources */,
+				69007CFB26EA7323001170D0 /* UIView+reuseId.swift in Sources */,
+				69F046F926FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift in Sources */,
 				697CCE5C26CFA47E00B69763 /* FeedItemCell.swift in Sources */,
 				691C5F4426E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift in Sources */,
 				69B539FA257FBC3C00116F98 /* UIViewController+tabBar.swift in Sources */,

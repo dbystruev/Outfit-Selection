@@ -25,4 +25,10 @@ extension BrandsViewController: UICollectionViewDelegate {
         // Configure get outfit button
         configureGoButton()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader else { return UICollectionReusableView() }
+        
+        return collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: BrandsSearchCollectionView.reuseId, for: indexPath)
+    }
 }

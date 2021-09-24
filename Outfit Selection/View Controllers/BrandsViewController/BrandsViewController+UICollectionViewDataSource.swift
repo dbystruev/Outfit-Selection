@@ -10,13 +10,13 @@ import UIKit
 
 extension BrandsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        brandedImages.count
+        brandedImages.filtered.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCell.reuseId, for: indexPath)
         let brandCell = cell as? BrandCell ?? BrandCell(frame: cell.frame)
-        brandCell.configure(brandedImage: brandedImages[indexPath.row], cellSize: cellSize(for: collectionView))
+        brandCell.configure(brandedImage: brandedImages.filtered[indexPath.row], cellSize: cellSize(for: collectionView))
         return brandCell
     }
 }

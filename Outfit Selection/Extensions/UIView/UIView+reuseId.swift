@@ -1,5 +1,5 @@
 //
-//  UITableViewCell+reuseId.swift
+//  UIView+reuseId.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 09.09.2021.
@@ -8,10 +8,9 @@
 
 import UIKit
 
-extension UITableViewCell {
+extension UIView {
     // MARK: - Static Properties
-    /// ID for use in tableView.dequeueReusableCell(withIdentifier:)
-    class var reuseId: String {
+    @objc class var reuseId: String {
         "\(String(describing: Self.self).decapitalizingFirstLetter)ReuseId"
     }
 }

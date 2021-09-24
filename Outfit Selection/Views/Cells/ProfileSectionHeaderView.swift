@@ -17,9 +17,6 @@ class ProfileSectionHeaderView: UICollectionReusableView {
     /// The nib object containing this section header
     static let nib = UINib(nibName: nibName, bundle: nil)
     
-    /// The reuse identifier to associate with this section header nib file
-    static let reuseId = "profileHeader"
-    
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     
