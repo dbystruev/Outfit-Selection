@@ -15,7 +15,7 @@ class BrandsViewController: LoggingViewController {
     @IBOutlet weak var allButton: SelectableButtonItem!
     
     /// Collection view with brand logos
-    @IBOutlet weak var brandsCollectionView: UICollectionView!
+    @IBOutlet weak var brandsCollectionView: BrandsCollectionView!
     
     /// Go button at the bottom of the screen
     @IBOutlet weak var getOutfitButton: UIButton!
@@ -38,6 +38,9 @@ class BrandsViewController: LoggingViewController {
     
     /// The collection of brand images
     let brandedImages = BrandManager.shared.brandedImages
+    
+    /// Time of last click in search bar
+    var lastClick: Date?
     
     /// True if we should enable go button — either all items are loaded or timed out for refresh
     var shouldEnableGoButton = false {

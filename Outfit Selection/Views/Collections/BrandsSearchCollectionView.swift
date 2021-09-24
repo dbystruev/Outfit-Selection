@@ -9,6 +9,6 @@
 import UIKit
 
 class BrandsSearchCollectionView: UICollectionReusableView {
-        
+    /// Search bar where you can enter a part of brand name to search
     @IBOutlet weak var searchBar: UISearchBar!
 }
