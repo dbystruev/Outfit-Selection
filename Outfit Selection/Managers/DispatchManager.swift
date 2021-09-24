@@ -13,7 +13,8 @@ class DispatchManager {
     static let shared = DispatchManager()
     
     // MARK: - Instance Properties
-    let group = DispatchGroup()
+    /// Dispatch group to run item manager network requests in parallel
+    let itemManagerGroup = DispatchGroup()
     
     // MARK: - Init
     private init() {}

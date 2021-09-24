@@ -19,9 +19,6 @@ class ItemManager {
     /// imagePrefixes should correspond to scrollViews
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
     
-    // Dispatch group to run network requests in parallel
-    let networkGroup = DispatchGroup()
-    
     /// Array of category image collection view models
     let viewModels: [ImageCollectionViewModel] = (0 ..< Category.all.count).map { _ in ImageCollectionViewModel.empty }
     
@@ -51,7 +48,7 @@ class ItemManager {
         debug("allWishlistItems:", allWishlistItems.count)
         
         // Wait for network group load images to finish
-        networkGroup.wait()
+        DispatchManager.shared.itemManagerGroup.wait()
         
         // Counts for progress view update
         var current = 0
@@ -104,7 +101,7 @@ class ItemManager {
                 loadedItemNames.append(item.name)
                 
                 // Enter the dispatch group for the next get image request
-                networkGroup.enter()
+                DispatchManager.shared.itemManagerGroup.enter()
                 
                 // Update the number of total images
                 total += 1
@@ -112,7 +109,7 @@ class ItemManager {
                 // Try to get an image for the current item
                 NetworkManager.shared.getImage(pictureURL) { optionalImage in
                     // Make sure we always leave the group
-                    defer { self.networkGroup.leave() }
+                    defer { DispatchManager.shared.itemManagerGroup.leave() }
                     
                     // Didn't get the image — that's an error
                     guard let image = optionalImage else {
@@ -147,7 +144,7 @@ class ItemManager {
         }
         
         // Get here when all image network requests are finished
-        networkGroup.notify(queue: DispatchQueue.global(qos: .background)) {
+        DispatchManager.shared.itemManagerGroup.notify(queue: DispatchQueue.global(qos: .background)) {
             completion(self.count, self.count)
         }
     }
@@ -203,7 +200,7 @@ class ItemManager {
         
         // Run network requests for different corners in parallel
         for categories in allCategories {
-            networkGroup.enter()
+            DispatchManager.shared.itemManagerGroup.enter()
             NetworkManager.shared.getItems(
                 in: categories,
                 for: gender,
@@ -216,12 +213,12 @@ class ItemManager {
                     success = false
                 }
                 
-                self.networkGroup.leave()
+                DispatchManager.shared.itemManagerGroup.leave()
             }
         }
         
         // Complete when all dispatch group tasks are finished
-        networkGroup.notify(queue: .main) {
+        DispatchManager.shared.itemManagerGroup.notify(queue: .main) {
             let endTime = Date()
             let passedTime = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
             
