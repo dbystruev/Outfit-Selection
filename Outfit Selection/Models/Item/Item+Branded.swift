@@ -8,5 +8,5 @@
 
 // MARK: - Branded
 extension Item: Branded {
-    var brand: String? { vendor }
+    var brand: String? { vendorName }
 }

@@ -73,7 +73,7 @@ final class Item: Decodable, Encodable {
     let url: URL
     
     /// The item vendor
-    let vendor: String
+    var vendorName: String
 
     /// True if item is in any wishlist, false otherwise (default)
     var wishlisted = false
@@ -90,7 +90,7 @@ final class Item: Decodable, Encodable {
         case price
         case size
         case url
-        case vendor
+        case vendorName = "vendor"
     }
     
     // MARK: - Computed Properties
@@ -105,8 +105,8 @@ final class Item: Decodable, Encodable {
     /// If item name starts with vendor (brand) drop that brand and capitalize the first letter of remaining string
     var nameWithoutVendor: String? {
         let lowercasedName = name.lowercased()
-        guard lowercasedName.starts(with: vendor.lowercased()) else { return lowercasedName }
-        return lowercasedName.dropFirst(vendor.count).trimmingCharacters(in: .whitespacesAndNewlines).capitalizingFirstLetter
+        guard lowercasedName.starts(with: vendorName.lowercased()) else { return lowercasedName }
+        return lowercasedName.dropFirst(vendorName.count).trimmingCharacters(in: .whitespacesAndNewlines).capitalizingFirstLetter
     }
     
     /// Non-optional time for sorting operations
@@ -130,7 +130,7 @@ final class Item: Decodable, Encodable {
         price = try values.decode(Double.self, forKey: .price)
         size = try values.decode(String.self, forKey: .size)
         url = try values.decode(URL.self, forKey: .url)
-        vendor = try values.decode(String.self, forKey: .vendor)
+        vendorName = try values.decode(String.self, forKey: .vendorName)
     }
     
     // MARK: - Methods

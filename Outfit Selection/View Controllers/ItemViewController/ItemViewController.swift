@@ -11,7 +11,7 @@ import UIKit
 class ItemViewController: LoggingViewController {
     // MARK: - Constants
     /// Maximum width of order button: design screen width (375) - left (16) and right (16) margins
-    let maxOrderButtonWidth: CGFloat = 343
+    let orderButtonMaxWidth: CGFloat = 343
     
     // MARK: - Outlets
     @IBOutlet weak var addToCollectionButton: UIButton! {
@@ -110,13 +110,13 @@ class ItemViewController: LoggingViewController {
         updateOrderButtonConstraints()
     }
     
-    /// Makes sure the button width does not exceed ItemViewController.maxOrderButtonWidth
+    /// Makes sure the button width does not exceed ItemViewController.orderButtonMaxWidth
     func updateOrderButtonConstraints() {
         // Calculate order button width if its constraints zeroed
         let orderButtonWidth = trailingStackView.frame.width
         
-        // Calculate order button constraints so its width does not exceed maxOrderButtonWidth
-        let constant =  orderButtonWidth < maxOrderButtonWidth ? 0 : (orderButtonWidth - maxOrderButtonWidth) / 2
+        // Calculate order button constraints so its width does not exceed orderButtonMaxWidth
+        let constant =  orderButtonWidth < orderButtonMaxWidth ? 0 : (orderButtonWidth - orderButtonMaxWidth) / 2
         
         // Assign order button constraints
         orderButtonHorizontalConstraints.forEach { $0.constant = constant }
@@ -129,7 +129,7 @@ class ItemViewController: LoggingViewController {
         let nameWithoutVendor = item.nameWithoutVendor
         nameLabels.forEach { $0.text = nameWithoutVendor }
         title = item.price.asPrice
-        let vendorUppercased = item.vendor.uppercased()
+        let vendorUppercased = item.vendorName.uppercased()
         vendorLabels.forEach { $0.text = vendorUppercased }
     }
     

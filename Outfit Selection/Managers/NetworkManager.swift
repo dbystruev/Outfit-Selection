@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFAudio
 
 class NetworkManager {
     // MARK: - Static Properties
@@ -22,8 +23,11 @@ class NetworkManager {
     /// Number of get requests currently running (image loading is not counted)
     var numberOfRequestsRunning = 0
     
-    // API server URL
+    /// API server URL
     var url: URL
+    
+    /// Map short vendor names to full vendor names
+    var fullVendorNames: [String: String] = [:]
     
     // MARK: - Init
     private init(_ url: URL? = nil) {
@@ -142,52 +146,77 @@ class NetworkManager {
     ///   - ids: items ids
     ///   - completion: closure called when request is finished, with items if successfull, or with nil if not
     func getItems(_ ids: [String], completion: @escaping ([Item]?) -> Void) {
+        // Include id=in.(..., ...) parameter
         let parameters = [ "id": "in.(\(ids.joined(separator: ",")))"]
-        get("items", parameters: parameters, completion: completion)
+        
+        // Request the items from the API
+        getItems(with: parameters, completion: completion)
     }
     
     /// Add /items?categoryId=in.(..., ...)&vendor=in.(..., ...)&limit=... to server URL and call the API
     /// - Parameters:
     ///   - categories: the list of categories to filter items by, should not be empty
     ///   - gender: load female. male, or other (all) items
-    ///   - vendors: the list of vendors to filter items by
+    ///   - vendorNames: the list of vendors to filter items by
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
     func getItems(
         in categories: [Category],
         for gender: Gender?,
-        filteredBy vendors: [String] = [],
+        filteredBy vendorNames: [String] = [],
         completion: @escaping ([Item]?) -> Void)
     {
         // Prepare parameters
-        let parameters = getParameters(in: categories, for: gender, filteredBy: vendors)
+        let parameters = parameters(in: categories, for: gender, filteredBy: vendorNames)
         
-        // Request the items in the current category
-        get("items", parameters: parameters, completion: completion)
+        // Request the items from the API
+        getItems(with: parameters, completion: completion)
+    }
+    
+    /// Call items API and replace vendor names in items with full versions after the call
+    /// - Parameters:
+    ///   - parameters: API query parameters
+    ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
+    func getItems(with parameters: [String: Any], completion: @escaping ([Item]?) -> Void) {
+        get("items", parameters: parameters) { (items: [Item]?) in
+            self.restoreVendorFullNames(items: items, completion: completion)
+        }
     }
     
     /// Prepare parameters dictionary for given categories, gender, and vendors
     /// - Parameters:
     ///   - categories: the list of categories to filter items by
     ///   - gender: load female, male, or other items
-    ///   - vendors: the list of vendors to filter items by
+    ///   - vendorNames: the list of vendors to filter items by
     /// - Returns: dictionary with parameters suitable to call get()
-    func getParameters(
+    func parameters(
         in categories: [Category] = [],
         for gender: Gender?,
-        filteredBy vendors: [String] = []
+        filteredBy vendorNames: [String] = []
     ) -> [String: Any] {
         // Prepare parameters
         var parameters: [String: Any] = ["limit": Item.maxCount]
-        parameters["category_id"] = categories.isEmpty ? nil : "in.(\(categories.map { "\($0.id)" }.joined(separator: ",")))"
+        
+        // Add "category_id" parameter
+        parameters[Item.CodingKeys.categoryId.rawValue] = categories.isEmpty
+            ? nil
+            : "in.(\(categories.map { "\($0.id)" }.joined(separator: ",")))"
         
         // Make vendors alphanumeric and lowercased
-        let lowercasedVendors = vendors.map { $0.lowercased().components(separatedBy: .alphanumerics.inverted).joined() }
-        parameters["vendor"] = vendors.isEmpty ? nil : "in.(\(lowercasedVendors.joined(separator: ",")))"
+        let shortVendorNames: [String] = vendorNames.map { vendorName in
+            let shortVendorName = vendorName.lowercased().components(separatedBy: .alphanumerics.inverted).joined()
+            fullVendorNames[shortVendorName] = vendorName
+            return shortVendorName
+        }
         
-        // Add gender to parameters
+        // Add "vendor" parameter
+        parameters[Item.CodingKeys.vendorName.rawValue] = vendorNames.isEmpty
+            ? nil
+            : "in.(\(shortVendorNames.joined(separator: ",")))"
+        
+        // Add "gender" parameter
         if let gender = gender {
             let genders = [gender == .other ? "\(Gender.male),\(Gender.female)" : gender.rawValue, "\(Gender.other)"]
-            parameters["gender"] = "in.(\(genders.joined(separator: ",")))"
+            parameters[Item.CodingKeys.gender.rawValue] = "in.(\(genders.joined(separator: ",")))"
         }
         
         return parameters
@@ -200,6 +229,24 @@ class NetworkManager {
     func reloadItems(for gender: Gender?, completion: @escaping (Bool?) -> Void) {
         // Load items if none are found
         ItemManager.shared.loadItems(for: gender, completion: completion)
+    }
+    
+    /// Restore full names for item vendors using self.fullVendorNames dictionary
+    /// - Parameters:
+    ///   - items: iterms with short vendor names received from the API
+    ///   - completion: closure called when full vendor names are restored, with items with replaced vendor names
+    func restoreVendorFullNames(items: [Item]?, completion: @escaping ([Item]?) -> Void) {
+        guard let items = items else {
+            completion(nil)
+            return
+        }
+        
+        // API sends short vendor names, replace them with full names
+        items.forEach { item in
+            item.vendorName = self.fullVendorNames[item.vendorName] ?? item.vendorName
+        }
+        
+        completion(items)
     }
     
     /// Update the main url we have to use in the future
