@@ -20,6 +20,10 @@ class BrandsViewController: LoggingViewController {
     /// Go button at the bottom of the screen
     @IBOutlet weak var getOutfitButton: UIButton!
     
+    // MARK: - Static Constants
+    /// Time delay before closing search keybaord
+    static let searchKeystrokeDelay: TimeInterval = 1
+    
     // MARK: - Stored Properties
     /// Gender selected on gender selection screen
     var gender: Gender? {
@@ -50,15 +54,11 @@ class BrandsViewController: LoggingViewController {
     }
     
     // MARK: - Inherited Methods
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         
-        // Show navigation bar on top
-        navigationController?.isNavigationBarHidden = false
-        
-        // Configure the buttons
-        configureAllButton()
-        configureGoButton()
+        // Clear brands search string when leaving brands selection screen
+        brandedImages.filter = ""
     }
     
     override func viewDidLoad() {
@@ -69,6 +69,17 @@ class BrandsViewController: LoggingViewController {
         
         // Configure navigation controller's bar font
         navigationController?.configureFont()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Show navigation bar on top
+        navigationController?.isNavigationBarHidden = false
+        
+        // Configure the buttons
+        configureAllButton()
+        configureGoButton()
     }
     
     override func viewWillLayoutSubviews() {

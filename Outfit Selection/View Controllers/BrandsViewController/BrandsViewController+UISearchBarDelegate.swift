@@ -14,7 +14,7 @@ extension BrandsViewController: UISearchBarDelegate {
     /// - Parameters:
     ///   - searchBar: the search bar that is being edited
     ///   - interval: the time to postpone the reload fior
-    func deferredReload(_ searchBar: UISearchBar, in interval: TimeInterval = 2) {
+    func deferredReload(_ searchBar: UISearchBar, in interval: TimeInterval = BrandsViewController.searchKeystrokeDelay) {
         if let lastClick = lastClick, interval < Date().timeIntervalSince(lastClick) {
             self.lastClick = nil
             brandsCollectionView.reloadData()
