@@ -1,5 +1,5 @@
 //
-//  FeedViewController.swift
+//  FeedTableViewController.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 18.08.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedViewController: LoggingViewController {
+class FeedTableViewController: LoggingViewController {
     // MARK: - Outlets
     @IBOutlet weak var feedTableView: UITableView!
     

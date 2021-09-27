@@ -65,7 +65,7 @@ class WishlistViewController: LoggingViewController {
     var cellsPerRow = 2
     
     /// Feed view controller used as data source and table delegate for collection table view
-    let feedController = FeedViewController()
+    let feedController = FeedTableViewController()
     
     /// Contains the currently selected tab: collections, items, or outfits
     var tabSelected: WishlistItem.Kind? {

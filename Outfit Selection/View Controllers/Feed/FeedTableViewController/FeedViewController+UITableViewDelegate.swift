@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension FeedViewController: UITableViewDelegate {
+extension FeedTableViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         // Choose which kind the cell will have
         let cell = cellDatas[indexPath.row]

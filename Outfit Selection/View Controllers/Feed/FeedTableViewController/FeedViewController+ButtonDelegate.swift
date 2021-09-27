@@ -6,7 +6,7 @@
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
-extension FeedViewController: ButtonDelegate {
+extension FeedTableViewController: ButtonDelegate {
     func buttonTapped(_ sender: Any) {
         // Check if the button was tapped in the feed brand cell
         if let brandedImage = sender as? BrandedImage {
