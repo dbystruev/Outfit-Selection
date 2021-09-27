@@ -51,6 +51,7 @@ class FeedBaseCell: UITableViewCell {
     enum Kind: String, CaseIterable, CustomStringConvertible {
         case brands
         case newItems
+        case occasions
         case sale
         
         // CustomStringConvertible
@@ -62,6 +63,8 @@ class FeedBaseCell: UITableViewCell {
                 return "Favorite brands"
             case .newItems:
                 return "New items for you"
+            case .occasions:
+                return "Occasions"
             case .sale:
                 return "Sales"
             }

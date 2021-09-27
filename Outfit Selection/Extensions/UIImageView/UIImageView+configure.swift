@@ -12,11 +12,14 @@ extension UIImageView {
     /// Load image from URL
     /// - Parameter url: the URL to load image from
     func configure(with url: URL?) {
+        image = UIImage(named: "clothes")
         guard let url = url else { return }
         NetworkManager.shared.getImage(url) { image in
             guard let image = image else { return }
             DispatchQueue.main.async {
-                self.image = image
+                UIView.animate(withDuration: 0.1) {
+                    self.image = image
+                }
             }
         }
     }

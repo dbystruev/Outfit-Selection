@@ -66,7 +66,7 @@ extension WishlistViewController {
         // Register cells, set data source and delegate for collections table view
         feedController.setup(collectionsTableView, kinds: [])
         feedController.cellDatas.append(contentsOf: Collection.collections.map {
-            (kind: .newItems, title: $0.name, items: $0.items)
+            (kind: .occasions, title: $0.name, items: $0.items)
         })
         
         // Set data source and delegate for wish list collection view

@@ -25,10 +25,25 @@ extension FeedViewController: UITableViewDataSource {
             if let brandCell = feedBaseCell as? FeedBrandCell {
                 brandCell.configureContent()
                 return brandCell
-                
             } else if let feedCell = feedBaseCell as? FeedItemCell {
                 let isInteractive = tableView == feedTableView
-                feedCell.configureContent(for: cellData.kind, title: cellData.title, brandNames: selectedBrandNames, items: cellData.items, isInteractive: isInteractive)
+                
+                let startTime = Date()
+                defer {
+                    let endTime = Date()
+                    let elapsedTime = endTime.timeIntervalSince(startTime)
+                    debug("\(cellData.title) items: \(cellData.items.count), \(round(1 / elapsedTime)) FPS")
+                }
+                
+                DispatchQueue.main.async {
+                    feedCell.configureContent(
+                        for: cellData.kind,
+                           title: cellData.title,
+                           brandNames: self.selectedBrandNames,
+                           items: cellData.items,
+                           isInteractive: isInteractive
+                    )
+                }
                 return feedCell
             }
             

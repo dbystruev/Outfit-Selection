@@ -90,7 +90,7 @@ class WishlistViewController: LoggingViewController {
         }
         
         // Add new collection to collection table view source
-        feedController.cellDatas.append((kind: .newItems, title: lastCollection.name, items: lastCollection.items))
+        feedController.cellDatas.append((kind: .occasions, title: lastCollection.name, items: lastCollection.items))
     }
     
     /// Select the suggested tab

@@ -31,7 +31,6 @@ class BrandManager {
                 loadSelectedBrands(into: _brandedImages)
                 return _brandedImages ?? BrandedImages()
             }
-            debug(brandedImages.brandNames)
             return brandedImages
         }
         set {
