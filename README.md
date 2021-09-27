@@ -37,3 +37,5 @@ Make sure [TestFlight App](https://apps.apple.com/app/testflight/id899247664) is
 Get Outfit [Team](https://www.getoutfit.ru/aboutus) for invaluable contributions.
 
 Noto Sans [font](https://fonts.google.com/specimen/Noto+Sans) designed by Google.
+
+[Clothes](https://www.flaticon.com/free-icon/clothes_130302) icon by [Freepik](https://www.freepik.com) from [Flaticon](https://www.flaticon.com).
