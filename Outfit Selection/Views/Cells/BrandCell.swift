@@ -17,14 +17,14 @@ class BrandCell: UICollectionViewCell {
     /// Horizontal margin between brand image view container and the cell
     static var horizontalMargin: CGFloat = 12 {
         didSet {
-            debug(horizontalMargin)
+//            debug(horizontalMargin)
         }
     }
     
     /// Horizontal padding around brand image view and its container
     static var horizontalPadding: CGFloat = 8 {
         didSet {
-            debug(horizontalPadding)
+//            debug(horizontalPadding)
         }
     }
     
@@ -34,14 +34,14 @@ class BrandCell: UICollectionViewCell {
     /// Vertical margin between brand image view container and the container
     static var verticalMargin: CGFloat = 8 {
         didSet {
-            debug(verticalMargin)
+//            debug(verticalMargin)
         }
     }
     
     /// Vertical padding around brand image view and its container
     static var verticalPadding: CGFloat = 24 {
         didSet {
-            debug(verticalPadding)
+//            debug(verticalPadding)
         }
     }
     

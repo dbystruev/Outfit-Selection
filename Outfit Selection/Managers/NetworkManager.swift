@@ -97,6 +97,7 @@ class NetworkManager {
             
             // Decode the received data
             guard let decodedData: T = self.decode(data) else {
+                debug("ERROR decoding response to \(request) \(data)")
                 completion(nil)
                 return
             }
@@ -104,6 +105,7 @@ class NetworkManager {
             // Store the message in logger cache
             let message = String(data: data, encoding: .utf8)
             Logger.log(key: request.absoluteString, message)
+//            debug(request.absoluteString, "\n", message)
             completion(decodedData)
         }
         
@@ -203,7 +205,7 @@ class NetworkManager {
         
         // Make vendors alphanumeric and lowercased
         let shortVendorNames: [String] = vendorNames.map { vendorName in
-            let shortVendorName = vendorName.lowercased().components(separatedBy: .alphanumerics.inverted).joined()
+            let shortVendorName = vendorName.lowercased().filter { $0.isASCII && ($0.isLetter || $0.isDigit) }
             fullVendorNames[shortVendorName] = vendorName
             return shortVendorName
         }
@@ -246,6 +248,7 @@ class NetworkManager {
             item.vendorName = self.fullVendorNames[item.vendorName] ?? item.vendorName
         }
         
+        debug("\(items.count) item\(items.count == 1 ? "" : "s")")
         completion(items)
     }
     
