@@ -22,7 +22,7 @@ class FeedItemViewController: LoggingViewController {
     var items: [Item] = []
     
     /// Kind (type) of the items
-    var kind: FeedBaseCell.Kind = .newItems
+    var kind: FeedKind = .newItems
     
     /// Name of the feed
     var name: String?
@@ -32,7 +32,10 @@ class FeedItemViewController: LoggingViewController {
         super.viewDidLoad()
         
         // Register feed item collection view cell for dequeue
-        itemCollectionView.register(FeedItemCollectionViewCell.self, forCellWithReuseIdentifier: FeedItemCollectionViewCell.reuseId)
+        itemCollectionView.register(
+            FeedItemCollectionViewCell.self,
+            forCellWithReuseIdentifier: FeedItemCollectionViewCell.reuseId
+        )
         
         // Use self as source for data
         itemCollectionView.dataSource = self

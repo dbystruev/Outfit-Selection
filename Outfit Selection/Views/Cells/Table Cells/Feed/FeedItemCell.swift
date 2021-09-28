@@ -84,7 +84,7 @@ class FeedItemCell: FeedBaseCell {
     ///   - brandNames: put items with given brand names first
     ///   - items: the items to configure the content for
     ///   - isInteractive: if true allow clicks on buttons and items, if not — disable them
-    func configureContent(for kind: Kind, title: String, brandNames: [String], items: [Item], isInteractive: Bool) {
+    func configureContent(for kind: FeedKind, title: String, brandNames: [String], items: [Item], isInteractive: Bool) {
         // Configure kind, title, and `see all` button visibility
         self.kind = kind
         name = title

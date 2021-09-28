@@ -45,31 +45,7 @@ class FeedBaseCell: UITableViewCell {
     var delegate: ButtonDelegate?
 
     /// Kind of this cell
-    var kind: Kind = .sale
-    
-    /// There are 3 kinds of feed cell so far
-    enum Kind: String, CaseIterable, CustomStringConvertible {
-        case brands
-        case newItems
-        case occasions
-        case sale
-        
-        // CustomStringConvertible
-        var description: String { rawValue }
-        
-        var title: String {
-            switch self {
-            case .brands:
-                return "Favorite brands"
-            case .newItems:
-                return "New items for you"
-            case .occasions:
-                return "Occasions"
-            case .sale:
-                return "Sales"
-            }
-        }
-    }
+    var kind: FeedKind = .sale
     
     // MARK: - Computed Properties
     var title: String { kind.title }

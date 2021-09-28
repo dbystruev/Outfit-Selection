@@ -6,6 +6,11 @@
 //
 //  https://stackoverflow.com/a/37225027
 extension Swift.Collection where Indices.Iterator.Element == Index {
+    subscript (safe index: Index?) -> Iterator.Element? {
+        guard let index = index else { return nil }
+        return self[safe: index]
+    }
+    
     subscript (safe index: Index) -> Iterator.Element? {
         indices.contains(index) ? self[index] : nil
     }

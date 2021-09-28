@@ -14,7 +14,7 @@ class FeedTableViewController: LoggingViewController {
     
     // MARK: - Stored Properties
     /// Types and titles of cells to show in table view
-    var cellDatas: [(kind: FeedBaseCell.Kind, title: String, items: [Item])] = []
+    var cellDatas: [(kind: FeedKind, title: String, items: [Item])] = []
     
     /// Saved brand cell margins and paddings
     var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
@@ -40,7 +40,7 @@ class FeedTableViewController: LoggingViewController {
     
     /// Register cells, set data source and delegate for a given table view
     /// - Parameter tableView: table view to setup
-    func setup(_ tableView: UITableView, kinds: [FeedBaseCell.Kind]) {
+    func setup(_ tableView: UITableView, kinds: [FeedKind]) {
         // Register feed cell with feed table view
         FeedBrandCell.register(with: tableView)
         FeedItemCell.register(with: tableView)
@@ -100,7 +100,7 @@ class FeedTableViewController: LoggingViewController {
         super.viewDidLoad()
         
         // Register cells, set data source and delegate for a feed table view
-        setup(feedTableView, kinds: FeedItemCell.Kind.allCases.filter { $0 != .occasions })
+        setup(feedTableView, kinds: FeedKind.allCases.filter { $0 != .occasions })
         
         // Go through the list of seleced occasions and add them to feed table view
         Occasion.selected.forEach {
