@@ -136,6 +136,8 @@
 		699632AB26FCB04000841B6F /* Sequence+splitBefore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699632AA26FCB04000841B6F /* Sequence+splitBefore.swift */; };
 		699632AD26FCB0DE00841B6F /* Character+isUppercased.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699632AC26FCB0DE00841B6F /* Character+isUppercased.swift */; };
 		699632B026FCB1A600841B6F /* String+dropSuffix.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699632AF26FCB1A600841B6F /* String+dropSuffix.swift */; };
+		6998124027037590007B7024 /* IBPCollectionViewCompositionalLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 6998123F27037590007B7024 /* IBPCollectionViewCompositionalLayout */; };
+		699812432703764E007B7024 /* IBPCollectionViewCompositionalLayoutInteroperability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699812422703764E007B7024 /* IBPCollectionViewCompositionalLayoutInteroperability.swift */; };
 		699AAB7E26CD5B5B001F6522 /* FeedTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699AAB7D26CD5B5B001F6522 /* FeedTableViewController.swift */; };
 		699AAB8026CD72AE001F6522 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 699AAB7F26CD72AE001F6522 /* Logger.swift */; };
 		699ABB5B25E6CA3900E388FC /* Welcome.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 699ABB5A25E6CA3900E388FC /* Welcome.storyboard */; };
@@ -334,6 +336,7 @@
 		699632AA26FCB04000841B6F /* Sequence+splitBefore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Sequence+splitBefore.swift"; sourceTree = "<group>"; };
 		699632AC26FCB0DE00841B6F /* Character+isUppercased.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Character+isUppercased.swift"; sourceTree = "<group>"; };
 		699632AF26FCB1A600841B6F /* String+dropSuffix.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+dropSuffix.swift"; sourceTree = "<group>"; };
+		699812422703764E007B7024 /* IBPCollectionViewCompositionalLayoutInteroperability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IBPCollectionViewCompositionalLayoutInteroperability.swift; sourceTree = "<group>"; };
 		699AAB7D26CD5B5B001F6522 /* FeedTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewController.swift; sourceTree = "<group>"; };
 		699AAB7F26CD72AE001F6522 /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		699ABB5A25E6CA3900E388FC /* Welcome.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Welcome.storyboard; sourceTree = "<group>"; };
@@ -411,6 +414,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				696209A026FB927E00B46FE8 /* AppsFlyerLib in Frameworks */,
+				6998124027037590007B7024 /* IBPCollectionViewCompositionalLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -536,6 +540,7 @@
 				699139E826E11188004B18AA /* Alert.swift */,
 				698A7F8A26E8C7F3006C36FD /* BrandManager */,
 				6924900025504DFD00106681 /* DispatchManager.swift */,
+				6998124127037632007B7024 /* IBPCollectionViewCompositionalLayout */,
 				693D7291256BFDD700540C10 /* ItemManager.swift */,
 				699AAB7F26CD72AE001F6522 /* Logger.swift */,
 				692C940E254700FC0075BD92 /* NetworkManager.swift */,
@@ -823,6 +828,14 @@
 				69007CFC26EA7462001170D0 /* OccasionCell.swift */,
 			);
 			path = "Table Cells";
+			sourceTree = "<group>";
+		};
+		6998124127037632007B7024 /* IBPCollectionViewCompositionalLayout */ = {
+			isa = PBXGroup;
+			children = (
+				699812422703764E007B7024 /* IBPCollectionViewCompositionalLayoutInteroperability.swift */,
+			);
+			path = IBPCollectionViewCompositionalLayout;
 			sourceTree = "<group>";
 		};
 		69A252CB26CED93700630EDA /* Logger */ = {
@@ -1134,6 +1147,7 @@
 			name = "Outfit Selection";
 			packageProductDependencies = (
 				6962099F26FB927E00B46FE8 /* AppsFlyerLib */,
+				6998123F27037590007B7024 /* IBPCollectionViewCompositionalLayout */,
 			);
 			productName = "Outfit Selection";
 			productReference = 69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */;
@@ -1165,6 +1179,7 @@
 			mainGroup = 69A6F6E722BA26B7002A3B49;
 			packageReferences = (
 				6962099E26FB927E00B46FE8 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+				6998123E27037590007B7024 /* XCRemoteSwiftPackageReference "IBPCollectionViewCompositionalLayout" */,
 			);
 			productRefGroup = 69A6F6F122BA26B7002A3B49 /* Products */;
 			projectDirPath = "";
@@ -1316,6 +1331,7 @@
 				69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */,
 				6906A9AB26E6853700386267 /* CollectionNameViewController+UITextFieldDelegate.swift in Sources */,
 				69007CFB26EA7323001170D0 /* UIView+reuseId.swift in Sources */,
+				699812432703764E007B7024 /* IBPCollectionViewCompositionalLayoutInteroperability.swift in Sources */,
 				69F046F926FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift in Sources */,
 				697CCE5C26CFA47E00B69763 /* FeedItemCell.swift in Sources */,
 				691C5F4426E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift in Sources */,
@@ -1406,6 +1422,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1440,6 +1457,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1468,6 +1486,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -1502,6 +1521,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				EXCLUDED_ARCHS = "";
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -1527,9 +1547,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2021.09.24;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
-				EXCLUDED_ARCHS = arm64;
-				"EXCLUDED_ARCHS[sdk=iphoneos*]" = "";
-				"EXCLUDED_ARCHS[sdk=iphonesimulator*]" = arm64;
+				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1606,6 +1624,14 @@
 				minimumVersion = 6.4.0;
 			};
 		};
+		6998123E27037590007B7024 /* XCRemoteSwiftPackageReference "IBPCollectionViewCompositionalLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/IBPCollectionViewCompositionalLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.6.9;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1613,6 +1639,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6962099E26FB927E00B46FE8 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
 			productName = AppsFlyerLib;
+		};
+		6998123F27037590007B7024 /* IBPCollectionViewCompositionalLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6998123E27037590007B7024 /* XCRemoteSwiftPackageReference "IBPCollectionViewCompositionalLayout" */;
+			productName = IBPCollectionViewCompositionalLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
