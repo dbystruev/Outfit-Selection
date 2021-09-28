@@ -18,7 +18,7 @@ extension FeedItemViewController: UICollectionViewDataSource {
         let itemCell: FeedItemCollectionViewCell = {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedItemCollectionViewCell.reuseId, for: indexPath)
             guard let itemCell = cell as? FeedItemCollectionViewCell else {
-                debug("WARNING: Can't dequeue cell with id \(FeedItemCollectionViewCell.reuseId)")
+                debug("WARNING: Can't cast \(FeedItemCollectionViewCell.reuseId) as \(FeedItemCollectionViewCell.self)")
                 let itemCell = FeedItemCollectionViewCell()
                 return itemCell
             }

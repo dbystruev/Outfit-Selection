@@ -37,8 +37,8 @@ class ProfileViewController: LoggingViewController {
         // Setup profile collection view
         profileCollectionView.dataSource = self
         profileCollectionView.delegate = self
-        profileCollectionView.register(BrandCell.nib, forCellWithReuseIdentifier: BrandCell.reuseId)
-        profileCollectionView.register(GenderCell.nib, forCellWithReuseIdentifier: GenderCell.reuseId)
+        profileCollectionView.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
+        profileCollectionView.register(GenderCollectionViewCell.nib, forCellWithReuseIdentifier: GenderCollectionViewCell.reuseId)
         profileCollectionView.register(ProfileSectionHeaderView.nib,
                                        forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                        withReuseIdentifier: ProfileSectionHeaderView.reuseId)

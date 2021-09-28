@@ -35,15 +35,13 @@ extension FeedTableViewController: UITableViewDataSource {
                     debug("\(cellData.title) items: \(cellData.items.count), \(round(1 / elapsedTime)) FPS")
                 }
                 
-                DispatchQueue.main.async {
-                    feedCell.configureContent(
-                        for: cellData.kind,
-                           title: cellData.title,
-                           brandNames: self.selectedBrandNames,
-                           items: cellData.items,
-                           isInteractive: isInteractive
-                    )
-                }
+                feedCell.configureContent(
+                    for: cellData.kind,
+                       title: cellData.title,
+                       brandNames: self.selectedBrandNames,
+                       items: cellData.items,
+                       isInteractive: isInteractive
+                )
                 return feedCell
             }
             

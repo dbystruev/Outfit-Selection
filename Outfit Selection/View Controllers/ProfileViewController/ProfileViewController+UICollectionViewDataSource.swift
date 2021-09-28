@@ -23,12 +23,12 @@ extension ProfileViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             // Section 0 is gender - configure gender cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenderCell.reuseId, for: indexPath)
-            (cell as? GenderCell)?.configure(gender: Gender.allCases[indexPath.row], selected: shownGender)
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenderCollectionViewCell.reuseId, for: indexPath)
+            (cell as? GenderCollectionViewCell)?.configure(gender: Gender.allCases[indexPath.row], selected: shownGender)
             return cell
         case 1:
             // Section 1 is brands - use brands view controller section 0 to answer
-            return brandsViewController?.collectionView(collectionView, cellForItemAt: indexPath) ?? BrandCell()
+            return brandsViewController?.collectionView(collectionView, cellForItemAt: indexPath) ?? BrandCollectionViewCell()
         default:
             debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")
             return UICollectionViewCell()

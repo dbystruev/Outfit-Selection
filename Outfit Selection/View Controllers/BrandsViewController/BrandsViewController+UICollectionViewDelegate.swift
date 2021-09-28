@@ -17,7 +17,10 @@ extension BrandsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.endEditing(true)
         
-        guard let brandCell = collectionView.cellForItem(at: indexPath) as? BrandCell else { return }
+        guard let brandCell = collectionView.cellForItem(at: indexPath) as? BrandCollectionViewCell else {
+            debug("WARNING: Can't cast cell at \(indexPath) to \(BrandCollectionViewCell.self)")
+            return
+        }
         let brandedImage = brandedImages[indexPath.row]
         
         // Toggle alpha between 0.25 and 1

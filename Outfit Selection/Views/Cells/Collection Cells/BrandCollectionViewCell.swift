@@ -1,5 +1,5 @@
 //
-//  BrandCell.swift
+//  BrandCollectionViewCell.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 27.11.2020.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BrandCell: UICollectionViewCell {
+class BrandCollectionViewCell: UICollectionViewCell {
     // MARK: - Class Properties
     /// Nib name is the same as the class name
     class var nibName: String { String(describing: Self.self) }
@@ -117,14 +117,14 @@ class BrandCell: UICollectionViewCell {
         brandImageView.image = brandedImage
         
         // Configure horizontal and vertical margin and padding around constraints
-        horizontalMarginConstraints.forEach { $0.constant = BrandCell.horizontalMargin }
-        horizontalPaddingConstraints.forEach { $0.constant = BrandCell.horizontalPadding }
-        verticalMarginConstraints.forEach { $0.constant = BrandCell.verticalMargin }
-        verticalPaddingConstraints.forEach { $0.constant = BrandCell.verticalPadding }
+        horizontalMarginConstraints.forEach { $0.constant = BrandCollectionViewCell.horizontalMargin }
+        horizontalPaddingConstraints.forEach { $0.constant = BrandCollectionViewCell.horizontalPadding }
+        verticalMarginConstraints.forEach { $0.constant = BrandCollectionViewCell.verticalMargin }
+        verticalPaddingConstraints.forEach { $0.constant = BrandCollectionViewCell.verticalPadding }
         
         // Set min brand image view height and width
-        brandImageViewHeightConstraint.constant = cellSize.height - 2 * (BrandCell.verticalMargin + BrandCell.verticalPadding)
-        brandImageViewWidthConstraint.constant = cellSize.width - 2 * (BrandCell.horizontalMargin + BrandCell.horizontalPadding)
+        brandImageViewHeightConstraint.constant = cellSize.height - 2 * (BrandCollectionViewCell.verticalMargin + BrandCollectionViewCell.verticalPadding)
+        brandImageViewWidthConstraint.constant = cellSize.width - 2 * (BrandCollectionViewCell.horizontalMargin + BrandCollectionViewCell.horizontalPadding)
         
         // Need to layout constraints before configuring cell background
         layoutIfNeeded()

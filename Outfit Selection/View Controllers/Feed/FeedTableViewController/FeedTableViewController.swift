@@ -122,11 +122,11 @@ class FeedTableViewController: LoggingViewController {
         super.viewWillAppear(animated)
         
         // Set margins and paddings for brand cell
-        savedBrandCellConstants = (BrandCell.horizontalMargin, BrandCell.horizontalPadding, BrandCell.verticalMargin, BrandCell.verticalPadding)
-        BrandCell.horizontalMargin = 0 * FeedBrandCell.designFactor
-        BrandCell.horizontalPadding = 20 * FeedBrandCell.designFactor
-        BrandCell.verticalMargin = 0 * FeedBrandCell.designFactor
-        BrandCell.verticalPadding = 20 * FeedBrandCell.designFactor
+        savedBrandCellConstants = (BrandCollectionViewCell.horizontalMargin, BrandCollectionViewCell.horizontalPadding, BrandCollectionViewCell.verticalMargin, BrandCollectionViewCell.verticalPadding)
+        BrandCollectionViewCell.horizontalMargin = 0 * FeedBrandCell.designFactor
+        BrandCollectionViewCell.horizontalPadding = 20 * FeedBrandCell.designFactor
+        BrandCollectionViewCell.verticalMargin = 0 * FeedBrandCell.designFactor
+        BrandCollectionViewCell.verticalPadding = 20 * FeedBrandCell.designFactor
         
         // Make sure like buttons are updated when we come back from see all screen
         feedTableView.visibleCells.forEach {
@@ -138,6 +138,6 @@ class FeedTableViewController: LoggingViewController {
         super.viewWillDisappear(animated)
         
         // Restore margins and paddings for brand cell
-        (BrandCell.horizontalMargin, BrandCell.horizontalPadding, BrandCell.verticalMargin, BrandCell.verticalPadding) = savedBrandCellConstants
+        (BrandCollectionViewCell.horizontalMargin, BrandCollectionViewCell.horizontalPadding, BrandCollectionViewCell.verticalMargin, BrandCollectionViewCell.verticalPadding) = savedBrandCellConstants
     }
 }

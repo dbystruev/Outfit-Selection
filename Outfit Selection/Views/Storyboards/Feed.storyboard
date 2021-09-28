@@ -147,6 +147,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="FfY-do-PKv"/>
                     <connections>
+                        <outlet property="feedCollectionView" destination="4hj-si-rCv" id="hrz-6u-GdU"/>
                         <segue destination="AyZ-Yg-HPR" kind="show" identifier="itemViewControllerSegue" id="WB9-H3-xSo"/>
                         <segue destination="sXO-jE-vg3" kind="show" identifier="feedItemViewControllerSegue" id="WMZ-89-YL3"/>
                     </connections>
@@ -168,7 +169,7 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="RdI-dW-UDm"/>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="OBE-Vt-tZn"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GO6-ud-Fr0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

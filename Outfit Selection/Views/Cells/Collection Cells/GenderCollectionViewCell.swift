@@ -1,5 +1,5 @@
 //
-//  GenderCell.swift
+//  GenderCollectionViewCell.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 28.02.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class GenderCell: UICollectionViewCell {
+class GenderCollectionViewCell: UICollectionViewCell {
     // MARK: - Class Properties
     /// Nib name is the same as the class name
     class var nibName: String { String(describing: Self.self) }

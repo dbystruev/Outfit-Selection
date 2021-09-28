@@ -15,8 +15,8 @@ extension BrandsViewController: UICollectionViewDelegateFlowLayout {
     /// - Returns: calculated cell size
     func cellSize(for collectionView: UICollectionView) -> CGSize {
         let size = collectionView.bounds.size
-        let cellWidth = floor(size.width / CGFloat(BrandCell.cellsPerRow(for: size)))
-        let cellHeight = cellWidth - 2 * (BrandCell.horizontalMargin - BrandCell.verticalMargin)
+        let cellWidth = floor(size.width / CGFloat(BrandCollectionViewCell.cellsPerRow(for: size)))
+        let cellHeight = cellWidth - 2 * (BrandCollectionViewCell.horizontalMargin - BrandCollectionViewCell.verticalMargin)
         return CGSize(width: cellWidth, height: cellHeight)
     }
     

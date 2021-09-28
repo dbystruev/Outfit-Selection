@@ -14,8 +14,8 @@ extension FeedBrandCell: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCell.reuseId, for: indexPath)
-        let brandCell = cell as? BrandCell ?? BrandCell(frame: cell.frame)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BrandCollectionViewCell.reuseId, for: indexPath)
+        let brandCell = cell as? BrandCollectionViewCell ?? BrandCollectionViewCell(frame: cell.frame)
         brandCell.configure(brandedImage: brandedImages[indexPath.row], cellSize: cellSize(for: collectionView))
         return brandCell
     }
