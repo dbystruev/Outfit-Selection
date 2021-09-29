@@ -20,6 +20,9 @@ class FeedCollectionViewController: LoggingViewController {
     /// Items for each of the kinds
     private var items: [FeedKind: [Item]] = [:]
     
+    /// Saved brand cell margins and paddings
+    var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
+    
     /// Types (kinds) for each of the section
     let sections = [
         FeedKind.brands,
@@ -64,8 +67,8 @@ class FeedCollectionViewController: LoggingViewController {
         // Define the brand group size
         let brandCount = brandedImages.count
         let brandGroupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(BrandCollectionViewCell.width * CGFloat(brandCount)),
-            heightDimension: .absolute(BrandCollectionViewCell.height)
+            widthDimension: .absolute((BrandCollectionViewCell.width + 2 * spacing) * CGFloat(brandCount)),
+            heightDimension: .absolute(BrandCollectionViewCell.height + 2 * spacing)
         )
         let brandGroup = NSCollectionLayoutGroup.horizontal(
             layoutSize: brandGroupSize,
@@ -75,7 +78,7 @@ class FeedCollectionViewController: LoggingViewController {
         brandGroup.contentInsets = NSDirectionalEdgeInsets(
             top: spacing,
             leading: spacing,
-            bottom: 0,
+            bottom: spacing,
             trailing: spacing
         )
         
@@ -96,7 +99,7 @@ class FeedCollectionViewController: LoggingViewController {
             count: itemsInSection
         )
         itemGroup.contentInsets = NSDirectionalEdgeInsets(
-            top: spacing,
+            top: 0,
             leading: spacing,
             bottom: 0,
             trailing: spacing
@@ -199,9 +202,33 @@ class FeedCollectionViewController: LoggingViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Set margins and paddings for brand cell
+        savedBrandCellConstants = (
+            BrandCollectionViewCell.horizontalMargin,
+            BrandCollectionViewCell.horizontalPadding,
+            BrandCollectionViewCell.verticalMargin,
+            BrandCollectionViewCell.verticalPadding
+        )
+        BrandCollectionViewCell.horizontalMargin = 0
+        BrandCollectionViewCell.horizontalPadding = 20
+        BrandCollectionViewCell.verticalMargin = 0
+        BrandCollectionViewCell.verticalPadding = 20
+        
         // Make sure like buttons are updated when we come back from see all screen
         feedCollectionView.visibleCells.forEach {
             ($0 as? FeedItemCollectionCell)?.configureLikeButton()
         }
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        // Restore margins and paddings for brand cell
+        (
+            BrandCollectionViewCell.horizontalMargin,
+            BrandCollectionViewCell.horizontalPadding,
+            BrandCollectionViewCell.verticalMargin,
+            BrandCollectionViewCell.verticalPadding
+        ) = savedBrandCellConstants
     }
 }
