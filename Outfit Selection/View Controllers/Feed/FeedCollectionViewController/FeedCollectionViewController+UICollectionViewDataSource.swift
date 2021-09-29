@@ -54,6 +54,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
         }
         
         feedHeader.configureContent(kind: sections[indexPath.section])
+        feedHeader.delegate = collectionView == feedCollectionView ? self : nil
         return feedHeader
     }
 }
