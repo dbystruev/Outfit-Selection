@@ -34,4 +34,26 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int { sections.count }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
+        guard kind == UICollectionView.elementKindSectionHeader else { return UICollectionReusableView() }
+        
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: FeedSectionHeaderView.reuseId,
+            for: indexPath
+        )
+        
+        guard let feedHeader = header as? FeedSectionHeaderView else {
+            debug("WARNINIG: Can't cast \(header) to \(FeedSectionHeaderView.self)")
+            return header
+        }
+        
+        feedHeader.configureContent(title: sections[indexPath.section].title)
+        return feedHeader
+    }
 }

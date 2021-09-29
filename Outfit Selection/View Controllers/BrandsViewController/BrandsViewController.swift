@@ -106,6 +106,9 @@ class BrandsViewController: LoggingViewController {
         // Configure the brands collection view
         brandsCollectionView.dataSource = self
         brandsCollectionView.delegate = self
-        brandsCollectionView.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
+        brandsCollectionView.register(
+            BrandCollectionViewCell.nib,
+            forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId
+        )
     }
 }
