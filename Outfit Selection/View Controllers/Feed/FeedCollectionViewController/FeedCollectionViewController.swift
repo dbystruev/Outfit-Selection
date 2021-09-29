@@ -142,6 +142,7 @@ class FeedCollectionViewController: LoggingViewController {
         brandedImages = BrandManager.shared.brandedImages.selectedFirst
         NetworkManager.shared.reloadItems(for: Gender.current) { success in
             guard success == true else { return }
+            self.items = [:]
             DispatchQueue.main.async {
                 self.feedCollectionView.reloadData()
             }
