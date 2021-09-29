@@ -43,8 +43,8 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Define the group size
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(120 * CGFloat(numberOfItemsInSection)),
-            heightDimension: .absolute(206)
+            widthDimension: .absolute(FeedItemCollectionViewCell.width * CGFloat(numberOfItemsInSection)),
+            heightDimension: .absolute(FeedItemCollectionViewCell.height)
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -61,7 +61,7 @@ class FeedCollectionViewController: LoggingViewController {
         // Define section header size
         let headerSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(60)
+            heightDimension: .absolute(FeedSectionHeaderView.height)
         )
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,

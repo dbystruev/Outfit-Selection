@@ -97,7 +97,9 @@ class BrandsViewController: LoggingViewController {
     func configureGoButton() {
         let brandsSelected = BrandManager.shared.selectedBrands.count
         let isEnabled = 0 < brandsSelected
-        getOutfitButton.backgroundColor = isEnabled ? Globals.Color.Button.enabled : Globals.Color.Button.disabled
+        getOutfitButton.backgroundColor = isEnabled
+            ? Globals.Color.Welcome.Button.enabled
+            : Globals.Color.Welcome.Button.disabled
         getOutfitButton.isEnabled = isEnabled
     }
     

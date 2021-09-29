@@ -9,6 +9,10 @@
 import UIKit
 
 class FeedItemCollectionViewCell: UICollectionViewCell {
+    // MARK: - Static Constants
+    static let height: CGFloat = 224
+    static let width: CGFloat = 160
+    
     // MARK: - Outlets
     var feedItem: FeedItem!
     

@@ -53,7 +53,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             return header
         }
         
-        feedHeader.configureContent(title: sections[indexPath.section].title)
+        feedHeader.configureContent(kind: sections[indexPath.section])
         return feedHeader
     }
 }

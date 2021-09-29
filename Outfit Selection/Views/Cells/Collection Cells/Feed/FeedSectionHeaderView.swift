@@ -9,7 +9,11 @@
 import UIKit
 
 class FeedSectionHeaderView: UICollectionReusableView {
+    // MARK: - Static Constants
+    static let height: CGFloat = 66
+    
     // MARK: - Outlets
+    let seeAllButton = DelegatedButton()
     let titleLabel = UILabel()
     
     // MARK: - Stored Properties
@@ -35,17 +39,37 @@ class FeedSectionHeaderView: UICollectionReusableView {
     
     // MARK: - Custom Methods
     func configureLayout() {
+        // Configure button
+        seeAllButton.addTarget(self, action: #selector(seeAllButtonTapped(_:)), for: .touchUpInside)
+        seeAllButton.setTitleColor(Globals.Color.Feed.button, for: .normal)
+        seeAllButton.titleLabel?.font = Globals.Font.Feed.button
+        seeAllButton.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(seeAllButton)
+        
+        // Configure title
+        titleLabel.textColor = Globals.Color.Feed.header
+        titleLabel.font = Globals.Font.Feed.header
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
         
         // Setup constraints
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            seeAllButton.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 24),
+            seeAllButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -24),
             titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 24),
             titleLabel.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 24)
         ])
     }
     
-    func configureContent(title: String) {
-        titleLabel.text = title
+    func configureContent(kind: FeedKind) {
+        seeAllButton.setTitle("See all", for: .normal)
+        seeAllButton.isHidden = kind == .brands
+        titleLabel.text = kind.title
+    }
+    
+    // MARK: - Actions
+    @objc func seeAllButtonTapped(_ sender: DelegatedButton) {
+        debug(self)
+        delegate?.buttonTapped(self)
     }
 }

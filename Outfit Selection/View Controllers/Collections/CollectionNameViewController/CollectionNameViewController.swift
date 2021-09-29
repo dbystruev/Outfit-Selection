@@ -69,7 +69,9 @@ class CollectionNameViewController: CollectionBaseViewController {
     /// Show `add items button` when `name text field` is not empty
     func updateUI() {
         let isEnabled = nameTextField.text?.isEmpty == false
-        addItemsButton.backgroundColor = isEnabled ? Globals.Color.Button.enabled : Globals.Color.Button.disabled
+        addItemsButton.backgroundColor = isEnabled
+            ? Globals.Color.Welcome.Button.enabled
+            : Globals.Color.Welcome.Button.disabled
         addItemsButton.isEnabled = isEnabled
     }
     
