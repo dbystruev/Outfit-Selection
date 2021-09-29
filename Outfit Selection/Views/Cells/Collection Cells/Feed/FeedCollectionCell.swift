@@ -1,5 +1,5 @@
 //
-//  FeedCollectionViewCell.swift
+//  FeedCollectionCell.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 27.08.2021.
@@ -8,13 +8,13 @@
 
 import UIKit
 
-class FeedCollectionViewCell: UICollectionViewCell {
+class FeedCollectionCell: UICollectionViewCell {
     // MARK: - Static Constants
     static let height: CGFloat = 224
     static let width: CGFloat = 160
     
     // MARK: - Outlets
-    var feedItem: FeedItem!
+    var feedItem: FeedItem?
     
     // MARK: - Static Methods
     /// Returns the number of cells to fit in one row
@@ -29,7 +29,7 @@ class FeedCollectionViewCell: UICollectionViewCell {
     /// Button delegate to send a message when something was tapped
     var delegate: ButtonDelegate? {
         didSet {
-            feedItem.delegate = delegate
+            feedItem?.delegate = delegate
         }
     }
     
@@ -78,6 +78,6 @@ class FeedCollectionViewCell: UICollectionViewCell {
     
     /// Configure the view of feed item's like button depending on item being in wish list
     func configureLikeButton() {
-        feedItem.configureLikeButton(isInteractive: true)
+        feedItem?.configureLikeButton(isInteractive: true)
     }
 }

@@ -34,6 +34,17 @@ class FeedCollectionViewController: LoggingViewController {
         // Define cell spacing
         let spacing: CGFloat = 8
         
+        // Define section header size
+        let headerSize = NSCollectionLayoutSize(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(FeedSectionHeaderView.height)
+        )
+        let header = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: headerSize,
+            elementKind: UICollectionView.elementKindSectionHeader,
+            alignment: .top
+        )
+        
         // Define the item size
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
@@ -47,42 +58,57 @@ class FeedCollectionViewController: LoggingViewController {
             trailing: spacing
         )
         
-        // Define the group size
-        let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(FeedCollectionViewCell.width * CGFloat(numberOfItemsInSection)),
-            heightDimension: .absolute(FeedCollectionViewCell.height)
+        // Define the brand group size
+        let brandCount = BrandManager.shared.brandedImages.count
+        let brandGroupSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(BrandCollectionViewCell.width * CGFloat(brandCount)),
+            heightDimension: .absolute(BrandCollectionViewCell.height)
         )
-        let group = NSCollectionLayoutGroup.horizontal(
-            layoutSize: groupSize,
+        let brandGroup = NSCollectionLayoutGroup.horizontal(
+            layoutSize: brandGroupSize,
             subitem: item,
-            count: numberOfItemsInSection
+            count: brandCount
         )
-        group.contentInsets = NSDirectionalEdgeInsets(
+        brandGroup.contentInsets = NSDirectionalEdgeInsets(
             top: spacing,
             leading: spacing,
             bottom: 0,
             trailing: spacing
         )
         
-        // Define section header size
-        let headerSize = NSCollectionLayoutSize(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(FeedSectionHeaderView.height)
+        // Define brand section size
+        let brandSection = NSCollectionLayoutSection(group: brandGroup)
+        brandSection.boundarySupplementaryItems = [header]
+        brandSection.interGroupSpacing = spacing
+        brandSection.orthogonalScrollingBehavior = .continuous
+        
+        // Define the item group size
+        let itemGroupSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(FeedCollectionCell.width * CGFloat(numberOfItemsInSection)),
+            heightDimension: .absolute(FeedCollectionCell.height)
         )
-        let header = NSCollectionLayoutBoundarySupplementaryItem(
-            layoutSize: headerSize,
-            elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top
+        let itemGroup = NSCollectionLayoutGroup.horizontal(
+            layoutSize: itemGroupSize,
+            subitem: item,
+            count: numberOfItemsInSection
+        )
+        itemGroup.contentInsets = NSDirectionalEdgeInsets(
+            top: spacing,
+            leading: spacing,
+            bottom: 0,
+            trailing: spacing
         )
         
-        // Define the section size
-        let section = NSCollectionLayoutSection(group: group)
-        section.boundarySupplementaryItems = [header]
-        section.interGroupSpacing = spacing
-        section.orthogonalScrollingBehavior = .continuous
+        // Define item section size
+        let itemSection = NSCollectionLayoutSection(group: itemGroup)
+        itemSection.boundarySupplementaryItems = [header]
+        itemSection.interGroupSpacing = spacing
+        itemSection.orthogonalScrollingBehavior = .continuous
         
         // Define the layout size
-        let layout = UICollectionViewCompositionalLayout(section: section)
+        let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
+            sectionIndex == 0 ? brandSection : itemSection
+        }
         
         return layout
     }
@@ -152,8 +178,8 @@ class FeedCollectionViewController: LoggingViewController {
         // Register collection view cells and header
         feedCollectionView.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
         feedCollectionView.register(
-            FeedCollectionViewCell.self,
-            forCellWithReuseIdentifier: FeedCollectionViewCell.reuseId
+            FeedCollectionCell.self,
+            forCellWithReuseIdentifier: FeedCollectionCell.reuseId
         )
         feedCollectionView.register(
             FeedSectionHeaderView.self,
@@ -172,7 +198,7 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Make sure like buttons are updated when we come back from see all screen
         feedCollectionView.visibleCells.forEach {
-            ($0 as? FeedCollectionViewCell)?.configureLikeButton()
+            ($0 as? FeedCollectionCell)?.configureLikeButton()
         }
     }
 }

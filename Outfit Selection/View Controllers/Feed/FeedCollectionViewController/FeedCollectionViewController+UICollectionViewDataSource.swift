@@ -11,12 +11,12 @@ import UIKit
 extension FeedCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: FeedCollectionViewCell.reuseId,
+            withReuseIdentifier: FeedCollectionCell.reuseId,
             for: indexPath
         )
         
-        guard let itemCell = cell as? FeedCollectionViewCell else {
-            debug("WARNING: Can't cast \(cell) to \(FeedCollectionViewCell.self)")
+        guard let itemCell = cell as? FeedCollectionCell else {
+            debug("WARNING: Can't cast \(cell) to \(FeedCollectionCell.self)")
             return cell
         }
         

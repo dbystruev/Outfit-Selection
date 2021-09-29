@@ -14,6 +14,10 @@ class BrandCollectionViewCell: UICollectionViewCell {
     class var nibName: String { String(describing: Self.self) }
     
     // MARK: - Static Properties
+    static let height: CGFloat = 98
+    static let width: CGFloat = 98
+    
+    
     /// Horizontal margin between brand image view container and the cell
     static var horizontalMargin: CGFloat = 12 {
         didSet {
