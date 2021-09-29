@@ -36,3 +36,4 @@ enum FeedKind {
 }
 
 extension FeedKind: Equatable {}
+extension FeedKind: Hashable {}

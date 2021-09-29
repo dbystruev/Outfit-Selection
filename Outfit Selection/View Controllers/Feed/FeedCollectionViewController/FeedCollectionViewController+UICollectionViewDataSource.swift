@@ -20,9 +20,10 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             return cell
         }
         
+        let kind = sections[indexPath.section]
         itemCell.configureContent(
-            kind: sections[indexPath.section],
-            item: Item.all.randomElement()!.value,
+            kind: kind,
+            item: items(for: kind)[indexPath.item],
             isInteractive: true
         )
         

@@ -62,6 +62,7 @@ class FeedSectionHeaderView: UICollectionReusableView {
     }
     
     func configureContent(kind: FeedKind) {
+        self.kind = kind
         seeAllButton.setTitle("See all", for: .normal)
         seeAllButton.isHidden = kind == .brands
         titleLabel.text = kind.title
@@ -69,7 +70,6 @@ class FeedSectionHeaderView: UICollectionReusableView {
     
     // MARK: - Actions
     @objc func seeAllButtonTapped(_ sender: DelegatedButton) {
-        debug(self)
         delegate?.buttonTapped(self)
     }
 }
