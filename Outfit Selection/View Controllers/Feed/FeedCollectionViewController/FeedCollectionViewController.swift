@@ -15,7 +15,7 @@ class FeedCollectionViewController: LoggingViewController {
     
     // MARK: - Stored Properties
     /// The collection of branded images
-    let brandedImages = BrandManager.shared.brandedImages.selectedFirst
+    var brandedImages = BrandManager.shared.brandedImages.selectedFirst
     
     /// Items for each of the kinds
     private var items: [FeedKind: [Item]] = [:]
@@ -100,9 +100,9 @@ class FeedCollectionViewController: LoggingViewController {
         )
         itemGroup.contentInsets = NSDirectionalEdgeInsets(
             top: 0,
-            leading: spacing,
+            leading: 0,
             bottom: 0,
-            trailing: spacing
+            trailing: 0
         )
         
         // Define item section size
@@ -134,6 +134,18 @@ class FeedCollectionViewController: LoggingViewController {
         }
         self.items[kind] = items
         return items
+    }
+    
+    /// Reload data in feed collection view, putting brand name to the beginning if it is not nil
+    /// - Parameter brandName: brand name, nil be default
+    func reloadDataOnBrandChange() {
+        brandedImages = BrandManager.shared.brandedImages.selectedFirst
+        NetworkManager.shared.reloadItems(for: Gender.current) { success in
+            guard success == true else { return }
+            DispatchQueue.main.async {
+                self.feedCollectionView.reloadData()
+            }
+        }
     }
     
     // MARK: - UIViewController Inherited Methods
@@ -180,6 +192,7 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Set self as data source for the feed collection view
         feedCollectionView.dataSource = self
+        feedCollectionView.delegate = self
         
         // Register collection view cells and header
         feedCollectionView.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
