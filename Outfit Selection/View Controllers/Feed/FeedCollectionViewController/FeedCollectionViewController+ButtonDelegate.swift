@@ -8,12 +8,18 @@
 
 extension FeedCollectionViewController: ButtonDelegate {
     func buttonTapped(_ sender: Any) {
-        guard let feedHeader = sender as? FeedSectionHeaderView else {
-            debug("WARNING: Can't cast \(sender) to \(FeedSectionHeaderView.self)")
+        // Check if `see all` button was tapped in the feed section header
+        if let feedHeader = sender as? FeedSectionHeaderView {
+            performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: feedHeader)
             return
         }
         
-        // `see all` button was tapped in the feed item cell
-        performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: feedHeader)
+        // Check if feed item cell was tapped
+        if let feedItem = sender as? FeedItem {
+            performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: feedItem)
+            return
+        }
+        
+        debug("WARNING: Can't cast \(sender) to \(FeedSectionHeaderView.self)")
     }
 }

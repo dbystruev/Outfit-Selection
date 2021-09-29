@@ -15,7 +15,7 @@ extension FeedKind: CustomStringConvertible {
         case .newItems:
             return ".newItems"
         case .occasions(let occasion):
-            return ".occasions(\(occasion)"
+            return ".occasions(\(occasion))"
         case .sale:
             return ".sale"
         }
