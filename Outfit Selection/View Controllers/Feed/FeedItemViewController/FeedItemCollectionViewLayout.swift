@@ -19,7 +19,7 @@ class FeedItemCollectionViewLayout: UICollectionViewFlowLayout {
         guard let collectionView = collectionView else { return }
         
         let availableWidth = collectionView.bounds.inset(by: collectionView.layoutMargins).width
-        let maxNumColumns = FeedItemCollectionViewCell.cellsPerRow(for: sizeViewWillTransitionTo ?? collectionView.bounds.size)
+        let maxNumColumns = FeedCollectionViewCell.cellsPerRow(for: sizeViewWillTransitionTo ?? collectionView.bounds.size)
         minimumInteritemSpacing = 16
         let cellWidth = (availableWidth / CGFloat(maxNumColumns) - minimumInteritemSpacing).rounded(.down)
         let cellHeight = 217 * cellWidth / 155

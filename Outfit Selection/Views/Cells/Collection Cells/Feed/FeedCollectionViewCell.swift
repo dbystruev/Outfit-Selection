@@ -1,5 +1,5 @@
 //
-//  FeedItemCollectionViewCell.swift
+//  FeedCollectionViewCell.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 27.08.2021.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedItemCollectionViewCell: UICollectionViewCell {
+class FeedCollectionViewCell: UICollectionViewCell {
     // MARK: - Static Constants
     static let height: CGFloat = 224
     static let width: CGFloat = 160

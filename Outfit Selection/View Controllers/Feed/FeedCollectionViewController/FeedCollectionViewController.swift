@@ -49,8 +49,8 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Define the group size
         let groupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(FeedItemCollectionViewCell.width * CGFloat(numberOfItemsInSection)),
-            heightDimension: .absolute(FeedItemCollectionViewCell.height)
+            widthDimension: .absolute(FeedCollectionViewCell.width * CGFloat(numberOfItemsInSection)),
+            heightDimension: .absolute(FeedCollectionViewCell.height)
         )
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
@@ -152,8 +152,8 @@ class FeedCollectionViewController: LoggingViewController {
         // Register collection view cells and header
         feedCollectionView.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
         feedCollectionView.register(
-            FeedItemCollectionViewCell.self,
-            forCellWithReuseIdentifier: FeedItemCollectionViewCell.reuseId
+            FeedCollectionViewCell.self,
+            forCellWithReuseIdentifier: FeedCollectionViewCell.reuseId
         )
         feedCollectionView.register(
             FeedSectionHeaderView.self,
@@ -172,7 +172,7 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Make sure like buttons are updated when we come back from see all screen
         feedCollectionView.visibleCells.forEach {
-            ($0 as? FeedItemCollectionViewCell)?.configureLikeButton()
+            ($0 as? FeedCollectionViewCell)?.configureLikeButton()
         }
     }
 }

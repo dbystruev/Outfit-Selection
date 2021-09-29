@@ -11,12 +11,12 @@ import UIKit
 extension FeedCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: FeedItemCollectionViewCell.reuseId,
+            withReuseIdentifier: FeedCollectionViewCell.reuseId,
             for: indexPath
         )
         
-        guard let itemCell = cell as? FeedItemCollectionViewCell else {
-            debug("WARNING: Can't cast \(cell) to \(FeedItemCollectionViewCell.self)")
+        guard let itemCell = cell as? FeedCollectionViewCell else {
+            debug("WARNING: Can't cast \(cell) to \(FeedCollectionViewCell.self)")
             return cell
         }
         
@@ -27,6 +27,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             isInteractive: true
         )
         
+        itemCell.delegate = self
         return itemCell
     }
     
@@ -55,7 +56,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
         }
         
         feedHeader.configureContent(kind: sections[indexPath.section])
-        feedHeader.delegate = collectionView == feedCollectionView ? self : nil
+        feedHeader.delegate = self
         return feedHeader
     }
 }

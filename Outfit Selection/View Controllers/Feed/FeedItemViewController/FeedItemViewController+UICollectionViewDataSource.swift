@@ -15,14 +15,14 @@ extension FeedItemViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Dequeue or create feed item collection view cell
-        let itemCell: FeedItemCollectionViewCell = {
+        let itemCell: FeedCollectionViewCell = {
             let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: FeedItemCollectionViewCell.reuseId,
+                withReuseIdentifier: FeedCollectionViewCell.reuseId,
                 for: indexPath
             )
-            guard let itemCell = cell as? FeedItemCollectionViewCell else {
-                debug("WARNING: Can't cast \(cell) as \(FeedItemCollectionViewCell.self)")
-                let itemCell = FeedItemCollectionViewCell()
+            guard let itemCell = cell as? FeedCollectionViewCell else {
+                debug("WARNING: Can't cast \(cell) as \(FeedCollectionViewCell.self)")
+                let itemCell = FeedCollectionViewCell()
                 return itemCell
             }
             return itemCell
