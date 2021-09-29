@@ -18,10 +18,10 @@ enum Globals {
         enum Welcome {
             enum Button {
                 /// Disabled grey button
-                static let disabled = UIColor(red: 0.88, green: 0.88, blue: 0.88, alpha: 1)
+                static let disabled = UIColor.gray
                 
-                /// Enabled blue button
-                static let enabled = UIColor(red: 0.455, green: 0.541, blue: 0.518, alpha: 1)
+                /// Enabled black button
+                static let enabled = UIColor.black
             }
         }
     }

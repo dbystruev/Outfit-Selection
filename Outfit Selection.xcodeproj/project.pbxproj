@@ -1604,7 +1604,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.5.9;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.concept;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -1632,7 +1632,7 @@
 				);
 				MARKETING_VERSION = 0.5.9;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.concept;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
