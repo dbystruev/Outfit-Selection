@@ -166,4 +166,13 @@ class FeedCollectionViewController: LoggingViewController {
         
         debug("DEBUG: \(sections.count) item groups: \(sections)")
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        // Make sure like buttons are updated when we come back from see all screen
+        feedCollectionView.visibleCells.forEach {
+            ($0 as? FeedItemCollectionViewCell)?.configureLikeButton()
+        }
+    }
 }
