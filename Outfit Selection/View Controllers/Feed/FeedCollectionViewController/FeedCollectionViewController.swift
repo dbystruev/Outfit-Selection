@@ -25,12 +25,21 @@ class FeedCollectionViewController: LoggingViewController {
     /// Compose layout for feed collection view
     /// - Returns: collection view layout for feed collection view
     private func generateLayout() -> UICollectionViewLayout {
-        // Deifine the item size
+        // Define cell spacing
+        let spacing: CGFloat = 8
+        
+        // Define the item size
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: .fractionalHeight(1)
         )
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = NSDirectionalEdgeInsets(
+            top: 0,
+            leading: spacing,
+            bottom: 0,
+            trailing: spacing
+        )
         
         // Define the group size
         let groupSize = NSCollectionLayoutSize(
@@ -42,9 +51,17 @@ class FeedCollectionViewController: LoggingViewController {
             subitem: item,
             count: numberOfItemsInSection
         )
+        group.contentInsets = NSDirectionalEdgeInsets(
+            top: spacing,
+            leading: spacing,
+            bottom: 0,
+            trailing: spacing
+        )
         
         // Define the section and layout sizes
         let section = NSCollectionLayoutSection(group: group)
+        section.interGroupSpacing = spacing
+        section.orthogonalScrollingBehavior = .continuous
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
