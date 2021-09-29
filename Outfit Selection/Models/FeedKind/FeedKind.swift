@@ -7,25 +7,32 @@
 //
 
 /// There are 3 kinds of feed cell so far
-enum FeedKind: String, CaseIterable, CustomStringConvertible {
+enum FeedKind {
+    // MARK: - Computed Static Properties
+    static var primary: [FeedKind] {
+        [.brands, .newItems, .sale]
+    }
+    
+    // MARK: - Enum
     case brands
     case newItems
-    case occasions
+    case occasions(String)
     case sale
     
-    // CustomStringConvertible
-    var description: String { rawValue }
-    
+    // MARK: - Computed Properties
+    /// Title in feed collection section
     var title: String {
         switch self {
         case .brands:
             return "Favorite brands"
         case .newItems:
             return "New items for you"
-        case .occasions:
-            return "Occasions"
+        case .occasions(let occasion):
+            return "Occasion: \(occasion)"
         case .sale:
             return "Sales"
         }
     }
 }
+
+extension FeedKind: Equatable {}

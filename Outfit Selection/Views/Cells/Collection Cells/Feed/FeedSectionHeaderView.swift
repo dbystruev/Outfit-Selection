@@ -20,7 +20,7 @@ class FeedSectionHeaderView: UICollectionReusableView {
     /// Delegate to call when something inside is tapped (for use in child classes)
     var delegate: ButtonDelegate?
 
-    /// Kind of this cell
+    /// Kind of this section
     var kind: FeedKind = .sale
     
     // MARK: - Computed Properties

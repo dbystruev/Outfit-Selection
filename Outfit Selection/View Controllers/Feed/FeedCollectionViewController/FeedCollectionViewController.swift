@@ -17,7 +17,7 @@ class FeedCollectionViewController: LoggingViewController {
         FeedKind.brands,
         FeedKind.newItems,
         FeedKind.sale,
-    ] + Occasion.selectedNames.map { _ in .occasions }
+    ] + Occasion.selectedNames.map { .occasions($0) }
         
     let numberOfItemsInSection = 42
     

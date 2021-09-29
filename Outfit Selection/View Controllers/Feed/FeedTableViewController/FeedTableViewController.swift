@@ -100,7 +100,7 @@ class FeedTableViewController: LoggingViewController {
         super.viewDidLoad()
         
         // Register cells, set data source and delegate for a feed table view
-        setup(feedTableView, kinds: FeedKind.allCases.filter { $0 != .occasions })
+        setup(feedTableView, kinds: FeedKind.primary)
         
         // Go through the list of seleced occasions and add them to feed table view
         Occasion.selected.forEach {
@@ -114,7 +114,7 @@ class FeedTableViewController: LoggingViewController {
             let items = Array(shuffledItems[..<numberOfItems])
             
             // Append the occasion to the list of cells
-            cellDatas.append((kind: .occasions, title: "Occasion: \($0.name)", items: items))
+            cellDatas.append((kind: .occasions($0.name), title: "Occasion: \($0.name)", items: items))
         }
     }
     
