@@ -16,7 +16,7 @@ class BrandCollectionViewCell: UICollectionViewCell {
     // MARK: - Static Properties
     static let height: CGFloat = 98
     static let width: CGFloat = 98
-    
+    static let size = CGSize(width: width, height: height)
     
     /// Horizontal margin between brand image view container and the cell
     static var horizontalMargin: CGFloat = 12 {

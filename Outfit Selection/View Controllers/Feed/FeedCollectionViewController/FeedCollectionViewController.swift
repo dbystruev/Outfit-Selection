@@ -14,6 +14,9 @@ class FeedCollectionViewController: LoggingViewController {
     @IBOutlet weak var feedCollectionView: UICollectionView!
     
     // MARK: - Stored Properties
+    /// The collection of branded images
+    let brandedImages = BrandManager.shared.brandedImages.selectedFirst
+    
     /// Items for each of the kinds
     private var items: [FeedKind: [Item]] = [:]
     
@@ -25,7 +28,7 @@ class FeedCollectionViewController: LoggingViewController {
     ] + Occasion.selectedNames.map { .occasions($0) }
     
     /// The number of items in each section
-    let numberOfItemsInSection = 42
+    let itemsInSection = 42
     
     // MARK: - Custom Methods
     /// Compose layout for feed collection view
@@ -59,7 +62,7 @@ class FeedCollectionViewController: LoggingViewController {
         )
         
         // Define the brand group size
-        let brandCount = BrandManager.shared.brandedImages.count
+        let brandCount = brandedImages.count
         let brandGroupSize = NSCollectionLayoutSize(
             widthDimension: .absolute(BrandCollectionViewCell.width * CGFloat(brandCount)),
             heightDimension: .absolute(BrandCollectionViewCell.height)
@@ -84,13 +87,13 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Define the item group size
         let itemGroupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(FeedCollectionCell.width * CGFloat(numberOfItemsInSection)),
-            heightDimension: .absolute(FeedCollectionCell.height)
+            widthDimension: .absolute(FeedItemCollectionCell.width * CGFloat(itemsInSection)),
+            heightDimension: .absolute(FeedItemCollectionCell.height)
         )
         let itemGroup = NSCollectionLayoutGroup.horizontal(
             layoutSize: itemGroupSize,
             subitem: item,
-            count: numberOfItemsInSection
+            count: itemsInSection
         )
         itemGroup.contentInsets = NSDirectionalEdgeInsets(
             top: spacing,
@@ -122,7 +125,7 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Compose the list of items for section
         var items: [Item] = []
-        for _ in 0 ..< numberOfItemsInSection {
+        for _ in 0 ..< itemsInSection {
             guard let item = Item.all.randomElement()?.value else { return items }
             items.append(item)
         }
@@ -178,8 +181,8 @@ class FeedCollectionViewController: LoggingViewController {
         // Register collection view cells and header
         feedCollectionView.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
         feedCollectionView.register(
-            FeedCollectionCell.self,
-            forCellWithReuseIdentifier: FeedCollectionCell.reuseId
+            FeedItemCollectionCell.self,
+            forCellWithReuseIdentifier: FeedItemCollectionCell.reuseId
         )
         feedCollectionView.register(
             FeedSectionHeaderView.self,
@@ -198,7 +201,7 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Make sure like buttons are updated when we come back from see all screen
         feedCollectionView.visibleCells.forEach {
-            ($0 as? FeedCollectionCell)?.configureLikeButton()
+            ($0 as? FeedItemCollectionCell)?.configureLikeButton()
         }
     }
 }

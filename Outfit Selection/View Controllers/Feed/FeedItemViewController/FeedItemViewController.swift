@@ -33,8 +33,8 @@ class FeedItemViewController: LoggingViewController {
         
         // Register feed item collection view cell for dequeue
         itemCollectionView.register(
-            FeedCollectionCell.self,
-            forCellWithReuseIdentifier: FeedCollectionCell.reuseId
+            FeedItemCollectionCell.self,
+            forCellWithReuseIdentifier: FeedItemCollectionCell.reuseId
         )
         
         // Use self as source for data
@@ -52,7 +52,7 @@ class FeedItemViewController: LoggingViewController {
         
         // Make sure like buttons are updated when we come back from item screen
         itemCollectionView.visibleCells.forEach {
-            ($0 as? FeedCollectionCell)?.configureLikeButton()
+            ($0 as? FeedItemCollectionCell)?.configureLikeButton()
         }
     }
 

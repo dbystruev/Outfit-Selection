@@ -10,29 +10,48 @@ import UIKit
 
 extension FeedCollectionViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: FeedCollectionCell.reuseId,
-            for: indexPath
-        )
+        switch sections[indexPath.section] {
         
-        guard let itemCell = cell as? FeedCollectionCell else {
-            debug("WARNING: Can't cast \(cell) to \(FeedCollectionCell.self)")
-            return cell
+        case .brands:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: BrandCollectionViewCell.reuseId,
+                for: indexPath
+            )
+            
+            guard let brandCell = cell as? BrandCollectionViewCell else {
+                debug("WARNING: Can't cast \(cell) to \(BrandCollectionViewCell.self)")
+                return cell
+            }
+            
+            brandCell.configure(brandedImage: brandedImages[indexPath.item], cellSize: BrandCollectionViewCell.size)
+            return brandCell
+            
+        default:
+            let cell = collectionView.dequeueReusableCell(
+                withReuseIdentifier: FeedItemCollectionCell.reuseId,
+                for: indexPath
+            )
+            
+            guard let itemCell = cell as? FeedItemCollectionCell else {
+                debug("WARNING: Can't cast \(cell) to \(FeedItemCollectionCell.self)")
+                return cell
+            }
+            
+            let kind = sections[indexPath.section]
+            itemCell.configureContent(
+                kind: kind,
+                item: items(for: kind)[indexPath.item],
+                isInteractive: true
+            )
+            
+            itemCell.delegate = self
+            return itemCell
         }
         
-        let kind = sections[indexPath.section]
-        itemCell.configureContent(
-            kind: kind,
-            item: items(for: kind)[indexPath.item],
-            isInteractive: true
-        )
-        
-        itemCell.delegate = self
-        return itemCell
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        numberOfItemsInSection
+        sections[section] == .brands ? brandedImages.count : itemsInSection
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int { sections.count }
