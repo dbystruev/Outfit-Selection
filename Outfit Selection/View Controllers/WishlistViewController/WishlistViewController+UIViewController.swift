@@ -64,10 +64,12 @@ extension WishlistViewController {
         navigationController?.configureFont()
         
         // Register cells, set data source and delegate for collections table view
-        feedController.setup(collectionsTableView, kinds: [])
-        feedController.cellDatas.append(contentsOf: Collection.collections.map {
-            (kind: .occasions($0.name), title: $0.name, items: $0.items)
-        })
+        feedController.setup(collectionsCollectionView)
+        
+        // Fill feed controller with collections and items
+        Collection.collections.forEach { collection in
+            feedController.add(items: collection.items, to: .occasions(collection.name))
+        }
         
         // Set data source and delegate for wish list collection view
         wishlistCollectionView.dataSource = self

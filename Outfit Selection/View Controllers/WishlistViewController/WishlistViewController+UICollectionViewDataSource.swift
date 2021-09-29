@@ -19,15 +19,12 @@ extension WishlistViewController: UICollectionViewDataSource {
         }
         let cell = wishlistCollectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
         
-        // If we are not serving for ourselves, use self as button delegate
-        let delegate = collectionView == wishlistCollectionView ? nil : self
-        
         // Configure an item or an outfit
         let wishlistItem = wishlist[indexPath.row]
         if let itemCell = cell as? WishlistItemCell, let item = wishlistItem.item {
-            itemCell.configure(with: item, delegate: delegate)
+            itemCell.configure(with: item, delegate: self)
         } else if let outfitCell = cell as? WishlistOutfitCell {
-            outfitCell.configure(with: wishlistItem, delegate: delegate)
+            outfitCell.configure(with: wishlistItem, delegate: self)
         } else {
             debug("WARNING: Can't convert wishlist item to an item or outfit cell")
         }

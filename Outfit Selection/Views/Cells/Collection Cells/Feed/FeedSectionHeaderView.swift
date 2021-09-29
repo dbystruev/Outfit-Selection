@@ -12,6 +12,19 @@ class FeedSectionHeaderView: UICollectionReusableView {
     // MARK: - Static Constants
     static let height: CGFloat = 66
     
+    // MARK: - Class Methods
+    /// Registers the header view with the collection view
+    /// - Parameter collectionView: the collection view to register with
+    /// - Returns: (optional) returns cell identifier
+    @discardableResult class func register(with collectionView: UICollectionView?) -> String {
+        collectionView?.register(
+            Self.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: reuseId
+        )
+        return reuseId
+    }
+    
     // MARK: - Outlets
     let seeAllButton = DelegatedButton()
     let titleLabel = UILabel()

@@ -28,7 +28,7 @@ enum FeedKind {
         case .newItems:
             return "New items for you"
         case .occasions(let occasion):
-            return "Occasion: \(occasion)"
+            return occasion
         case .sale:
             return "Sales"
         }

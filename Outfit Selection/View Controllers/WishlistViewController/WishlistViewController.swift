@@ -11,7 +11,7 @@ import UIKit
 class WishlistViewController: LoggingViewController {
     // MARK: - Outlets
     @IBOutlet weak var collectionsButton: UIButton!
-    @IBOutlet weak var collectionsTableView: UITableView!
+    @IBOutlet weak var collectionsCollectionView: UICollectionView!
     @IBOutlet weak var collectionsUnderline: UIView!
     @IBOutlet var createCollectionButton: UIBarButtonItem! // strong in order to add / delete
     @IBOutlet weak var itemsButton: UIButton!
@@ -64,8 +64,8 @@ class WishlistViewController: LoggingViewController {
     /// Number of cells to show per row: 2 for vertical and 4 for horizontal orientations
     var cellsPerRow = 2
     
-    /// Feed view controller used as data source and table delegate for collection table view
-    let feedController = FeedTableViewController()
+    /// Feed view controller used as data source and delegate for collections collection view
+    let feedController = FeedCollectionViewController()
     
     /// Contains the currently selected tab: collections, items, or outfits
     var tabSelected: WishlistItem.Kind? {
@@ -89,12 +89,8 @@ class WishlistViewController: LoggingViewController {
             return
         }
         
-        // Add new collection to collection table view source
-        feedController.cellDatas.append((
-            kind: .occasions(lastCollection.name),
-            title: lastCollection.name,
-            items: lastCollection.items
-        ))
+        // Appped last collection items
+        feedController.add(items: lastCollection.items, to: .occasions(lastCollection.name))
     }
     
     /// Select the suggested tab
@@ -125,10 +121,10 @@ class WishlistViewController: LoggingViewController {
         }
         
         // Make visible and reload either collection table view or wishlist collection view
-        collectionsTableView.isHidden = tabSelected != .collection
+        collectionsCollectionView.isHidden = tabSelected != .collection
         wishlistCollectionView.isHidden = tabSelected == .collection
         if tabSelected == .collection {
-            collectionsTableView.reloadData()
+            collectionsCollectionView.reloadData()
         } else {
             wishlistCollectionView.reloadData()
         }

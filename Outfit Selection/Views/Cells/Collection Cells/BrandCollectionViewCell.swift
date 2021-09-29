@@ -49,6 +49,15 @@ class BrandCollectionViewCell: UICollectionViewCell {
         }
     }
     
+    // MARK: - Class Methods
+    /// Registers the cell with the collection view
+    /// - Parameter collectionView: the collection view to register with
+    /// - Returns: (optional) returns cell identifier
+    @discardableResult class func register(with collectionView: UICollectionView?) -> String {
+        collectionView?.register(nib, forCellWithReuseIdentifier: reuseId)
+        return reuseId
+    }
+    
     // MARK: - Static Methods
     /// Returns the number of cells to fit in one row
     /// - Parameter size: size of a view to determine landscape or portrait orientation
