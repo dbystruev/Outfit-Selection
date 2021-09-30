@@ -70,8 +70,8 @@ class CollectionNameViewController: CollectionBaseViewController {
     func updateUI() {
         let isEnabled = nameTextField.text?.isEmpty == false
         addItemsButton.backgroundColor = isEnabled
-            ? Globals.Color.Welcome.Button.enabled
-            : Globals.Color.Welcome.Button.disabled
+            ? Globals.Color.Button.enabled
+            : Globals.Color.Button.disabled
         addItemsButton.isEnabled = isEnabled
     }
     

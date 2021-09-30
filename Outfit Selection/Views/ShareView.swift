@@ -41,7 +41,10 @@ class ShareView: UIView {
     
     // MARK: - Class Functions
     class func instanceFromNib() -> ShareView {
-        nib.instantiate(withOwner: nil, options: nil)[0] as! Self
+        let shareView = nib.instantiate(withOwner: nil, options: nil)[0] as! Self
+        debug(WhiteLabel.logoShare)
+        shareView.logoImageView.image = UIImage(named: WhiteLabel.logoShare)
+        return shareView
     }
     
     // MARK: - Stored Properties

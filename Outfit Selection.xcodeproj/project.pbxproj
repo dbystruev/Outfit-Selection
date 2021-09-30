@@ -35,7 +35,6 @@
 		6906A9AE26E68C7C00386267 /* CollectionSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906A9AD26E68C7C00386267 /* CollectionSelectViewController.swift */; };
 		6906A9B026E68CEB00386267 /* CollectionBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906A9AF26E68CEB00386267 /* CollectionBaseViewController.swift */; };
 		6906A9B226E68FF400386267 /* Wishlist.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6906A9B126E68FF400386267 /* Wishlist.storyboard */; };
-		690B1F9825BEF54E000CDD51 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */; };
 		690B42B226DD7601000C683B /* WishlistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690B42B126DD7601000C683B /* WishlistButton.swift */; };
 		6910BDE4260B6D7B00A26F90 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910BDE3260B6D7B00A26F90 /* Bubble.swift */; };
 		69162D9826103EEA001C97A9 /* BrandedImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69162D9726103EEA001C97A9 /* BrandedImages.swift */; };
@@ -100,6 +99,7 @@
 		69672AE922F1D06A0053FB85 /* OutfitViewController+present.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69672AE822F1D06A0053FB85 /* OutfitViewController+present.swift */; };
 		696E875B256463160061802E /* Double+asPrice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 696E875A256463160061802E /* Double+asPrice.swift */; };
 		696E876F25647C0F0061802E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 696E876E25647C0F0061802E /* README.md */; };
+		6971232C2705F90200ED2393 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6971232B2705F90200ED2393 /* Launch Screen.storyboard */; };
 		69727EFF25E84EC000457A58 /* UINavigationController+findViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69727EFE25E84EC000457A58 /* UINavigationController+findViewController.swift */; };
 		69739EB022BA5DF80077E45D /* PinnableScrollView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69739EAF22BA5DF80077E45D /* PinnableScrollView+Extension.swift */; };
 		69739EB222BA64E40077E45D /* OutfitViewController+Gestures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69739EB122BA64E40077E45D /* OutfitViewController+Gestures.swift */; };
@@ -149,6 +149,9 @@
 		69A0C9E32704635700C49977 /* FeedCollectionViewController+ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A0C9E22704635700C49977 /* FeedCollectionViewController+ButtonDelegate.swift */; };
 		69A0C9E6270467DC00C49977 /* FeedKind+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A0C9E5270467DC00C49977 /* FeedKind+CustomStringConvertible.swift */; };
 		69A0C9E8270486A100C49977 /* FeedCollectionViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A0C9E7270486A100C49977 /* FeedCollectionViewController+UICollectionViewDelegate.swift */; };
+		69A0C9EA2705B3F200C49977 /* WhiteLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A0C9E92705B3F200C49977 /* WhiteLabel.swift */; };
+		69A0C9F42705CC2000C49977 /* Launch Screen Concept.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A0C9F22705CC2000C49977 /* Launch Screen Concept.storyboard */; };
+		69A0C9F52705CC2000C49977 /* Launch Screen Raskroi.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69A0C9F32705CC2000C49977 /* Launch Screen Raskroi.storyboard */; };
 		69A2E20526FA831B002B4046 /* WishlistItem+Encodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A2E20426FA831B002B4046 /* WishlistItem+Encodable.swift */; };
 		69A2E20726FA8EEE002B4046 /* WishlistItem+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A2E20626FA8EEE002B4046 /* WishlistItem+Equatable.swift */; };
 		69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */; };
@@ -243,7 +246,6 @@
 		6906A9AD26E68C7C00386267 /* CollectionSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSelectViewController.swift; sourceTree = "<group>"; };
 		6906A9AF26E68CEB00386267 /* CollectionBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionBaseViewController.swift; sourceTree = "<group>"; };
 		6906A9B126E68FF400386267 /* Wishlist.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Wishlist.storyboard; sourceTree = "<group>"; };
-		690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		690B42B126DD7601000C683B /* WishlistButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistButton.swift; sourceTree = "<group>"; };
 		6910BDE3260B6D7B00A26F90 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		69162D9726103EEA001C97A9 /* BrandedImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandedImages.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 		69672AE822F1D06A0053FB85 /* OutfitViewController+present.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+present.swift"; sourceTree = "<group>"; };
 		696E875A256463160061802E /* Double+asPrice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+asPrice.swift"; sourceTree = "<group>"; };
 		696E876E25647C0F0061802E /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		6971232B2705F90200ED2393 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		69727EFE25E84EC000457A58 /* UINavigationController+findViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+findViewController.swift"; sourceTree = "<group>"; };
 		69739EAF22BA5DF80077E45D /* PinnableScrollView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollView+Extension.swift"; sourceTree = "<group>"; };
 		69739EB122BA64E40077E45D /* OutfitViewController+Gestures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+Gestures.swift"; sourceTree = "<group>"; };
@@ -355,9 +358,12 @@
 		69A0C9E22704635700C49977 /* FeedCollectionViewController+ButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedCollectionViewController+ButtonDelegate.swift"; sourceTree = "<group>"; };
 		69A0C9E5270467DC00C49977 /* FeedKind+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedKind+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		69A0C9E7270486A100C49977 /* FeedCollectionViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedCollectionViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
+		69A0C9E92705B3F200C49977 /* WhiteLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhiteLabel.swift; sourceTree = "<group>"; };
+		69A0C9F22705CC2000C49977 /* Launch Screen Concept.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen Concept.storyboard"; sourceTree = "<group>"; };
+		69A0C9F32705CC2000C49977 /* Launch Screen Raskroi.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen Raskroi.storyboard"; sourceTree = "<group>"; };
 		69A2E20426FA831B002B4046 /* WishlistItem+Encodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistItem+Encodable.swift"; sourceTree = "<group>"; };
 		69A2E20626FA8EEE002B4046 /* WishlistItem+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistItem+Equatable.swift"; sourceTree = "<group>"; };
-		69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Outfit Selection.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		69A6F6F022BA26B7002A3B49 /* Get Outfit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Get Outfit.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		69A6F6F322BA26B7002A3B49 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		69A6F6F522BA26B7002A3B49 /* OutfitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OutfitViewController.swift; sourceTree = "<group>"; };
 		69A6F6F822BA26B7002A3B49 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -560,6 +566,7 @@
 				693D7291256BFDD700540C10 /* ItemManager.swift */,
 				699AAB7F26CD72AE001F6522 /* Logger.swift */,
 				692C940E254700FC0075BD92 /* NetworkManager.swift */,
+				69A0C9E92705B3F200C49977 /* WhiteLabel.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -872,6 +879,16 @@
 			path = FeedKind;
 			sourceTree = "<group>";
 		};
+		69A0C9F12705CBC300C49977 /* Launch Screen */ = {
+			isa = PBXGroup;
+			children = (
+				6971232B2705F90200ED2393 /* Launch Screen.storyboard */,
+				69A0C9F22705CC2000C49977 /* Launch Screen Concept.storyboard */,
+				69A0C9F32705CC2000C49977 /* Launch Screen Raskroi.storyboard */,
+			);
+			path = "Launch Screen";
+			sourceTree = "<group>";
+		};
 		69A252CB26CED93700630EDA /* Logger */ = {
 			isa = PBXGroup;
 			children = (
@@ -902,7 +919,7 @@
 		69A6F6F122BA26B7002A3B49 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */,
+				69A6F6F022BA26B7002A3B49 /* Get Outfit.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -951,7 +968,7 @@
 				6986612525705F45008F94CA /* BrandsViewController */,
 				6906A9A926E684E300386267 /* Collections */,
 				6976232726D76E7300504F31 /* Feed */,
-				69FBB20522F1ABC000187562 /* GenderViewController */,
+				69FBB20622F1ABE000187562 /* GenderViewController.swift */,
 				697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */,
 				69322E2D26008EEF00CAFBFA /* ItemViewController */,
 				696209A326FB969400B46FE8 /* LoggingViewController.swift */,
@@ -971,7 +988,7 @@
 			children = (
 				6906A99F26E62B4A00386267 /* Collections.storyboard */,
 				69F78DF526CBF047007843C4 /* Feed.storyboard */,
-				690B1F9725BEF54E000CDD51 /* Launch Screen.storyboard */,
+				69A0C9F12705CBC300C49977 /* Launch Screen */,
 				69A6F6F722BA26B7002A3B49 /* Main.storyboard */,
 				6906A99D26E616F600386267 /* Profile.storyboard */,
 				699ABB5A25E6CA3900E388FC /* Welcome.storyboard */,
@@ -1158,14 +1175,6 @@
 			path = OutfitViewController;
 			sourceTree = "<group>";
 		};
-		69FBB20522F1ABC000187562 /* GenderViewController */ = {
-			isa = PBXGroup;
-			children = (
-				69FBB20622F1ABE000187562 /* GenderViewController.swift */,
-			);
-			path = GenderViewController;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1187,7 +1196,7 @@
 				6998123F27037590007B7024 /* IBPCollectionViewCompositionalLayout */,
 			);
 			productName = "Outfit Selection";
-			productReference = 69A6F6F022BA26B7002A3B49 /* Outfit Selection.app */;
+			productReference = 69A6F6F022BA26B7002A3B49 /* Get Outfit.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -1240,6 +1249,7 @@
 				69535A4A25EDF6AA00E9D816 /* Screenshot10.png in Resources */,
 				69535A4C25EDF6AA00E9D816 /* Screenshot06.png in Resources */,
 				69535A4425EDF6AA00E9D816 /* Screenshot02.png in Resources */,
+				6971232C2705F90200ED2393 /* Launch Screen.storyboard in Resources */,
 				69297C6025EBC9FE00A8684E /* GenderCollectionViewCell.xib in Resources */,
 				692AF3CE260113DB00D37269 /* ShareView.xib in Resources */,
 				69535A4625EDF6AA00E9D816 /* Screenshot13.png in Resources */,
@@ -1261,12 +1271,13 @@
 				69F78DF626CBF047007843C4 /* Feed.storyboard in Resources */,
 				69535A5025EDF6AA00E9D816 /* Screenshot04.png in Resources */,
 				69C5CBFF260A1F2200DE22E6 /* NotoSans-Regular.ttf in Resources */,
+				69A0C9F42705CC2000C49977 /* Launch Screen Concept.storyboard in Resources */,
 				69535A4B25EDF6AA00E9D816 /* Screenshot07.png in Resources */,
-				690B1F9825BEF54E000CDD51 /* Launch Screen.storyboard in Resources */,
 				69C5CBF5260A1ED800DE22E6 /* NotoSans-SemiBold.ttf in Resources */,
 				69535A5125EDF6AA00E9D816 /* Screenshot05.png in Resources */,
 				69535A4E25EDF6AA00E9D816 /* Screenshot14.png in Resources */,
 				693D7286256BF1EA00540C10 /* Brands.bundle in Resources */,
+				69A0C9F52705CC2000C49977 /* Launch Screen Raskroi.storyboard in Resources */,
 				69C5CBF8260A1EF000DE22E6 /* NotoSans-Medium.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1426,6 +1437,7 @@
 				691C5F3C26E764F200DF0758 /* CGSize+CustomStringConvertible.swift in Sources */,
 				69F046FC26FDDB87002E16C0 /* BrandsCollectionView.swift in Sources */,
 				69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */,
+				69A0C9EA2705B3F200C49977 /* WhiteLabel.swift in Sources */,
 				69AB228C22BA4BE400C7FA8D /* OutfitViewController+Actions.swift in Sources */,
 				69007D0026EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift in Sources */,
 				69B539F2257F9C7A00116F98 /* UIViewController+dismissRoot.swift in Sources */,
@@ -1462,6 +1474,200 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		69A0C9ED2705C5BE00C49977 /* Concept */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen Concept";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Concept;
+		};
+		69A0C9EE2705C5BE00C49977 /* Concept */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APP_DISPLAY_NAME = "Concept Group";
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Concept";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2021.09.29;
+				DEVELOPMENT_TEAM = 8J39KF9DMS;
+				EXCLUDED_ARCHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Outfit Selection/App/Info.plist";
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LAUNCH_SCREEN = "Launch Screen Concept";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.5.9;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.concept;
+				PRODUCT_NAME = "Concept Group";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Concept;
+		};
+		69A0C9EF2705C5C900C49977 /* Raskroi */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD)";
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				EXCLUDED_ARCHS = "";
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen Raskroi";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Raskroi;
+		};
+		69A0C9F02705C5C900C49977 /* Raskroi */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				APP_DISPLAY_NAME = Raskroi;
+				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon Raskroi";
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2021.09.29;
+				DEVELOPMENT_TEAM = 8J39KF9DMS;
+				EXCLUDED_ARCHS = "";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
+				INFOPLIST_FILE = "$(SRCROOT)/Outfit Selection/App/Info.plist";
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LAUNCH_SCREEN = "Launch Screen Raskroi";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.5.9;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.raskroi;
+				PRODUCT_NAME = Raskroi;
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Raskroi;
+		};
 		69A6F70022BA26BA002A3B49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -1516,6 +1722,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
@@ -1574,6 +1782,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = NO;
+				INFOPLIST_KEY_UILaunchStoryboardName = "Launch Screen";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
@@ -1587,6 +1797,7 @@
 		69A6F70322BA26BA002A3B49 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_DISPLAY_NAME = "Get Outfit";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1598,14 +1809,16 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Outfit Selection/App/Info.plist";
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LAUNCH_SCREEN = "Launch Screen";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.5.9;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.concept;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
+				PRODUCT_NAME = "Get Outfit";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1615,6 +1828,7 @@
 		69A6F70422BA26BA002A3B49 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				APP_DISPLAY_NAME = "Get Outfit";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
@@ -1625,15 +1839,17 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Outfit Selection/App/Info.plist";
+				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
+				LAUNCH_SCREEN = "Launch Screen";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.5.9;
 				ONLY_ACTIVE_ARCH = NO;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.concept;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.release;
+				PRODUCT_NAME = "Get Outfit";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1647,6 +1863,8 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				69A6F70022BA26BA002A3B49 /* Debug */,
+				69A0C9ED2705C5BE00C49977 /* Concept */,
+				69A0C9EF2705C5C900C49977 /* Raskroi */,
 				69A6F70122BA26BA002A3B49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
@@ -1656,6 +1874,8 @@
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				69A6F70322BA26BA002A3B49 /* Debug */,
+				69A0C9EE2705C5BE00C49977 /* Concept */,
+				69A0C9F02705C5C900C49977 /* Raskroi */,
 				69A6F70422BA26BA002A3B49 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;

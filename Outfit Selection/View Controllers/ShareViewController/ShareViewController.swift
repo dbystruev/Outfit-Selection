@@ -34,7 +34,12 @@ class ShareViewController: LoggingViewController {
     /// Share view with outfit to share
     var outfitView: ShareView! {
         didSet {
-            outfitView.configureLayout(logoVisible: false, outfitBottomMargin: 8, outfitTopMargin: 8, outfitWidth: 115)
+            outfitView.configureLayout(
+                logoVisible: false,
+                outfitBottomMargin: 8,
+                outfitTopMargin: 8,
+                outfitWidth: 115
+            )
         }
     }
     

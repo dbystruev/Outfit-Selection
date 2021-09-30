@@ -7,7 +7,15 @@
 //
 
 extension String {
+    /// Returns the last part of the string split by slash character "/"
     var lastComponent: String {
-        String(split(separator: "/").last ?? "")
+        lastComponent()
+    }
+    
+    /// Returns the last part of the string split by given separating character
+    /// - Parameter separator: the character which separates the parts of the string
+    /// - Returns: the last part of the string
+    func lastComponent(separator: Character = "/") -> String {
+        String(split(separator: separator).last ?? "")
     }
 }

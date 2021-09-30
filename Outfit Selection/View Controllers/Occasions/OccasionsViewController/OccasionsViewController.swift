@@ -11,6 +11,14 @@ import UIKit
 class OccasionsViewController: LoggingViewController {
     
     // MARK: - Outlets
+    /// Go button at the bottom of the screen
+    @IBOutlet weak var nextButton: UIButton! {
+        didSet {
+            nextButton.backgroundColor = Globals.Color.Button.enabled
+        }
+    }
+    
+    /// The main table view with occasion list
     @IBOutlet weak var occasionsTableView: UITableView!
     
     // MARK: - Inherited Methods

@@ -10,5 +10,6 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder {
+    // MARK: - Stored Properties
     var window: UIWindow?
 }

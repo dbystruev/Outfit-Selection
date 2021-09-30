@@ -11,7 +11,27 @@ import UIKit
 class ProgressViewController: LoggingViewController {
     
     // MARK: - Outlets
-    @IBOutlet weak var progressView: UIProgressView!
+    /// Logo on top of progress bar
+    @IBOutlet weak var logoImageView: UIImageView! {
+        didSet {
+            logoImageView.image = UIImage(named: WhiteLabel.logo)
+        }
+    }
+    
+    /// Text `picking up the right pieces` above the progress bar
+    @IBOutlet weak var progressLabel: UILabel! {
+        didSet {
+            progressLabel.textColor = WhiteLabel.Color.Text.label
+        }
+    }
+    
+    /// The actual progress bar
+    @IBOutlet weak var progressView: UIProgressView! {
+        didSet {
+            progressView.progressTintColor = WhiteLabel.Color.Progress.progressTintColor
+            progressView.trackTintColor = WhiteLabel.Color.Progress.trackTintColor
+        }
+    }
     
     // MARK: - Stored Properties
     /// The collection of brand images
@@ -25,6 +45,11 @@ class ProgressViewController: LoggingViewController {
     override var prefersStatusBarHidden: Bool { true }
 
     // MARK: - Inherited Methods
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = WhiteLabel.Color.Background.light
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         

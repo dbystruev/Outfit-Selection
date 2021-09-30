@@ -15,14 +15,22 @@ enum Globals {
             static let header = ColorCompatibility.label // UIColor(red: 23, green: 23, blue: 23, alpha: 1)
         }
         
-        enum Welcome {
-            enum Button {
-                /// Disabled grey button
-                static let disabled = UIColor.gray
-                
-                /// Enabled black button
-                static let enabled = UIColor.black
+        /// Button Colors
+        enum Button {
+            
+            /// Gender button colors
+            enum Gender {
+                /// Title color for gender buttons
+                static let titleColor = WhiteLabel.Color.Button.Gender.titleColor
             }
+            /// Disabled color for welcome button
+            static let disabled = WhiteLabel.Color.Button.disabled
+            
+            /// Enabled color for welcome button
+            static let enabled = WhiteLabel.Color.Button.enabled
+            
+            /// Title color for buttons
+            static let titleColor = WhiteLabel.Color.Button.titleColor
         }
     }
     
@@ -34,5 +42,10 @@ enum Globals {
             /// UIFont(name: "NotoSans-SemiBold", size: 16)
             static let header = UIFont(name: "NotoSans-SemiBold", size: 16)!
         }
+    }
+    
+    enum Image {
+        /// Logo image
+        static let logo = UIImage(named: WhiteLabel.logo)!
     }
 }

@@ -15,13 +15,35 @@ class GenderViewController: LoggingViewController {
     @IBOutlet weak var buttonStackView: UIStackView!
     
     /// Label with text "Get Outfit is a personalised styling platform"
-    @IBOutlet weak var descriptionLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel! {
+        didSet {
+            descriptionLabel.text = WhiteLabel.Text.Gender.description
+            descriptionLabel.textColor = WhiteLabel.Color.Text.label
+        }
+    }
     
-    /// Final position of Get Outfit logo
-    @IBOutlet weak var logoImageView: UIImageView!
+    /// Female, male, and other buttons
+    @IBOutlet var genderButtons: [GenderButton]! {
+        didSet {
+            genderButtons.forEach {
+                $0.setTitleColor(Globals.Color.Button.Gender.titleColor, for: .normal)
+            }
+        }
+    }
     
-    /// Initial position of Get Outfit logo
-    @IBOutlet weak var startingLogoImageView: UIImageView!
+    /// Final position of logo
+    @IBOutlet weak var logoImageView: UIImageView! {
+        didSet {
+            logoImageView.image = Globals.Image.logo
+        }
+    }
+    
+    /// Initial position of logo
+    @IBOutlet weak var startingLogoImageView: UIImageView! {
+        didSet {
+            startingLogoImageView.image = Globals.Image.logo
+        }
+    }
     
     // MARK: - Stored Properties
     /// Flag which indicates if this is the first appearance of this view controller (true) or we came back from navigation stack (false)
@@ -55,6 +77,11 @@ class GenderViewController: LoggingViewController {
         guard segue.identifier == BrandsViewController.segueIdentifier else { return }
         guard let destination = segue.destination as? BrandsViewController else { return }
         destination.gender = gender
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        view.backgroundColor = WhiteLabel.Color.Background.light
     }
 
     /// Hides toolbar and navigation bar before the view is added to a view hierarchy

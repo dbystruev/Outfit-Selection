@@ -42,7 +42,14 @@ class ItemViewController: LoggingViewController {
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet var nameLabels: [UILabel]!
-    @IBOutlet weak var orderButton: UIButton!
+    
+    @IBOutlet weak var orderButton: UIButton! {
+        didSet {
+            orderButton.backgroundColor = Globals.Color.Button.enabled
+            orderButton.setTitleColor(Globals.Color.Button.titleColor, for: .normal)
+        }
+    }
+    
     @IBOutlet weak var rightLabelsStackView: UIStackView!
     @IBOutlet weak var topLabelsStackView: UIStackView!
     @IBOutlet weak var topStackView: UIStackView!

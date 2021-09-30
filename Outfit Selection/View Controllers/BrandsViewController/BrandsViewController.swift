@@ -18,7 +18,7 @@ class BrandsViewController: LoggingViewController {
     @IBOutlet weak var brandsCollectionView: BrandsCollectionView!
     
     /// Go button at the bottom of the screen
-    @IBOutlet weak var getOutfitButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton!
     
     // MARK: - Static Constants
     /// Time delay before closing search keybaord
@@ -97,10 +97,10 @@ class BrandsViewController: LoggingViewController {
     func configureGoButton() {
         let brandsSelected = BrandManager.shared.selectedBrands.count
         let isEnabled = 0 < brandsSelected
-        getOutfitButton.backgroundColor = isEnabled
-            ? Globals.Color.Welcome.Button.enabled
-            : Globals.Color.Welcome.Button.disabled
-        getOutfitButton.isEnabled = isEnabled
+        nextButton.backgroundColor = isEnabled
+            ? Globals.Color.Button.enabled
+            : Globals.Color.Button.disabled
+        nextButton.isEnabled = isEnabled
     }
     
     /// Configure brands collection view layout
