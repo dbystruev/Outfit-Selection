@@ -9,11 +9,14 @@
 import UIKit
 
 extension WishlistViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { wishlist.count }
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        let count = wishlist.count
+        return count
+    }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         // Obtain the cell from wishlist collection view
-        guard let cellId = wishlistCellId else {
+        guard let cellId = wishlistCellReuseId else {
             debug("ERROR: Can't get wishlist cell id")
             return UICollectionViewCell()
         }

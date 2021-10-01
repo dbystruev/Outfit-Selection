@@ -47,15 +47,18 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             itemCell.delegate = self
             return itemCell
         }
-        
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let kind = sections[section]
-        return kind == .brands ? brandedImages.count : items(for: kind).count
+        let count = kind == .brands ? brandedImages.count : items(for: kind).count
+        return count
     }
     
-    func numberOfSections(in collectionView: UICollectionView) -> Int { sections.count }
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        let count = sections.count
+        return count
+    }
     
     func collectionView(
         _ collectionView: UICollectionView,

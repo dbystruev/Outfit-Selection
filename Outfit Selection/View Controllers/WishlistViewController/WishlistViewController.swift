@@ -46,15 +46,15 @@ class WishlistViewController: LoggingViewController {
     }
     
     /// Either items or outfit cell depending on whether the items tab is selected
-    var wishlistCellId: String? {
+    var wishlistCellReuseId: String? {
         let kind = tabSelected ?? Wishlist.largestKind
         switch kind {
         case .collection:
-            return "collectionItemCell"
+            return FeedItemCollectionCell.reuseId
         case .item:
-            return "itemCell"
+            return WishlistItemCell.reuseId
         case .outfit:
-            return "outfitCell"
+            return WishlistOutfitCell.reuseId
         case nil:
             return nil
         }

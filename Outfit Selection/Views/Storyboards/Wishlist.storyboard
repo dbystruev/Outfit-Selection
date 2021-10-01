@@ -29,7 +29,7 @@
         <!--Wish list-->
         <scene sceneID="g4H-qc-Zga">
             <objects>
-                <viewController id="Dz6-5H-rll" customClass="WishlistViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Dz6-5H-rll" customClass="WishlistViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8s2-kM-Bbc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -136,7 +136,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="itemCell" id="sDn-Oz-EWR" customClass="WishlistItemCell" customModule="Outfit_Selection" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="wishlistItemCellReuseId" id="sDn-Oz-EWR" customClass="WishlistItemCell" customModule="Concept_Group" customModuleProvider="target">
                                         <rect key="frame" x="99" y="0.0" width="184" height="276"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="6Nb-Es-81f">
@@ -202,7 +202,7 @@
                                             <outlet property="vendorLabel" destination="d2A-HP-2lw" id="9yq-3Z-yLu"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="outfitCell" id="BLs-Zw-Z2Y" customClass="WishlistOutfitCell" customModule="Outfit_Selection" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="wishlistOutfitCellReuseId" id="BLs-Zw-Z2Y" customClass="WishlistOutfitCell" customModule="Concept_Group" customModuleProvider="target">
                                         <rect key="frame" x="99" y="292" width="184" height="276"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="5cU-Zr-chq">
@@ -375,7 +375,7 @@
         <!--Item View Controller-->
         <scene sceneID="DKu-iH-gqv">
             <objects>
-                <viewController storyboardIdentifier="itemViewController" id="893-Rv-iVe" customClass="ItemViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="itemViewController" id="893-Rv-iVe" customClass="ItemViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="XEi-hE-Ldh">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -452,7 +452,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvm-ZV-PB7">
                                                                 <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                                 <subviews>
-                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmW-tW-0Rp" userLabel="Dislike Button" customClass="WishlistButton" customModule="Outfit_Selection" customModuleProvider="target">
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmW-tW-0Rp" userLabel="Dislike Button" customClass="WishlistButton" customModule="Concept_Group" customModuleProvider="target">
                                                                         <rect key="frame" x="-6" y="-6" width="52" height="52"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="52" id="qus-lH-IlT"/>
@@ -475,7 +475,7 @@
                                                                     <constraint firstAttribute="trailing" secondItem="CmW-tW-0Rp" secondAttribute="trailing" constant="-6" id="zcZ-ar-5tb"/>
                                                                 </constraints>
                                                             </view>
-                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycc-SW-MX5" customClass="WishlistButton" customModule="Outfit_Selection" customModuleProvider="target">
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ycc-SW-MX5" customClass="WishlistButton" customModule="Concept_Group" customModuleProvider="target">
                                                                 <rect key="frame" x="52" y="0.0" width="40" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
@@ -601,7 +601,7 @@
         <!--Intermediary View Controller-->
         <scene sceneID="s3n-bu-j52">
             <objects>
-                <viewController id="C0E-kp-KJb" customClass="IntermediaryViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="C0E-kp-KJb" customClass="IntermediaryViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MrD-fC-0Wx">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

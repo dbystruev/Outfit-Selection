@@ -20,14 +20,14 @@ class FeedCollectionViewController: LoggingViewController {
     /// Items for each of the kinds
     var items: [FeedKind: [Item]] = [:]
     
+    /// The maximum number of items in each section
+    let maxItemsInSection = 42
+    
     /// Saved brand cell margins and paddings
     var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
     
     /// Types (kinds) for each of the section
     var sections: [FeedKind] = []
-    
-    /// The number of items in each section
-    let itemsInSection = 42
     
     // MARK: - Custom Methods
     /// Append items to the section of given type (kind)
@@ -35,6 +35,7 @@ class FeedCollectionViewController: LoggingViewController {
     ///   - items: items to append to the section
     ///   - section: the section type (kind) to append the items to
     func add(items: [Item], to section: FeedKind) {
+        debug(items.count, section)
         sections.append(section)
         self.items[section] = items
     }
@@ -95,13 +96,12 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Define the item group size
         let itemGroupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(FeedItemCollectionCell.width * CGFloat(itemsInSection)),
+            widthDimension: .absolute(FeedItemCollectionCell.width),
             heightDimension: .absolute(FeedItemCollectionCell.height)
         )
         let itemGroup = NSCollectionLayoutGroup.horizontal(
             layoutSize: itemGroupSize,
-            subitem: item,
-            count: itemsInSection
+            subitems: [item]
         )
         itemGroup.contentInsets = NSDirectionalEdgeInsets(
             top: 0,
@@ -133,9 +133,11 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Compose the list of items for section
         var items: [Item] = []
-        for _ in 0 ..< itemsInSection {
-            guard let item = Item.all.randomElement()?.value else { return items }
-            items.append(item)
+        var remainingItems = Item.all
+        while items.count < maxItemsInSection && 0 < remainingItems.count {
+            guard let item = remainingItems.randomElement() else { return items }
+            items.append(item.value)
+            remainingItems.removeValue(forKey: item.key)
         }
         self.items[kind] = items
         return items

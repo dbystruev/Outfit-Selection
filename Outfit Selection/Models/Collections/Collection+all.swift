@@ -15,7 +15,9 @@ extension Collection {
     static var collections: [Collection] {
         get {
             guard let gender = Gender.current else { return [] }
-            return _collections[gender] ?? []
+            let collections = _collections[gender] ?? []
+            debug(gender, collections.count, "collections, items:", collections.reduce(0) { $0 + $1.items.count })
+            return collections
         }
         set {
             guard let gender = Gender.current else { return }
