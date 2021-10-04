@@ -14,7 +14,7 @@
             <rect key="frame" x="0.0" y="0.0" width="1080" height="1080"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_share" translatesAutoresizingMaskIntoConstraints="NO" id="MMa-Uy-JXn">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="getoutfit_share" translatesAutoresizingMaskIntoConstraints="NO" id="MMa-Uy-JXn">
                     <rect key="frame" x="483" y="73" width="114" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="114" id="OiW-Z0-fsS"/>
@@ -107,6 +107,6 @@
         </view>
     </objects>
     <resources>
-        <image name="logo_share" width="114" height="22"/>
+        <image name="getoutfit_share" width="114" height="22"/>
     </resources>
 </document>

@@ -81,15 +81,18 @@ class WishlistViewController: LoggingViewController {
     // MARK: - Custom Methods
     /// Called when user finished selecting items or outfits for new collection
     func finishSelectingCollectionItems() {
-        guard let lastCollection = Collection.collections.last else { return }
-        
-        // Check if last collection is empty and remove it
-        guard !lastCollection.isEmpty else {
-            Collection.collections.removeLast()
+        guard let lastCollection = Collection.last else {
+            debug("WARNING: collections is empty")
             return
         }
         
-        // Appped last collection items
+        // Check if last collection is empty and remove it
+        guard !lastCollection.isEmpty else {
+            Collection.removeLast()
+            return
+        }
+        
+        // Append last collection items
         feedController.add(items: lastCollection.items, to: .occasions(lastCollection.name))
     }
     

@@ -50,7 +50,7 @@ extension WishlistViewController {
             destination.wishlistViewController = self
             
             // Create new collection
-            Collection.collections.append(Collection(Gender.current, collectionName))
+            Collection.append(Collection(Gender.current, collectionName))
             
         default:
             debug("WARNING: Unknown segue identifier", segue.identifier)
@@ -67,7 +67,7 @@ extension WishlistViewController {
         feedController.setup(collectionsCollectionView)
         
         // Fill feed controller with collections and items
-        Collection.collections.forEach { collection in
+        Collection.all.forEach { collection in
             feedController.add(items: collection.items, to: .occasions(collection.name))
         }
         

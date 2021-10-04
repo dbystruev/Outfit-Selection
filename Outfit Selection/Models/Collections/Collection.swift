@@ -18,8 +18,8 @@ class Collection: Codable {
     let name: String
     
     // MARK: - Computed Propeties
-    var count: Int { collectionItems.count }
     var isEmpty: Bool { collectionItems.isEmpty }
+    var itemCount: Int { collectionItems.count }
     var items: [Item] {
         collectionItems.flatMap { $0.items }
     }

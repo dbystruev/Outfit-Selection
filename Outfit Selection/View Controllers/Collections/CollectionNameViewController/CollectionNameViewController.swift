@@ -91,7 +91,10 @@ class CollectionNameViewController: CollectionBaseViewController {
         
         // Present collection select view controller
         dismiss(animated: true) {
-            self.wishlistViewController?.performSegue(withIdentifier: CollectionSelectViewController.segueIdentifier, sender: self)
+            self.wishlistViewController?.performSegue(
+                withIdentifier: CollectionSelectViewController.segueIdentifier,
+                sender: self
+            )
         }
     }
     

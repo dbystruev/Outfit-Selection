@@ -9,55 +9,52 @@
 import Foundation
 
 extension Collection {
-    /// All collections created by the user
-    private static var _collections: [Gender: [Collection]] = [:]
+    // MARK: - Static Stored Properties
+    /// Lists of collections for all genders
+    private static var genderCollections: [Gender: [Collection]] = [:]
     
-    static var collections: [Collection] {
-        get {
-            guard let gender = Gender.current else { return [] }
-            let collections = _collections[gender] ?? []
-            debug(gender, collections.count, "collections, items:", collections.reduce(0) { $0 + $1.items.count })
-            return collections
-        }
-        set {
-            guard let gender = Gender.current else { return }
-            guard _collections[gender]?.count != newValue.count else { return }
-            _collections[gender] = newValue
-            save()
-        }
-    }
-}
-
-// MARK: - User Defaults
-extension Collection {
-    // MARK: - Static Constants
-    /// User defaults key
-    static let userDefaultsKey = "GetOutfitCollectionKey"
-    
-    // MARK: - Methods
-    /// Load wishlist from user defaults
-    static func load() {
-        guard let data = UserDefaults.standard.object(forKey: userDefaultsKey) as? Data else {
-            debug("WARNING: Can't find data from user defaults for key \(userDefaultsKey)")
-            return
-        }
-        
-        guard let collections = try? PList.decoder.decode([Gender: [Collection]].self, from: data) else {
-            debug("WARNING: Can't decode \(data) from user defaults to [Collection] for key \(userDefaultsKey)")
-            return
-            
-        }
-        
-        _collections = collections
+    // MARK: - Static Computed Properties
+    /// All collections for current gender
+    static var all: [Collection] {
+        guard let gender = Gender.current else { return [] }
+        return genderCollections[gender] ?? []
     }
     
-    /// Save wishlist to user defaults
-    static func save() {
-        guard let data = try? PList.encoder.encode(_collections) else {
-            debug("WARNING: Can't encode \(_collections.count) collections for key \(userDefaultsKey)")
+    /// Last added collection for current gender
+    static var last: Collection? {
+        all.last
+    }
+    
+    // MARK: - Static Methods
+    /// Add collection for given gender
+    /// - Parameters:
+    ///   - collection: the collection to add
+    static func append(_ collection: Collection) {
+        // Save collections for all genders to user defaults when finished
+        defer { save(genderCollections) }
+        
+        // Check if collections for gender are present already
+        let gender = collection.gender
+        guard var collections = genderCollections[gender] else {
+            // If not present — create new collection list for its gender
+            genderCollections[gender] = [collection]
             return
         }
         
-        UserDefaults.standard.set(data, forKey: userDefaultsKey)
+        // If present — add new collection to existing gender
+        collections.append(collection)
+        genderCollections[gender] = collections
+    }
+    
+    /// Load all gender collections from user defaults
+    static func loadAllGenders() {
+        genderCollections = load()
+    }
+    
+    
+    /// Remove last collection for current gender
+    static func removeLast() {
+        guard let gender = Gender.current else { return }
+        genderCollections[gender]?.removeLast()
     }
 }

@@ -11,7 +11,7 @@ extension WishlistViewController: ButtonDelegate {
     /// - Parameter sender: item or outfit selected
     func buttonTapped(_ sender: Any) {
         // Get the most current collection
-        guard let lastCollection = Collection.collections.last else {
+        guard let lastCollection = Collection.last else {
             debug("WARNING: collections is empty")
             return
         }
@@ -48,7 +48,7 @@ extension WishlistViewController: ButtonDelegate {
         }
         
         // Update collection name label
-        let count = lastCollection.count
+        let count = lastCollection.itemCount
         let textCount = count == 0 ? "None" : "\(count)"
         collectionNameLabel?.text = "\(textCount) selected for \(lastCollection.name)"
     }
