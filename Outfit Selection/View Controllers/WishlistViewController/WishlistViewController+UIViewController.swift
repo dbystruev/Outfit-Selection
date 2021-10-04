@@ -14,15 +14,36 @@ extension WishlistViewController {
         switch segue.identifier {
         
         case ItemViewController.segueIdentifier:
-            guard let destination = segue.destination as? ItemViewController else { return }
-            guard let selectedIndexPath = wishlistCollectionView.indexPathsForSelectedItems?.first else { return }
-            guard let itemCell = wishlistCollectionView.cellForItem(at: selectedIndexPath) as? WishlistItemCell else { return }
-            destination.image = itemCell.pictureImageView.image
-            destination.item = wishlist[selectedIndexPath.row].item
+            // Make sure destination is item view controller
+            guard let destination = segue.destination as? ItemViewController else {
+                debug("WARNING: \(segue.destination) is not \(ItemViewController.self)")
+                return
+            }
+            
+            // If we were sent by feed item use its item and image information to configure destination
+            if let feedItem = sender as? FeedItem {
+                destination.configure(with: feedItem.item, image: feedItem.itemImageView.image)
+                return
+            }
+            
+            // Check if any cell is selected
+            guard let selectedIndexPath = wishlistCollectionView.indexPathsForSelectedItems?.first else {
+                debug("WARNING: No index path is selected in", wishlistCollectionView)
+                return
+            }
+            
+            // Check that selected cell is wishlist item cell
+            guard let itemCell = wishlistCollectionView.cellForItem(at: selectedIndexPath) as? WishlistItemCell else {
+                debug("WARNING: Can't cast cell at \(selectedIndexPath) to \(WishlistItemCell.self)")
+                return
+            }
+            
+            // Configure item view controller with given item and image
+            destination.configure(with: wishlist[selectedIndexPath.row].item, image: itemCell.pictureImageView.image)
             
         case CollectionNameViewController.segueIdentifier:
             guard let destination = segue.destination as? CollectionNameViewController else {
-                debug("WARNING: \(segue.destination) is not CollectionsViewController")
+                debug("WARNING: \(segue.destination) is not \(CollectionNameViewController.self)")
                 return
             }
             
@@ -31,12 +52,12 @@ extension WishlistViewController {
             
         case CollectionSelectViewController.segueIdentifier:
             guard let destination = segue.destination as? CollectionSelectViewController else {
-                debug("WARNING: \(segue.destination) is not CollectionSelectViewController")
+                debug("WARNING: \(segue.destination) is not \(CollectionSelectViewController.self)")
                 return
             }
             
             guard let sender = sender as? CollectionNameViewController else {
-                debug("WARNING: \(String(describing: sender)) is not CollectionNameViewController")
+                debug("WARNING: \(String(describing: sender)) is not \(CollectionNameViewController.self)")
                 return
             }
             

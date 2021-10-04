@@ -7,12 +7,18 @@
 //
 
 extension WishlistViewController: ButtonDelegate {
-    /// Called when item or outfit is selected in new collection creation
+    /// Called when item or outfit is selected in new collection creation or feed item is tapped
     /// - Parameter sender: item or outfit selected
     func buttonTapped(_ sender: Any) {
         // Get the most current collection
         guard let lastCollection = Collection.last else {
             debug("WARNING: collections are empty")
+            return
+        }
+        
+        // Check if feed item was tapped
+        if let feedItem = sender as? FeedItem {
+            performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: feedItem)
             return
         }
         
