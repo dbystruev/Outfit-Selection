@@ -83,6 +83,15 @@ class ItemViewController: LoggingViewController {
         layer.shadowRadius = 10
     }
     
+    /// Configure item view controller with given item and its image
+    /// - Parameters:
+    ///   - item: an item to configure the view controller with
+    ///   - image: an image to configure the view controller with
+    func configure(with item: Item?, image: UIImage?) {
+        self.image = image
+        self.item = item
+    }
+    
     /// Load item pictures to image view and image stack view
     func loadImages() {
         // Load the first image

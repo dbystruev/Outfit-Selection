@@ -189,29 +189,29 @@ class FeedCollectionViewController: LoggingViewController {
             }
             
             guard let feedItemViewController = segue.destination as? FeedItemViewController else {
-                debug("Can't case \(segue.destination) to \(FeedItemViewController.self)")
+                debug("Can't cast \(segue.destination) to \(FeedItemViewController.self)")
                 return
             }
             
             let kind = feedHeader.kind
-            feedItemViewController.items = items(for: kind)
-            feedItemViewController.kind = kind
-            feedItemViewController.name = feedHeader.title
+            feedItemViewController.configure(kind, with: items(for: kind), named: feedHeader.title)
             
         case ItemViewController.segueIdentifier:
+            // Make sure feed item was clicked
             guard let feedItem = sender as? FeedItem else {
                 debug("Can't cast \(String(describing: sender)) to \(FeedItem.self)")
                 return
             }
             
+            // Make sure we segue to item view controller
             guard let itemViewController = segue.destination as? ItemViewController else {
                 debug("Can't cast \(segue.destination) to \(ItemViewController.self)")
                 return
             }
             
-            itemViewController.image = feedItem.itemImageView.image
-            itemViewController.item = feedItem.item
-            
+            // Configure item view controller with feed item and its image
+            itemViewController.configure(with: feedItem.item, image: feedItem.itemImageView.image)
+
         default:
             debug("WARNING: unknown segue id \(String(describing: segue.identifier))")
         }
