@@ -7,7 +7,10 @@
 //
 
 extension WishlistViewController: ButtonDelegate {
-    /// Called when item or outfit is selected in new collection creation or feed item is tapped
+    /// Called when:
+    ///     - item or outfit is selected in new collection creation, or
+    ///     - feed item is tapped, or
+    ///     - wishlist item / outfit cell is tapped
     /// - Parameter sender: item or outfit selected
     func buttonTapped(_ sender: Any) {
         // Get the most current collection
@@ -44,6 +47,12 @@ extension WishlistViewController: ButtonDelegate {
             return
         }
         
+        // If collection name label is nil we haven't started to create a collection
+        guard let collectionNameLabel = collectionNameLabel else {
+            createCollectionButtonTapped(createCollectionButton)
+            return
+        }
+        
         // Depending on whether collection item is already present, add or remove it
         if lastCollection.contains(collectionItem) {
             lastCollection.remove(collectionItem)
@@ -56,6 +65,6 @@ extension WishlistViewController: ButtonDelegate {
         // Update collection name label
         let count = lastCollection.itemCount
         let textCount = count == 0 ? "None" : "\(count)"
-        collectionNameLabel?.text = "\(textCount) selected for \(lastCollection.name)"
+        collectionNameLabel.text = "\(textCount) selected for \(lastCollection.name)"
     }
 }
