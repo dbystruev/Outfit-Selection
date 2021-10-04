@@ -27,6 +27,18 @@ class FeedItemViewController: LoggingViewController {
     /// Name of the feed
     var name: String?
     
+    // MARK: - Custom Methods
+    /// Configure with feed collection view controller
+    /// - Parameters:
+    ///   - kind: feed item collection type (kind)
+    ///   - items: the list of included items
+    ///   - name: name of the collection
+    func configure(_ kind: FeedKind, with items: [Item], named name: String?) {
+        self.kind = kind
+        self.name = name
+        self.items = items
+    }
+    
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()

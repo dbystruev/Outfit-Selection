@@ -65,6 +65,7 @@ extension WishlistViewController {
         
         // Register cells, set data source and delegate for collections table view
         feedController.setup(collectionsCollectionView)
+        feedController.parentNavigationController = navigationController
         
         // Fill feed controller with collections and items
         Collection.all.forEach { collection in

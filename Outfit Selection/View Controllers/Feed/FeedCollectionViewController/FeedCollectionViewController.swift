@@ -23,6 +23,9 @@ class FeedCollectionViewController: LoggingViewController {
     /// The maximum number of items in each section
     let maxItemsInSection = 42
     
+    /// Parent navigation controller if called from another view controller
+    var parentNavigationController: UINavigationController?
+    
     /// Saved brand cell margins and paddings
     var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
     

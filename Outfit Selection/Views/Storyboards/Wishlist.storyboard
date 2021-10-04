@@ -16,7 +16,17 @@
                 <viewControllerPlaceholder storyboardName="Collections" referencedIdentifier="collectionSelectViewController" id="dpK-T5-oF1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Osl-nF-E3m" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1593" y="234"/>
+            <point key="canvasLocation" x="1722" y="234"/>
+        </scene>
+        <!--feedItemViewController-->
+        <scene sceneID="SXP-vB-iRv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Feed" referencedIdentifier="feedItemViewController" id="faO-Wq-1Z2" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="g6N-LW-9Qc"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="77R-Zm-AV3" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1309" y="291"/>
         </scene>
         <!--Collections-->
         <scene sceneID="mAx-UR-IEa">
@@ -24,7 +34,7 @@
                 <viewControllerPlaceholder storyboardName="Collections" id="82V-RC-D2e" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iVC-gc-6qS" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1025" y="234"/>
+            <point key="canvasLocation" x="907" y="234"/>
         </scene>
         <!--Wish list-->
         <scene sceneID="g4H-qc-Zga">
@@ -366,6 +376,7 @@
                         <segue destination="893-Rv-iVe" kind="show" identifier="itemViewControllerSegue" id="auX-w6-qgR"/>
                         <segue destination="82V-RC-D2e" kind="presentation" identifier="collectionNameViewControllerSegue" id="WxI-ut-xRH"/>
                         <segue destination="dpK-T5-oF1" kind="presentation" identifier="collectionSelectViewControllerSegue" id="fY1-fq-HdE"/>
+                        <segue destination="faO-Wq-1Z2" kind="show" identifier="feedItemViewControllerSegue" id="LQF-yi-8sI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wYW-gk-QCk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
