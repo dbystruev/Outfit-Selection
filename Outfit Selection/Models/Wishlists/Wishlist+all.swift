@@ -11,10 +11,10 @@ import Foundation
 extension Wishlist {
     // MARK: - Stored Static Properties
     /// Wishlist items added by the user to the wishlist
-    private static var _all: [Gender: [WishlistItem]] = [:]
+    private static var _all: [Gender: [WishlistItems]] = [:]
     
     /// Wishlist items saved to user default every time they are updated
-    private(set) static var all: [WishlistItem] {
+    private(set) static var all: [WishlistItems] {
         get {
             guard let gender = Gender.current else { return [] }
             return _all[gender] ?? []
@@ -27,12 +27,12 @@ extension Wishlist {
         }
     }
     
-    static func append(_ wishlistItem: WishlistItem) {
+    static func append(_ wishlistItem: WishlistItems) {
         all.append(wishlistItem)
     }
     
     /// Clear both items and outfit wishlists
-    static func removeAll(where shouldBeRemoved: (WishlistItem) -> Bool) {
+    static func removeAll(where shouldBeRemoved: (WishlistItems) -> Bool) {
         all.removeAll(where: shouldBeRemoved)
     }
 }
@@ -52,7 +52,7 @@ extension Wishlist {
             return
         }
         
-        guard let wishlistItems = try? PList.decoder.decode([WishlistItem].self, from: data) else {
+        guard let wishlistItems = try? PList.decoder.decode([WishlistItems].self, from: data) else {
             debug("WARNING: Can't decode \(data) from user defaults to [WishlistItem] for key \(userDefaultsKey)")
             return
             

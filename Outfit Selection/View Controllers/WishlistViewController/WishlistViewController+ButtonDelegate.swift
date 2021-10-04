@@ -29,7 +29,7 @@ extension WishlistViewController: ButtonDelegate {
                 // Try to get collection item from an item
                 return CollectionItems(item)
             // Or if sender is a wishlist
-            } else if let wishlist = wishlistCell.element as? WishlistItem {
+            } else if let wishlist = wishlistCell.element as? WishlistItems {
                 // Try to get collection item from the list of wishlist items
                 return CollectionItems(wishlist.items.values.map { $0 })
             } else { return nil }

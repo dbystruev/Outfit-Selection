@@ -12,7 +12,7 @@ import Foundation
 struct Wishlist: Codable {
     // MARK: - Stored Static Properties
     /// Suggests what to select next time when opening wishlist
-    static var tabSuggested: WishlistItem.Kind?
+    static var tabSuggested: WishlistItems.Kind?
         
     // MARK: - Computed Static Properties
     /// All items in collections, item wishlist, and outfit wishlist
@@ -27,7 +27,7 @@ struct Wishlist: Codable {
     }
     
     /// Wishlist items with type .collection
-    static var collections: [WishlistItem] {
+    static var collections: [WishlistItems] {
         all.filter { $0.kind == .collection }
     }
     
@@ -42,7 +42,7 @@ struct Wishlist: Codable {
     }
     
     /// Wishlist items with type .item
-    static var items: [WishlistItem] {
+    static var items: [WishlistItems] {
         all.filter { $0.kind == .item }
     }
     
@@ -52,14 +52,14 @@ struct Wishlist: Codable {
     }
     
     /// Returns the type (kind) of the largerst wishlist
-    static var largestKind: WishlistItem.Kind? {
+    static var largestKind: WishlistItems.Kind? {
         let sortedWishlists = [collections, items, outfits].sorted { $1.count < $0.count }
         let largestWishlist = sortedWishlists[0]
         return largestWishlist.first?.kind
     }
     
     /// Wishlist items with type .outfit
-    static var outfits: [WishlistItem] {
+    static var outfits: [WishlistItems] {
         all.filter { $0.kind == .outfit }
     }
     
@@ -85,7 +85,7 @@ struct Wishlist: Codable {
             debug("WARNING: Gender.current is empty")
             return
         }
-        Wishlist.append(WishlistItem(gender: gender, kind: .item, items: [item], name: item.name))
+        Wishlist.append(WishlistItems(gender: gender, kind: .item, items: [item], name: item.name))
         
         // Remember that item is in the wishlist
         item.setWishlisted()
@@ -107,7 +107,7 @@ struct Wishlist: Codable {
             debug("WARNING: Gender.current is empty")
             return
         }
-        Wishlist.append(WishlistItem(gender: gender, kind: .outfit, items: items, name: occasion))
+        Wishlist.append(WishlistItems(gender: gender, kind: .outfit, items: items, name: occasion))
         
         // Set each item's wishlisted property
         items.forEach { $0.setWishlisted() }
