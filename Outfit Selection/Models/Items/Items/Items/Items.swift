@@ -1,40 +1,42 @@
 //
-//  CollectionItem.swift
+//  Items.swift
 //  Outfit Selection
 //
-//  Created by Denis Bystruev on 06.09.2021.
+//  Created by Denis Bystruev on 04.10.2021.
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
-final class CollectionItem: Codable {
-    
+class Items: Decodable {
     // MARK: - Types
     enum CodingKeys: String, CodingKey {
         case itemIDs = "item_ids"
         case kind
     }
     
-    /// There are 2 types of collections: with items or with looks of items
+    /// Type (kind) of items
     enum Kind: Int, Codable, CustomStringConvertible {
+        case collection
         case item
         case outfit
         
-        // CustomStringConvertible
+        // MARK: - CustomStringConvertible
         var description: String {
             switch self {
-            
+                
+            case .collection:
+                return ".collection"
+                
             case .item:
                 return ".item"
                 
             case .outfit:
                 return ".outfit"
-                
             }
         }
     }
     
     // MARK: - Stored Properties
-    /// Kind (type) of the collection item
+    /// Kind (type) of the items
     let kind: Kind
     
     /// The list of item ids
@@ -43,29 +45,22 @@ final class CollectionItem: Codable {
     /// The dictionary of items (or single item in case of .item type)
     var items: [String: Item] = [:]
     
-    // MARK: - Init
-    init?(_ item: Item?) {
-        guard let item = item else { return nil }
-        kind = .item
-        itemIDs = [item.id]
-        items = [item.id: item]
-    }
-
-    init?(_ outfit: [Item]?) {
-        guard let outfit = outfit, !outfit.isEmpty else { return nil }
-        kind = .outfit
-        itemIDs = outfit.map { $0.id }
-        outfit.forEach { items[$0.id] = $0 }
+    // MARK: - Computed Properties
+    /// The first item of the items array
+    var item: Item? { items.values.first }
+    
+    /// The set of items ids
+    var itemsIdSet: Set<String> { Set(itemIDs)}
+    
+    /// Price of all items combined
+    var price: Double {
+        items.values.reduce(0) { $0 + $1.price }
     }
     
-    // MARK: - Decodable
-    required init(from decoder: Decoder) throws {
-        // Get values from the container
-        let values = try decoder.container(keyedBy: CodingKeys.self)
-        
-        // Decode all properties
-        kind = try values.decode(Kind.self, forKey: .kind)
-        itemIDs = try values.decode([String].self, forKey: .itemIDs)
+    // MARK: - Init
+    init(kind: Kind, itemIDs: [String]) {
+        self.kind = kind
+        self.itemIDs = itemIDs
         
         // Set already loaded items
         itemIDs.forEach {
@@ -78,5 +73,17 @@ final class CollectionItem: Codable {
         NetworkManager.shared.getItems(newItemIDs) { newItems in
             newItems?.forEach { self.items[$0.id] = $0 }
         }
+    }
+    
+    // MARK: - Decodable
+    required convenience init(from decoder: Decoder) throws {
+        // Get values from the container
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // Decode all properties
+        let kind = try values.decode(Kind.self, forKey: .kind)
+        let itemIDs = try values.decode([String].self, forKey: .itemIDs)
+        
+        self.init(kind: kind, itemIDs: itemIDs)
     }
 }

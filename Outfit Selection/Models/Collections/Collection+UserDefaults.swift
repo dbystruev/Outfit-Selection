@@ -39,7 +39,6 @@ extension Collection {
     /// Save all collections to user defaults
     /// - Parameter genderCollections: dictionary of collections listed by gender
     static func save(_ genderCollections: [Gender: [Collection]]) {
-        debug(genderCollections.keys, genderCollections.values)
         let collections = genderCollections.values.flatMap { $0 }
         guard let data = try? PList.encoder.encode(collections) else {
             debug(

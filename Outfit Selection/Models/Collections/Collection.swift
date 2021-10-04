@@ -11,7 +11,7 @@ import Foundation
 final class Collection: Codable {
     // MARK: - Stored Properties
     /// Collection items
-    private var collectionItems: [CollectionItem] = []
+    private var collectionItems: [CollectionItems] = []
     
     /// Collection gender
     var gender: Gender
@@ -37,7 +37,7 @@ final class Collection: Codable {
     }
     
     // MARK: - Methods
-    func append(_ item: CollectionItem?) {
+    func append(_ item: CollectionItems?) {
         guard let item = item else {
             debug("WARNING: item is nil")
             return
@@ -48,7 +48,7 @@ final class Collection: Codable {
     /// Returns true or false depending on whether collection constains a collection item
     /// - Parameter item: collection item to check for
     /// - Returns: true or false depending on result
-    func contains(_ item: CollectionItem) -> Bool {
+    func contains(_ item: CollectionItems) -> Bool {
         collectionItems.contains(item)
     }
     
@@ -56,7 +56,7 @@ final class Collection: Codable {
     /// - Parameter item: an item to check for
     /// - Returns: true or false depending on result
     func contains(_ item: Item) -> Bool {
-        guard let collectionItem = CollectionItem(item) else { return false }
+        guard let collectionItem = CollectionItems(item) else { return false }
         return contains(collectionItem)
     }
     
@@ -64,13 +64,13 @@ final class Collection: Codable {
     /// - Parameter look: collection items to check for
     /// - Returns: true or false depending on result
     func contains(_ outfit: [Item]) -> Bool {
-        guard let collectionOutfit = CollectionItem(outfit) else { return false }
+        guard let collectionOutfit = CollectionItems(outfit) else { return false }
         return contains(collectionOutfit)
     }
     
     /// Removes given collection item from the collection
     /// - Parameter item: collection item to be removed
-    func remove(_ item: CollectionItem) {
+    func remove(_ item: CollectionItems) {
         collectionItems.removeAll { $0 == item }
     }
 }
