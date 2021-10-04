@@ -44,8 +44,9 @@ class FeedCollectionViewController: LoggingViewController {
     }
     
     /// Compose layout for feed collection view
+    /// - Parameter withBrandsOnTop: if true top row is brands row
     /// - Returns: collection view layout for feed collection view
-    private func generateLayout() -> UICollectionViewLayout {
+    private func generateLayout(withBrandsOnTop: Bool) -> UICollectionViewLayout {
         // Define cell spacing
         let spacing: CGFloat = 8
         
@@ -121,7 +122,7 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Define the layout size
         let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
-            sectionIndex == 0 ? brandSection : itemSection
+            withBrandsOnTop && sectionIndex == 0 ? brandSection : itemSection
         }
         
         return layout
@@ -160,8 +161,10 @@ class FeedCollectionViewController: LoggingViewController {
     }
     
     /// Register cells, set data source and delegate for a given collection view
-    /// - Parameter collectionView: collection view to setup
-    func setup(_ collectionView: UICollectionView) {
+    /// - Parameters:
+    ///   - collectionView: collection view to setup
+    ///   - withBrandsOnTop: if true add brands row on top of collection view
+    func setup(_ collectionView: UICollectionView, withBrandsOnTop: Bool) {
         // Register feed cell with feed table view
         BrandCollectionViewCell.register(with: collectionView)
         FeedItemCollectionCell.register(with: collectionView)
@@ -172,7 +175,7 @@ class FeedCollectionViewController: LoggingViewController {
         collectionView.delegate = self
         
         // Generate collection view layout
-        collectionView.setCollectionViewLayout(generateLayout(), animated: false)
+        collectionView.setCollectionViewLayout(generateLayout(withBrandsOnTop: withBrandsOnTop), animated: false)
         
         // Clear initial items
         items = [:]
@@ -228,7 +231,7 @@ class FeedCollectionViewController: LoggingViewController {
         ] + Occasion.selectedNames.map { .occasions($0) }
         
         // Set self as data source and register collection view cells and header
-        setup(feedCollectionView)
+        setup(feedCollectionView, withBrandsOnTop: true)
         
         // Add initial values for each section
         sections.forEach { add(items: items(for: $0), to: $0) }
