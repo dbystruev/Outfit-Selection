@@ -8,6 +8,6 @@
 
 extension CollectionItem: Equatable {
     static func == (lhs: CollectionItem, rhs: CollectionItem) -> Bool {
-        lhs.kind == rhs.kind && Set(lhs.itemIds) == Set(rhs.itemIds)
+        lhs.kind == rhs.kind && Set(lhs.itemIDs) == Set(rhs.itemIDs)
     }
 }

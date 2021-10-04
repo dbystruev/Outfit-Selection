@@ -21,7 +21,7 @@ class CollectionSelectViewController: CollectionBaseViewController {
     // MARK: - Inherited Methods
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        wishlistViewController?.finishSelectingCollectionItems()
+        wishlistViewController?.finishedSelectingCollectionItems()
     }
     
     override func viewDidLoad() {

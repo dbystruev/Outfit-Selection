@@ -8,7 +8,7 @@
 
 import Foundation
 
-class WishlistItem: Decodable {
+final class WishlistItem: Decodable {
     
     // MARK: - Types
     enum CodingKeys: String, CodingKey {
@@ -48,11 +48,11 @@ class WishlistItem: Decodable {
     /// Type (kind) of wishlist item
     var kind: Kind
     
-    /// The dictionary of items (or one item in case of .item type)
-    var items: [String: Item] = [:]
-    
     /// Item IDs which are loaded first and load items by ids
     let itemIDs: [String]
+
+    /// The dictionary of items (or one item in case of .item type)
+    var items: [String: Item] = [:]    
     
     /// Name for collection, item, or occasion for outfit
     var name: String?

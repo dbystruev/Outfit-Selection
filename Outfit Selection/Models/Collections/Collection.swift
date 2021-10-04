@@ -6,7 +6,9 @@
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
-class Collection: Codable {
+import Foundation
+
+final class Collection: Codable {
     // MARK: - Stored Properties
     /// Collection items
     private var collectionItems: [CollectionItem] = []
@@ -18,10 +20,10 @@ class Collection: Codable {
     let name: String
     
     // MARK: - Computed Propeties
-    var isEmpty: Bool { collectionItems.isEmpty }
-    var itemCount: Int { collectionItems.count }
+    var isEmpty: Bool { items.isEmpty }
+    var itemCount: Int { items.count }
     var items: [Item] {
-        collectionItems.flatMap { $0.items }
+        collectionItems.flatMap { $0.items.values }
     }
     
     // MARK: - Init
@@ -70,5 +72,12 @@ class Collection: Codable {
     /// - Parameter item: collection item to be removed
     func remove(_ item: CollectionItem) {
         collectionItems.removeAll { $0 == item }
+    }
+}
+
+// MARK: - CustomStringConvertible
+extension Collection: CustomStringConvertible {
+    var description: String {
+        "collectionItems: \(collectionItems), gender: \(gender), name: \(name)"
     }
 }

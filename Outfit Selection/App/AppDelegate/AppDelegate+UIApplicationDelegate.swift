@@ -59,7 +59,7 @@ extension AppDelegate: UIApplicationDelegate {
         
         // Restore user wishlists, collections, and occasions if any
         Wishlist.load()
-        Collection.loadAllGenders()
+        Collection.load()
         Occasion.loadSelectedOccasions()
         
         return true

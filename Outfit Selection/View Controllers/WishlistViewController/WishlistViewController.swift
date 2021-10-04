@@ -80,7 +80,12 @@ class WishlistViewController: LoggingViewController {
     
     // MARK: - Custom Methods
     /// Called when user finished selecting items or outfits for new collection
-    func finishSelectingCollectionItems() {
+    func finishedSelectingCollectionItems() {
+        defer {
+            // Save collections to user defaults on exit
+            Collection.save()
+        }
+        
         guard let lastCollection = Collection.last else {
             debug("WARNING: collections is empty")
             return

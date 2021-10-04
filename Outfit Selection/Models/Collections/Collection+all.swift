@@ -46,15 +46,20 @@ extension Collection {
         genderCollections[gender] = collections
     }
     
-    /// Load all gender collections from user defaults
-    static func loadAllGenders() {
-        genderCollections = load()
+    /// Remove all collections for current gender
+    static func removeAll() {
+        guard let gender = Gender.current else { return }
+        genderCollections[gender]?.removeAll()
     }
-    
     
     /// Remove last collection for current gender
     static func removeLast() {
         guard let gender = Gender.current else { return }
         genderCollections[gender]?.removeLast()
+    }
+    
+    /// Save collections for all genders to user defaults
+    static func save() {
+        save(genderCollections)
     }
 }

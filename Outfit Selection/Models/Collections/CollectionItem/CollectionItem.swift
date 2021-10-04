@@ -6,9 +6,14 @@
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
-struct CollectionItem: Codable {
+final class CollectionItem: Codable {
     
     // MARK: - Types
+    enum CodingKeys: String, CodingKey {
+        case itemIDs = "item_ids"
+        case kind
+    }
+    
     /// There are 2 types of collections: with items or with looks of items
     enum Kind: Int, Codable, CustomStringConvertible {
         case item
@@ -32,25 +37,46 @@ struct CollectionItem: Codable {
     /// Kind (type) of the collection item
     let kind: Kind
     
-    /// Single item or a few items depending on collection item type
-    let items: [Item]
-    
-    // MARK: - Computed Properties
     /// The list of item ids
-    var itemIds: [String] {
-        items.map { $0.id }
-    }
+    let itemIDs: [String]
+    
+    /// The dictionary of items (or single item in case of .item type)
+    var items: [String: Item] = [:]
     
     // MARK: - Init
     init?(_ item: Item?) {
         guard let item = item else { return nil }
         kind = .item
-        items = [item]
+        itemIDs = [item.id]
+        items = [item.id: item]
     }
-    
+
     init?(_ outfit: [Item]?) {
         guard let outfit = outfit, !outfit.isEmpty else { return nil }
         kind = .outfit
-        items = outfit
+        itemIDs = outfit.map { $0.id }
+        outfit.forEach { items[$0.id] = $0 }
+    }
+    
+    // MARK: - Decodable
+    required init(from decoder: Decoder) throws {
+        // Get values from the container
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // Decode all properties
+        kind = try values.decode(Kind.self, forKey: .kind)
+        itemIDs = try values.decode([String].self, forKey: .itemIDs)
+        
+        // Set already loaded items
+        itemIDs.forEach {
+            guard let item = Item.all[$0] else { return }
+            items[$0] = item
+        }
+        
+        // Load new collection items not present in the global items
+        let newItemIDs = itemIDs.filter { items[$0] == nil }
+        NetworkManager.shared.getItems(newItemIDs) { newItems in
+            newItems?.forEach { self.items[$0.id] = $0 }
+        }
     }
 }

@@ -12,7 +12,7 @@ extension WishlistViewController: ButtonDelegate {
     func buttonTapped(_ sender: Any) {
         // Get the most current collection
         guard let lastCollection = Collection.last else {
-            debug("WARNING: collections is empty")
+            debug("WARNING: collections are empty")
             return
         }
         

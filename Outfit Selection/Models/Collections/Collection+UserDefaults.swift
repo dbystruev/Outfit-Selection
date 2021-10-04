@@ -16,33 +16,35 @@ extension Collection {
     
     // MARK: - Methods
     /// Load collections from user defaults
-    /// - Returns: loaded collections
-    static func load() -> [Gender: [Collection]] {
+    static func load() {
         guard let data = UserDefaults.standard.object(forKey: userDefaultsKey) as? Data else {
             debug("WARNING: Can't find data from user defaults for key \(userDefaultsKey)")
-            return [:]
+            return
         }
         
-        guard let genderCollections = try? PList.decoder.decode([Gender: [Collection]].self, from: data) else {
+        guard let collections = try? PList.decoder.decode(Collections.self, from: data) else {
             debug(
                 "WARNING: Can't decode \(data)",
-                "from user defaults to \([Gender: [Collection]].self)",
+                "from user defaults to \([Collection].self)",
                 "for key \(userDefaultsKey)"
             )
-            return [:]
-            
+            return
         }
         
-        return genderCollections
+        for collection in collections {
+            Collection.append(collection)
+        }
     }
     
     /// Save all collections to user defaults
     /// - Parameter genderCollections: dictionary of collections listed by gender
     static func save(_ genderCollections: [Gender: [Collection]]) {
-        guard let data = try? PList.encoder.encode(genderCollections) else {
+        debug(genderCollections.keys, genderCollections.values)
+        let collections = genderCollections.values.flatMap { $0 }
+        guard let data = try? PList.encoder.encode(collections) else {
             debug(
-                "WARNING: Can't encode \(genderCollections.count)",
-                "to \([Gender: [Collection]].self) gender collections",
+                "WARNING: Can't encode \(collections.count)",
+                "to \(Collections.self) gender collections",
                 "for key \(userDefaultsKey)"
             )
             return
