@@ -13,12 +13,6 @@ extension WishlistViewController: ButtonDelegate {
     ///     - wishlist item / outfit cell is tapped
     /// - Parameter sender: item or outfit selected
     func buttonTapped(_ sender: Any) {
-        // Get the most current collection
-        guard let lastCollection = Collection.last else {
-            debug("WARNING: collections are empty")
-            return
-        }
-        
         // Check if feed item was tapped
         if let feedItem = sender as? FeedItem {
             performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: feedItem)
@@ -50,6 +44,12 @@ extension WishlistViewController: ButtonDelegate {
         // If collection name label is nil we haven't started to create a collection
         guard let collectionNameLabel = collectionNameLabel else {
             createCollectionButtonTapped(createCollectionButton)
+            return
+        }
+        
+        // Get the most current collection
+        guard let lastCollection = Collection.last else {
+            debug("WARNING: collections are empty")
             return
         }
         
