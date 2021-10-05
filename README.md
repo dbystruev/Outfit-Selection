@@ -11,7 +11,11 @@ Make sure [TestFlight App](https://apps.apple.com/app/testflight/id899247664) is
 
 [Figma](https://www.figma.com/file/RPuD2yffxN2n1K28h71dhj/GetOutfit?node-id=5%3A0)
 
-## Screenshots
+## View Controllers
+
+![View Controllers](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/get_outfit_app.png)
+
+## Individual Screenshots
 
 ![Logo](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screenshot01.png?raw=true)
 ![Gender Selection](https://github.com/dbystruev/Outfit-Selection/blob/master/Outfit%20Selection/Resources/Screenshots/Screenshot02.png?raw=true)
@@ -32,7 +36,7 @@ Make sure [TestFlight App](https://apps.apple.com/app/testflight/id899247664) is
 
 ## Requirements
 
-REST/JSON server with [Categories](http://spb.getoutfit.co:3000/categories) and [items](http://spb.getoutfit.co:3000/items?limit=10) database.
+REST/JSON server with [categories](http://spb.getoutfit.co:3000/categories) and [items](http://spb.getoutfit.co:3000/items?limit=10) database.
 
 ## Acknowledgments
 
