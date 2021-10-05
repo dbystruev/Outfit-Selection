@@ -20,7 +20,7 @@
         <!--Outfit-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="OutfitViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="OutfitViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,7 +37,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soe-qC-gFy">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
                                                         <subviews>
-                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-61-yTt" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
+                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-61-yTt" customClass="PinnableScrollView" customModule="Concept_Group" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="968-N5-ncz">
@@ -84,7 +84,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q3p-Hb-HCX">
                                                         <rect key="frame" x="0.0" y="215.5" width="207" height="431.5"/>
                                                         <subviews>
-                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McV-FV-yxk" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
+                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McV-FV-yxk" customClass="PinnableScrollView" customModule="Concept_Group" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="431.5"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0zR-30-TcT">
@@ -138,7 +138,7 @@
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMD-nX-CLZ">
                                                         <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
                                                         <subviews>
-                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrI-94-QGh" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
+                                                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrI-94-QGh" customClass="PinnableScrollView" customModule="Concept_Group" customModuleProvider="target">
                                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MdE-3E-PTX">
@@ -187,7 +187,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIz-Li-wcf">
                                                                 <rect key="frame" x="0.0" y="0.0" width="207" height="216"/>
                                                                 <subviews>
-                                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAH-LD-FOj" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
+                                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAH-LD-FOj" customClass="PinnableScrollView" customModule="Concept_Group" customModuleProvider="target">
                                                                         <rect key="frame" x="16" y="32" width="175" height="184"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PWZ-Fo-lTr">
@@ -233,7 +233,7 @@
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACr-z5-nl2">
                                                                 <rect key="frame" x="0.0" y="216" width="207" height="215.5"/>
                                                                 <subviews>
-                                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mM-sh-37O" customClass="PinnableScrollView" customModule="Outfit_Selection" customModuleProvider="target">
+                                                                    <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mM-sh-37O" customClass="PinnableScrollView" customModule="Concept_Group" customModuleProvider="target">
                                                                         <rect key="frame" x="16" y="0.0" width="175" height="183.5"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="32E-Pf-wzh">
@@ -308,8 +308,8 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="kYh-UG-gmm" secondAttribute="height" multiplier="1:1" id="3QI-xL-Yno"/>
                                                                 </constraints>
-                                                                <state key="normal" image="heart"/>
-                                                                <state key="selected" image="wishlist_filled"/>
+                                                                <state key="normal" image="like"/>
+                                                                <state key="selected" image="like_filled"/>
                                                                 <connections>
                                                                     <action selector="likeButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3y8-R6-MF9"/>
                                                                 </connections>
@@ -319,7 +319,7 @@
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" secondItem="EUS-GK-b31" secondAttribute="height" multiplier="1:1" id="CyU-aE-pnS"/>
                                                                 </constraints>
-                                                                <state key="normal" image="refresh"/>
+                                                                <state key="normal" image="shuffle"/>
                                                                 <connections>
                                                                     <action selector="refreshButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NXL-2I-Qnf"/>
                                                                 </connections>
@@ -339,7 +339,7 @@
                                     </view>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJl-Sn-ofQ" customClass="RefreshBubble" customModule="Outfit_Selection" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oJl-Sn-ofQ" customClass="RefreshBubble" customModule="Concept_Group" customModuleProvider="target">
                                 <rect key="frame" x="108" y="750" width="238" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="238" id="ZWw-q8-xr8"/>
@@ -398,7 +398,7 @@
         <!--Share-->
         <scene sceneID="kNA-Ue-Zj7">
             <objects>
-                <viewController title="Share" id="zS2-Fi-i4G" customClass="ShareViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Share" id="zS2-Fi-i4G" customClass="ShareViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Yxc-Dx-qXJ">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -409,7 +409,7 @@
                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="FJ6-Sy-aAv">
                                         <rect key="frame" x="24" y="0.0" width="366" height="169"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xss-a3-dcq" customClass="ShareView" customModule="Outfit_Selection" customModuleProvider="target">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xss-a3-dcq" customClass="ShareView" customModule="Concept_Group" customModuleProvider="target">
                                                 <rect key="frame" x="0.0" y="0.0" width="124.5" height="169"/>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5C7-Yp-u9k">
@@ -520,7 +520,7 @@
         <!--Occasions Popup View Controller-->
         <scene sceneID="L4D-s5-Wfa">
             <objects>
-                <viewController storyboardIdentifier="occasionsViewController" id="CSx-YW-3hg" customClass="OccasionsPopupViewController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="occasionsViewController" id="CSx-YW-3hg" customClass="OccasionsPopupViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="noJ-et-5vB">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="264"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -587,7 +587,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="kA0-0v-X04">
             <objects>
-                <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="p6y-3M-M5c" customClass="TabBarController" customModule="Outfit_Selection" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="tabBarController" automaticallyAdjustsScrollViewInsets="NO" id="p6y-3M-M5c" customClass="TabBarController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="p0d-o6-Tzp">
                         <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
@@ -628,11 +628,11 @@
     </scenes>
     <resources>
         <image name="hanger" width="32" height="24"/>
-        <image name="heart" width="28" height="28"/>
+        <image name="like" width="28" height="28"/>
+        <image name="like_filled" width="28" height="28"/>
         <image name="outfit" width="24" height="24"/>
-        <image name="refresh" width="28" height="28"/>
         <image name="share" width="33" height="27"/>
-        <image name="wishlist_filled" width="24" height="24"/>
+        <image name="shuffle" width="28" height="28"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
