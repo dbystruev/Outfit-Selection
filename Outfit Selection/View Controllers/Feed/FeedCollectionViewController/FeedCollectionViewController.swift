@@ -234,8 +234,6 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Add initial values for each section
         sections.forEach { add(items: items(for: $0), to: $0) }
-        
-        debug("DEBUG: \(sections.count) item groups: \(sections)")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -88,7 +88,6 @@ class ItemViewController: LoggingViewController {
     ///   - item: an item to configure the view controller with
     ///   - image: an image to configure the view controller with
     func configure(with item: Item?, image: UIImage?) {
-        debug(item)
         self.image = image
         self.item = item
     }

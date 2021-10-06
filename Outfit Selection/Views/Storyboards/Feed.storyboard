@@ -14,41 +14,6 @@
         </array>
     </customFonts>
     <scenes>
-        <!--Feed-->
-        <scene sceneID="s0d-6b-0kx">
-            <objects>
-                <viewController id="Y6W-OH-hqX" customClass="FeedTableViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zSh-sE-otJ">
-                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <sections/>
-                            </tableView>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <constraints>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="zSh-sE-otJ" secondAttribute="bottom" id="9u7-6J-iUr"/>
-                            <constraint firstItem="zSh-sE-otJ" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="E6k-9d-exW"/>
-                            <constraint firstItem="zSh-sE-otJ" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="EDy-VA-ObF"/>
-                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="zSh-sE-otJ" secondAttribute="trailing" id="bPr-jM-E0F"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Feed" id="Cyf-S5-7ao"/>
-                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
-                    <connections>
-                        <outlet property="feedTableView" destination="zSh-sE-otJ" id="Q3K-VB-HRy"/>
-                        <segue destination="sXO-jE-vg3" kind="show" identifier="feedItemViewControllerSegue" id="eQ7-pl-bYp"/>
-                        <segue destination="AyZ-Yg-HPR" kind="show" identifier="itemViewControllerSegue" id="WlN-5p-cgq"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="891" y="-180"/>
-        </scene>
         <!--Feed Item View Controller-->
         <scene sceneID="2lq-O3-dbm">
             <objects>
@@ -94,7 +59,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzf-jv-yyO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2064" y="240"/>
+            <point key="canvasLocation" x="1974" y="155"/>
         </scene>
         <!--itemViewController-->
         <scene sceneID="UdD-7k-PbK">
@@ -104,7 +69,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ubu-VI-GBp" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1463" y="240"/>
+            <point key="canvasLocation" x="925" y="559"/>
         </scene>
         <!--Feed Collection View Controller-->
         <scene sceneID="2qM-uj-Tf9">
@@ -144,7 +109,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nTO-Ri-33N" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="890" y="551"/>
+            <point key="canvasLocation" x="926" y="155"/>
         </scene>
         <!--Feed-->
         <scene sceneID="zAV-bp-sx6">
@@ -167,10 +132,6 @@
             <point key="canvasLocation" x="-87" y="155"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="WlN-5p-cgq"/>
-        <segue reference="WMZ-89-YL3"/>
-    </inferredMetricsTieBreakers>
     <resources>
         <image name="home" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
