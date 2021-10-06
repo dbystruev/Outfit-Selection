@@ -188,12 +188,12 @@ class NetworkManager {
     /// - Parameters:
     ///   - categories: the list of categories to filter items by
     ///   - gender: load female, male, or other items
-    ///   - vendorNames: the list of vendors to filter items by
+    ///   - fullVendorNames: the list of vendors to filter items by
     /// - Returns: dictionary with parameters suitable to call get()
     func parameters(
         in categories: [Category] = [],
         for gender: Gender?,
-        filteredBy vendorNames: [String] = []
+        filteredBy fullVendorNames: [String] = []
     ) -> [String: Any] {
         // Prepare parameters
         var parameters: [String: Any] = ["limit": Item.maxCount]
@@ -204,14 +204,14 @@ class NetworkManager {
             : "in.(\(categories.map { "\($0.id)" }.joined(separator: ",")))"
         
         // Make vendors alphanumeric and lowercased
-        let shortVendorNames: [String] = vendorNames.map { vendorName in
-            let shortVendorName = vendorName.lowercased().filter { $0.isASCII && ($0.isLetter || $0.isDigit) }
-            fullVendorNames[shortVendorName] = vendorName
+        let shortVendorNames: [String] = fullVendorNames.map { fullVendorName in
+            let shortVendorName = fullVendorName.shorted
+            self.fullVendorNames[shortVendorName] = fullVendorName
             return shortVendorName
         }
         
         // Add "vendor" parameter
-        parameters[Item.CodingKeys.vendorName.rawValue] = vendorNames.isEmpty
+        parameters[Item.CodingKeys.vendorName.rawValue] = fullVendorNames.isEmpty
             ? nil
             : "in.(\(shortVendorNames.joined(separator: ",")))"
         

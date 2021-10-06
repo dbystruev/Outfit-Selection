@@ -11,7 +11,11 @@ import Foundation
 extension Wishlist {
     // MARK: - Stored Static Properties
     /// Wishlist items added by the user to the wishlist
-    private static var _all: [Gender: [WishlistItems]] = [:]
+    private static var _all: [Gender: [WishlistItems]] = [:] {
+        didSet {
+            debug(_all.count, _all)
+        }
+    }
     
     /// Wishlist items saved to user default every time they are updated
     private(set) static var all: [WishlistItems] {

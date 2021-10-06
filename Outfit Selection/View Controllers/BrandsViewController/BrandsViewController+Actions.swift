@@ -10,6 +10,16 @@ import UIKit
 
 // MARK: - Actions
 extension BrandsViewController {
+    /// Called when next button is tapped
+    /// - Parameter sender: the get outfit button which was tapped
+    @IBAction func nextButtonTapped(_ sender: UIButton) {
+        // Start loading items
+        NetworkManager.shared.reloadItems(for: gender) { _ in }
+        
+        // Transition to the progress view controller
+        performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)
+    }
+    
     @IBAction func selectAllButtonTapped(_ sender: SelectableButtonItem) {
         // Switch the selection
         sender.isButtonSelected.toggle()
@@ -21,15 +31,5 @@ extension BrandsViewController {
         
         brandsCollectionView.reloadData()
         configureGoButton()
-    }
-    
-    /// Called when Get Outfit button is tapped
-    /// - Parameter sender: the get outfit button which was tapped
-    @IBAction func getOutfitButtonTapped(_ sender: UIButton) {
-        // Start loading items
-        NetworkManager.shared.reloadItems(for: gender) { _ in }
-        
-        // Transition to the progress view controller
-        performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)
     }
 }

@@ -89,6 +89,7 @@ class Items: Codable {
         
         // Load new collection items not present in the global items
         let newItemIDs = itemIDs.filter { items[$0] == nil }
+        
         NetworkManager.shared.getItems(newItemIDs) { newItems in
             guard let newItems = newItems, !newItems.isEmpty else { return }
             Item.append(contentsOf: newItems)

@@ -1,5 +1,5 @@
 //
-//  WishlistItem+Equatable.swift
+//  WishlistItems+Equatable.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 22.09.2021.
