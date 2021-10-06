@@ -136,8 +136,18 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Compose the list of items for section
         let brandManager = BrandManager.shared
+        let brandNames = brandManager.selectedBrandNames
         var items: [Item] = []
         var remainingItems = Item.all
+        var remainingBrandedItems = remainingItems.filter { $0.value.branded(brandNames) }
+        
+        // First add items with selected brands
+        while items.count < maxItemsInSection && 0 < remainingBrandedItems.count {
+            guard let item = remainingBrandedItems.randomElement() else { return items }
+            items.append(item.value)
+            remainingBrandedItems.removeValue(forKey: item.key)
+            remainingItems.removeValue(forKey: item.key)
+        }
         
         // Now add all other items
         while items.count < maxItemsInSection && 0 < remainingItems.count {
@@ -146,11 +156,10 @@ class FeedCollectionViewController: LoggingViewController {
             remainingItems.removeValue(forKey: item.key)
         }
         
-        // Put the last sekected brand name first
+        // Put the last selected brand name first
         if let lastSelectedBrandName = brandManager.lastSelected?.brandName {
             let lastSelectedBrandNames = [lastSelectedBrandName]
             items.sort { $0.branded(lastSelectedBrandNames) || !$1.branded(lastSelectedBrandNames)}
-            debug(lastSelectedBrandNames, items.first)
         }
         
         // Save the items

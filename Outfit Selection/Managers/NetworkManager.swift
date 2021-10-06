@@ -206,7 +206,7 @@ class NetworkManager {
         filteredBy fullVendorNames: [String] = []
     ) -> [String: Any] {
         // Prepare parameters
-        var parameters: [String: Any] = ["limit": Item.maxCount]
+        var parameters: [String: Any] = ["limit": Item.maxCount / BrandManager.shared.selectedBrands.count + 1]
         
         // Add "category_id" parameter
         parameters[Item.CodingKeys.categoryId.rawValue] = categories.isEmpty

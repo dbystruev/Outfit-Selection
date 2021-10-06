@@ -30,18 +30,40 @@ class Logger {
         return bundledContent
     }()
     
+    /// Duration in seconds when cache should be used
+    static let cacheDuration: TimeInterval = 3600
+    
     /// Load logs from filesystem files
     private static let filesystemLogs: [String: String] = {
         // Content of files to be returned at the end
         var logFilesContent: [String: String] = [:]
         
         // Get the filest enumerator for the directory
-        let files = FileManager.default.enumerator(at: logDirectoryURL, includingPropertiesForKeys: [URLResourceKey.isRegularFileKey])
+        let files = FileManager.default.enumerator(
+            at: logDirectoryURL,
+            includingPropertiesForKeys: [URLResourceKey.isRegularFileKey]
+        )
         
         // Go through all the files in the directory
         while let file = files?.nextObject() as? NSURL {
             // Skip all non-txt files
             guard file.pathExtension == "txt" else { continue }
+            
+            // Check file date / time
+            if
+                let path = file.path,
+                let attributes = try? FileManager.default.attributesOfItem(atPath: path),
+                let modifiedAt = attributes[.modificationDate] as? Date,
+                cacheDuration < abs(modifiedAt.timeIntervalSinceNow)
+            {
+                do {
+                    try FileManager.default.removeItem(atPath: path)
+                    debug("DEBUG: file at \(path) has been removed")
+                } catch {
+                    debug("WARNING: Can't remove file at \(path) due to \(error.localizedDescription)")
+                }
+                continue
+            }
             
             // Load content of all files into returned variable
             do {

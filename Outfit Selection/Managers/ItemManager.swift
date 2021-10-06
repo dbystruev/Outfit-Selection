@@ -201,22 +201,24 @@ class ItemManager {
         let allWishlistItemsIds = Array(Wishlist.allItemsIdSet)
         DispatchManager.shared.itemManagerGroup.enter()
         
-        // Run network requests for different corners in parallel
+        // Run network requests for different corners and brand names in parallel
         for categories in allCategories {
-            DispatchManager.shared.itemManagerGroup.enter()
-            NetworkManager.shared.getItems(
-                in: categories,
-                for: gender,
-                filteredBy: selectedBrandNames
-            ) { items in
-                // Check if any items were loaded
-                if let items = items {
-                    Item.append(contentsOf: items)
-                } else {
-                    success = false
+            for brandName in selectedBrandNames {
+                DispatchManager.shared.itemManagerGroup.enter()
+                NetworkManager.shared.getItems(
+                    in: categories,
+                    for: gender,
+                    filteredBy: [brandName]
+                ) { items in
+                    // Check if any items were loaded
+                    if let items = items {
+                        Item.append(contentsOf: items)
+                    } else {
+                        success = false
+                    }
+                    
+                    DispatchManager.shared.itemManagerGroup.leave()
                 }
-                
-                DispatchManager.shared.itemManagerGroup.leave()
             }
         }
         
