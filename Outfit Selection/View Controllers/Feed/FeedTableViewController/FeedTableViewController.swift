@@ -88,8 +88,7 @@ class FeedTableViewController: LoggingViewController {
                 return
             }
             
-            destination.image = feedItem.itemImageView.image
-            destination.item = feedItem.item
+            destination.configure(with: feedItem.item, image: feedItem.itemImageView.image)
             
         default:
             debug("Unknown segue id \(String(describing: segue.identifier))")

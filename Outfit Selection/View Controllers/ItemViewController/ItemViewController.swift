@@ -58,10 +58,10 @@ class ItemViewController: LoggingViewController {
     
     // MARK: - Stored Properties
     /// First item image
-    var image: UIImage?
+    private weak var image: UIImage?
     
     /// Item  to show
-    weak var item: Item?
+    private(set) weak var item: Item?
     
     /// Item url to present at Intermediary view controller
     var url: URL?
@@ -88,6 +88,7 @@ class ItemViewController: LoggingViewController {
     ///   - item: an item to configure the view controller with
     ///   - image: an image to configure the view controller with
     func configure(with item: Item?, image: UIImage?) {
+        debug(item)
         self.image = image
         self.item = item
     }

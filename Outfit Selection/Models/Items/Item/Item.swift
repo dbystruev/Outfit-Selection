@@ -23,7 +23,6 @@ final class Item: Decodable, Encodable {
         newItems.forEach { all[$0.id] = $0 }
     }
     
-    // MARK: - Static Methods
     /// Dislikes given item in Item.all
     /// - Parameter item: the item to be disliked
     static func dislike(_ item: Item?) {
@@ -33,6 +32,12 @@ final class Item: Decodable, Encodable {
     /// Clears all items
     static func removeAll() {
         all.removeAll()
+    }
+    
+    /// Update all items vendor names to full versions
+    /// - Parameter fullVendorNames: the dictionary with short : full vendor names
+    static func updateVendorNames(with fullVendorNames: [String: String]) {
+        all.forEach { $0.value.updateVendorName(with: fullVendorNames) }
     }
     
     // MARK: - Stored Properties
@@ -138,5 +143,11 @@ final class Item: Decodable, Encodable {
     /// - Parameter value: the value to set the wishlist property to, true by default
     func setWishlisted(to value: Bool = true) {
         wishlisted = value
+    }
+    
+    /// Check if current vendor name is found in full vendor names dictionary and update it if so
+    /// - Parameter fullVendorNames: the dictionary with short : full vendor names
+    func updateVendorName(with fullVendorNames: [String: String]) {
+        vendorName = fullVendorNames[vendorName] ?? vendorName
     }
 }

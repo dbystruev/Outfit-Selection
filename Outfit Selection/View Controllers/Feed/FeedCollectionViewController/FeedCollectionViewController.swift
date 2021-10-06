@@ -38,7 +38,6 @@ class FeedCollectionViewController: LoggingViewController {
     ///   - items: items to append to the section
     ///   - section: the section type (kind) to append the items to
     func add(items: [Item], to section: FeedKind) {
-        debug(items.count, section)
         sections.append(section)
         self.items[section] = items
     }

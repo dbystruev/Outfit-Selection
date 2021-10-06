@@ -62,7 +62,17 @@ class Items: Codable {
         self.kind = kind
         self.itemIDs = itemIDs
         
-        initItems(with: itemIDs)
+        updateItems(for: itemIDs)
+    }
+    
+    // MARK: - Methods
+    /// Update all items vendor names to full versions
+    /// - Parameter fullVendorNames: the dictionary with short : full vendor names
+    func updateVendorNames(with fullVendorNames: [String: String]) {
+        items.forEach {
+            $0.value.updateVendorName(with: fullVendorNames)
+            debug(items[$0.key], fullVendorNames)
+        }
     }
     
     // MARK: - Decodable
@@ -75,12 +85,12 @@ class Items: Codable {
         itemIDs = try values.decode([String].self, forKey: .itemIDs)
         
         // Init items with given item IDs
-        initItems(with: itemIDs)
+        updateItems(for: itemIDs)
     }
     
-    /// Init items with given item IDs
+    /// Update items with given item IDs
     /// - Parameter itemIDs: item IDs to init items from
-    func initItems(with itemIDs: [String]) {
+    func updateItems(for itemIDs: [String]) {
         // Set already loaded items
         itemIDs.forEach {
             guard let item = Item.all[$0] else { return }

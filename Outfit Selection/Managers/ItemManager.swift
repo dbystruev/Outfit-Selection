@@ -45,7 +45,6 @@ class ItemManager {
         
         // Get all wishlist items
         let allWishlistItems = Wishlist.allItems
-        debug("allWishlistItems:", allWishlistItems.count)
         
         // Wait for network group load images to finish
         DispatchManager.shared.itemManagerGroup.wait()
@@ -198,6 +197,10 @@ class ItemManager {
         // Remove all items before loading them again
         Item.removeAll()
         
+        // Make sure we don't forget wishlist items
+        let allWishlistItemsIds = Array(Wishlist.allItemsIdSet)
+        DispatchManager.shared.itemManagerGroup.enter()
+        
         // Run network requests for different corners in parallel
         for categories in allCategories {
             DispatchManager.shared.itemManagerGroup.enter()
@@ -217,6 +220,18 @@ class ItemManager {
             }
         }
         
+        // Run network request for wishlist items in parallel
+        NetworkManager.shared.getItems(allWishlistItemsIds) { wishlistItems in
+            // Check if any items were loaded
+            if let wishlistItems = wishlistItems {
+                Item.append(contentsOf: wishlistItems)
+            } else {
+                success = false
+            }
+            
+            DispatchManager.shared.itemManagerGroup.leave()
+        }
+        
         // Complete when all dispatch group tasks are finished
         DispatchManager.shared.itemManagerGroup.notify(queue: .main) {
             let endTime = Date()
@@ -224,7 +239,13 @@ class ItemManager {
             
             if success {
                 let categoriesCount = allCategories.flatMap { $0 }.count
-                debug(Item.all.count, gender?.rawValue, "items from \(categoriesCount) categories loaded in", passedTime.asTime, "s")
+                debug(
+                    Item.all.count,
+                    gender?.rawValue,
+                    "items from \(categoriesCount) categories loaded in",
+                    passedTime.asTime,
+                    "s"
+                )
             }
             
             completion(success)

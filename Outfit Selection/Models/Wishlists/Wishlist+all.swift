@@ -11,11 +11,7 @@ import Foundation
 extension Wishlist {
     // MARK: - Stored Static Properties
     /// Wishlist items added by the user to the wishlist
-    private static var _all: [Gender: [WishlistItems]] = [:] {
-        didSet {
-            debug(_all.count, _all)
-        }
-    }
+    private static var _all: [Gender: [WishlistItems]] = [:]
     
     /// Wishlist items saved to user default every time they are updated
     private(set) static var all: [WishlistItems] {
@@ -38,6 +34,16 @@ extension Wishlist {
     /// Clear both items and outfit wishlists
     static func removeAll(where shouldBeRemoved: (WishlistItems) -> Bool) {
         all.removeAll(where: shouldBeRemoved)
+    }
+    
+    /// Update all items vendor names to full versions
+    /// - Parameter fullVendorNames: the dictionary with short : full vendor names
+    static func updateVendorNames(with fullVendorNames: [String: String]) {
+        _all.forEach { wishlistItems in
+            wishlistItems.value.forEach {
+                $0.updateVendorNames(with: fullVendorNames)
+            }
+        }
     }
 }
 

@@ -27,7 +27,17 @@ class NetworkManager {
     var url: URL
     
     /// Map short vendor names to full vendor names
-    var fullVendorNames: [String: String] = [:]
+    var fullVendorNames: [String: String] = {
+        var fullVendorNames: [String: String] = [:]
+        BrandManager.shared.brandNames.forEach { fullVendorNames[$0.shorted] = $0 	}
+        return fullVendorNames
+    }() {
+        didSet {
+            guard oldValue.keys.count != fullVendorNames.keys.count else { return }
+            Item.updateVendorNames(with: fullVendorNames)
+            Wishlist.updateVendorNames(with: fullVendorNames)
+        }
+    }
     
     // MARK: - Init
     private init(_ url: URL? = nil) {
@@ -248,7 +258,6 @@ class NetworkManager {
             item.vendorName = self.fullVendorNames[item.vendorName] ?? item.vendorName
         }
         
-        debug("\(items.count) item\(items.count == 1 ? "" : "s")")
         completion(items)
     }
     
