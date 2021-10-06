@@ -221,10 +221,10 @@ class ItemManager {
         }
         
         // Run network request for wishlist items in parallel
-        NetworkManager.shared.getItems(allWishlistItemsIds) { wishlistItems in
+        NetworkManager.shared.getItems(allWishlistItemsIds) { itemsFromWishlists in
             // Check if any items were loaded
-            if let wishlistItems = wishlistItems {
-                Item.append(contentsOf: wishlistItems)
+            if let itemsFromWishlists = itemsFromWishlists {
+                Item.append(contentsOf: itemsFromWishlists)
             } else {
                 success = false
             }

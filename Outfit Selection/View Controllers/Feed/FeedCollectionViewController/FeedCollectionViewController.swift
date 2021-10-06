@@ -15,13 +15,13 @@ class FeedCollectionViewController: LoggingViewController {
     
     // MARK: - Stored Properties
     /// The collection of branded images
-    var brandedImages = BrandManager.shared.brandedImages.selectedFirst
+    let brandedImages = BrandManager.shared.brandedImages.prioritizeSelected
     
     /// Items for each of the kinds
     var items: [FeedKind: [Item]] = [:]
     
     /// The maximum number of items in each section
-    let maxItemsInSection = 42
+    let maxItemsInSection = BrandManager.shared.brandedImages.count
     
     /// Parent navigation controller if called from another view controller
     var parentNavigationController: UINavigationController?
@@ -135,13 +135,25 @@ class FeedCollectionViewController: LoggingViewController {
         if let items = items[kind] { return items }
         
         // Compose the list of items for section
+        let brandManager = BrandManager.shared
         var items: [Item] = []
         var remainingItems = Item.all
+        
+        // Now add all other items
         while items.count < maxItemsInSection && 0 < remainingItems.count {
             guard let item = remainingItems.randomElement() else { return items }
             items.append(item.value)
             remainingItems.removeValue(forKey: item.key)
         }
+        
+        // Put the last sekected brand name first
+        if let lastSelectedBrandName = brandManager.lastSelected?.brandName {
+            let lastSelectedBrandNames = [lastSelectedBrandName]
+            items.sort { $0.branded(lastSelectedBrandNames) || !$1.branded(lastSelectedBrandNames)}
+            debug(lastSelectedBrandNames, items.first)
+        }
+        
+        // Save the items
         self.items[kind] = items
         return items
     }
@@ -149,7 +161,6 @@ class FeedCollectionViewController: LoggingViewController {
     /// Reload data in feed collection view, putting brand name to the beginning if it is not nil
     /// - Parameter brandName: brand name, nil be default
     func reloadDataOnBrandChange() {
-        brandedImages = BrandManager.shared.brandedImages.selectedFirst
         NetworkManager.shared.reloadItems(for: Gender.current) { success in
             guard success == true else { return }
             self.items = [:]

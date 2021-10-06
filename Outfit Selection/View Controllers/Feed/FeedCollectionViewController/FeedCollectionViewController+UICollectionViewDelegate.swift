@@ -9,7 +9,7 @@
 import UIKit
 
 extension FeedCollectionViewController: UICollectionViewDelegate {
-    /// Perform an action when a user taps an item in the brands collection view
+    /// Perform an action when the user taps a brand in the collection view
     /// - Parameters:
     ///   - collectionView: the brands collection view
     ///   - indexPath: item index path the user has tapped on

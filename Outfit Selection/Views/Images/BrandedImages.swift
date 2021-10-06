@@ -36,11 +36,17 @@ class BrandedImages {
     /// Branded images filtere by brand
     var filtered: BrandedImages { filter { filter.isEmpty ? true : $0.branded([filter]) } }
     
-    /// Branded images currently selected by the user
-    var selected: BrandedImages { filter { $0.isSelected }}
+    /// All branded images with last selected first
+    var prioritizeLastSelected: BrandedImages {
+        guard let lastSelected = BrandManager.shared.lastSelected else { return self }
+        return BrandedImages([lastSelected]) + filter { !$0.isLastSelected }
+    }
     
     /// All branded images sorted by selected first
-    var selectedFirst: BrandedImages { selected + unselected }
+    var prioritizeSelected: BrandedImages { selected + unselected }
+    
+    /// Branded images currently selected by the user
+    var selected: BrandedImages { filter { $0.isSelected }}
     
     /// Image of the internal array with a given index
     subscript(index: Int) -> BrandedImage { images[index] }

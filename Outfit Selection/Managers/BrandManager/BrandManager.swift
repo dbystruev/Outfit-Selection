@@ -16,7 +16,11 @@ class BrandManager {
     private init() {}
     
     // MARK: - Stored Properties
+    /// Private branded images
     private var _brandedImages: BrandedImages?
+    
+    /// Last selected branded image
+    weak var lastSelected: BrandedImage?
     
     // MARK: - Computed Properties
     /// Available brand images
@@ -44,7 +48,7 @@ class BrandManager {
     }
     
     /// Sorted full file names of images with brand logos
-    var fullNames: [String] {
+    private var fullNames: [String] {
         let bundleURL = Bundle.main.bundleURL.appendingPathComponent("Brands.bundle")
         guard let names = try? FileManager.default.contentsOfDirectory(at: bundleURL, includingPropertiesForKeys: nil) else {
             return []
