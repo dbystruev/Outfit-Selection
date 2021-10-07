@@ -48,13 +48,29 @@ extension Occasion {
     // MARK: - Static Methods
     /// Load selected occasion names from user defaults and updated Occasion.all
     static func loadSelectedOccasions() {
-        guard let selectedNamesRestored = UserDefaults.standard.object(forKey: Occasion.userDefaultsKey) as? [String] else { return }
-        guard !selectedNamesRestored.isEmpty else { return }
+        guard
+            let selectedNamesRestored = UserDefaults.standard.object(forKey: userDefaultsKey) as? [String]
+        else {
+            debug("WARNING: Can't find data from user defaults for key \(userDefaultsKey)")
+            return
+        }
+        guard !selectedNamesRestored.isEmpty else {
+            debug("WARNING: Occasion list in user defaults for key \(userDefaultsKey) is empty")
+            return
+        }
+        
+        var selectedOccasionsCount = 0
         
         for (index, occasion) in Occasion.all.enumerated() {
             guard selectedNamesRestored.contains(occasion.name.lowercased()) else { continue }
             Occasion.all[index]._isSelected = true
+            selectedOccasionsCount += 1
         }
+        
+        debug(
+            "\(userDefaultsKey): \(selectedNamesRestored.count) loaded,",
+            "\(selectedOccasionsCount) of \(Occasion.all.count) selected"
+        )
     }
     
     /// Save selected occasion names to user defaults
