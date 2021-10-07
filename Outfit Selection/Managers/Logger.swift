@@ -44,10 +44,18 @@ class Logger {
             includingPropertiesForKeys: [URLResourceKey.isRegularFileKey]
         )
         
+        // Init counters
+        var filesRemoved = 0
+        var filesSkipped = 0
+        var filesUsed = 0
+        
         // Go through all the files in the directory
         while let file = files?.nextObject() as? NSURL {
             // Skip all non-txt files
-            guard file.pathExtension == "txt" else { continue }
+            guard file.pathExtension == "txt" else {
+                filesSkipped += 1
+                continue
+            }
             
             // Check file date / time
             if
@@ -58,9 +66,10 @@ class Logger {
             {
                 do {
                     try FileManager.default.removeItem(atPath: path)
-                    debug("DEBUG: file at \(path) has been removed")
+                    filesRemoved += 1
                 } catch {
                     debug("WARNING: Can't remove file at \(path) due to \(error.localizedDescription)")
+                    filesSkipped += 1
                 }
                 continue
             }
@@ -69,17 +78,28 @@ class Logger {
             do {
                 // Get file content and try to decode it as dictionary element
                 let content = try String(contentsOf: file as URL)
-                guard let decodedContent = decode(content) else { continue }
+                guard let decodedContent = decode(content) else {
+                    debug("WARNING: Can't decode content of file \(file): \(content)")
+                    filesSkipped += 1
+                    continue
+                }
                 
                 // Save decoded content
                 logFilesContent[decodedContent.key] = decodedContent.value
+                filesUsed += 1
                 
             } catch {
                 debug(error.localizedDescription)
+                filesSkipped += 1
             }
         }
         
-        debug("Loaded \(logFilesContent.count) records from \(logDirectoryURL)")
+        debug(
+            "Loaded \(logFilesContent.count) records,",
+            "removed \(filesRemoved),",
+            "skipped \(filesSkipped),",
+            "used \(filesUsed) from path \(logDirectoryURL)"
+        )
         return logFilesContent
     }()
     
