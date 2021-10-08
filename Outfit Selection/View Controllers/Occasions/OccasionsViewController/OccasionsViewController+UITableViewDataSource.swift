@@ -9,7 +9,7 @@
 import UIKit
 
 extension OccasionsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { Occasion.all.count }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { occasions.count }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let occasionCell: OccasionCell = {
@@ -20,7 +20,7 @@ extension OccasionsViewController: UITableViewDataSource {
             return cell
         }()
         
-        occasionCell.configureContent(with: Occasion.all[indexPath.row])
+        occasionCell.configureContent(with: occasions[indexPath.row])
         return occasionCell
     }
     

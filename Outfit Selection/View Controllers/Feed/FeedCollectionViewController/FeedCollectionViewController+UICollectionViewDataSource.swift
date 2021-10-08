@@ -38,11 +38,13 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             }
             
             let kind = sections[indexPath.section]
-            itemCell.configureContent(
-                kind: kind,
-                item: items(for: kind)[indexPath.item],
-                isInteractive: true
-            )
+            if let item = items[kind]?[indexPath.item] {
+                itemCell.configureContent(
+                    kind: kind,
+                    item: item,
+                    isInteractive: true
+                )
+            }
             
             itemCell.delegate = self
             return itemCell
@@ -51,7 +53,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let kind = sections[section]
-        let count = kind == .brands ? brandedImages.count : items(for: kind).count
+        let count = kind == .brands ? brandedImages.count : items[kind]?.count ?? 0
         return count
     }
     

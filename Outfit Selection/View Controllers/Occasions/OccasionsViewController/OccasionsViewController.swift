@@ -21,6 +21,9 @@ class OccasionsViewController: LoggingViewController {
     /// The main table view with occasion list
     @IBOutlet weak var occasionsTableView: UITableView!
     
+    // MARK: - Stored Properties
+    var occasions: [Occasion] = Occasion.all.keys.sorted().compactMap { Occasion.all[$0] }
+    
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()

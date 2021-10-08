@@ -98,7 +98,7 @@ class WishlistViewController: LoggingViewController {
         }
         
         // Append last collection items
-        feedController.add(items: lastCollection.items, to: .occasions(lastCollection.name))
+        feedController.addSection(items: lastCollection.items, to: .occasions(lastCollection.name))
     }
     
     /// Select the suggested tab

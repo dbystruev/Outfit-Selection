@@ -37,8 +37,12 @@ class FeedCollectionViewController: LoggingViewController {
     /// - Parameters:
     ///   - items: items to append to the section
     ///   - section: the section type (kind) to append the items to
-    func add(items: [Item], to section: FeedKind) {
+    func addSection(items: [Item], to section: FeedKind) {
         sections.append(section)
+        guard !items.isEmpty else {
+            getItems(for: section)
+            return
+        }
         self.items[section] = items
     }
     
@@ -127,55 +131,49 @@ class FeedCollectionViewController: LoggingViewController {
         return layout
     }
     
-    /// Select items depending on feed type (kind)
+    /// Gets items depending on feed type (kind)
     /// - Parameter kind: feed type (kind)
-    /// - Returns: the items selected for the given type (kind)
-    func items(for kind: FeedKind) -> [Item] {
-        // Check that the items for the given kind are already present
-        if let items = items[kind] { return items }
-        
-        // Compose the list of items for section
+    func getItems(for kind: FeedKind) {
+        // All sections will need to be filtered by brands
         let brandManager = BrandManager.shared
         let brandNames = brandManager.selectedBrandNames
-        var items: [Item] = []
-        var remainingItems = Item.all
-        var remainingBrandedItems = remainingItems.filter { $0.value.branded(brandNames) }
         
-        // First add items with selected brands
-        while items.count < maxItemsInSection && 0 < remainingBrandedItems.count {
-            guard let item = remainingBrandedItems.randomElement() else { return items }
-            items.append(item.value)
-            remainingBrandedItems.removeValue(forKey: item.key)
-            remainingItems.removeValue(forKey: item.key)
+        // Categories should be limited for occasions
+        let categoryIDs: [Int] = {
+            if case let .occasions(name) = kind {
+                return Occasion.all[name]?.categoryIDs ?? []
+            } else {
+                return []
+            }
+        }()
+        let categories = categoryIDs.compactMap { Category.all[$0] }
+        
+        NetworkManager.shared.getItems(in: categories, filteredBy: brandNames) { items in
+            guard var items = items else { return }
+            
+            // Put the last selected brand name first
+            if let lastSelectedBrandName = brandManager.lastSelected?.brandName {
+                let lastSelectedBrandNames = [lastSelectedBrandName]
+                items.sort { $0.branded(lastSelectedBrandNames) || !$1.branded(lastSelectedBrandNames)}
+            }
+            
+            self.items[kind] = items
+            
+            let reloadSections = self.sections.enumerated().compactMap { index, section in
+                section == kind ? index : nil
+            }
+            DispatchQueue.main.async {
+                self.feedCollectionView.reloadSections(IndexSet(reloadSections))
+            }
         }
-        
-        // Now add all other items
-        while items.count < maxItemsInSection && 0 < remainingItems.count {
-            guard let item = remainingItems.randomElement() else { return items }
-            items.append(item.value)
-            remainingItems.removeValue(forKey: item.key)
-        }
-        
-        // Put the last selected brand name first
-        if let lastSelectedBrandName = brandManager.lastSelected?.brandName {
-            let lastSelectedBrandNames = [lastSelectedBrandName]
-            items.sort { $0.branded(lastSelectedBrandNames) || !$1.branded(lastSelectedBrandNames)}
-        }
-        
-        // Save the items
-        self.items[kind] = items
-        return items
     }
     
     /// Reload data in feed collection view, putting brand name to the beginning if it is not nil
     /// - Parameter brandName: brand name, nil be default
     func reloadDataOnBrandChange() {
-        NetworkManager.shared.reloadItems(for: Gender.current) { success in
-            guard success == true else { return }
-            self.items = [:]
-            DispatchQueue.main.async {
-                self.feedCollectionView.reloadData()
-            }
+        items = [:]
+        for section in sections {
+            getItems(for: section)
         }
     }
     
@@ -216,7 +214,7 @@ class FeedCollectionViewController: LoggingViewController {
             }
             
             let kind = feedHeader.kind
-            feedItemViewController.configure(kind, with: items(for: kind), named: feedHeader.title)
+            feedItemViewController.configure(kind, with: items[kind], named: feedHeader.title)
             
         case ItemViewController.segueIdentifier:
             // Make sure feed item was clicked
@@ -253,7 +251,7 @@ class FeedCollectionViewController: LoggingViewController {
         setup(feedCollectionView, withBrandsOnTop: true)
         
         // Add initial values for each section
-        sections.forEach { add(items: items(for: $0), to: $0) }
+        sections.forEach { addSection(items: items[$0] ?? [], to: $0) }
     }
     
     override func viewWillAppear(_ animated: Bool) {

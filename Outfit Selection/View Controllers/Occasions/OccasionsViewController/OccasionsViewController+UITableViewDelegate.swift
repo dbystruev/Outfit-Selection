@@ -12,7 +12,7 @@ extension OccasionsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat { OccasionCell.heigth }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        Occasion.all[indexPath.row].isSelected.toggle()
+        occasions[indexPath.row].isSelected.toggle()
         tableView.reloadRows(at: [indexPath], with: .automatic)
     }
 }

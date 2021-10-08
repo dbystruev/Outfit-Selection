@@ -159,7 +159,7 @@ class NetworkManager {
     ///   - completion: closure called when request is finished, with items if successfull, or with nil if not
     func getItems(_ ids: [String], completion: @escaping ([Item]?) -> Void) {
         // Include id=in.(..., ...) parameter
-        let parameters = [ "id": "in.(\(ids.joined(separator: ",")))"]
+        let parameters = ["id": "in.(\(ids.joined(separator: ",")))"]
         
         // Request the items from the API
         getItems(with: parameters, completion: completion)
@@ -167,13 +167,13 @@ class NetworkManager {
     
     /// Add /items?categoryId=in.(..., ...)&vendor=in.(..., ...)&limit=... to server URL and call the API
     /// - Parameters:
-    ///   - categories: the list of categories to filter items by, should not be empty
-    ///   - gender: load female. male, or other (all) items
+    ///   - categories: the list of categories to filter items by, empty (all categories) by default
+    ///   - gender: load female. male, or other (all) items, Gender.current by default
     ///   - vendorNames: the list of vendors to filter items by
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
     func getItems(
-        in categories: [Category],
-        for gender: Gender?,
+        in categories: [Category] = [],
+        for gender: Gender? = Gender.current,
         filteredBy vendorNames: [String] = [],
         completion: @escaping ([Item]?) -> Void)
     {
@@ -189,6 +189,11 @@ class NetworkManager {
     ///   - parameters: API query parameters
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
     func getItems(with parameters: [String: Any], completion: @escaping ([Item]?) -> Void) {
+        // Sort by modified time from newest to oldest
+        var parameters = parameters
+        parameters["order"] = "modified_time.desc"
+        
+        // Process get request
         get("items", parameters: parameters) { (items: [Item]?) in
             self.restoreVendorFullNames(items: items, completion: completion)
         }
@@ -212,7 +217,8 @@ class NetworkManager {
         filteredBy fullVendorNames: [String] = []
     ) -> [String: Any] {
         // Prepare parameters
-        var parameters: [String: Any] = ["limit": Item.maxCount / BrandManager.shared.selectedBrands.count + 1]
+        let brandsCount = BrandManager.shared.selectedBrands.count
+        var parameters: [String: Any] = ["limit": brandsCount < 1 ? Item.maxCount : Item.maxCount / brandsCount + 1]
         
         // Add "category_id" parameter
         parameters[Item.CodingKeys.categoryId.rawValue] = categories.isEmpty

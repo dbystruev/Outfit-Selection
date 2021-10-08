@@ -31,7 +31,7 @@ extension FeedCollectionViewController: ButtonDelegate {
             
             // Configure and push feed item view controller
             let kind = feedHeader.kind
-            feedItemViewController.configure(kind, with: items(for: kind), named: feedHeader.title)
+            feedItemViewController.configure(kind, with: items[kind], named: feedHeader.title)
             wishlistNavigationController.pushViewController(feedItemViewController, animated: true)
             return
         }

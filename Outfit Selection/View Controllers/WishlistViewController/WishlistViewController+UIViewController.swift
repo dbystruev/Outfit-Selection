@@ -90,7 +90,7 @@ extension WishlistViewController {
         
         // Fill feed controller with collections and items
         Collection.all.forEach { collection in
-            feedController.add(items: collection.items, to: .occasions(collection.name))
+            feedController.addSection(items: collection.items, to: .occasions(collection.name))
         }
         
         // Set data source and delegate for wish list collection view

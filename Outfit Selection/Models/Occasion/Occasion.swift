@@ -73,9 +73,9 @@ extension Occasion {
         
         var selectedOccasionsCount = 0
         
-        for (index, occasion) in Occasion.all.enumerated() {
-            guard selectedNamesRestored.contains(occasion.name.lowercased()) else { continue }
-            Occasion.all[index]._isSelected = true
+        for selectedRestoredName in selectedNamesRestored {
+            guard let occasion = Occasion.all[selectedRestoredName.lowercased()] else { continue }
+            occasion.isSelected = true
             selectedOccasionsCount += 1
         }
         

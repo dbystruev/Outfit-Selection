@@ -24,7 +24,11 @@ extension AppDelegate {
             // Make sure we don't update to the empty list of occasions
             guard let occasions = occasions, !occasions.isEmpty else { return }
             
-            Occasion.all = occasions.sorted { $0.name < $1.name }
+            // Fill occasions with the new list of occasions
+            Occasion.all.removeAll()
+            occasions.forEach {
+                Occasion.all[$0.name.lowercased()] = $0
+            }
             
             // Restore occasions from user defaults
             Occasion.restore()
