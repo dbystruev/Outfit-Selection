@@ -122,7 +122,7 @@ class NetworkManager {
         task.resume()
     }
     
-    /// Add /categories?limit=999999 to server URL and call the API
+    /// Call /categories API
     /// - Parameter completion: closure called after the request is finished, with list of categories if successfull, or with nil if not
     func getCategories(completion: @escaping (_ categories: [Category]?) -> Void) {
         get("categories", completion: completion)
@@ -192,6 +192,12 @@ class NetworkManager {
         get("items", parameters: parameters) { (items: [Item]?) in
             self.restoreVendorFullNames(items: items, completion: completion)
         }
+    }
+    
+    /// Call /occasions API
+    /// - Parameter completion: closure called after the request is finished, with list of occasions if successfull, or with nil if not
+    func getOccasions(completion: @escaping (_ categories: [Occasion]?) -> Void) {
+        get("occasions", completion: completion)
     }
     
     /// Prepare parameters dictionary for given categories, gender, and vendors

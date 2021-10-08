@@ -17,4 +17,17 @@ extension AppDelegate {
             Category.all = categories
         }
     }
+    
+    /// Update the list of occasions from the server
+    func updateOccasions() {
+        NetworkManager.shared.getOccasions { occasions in
+            // Make sure we don't update to the empty list of occasions
+            guard let occasions = occasions, !occasions.isEmpty else { return }
+            
+            Occasion.all = occasions.sorted { $0.name < $1.name }
+            
+            // Restore occasions from user defaults
+            Occasion.restore()
+        }
+    }
 }

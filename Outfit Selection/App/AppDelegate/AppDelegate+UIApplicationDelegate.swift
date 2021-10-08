@@ -35,6 +35,9 @@ extension AppDelegate: UIApplicationDelegate {
         NetworkManager.shared.updateURL() { _ in
             // Update the list of categories from the server
             self.updateCategories()
+            
+            // Update the list of occasions from the server
+            self.updateOccasions()
         }
         
         // Change global tint color
@@ -57,10 +60,9 @@ extension AppDelegate: UIApplicationDelegate {
         // Configure current notification center
         userNotificationCenter(configureFor: application)
         
-        // Restore user wishlists, collections, and occasions if any
-        Wishlist.load()
-        Collection.load()
-        Occasion.loadSelectedOccasions()
+        // Restore user wishlists and collections from user defaults
+        Wishlist.restore()
+        Collection.restore()
         
         return true
     }

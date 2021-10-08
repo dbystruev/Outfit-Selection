@@ -59,7 +59,7 @@ extension Occasion {
     
     // MARK: - Static Methods
     /// Load selected occasion names from user defaults and updated Occasion.all
-    static func loadSelectedOccasions() {
+    static func restore() {
         guard
             let selectedNamesRestored = UserDefaults.standard.object(forKey: userDefaultsKey) as? [String]
         else {

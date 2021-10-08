@@ -56,7 +56,7 @@ extension Wishlist {
     
     // MARK: - Methods
     /// Load wishlist from user defaults
-    static func load() {
+    static func restore() {
         guard let data = UserDefaults.standard.object(forKey: userDefaultsKey) as? Data else {
             debug("WARNING: Can't find data from user defaults for key \(userDefaultsKey)")
             return
