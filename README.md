@@ -36,7 +36,10 @@ Make sure [TestFlight App](https://apps.apple.com/app/testflight/id899247664) is
 
 ## Requirements
 
-REST/JSON server with [categories](http://spb.getoutfit.co:3000/categories) and [items](http://spb.getoutfit.co:3000/items?limit=10) database.
+REST/JSON server with the following API calls:
+* [categories](http://spb.getoutfit.co:3000/categories)
+* [items](http://spb.getoutfit.co:3000/items?limit=10)
+* [occasions](http://spb.getoutfit.co:3000/occasions)
 
 ## Acknowledgments
 

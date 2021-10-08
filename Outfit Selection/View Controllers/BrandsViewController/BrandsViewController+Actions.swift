@@ -16,7 +16,13 @@ extension BrandsViewController {
         // Start loading items
         NetworkManager.shared.reloadItems(for: gender) { _ in }
         
-        // Transition to the progress view controller
+        // Transition progress view controller if occasions are empty
+        guard !Occasion.all.isEmpty else {
+            performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
+            return
+        }
+        
+        // Transition to occasions
         performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)
     }
     

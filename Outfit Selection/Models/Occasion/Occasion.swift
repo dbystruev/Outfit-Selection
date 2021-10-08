@@ -8,15 +8,19 @@
 
 import Foundation
 
-struct Occasion: Codable {
+final class Occasion: Codable {
     
-    // MARK: - Properties
+    // MARK: - Stored Properties
     /// The name of the occasion
     let name: String
+    
+    /// Category IDs which belong to the occasion
+    let categoryIDs: [Int]
     
     /// Flag showing if occasion is selected by the user
     private var _isSelected = false
     
+    // MARK: - Computed Properties
     var isSelected: Bool {
         get { _isSelected }
         set {
@@ -28,13 +32,21 @@ struct Occasion: Codable {
         }
     }
     
+    // MARK: - Types
+    enum CodingKeys: String, CodingKey {
+        case name
+        case categoryIDs = "category_ids"
+    }
+    
     // MARK: - Init
     /// Constructor for occasion
     /// - Parameters:
     ///   - name: the name of the occasion
+    ///   - categoryIDs: category IDs which belong to the occasion
     ///   - isSelected: whether the occasion is selected by the user, false by default
-    init(_ name: String, isSelected: Bool = false) {
+    init(_ name: String, categoryIDs: [Int], isSelected: Bool = false) {
         self.name = name
+        self.categoryIDs = categoryIDs
         self.isSelected = isSelected
     }
 }

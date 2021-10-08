@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class Item: Decodable, Encodable {
+final class Item: Codable {
     // MARK: - Static Properties
     /// All items loaded from the server
     private(set) static var all = [String: Item]()
