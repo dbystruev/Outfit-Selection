@@ -148,8 +148,16 @@ class FeedCollectionViewController: LoggingViewController {
         }()
         let categories = categoryIDs.compactMap { Category.all[$0] }
         
-        NetworkManager.shared.getItems(in: categories, filteredBy: brandNames) { items in
-            guard var items = items else { return }
+        // If feed type is sale get items with old prices set
+        let sale = kind == .sale
+        
+        NetworkManager.shared.getItems(
+            in: categories,
+            filteredBy: brandNames,
+            limited: maxItemsInSection,
+            sale: sale
+        ) { items in
+            guard var items = items?.shuffled() else { return }
             
             // Put the last selected brand name first
             if let lastSelectedBrandName = brandManager.lastSelected?.brandName {
@@ -159,11 +167,11 @@ class FeedCollectionViewController: LoggingViewController {
             
             self.items[kind] = items
             
-            let reloadSections = self.sections.enumerated().compactMap { index, section in
+            let updatedSections = self.sections.enumerated().compactMap { index, section in
                 section == kind ? index : nil
             }
             DispatchQueue.main.async {
-                self.feedCollectionView.reloadSections(IndexSet(reloadSections))
+                self.feedCollectionView.reloadSections(IndexSet(updatedSections))
             }
         }
     }
