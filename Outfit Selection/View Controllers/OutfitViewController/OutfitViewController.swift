@@ -39,6 +39,9 @@ class OutfitViewController: LoggingViewController {
     /// Confstraint for the trailing of hanger bubble
     var hangerBubbleTrailingConstraint: NSLayoutConstraint!
     
+    /// Occasion which is currently selected by the user
+    weak var occasionSelected: Occasion?
+    
     /// Scroll to items in this list if there are any
     var scrollToItems: [Item] = []
     

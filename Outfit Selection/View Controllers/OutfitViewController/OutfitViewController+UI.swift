@@ -135,7 +135,7 @@ extension OutfitViewController {
         DispatchQueue.main.asyncAfter(deadline: .now() + pause) {
             // Check that outfit view controller is visible
             guard !self.shouldHideBubbles else { return }
-
+            
             if self.showHangerBubble {
                 UIView.animate(withDuration: 2) {
                     self.hangerBubble.alpha = 1
@@ -147,7 +147,7 @@ extension OutfitViewController {
                     self.refreshBubble?.alpha = 1
                 }
             }
-
+            
         }
     }
     
@@ -186,15 +186,53 @@ extension OutfitViewController {
     
     /// Update occasions stack view
     func updateOccasions() {
+        // Save selected occasions for future manipulations
+        let selectedOccasions = Occasion.selected
+        
         // Hide occasions stack view if no occasions are selected
-        let isHidden = Occasion.selected.isEmpty
+        let isHidden = selectedOccasions.isEmpty
         occasionsStackView.isHidden = isHidden
         occasionsStackViewHeightConstraint.constant = isHidden ? 0 : 44
-        guard !isHidden else { return }
         
-        // Set first occasion name as first button name
-        guard let firstButton = occasionsStackView.arrangedSubviews.first as? UIButton else { return }
-        firstButton.setTitle(Occasion.selected.first?.name, for: .normal)
+        // Get buttons from occasions stack view
+        let buttons = occasionsStackView.arrangedSubviews.compactMap { $0 as? OccasionButton }
+        guard let firstButton = buttons.first else {
+            debug("ERROR: no buttons in occasions stack view")
+            return
+        }
+        
+        // Fill existing arranged subviews with selected occasions
+        for (button, occasion) in zip(buttons, selectedOccasions) {
+            // Set next occasion name as button name
+            button.occasion = occasion
+            button.setTitle(occasion.name, for: .normal)
+        }
+        
+        // If there is no enough buttons add more
+        if buttons.count < selectedOccasions.count {
+            for occasionIndex in buttons.count ..< selectedOccasions.count {
+                // Create a button with given occasion name
+                let occasion = selectedOccasions[occasionIndex]
+                let button = OccasionButton(occasion)
+                button.setTitleColor(firstButton.titleColor(for: .normal), for: .normal)
+                button.titleLabel?.font = firstButton.titleLabel?.font
+                
+                // Copy all touch up inside actions for all targets from the first button
+                for target in firstButton.allTargets {
+                    guard let actions = firstButton.actions(forTarget: target, forControlEvent: .touchUpInside) else { continue }
+                    for action in actions {
+                        button.addTarget(target, action: Selector(action), for: .touchUpInside)
+                    }
+                }
+                
+                occasionsStackView.addArrangedSubview(button)
+                debug(button)
+            }
+            // If there are too many buttons remove remaining {
+        } else if selectedOccasions.count < buttons.count {
+            let buttonsToRemove = buttons.count - selectedOccasions.count
+            
+        }
     }
     
     /// Updates price label

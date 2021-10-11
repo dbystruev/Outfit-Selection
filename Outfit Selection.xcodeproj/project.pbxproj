@@ -219,6 +219,7 @@
 		69F046FC26FDDB87002E16C0 /* BrandsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F046FB26FDDB87002E16C0 /* BrandsCollectionView.swift */; };
 		69F6465B270227360059A46C /* FeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F6465A270227360059A46C /* FeedCollectionViewController.swift */; };
 		69F78DF626CBF047007843C4 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F78DF526CBF047007843C4 /* Feed.storyboard */; };
+		69FB0E9F271460BB006C20E9 /* OccasionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB0E9E271460BB006C20E9 /* OccasionButton.swift */; };
 		69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FBB20622F1ABE000187562 /* GenderViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -435,6 +436,7 @@
 		69F046FB26FDDB87002E16C0 /* BrandsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsCollectionView.swift; sourceTree = "<group>"; };
 		69F6465A270227360059A46C /* FeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewController.swift; sourceTree = "<group>"; };
 		69F78DF526CBF047007843C4 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
+		69FB0E9E271460BB006C20E9 /* OccasionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionButton.swift; sourceTree = "<group>"; };
 		69FBB20622F1ABE000187562 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -800,6 +802,7 @@
 			children = (
 				697CCE6526CFF22900B69763 /* DelegatedButton.swift */,
 				69AEC9E725BF014100183E15 /* GenderButton.swift */,
+				69FB0E9E271460BB006C20E9 /* OccasionButton.swift */,
 				69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */,
 				69AE95552563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift */,
 				690B42B126DD7601000C683B /* WishlistButton.swift */,
@@ -1464,6 +1467,7 @@
 				699632AD26FCB0DE00841B6F /* Character+isUppercased.swift in Sources */,
 				691C5F3C26E764F200DF0758 /* CGSize+CustomStringConvertible.swift in Sources */,
 				69642071270AE6BC00FCDF5A /* Collection+UserDefaults.swift in Sources */,
+				69FB0E9F271460BB006C20E9 /* OccasionButton.swift in Sources */,
 				69F046FC26FDDB87002E16C0 /* BrandsCollectionView.swift in Sources */,
 				69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */,
 				69A0C9EA2705B3F200C49977 /* WhiteLabel.swift in Sources */,

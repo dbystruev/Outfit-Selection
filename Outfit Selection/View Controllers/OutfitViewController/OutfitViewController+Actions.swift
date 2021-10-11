@@ -66,6 +66,10 @@ extension OutfitViewController {
         }
     }
     
+    @IBAction func occasionButtonTapped(_ sender: OccasionButton) {
+        debug(sender.occasion?.name)
+    }
+    
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         // Get the images and check that all of them are not nil
         let imageViews = scrollViews.compactMap { $0.getImageView() }
