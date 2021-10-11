@@ -25,26 +25,55 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IAX-S5-SzT">
+                                <rect key="frame" x="0.0" y="88" width="414" height="44"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="N2o-hb-U88">
+                                        <rect key="frame" x="20" y="0.0" width="80" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QSs-rB-2If">
+                                                <rect key="frame" x="0.0" y="0.0" width="80" height="44"/>
+                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <state key="normal" title="Occasions">
+                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.9999235272" green="1" blue="0.99988299609999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="nDl-gS-Ksk"/>
+                                        </constraints>
+                                    </stackView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="U9V-yz-bhc" firstAttribute="bottom" secondItem="N2o-hb-U88" secondAttribute="bottom" id="3kX-u5-rVc"/>
+                                    <constraint firstItem="N2o-hb-U88" firstAttribute="top" secondItem="U9V-yz-bhc" secondAttribute="top" id="Vkc-bH-fF8"/>
+                                    <constraint firstItem="U9V-yz-bhc" firstAttribute="trailing" secondItem="N2o-hb-U88" secondAttribute="trailing" id="j2A-pL-Rg1"/>
+                                    <constraint firstItem="N2o-hb-U88" firstAttribute="leading" secondItem="U9V-yz-bhc" secondAttribute="leading" constant="20" id="xtJ-ri-1M6"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="U9V-yz-bhc"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="pkA-Vh-D3f"/>
+                            </scrollView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Mpa-x0-hSn">
-                                <rect key="frame" x="0.0" y="104" width="414" height="703"/>
+                                <rect key="frame" x="0.0" y="132" width="414" height="675"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="hWK-Fq-NLp" userLabel="Outfit Stack View">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="647"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="619"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v08-i2-MWB" userLabel="Left Stack View">
-                                                <rect key="frame" x="0.0" y="0.0" width="207" height="647"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="207" height="619"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="soe-qC-gFy">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="206.5"/>
                                                         <subviews>
                                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2j-61-yTt" customClass="PinnableScrollView" customModule="Concept_Group" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="206.5"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="968-N5-ncz">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="206.5"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yAK-fJ-kYJ">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="206.5"/>
                                                                                 <gestureRecognizers/>
                                                                             </imageView>
                                                                         </subviews>
@@ -82,16 +111,16 @@
                                                         </constraints>
                                                     </view>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="q3p-Hb-HCX">
-                                                        <rect key="frame" x="0.0" y="215.5" width="207" height="431.5"/>
+                                                        <rect key="frame" x="0.0" y="206.5" width="207" height="412.5"/>
                                                         <subviews>
                                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="McV-FV-yxk" customClass="PinnableScrollView" customModule="Concept_Group" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="431.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="412.5"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="0zR-30-TcT">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="431.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="412.5"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3gk-iW-dx9">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="431.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="412.5"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                     </stackView>
@@ -133,19 +162,19 @@
                                                 </constraints>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="kgN-iQ-i5v" userLabel="Right Stack View">
-                                                <rect key="frame" x="207" y="0.0" width="207" height="647"/>
+                                                <rect key="frame" x="207" y="0.0" width="207" height="619"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMD-nX-CLZ">
-                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="206.5"/>
                                                         <subviews>
                                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nrI-94-QGh" customClass="PinnableScrollView" customModule="Concept_Group" customModuleProvider="target">
-                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="206.5"/>
                                                                 <subviews>
                                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="MdE-3E-PTX">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="207" height="206.5"/>
                                                                         <subviews>
                                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="gbr-Gx-rxa">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="215.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="206.5"/>
                                                                             </imageView>
                                                                         </subviews>
                                                                     </stackView>
@@ -182,19 +211,19 @@
                                                         </constraints>
                                                     </view>
                                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="CVg-er-V9a" userLabel="Bottom Stack View">
-                                                        <rect key="frame" x="0.0" y="215.5" width="207" height="431.5"/>
+                                                        <rect key="frame" x="0.0" y="206.5" width="207" height="412.5"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CIz-Li-wcf">
-                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="216"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="207" height="206"/>
                                                                 <subviews>
                                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAH-LD-FOj" customClass="PinnableScrollView" customModule="Concept_Group" customModuleProvider="target">
-                                                                        <rect key="frame" x="16" y="32" width="175" height="184"/>
+                                                                        <rect key="frame" x="16" y="32" width="175" height="174"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="PWZ-Fo-lTr">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="175" height="184"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="175" height="174"/>
                                                                                 <subviews>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="slC-JN-DLX">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="184"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="174"/>
                                                                                     </imageView>
                                                                                 </subviews>
                                                                             </stackView>
@@ -231,16 +260,16 @@
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ACr-z5-nl2">
-                                                                <rect key="frame" x="0.0" y="216" width="207" height="215.5"/>
+                                                                <rect key="frame" x="0.0" y="206" width="207" height="206.5"/>
                                                                 <subviews>
                                                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7mM-sh-37O" customClass="PinnableScrollView" customModule="Concept_Group" customModuleProvider="target">
-                                                                        <rect key="frame" x="16" y="0.0" width="175" height="183.5"/>
+                                                                        <rect key="frame" x="16" y="0.0" width="175" height="174.5"/>
                                                                         <subviews>
                                                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="32E-Pf-wzh">
-                                                                                <rect key="frame" x="0.0" y="0.0" width="175" height="183.5"/>
+                                                                                <rect key="frame" x="0.0" y="0.0" width="175" height="174.5"/>
                                                                                 <subviews>
                                                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="E0I-hd-Y8I">
-                                                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="183.5"/>
+                                                                                        <rect key="frame" x="0.0" y="0.0" width="175" height="174.5"/>
                                                                                     </imageView>
                                                                                 </subviews>
                                                                             </stackView>
@@ -286,7 +315,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hj3-6W-cgc">
-                                        <rect key="frame" x="0.0" y="647" width="414" height="56"/>
+                                        <rect key="frame" x="0.0" y="619" width="414" height="56"/>
                                         <subviews>
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ggf-Jf-cb6">
                                                 <rect key="frame" x="16" y="0.0" width="382" height="56"/>
@@ -350,11 +379,15 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="Mpa-x0-hSn" firstAttribute="top" secondItem="N2o-hb-U88" secondAttribute="bottom" id="0TP-dV-8wu"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="IAX-S5-SzT" secondAttribute="top" id="65y-IT-TI8"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="Mpa-x0-hSn" secondAttribute="bottom" constant="6" id="8ug-BV-VeL"/>
+                            <constraint firstItem="IAX-S5-SzT" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="FSK-7y-Dpg"/>
                             <constraint firstItem="oJl-Sn-ofQ" firstAttribute="trailing" secondItem="EUS-GK-b31" secondAttribute="leading" constant="4" id="OyO-vD-qVZ"/>
-                            <constraint firstItem="Mpa-x0-hSn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="QBM-z2-oFL"/>
                             <constraint firstItem="oJl-Sn-ofQ" firstAttribute="centerY" secondItem="EUS-GK-b31" secondAttribute="centerY" id="RZy-M6-jXz"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="IAX-S5-SzT" secondAttribute="leading" id="Yzb-Bx-jV9"/>
                             <constraint firstItem="Mpa-x0-hSn" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="d72-qj-u8I"/>
+                            <constraint firstItem="Mpa-x0-hSn" firstAttribute="top" secondItem="IAX-S5-SzT" secondAttribute="bottom" id="hxP-QE-qBW"/>
                             <constraint firstItem="Mpa-x0-hSn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ldn-qd-m4j"/>
                         </constraints>
                     </view>
@@ -372,6 +405,8 @@
                         <outlet property="hangerBarButtonItem" destination="ka5-GL-mJm" id="IvH-vr-Biu"/>
                         <outlet property="iconsStackView" destination="Ggf-Jf-cb6" id="bfG-jS-Zh5"/>
                         <outlet property="likeButton" destination="kYh-UG-gmm" id="aT9-7N-MF8"/>
+                        <outlet property="occasionsStackView" destination="N2o-hb-U88" id="Xbd-Wl-hJU"/>
+                        <outlet property="occasionsStackViewHeightConstraint" destination="nDl-gS-Ksk" id="S83-NH-n0E"/>
                         <outlet property="priceLabel" destination="TjY-vq-NEy" id="a2R-Fu-TWq"/>
                         <outlet property="refreshBubble" destination="oJl-Sn-ofQ" id="7Da-zx-g2G"/>
                         <outlet property="refreshButton" destination="EUS-GK-b31" id="15N-Hx-Phk"/>

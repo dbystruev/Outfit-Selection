@@ -184,6 +184,19 @@ extension OutfitViewController {
         }
     }
     
+    /// Update occasions stack view
+    func updateOccasions() {
+        // Hide occasions stack view if no occasions are selected
+        let isHidden = Occasion.selected.isEmpty
+        occasionsStackView.isHidden = isHidden
+        occasionsStackViewHeightConstraint.constant = isHidden ? 0 : 44
+        guard !isHidden else { return }
+        
+        // Set first occasion name as first button name
+        guard let firstButton = occasionsStackView.arrangedSubviews.first as? UIButton else { return }
+        firstButton.setTitle(Occasion.selected.first?.name, for: .normal)
+    }
+    
     /// Updates price label
     func updatePrice() {
         guard 0 < price else {
@@ -200,6 +213,9 @@ extension OutfitViewController {
     func updateUI() {
         // Update like button
         updateLikeButton()
+        
+        // Update occasions stack view
+        updateOccasions()
         
         // Update price label
         updatePrice()

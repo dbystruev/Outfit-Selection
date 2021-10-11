@@ -14,6 +14,8 @@ class OutfitViewController: LoggingViewController {
     @IBOutlet var hangerButtons: [UIButton]!
     @IBOutlet weak var iconsStackView: UIStackView!
     @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var occasionsStackView: UIStackView!
+    @IBOutlet weak var occasionsStackViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var refreshBubble: RefreshBubble! {
         didSet {
