@@ -8,6 +8,7 @@
 
 import Foundation
 
+/// Occasions to create looks for
 final class Occasion: Codable {
     
     // MARK: - Stored Properties
@@ -47,7 +48,14 @@ final class Occasion: Codable {
     init(_ name: String, categoryIDs: [Int], isSelected: Bool = false) {
         self.name = name
         self.categoryIDs = categoryIDs
-        self.isSelected = isSelected
+        self._isSelected = isSelected
+    }
+    
+    // MARK: - Methods
+    /// Select / deselect this occasion without updating user defaults
+    /// - Parameter isSelected: true if should select, false if should unselect
+    func selectWithoutSaving(_ isSelected: Bool) {
+        _isSelected = isSelected
     }
 }
 

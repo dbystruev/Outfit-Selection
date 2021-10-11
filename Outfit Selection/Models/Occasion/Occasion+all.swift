@@ -23,4 +23,7 @@ extension Occasion {
     
     /// The names of selected occasions
     static var selectedNames: [String] { selected.map { $0.name }}
+    
+    /// The list of unselected occasions
+    static var unselected: [Occasion] { all.values.filter { !$0.isSelected }}
 }

@@ -221,6 +221,7 @@
 		69F78DF626CBF047007843C4 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F78DF526CBF047007843C4 /* Feed.storyboard */; };
 		69FB0E9F271460BB006C20E9 /* OccasionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB0E9E271460BB006C20E9 /* OccasionButton.swift */; };
 		69FB0EA12714656D006C20E9 /* Occasion+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB0EA02714656D006C20E9 /* Occasion+CustomStringConvertible.swift */; };
+		69FB0EA327148AAE006C20E9 /* OccasionsViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB0EA227148AAE006C20E9 /* OccasionsViewController+Actions.swift */; };
 		69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FBB20622F1ABE000187562 /* GenderViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -439,6 +440,7 @@
 		69F78DF526CBF047007843C4 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		69FB0E9E271460BB006C20E9 /* OccasionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionButton.swift; sourceTree = "<group>"; };
 		69FB0EA02714656D006C20E9 /* Occasion+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occasion+CustomStringConvertible.swift"; sourceTree = "<group>"; };
+		69FB0EA227148AAE006C20E9 /* OccasionsViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OccasionsViewController+Actions.swift"; sourceTree = "<group>"; };
 		69FBB20622F1ABE000187562 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -479,6 +481,7 @@
 			isa = PBXGroup;
 			children = (
 				69007CF226EA6A4B001170D0 /* OccasionsViewController.swift */,
+				69FB0EA227148AAE006C20E9 /* OccasionsViewController+Actions.swift */,
 				69007CFF26EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift */,
 				69007D0126EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift */,
 			);
@@ -1460,6 +1463,7 @@
 				69297C5225EB852700A8684E /* BrandCollectionViewCell.swift in Sources */,
 				69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */,
 				69A0C9DC27044E6600C49977 /* FeedSectionHeaderView.swift in Sources */,
+				69FB0EA327148AAE006C20E9 /* OccasionsViewController+Actions.swift in Sources */,
 				698A7F9626E8E8DB006C36FD /* WishlistItems.swift in Sources */,
 				69C5CBE0260A12D900DE22E6 /* ShareViewController+UITableViewDataSource.swift in Sources */,
 				691C5F4226E7950900DF0758 /* WishlistBaseCell.swift in Sources */,

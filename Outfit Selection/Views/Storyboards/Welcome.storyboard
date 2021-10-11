@@ -397,8 +397,17 @@
                             <constraint firstItem="hZS-Fj-0sN" firstAttribute="leading" secondItem="aJ0-6q-khG" secondAttribute="leading" priority="750" constant="24" id="oJO-ac-hJN"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Occasions" id="om5-eO-dyh"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Occasions" id="emN-yU-cqq">
+                        <barButtonItem key="rightBarButtonItem" title="Select all" id="oR3-nD-fqp" customClass="SelectableButtonItem" customModule="Concept_Group" customModuleProvider="target">
+                            <connections>
+                                <action selector="selectAllButtonTapped:" destination="21c-yn-AfK" id="9hC-v6-b7X"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="allButton" destination="oR3-nD-fqp" id="9KA-Rf-diq"/>
                         <outlet property="nextButton" destination="hZS-Fj-0sN" id="rAN-05-0me"/>
                         <outlet property="occasionsTableView" destination="VQg-j8-dsL" id="bIN-fl-bKy"/>
                     </connections>
@@ -409,7 +418,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jyn-7A-y6N"/>
+        <segue reference="Nk9-sR-D98"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checked" width="18" height="18"/>

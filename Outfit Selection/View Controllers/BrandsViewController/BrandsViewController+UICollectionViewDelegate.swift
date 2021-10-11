@@ -27,7 +27,8 @@ extension BrandsViewController: UICollectionViewDelegate {
         brandedImage.isSelected.toggle()
         brandCell.configureBackground(isSelected: brandedImage.isSelected)
         
-        // Configure get outfit button
+        // Configure the buttons
+        configureAllButton()
         configureGoButton()
     }
 }
