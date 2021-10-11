@@ -220,6 +220,7 @@
 		69F6465B270227360059A46C /* FeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F6465A270227360059A46C /* FeedCollectionViewController.swift */; };
 		69F78DF626CBF047007843C4 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F78DF526CBF047007843C4 /* Feed.storyboard */; };
 		69FB0E9F271460BB006C20E9 /* OccasionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB0E9E271460BB006C20E9 /* OccasionButton.swift */; };
+		69FB0EA12714656D006C20E9 /* Occasion+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB0EA02714656D006C20E9 /* Occasion+CustomStringConvertible.swift */; };
 		69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FBB20622F1ABE000187562 /* GenderViewController.swift */; };
 /* End PBXBuildFile section */
 
@@ -437,6 +438,7 @@
 		69F6465A270227360059A46C /* FeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewController.swift; sourceTree = "<group>"; };
 		69F78DF526CBF047007843C4 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		69FB0E9E271460BB006C20E9 /* OccasionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionButton.swift; sourceTree = "<group>"; };
+		69FB0EA02714656D006C20E9 /* Occasion+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occasion+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		69FBB20622F1ABE000187562 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -459,6 +461,7 @@
 				69007CEB26EA6324001170D0 /* Occasion.swift */,
 				69007CEE26EA63AA001170D0 /* Occasion+all.swift */,
 				69007CF026EA6619001170D0 /* Occasion+Comparable.swift */,
+				69FB0EA02714656D006C20E9 /* Occasion+CustomStringConvertible.swift */,
 			);
 			path = Occasion;
 			sourceTree = "<group>";
@@ -1472,6 +1475,7 @@
 				69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */,
 				69A0C9EA2705B3F200C49977 /* WhiteLabel.swift in Sources */,
 				69AB228C22BA4BE400C7FA8D /* OutfitViewController+Actions.swift in Sources */,
+				69FB0EA12714656D006C20E9 /* Occasion+CustomStringConvertible.swift in Sources */,
 				69007D0026EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift in Sources */,
 				69B539F2257F9C7A00116F98 /* UIViewController+dismissRoot.swift in Sources */,
 				69297C5F25EBC9FE00A8684E /* GenderCollectionViewCell.swift in Sources */,

@@ -67,7 +67,7 @@ extension OutfitViewController {
     }
     
     @IBAction func occasionButtonTapped(_ sender: OccasionButton) {
-        debug(sender.occasion?.name)
+        occasionSelected = sender.occasion
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
