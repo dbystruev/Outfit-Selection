@@ -184,8 +184,8 @@ extension OutfitViewController {
         }
     }
     
-    /// Update occasions stack view
-    func updateOccasions() {
+    /// Setup occasions stack view
+    func setupOccasions() {
         // By default make the first occasion selected
         let selectedOccasions = Occasion.selected.sorted()
         occasionSelected = occasionSelected ?? selectedOccasions.first
@@ -241,6 +241,27 @@ extension OutfitViewController {
             // Remove the buttons
             buttonsToRemove.forEach { $0.element.removeFromSuperview() }
         }
+        
+        // Update occasions
+        updateOccasions()
+    }
+    
+    /// Update occasions stack view when user taps an occasion button
+    func updateOccasions() {
+        let occasionButtons = occasionsStackView.arrangedSubviews.compactMap { $0 as? OccasionButton }
+        for button in occasionButtons {
+            // Set button opacity depending on whether it is selected
+            let isSelected = button.occasion == occasionSelected
+            button.alpha = isSelected ? 1 : 0.5
+            
+            // Underline the title if it is selected
+            guard let currentTitle = button.title(for: .normal) else { continue }
+            let attributedTitle = NSAttributedString(
+                string: NSLocalizedString(currentTitle, comment: ""),
+                attributes: [.underlineStyle: isSelected ? 1 : 0]
+            )
+            button.setAttributedTitle(attributedTitle, for: .normal)
+        }
     }
     
     /// Updates price label
@@ -257,11 +278,11 @@ extension OutfitViewController {
     
     /// Updates like button and price
     func updateUI() {
+        // Setup occasions stack view
+        setupOccasions()
+        
         // Update like button
         updateLikeButton()
-        
-        // Update occasions stack view
-        updateOccasions()
         
         // Update price label
         updatePrice()

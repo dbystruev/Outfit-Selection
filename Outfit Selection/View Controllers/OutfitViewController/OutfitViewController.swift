@@ -42,7 +42,7 @@ class OutfitViewController: LoggingViewController {
     /// Occasion which is currently selected by the user
     weak var occasionSelected: Occasion? {
         didSet {
-            debug(occasionSelected)
+            updateOccasions()
         }
     }
     
