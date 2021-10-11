@@ -187,7 +187,7 @@ extension OutfitViewController {
     /// Update occasions stack view
     func updateOccasions() {
         // Save selected occasions for future manipulations
-        let selectedOccasions = Occasion.selected
+        let selectedOccasions = Occasion.selected.sorted()
         
         // Hide occasions stack view if no occasions are selected
         let isHidden = selectedOccasions.isEmpty
@@ -208,8 +208,9 @@ extension OutfitViewController {
             button.setTitle(occasion.name, for: .normal)
         }
         
-        // If there is no enough buttons add more
+        // If there are no enough buttons add more buttons
         if buttons.count < selectedOccasions.count {
+            // Go through occasions not added to buttons yet
             for occasionIndex in buttons.count ..< selectedOccasions.count {
                 // Create a button with given occasion name
                 let occasion = selectedOccasions[occasionIndex]
@@ -225,13 +226,19 @@ extension OutfitViewController {
                     }
                 }
                 
+                // Add the button to occasions stack view
                 occasionsStackView.addArrangedSubview(button)
-                debug(button)
             }
-            // If there are too many buttons remove remaining {
+        // If there are too many buttons remove remaining
         } else if selectedOccasions.count < buttons.count {
-            let buttonsToRemove = buttons.count - selectedOccasions.count
+            // How many buttons to remove
+            let buttonsToRemoveCount = buttons.count - selectedOccasions.count
             
+            // The actual buttons to remove
+            let buttonsToRemove = buttons.reversed().enumerated().filter { index, _ in index < buttonsToRemoveCount }
+            
+            // Remove the buttons
+            buttonsToRemove.forEach { $0.element.removeFromSuperview() }
         }
     }
     
