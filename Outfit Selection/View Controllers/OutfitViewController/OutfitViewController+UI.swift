@@ -196,8 +196,9 @@ extension OutfitViewController {
         occasionsStackViewHeightConstraint.constant = isHidden ? 0 : 44
         
         // Get buttons from occasions stack view
-        let buttons = occasionsStackView.arrangedSubviews.compactMap { $0 as? OccasionButton }
-        guard let firstButton = buttons.first else {
+        let buttonUnderlineStackViews = occasionsStackView.arrangedSubviews.compactMap { $0 as? UIStackView }
+        let buttons = buttonUnderlineStackViews.compactMap { $0.arrangedSubviews.first as? OccasionButton }
+        guard let firstButton = buttons.first, buttons.count == buttonUnderlineStackViews.count else {
             debug("ERROR: no buttons in occasions stack view")
             return
         }
@@ -227,8 +228,18 @@ extension OutfitViewController {
                     }
                 }
                 
-                // Add the button to occasions stack view
-                occasionsStackView.addArrangedSubview(button)
+                // Setup the view to underline the buttons
+                let underlineView = UIView(frame: CGRect(origin: CGPoint.zero, size: CGSize(width: 61, height: 1)))
+                underlineView.backgroundColor = button.titleColor(for: .normal)
+                underlineView.translatesAutoresizingMaskIntoConstraints = false
+                NSLayoutConstraint.activate([underlineView.heightAnchor.constraint(equalToConstant: 1)])
+                
+                // Setup the stack view with button and underline
+                let buttonUnderlineStackView = UIStackView(arrangedSubviews: [button, underlineView])
+                buttonUnderlineStackView.axis = .vertical
+                
+                // Add the button and underline to occasions stack view
+                occasionsStackView.addArrangedSubview(buttonUnderlineStackView)
             }
         // If there are too many buttons remove remaining
         } else if selectedOccasions.count < buttons.count {
@@ -236,7 +247,9 @@ extension OutfitViewController {
             let buttonsToRemoveCount = buttons.count - selectedOccasions.count
             
             // The actual buttons to remove
-            let buttonsToRemove = buttons.reversed().enumerated().filter { index, _ in index < buttonsToRemoveCount }
+            let buttonsToRemove = buttonUnderlineStackViews.reversed().enumerated().filter {
+                index, _ in index < buttonsToRemoveCount
+            }
             
             // Remove the buttons
             buttonsToRemove.forEach { $0.element.removeFromSuperview() }
@@ -248,19 +261,19 @@ extension OutfitViewController {
     
     /// Update occasions stack view when user taps an occasion button
     func updateOccasions() {
-        let occasionButtons = occasionsStackView.arrangedSubviews.compactMap { $0 as? OccasionButton }
-        for button in occasionButtons {
+        // Get all occasion buttons and underlines
+        let buttonUnderlineStackViews = occasionsStackView.arrangedSubviews.compactMap { $0 as? UIStackView }
+        let buttons = buttonUnderlineStackViews.compactMap { $0.arrangedSubviews.first as? OccasionButton }
+        let underlines = buttonUnderlineStackViews.compactMap { $0.arrangedSubviews.last }
+        
+        // Go through all occastion buttons and underline the selected one
+        for (button, underline) in zip(buttons, underlines) {
             // Set button opacity depending on whether it is selected
             let isSelected = button.occasion == occasionSelected
             button.alpha = isSelected ? 1 : 0.5
-            
-            // Underline the title if it is selected
-            guard let currentTitle = button.title(for: .normal) else { continue }
-            let attributedTitle = NSAttributedString(
-                string: NSLocalizedString(currentTitle, comment: ""),
-                attributes: [.underlineStyle: isSelected ? 1 : 0]
-            )
-            button.setAttributedTitle(attributedTitle, for: .normal)
+
+            // Set button underline visibility depending on whether the button is selected
+            underline.isHidden = !isSelected
         }
     }
     
