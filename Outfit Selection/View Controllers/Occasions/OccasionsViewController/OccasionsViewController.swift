@@ -55,6 +55,9 @@ class OccasionsViewController: LoggingViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        // Unhide top navigation bar
+        navigationController?.isNavigationBarHidden = false
+        
         // Configure UI
         configureAllButton()
         configureGoButton()

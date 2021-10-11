@@ -70,6 +70,15 @@ extension OutfitViewController {
         occasionSelected = sender.occasion
     }
     
+    /// Move to occasions view controller when left screen edge is panned
+    /// - Parameter sender: left screen edge pan gesture recognizer
+    @IBAction func screenEdgePanned(_ sender: UIScreenEdgePanGestureRecognizer) {
+        // Pop to occasions view controller
+        let welcomeNavigationController = tabBarController?.navigationController
+        welcomeNavigationController?.popViewController(animated: false)
+        welcomeNavigationController?.popViewController(animated: true)
+    }
+    
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         // Get the images and check that all of them are not nil
         let imageViews = scrollViews.compactMap { $0.getImageView() }
