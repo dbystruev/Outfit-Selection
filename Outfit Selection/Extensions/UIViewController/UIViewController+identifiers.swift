@@ -1,5 +1,5 @@
 //
-//  UIViewController+segueIdentifier.swift
+//  UIViewController+identifiers.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 09.09.2021.
@@ -10,7 +10,11 @@ import UIKit
 
 extension UIViewController {
     // MARK: - Static Properties
+    /// Segue ID
     class var segueIdentifier: String {
-        "\(String(describing: Self.self).decapitalizingFirstLetter)Segue"
+        "\(storyboardId.decapitalizingFirstLetter)Segue"
     }
+    
+    /// Storyboard ID
+    class var storyboardId: String { String(describing: Self.self) }
 }

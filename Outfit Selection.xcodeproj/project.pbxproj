@@ -15,7 +15,7 @@
 		69007CEF26EA63AA001170D0 /* Occasion+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CEE26EA63AA001170D0 /* Occasion+all.swift */; };
 		69007CF126EA6619001170D0 /* Occasion+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CF026EA6619001170D0 /* Occasion+Comparable.swift */; };
 		69007CF326EA6A4B001170D0 /* OccasionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CF226EA6A4B001170D0 /* OccasionsViewController.swift */; };
-		69007CF626EA6ABC001170D0 /* UIViewController+segueIdentifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CF526EA6ABC001170D0 /* UIViewController+segueIdentifier.swift */; };
+		69007CF626EA6ABC001170D0 /* UIViewController+identifiers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CF526EA6ABC001170D0 /* UIViewController+identifiers.swift */; };
 		69007CFB26EA7323001170D0 /* UIView+reuseId.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CFA26EA7323001170D0 /* UIView+reuseId.swift */; };
 		69007CFD26EA7462001170D0 /* OccasionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CFC26EA7462001170D0 /* OccasionCell.swift */; };
 		69007D0026EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CFF26EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift */; };
@@ -238,7 +238,7 @@
 		69007CEE26EA63AA001170D0 /* Occasion+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occasion+all.swift"; sourceTree = "<group>"; };
 		69007CF026EA6619001170D0 /* Occasion+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occasion+Comparable.swift"; sourceTree = "<group>"; };
 		69007CF226EA6A4B001170D0 /* OccasionsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsViewController.swift; sourceTree = "<group>"; };
-		69007CF526EA6ABC001170D0 /* UIViewController+segueIdentifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+segueIdentifier.swift"; sourceTree = "<group>"; };
+		69007CF526EA6ABC001170D0 /* UIViewController+identifiers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+identifiers.swift"; sourceTree = "<group>"; };
 		69007CFA26EA7323001170D0 /* UIView+reuseId.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+reuseId.swift"; sourceTree = "<group>"; };
 		69007CFC26EA7462001170D0 /* OccasionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionCell.swift; sourceTree = "<group>"; };
 		69007CFF26EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OccasionsViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
@@ -1074,8 +1074,8 @@
 			isa = PBXGroup;
 			children = (
 				69B539F1257F9C7A00116F98 /* UIViewController+dismissRoot.swift */,
+				69007CF526EA6ABC001170D0 /* UIViewController+identifiers.swift */,
 				6906A9A526E6616E00386267 /* UIViewController+keyboard.swift */,
-				69007CF526EA6ABC001170D0 /* UIViewController+segueIdentifier.swift */,
 				69B539F9257FBC3C00116F98 /* UIViewController+tabBar.swift */,
 				69E8ACE526FDF074000CC96A /* UIViewController+touchesBegan.swift */,
 			);
@@ -1481,7 +1481,7 @@
 				6986612125704F1A008F94CA /* UIImage+resize.swift in Sources */,
 				69C3697125E7D127000A8E5E /* WishlistItemCell.swift in Sources */,
 				69297C5A25EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
-				69007CF626EA6ABC001170D0 /* UIViewController+segueIdentifier.swift in Sources */,
+				69007CF626EA6ABC001170D0 /* UIViewController+identifiers.swift in Sources */,
 				696209A426FB969400B46FE8 /* LoggingViewController.swift in Sources */,
 				69297C5225EB852700A8684E /* BrandCollectionViewCell.swift in Sources */,
 				69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */,

@@ -17,6 +17,15 @@ extension Onboarding {
         Onboarding(image: placeholderImage, text: placeholderText, title: placeholderTitle)
     ]
     
+    /// Index of current onboarding screen in all array
+    static var currentIndex = 0 {
+        didSet {
+            // Make sure current index is between 0 and all.count - 1
+            currentIndex = max(0, currentIndex)
+            currentIndex = min(all.count - 1, currentIndex)
+        }
+    }
+    
     /// Onboarding placeholder image
     static let placeholderImage = UIImage(named: "onboarding_placeholder")!
     

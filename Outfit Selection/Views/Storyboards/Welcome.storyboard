@@ -306,7 +306,7 @@
         <!--Onboarding View Controller-->
         <scene sceneID="6hR-JD-P6T">
             <objects>
-                <viewController id="cic-yD-JyJ" customClass="OnboardingViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OnboardingViewController" id="cic-yD-JyJ" customClass="OnboardingViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="c9b-3j-iFp">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
