@@ -73,10 +73,22 @@ extension OutfitViewController {
     /// Move to occasions view controller when left screen edge is panned
     /// - Parameter sender: left screen edge pan gesture recognizer
     @IBAction func screenEdgePanned(_ sender: UIScreenEdgePanGestureRecognizer) {
+        // Get navigation controller on top of tab bar controller
+        guard let welcomeNavigationController = tabBarController?.navigationController else {
+            debug("WARNING: Can't find navigation controller on top of", tabBarController)
+            return
+        }
+        
+        // Get occasions view controller
+        guard let occasionsViewController = welcomeNavigationController.findViewController(
+            ofType: OccasionsViewController.self
+        ) else {
+            debug("WARNING: Can't find \(OccasionsViewController.self) in", welcomeNavigationController)
+            return
+        }
+        
         // Pop to occasions view controller
-        let welcomeNavigationController = tabBarController?.navigationController
-        welcomeNavigationController?.popViewController(animated: false)
-        welcomeNavigationController?.popViewController(animated: true)
+        welcomeNavigationController.popToViewController(occasionsViewController, animated: true)
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
