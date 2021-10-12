@@ -12,9 +12,21 @@ extension Onboarding {
     // MARK: - Static Constants
     /// All onboarding screens
     static let all: [Onboarding] = [
-        Onboarding(image: placeholderImage, text: placeholderText, title: placeholderTitle),
-        Onboarding(image: placeholderImage, text: placeholderText, title: placeholderTitle),
-        Onboarding(image: placeholderImage, text: placeholderText, title: placeholderTitle)
+        Onboarding(
+            image: placeholderImage,
+            text: placeholderText,
+            title: "We will find you a stylish look for any occasion"
+        ),
+        Onboarding(
+            image: placeholderImage,
+            text: placeholderText,
+            title: "Collect your own wish list"
+        ),
+        Onboarding(
+            image: placeholderImage,
+            text: placeholderText,
+            title: "Share clothing collections with your friends and followers"
+        ),
     ]
     
     /// Index of current onboarding screen in all array
@@ -37,7 +49,4 @@ extension Onboarding {
         consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
         cillum dolore
     """
-    
-    /// Onboarding placeholder title
-    static let placeholderTitle = "An outfit for any occasion"
 }

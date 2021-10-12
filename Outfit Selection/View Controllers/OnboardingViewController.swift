@@ -16,7 +16,8 @@ class OnboardingViewController: NextButtonViewController {
     // MARK: - Inherited Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        debug("Onboarding.currentIndex:", Onboarding.currentIndex)
+        let index = Onboarding.currentIndex
+        title = "\(index + 1): \(Onboarding.all[index].title)"
     }
     
     override func viewWillDisappear(_ animated: Bool) {
