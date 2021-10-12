@@ -676,6 +676,7 @@
 				6986612525705F45008F94CA /* BrandsViewController */,
 				695756622715961B007ADE02 /* NextButtonViewController.swift */,
 				69007CFE26EA771B001170D0 /* OccasionsViewController */,
+				6957565F271590CB007ADE02 /* OnboardingViewController.swift */,
 			);
 			path = NextButtonViewControllers;
 			sourceTree = "<group>";
@@ -1021,7 +1022,6 @@
 				696209A326FB969400B46FE8 /* LoggingViewController.swift */,
 				69575661271595FC007ADE02 /* NextButtonViewControllers */,
 				69C3695825E780E2000A8E5E /* OccasionsPopupViewController */,
-				6957565F271590CB007ADE02 /* OnboardingViewController.swift */,
 				69FBB20422F1A86700187562 /* OutfitViewController */,
 				69D0FDA225EB64C600FC15F6 /* ProfileViewController */,
 				69BA640325E66EDE00C805B6 /* ProgressViewController.swift */,

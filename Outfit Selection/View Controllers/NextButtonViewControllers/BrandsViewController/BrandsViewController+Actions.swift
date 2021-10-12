@@ -16,8 +16,8 @@ extension BrandsViewController {
         // Start loading items
         NetworkManager.shared.reloadItems(for: gender) { _ in }
         
-        // Trainsition to onboarding if they are not empty
-        guard Onboarding.all.isEmpty else {
+        // Trainsition to onboarding if they are not empty or already presented
+        guard Onboarding.all.isEmpty || 0 < Onboarding.currentIndex else {
             performSegue(withIdentifier: OnboardingViewController.segueIdentifier, sender: sender)
             return
         }
