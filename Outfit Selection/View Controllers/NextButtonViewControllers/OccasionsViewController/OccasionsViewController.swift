@@ -8,18 +8,11 @@
 
 import UIKit
 
-class OccasionsViewController: LoggingViewController {
+class OccasionsViewController: NextButtonViewController {
     
     // MARK: - Outlets
     /// Top right button to clear or select all brands
     @IBOutlet weak var allButton: SelectableButtonItem!
-    
-    /// Go button at the bottom of the screen
-    @IBOutlet weak var nextButton: UIButton! {
-        didSet {
-            nextButton.backgroundColor = Globals.Color.Button.enabled
-        }
-    }
     
     /// The main table view with occasion list
     @IBOutlet weak var occasionsTableView: UITableView!

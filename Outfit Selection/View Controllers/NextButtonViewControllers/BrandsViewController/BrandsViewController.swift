@@ -8,7 +8,7 @@
 
 import UIKit
 
-class BrandsViewController: LoggingViewController {
+class BrandsViewController: NextButtonViewController {
     
     // MARK: - Outlets
     /// Top right button to clear or select all brands
@@ -16,9 +16,6 @@ class BrandsViewController: LoggingViewController {
     
     /// Collection view with brand logos
     @IBOutlet weak var brandsCollectionView: BrandsCollectionView!
-    
-    /// Go button at the bottom of the screen
-    @IBOutlet weak var nextButton: UIButton!
     
     // MARK: - Static Constants
     /// Time delay before closing search keybaord
@@ -49,7 +46,7 @@ class BrandsViewController: LoggingViewController {
     /// True if we should enable go button — either all items are loaded or timed out for refresh
     var shouldEnableGoButton = false {
         didSet {
-            configureGoButton()
+            configureNextButton()
         }
     }
     
@@ -79,7 +76,6 @@ class BrandsViewController: LoggingViewController {
         
         // Configure the buttons
         configureAllButton()
-        configureGoButton()
     }
     
     override func viewWillLayoutSubviews() {
@@ -93,14 +89,12 @@ class BrandsViewController: LoggingViewController {
         allButton.isButtonSelected = brandedImages.unselected.count < brandedImages.selected.count
     }
     
-    /// Set go button backgroun color and enable / disable it depending on number of brands selected
-    func configureGoButton() {
+    /// Set next button background color and enable / disable it depending on number of brands selected
+    /// - Parameter isEnabled: argument used in parent and not used here
+    override func configureNextButton(_ isEnabled: Bool = true) {
         let brandsSelected = BrandManager.shared.selectedBrands.count
         let isEnabled = 0 < brandsSelected
-        nextButton.backgroundColor = isEnabled
-            ? Globals.Color.Button.enabled
-            : Globals.Color.Button.disabled
-        nextButton.isEnabled = isEnabled
+        super.configureNextButton(isEnabled)
     }
     
     /// Configure brands collection view layout

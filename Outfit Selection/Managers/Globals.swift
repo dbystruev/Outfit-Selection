@@ -41,19 +41,16 @@ enum Globals {
         /// Colors for onboarding screens
         enum Onboarding {
             /// Onboarding background color
-            static let background = UIColor(red: 81, green: 97, blue: 95, alpha: 1)
-            
-            /// Onboarding button color
-            static let button = UIColor(red: 116, green: 138, blue: 132, alpha: 1)
+            static let background = WhiteLabel.Color.Background.onboarding
             
             /// Onboarding dash color
-            static let dash = UIColor(red: 116, green: 138, blue: 132, alpha: 1)
+            static let dash = Button.enabled
             
             /// Onboarding dot color
-            static let dot = UIColor(red: 224, green: 224, blue: 224, alpha: 1)
+            static let dot = WhiteLabel.Color.Button.disabled
             
             /// Onboarding text color
-            static let text = UIColor(red: 252, green: 252, blue: 252, alpha: 1)
+            static let text = WhiteLabel.Color.Text.onboarding
         }
     }
     

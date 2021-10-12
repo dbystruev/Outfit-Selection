@@ -101,6 +101,8 @@
 		69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */; };
 		6957565B27158987007ADE02 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957565A27158987007ADE02 /* Onboarding.swift */; };
 		6957565E27158B99007ADE02 /* Onboarding+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957565D27158B99007ADE02 /* Onboarding+all.swift */; };
+		69575660271590CB007ADE02 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957565F271590CB007ADE02 /* OnboardingViewController.swift */; };
+		695756632715961B007ADE02 /* NextButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695756622715961B007ADE02 /* NextButtonViewController.swift */; };
 		695EE0042586449E00E2BB57 /* BrandsViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695EE0032586449E00E2BB57 /* BrandsViewController+Actions.swift */; };
 		6962099D26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6962099C26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift */; };
 		696209A026FB927E00B46FE8 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 6962099F26FB927E00B46FE8 /* AppsFlyerLib */; };
@@ -322,6 +324,8 @@
 		69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandedImage+Branded.swift"; sourceTree = "<group>"; };
 		6957565A27158987007ADE02 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
 		6957565D27158B99007ADE02 /* Onboarding+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding+all.swift"; sourceTree = "<group>"; };
+		6957565F271590CB007ADE02 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		695756622715961B007ADE02 /* NextButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonViewController.swift; sourceTree = "<group>"; };
 		695EE0032586449E00E2BB57 /* BrandsViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+Actions.swift"; sourceTree = "<group>"; };
 		6962099C26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gender+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		696209A326FB969400B46FE8 /* LoggingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingViewController.swift; sourceTree = "<group>"; };
@@ -470,15 +474,6 @@
 				69FB0EA02714656D006C20E9 /* Occasion+CustomStringConvertible.swift */,
 			);
 			path = Occasion;
-			sourceTree = "<group>";
-		};
-		69007CF726EA6D7E001170D0 /* Occasions */ = {
-			isa = PBXGroup;
-			children = (
-				69C3695825E780E2000A8E5E /* OccasionsPopupViewController */,
-				69007CFE26EA771B001170D0 /* OccasionsViewController */,
-			);
-			path = Occasions;
 			sourceTree = "<group>";
 		};
 		69007CFE26EA771B001170D0 /* OccasionsViewController */ = {
@@ -673,6 +668,16 @@
 				6957565D27158B99007ADE02 /* Onboarding+all.swift */,
 			);
 			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		69575661271595FC007ADE02 /* NextButtonViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				6986612525705F45008F94CA /* BrandsViewController */,
+				695756622715961B007ADE02 /* NextButtonViewController.swift */,
+				69007CFE26EA771B001170D0 /* OccasionsViewController */,
+			);
+			path = NextButtonViewControllers;
 			sourceTree = "<group>";
 		};
 		69642076270B238D00FCDF5A /* Items */ = {
@@ -1008,14 +1013,15 @@
 		69A6F70722BA38E6002A3B49 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6986612525705F45008F94CA /* BrandsViewController */,
 				6906A9A926E684E300386267 /* Collections */,
 				6976232726D76E7300504F31 /* Feed */,
 				69FBB20622F1ABE000187562 /* GenderViewController.swift */,
 				697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */,
 				69322E2D26008EEF00CAFBFA /* ItemViewController */,
 				696209A326FB969400B46FE8 /* LoggingViewController.swift */,
-				69007CF726EA6D7E001170D0 /* Occasions */,
+				69575661271595FC007ADE02 /* NextButtonViewControllers */,
+				69C3695825E780E2000A8E5E /* OccasionsPopupViewController */,
+				6957565F271590CB007ADE02 /* OnboardingViewController.swift */,
 				69FBB20422F1A86700187562 /* OutfitViewController */,
 				69D0FDA225EB64C600FC15F6 /* ProfileViewController */,
 				69BA640325E66EDE00C805B6 /* ProgressViewController.swift */,
@@ -1341,6 +1347,7 @@
 				69DB6A5625E81B1000EC4CDE /* WishlistViewController+UICollectionViewDataSource.swift in Sources */,
 				690B42B226DD7601000C683B /* WishlistButton.swift in Sources */,
 				69C3696B25E7C1D4000A8E5E /* Wishlist.swift in Sources */,
+				695756632715961B007ADE02 /* NextButtonViewController.swift in Sources */,
 				691E5D732703904700C6CBD3 /* FeedKind.swift in Sources */,
 				69007D0226EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift in Sources */,
 				69E8ACE626FDF074000CC96A /* UIViewController+touchesBegan.swift in Sources */,
@@ -1413,6 +1420,7 @@
 				693D7292256BFDD700540C10 /* ItemManager.swift in Sources */,
 				695367F825F7AFAC0024EC8B /* AppDelegate+UIApplicationDelegate.swift in Sources */,
 				69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */,
+				69575660271590CB007ADE02 /* OnboardingViewController.swift in Sources */,
 				69A0C9E6270467DC00C49977 /* FeedKind+CustomStringConvertible.swift in Sources */,
 				69007CF126EA6619001170D0 /* Occasion+Comparable.swift in Sources */,
 				69560EC82587E5D400337F35 /* Branded.swift in Sources */,

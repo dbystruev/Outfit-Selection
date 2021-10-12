@@ -29,6 +29,6 @@ extension BrandsViewController: UICollectionViewDelegate {
         
         // Configure the buttons
         configureAllButton()
-        configureGoButton()
+        configureNextButton()
     }
 }

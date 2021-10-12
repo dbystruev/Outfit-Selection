@@ -16,14 +16,20 @@ extension BrandsViewController {
         // Start loading items
         NetworkManager.shared.reloadItems(for: gender) { _ in }
         
-        // Transition progress view controller if occasions are empty
-        guard !Occasion.all.isEmpty else {
-            performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
+        // Trainsition to onboarding if they are not empty
+        guard Onboarding.all.isEmpty else {
+            performSegue(withIdentifier: OnboardingViewController.segueIdentifier, sender: sender)
             return
         }
         
-        // Transition to occasions
-        performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)
+        // Transition to occasions if they are not empty
+        guard Occasion.all.isEmpty else {
+            performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)
+            return
+        }
+        
+        // Transition to progress
+        performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
     }
     
     @IBAction func selectAllButtonTapped(_ sender: SelectableButtonItem) {
@@ -36,6 +42,6 @@ extension BrandsViewController {
         BrandManager.shared.saveSelectedBrands()
         
         brandsCollectionView.reloadData()
-        configureGoButton()
+        configureNextButton()
     }
 }
