@@ -62,6 +62,11 @@ enum Globals {
             /// UIFont(name: "NotoSans-SemiBold", size: 16)
             static let header = UIFont(name: "NotoSans-SemiBold", size: 16)!
         }
+        
+        enum Onboarding {
+            /// UIFont(name: "NotoSans-Bold", size: 17)
+            static let button = UIFont(name: "NotoSans-Bold", size: 17)!
+        }
     }
     
     enum Image {

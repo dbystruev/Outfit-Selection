@@ -103,6 +103,7 @@
 		6957565E27158B99007ADE02 /* Onboarding+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957565D27158B99007ADE02 /* Onboarding+all.swift */; };
 		69575660271590CB007ADE02 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957565F271590CB007ADE02 /* OnboardingViewController.swift */; };
 		695756632715961B007ADE02 /* NextButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695756622715961B007ADE02 /* NextButtonViewController.swift */; };
+		695756652715EBCA007ADE02 /* OnboardingPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695756642715EBCA007ADE02 /* OnboardingPopupViewController.swift */; };
 		695EE0042586449E00E2BB57 /* BrandsViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695EE0032586449E00E2BB57 /* BrandsViewController+Actions.swift */; };
 		6962099D26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6962099C26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift */; };
 		696209A026FB927E00B46FE8 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 6962099F26FB927E00B46FE8 /* AppsFlyerLib */; };
@@ -326,6 +327,7 @@
 		6957565D27158B99007ADE02 /* Onboarding+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding+all.swift"; sourceTree = "<group>"; };
 		6957565F271590CB007ADE02 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		695756622715961B007ADE02 /* NextButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonViewController.swift; sourceTree = "<group>"; };
+		695756642715EBCA007ADE02 /* OnboardingPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPopupViewController.swift; sourceTree = "<group>"; };
 		695EE0032586449E00E2BB57 /* BrandsViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+Actions.swift"; sourceTree = "<group>"; };
 		6962099C26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gender+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		696209A326FB969400B46FE8 /* LoggingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingViewController.swift; sourceTree = "<group>"; };
@@ -676,9 +678,17 @@
 				6986612525705F45008F94CA /* BrandsViewController */,
 				695756622715961B007ADE02 /* NextButtonViewController.swift */,
 				69007CFE26EA771B001170D0 /* OccasionsViewController */,
-				6957565F271590CB007ADE02 /* OnboardingViewController.swift */,
 			);
 			path = NextButtonViewControllers;
+			sourceTree = "<group>";
+		};
+		695756662715FF72007ADE02 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				695756642715EBCA007ADE02 /* OnboardingPopupViewController.swift */,
+				6957565F271590CB007ADE02 /* OnboardingViewController.swift */,
+			);
+			path = Onboarding;
 			sourceTree = "<group>";
 		};
 		69642076270B238D00FCDF5A /* Items */ = {
@@ -1022,6 +1032,7 @@
 				696209A326FB969400B46FE8 /* LoggingViewController.swift */,
 				69575661271595FC007ADE02 /* NextButtonViewControllers */,
 				69C3695825E780E2000A8E5E /* OccasionsPopupViewController */,
+				695756662715FF72007ADE02 /* Onboarding */,
 				69FBB20422F1A86700187562 /* OutfitViewController */,
 				69D0FDA225EB64C600FC15F6 /* ProfileViewController */,
 				69BA640325E66EDE00C805B6 /* ProgressViewController.swift */,
@@ -1418,6 +1429,7 @@
 				695367EE25F7AA520024EC8B /* AppDelegate+AppsFlyerLibDelegate.swift in Sources */,
 				699632B026FCB1A600841B6F /* String+dropSuffix.swift in Sources */,
 				693D7292256BFDD700540C10 /* ItemManager.swift in Sources */,
+				695756652715EBCA007ADE02 /* OnboardingPopupViewController.swift in Sources */,
 				695367F825F7AFAC0024EC8B /* AppDelegate+UIApplicationDelegate.swift in Sources */,
 				69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */,
 				69575660271590CB007ADE02 /* OnboardingViewController.swift in Sources */,

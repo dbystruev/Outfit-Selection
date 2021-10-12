@@ -314,43 +314,18 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IRN-tw-XJ5">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tWx-41-vEa">
-                                <rect key="frame" x="24" y="649" width="327" height="56"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="56" id="U2A-QS-kc4"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="343" id="ucV-Uj-isw"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="17"/>
-                                <state key="normal" title="Next">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="8"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="nextButtonTapped:" destination="cic-yD-JyJ" eventType="touchUpInside" id="yHI-7r-pgz"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="iJG-mt-Ohp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="tWx-41-vEa" firstAttribute="leading" secondItem="iJG-mt-Ohp" secondAttribute="leading" priority="750" constant="24" id="0lh-it-WmE"/>
-                            <constraint firstItem="iJG-mt-Ohp" firstAttribute="trailing" secondItem="tWx-41-vEa" secondAttribute="trailing" priority="750" constant="24" id="ONe-4t-Zoh"/>
-                            <constraint firstItem="tWx-41-vEa" firstAttribute="centerX" secondItem="c9b-3j-iFp" secondAttribute="centerX" id="V9X-db-95h"/>
                             <constraint firstItem="IRN-tw-XJ5" firstAttribute="leading" secondItem="c9b-3j-iFp" secondAttribute="leading" id="cM4-2A-aXU"/>
                             <constraint firstItem="IRN-tw-XJ5" firstAttribute="top" secondItem="c9b-3j-iFp" secondAttribute="top" id="kc6-VH-LCd"/>
                             <constraint firstAttribute="bottom" secondItem="IRN-tw-XJ5" secondAttribute="bottom" priority="250" id="oAb-gr-Xid"/>
-                            <constraint firstItem="iJG-mt-Ohp" firstAttribute="bottom" secondItem="tWx-41-vEa" secondAttribute="bottom" constant="24" id="oJz-a6-9EF"/>
                             <constraint firstItem="IRN-tw-XJ5" firstAttribute="trailing" secondItem="c9b-3j-iFp" secondAttribute="trailing" id="ufO-ok-3Kd"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vAm-Nk-jC6"/>
                     <connections>
-                        <outlet property="nextButton" destination="tWx-41-vEa" id="w3n-Le-SUy"/>
                         <outlet property="onboardingImageView" destination="IRN-tw-XJ5" id="g2x-2r-Vc7"/>
                         <segue destination="21c-yn-AfK" kind="show" identifier="occasionsViewControllerSegue" id="4eR-qM-Brs"/>
                         <segue destination="Y68-Zi-Cgh" kind="show" identifier="progressViewControllerSegue" id="Ihu-J5-pB2"/>
@@ -359,6 +334,22 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLZ-Hs-344" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-295.19999999999999" y="-236.45320197044336"/>
+        </scene>
+        <!--Onboarding Popup View Controller-->
+        <scene sceneID="dEp-B3-DYh">
+            <objects>
+                <viewController storyboardIdentifier="OnboardingPopupViewController" id="WcY-RU-FAU" customClass="OnboardingPopupViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="cdf-SX-VUB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="362"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="3Xi-cd-Oeu"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <size key="freeformSize" width="375" height="362"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wpK-my-KMX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="647" y="-403"/>
         </scene>
         <!--Occasions-->
         <scene sceneID="Uax-un-n1R">
@@ -476,7 +467,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4eR-qM-Brs"/>
+        <segue reference="wHC-E6-Atd"/>
         <segue reference="Nk9-sR-D98"/>
     </inferredMetricsTieBreakers>
     <resources>

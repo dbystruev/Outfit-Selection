@@ -126,64 +126,6 @@ extension OutfitViewController {
         updateUI()
     }
     
-    /// Show hanger and refresh bubbles after initial pause
-    /// - Parameter pause: initial pause in seconds to wait before showing the bubbles
-    func showBubbles(after pause: TimeInterval = 2) {
-        shouldHideBubbles = false
-        
-        // Show hanger bubble in 2 seconds
-        DispatchQueue.main.asyncAfter(deadline: .now() + pause) {
-            // Check that outfit view controller is visible
-            guard !self.shouldHideBubbles else { return }
-            
-            if self.showHangerBubble {
-                UIView.animate(withDuration: 2) {
-                    self.hangerBubble.alpha = 1
-                }
-            }
-            
-            if self.showRefreshBubble {
-                UIView.animate(withDuration: 2) {
-                    self.refreshBubble?.alpha = 1
-                }
-            }
-            
-        }
-    }
-    
-    func unpin() {
-        hangerButtons.forEach { $0.isSelected = false }
-        refreshButton.isEnabled = true
-        scrollViews.unpin()
-    }
-    
-    func updatePriceLabelWithItemCount(with count: Int) {
-        priceLabel.text = "Items: \(count)"
-    }
-    
-    func updateItemCount() {
-        updatePriceLabelWithItemCount(with: itemCount)
-        updateUI()
-    }
-    
-    /// Update layout when rotating
-    /// - Parameter isHorizontal: true if layout should be horizontal, false otherwise
-    func updateLayout(isHorizontal: Bool) {
-        iconsStackView.alignment = isHorizontal ? .center : .fill
-        iconsStackView.axis = isHorizontal ? .vertical : .horizontal
-        iconsStackView.distribution = isHorizontal ? .fillEqually : .fill
-        topStackView.alignment = isHorizontal ? .center : .fill
-        topStackView.axis = isHorizontal ? .horizontal : .vertical
-        topStackView.distribution = isHorizontal ? .fillEqually : .fill
-    }
-    
-    /// Updates like button
-    func updateLikeButton() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.likeButton.isSelected = Wishlist.contains(self.items) == true
-        }
-    }
-    
     /// Setup occasions stack view
     func setupOccasions() {
         // By default make the first occasion selected
@@ -257,6 +199,64 @@ extension OutfitViewController {
         
         // Update occasions
         updateOccasions()
+    }
+    
+    /// Show hanger and refresh bubbles after initial pause
+    /// - Parameter pause: initial pause in seconds to wait before showing the bubbles
+    func showBubbles(after pause: TimeInterval = 2) {
+        shouldHideBubbles = false
+        
+        // Show hanger bubble in 2 seconds
+        DispatchQueue.main.asyncAfter(deadline: .now() + pause) {
+            // Check that outfit view controller is visible
+            guard !self.shouldHideBubbles else { return }
+            
+            if self.showHangerBubble {
+                UIView.animate(withDuration: 2) {
+                    self.hangerBubble.alpha = 1
+                }
+            }
+            
+            if self.showRefreshBubble {
+                UIView.animate(withDuration: 2) {
+                    self.refreshBubble?.alpha = 1
+                }
+            }
+            
+        }
+    }
+    
+    func unpin() {
+        hangerButtons.forEach { $0.isSelected = false }
+        refreshButton.isEnabled = true
+        scrollViews.unpin()
+    }
+    
+    func updatePriceLabelWithItemCount(with count: Int) {
+        priceLabel.text = "Items: \(count)"
+    }
+    
+    func updateItemCount() {
+        updatePriceLabelWithItemCount(with: itemCount)
+        updateUI()
+    }
+    
+    /// Update layout when rotating
+    /// - Parameter isHorizontal: true if layout should be horizontal, false otherwise
+    func updateLayout(isHorizontal: Bool) {
+        iconsStackView.alignment = isHorizontal ? .center : .fill
+        iconsStackView.axis = isHorizontal ? .vertical : .horizontal
+        iconsStackView.distribution = isHorizontal ? .fillEqually : .fill
+        topStackView.alignment = isHorizontal ? .center : .fill
+        topStackView.axis = isHorizontal ? .horizontal : .vertical
+        topStackView.distribution = isHorizontal ? .fillEqually : .fill
+    }
+    
+    /// Updates like button
+    func updateLikeButton() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            self.likeButton.isSelected = Wishlist.contains(self.items) == true
+        }
     }
     
     /// Update occasions stack view when user taps an occasion button
