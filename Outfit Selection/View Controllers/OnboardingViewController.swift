@@ -9,15 +9,28 @@
 import UIKit
 
 class OnboardingViewController: NextButtonViewController {
+    // MARK: - Outlets
+    /// Image view to display onboarding picture
+    @IBOutlet weak var onboardingImageView: UIImageView!
+    
     // MARK: - Properties
     /// True when we are going forwards
     var goingForwards = false
+    
+    // MARK: - Custom Methods
+    /// Configure content of this screen with given onboarding
+    /// - Parameter onboarding: onboarding to configure the screen with
+    func configure(with onboarding: Onboarding) {
+        onboardingImageView.image = onboarding.image
+        title = onboarding.title
+    }
     
     // MARK: - Inherited Methods
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let index = Onboarding.currentIndex
-        title = "\(index + 1): \(Onboarding.all[index].title)"
+        let onboarding = Onboarding.all[index]
+        configure(with: onboarding)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
