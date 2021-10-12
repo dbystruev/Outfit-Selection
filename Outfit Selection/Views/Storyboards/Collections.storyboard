@@ -119,7 +119,7 @@
         <!--Collection Select View Controller-->
         <scene sceneID="pD4-kT-d28">
             <objects>
-                <viewController storyboardIdentifier="collectionSelectViewController" id="t8f-d5-fMr" customClass="CollectionSelectViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="CollectionSelectViewController" id="t8f-d5-fMr" customClass="CollectionSelectViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="r5x-3N-dyz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

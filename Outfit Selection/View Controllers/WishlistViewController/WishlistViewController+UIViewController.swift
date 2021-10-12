@@ -88,6 +88,9 @@ extension WishlistViewController {
         feedController.setup(collectionsCollectionView, withBrandsOnTop: false)
         feedController.parentNavigationController = navigationController
         
+        // Register feed item collection cell with wishlist collection view
+        FeedItemCollectionCell.register(with: wishlistCollectionView)
+        
         // Fill feed controller with collections and items
         Collection.all.forEach { collection in
             feedController.addSection(items: collection.items, to: .occasions(collection.name))
