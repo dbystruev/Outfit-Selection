@@ -10,11 +10,6 @@ import UIKit
 
 enum Globals {
     enum Color {
-        enum Feed {
-            static let button = ColorCompatibility.label // UIColor(red: 23, green: 23, blue: 23, alpha: 1)
-            static let header = ColorCompatibility.label // UIColor(red: 23, green: 23, blue: 23, alpha: 1)
-        }
-        
         /// Button Colors
         enum Button {
             
@@ -23,6 +18,7 @@ enum Globals {
                 /// Title color for gender buttons
                 static let titleColor = WhiteLabel.Color.Button.Gender.titleColor
             }
+            
             /// Disabled color for welcome button
             static let disabled = WhiteLabel.Color.Button.disabled
             
@@ -31,6 +27,33 @@ enum Globals {
             
             /// Title color for buttons
             static let titleColor = WhiteLabel.Color.Button.titleColor
+        }
+        
+        /// Feed colors
+        enum Feed {
+            /// Feed button color
+            static let button = ColorCompatibility.label // UIColor(red: 23, green: 23, blue: 23, alpha: 1)
+            
+            /// Feed header color
+            static let header = ColorCompatibility.label // UIColor(red: 23, green: 23, blue: 23, alpha: 1)
+        }
+        
+        /// Colors for onboarding screens
+        enum Onboarding {
+            /// Onboarding background color
+            static let background = UIColor(red: 81, green: 97, blue: 95, alpha: 1)
+            
+            /// Onboarding button color
+            static let button = UIColor(red: 116, green: 138, blue: 132, alpha: 1)
+            
+            /// Onboarding dash color
+            static let dash = UIColor(red: 116, green: 138, blue: 132, alpha: 1)
+            
+            /// Onboarding dot color
+            static let dot = UIColor(red: 224, green: 224, blue: 224, alpha: 1)
+            
+            /// Onboarding text color
+            static let text = UIColor(red: 252, green: 252, blue: 252, alpha: 1)
         }
     }
     
