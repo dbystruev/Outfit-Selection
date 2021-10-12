@@ -16,8 +16,9 @@ class OccasionsPopupViewController: LoggingViewController {
     /// Items in the current outfit
     var items = [Item]()
     
+    /// Sorted names of all occasions
     let occasionNames = Occasion.names.sorted()
-    
+
     // MARK: - Inherited Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         dismiss(animated: true)
@@ -31,7 +32,10 @@ class OccasionsPopupViewController: LoggingViewController {
         occasionPickerView.delegate = self
         
         // Find the first non-occupied index
-        if var shouldSelectRow = occasionNames.firstIndex(of: "Daily") {
+        if
+            let firstName = occasionNames.first,
+            var shouldSelectRow = occasionNames.firstIndex(of: firstName)
+        {
             let occasionsCount = occasionNames.count
             if Wishlist.outfits.count < occasionsCount {
                 while Wishlist.contains(occasionNames[shouldSelectRow]) {

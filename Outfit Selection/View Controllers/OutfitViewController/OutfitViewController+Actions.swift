@@ -59,10 +59,12 @@ extension OutfitViewController {
             sender.isSelected = false
             Wishlist.remove(items)
         } else {
-            let controller = storyboard?.instantiateViewController(withIdentifier: "occasionsViewController")
-            guard let occasionsViewController = controller as? OccasionsPopupViewController else { return }
-            occasionsViewController.items = items
-            present(occasionsViewController, animated: true)
+            let controller = storyboard?.instantiateViewController(
+                withIdentifier: OccasionsPopupViewController.storyboardId
+            )
+            guard let occasionsPopupViewController = controller as? OccasionsPopupViewController else { return }
+            occasionsPopupViewController.items = items
+            present(occasionsPopupViewController, animated: true)
         }
     }
     

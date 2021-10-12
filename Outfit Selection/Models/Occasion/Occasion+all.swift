@@ -16,7 +16,7 @@ extension Occasion {
     
     // MARK: - Computed Properties
     /// The names of all occasions
-    static var names: [String] { all.keys.map({ $0 }) }
+    static var names: [String] { all.values.map({ $0.name }) }
     
     /// The list of selected occasions
     static var selected: [Occasion] { all.values.filter { $0.isSelected }}
