@@ -103,7 +103,6 @@
 		6957565E27158B99007ADE02 /* Onboarding+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957565D27158B99007ADE02 /* Onboarding+all.swift */; };
 		69575660271590CB007ADE02 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957565F271590CB007ADE02 /* OnboardingViewController.swift */; };
 		695756632715961B007ADE02 /* NextButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695756622715961B007ADE02 /* NextButtonViewController.swift */; };
-		695756652715EBCA007ADE02 /* OnboardingPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695756642715EBCA007ADE02 /* OnboardingPopupViewController.swift */; };
 		695EE0042586449E00E2BB57 /* BrandsViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695EE0032586449E00E2BB57 /* BrandsViewController+Actions.swift */; };
 		6962099D26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6962099C26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift */; };
 		696209A026FB927E00B46FE8 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 6962099F26FB927E00B46FE8 /* AppsFlyerLib */; };
@@ -327,7 +326,6 @@
 		6957565D27158B99007ADE02 /* Onboarding+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding+all.swift"; sourceTree = "<group>"; };
 		6957565F271590CB007ADE02 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		695756622715961B007ADE02 /* NextButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonViewController.swift; sourceTree = "<group>"; };
-		695756642715EBCA007ADE02 /* OnboardingPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingPopupViewController.swift; sourceTree = "<group>"; };
 		695EE0032586449E00E2BB57 /* BrandsViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+Actions.swift"; sourceTree = "<group>"; };
 		6962099C26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gender+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		696209A326FB969400B46FE8 /* LoggingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingViewController.swift; sourceTree = "<group>"; };
@@ -678,17 +676,9 @@
 				6986612525705F45008F94CA /* BrandsViewController */,
 				695756622715961B007ADE02 /* NextButtonViewController.swift */,
 				69007CFE26EA771B001170D0 /* OccasionsViewController */,
-			);
-			path = NextButtonViewControllers;
-			sourceTree = "<group>";
-		};
-		695756662715FF72007ADE02 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				695756642715EBCA007ADE02 /* OnboardingPopupViewController.swift */,
 				6957565F271590CB007ADE02 /* OnboardingViewController.swift */,
 			);
-			path = Onboarding;
+			path = NextButtonViewControllers;
 			sourceTree = "<group>";
 		};
 		69642076270B238D00FCDF5A /* Items */ = {
@@ -775,6 +765,29 @@
 				6978202E2587BCAA007D4CCB /* ImageCollectionViewModel.swift */,
 			);
 			path = "View Models";
+			sourceTree = "<group>";
+		};
+		6979DF79271741E1001EC168 /* Welcome */ = {
+			isa = PBXGroup;
+			children = (
+				69FBB20622F1ABE000187562 /* GenderViewController.swift */,
+				69575661271595FC007ADE02 /* NextButtonViewControllers */,
+				69BA640325E66EDE00C805B6 /* ProgressViewController.swift */,
+			);
+			path = Welcome;
+			sourceTree = "<group>";
+		};
+		6979DF7A2717426F001EC168 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */,
+				69322E2D26008EEF00CAFBFA /* ItemViewController */,
+				69C3695825E780E2000A8E5E /* OccasionsPopupViewController */,
+				69FBB20422F1A86700187562 /* OutfitViewController */,
+				69C5CBDD260A12BE00DE22E6 /* ShareViewController */,
+				699ABB5E25E6D54A00E388FC /* TabBarController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 		697CCE6B26D0109F00B69763 /* String */ = {
@@ -1026,19 +1039,11 @@
 			children = (
 				6906A9A926E684E300386267 /* Collections */,
 				6976232726D76E7300504F31 /* Feed */,
-				69FBB20622F1ABE000187562 /* GenderViewController.swift */,
-				697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */,
-				69322E2D26008EEF00CAFBFA /* ItemViewController */,
 				696209A326FB969400B46FE8 /* LoggingViewController.swift */,
-				69575661271595FC007ADE02 /* NextButtonViewControllers */,
-				69C3695825E780E2000A8E5E /* OccasionsPopupViewController */,
-				695756662715FF72007ADE02 /* Onboarding */,
-				69FBB20422F1A86700187562 /* OutfitViewController */,
+				6979DF7A2717426F001EC168 /* Main */,
 				69D0FDA225EB64C600FC15F6 /* ProfileViewController */,
-				69BA640325E66EDE00C805B6 /* ProgressViewController.swift */,
-				69C5CBDD260A12BE00DE22E6 /* ShareViewController */,
-				699ABB5E25E6D54A00E388FC /* TabBarController.swift */,
-				69DB6A5425E81AF700EC4CDE /* WishlistViewController */,
+				6979DF79271741E1001EC168 /* Welcome */,
+				69DB6A5425E81AF700EC4CDE /* Wishlist */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -1169,7 +1174,7 @@
 			path = Feed;
 			sourceTree = "<group>";
 		};
-		69DB6A5425E81AF700EC4CDE /* WishlistViewController */ = {
+		69DB6A5425E81AF700EC4CDE /* Wishlist */ = {
 			isa = PBXGroup;
 			children = (
 				69C3696625E79ED3000A8E5E /* WishlistViewController.swift */,
@@ -1180,7 +1185,7 @@
 				69DB6A5925E81BAD00EC4CDE /* WishlistViewController+UICollectionViewDelegateFlowLayout.swift */,
 				691C5F4526E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift */,
 			);
-			path = WishlistViewController;
+			path = Wishlist;
 			sourceTree = "<group>";
 		};
 		69E0642026FA58C500C68A6A /* UIImageView */ = {
@@ -1429,7 +1434,6 @@
 				695367EE25F7AA520024EC8B /* AppDelegate+AppsFlyerLibDelegate.swift in Sources */,
 				699632B026FCB1A600841B6F /* String+dropSuffix.swift in Sources */,
 				693D7292256BFDD700540C10 /* ItemManager.swift in Sources */,
-				695756652715EBCA007ADE02 /* OnboardingPopupViewController.swift in Sources */,
 				695367F825F7AFAC0024EC8B /* AppDelegate+UIApplicationDelegate.swift in Sources */,
 				69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */,
 				69575660271590CB007ADE02 /* OnboardingViewController.swift in Sources */,
