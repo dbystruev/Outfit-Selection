@@ -25,6 +25,11 @@ class OnboardingViewController: NextButtonViewController {
     /// In onboarding stack view: title label
     @IBOutlet weak var onboardingTitleLabel: UILabel!
     
+    @IBOutlet var progressWidthConstraints: [NSLayoutConstraint]!
+    
+    /// Progress dash and dots indicators
+    @IBOutlet var progressIndicators: [UIView]!
+    
     /// In onboarding stack view: progress stack view with dash and dots
     @IBOutlet weak var progressStackView: UIStackView!
     
@@ -46,6 +51,20 @@ class OnboardingViewController: NextButtonViewController {
         onboardingImageView.image = onboarding.image
         onboardingTextLabel.text = onboarding.text
         onboardingTitleLabel.text = onboarding.title
+        
+        // Configure progress indicator
+        for progressIndex in 0 ..< min(progressIndicators.count, progressWidthConstraints.count) {
+            // Show dash when current onboarding is selected
+            let isDash = index == progressIndex
+            
+            // Set background color
+            progressIndicators[progressIndex].backgroundColor = isDash
+                ? Globals.Color.Onboarding.dash
+                : Globals.Color.Onboarding.dot
+            
+            // Set width
+            progressWidthConstraints[progressIndex].constant = isDash ? 16 : 4
+        }
     }
     
     /// Configure onboarding stack view radius, background, and text colors
@@ -55,9 +74,12 @@ class OnboardingViewController: NextButtonViewController {
         
         // Configue the views
         onboardingStackView.backgroundColor = Globals.Color.Onboarding.background
-        onboardingStackView.layer.cornerRadius = 48
+        onboardingStackView.layer.cornerRadius = 16
         onboardingTextLabel.textColor = Globals.Color.Onboarding.text
         onboardingTitleLabel.textColor = Globals.Color.Onboarding.text
+        
+        // Configure progress indicators
+        progressIndicators.forEach { $0.layer.cornerRadius = 2 }
     }
     
     // MARK: - Inherited Methods

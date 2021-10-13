@@ -361,10 +361,32 @@
                                         <viewLayoutGuide key="contentLayoutGuide" id="Fge-pm-sGN"/>
                                         <viewLayoutGuide key="frameLayoutGuide" id="f4d-Rh-cuY"/>
                                     </scrollView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Aoc-yI-LVl">
+                                    <stackView opaque="NO" contentMode="scaleToFill" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Aoc-yI-LVl">
                                         <rect key="frame" x="171.66666666666666" y="260" width="32" height="4"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rck-Kk-kYe">
+                                                <rect key="frame" x="0.0" y="0.0" width="16" height="4"/>
+                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="16" id="MWe-w6-dsj"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cdl-4Z-Wcc">
+                                                <rect key="frame" x="20" y="0.0" width="4" height="4"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="4" id="BEk-C2-Kqh"/>
+                                                </constraints>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dp0-7i-2US">
+                                                <rect key="frame" x="28" y="0.0" width="4" height="4"/>
+                                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="4" id="7JX-4g-8dK"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="32" id="fup-BA-pFH"/>
                                             <constraint firstAttribute="height" constant="4" id="lsd-gI-qoa"/>
                                         </constraints>
                                     </stackView>
@@ -425,6 +447,12 @@
                         <outlet property="onboardingTitleLabel" destination="i7k-TD-g8Y" id="609-b1-1uc"/>
                         <outlet property="progressStackView" destination="Aoc-yI-LVl" id="nwR-1o-S2n"/>
                         <outlet property="spaceView" destination="AuO-nw-jzd" id="oyU-qv-Zx2"/>
+                        <outletCollection property="progressIndicators" destination="rck-Kk-kYe" collectionClass="NSMutableArray" id="wjH-aU-dpB"/>
+                        <outletCollection property="progressIndicators" destination="Cdl-4Z-Wcc" collectionClass="NSMutableArray" id="AiX-2f-YsB"/>
+                        <outletCollection property="progressIndicators" destination="dp0-7i-2US" collectionClass="NSMutableArray" id="wif-4d-kbR"/>
+                        <outletCollection property="progressWidthConstraints" destination="MWe-w6-dsj" collectionClass="NSMutableArray" id="2Xt-vS-7OK"/>
+                        <outletCollection property="progressWidthConstraints" destination="BEk-C2-Kqh" collectionClass="NSMutableArray" id="XE0-RN-3Nx"/>
+                        <outletCollection property="progressWidthConstraints" destination="7JX-4g-8dK" collectionClass="NSMutableArray" id="ULZ-ET-I5O"/>
                         <segue destination="21c-yn-AfK" kind="show" identifier="occasionsViewControllerSegue" id="4eR-qM-Brs"/>
                         <segue destination="Y68-Zi-Cgh" kind="show" identifier="progressViewControllerSegue" id="Ihu-J5-pB2"/>
                     </connections>
