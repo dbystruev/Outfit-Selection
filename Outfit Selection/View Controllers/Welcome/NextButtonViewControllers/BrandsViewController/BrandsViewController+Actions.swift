@@ -12,7 +12,7 @@ import UIKit
 extension BrandsViewController {
     /// Called when next button is tapped
     /// - Parameter sender: the get outfit button which was tapped
-    @IBAction func nextButtonTapped(_ sender: UIButton) {
+    override func nextButtonTapped(_ sender: UIButton) {
         // Start loading items
         NetworkManager.shared.reloadItems(for: gender) { _ in }
         

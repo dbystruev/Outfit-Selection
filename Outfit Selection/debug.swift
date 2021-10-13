@@ -32,7 +32,7 @@ func debug(line: Int = #line,
         lastDebugLineRepeatCount += 1
     } else {
         if 1 < lastDebugLineRepeatCount {
-            print("Previous line was repeated \(lastDebugLineRepeatCount) times")
+            print("Previous line repeated \(lastDebugLineRepeatCount) times")
         }
         print(newLine)
         lastDebugLine = newLine

@@ -6,8 +6,14 @@
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
+import UIKit
+
 extension OccasionsViewController {
     // MARK: - Actions
+    override func nextButtonTapped(_ sender: UIButton) {
+        performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
+    }
+    
     @IBAction func selectAllButtonTapped(_ sender: SelectableButtonItem) {
         // Switch the selection
         sender.isButtonSelected.toggle()

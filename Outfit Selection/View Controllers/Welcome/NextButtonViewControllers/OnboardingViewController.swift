@@ -109,7 +109,7 @@ class OnboardingViewController: NextButtonViewController {
     // MARK: - Actions
     /// Called when next button is tapped
     /// - Parameter sender: the get outfit button which was tapped
-    @IBAction func nextButtonTapped(_ sender: UIButton) {
+    override func nextButtonTapped(_ sender: UIButton) {
         // Set going forwards flag to true when going forwards
         OnboardingViewController.goingForwards = true
         

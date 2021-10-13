@@ -268,9 +268,6 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <action selector="nextButtonTapped:" destination="K50-Fg-dgI" eventType="touchUpInside" id="jPX-gb-7MW"/>
-                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="On4-rd-E6O"/>
@@ -415,9 +412,6 @@
                                                 <integer key="value" value="8"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
-                                        <connections>
-                                            <action selector="nextButtonTapped:" destination="cic-yD-JyJ" eventType="touchUpInside" id="dep-dv-mBs"/>
-                                        </connections>
                                     </button>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AuO-nw-jzd">
                                         <rect key="frame" x="0.0" y="352" width="375" height="139"/>
@@ -494,9 +488,6 @@
                                         <integer key="value" value="8"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
-                                <connections>
-                                    <segue destination="Y68-Zi-Cgh" kind="show" id="Nk9-sR-D98"/>
-                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your favourite occasions " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7I-pz-nl1">
                                 <rect key="frame" x="16" y="104" width="343" height="24.666666666666657"/>
@@ -578,6 +569,7 @@
                         <outlet property="allButton" destination="oR3-nD-fqp" id="9KA-Rf-diq"/>
                         <outlet property="nextButton" destination="hZS-Fj-0sN" id="rAN-05-0me"/>
                         <outlet property="occasionsTableView" destination="VQg-j8-dsL" id="bIN-fl-bKy"/>
+                        <segue destination="Y68-Zi-Cgh" kind="show" identifier="progressViewControllerSegue" id="Y3I-SD-N7s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rl7-1r-IRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
