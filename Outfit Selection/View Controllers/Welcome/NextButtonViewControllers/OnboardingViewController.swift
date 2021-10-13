@@ -37,7 +37,7 @@ class OnboardingViewController: NextButtonViewController {
     
     // MARK: - Custom Methods
     /// Configure content of this screen with given onboarding
-    func configure() {
+    func configureContent() {
         // Get current onboarding
         let index = Onboarding.currentIndex
         let onboarding = Onboarding.all[index]
@@ -48,19 +48,31 @@ class OnboardingViewController: NextButtonViewController {
         onboardingTitleLabel.text = onboarding.title
     }
     
+    /// Configure onboarding stack view radius, background, and text colors
+    func configureLayout() {
+        // Hide navigation bar
+        navigationController?.isNavigationBarHidden = true
+        
+        // Configue the views
+        onboardingStackView.backgroundColor = Globals.Color.Onboarding.background
+        onboardingStackView.layer.cornerRadius = 48
+        onboardingTextLabel.textColor = Globals.Color.Onboarding.text
+        onboardingTitleLabel.textColor = Globals.Color.Onboarding.text
+    }
+    
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Show next button on top of navigation view once
-        configureNextButton()
+        // Configure onboarding stack view radius and colors
+        configureLayout()
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // Show current onboarding
-        configure()
+        configureContent()
     }
     
     override func viewWillDisappear(_ animated: Bool) {

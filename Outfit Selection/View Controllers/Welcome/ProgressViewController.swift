@@ -58,10 +58,6 @@ class ProgressViewController: LoggingViewController {
         
         // Initiate progress with 0
         progressView.progress = 0
-        
-        // Remove onboarding view controllers
-        let onboardingScreens = navigationController?.viewControllers.filter { $0 is OnboardingViewController }
-        onboardingScreens?.reversed().forEach { $0.removeFromParent() }
 
         // Instantiate the tab bar controller
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)

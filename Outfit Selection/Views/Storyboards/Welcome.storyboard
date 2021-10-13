@@ -411,7 +411,7 @@
                             <constraint firstItem="IRN-tw-XJ5" firstAttribute="top" secondItem="c9b-3j-iFp" secondAttribute="top" id="kc6-VH-LCd"/>
                             <constraint firstItem="iJG-mt-Ohp" firstAttribute="bottom" secondItem="UTd-n8-W7x" secondAttribute="bottom" constant="24" id="mUn-IO-yra"/>
                             <constraint firstAttribute="bottom" secondItem="H9k-HT-Jxr" secondAttribute="bottom" constant="-48" id="nBa-S5-nh9"/>
-                            <constraint firstAttribute="bottom" secondItem="IRN-tw-XJ5" secondAttribute="bottom" priority="250" id="oAb-gr-Xid"/>
+                            <constraint firstItem="IRN-tw-XJ5" firstAttribute="bottom" secondItem="c9b-3j-iFp" secondAttribute="bottom" priority="250" constant="-314" id="oAb-gr-Xid"/>
                             <constraint firstItem="IRN-tw-XJ5" firstAttribute="trailing" secondItem="c9b-3j-iFp" secondAttribute="trailing" id="ufO-ok-3Kd"/>
                         </constraints>
                     </view>
