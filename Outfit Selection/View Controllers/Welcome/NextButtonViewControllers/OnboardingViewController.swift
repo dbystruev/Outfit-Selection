@@ -25,10 +25,11 @@ class OnboardingViewController: NextButtonViewController {
     /// In onboarding stack view: title label
     @IBOutlet weak var onboardingTitleLabel: UILabel!
     
-    @IBOutlet var progressWidthConstraints: [NSLayoutConstraint]!
+    /// Progress dash and dots indicator buttons
+    @IBOutlet var progressButtons: [UIButton]!
     
-    /// Progress dash and dots indicators
-    @IBOutlet var progressIndicators: [UIView]!
+    /// Width constraints for each progress indicator button
+    @IBOutlet var progressWidthConstraints: [NSLayoutConstraint]!
     
     /// In onboarding stack view: progress stack view with dash and dots
     @IBOutlet weak var progressStackView: UIStackView!
@@ -44,26 +45,26 @@ class OnboardingViewController: NextButtonViewController {
     /// Configure content of this screen with given onboarding
     func configureContent() {
         // Get current onboarding
-        let index = Onboarding.currentIndex
-        let onboarding = Onboarding.all[index]
+        let currentIndex = Onboarding.currentIndex
+        let onboarding = Onboarding.all[currentIndex]
         
         // Configure with current onboarding
         onboardingImageView.image = onboarding.image
         onboardingTextLabel.text = onboarding.text
         onboardingTitleLabel.text = onboarding.title
         
-        // Configure progress indicator
-        for progressIndex in 0 ..< min(progressIndicators.count, progressWidthConstraints.count) {
+        // Configure progress indicator buttons
+        for buttonIndex in 0 ..< min(progressButtons.count, progressWidthConstraints.count) {
             // Show dash when current onboarding is selected
-            let isDash = index == progressIndex
+            let isDash = currentIndex == buttonIndex
             
-            // Set background color
-            progressIndicators[progressIndex].backgroundColor = isDash
+            // Set button background color
+            progressButtons[buttonIndex].backgroundColor = isDash
                 ? Globals.Color.Onboarding.dash
                 : Globals.Color.Onboarding.dot
             
-            // Set width
-            progressWidthConstraints[progressIndex].constant = isDash ? 16 : 4
+            // Set button width
+            progressWidthConstraints[buttonIndex].constant = isDash ? 16 : 4
         }
     }
     
@@ -79,7 +80,7 @@ class OnboardingViewController: NextButtonViewController {
         onboardingTitleLabel.textColor = Globals.Color.Onboarding.text
         
         // Configure progress indicators
-        progressIndicators.forEach { $0.layer.cornerRadius = 2 }
+        progressButtons.forEach { $0.layer.cornerRadius = 2 }
     }
     
     // MARK: - Inherited Methods
@@ -132,5 +133,25 @@ class OnboardingViewController: NextButtonViewController {
         
         // Transition to progress
         performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
+    }
+    
+    /// Called when one of dash or dot progress buttons is tapped
+    /// - Parameter sender: the dash or dot button which was tapped
+    @IBAction func progressButtonTapped(_ sender: UIButton) {
+        // Find the index of the progress button which was tapped
+        guard let buttonIndex = progressButtons.firstIndex(of: sender) else {
+            debug("WARNING: No", sender, "is found in", progressButtons)
+            return
+        }
+        
+        // Get onboarding index and don't act on current screen
+        let currentIndex = Onboarding.currentIndex
+        if buttonIndex < currentIndex {
+            // Move backwards if tapped button is below current index
+            navigationController?.popViewController(animated: true)
+        } else if currentIndex < buttonIndex {
+            // Move forwards if tapped button is above current index
+            nextButtonTapped(sender)
+        }
     }
 }
