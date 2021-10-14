@@ -46,105 +46,109 @@ class ItemManager {
         // Get all wishlist items
         let allWishlistItems = Wishlist.allItems
         
-        // Wait for network group load images to finish
-        DispatchManager.shared.itemManagerGroup.wait()
-        
-        // Counts for progress view update
-        var current = 0
-        var total = 0
-        
-        /// Loop all categories and view models, whatever number is lower
-        for (categories, viewModel) in zip(Categories.filtered(by: gender), ItemManager.shared.viewModels) {
-            // The names of the items already loaded in this category
-            var loadedItemNames = [String]()
+        // Move everything to async queue in order not to hang execution
+        DispatchQueue.main.async {
             
-            // Get category identifiers
-            let categoryIds = categories.map { $0.id }
+            // Wait for network group load images to finish
+            DispatchManager.shared.itemManagerGroup.wait()
             
-            // Select only the items which belong to one of the categories given
-            let categoryFilteredItems = (allWishlistItems + Item.all.values).filter {
-                // Check that item's category id is in the list of category ids looked for
-                categoryIds.contains($0.categoryId)
-            }
+            // Counts for progress view update
+            var current = 0
+            var total = 0
             
-            // Filter category items by the brand given
-            let brandFilteredItems = categoryFilteredItems.filter { $0.wishlisted == true || $0.branded(brandNames) }
-            
-            // If brand filtering brought us an empty list, discard it
-            let items = brandFilteredItems.isEmpty ? categoryFilteredItems : brandFilteredItems
-            
-            // The maximum number of network image loads in one corner
-            var remainingLoads = Categories.maxCornerCount
-            
-            // Loop all items in given category
-            for item in items {
-                // Check that there is no item with the same name already in the list, unless it is wishlisted
-                guard !loadedItemNames.contains(item.name) else {
-                    // Items with similar names - that's not an error, but a warning
-                    //debug("WARNING: \(itemName) already loaded in category \(category.name)")
-                    continue
+            /// Loop all categories and view models, whatever number is lower
+            for (categories, viewModel) in zip(Categories.filtered(by: gender), ItemManager.shared.viewModels) {
+                // The names of the items already loaded in this category
+                var loadedItemNames = [String]()
+                
+                // Get category identifiers
+                let categoryIds = categories.map { $0.id }
+                
+                // Select only the items which belong to one of the categories given
+                let categoryFilteredItems = (allWishlistItems + Item.all.values).filter {
+                    // Check that item's category id is in the list of category ids looked for
+                    categoryIds.contains($0.categoryId)
                 }
                 
-                // Get the item picture url
-                guard let pictureURL = item.pictures.first else {
-                    // No picture — that's an error
-                    debug("ERROR: No picture URLs for the item", item.name, item.url)
-                    continue
-                }
+                // Filter category items by the brand given
+                let brandFilteredItems = categoryFilteredItems.filter { $0.wishlisted == true || $0.branded(brandNames) }
                 
-                // Check that we haven't used the maximum number of network loads in the category
-                guard 0 < remainingLoads else { continue }
-                remainingLoads -= 1
+                // If brand filtering brought us an empty list, discard it
+                let items = brandFilteredItems.isEmpty ? categoryFilteredItems : brandFilteredItems
                 
-                // Pretend that we have succesfully loaded an item with given name
-                loadedItemNames.append(item.name)
+                // The maximum number of network image loads in one corner
+                var remainingLoads = Categories.maxCornerCount
                 
-                // Enter the dispatch group for the next get image request
-                DispatchManager.shared.itemManagerGroup.enter()
-                
-                // Update the number of total images
-                total += 1
-                
-                // Try to get an image for the current item
-                NetworkManager.shared.getImage(pictureURL) { optionalImage in
-                    // Make sure we always leave the group
-                    defer { DispatchManager.shared.itemManagerGroup.leave() }
+                // Loop all items in given category
+                for item in items {
+                    // Check that there is no item with the same name already in the list, unless it is wishlisted
+                    guard !loadedItemNames.contains(item.name) else {
+                        // Items with similar names - that's not an error, but a warning
+                        //debug("WARNING: \(itemName) already loaded in category \(category.name)")
+                        continue
+                    }
                     
-                    // Didn't get the image — that's an error
-                    guard let image = optionalImage else {
-                        // Compose error message
-                        let message = optionalImage == nil ? "image" : "item index"
+                    // Get the item picture url
+                    guard let pictureURL = item.pictures.first else {
+                        // No picture — that's an error
+                        debug("ERROR: No picture URLs for the item", item.name, item.url)
+                        continue
+                    }
+                    
+                    // Check that we haven't used the maximum number of network loads in the category
+                    guard 0 < remainingLoads else { continue }
+                    remainingLoads -= 1
+                    
+                    // Pretend that we have succesfully loaded an item with given name
+                    loadedItemNames.append(item.name)
+                    
+                    // Enter the dispatch group for the next get image request
+                    DispatchManager.shared.itemManagerGroup.enter()
+                    
+                    // Update the number of total images
+                    total += 1
+                    
+                    // Try to get an image for the current item
+                    NetworkManager.shared.getImage(pictureURL) { optionalImage in
+                        // Make sure we always leave the group
+                        defer { DispatchManager.shared.itemManagerGroup.leave() }
                         
-                        debug("ERROR: Can't get an \(message) for the item", item.name, item.url)
-                        
-                        // Remove item name already added to the array of loaded item names
-                        if let itemNameIndex = loadedItemNames.firstIndex(of: item.name) {
-                            loadedItemNames.remove(at: itemNameIndex)
+                        // Didn't get the image — that's an error
+                        guard let image = optionalImage else {
+                            // Compose error message
+                            let message = optionalImage == nil ? "image" : "item index"
+                            
+                            debug("ERROR: Can't get an \(message) for the item", item.name, item.url)
+                            
+                            // Remove item name already added to the array of loaded item names
+                            if let itemNameIndex = loadedItemNames.firstIndex(of: item.name) {
+                                loadedItemNames.remove(at: itemNameIndex)
+                            }
+                            
+                            // Increase remaining loads
+                            remainingLoads += 1
+                            
+                            return
                         }
                         
-                        // Increase remaining loads
-                        remainingLoads += 1
+                        // Append image to the end of corresponding image collection view model
+                        viewModel.append(image.halved, item: item)
                         
-                        return
-                    }
-                    
-                    // Append image to the end of corresponding image collection view model
-                    viewModel.append(image.halved, item: item)
-                    
-                    // Update the number of currently loaded images
-                    current += 1
-                    
-                    // Update progress bar, but avoid final update
-                    if current < total {
-                        completion(current, total)
+                        // Update the number of currently loaded images
+                        current += 1
+                        
+                        // Update progress bar, but avoid final update
+                        if current < total {
+                            completion(current, total)
+                        }
                     }
                 }
             }
-        }
-        
-        // Get here when all image network requests are finished
-        DispatchManager.shared.itemManagerGroup.notify(queue: DispatchQueue.global(qos: .background)) {
-            completion(self.count, self.count)
+            
+            // Get here when all image network requests are finished
+            DispatchManager.shared.itemManagerGroup.notify(queue: DispatchQueue.global(qos: .background)) {
+                completion(self.count, self.count)
+            }
         }
     }
     

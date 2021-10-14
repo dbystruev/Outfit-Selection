@@ -367,7 +367,7 @@
                                                                 </constraints>
                                                                 <state key="normal" image="shuffle"/>
                                                                 <connections>
-                                                                    <action selector="refreshButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="NXL-2I-Qnf"/>
+                                                                    <action selector="shuffleButtonTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="tej-yV-ibt"/>
                                                                 </connections>
                                                             </button>
                                                         </subviews>
@@ -419,7 +419,11 @@
                                     <action selector="shareButtonTapped:" destination="BYZ-38-t0r" id="q04-4G-p2d"/>
                                 </connections>
                             </barButtonItem>
-                            <barButtonItem title="Item" image="hanger" id="ka5-GL-mJm"/>
+                            <barButtonItem title="Item" image="hanger" id="ka5-GL-mJm">
+                                <connections>
+                                    <action selector="hangerBarButtonItemTapped:" destination="BYZ-38-t0r" id="4lE-IK-wvO"/>
+                                </connections>
+                            </barButtonItem>
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
@@ -442,7 +446,6 @@
                         <outletCollection property="scrollViews" destination="nrI-94-QGh" collectionClass="NSMutableArray" id="RPn-yf-T3J"/>
                         <outletCollection property="scrollViews" destination="YAH-LD-FOj" collectionClass="NSMutableArray" id="A59-kh-663"/>
                         <outletCollection property="scrollViews" destination="7mM-sh-37O" collectionClass="NSMutableArray" id="jU0-gS-uur"/>
-                        <outletCollection property="hangerBarButtonItem" destination="ka5-GL-mJm" collectionClass="NSMutableArray" id="lRQ-Xx-Gea"/>
                         <segue destination="zS2-Fi-i4G" kind="show" identifier="shareViewControllerSegue" id="eq6-fh-lkt"/>
                         <segue destination="iyn-SV-hBn" kind="show" identifier="itemViewControllerSegue" id="2q6-Ru-l0M"/>
                     </connections>

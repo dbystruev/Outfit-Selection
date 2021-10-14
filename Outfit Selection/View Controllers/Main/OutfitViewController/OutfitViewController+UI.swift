@@ -198,7 +198,7 @@ extension OutfitViewController {
         }
         
         // Update occasions
-        updateOccasions()
+        updateOccasionsUI()
     }
     
     /// Show hanger and refresh bubbles after initial pause
@@ -217,7 +217,7 @@ extension OutfitViewController {
                 }
             }
             
-            if self.showRefreshBubble {
+            if self.showShuffleBubble {
                 UIView.animate(withDuration: 2) {
                     self.refreshBubble?.alpha = 1
                 }
@@ -260,7 +260,7 @@ extension OutfitViewController {
     }
     
     /// Update occasions stack view when user taps an occasion button
-    func updateOccasions() {
+    func updateOccasionsUI() {
         // Get all occasion buttons and underlines
         let buttonUnderlineStackViews = occasionsStackView.arrangedSubviews.compactMap { $0 as? UIStackView }
         let buttons = buttonUnderlineStackViews.compactMap { $0.arrangedSubviews.first as? OccasionButton }
@@ -278,7 +278,7 @@ extension OutfitViewController {
     }
     
     /// Updates price label
-    func updatePrice() {
+    func updatePriceUI() {
         guard 0 < price else {
             updatePriceLabelWithItemCount(with: itemCount)
             return
@@ -298,6 +298,6 @@ extension OutfitViewController {
         updateLikeButton()
         
         // Update price label
-        updatePrice()
+        updatePriceUI()
     }
 }

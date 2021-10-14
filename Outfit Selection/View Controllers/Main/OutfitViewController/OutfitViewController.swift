@@ -42,7 +42,7 @@ class OutfitViewController: LoggingViewController {
     /// Occasion which is currently selected by the user
     weak var occasionSelected: Occasion? {
         didSet {
-            updateOccasions()
+            updateOccasionsUI()
         }
     }
     
@@ -70,9 +70,9 @@ class OutfitViewController: LoggingViewController {
     }
     
     /// True when we want to show refresh bubble, false otherwise
-    var showRefreshBubble = false {
+    var showShuffleBubble = false {
         didSet {
-            refreshBubble?.isHidden = !showRefreshBubble
+            refreshBubble?.isHidden = !showShuffleBubble
         }
     }
     

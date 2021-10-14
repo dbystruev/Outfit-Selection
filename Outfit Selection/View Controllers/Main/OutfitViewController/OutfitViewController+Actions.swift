@@ -20,7 +20,7 @@ extension OutfitViewController {
     /// Called when the user taps hanger bubble
     @objc func hangerBubbleTapped() {
         showHangerBubble = false
-        showRefreshBubble = true
+        showShuffleBubble = true
         showBubbles()
     }
     
@@ -42,11 +42,11 @@ extension OutfitViewController {
     
     /// Called when the user taps refresh bubble
     @objc func refreshBubbleTapped() {
-        showRefreshBubble = false
+        showShuffleBubble = false
     }
     
-    @IBAction func refreshButtonTapped(_ sender: Any) {
-        showRefreshBubble = false
+    @IBAction func shuffleButtonTapped(_ sender: Any) {
+        showShuffleBubble = false
         scrollToRandomItems()
     }
     
