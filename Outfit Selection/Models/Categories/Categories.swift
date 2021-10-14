@@ -22,8 +22,8 @@ extension Categories {
     private(set) static var byId: [Int: Category] = [:]
     
     /// Female categories filtered by chosen female category names
-    static let femaleCategories: [[Category]] = {
-        femaleCategoryNames.map { words in
+    static let female: [[Category]] = {
+        femaleNames.map { words in
             all.filter { category in
                 let categoryName = category.name.lowercased()
                 return words.contains { categoryName.contains($0) }
@@ -32,7 +32,7 @@ extension Categories {
     }()
     
     /// Female category names
-    static let femaleCategoryNames: [[String]] = [
+    static let femaleNames: [[String]] = [
         // Top left
         ["топы"],
         
@@ -50,8 +50,8 @@ extension Categories {
     ]
     
     /// Male categories filtered by chosen male category names
-    static let maleCategories: [[Category]] = {
-        maleCategoryNames.map { words in
+    static let male: [[Category]] = {
+        maleNames.map { words in
             all.filter { category in
                 let categoryName = category.name.lowercased()
                 return words.contains { categoryName.contains($0) }
@@ -60,7 +60,7 @@ extension Categories {
     }()
     
     /// Male category names
-    static let maleCategoryNames: [[String]] = [
+    static let maleNames: [[String]] = [
         // Top left
         ["футболки", "майки"],
         
@@ -87,18 +87,20 @@ extension Categories {
     static func filtered(by gender: Gender?) -> [[Category]] {
         switch gender {
         case .female:
-            return femaleCategories
+            return female
         case .male:
-            return maleCategories
+            return male
         case .other, nil:
-            return femaleCategories + maleCategories
+            return female + male
         }
     }
     
-    /// Return the list of categories filetered by given occasions
+    // MARK: - Custom Methods
+    /// Return the list of categories filtered by given occasions
     /// - Parameter occasions: occasions to filter categories by
     /// - Returns: the list of categories filtered by occasions
-    static func filtered(by occasions: [Occasion]) -> [Category] {
-        occasions.flatMap({ $0.categoryIDs }).unique.compactMap { byId[$0] }
+    func filtered(by occasions: [Occasion]) -> [Category] {
+        let uniqueCategoryIDs = occasions.flatMap({ $0.categoryIDs }).unique
+        return filter { uniqueCategoryIDs.contains($0.id) }
     }
 }

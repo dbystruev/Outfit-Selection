@@ -192,6 +192,7 @@ class ItemManager {
         
         // Prepare all categories and selected brand names for parallel network requests
         let allCategories = Categories.filtered(by: gender)
+        let occasionCategories = allCategories.map { $0.filtered(by: Occasion.selected) }
         let selectedBrandNames = BrandManager.shared.selectedBrandNames
         
         // Remove all items before loading them again
@@ -202,7 +203,7 @@ class ItemManager {
         DispatchManager.shared.itemManagerGroup.enter()
         
         // Run network requests for different corners and brand names in parallel
-        for categories in allCategories {
+        for categories in occasionCategories {
             let brandNamesSlice = selectedBrandNames.chunked(into: selectedBrandNames.count / 3 + 1)
             for brandNames in brandNamesSlice {
                 DispatchManager.shared.itemManagerGroup.enter()
@@ -241,7 +242,7 @@ class ItemManager {
             let passedTime = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
             
             if success {
-                let categoriesCount = allCategories.flatMap { $0 }.count
+                let categoriesCount = occasionCategories.flatMap { $0 }.count
                 debug(
                     Item.all.count,
                     gender?.rawValue,
