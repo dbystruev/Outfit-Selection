@@ -11,9 +11,13 @@ struct Category: Codable {
     /// The full  list of categories
     static var all: [Category] = [] {
         didSet {
+            all.forEach { byId[$0.id] = $0 }
             debug("INFO: updated to \(all.count) values")
         }
     }
+    
+    /// The list of categories by id
+    private(set) static var byId: [Int: Category] = [:]
     
     /// Female categories filtered by chosen female category names
     static let femaleCategories: [[Category]] = {
@@ -87,6 +91,13 @@ struct Category: Codable {
         case .other, nil:
             return femaleCategories + maleCategories
         }
+    }
+    
+    /// Return the list of categories filetered by given occasions
+    /// - Parameter occasions: occasions to filter categories by
+    /// - Returns: the list of categories filtered by occasions
+    static func filtered(by occasions: [Occasion]) -> [Category] {
+        occasions.flatMap({ $0.categoryIDs }).unique.compactMap { byId[$0] }
     }
     
     // MARK: - Stored Properties
