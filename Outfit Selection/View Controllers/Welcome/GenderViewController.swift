@@ -49,9 +49,6 @@ class GenderViewController: LoggingViewController {
     /// Flag which indicates if this is the first appearance of this view controller (true) or we came back from navigation stack (false)
     var firstAppearance = true
     
-    /// Gender selected by user (not using Gender.current to save old value)
-    var gender: Gender = .other
-    
     // MARK: - Inherited Properties
     /// Make status bar text light
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
@@ -61,24 +58,13 @@ class GenderViewController: LoggingViewController {
     /// - Parameter gender: gender to pass to brands view controller
     func performSegueToBrandsViewController(gender: Gender) {
         // Save the gender — don't update Gender.current as it is used to reload items
-        self.gender = gender
+        Gender.current = gender
         
         // Segue to brands view controller
         performSegue(withIdentifier: BrandsViewController.segueIdentifier, sender: self)
     }
     
     // MARK: - Inherited Methods
-    /// Passes gender information to the brands view controller
-    /// - Parameters:
-    ///   - segue: the segue with information about the view controllers involved in the segue
-    ///   - sender: the object that initiated the segue
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        super.prepare(for: segue, sender: sender)
-        guard segue.identifier == BrandsViewController.segueIdentifier else { return }
-        guard let destination = segue.destination as? BrandsViewController else { return }
-        destination.gender = gender
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = WhiteLabel.Color.Background.light

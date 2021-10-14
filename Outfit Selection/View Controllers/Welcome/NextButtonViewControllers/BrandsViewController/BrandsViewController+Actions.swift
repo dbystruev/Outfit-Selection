@@ -13,9 +13,6 @@ extension BrandsViewController {
     /// Called when next button is tapped
     /// - Parameter sender: the get outfit button which was tapped
     override func nextButtonTapped(_ sender: UIButton) {
-        // Start loading items
-        NetworkManager.shared.reloadItems(for: gender) { _ in }
-        
         // Transition to occasions if they are not empty
         guard Occasion.all.isEmpty else {
             performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)

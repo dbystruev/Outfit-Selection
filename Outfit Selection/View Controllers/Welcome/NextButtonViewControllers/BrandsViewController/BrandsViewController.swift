@@ -22,21 +22,6 @@ class BrandsViewController: NextButtonViewController {
     static let searchKeystrokeDelay: TimeInterval = 1
     
     // MARK: - Stored Properties
-    /// Gender selected on gender selection screen
-    var gender: Gender? {
-        get { Gender.current }
-        set {
-            // Don't clear items if gender value did not change
-            guard Gender.current != newValue else { return }
-            
-            // Set current gender
-            Gender.current = newValue
-            
-            // Clear all wish lists
-//            Wishlist.removeAll()
-        }
-    }
-    
     /// The collection of brand images
     let brandedImages = BrandManager.shared.brandedImages
     
