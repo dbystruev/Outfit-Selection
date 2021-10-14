@@ -18,10 +18,22 @@ class NetworkManager {
     
     // MARK: - Stored Properties
     /// Maximum number of simultaneous get requests (image loading is not counted)
-    let maxRequestsInParallel = 1024
+    let maxNumberOfRequestsLimit = 1024
+    
+    /// The maximum number of parallel requests reached
+    var maxNumberOfRequestsReached = 0
     
     /// Number of get requests currently running (image loading is not counted)
-    var numberOfRequestsRunning = 0
+    var numberOfRequestsRunning = 0 {
+        didSet {
+            if numberOfRequestsRunning < 1 {
+                debug("Max:", maxNumberOfRequestsReached)
+                maxNumberOfRequestsReached = 0
+            } else {
+                maxNumberOfRequestsReached = max(maxNumberOfRequestsReached, numberOfRequestsRunning)
+            }
+        }
+    }
     
     /// API server URL
     var url: URL
@@ -85,8 +97,8 @@ class NetworkManager {
         }
         
         // Check that we don't run more than allowed number of get requests in parallel
-        guard numberOfRequestsRunning <= maxRequestsInParallel else {
-            debug("ERROR: the number of network get requests should not exceed \(maxRequestsInParallel)")
+        guard numberOfRequestsRunning <= maxNumberOfRequestsLimit else {
+            debug("ERROR: the number of network get requests should not exceed \(maxNumberOfRequestsLimit)")
             completion(nil)
             return
         }
@@ -231,9 +243,8 @@ class NetworkManager {
         filteredBy fullVendorNames: [String]
     ) -> [String: Any] {
         // Prepare parameters
-        let brandsCount = BrandManager.shared.selectedBrands.count
         var parameters: [String: Any] = [
-            "limit": limit ?? (brandsCount < 1 ? Item.maxCount : Item.maxCount / brandsCount + 1)
+            "limit": limit ?? Item.maxCount
         ]
         
         // Add "category_id" parameter

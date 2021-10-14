@@ -124,7 +124,7 @@ class Logger {
             return [:]
         }
         
-        // Event if we fail after that make sure we've flagged the fact we have initialized
+        // Even if we fail after that make sure we've flagged the fact we have initialized
         initialized = true
 
         return bundledLogs.merging(filesystemLogs) { _, new in new }
@@ -140,7 +140,7 @@ class Logger {
     /// Variable which stores different log messages to avoid doubling
     private static var logs: [String: String] = [:]
     
-    /// Whether the logger should log (cache) network requests
+    /// Whether the logger should log (cache) network requests — set by `update server`
     public static var shouldLog = false
     
     // MARK: - Methods
