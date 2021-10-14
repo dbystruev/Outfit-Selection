@@ -201,12 +201,9 @@ class ItemManager {
         let allWishlistItemsIds = Array(Wishlist.allItemsIdSet)
         DispatchManager.shared.itemManagerGroup.enter()
         
-        debug("Categories:", allCategories.count, "Selected Brands:", selectedBrandNames.count)
-        
         // Run network requests for different corners and brand names in parallel
         for categories in allCategories {
             let brandNamesSlice = selectedBrandNames.chunked(into: selectedBrandNames.count / 3 + 1)
-            debug("brandNamesSlice:", brandNamesSlice.count)
             for brandNames in brandNamesSlice {
                 DispatchManager.shared.itemManagerGroup.enter()
                 NetworkManager.shared.getItems(

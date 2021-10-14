@@ -156,7 +156,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-JP-tfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1914" y="137"/>
+            <point key="canvasLocation" x="-1943" y="137"/>
         </scene>
         <!--Progress View Controller-->
         <scene sceneID="8ts-hO-orG">
@@ -207,7 +207,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4H-oc-phH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="650" y="114"/>
+            <point key="canvasLocation" x="657" y="100"/>
         </scene>
         <!--Tell us your favourites-->
         <scene sceneID="Jxn-eD-PxF">
@@ -456,13 +456,12 @@
                         <outletCollection property="progressWidthConstraints" destination="MWe-w6-dsj" collectionClass="NSMutableArray" id="2Xt-vS-7OK"/>
                         <outletCollection property="progressWidthConstraints" destination="BEk-C2-Kqh" collectionClass="NSMutableArray" id="XE0-RN-3Nx"/>
                         <outletCollection property="progressWidthConstraints" destination="7JX-4g-8dK" collectionClass="NSMutableArray" id="ULZ-ET-I5O"/>
-                        <segue destination="21c-yn-AfK" kind="show" identifier="occasionsViewControllerSegue" id="4eR-qM-Brs"/>
                         <segue destination="Y68-Zi-Cgh" kind="show" identifier="progressViewControllerSegue" id="Ihu-J5-pB2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rLZ-Hs-344" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-295.19999999999999" y="-236.45320197044336"/>
+            <point key="canvasLocation" x="-311" y="531"/>
         </scene>
         <!--Occasions-->
         <scene sceneID="Uax-un-n1R">
@@ -570,15 +569,16 @@
                         <outlet property="nextButton" destination="hZS-Fj-0sN" id="rAN-05-0me"/>
                         <outlet property="occasionsTableView" destination="VQg-j8-dsL" id="bIN-fl-bKy"/>
                         <segue destination="Y68-Zi-Cgh" kind="show" identifier="progressViewControllerSegue" id="Y3I-SD-N7s"/>
+                        <segue destination="cic-yD-JyJ" kind="show" identifier="onboardingViewControllerSegue" id="Nvt-OB-piX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rl7-1r-IRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-295" y="567"/>
+            <point key="canvasLocation" x="-311" y="-242"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="4eR-qM-Brs"/>
+        <segue reference="Nvt-OB-piX"/>
         <segue reference="Ihu-J5-pB2"/>
     </inferredMetricsTieBreakers>
     <resources>

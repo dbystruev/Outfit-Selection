@@ -16,15 +16,15 @@ extension BrandsViewController {
         // Start loading items
         NetworkManager.shared.reloadItems(for: gender) { _ in }
         
-        // Trainsition to onboarding if they are not empty or already presented
-        guard Onboarding.all.isEmpty || 0 < Onboarding.currentIndex else {
-            performSegue(withIdentifier: OnboardingViewController.segueIdentifier, sender: sender)
-            return
-        }
-        
         // Transition to occasions if they are not empty
         guard Occasion.all.isEmpty else {
             performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)
+            return
+        }
+        
+        // Trainsition to onboarding if they are not empty or were already presented earlier
+        guard Onboarding.all.isEmpty || 0 < Onboarding.currentIndex else {
+            performSegue(withIdentifier: OnboardingViewController.segueIdentifier, sender: sender)
             return
         }
         

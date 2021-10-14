@@ -11,6 +11,13 @@ import UIKit
 extension OccasionsViewController {
     // MARK: - Actions
     override func nextButtonTapped(_ sender: UIButton) {
+        // Trainsition to onboarding if they are not empty or were already presented earlier
+        guard Onboarding.all.isEmpty || 0 < Onboarding.currentIndex else {
+            performSegue(withIdentifier: OnboardingViewController.segueIdentifier, sender: sender)
+            return
+        }
+        
+        // Transition to progress
         performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
     }
     

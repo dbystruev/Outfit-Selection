@@ -125,12 +125,6 @@ class OnboardingViewController: NextButtonViewController {
             return
         }
         
-        // Transition to occasions if they are not empty
-        guard Occasion.all.isEmpty else {
-            performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)
-            return
-        }
-        
         // Transition to progress
         performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
     }
