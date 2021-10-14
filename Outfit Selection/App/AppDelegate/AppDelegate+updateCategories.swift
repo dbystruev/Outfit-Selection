@@ -14,7 +14,7 @@ extension AppDelegate {
             // Make sure we don't update to the empty list of categories
             guard let categories = categories, !categories.isEmpty else { return }
             
-            Category.all = categories
+            Categories.all = categories
         }
     }
     

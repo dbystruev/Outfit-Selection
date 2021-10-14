@@ -146,7 +146,7 @@ class FeedCollectionViewController: LoggingViewController {
                 return []
             }
         }()
-        let categories = categoryIDs.compactMap { Category.all[$0] }
+        let categories = categoryIDs.compactMap { Categories.all[$0] }
         
         // If feed type is sale get items with old prices set
         let sale = kind == .sale

@@ -20,7 +20,7 @@ class ItemManager {
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
     
     /// Array of category image collection view models
-    let viewModels: [ImageCollectionViewModel] = (0 ..< Category.all.count).map { _ in ImageCollectionViewModel.empty }
+    let viewModels: [ImageCollectionViewModel] = (0 ..< Categories.all.count).map { _ in ImageCollectionViewModel.empty }
     
     // MARK: - Computed Properties
     /// Number of items loaded into view models
@@ -54,7 +54,7 @@ class ItemManager {
         var total = 0
         
         /// Loop all categories and view models, whatever number is lower
-        for (categories, viewModel) in zip(Category.filtered(by: gender), ItemManager.shared.viewModels) {
+        for (categories, viewModel) in zip(Categories.filtered(by: gender), ItemManager.shared.viewModels) {
             // The names of the items already loaded in this category
             var loadedItemNames = [String]()
             
@@ -74,7 +74,7 @@ class ItemManager {
             let items = brandFilteredItems.isEmpty ? categoryFilteredItems : brandFilteredItems
             
             // The maximum number of network image loads in one corner
-            var remainingLoads = Category.maxCornerCount
+            var remainingLoads = Categories.maxCornerCount
             
             // Loop all items in given category
             for item in items {
@@ -191,7 +191,7 @@ class ItemManager {
         var success = true
         
         // Prepare all categories and selected brand names for parallel network requests
-        let allCategories = Category.filtered(by: gender)
+        let allCategories = Categories.filtered(by: gender)
         let selectedBrandNames = BrandManager.shared.selectedBrandNames
         
         // Remove all items before loading them again
