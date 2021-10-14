@@ -17,13 +17,13 @@ class OutfitViewController: LoggingViewController {
     @IBOutlet weak var occasionsStackView: UIStackView!
     @IBOutlet weak var occasionsStackViewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var refreshBubble: RefreshBubble! {
+    @IBOutlet var scrollViews: [PinnableScrollView]!
+    @IBOutlet weak var shuffleBubble: RefreshBubble! {
         didSet {
-            configureRefreshBubble()
+            configureShuffleBubble()
         }
     }
-    @IBOutlet weak var refreshButton: UIButton!
-    @IBOutlet var scrollViews: [PinnableScrollView]!
+    @IBOutlet weak var shuffleButton: UIButton!
     @IBOutlet weak var topStackView: UIStackView!
     
     // MARK: - Stored Properties
@@ -72,20 +72,22 @@ class OutfitViewController: LoggingViewController {
     /// True when we want to show refresh bubble, false otherwise
     var showShuffleBubble = false {
         didSet {
-            refreshBubble?.isHidden = !showShuffleBubble
+            shuffleBubble?.isHidden = !showShuffleBubble
         }
     }
     
     // MARK: - Computed Properties
+    /// Items in all scroll views' image views, including currently non-visible
+    var items: [Item] {
+        scrollViews.flatMap { $0.items }
+    }
+    
+    /// The number of items in all scroll views
     var itemCount: Int {
         scrollViews.reduce(0) { $0 + $1.itemCount }
     }
     
-    /// Items for current image views
-    var items: [Item] {
-        scrollViews.compactMap({ $0.getImageView()?.item })
-    }
-    
+    /// Total price of all visible items
     var price: Double {
         var amount = 0.0
         for scrollView in scrollViews {
@@ -93,5 +95,10 @@ class OutfitViewController: LoggingViewController {
             amount += itemPrice
         }
         return amount
+    }
+    
+    /// Items for currently visible image views
+    var visibleItems: [Item] {
+        scrollViews.compactMap({ $0.getImageView()?.item })
     }
 }

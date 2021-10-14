@@ -58,7 +58,11 @@ extension OutfitViewController {
         // Scroll to wishlist items or random elements on first appearance
         if scrollToItems.isEmpty {
             if firstAppearance {
-                scrollToRandomItems()
+                guard occasionSelected != nil else {
+                    scrollToRandomItems()
+                    return
+                }
+                scrollTo(occasion: occasionSelected)
             }
         } else {
             scrollTo(items: scrollToItems)

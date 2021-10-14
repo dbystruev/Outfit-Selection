@@ -34,20 +34,10 @@ extension OutfitViewController {
         scrollViews[selectedIndex].toggle()
         
         // Disable refresh button if all scroll views are pinned
-        refreshButton.isEnabled = !scrollViews.allPinned
+        shuffleButton.isEnabled = !scrollViews.allPinned
         
         // Update hanger buttons opacity
         configureHangerButtons()
-    }
-    
-    /// Called when the user taps refresh bubble
-    @objc func refreshBubbleTapped() {
-        showShuffleBubble = false
-    }
-    
-    @IBAction func shuffleButtonTapped(_ sender: Any) {
-        showShuffleBubble = false
-        scrollToRandomItems()
     }
     
     @IBAction func likeButtonTapped(_ sender: UIButton) {
@@ -55,20 +45,24 @@ extension OutfitViewController {
         Wishlist.tabSuggested = .outfit
         
         // Dislike if we already liked it, or like if we didn't
-        if Wishlist.contains(items) == true {
+        if Wishlist.contains(visibleItems) == true {
             sender.isSelected = false
-            Wishlist.remove(items)
+            Wishlist.remove(visibleItems)
         } else {
             let controller = storyboard?.instantiateViewController(
                 withIdentifier: OccasionsPopupViewController.storyboardId
             )
             guard let occasionsPopupViewController = controller as? OccasionsPopupViewController else { return }
-            occasionsPopupViewController.items = items
+            occasionsPopupViewController.items = visibleItems
             present(occasionsPopupViewController, animated: true)
         }
     }
     
     @IBAction func occasionButtonTapped(_ sender: OccasionButton) {
+        // Scroll to tapped occasion
+        scrollTo(occasion: sender.occasion)
+        
+        // Updated selected occasion property and UI
         occasionSelected = sender.occasion
     }
     
@@ -109,5 +103,15 @@ extension OutfitViewController {
         
         // Segue to share view controller
         performSegue(withIdentifier: "shareViewControllerSegue", sender: self)
+    }
+    
+    /// Called when the user taps refresh bubble
+    @objc func shuffleBubbleTapped() {
+        showShuffleBubble = false
+    }
+    
+    @IBAction func shuffleButtonTapped(_ sender: Any) {
+        showShuffleBubble = false
+        scrollToRandomItems()
     }
 }

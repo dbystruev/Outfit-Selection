@@ -34,13 +34,18 @@ extension PinnableScrollView {
         return contentSize.width / CGFloat(count)
     }
     
-    var stackView: UIStackView? {
-        subviews.first as? UIStackView
+    /// Items of each of the arranged subviews of the pinnable scroll view
+    var items: [Item] {
+        stackView?.arrangedSubviews.compactMap { ($0 as? UIImageView)?.item } ?? []
     }
     
     /// Item ids of each of the arranged subviews of the pinnable scroll view
     var itemIds: [String] {
-        stackView?.arrangedSubviews.compactMap { ($0 as? UIImageView)?.item?.id } ?? []
+        items.map { $0.id }
+    }
+    
+    var stackView: UIStackView? {
+        subviews.first as? UIStackView
     }
     
     // MARK: - Methods

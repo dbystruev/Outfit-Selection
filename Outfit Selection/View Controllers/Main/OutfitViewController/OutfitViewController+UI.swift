@@ -72,19 +72,19 @@ extension OutfitViewController {
     }
     
     /// Configure refresh bubble once in the beginning
-    func configureRefreshBubble() {
-        refreshBubble?.alpha = 0
-        refreshBubble?.text = "Check out the next outfit"
+    func configureShuffleBubble() {
+        shuffleBubble?.alpha = 0
+        shuffleBubble?.text = "Check out the next outfit"
         
         // Add tap gesture on refresh bubble
-        refreshBubble?.addTapOnce(target: self, action: #selector(refreshBubbleTapped))
+        shuffleBubble?.addTapOnce(target: self, action: #selector(shuffleBubbleTapped))
     }
     
     /// Hide hanger and refresh bubbles immediately
     func hideBubbles() {
         shouldHideBubbles = true
         hangerBubble.alpha = 0
-        refreshBubble?.alpha = 0
+        shuffleBubble?.alpha = 0
     }
     
     /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
@@ -100,7 +100,7 @@ extension OutfitViewController {
     }
     
     func pin() {
-        refreshButton.isEnabled = false
+        shuffleButton.isEnabled = false
         scrollViews.pin()
     }
     
@@ -111,6 +111,14 @@ extension OutfitViewController {
         
         // Update like button and price
         updateUI()
+    }
+    
+    /// Scroll outfit's scroll views to the given occasion
+    /// - Parameter occasion: the occasion to scroll the scroll views to
+    func scrollTo(occasion: Occasion?) {
+        guard let occasion = occasion else { return }
+        let occasionItems = items.filter { occasion.categoryIDs.contains($0.categoryId) }
+        scrollTo(items: occasionItems.shuffled())
     }
     
     /// Scroll to random items
@@ -219,7 +227,7 @@ extension OutfitViewController {
             
             if self.showShuffleBubble {
                 UIView.animate(withDuration: 2) {
-                    self.refreshBubble?.alpha = 1
+                    self.shuffleBubble?.alpha = 1
                 }
             }
             
@@ -228,7 +236,7 @@ extension OutfitViewController {
     
     func unpin() {
         hangerButtons.forEach { $0.isSelected = false }
-        refreshButton.isEnabled = true
+        shuffleButton.isEnabled = true
         scrollViews.unpin()
     }
     
@@ -255,7 +263,7 @@ extension OutfitViewController {
     /// Updates like button
     func updateLikeButton() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.likeButton.isSelected = Wishlist.contains(self.items) == true
+            self.likeButton.isSelected = Wishlist.contains(self.visibleItems) == true
         }
     }
     
