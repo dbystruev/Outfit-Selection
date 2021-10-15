@@ -14,17 +14,17 @@ extension Onboarding {
     static let all: [Onboarding] = [
         Onboarding(
             image: placeholderImage,
-            text: placeholderText,
+            text: "", // "placeholderText,
             title: "We will find you a stylish look for any occasion"
         ),
         Onboarding(
             image: placeholderImage,
-            text: placeholderText,
+            text: "", // placeholderText,
             title: "Collect your own wish list"
         ),
         Onboarding(
             image: placeholderImage,
-            text: placeholderText,
+            text: "", // placeholderText,
             title: "Share clothing collections with your friends and followers"
         ),
     ]
