@@ -50,20 +50,16 @@ extension Wishlist {
 
 // MARK: - User Defaults
 extension Wishlist {
-    // MARK: - Static Constants
-    /// User defaults key
-    static let userDefaultsKey = "GetOutfitWishlistKey"
-    
     // MARK: - Methods
     /// Load wishlist from user defaults
     static func restore() {
-        guard let data = UserDefaults.standard.object(forKey: userDefaultsKey) as? Data else {
-            debug("WARNING: Can't find data from user defaults for key \(userDefaultsKey)")
+        guard let data = UserDefaults.wishlists else {
+            debug("WARNING: Can't find wishlists data in user defaults")
             return
         }
         
         guard let wishlistItems = try? PList.decoder.decode([WishlistItems].self, from: data) else {
-            debug("WARNING: Can't decode \(data) from user defaults to [WishlistItem] for key \(userDefaultsKey)")
+            debug("WARNING: Can't decode wishlists \(data) from user defaults to \([WishlistItems].self)")
             return
             
         }
@@ -75,18 +71,18 @@ extension Wishlist {
             let count = items.reduce(0) { $0 + $1.itemIDs.count }
             messages.append("\(count) \(gender)")
         }
-        debug("\(userDefaultsKey):", messages.joined(separator: ", "), "item ids loaded")
+        debug("Wishlists:", messages.joined(separator: ", "), "item ids loaded")
     }
     
     /// Save wishlist to user defaults
     static func save() {
         let wishlistItems = _all.values.flatMap { $0 }
         guard let data = try? PList.encoder.encode(wishlistItems) else {
-            debug("WARNING: Can't encode \(all.count) wishlist items for key \(userDefaultsKey)")
+            debug("WARNING: Can't encode \(all.count) wishlist items for user defaults")
             return
         }
         
-        debug("DEBUG: Saving \(data) for \(userDefaultsKey)")
-        UserDefaults.standard.set(data, forKey: userDefaultsKey)
+        debug("DEBUG: Saving \(data) to user defaults wishlists")
+        UserDefaults.wishlists = data
     }
 }

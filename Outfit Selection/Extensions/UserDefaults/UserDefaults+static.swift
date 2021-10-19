@@ -11,7 +11,7 @@ import Foundation
 
 extension UserDefaults {
     
-    /// Collections saved by the user
+    /// Collections data saved by the user
     @UserDefault(key: "GetOutfitCollectionKey", defaultValue: nil)
     static var collections: Data?
     
@@ -26,4 +26,8 @@ extension UserDefaults {
     /// The list of occasions selected by the user
     @UserDefault(key: "GetOutfitSelectedOccasionsBrandsKey", defaultValue: [])
     static var selectedOccasions: [String]
+    
+    /// Wishlist items data saved by the user
+    @UserDefault(key: "GetOutfitWishlistKey", defaultValue: nil)
+    static var wishlists: Data?
 }
