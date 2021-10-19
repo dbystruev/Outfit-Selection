@@ -61,21 +61,13 @@ final class Occasion: Codable {
 
 // MARK: - UserDefaults
 extension Occasion {
-    // MARK: - Static Constants
-    /// User defaults key
-    static let userDefaultsKey = "GetOutfitSelectedOccasionsBrandsKey"
-    
     // MARK: - Static Methods
     /// Load selected occasion names from user defaults and updated Occasion.all
     static func restore() {
-        guard
-            let selectedNamesRestored = UserDefaults.standard.object(forKey: userDefaultsKey) as? [String]
-        else {
-            debug("WARNING: Can't find data from user defaults for key \(userDefaultsKey)")
-            return
-        }
+        // Get selected occasion names and make sure they are not empty
+        let selectedNamesRestored = UserDefaults.selectedOccasions
         guard !selectedNamesRestored.isEmpty else {
-            debug("WARNING: Occasion list in user defaults for key \(userDefaultsKey) is empty")
+            debug("WARNING: Occasion list in user defaults is empty")
             return
         }
         
@@ -88,7 +80,7 @@ extension Occasion {
         }
         
         debug(
-            "\(userDefaultsKey): \(selectedNamesRestored.count) loaded,",
+            "Occasions: \(selectedNamesRestored.count) loaded,",
             "\(selectedOccasionsCount) of \(Occasion.all.count) selected"
         )
     }
@@ -96,6 +88,6 @@ extension Occasion {
     /// Save selected occasion names to user defaults
     static func saveSelectedOccasions() {
         let selectedNamesLowercased = self.selectedNames.map { $0.lowercased() }
-        UserDefaults.standard.set(selectedNamesLowercased, forKey: Occasion.userDefaultsKey)
+        UserDefaults.selectedOccasions = selectedNamesLowercased
     }
 }
