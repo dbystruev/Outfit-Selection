@@ -126,6 +126,7 @@ class OnboardingViewController: NextButtonViewController {
         }
         
         // Transition to progress
+        UserDefaults.hasSeenAppIntroduction = true
         performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
     }
     
