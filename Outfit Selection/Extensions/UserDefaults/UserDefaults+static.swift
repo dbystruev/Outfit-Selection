@@ -11,6 +11,10 @@ import Foundation
 
 extension UserDefaults {
     
+    /// Collections saved by the user
+    @UserDefault(key: "GetOutfitCollectionKey", defaultValue: nil)
+    static var collections: Data?
+    
     /// True if user has seen onboarding
     @UserDefault(key: "GetOutfitHasSeenAppIntroduction", defaultValue: false)
     static var hasSeenAppIntroduction: Bool

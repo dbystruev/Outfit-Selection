@@ -10,23 +10,18 @@ import Foundation
 
 // MARK: - User Defaults
 extension Collection {
-    // MARK: - Static Constants
-    /// User defaults key
-    static let userDefaultsKey = "GetOutfitCollectionKey"
-    
     // MARK: - Methods
     /// Load collections from user defaults
     static func restore() {
-        guard let data = UserDefaults.standard.object(forKey: userDefaultsKey) as? Data else {
-            debug("WARNING: Can't find data from user defaults for key \(userDefaultsKey)")
+        guard let data = UserDefaults.collections else {
+            debug("WARNING: Can't find saved collections in user defaults")
             return
         }
         
         guard let collections = try? PList.decoder.decode(Collections.self, from: data) else {
             debug(
-                "WARNING: Can't decode \(data)",
-                "from user defaults to \([Collection].self)",
-                "for key \(userDefaultsKey)"
+                "WARNING: Can't decode \(data) for collections",
+                "from user defaults to \([Collection].self)"
             )
             return
         }
@@ -42,13 +37,11 @@ extension Collection {
         let collections = genderCollections.values.flatMap { $0 }
         guard let data = try? PList.encoder.encode(collections) else {
             debug(
-                "WARNING: Can't encode \(collections.count)",
-                "to \(Collections.self) gender collections",
-                "for key \(userDefaultsKey)"
-            )
+                "WARNING: Can't encode \(collections.count) collections",
+                "to \(Collections.self) gender collections"            )
             return
         }
         
-        UserDefaults.standard.set(data, forKey: userDefaultsKey)
+        UserDefaults.collections = data
     }
 }
