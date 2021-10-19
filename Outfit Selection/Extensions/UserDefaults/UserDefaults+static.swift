@@ -14,4 +14,8 @@ extension UserDefaults {
     /// True if user has seen onboarding
     @UserDefault(key: "GetOutfitHasSeenAppIntroduction", defaultValue: false)
     static var hasSeenAppIntroduction: Bool
+    
+    /// The list of brands selected by the user
+    @UserDefault(key: "GetOutfitSelectedBrandsKey", defaultValue: [])
+    static var selectedBrands: [String]
 }
