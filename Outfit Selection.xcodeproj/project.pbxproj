@@ -188,6 +188,7 @@
 		69B86BBB26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */; };
 		69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640325E66EDE00C805B6 /* ProgressViewController.swift */; };
 		69BA640B25E6BB2000C805B6 /* SelectableButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */; };
+		69C18F1B271F0762006D7B47 /* UserDefault+propertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */; };
 		69C3695525E77549000A8E5E /* OccasionsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3695425E77549000A8E5E /* OccasionsPopupViewController.swift */; };
 		69C3695B25E780F8000A8E5E /* OccasionsPopupViewController+UIPickerViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3695A25E780F8000A8E5E /* OccasionsPopupViewController+UIPickerViewDataSource.swift */; };
 		69C3695E25E7812D000A8E5E /* OccasionsPopupViewController+UIPickerViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3695D25E7812D000A8E5E /* OccasionsPopupViewController+UIPickerViewDelegate.swift */; };
@@ -414,6 +415,7 @@
 		69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedItemViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69BA640325E66EDE00C805B6 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButtonItem.swift; sourceTree = "<group>"; };
+		69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+propertyWrapper.swift"; sourceTree = "<group>"; };
 		69C3695425E77549000A8E5E /* OccasionsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsPopupViewController.swift; sourceTree = "<group>"; };
 		69C3695A25E780F8000A8E5E /* OccasionsPopupViewController+UIPickerViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OccasionsPopupViewController+UIPickerViewDataSource.swift"; sourceTree = "<group>"; };
 		69C3695D25E7812D000A8E5E /* OccasionsPopupViewController+UIPickerViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OccasionsPopupViewController+UIPickerViewDelegate.swift"; sourceTree = "<group>"; };
@@ -606,6 +608,7 @@
 				692AF3D4260120A100D37269 /* UIView */,
 				69B539FC257FBC6800116F98 /* UIViewController */,
 				692C9416254708830075BD92 /* URL+withQueries.swift */,
+				69C18F19271F071A006D7B47 /* UserDefaults */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1123,6 +1126,14 @@
 			path = UIViewController;
 			sourceTree = "<group>";
 		};
+		69C18F19271F071A006D7B47 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		69C3695825E780E2000A8E5E /* OccasionsPopupViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1435,6 +1446,7 @@
 				6906A9A426E6535700386267 /* WishlistViewController+Actions.swift in Sources */,
 				692AF3CB260113C300D37269 /* ShareView.swift in Sources */,
 				697CCE6626CFF22900B69763 /* DelegatedButton.swift in Sources */,
+				69C18F1B271F0762006D7B47 /* UserDefault+propertyWrapper.swift in Sources */,
 				6906A9A826E6725800386267 /* Collection+all.swift in Sources */,
 				69A6F70A22BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift in Sources */,
 				69AE95562563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift in Sources */,
