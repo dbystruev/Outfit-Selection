@@ -9,7 +9,7 @@ Make sure [TestFlight App](https://apps.apple.com/app/testflight/id899247664) is
 
 ## Design
 
-[Figma](https://www.figma.com/file/RPuD2yffxN2n1K28h71dhj/GetOutfit?node-id=5%3A0)
+Figma [original](https://www.figma.com/file/RPuD2yffxN2n1K28h71dhj/GetOutfit?node-id=5%3A0) and [updated](https://www.figma.com/file/YCL7qd5B147CPSPEqaVIMj/GetOutfit-(Copy%29?node-id=1231%3A3502).
 
 ## View Controllers
 
