@@ -33,6 +33,11 @@ extension AppDelegate: UIApplicationDelegate {
         
         // Make sure we use the most recent URL
         NetworkManager.shared.updateURL() { _ in
+            // Load onboarding screens if the user has not seen them yet
+            if !UserDefaults.hasSeenAppIntroduction {
+                self.updateOnboarding()
+            }
+            
             // Update the list of categories from the server
             self.updateCategories()
             

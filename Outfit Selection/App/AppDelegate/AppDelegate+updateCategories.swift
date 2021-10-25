@@ -34,4 +34,15 @@ extension AppDelegate {
             Occasion.restore()
         }
     }
+    
+    func updateOnboarding() {
+        NetworkManager.shared.getOnboarding { onboardings in
+            // Makr sure we don't update onboardings with error values
+            guard let onboardings = onboardings else { return }
+            
+            // Update onboardings
+            Onboarding.all = onboardings
+            Onboarding.currentIndex = 0
+        }
+    }
 }

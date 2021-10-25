@@ -315,9 +315,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IRN-tw-XJ5">
-                                <rect key="frame" x="-25" y="0.0" width="425" height="680"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="IRN-tw-XJ5" secondAttribute="height" multiplier="5:8" id="CEg-q7-CBf"/>
+                                    <constraint firstAttribute="width" secondItem="IRN-tw-XJ5" secondAttribute="height" multiplier="375:812" id="ID1-DK-fqb"/>
                                 </constraints>
                             </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="H9k-HT-Jxr">
@@ -432,16 +432,14 @@
                         <viewLayoutGuide key="safeArea" id="iJG-mt-Ohp"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="IRN-tw-XJ5" firstAttribute="width" relation="greaterThanOrEqual" secondItem="c9b-3j-iFp" secondAttribute="width" id="4w3-uH-2O0"/>
-                            <constraint firstItem="IRN-tw-XJ5" firstAttribute="centerX" secondItem="c9b-3j-iFp" secondAttribute="centerX" id="CG2-5Q-peh"/>
-                            <constraint firstItem="IRN-tw-XJ5" firstAttribute="width" secondItem="c9b-3j-iFp" secondAttribute="width" priority="250" id="HUh-8X-HBx"/>
+                            <constraint firstAttribute="trailing" secondItem="IRN-tw-XJ5" secondAttribute="trailing" id="MCD-Ng-OGY"/>
                             <constraint firstItem="H9k-HT-Jxr" firstAttribute="leading" secondItem="c9b-3j-iFp" secondAttribute="leading" id="TCo-kV-ha9"/>
+                            <constraint firstItem="IRN-tw-XJ5" firstAttribute="leading" secondItem="c9b-3j-iFp" secondAttribute="leading" id="Var-lg-bPO"/>
                             <constraint firstAttribute="trailing" secondItem="H9k-HT-Jxr" secondAttribute="trailing" id="YcG-rv-cb6"/>
                             <constraint firstItem="i7k-TD-g8Y" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iJG-mt-Ohp" secondAttribute="top" constant="24" id="c91-g4-I76"/>
-                            <constraint firstItem="IRN-tw-XJ5" firstAttribute="top" secondItem="c9b-3j-iFp" secondAttribute="top" id="kc6-VH-LCd"/>
+                            <constraint firstAttribute="top" secondItem="IRN-tw-XJ5" secondAttribute="top" id="mLo-5j-t8S"/>
                             <constraint firstItem="iJG-mt-Ohp" firstAttribute="bottom" secondItem="UTd-n8-W7x" secondAttribute="bottom" constant="24" id="mUn-IO-yra"/>
                             <constraint firstAttribute="bottom" secondItem="H9k-HT-Jxr" secondAttribute="bottom" constant="-48" id="nBa-S5-nh9"/>
-                            <constraint firstAttribute="bottom" relation="lessThanOrEqual" secondItem="IRN-tw-XJ5" secondAttribute="bottom" constant="132" id="oAb-gr-Xid"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="vAm-Nk-jC6"/>

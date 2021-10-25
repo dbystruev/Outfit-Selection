@@ -227,6 +227,12 @@ class NetworkManager {
         get("occasions", completion: completion)
     }
     
+    /// Call /onboarding API
+    /// - Parameter completion: closure called after the request is finished, with list of occasions if successfull, or with nil if not
+    func getOnboarding(completion: @escaping (_ onboardings: [Onboarding]?) -> Void) {
+        get("onboarding", completion: completion)
+    }
+    
     /// Prepare parameters dictionary for given categories, gender, and vendors
     /// - Parameters:
     ///   - categories: the list of categories to filter items by

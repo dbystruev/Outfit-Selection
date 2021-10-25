@@ -36,14 +36,18 @@ Make sure [TestFlight App](https://apps.apple.com/app/testflight/id899247664) is
 
 ## Requirements
 
-REST/JSON server with the following API calls:
+REST/JSON server with the following API calls implemented with [PostgREST](https://postgrest.org):
 * [categories](http://spb.getoutfit.co:3000/categories)
 * [items](http://spb.getoutfit.co:3000/items?limit=10)
 * [occasions](http://spb.getoutfit.co:3000/occasions)
+* [onboarding](http://spb.getoutfit.co:3000/onboarding)
+* [server](http://spb.getoutfit.co:3000/server)
 
 ## Acknowledgments
 
 Get Outfit [Team](https://www.getoutfit.ru/aboutus) for invaluable contributions.
+
+[PostgREST](https://postgrest.org) for great REST API for PostgreSQL database.
 
 Icons by [Freepik](https://www.freepik.com) from [Flaticon](https://www.flaticon.com):
 * [Clothes](https://www.flaticon.com/free-icon/clothes_130302)
