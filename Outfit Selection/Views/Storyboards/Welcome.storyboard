@@ -314,7 +314,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="onboarding_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="IRN-tw-XJ5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IRN-tw-XJ5">
                                 <rect key="frame" x="-25" y="0.0" width="425" height="680"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IRN-tw-XJ5" secondAttribute="height" multiplier="5:8" id="CEg-q7-CBf"/>
@@ -587,7 +587,6 @@
     <resources>
         <image name="checked" width="18" height="18"/>
         <image name="concept_main" width="891" height="226"/>
-        <image name="onboarding_placeholder" width="375" height="600"/>
         <image name="unchecked" width="24" height="24"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

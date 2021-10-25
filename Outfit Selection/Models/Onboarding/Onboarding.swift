@@ -6,12 +6,12 @@
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
-import UIKit
+import Foundation
 
-struct Onboarding {
+struct Onboarding: Codable {
     // MARK: - Properties
     /// Onboarding image (displayed in the background)
-    let image: UIImage
+    let image: URL
     
     /// Onboarding text (displayed in the popup)
     let text: String
