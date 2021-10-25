@@ -314,7 +314,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IRN-tw-XJ5">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IRN-tw-XJ5">
                                 <rect key="frame" x="-25" y="0.0" width="425" height="680"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="IRN-tw-XJ5" secondAttribute="height" multiplier="5:8" id="CEg-q7-CBf"/>
@@ -434,6 +434,7 @@
                         <constraints>
                             <constraint firstItem="IRN-tw-XJ5" firstAttribute="width" relation="greaterThanOrEqual" secondItem="c9b-3j-iFp" secondAttribute="width" id="4w3-uH-2O0"/>
                             <constraint firstItem="IRN-tw-XJ5" firstAttribute="centerX" secondItem="c9b-3j-iFp" secondAttribute="centerX" id="CG2-5Q-peh"/>
+                            <constraint firstItem="IRN-tw-XJ5" firstAttribute="width" secondItem="c9b-3j-iFp" secondAttribute="width" priority="250" id="HUh-8X-HBx"/>
                             <constraint firstItem="H9k-HT-Jxr" firstAttribute="leading" secondItem="c9b-3j-iFp" secondAttribute="leading" id="TCo-kV-ha9"/>
                             <constraint firstAttribute="trailing" secondItem="H9k-HT-Jxr" secondAttribute="trailing" id="YcG-rv-cb6"/>
                             <constraint firstItem="i7k-TD-g8Y" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iJG-mt-Ohp" secondAttribute="top" constant="24" id="c91-g4-I76"/>

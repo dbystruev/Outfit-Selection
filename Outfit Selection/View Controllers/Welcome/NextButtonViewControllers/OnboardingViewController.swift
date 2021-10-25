@@ -49,7 +49,7 @@ class OnboardingViewController: NextButtonViewController {
         let onboarding = Onboarding.all[currentIndex]
         
         // Configure with current onboarding
-        onboardingImageView.image = onboarding.image
+        onboardingImageView.configure(with: onboarding.image)
         onboardingTextLabel.text = onboarding.text
         onboardingTitleLabel.text = onboarding.title
         
