@@ -14,7 +14,6 @@ extension Categories {
     static var all: [Category] = [] {
         didSet {
             all.forEach { byId[$0.id] = $0 }
-            debug("INFO: updated to \(all.count) values")
         }
     }
     
