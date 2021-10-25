@@ -44,10 +44,6 @@ class OccasionsViewController: NextButtonViewController {
         occasionsTableView.dataSource = self
         occasionsTableView.delegate = self
         occasionsTableView.separatorStyle = .none
-        
-        // Remove onboarding view controllers
-        let onboardingScreens = navigationController?.viewControllers.filter { $0 is OnboardingViewController }
-        onboardingScreens?.reversed().forEach { $0.removeFromParent() }
     }
     
     override func viewWillAppear(_ animated: Bool) {

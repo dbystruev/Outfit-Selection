@@ -17,8 +17,8 @@ extension Onboarding {
     static var currentIndex = 0 {
         didSet {
             // Make sure current index is between 0 and all.count - 1
-            currentIndex = max(0, currentIndex)
             currentIndex = min(all.count - 1, currentIndex)
+            currentIndex = max(0, currentIndex)
         }
     }
 }

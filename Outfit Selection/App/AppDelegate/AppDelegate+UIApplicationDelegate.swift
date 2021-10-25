@@ -30,12 +30,23 @@ extension AppDelegate: UIApplicationDelegate {
     ///   - launchOptions: a dictionary indicating the reason the app was launched (if any), may be empty when the user launched the app directly
     /// - Returns: true if a URL should be handled, system combines it with application(_:willFinishLaunchingWithOptions:)
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        // Initialize the window
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
+        
+        // Dispatch group to delay launch until initial API calls are finished
+        let group = DispatchGroup()
+        group.enter()
         
         // Make sure we use the most recent URL
         NetworkManager.shared.updateURL() { _ in
             // Load onboarding screens if the user has not seen them yet
             if !UserDefaults.hasSeenAppIntroduction {
-                self.updateOnboarding()
+                self.updateOnboarding { _ in
+                    group.leave()
+                }
+            } else {
+                group.leave()
             }
             
             // Update the list of categories from the server
@@ -69,11 +80,23 @@ extension AppDelegate: UIApplicationDelegate {
         Wishlist.restore()
         Collection.restore()
         
+        // Wait for API request to finish, but no more than 3 seconds
+        _ = group.wait(timeout: .now() + 3)
+        
+        debug("INFO: Onboarding screens:", Onboarding.all.count)
+        
+        // Transfer to the initial view controller
+        let next = UserDefaults.hasSeenAppIntroduction || Occasion.all.count < 1
+            ? "GenderNavigationViewController"
+            : "OnboardingNavigationViewController"
+        window?.rootViewController = storyboard.instantiateViewController(withIdentifier: next)
+        window?.makeKeyAndVisible()
+        
         return true
     }
     
     /// Called when a remote notification arrived that indicates there is data to be fetched
-    /// - Parameters:
+    /// - Parameters:wait
     ///   - application: the singleton app object
     ///   - userInfo: a dictionary with a badge number for the app icon, an alert sound, an alert message , a notification identifier, etc.
     ///   - completionHandler: the block to execute when the download operation is complete

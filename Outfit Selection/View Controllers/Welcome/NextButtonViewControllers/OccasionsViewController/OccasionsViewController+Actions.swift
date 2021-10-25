@@ -14,12 +14,6 @@ extension OccasionsViewController {
         // Start loading items
         NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
         
-        // Transition to onboarding if they are not empty or were not presented earlier
-        guard Onboarding.all.isEmpty || UserDefaults.hasSeenAppIntroduction else {
-            performSegue(withIdentifier: OnboardingViewController.segueIdentifier, sender: sender)
-            return
-        }
-        
         // Transition to progress
         performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
     }

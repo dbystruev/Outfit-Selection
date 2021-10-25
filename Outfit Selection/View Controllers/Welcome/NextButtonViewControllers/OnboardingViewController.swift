@@ -46,6 +46,9 @@ class OnboardingViewController: NextButtonViewController {
     func configureContent() {
         // Get current onboarding
         let currentIndex = Onboarding.currentIndex
+        
+        // Make sure we don't configure empty controllers
+        guard currentIndex < Onboarding.all.count else { return }
         let onboarding = Onboarding.all[currentIndex]
         
         // Configure with current onboarding
@@ -125,9 +128,9 @@ class OnboardingViewController: NextButtonViewController {
             return
         }
         
-        // Transition to progress
+        // Transition to gender view controller
         UserDefaults.hasSeenAppIntroduction = true
-        performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
+        performSegue(withIdentifier: GenderViewController.segueIdentifier, sender: sender)
     }
     
     /// Called when one of dash or dot progress buttons is tapped

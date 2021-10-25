@@ -48,12 +48,17 @@ extension AppDelegate {
         }
     }
     
-    func updateOnboarding() {
+    /// Load onboarding screens
+    /// - Parameter completion: a closure with bool parameter called in case of success (true) or failure (false)
+    func updateOnboarding(completion: @escaping (_ success: Bool) -> Void) {
         let startTime = Date()
         
         NetworkManager.shared.getOnboarding { onboardings in
             // Makr sure we don't update onboardings with error values
-            guard let onboardings = onboardings else { return }
+            guard let onboardings = onboardings else {
+                completion(false)
+                return
+            }
             
             // Update onboardings
             Onboarding.all = onboardings
@@ -62,6 +67,8 @@ extension AppDelegate {
             // Show elapsed time
             let elapsed = Date().timeIntervalSince(startTime)
             debug("INFO: Loaded \(Onboarding.all.count) onboarding screens in \(elapsed.asTime) s")
+            
+            completion(true)
         }
     }
 }
