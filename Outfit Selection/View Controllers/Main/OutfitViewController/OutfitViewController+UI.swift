@@ -141,7 +141,7 @@ extension OutfitViewController {
         occasionSelected = occasionSelected ?? selectedOccasions.first
         
         // Hide occasions stack view if no occasions are selected
-        let isHidden = true // selectedOccasions.isEmpty // TODO: remove isHidden = true
+        let isHidden = selectedOccasions.isEmpty
         occasionsStackView.isHidden = isHidden
         occasionsStackViewHeightConstraint.constant = isHidden ? 0 : 44
         

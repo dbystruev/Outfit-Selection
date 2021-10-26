@@ -80,10 +80,8 @@ extension AppDelegate: UIApplicationDelegate {
         Wishlist.restore()
         Collection.restore()
         
-        // Wait for API request to finish, but no more than 3 seconds
+        // Wait for API requests to finish, but no more than 3 seconds
         _ = group.wait(timeout: .now() + 3)
-        
-        debug("INFO: Onboarding screens:", Onboarding.all.count)
         
         // Transfer to the initial view controller
         let next = UserDefaults.hasSeenAppIntroduction || Occasion.all.count < 1
