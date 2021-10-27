@@ -65,7 +65,7 @@ class ItemManager {
                 var loadedItemNames = [String]()
                 
                 // Get category identifiers
-                let categoryIds = categories.map { $0.id }
+                let categoryIds = categories.ids
                 
                 // Select only the items which belong to one of the categories given
                 let categoryFilteredItems = (allWishlistItems + Item.all.values).filter {
@@ -209,12 +209,13 @@ class ItemManager {
         DispatchManager.shared.itemManagerGroup.enter()
         
         // Run network requests for different corners and brand names in parallel
-        if occasionCategories.isEmpty {
-            let categories = allCategories.flatMap { $0.map { $0.id }}
-            loadItemsByBrands(gender: gender, categories: categories)
+        if Occasion.all.isEmpty {
+            for categories in allCategories {
+                loadItemsByBrands(gender: gender, categoryIDs: categories.ids)
+            }
         } else {
             for subcategories in occasionCategories {
-                loadItemsByBrands(gender: gender, subcategories: subcategories)
+                loadItemsByBrands(gender: gender, subcategoryIDs: subcategories.ids)
             }
         }
         
@@ -250,15 +251,20 @@ class ItemManager {
         }
     }
     
-    func loadItemsByBrands(gender: Gender?, categories: [Int] = [], subcategories: [Category] = []) {
+    /// Load items from the server to Item.all arrays, send requests for brands in parallel
+    /// - Parameters:
+    ///   - gender: load female. male, or other (all) items
+    ///   - categoryIDs: the list of category IDs to filter items by, empty (all categories) by default
+    ///   - subcategoryIDs: the list of subcategory IDs to filter items by, empty (all subcategories) by default
+    func loadItemsByBrands(gender: Gender?, categoryIDs: [Int] = [], subcategoryIDs: [Int] = []) {
         let selectedBrandNames = BrandManager.shared.selectedBrandNames
         let brandNamesSlice = selectedBrandNames.chunked(into: selectedBrandNames.count / 3 + 1)
         for brandNames in brandNamesSlice {
             DispatchManager.shared.itemManagerGroup.enter()
             NetworkManager.shared.getItems(
                 for: gender,
-                in: categories,
-                subcategories: subcategories.map { $0.id },
+                in: categoryIDs,
+                subcategoryIDs: subcategoryIDs,
                 filteredBy: brandNames
             ) { items in
                 // Check if any items were loaded

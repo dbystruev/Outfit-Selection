@@ -151,7 +151,7 @@ class FeedCollectionViewController: LoggingViewController {
         let sale = kind == .sale
         
         NetworkManager.shared.getItems(
-            subcategories: subcategoryIDs,
+            subcategoryIDs: subcategoryIDs,
             filteredBy: brandNames,
             limited: maxItemsInSection,
             sale: sale

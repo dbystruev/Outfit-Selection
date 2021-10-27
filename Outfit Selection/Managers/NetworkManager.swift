@@ -180,28 +180,26 @@ class NetworkManager {
     /// Add /items?category_id=in.(..., ...)&vendor=in.(..., ...)&limit=... to server URL and call the API
     /// - Parameters:
     ///   - gender: load female. male, or other (all) items, Gender.current by default
-    ///   - categories: the list of category IDs to filter items by, empty (all categories) by default
-    ///   - subcategories: the list of subcategory IDs to filter items by, empty (all subcategories) by default
+    ///   - categoryIDs: the list of category IDs to filter items by, empty (all categories) by default
+    ///   - subcategoryIDs: the list of subcategory IDs to filter items by, empty (all subcategories) by default
     ///   - vendorNames: the list of vendors to filter items by
     ///   - limit: limit the number of items by given number, nil by default
     ///   - sale: old price should not be null, false by default
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
     func getItems(
         for gender: Gender? = Gender.current,
-        in categories: [Int] = [],
-        subcategories: [Int] = [],
+        in categoryIDs: [Int] = [],
+        subcategoryIDs: [Int] = [],
         filteredBy vendorNames: [String] = [],
         limited limit: Int? = nil,
         sale: Bool = false,
         completion: @escaping ([Item]?) -> Void)
     {
-        debug("subcategories:", subcategories.count)
-        
         // Prepare parameters
         let parameters = parameters(
             for: gender,
-               in: categories,
-               subcategories: subcategories,
+               in: categoryIDs,
+               subcategoryIDs: subcategoryIDs,
                limited: limit,
                sale: sale,
                filteredBy: vendorNames
@@ -250,7 +248,7 @@ class NetworkManager {
     func parameters(
         for gender: Gender?,
         in categories: [Int],
-        subcategories: [Int],
+        subcategoryIDs: [Int],
         limited limit: Int?,
         sale: Bool,
         filteredBy fullVendorNames: [String]
@@ -269,9 +267,9 @@ class NetworkManager {
         : "in.(\(categories.unique.commaJoined))"
         
         // Add "categories=ov.{1,2,3}" parameter (ov for overlap)
-        parameters[Keys.subcategoryIDs.rawValue] = subcategories.isEmpty
+        parameters[Keys.subcategoryIDs.rawValue] = subcategoryIDs.isEmpty
         ? nil
-        : "ov.{\(subcategories.unique.commaJoined)}"
+        : "ov.{\(subcategoryIDs.unique.commaJoined)}"
         
         // Add "old_price" not null parameter
         parameters[Keys.oldPrice.rawValue] = sale ? "not.is.null" : nil
