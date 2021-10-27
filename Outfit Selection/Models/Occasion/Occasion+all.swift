@@ -17,6 +17,7 @@ extension Occasion {
     // MARK: - Computed Properties
     /// The labels of all occasions
     static var labels: [String] { all.values.map({ $0.label })}
+    
     /// The names of all occasions
     static var names: [String] { all.values.map({ $0.name })}
     
@@ -31,6 +32,9 @@ extension Occasion {
     
     /// The names of selected occasions
     static var selectedNames: [String] { selected.map { $0.name }}
+    
+    /// The titles (name: label) of selected occasions
+    static var selectedTitles: [String] { selected.map { $0.title }}
     
     /// The list of unselected occasions
     static var unselected: [Occasion] { all.values.filter { !$0.isSelected }}

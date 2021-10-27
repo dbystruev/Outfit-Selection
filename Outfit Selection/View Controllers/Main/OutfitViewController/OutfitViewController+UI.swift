@@ -157,7 +157,7 @@ extension OutfitViewController {
         for (button, occasion) in zip(buttons, selectedOccasions) {
             // Set next occasion name as button name
             button.occasion = occasion
-            button.setTitle(occasion.name, for: .normal)
+            button.setTitle(occasion.title, for: .normal)
         }
         
         // If there are no enough buttons add more buttons

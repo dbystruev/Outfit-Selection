@@ -15,7 +15,7 @@ class OccasionCell: UITableViewCell {
     @IBOutlet weak var occasionNameLabel: UILabel!
     
     // MARK: - Static Constants
-    static let heigth: CGFloat = 40
+    static let heigth: CGFloat = UITableView.automaticDimension // 40
     
     // MARK: - Inherited Methods
     override func awakeFromNib() {
@@ -28,7 +28,7 @@ class OccasionCell: UITableViewCell {
     /// - Parameter occasion: the occasion to configure this cell with
     func configureContent(with occasion: Occasion) {
         checkBoxImageView.isHighlighted = occasion.isSelected
-        occasionNameLabel.text = occasion.name
+        occasionNameLabel.text = occasion.title
     }
     
     /// Configure the cell's look and feel once at the beginning

@@ -34,6 +34,7 @@ final class Occasion: Codable {
     let id: Int
     
     // MARK: - Computed Properties
+    /// True if occasion is selected, false otherwise. When set, user defaults is updated.
     var isSelected: Bool {
         get { _isSelected }
         set {
@@ -44,6 +45,9 @@ final class Occasion: Codable {
             }
         }
     }
+    
+    /// Occasion name and title togeher
+    var title: String { "\(name): \(label)" }
     
     // MARK: - Types
     enum CodingKeys: String, CodingKey {

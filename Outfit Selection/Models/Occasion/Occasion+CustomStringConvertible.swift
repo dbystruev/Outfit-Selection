@@ -8,6 +8,6 @@
 
 extension Occasion: CustomStringConvertible {
     var description: String {
-        "\(name) \(label)\(isSelected ? " selected" : ""): \(self.categoryIDs)"
+        "\(title)\(isSelected ? " selected" : ""): \(self.categoryIDs)"
     }
 }

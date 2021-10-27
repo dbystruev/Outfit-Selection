@@ -10,11 +10,7 @@ extension Occasion: Comparable {
     static func < (lhs: Occasion, rhs: Occasion) -> Bool {
         lhs.isSelected && !rhs.isSelected       // selected occasions should be listed first
         || lhs.isSelected == rhs.isSelected     // if both are selected or both are unselected...
-        && (
-            lhs.name < rhs.name                 // ... then first sort by name
-            || lhs.name == rhs.name             // if names are equal...
-            && lhs.label < rhs.label            // ...then sort by labels
-        )
+        && lhs.title < rhs.title                // then sort by title (name: label)
     }
     
     static func == (lhs: Occasion, rhs: Occasion) -> Bool { lhs.id == rhs.id }
