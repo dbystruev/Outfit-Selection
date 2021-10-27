@@ -65,6 +65,18 @@ extension Occasion {
         with(title: title).forEach { $0.isSelected = shouldSelect }
     }
     
+    /// Update all occasions with given gender
+    /// - Parameter gender: the gender to update occasions with
+    static func updateWith(gender: Gender?) {
+        // Don't update if gender is not set or is set to unisex
+        guard let gender = gender, gender != .other else { return }
+        
+        // Remove all occasions with different gender
+        all.values
+            .filter { $0.gender != gender }
+            .forEach { all[$0.id] = nil }
+    }
+    
     /// Return all occasions with given title
     /// - Parameter title: the title to look for
     /// - Returns: the list of occasions with the title

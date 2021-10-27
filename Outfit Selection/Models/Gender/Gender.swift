@@ -10,7 +10,12 @@
 enum Gender: String, Codable {
     // MARK: - Static Properties
     /// Currently selected gender
-    static var current: Gender?
+    static var current: Gender? {
+        didSet {
+            // Update occasions to current gender only
+            Occasion.updateWith(gender: current)
+        }
+    }
     
     // MARK: - Cases
     case female

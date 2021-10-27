@@ -189,6 +189,7 @@
 		69B86BBB26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */; };
 		69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640325E66EDE00C805B6 /* ProgressViewController.swift */; };
 		69BA640B25E6BB2000C805B6 /* SelectableButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */; };
+		69BEC0EB2729591C0034F454 /* Occasions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EA2729591C0034F454 /* Occasions.swift */; };
 		69C18F1B271F0762006D7B47 /* UserDefault+propertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */; };
 		69C18F1D271F0845006D7B47 /* UserDefaults+static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C18F1C271F0845006D7B47 /* UserDefaults+static.swift */; };
 		69C3695525E77549000A8E5E /* OccasionsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3695425E77549000A8E5E /* OccasionsPopupViewController.swift */; };
@@ -418,6 +419,7 @@
 		69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedItemViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69BA640325E66EDE00C805B6 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButtonItem.swift; sourceTree = "<group>"; };
+		69BEC0EA2729591C0034F454 /* Occasions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occasions.swift; sourceTree = "<group>"; };
 		69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+propertyWrapper.swift"; sourceTree = "<group>"; };
 		69C18F1C271F0845006D7B47 /* UserDefaults+static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+static.swift"; sourceTree = "<group>"; };
 		69C3695425E77549000A8E5E /* OccasionsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsPopupViewController.swift; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 				69007CEE26EA63AA001170D0 /* Occasion+all.swift */,
 				69007CF026EA6619001170D0 /* Occasion+Comparable.swift */,
 				69FB0EA02714656D006C20E9 /* Occasion+CustomStringConvertible.swift */,
+				69BEC0EA2729591C0034F454 /* Occasions.swift */,
 			);
 			path = Occasion;
 			sourceTree = "<group>";
@@ -1558,6 +1561,7 @@
 				6912773627076DB700FB6107 /* Collection+Equatable.swift in Sources */,
 				6906A9B026E68CEB00386267 /* CollectionBaseViewController.swift in Sources */,
 				69C5CBD62609E39100DE22E6 /* ShareViewController.swift in Sources */,
+				69BEC0EB2729591C0034F454 /* Occasions.swift in Sources */,
 				69AEC9E825BF014100183E15 /* GenderButton.swift in Sources */,
 				699632AD26FCB0DE00841B6F /* Character+isUppercased.swift in Sources */,
 				691C5F3C26E764F200DF0758 /* CGSize+CustomStringConvertible.swift in Sources */,
