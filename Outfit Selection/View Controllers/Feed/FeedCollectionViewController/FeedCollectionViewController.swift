@@ -140,13 +140,13 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Categories should be limited for occasions
         let categoryIDs: [Int] = {
-            if case let .occasions(name) = kind {
-                return Occasion.all[name]?.categoryIDs ?? []
+            if case let .occasions(id) = kind {
+                return Occasion.all[id]?.categoryIDs ?? []
             } else {
                 return []
             }
         }()
-        let categories = categoryIDs.compactMap { Categories.all[$0] }
+        let categories = categoryIDs.compactMap { Categories.all[safe: $0] }
         
         // If feed type is sale get items with old prices set
         let sale = kind == .sale

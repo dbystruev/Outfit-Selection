@@ -10,7 +10,7 @@ import UIKit
 
 class FeedSectionHeaderView: UICollectionReusableView {
     // MARK: - Static Constants
-    static let height: CGFloat = 66
+    static let height: CGFloat = 80
     
     // MARK: - Class Methods
     /// Registers the header view with the collection view
@@ -60,6 +60,7 @@ class FeedSectionHeaderView: UICollectionReusableView {
         addSubview(seeAllButton)
         
         // Configure title
+        titleLabel.numberOfLines = 2
         titleLabel.textColor = Globals.Color.Feed.header
         titleLabel.font = Globals.Font.Feed.header
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -67,6 +68,9 @@ class FeedSectionHeaderView: UICollectionReusableView {
         
         // Setup constraints
         NSLayoutConstraint.activate([
+            seeAllButton.leadingAnchor.constraint(
+                greaterThanOrEqualTo: titleLabel.trailingAnchor, constant: 16
+            ),
             seeAllButton.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 24),
             seeAllButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -24),
             titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 24),
