@@ -12,14 +12,26 @@ import Foundation
 final class Occasion: Codable {
     
     // MARK: - Stored Properties
-    /// The name of the occasion
-    let name: String
+    /// Flag showing if occasion is selected by the user
+    private var _isSelected = false
     
     /// Category IDs which belong to the occasion
     let categoryIDs: [Int]
     
-    /// Flag showing if occasion is selected by the user
-    private var _isSelected = false
+    /// Occasion gender
+    let gender: Gender
+    
+    /// Occasion label (2nd level name)
+    let label: String
+    
+    /// Occasion looks (subcategories)
+    let looks: [[Int]]
+    
+    /// The name of the occasion
+    let name: String
+    
+    /// Occasion id (for Equatable)
+    let id: Int
     
     // MARK: - Computed Properties
     var isSelected: Bool {
@@ -35,20 +47,37 @@ final class Occasion: Codable {
     
     // MARK: - Types
     enum CodingKeys: String, CodingKey {
-        case name
         case categoryIDs = "category_ids"
+        case gender
+        case id
+        case label
+        case looks
+        case name
     }
     
     // MARK: - Init
     /// Constructor for occasion
     /// - Parameters:
     ///   - name: the name of the occasion
+    ///   - label: occasion label (2nd level name)
     ///   - categoryIDs: category IDs which belong to the occasion
     ///   - isSelected: whether the occasion is selected by the user, false by default
-    init(_ name: String, categoryIDs: [Int], isSelected: Bool = false) {
-        self.name = name
-        self.categoryIDs = categoryIDs
+    init(
+        _ name: String,
+        label: String,
+        categoryIDs: [Int],
+        gender: Gender,
+        looks: [[Int]],
+        id: Int,
+        isSelected: Bool = false
+    ) {
         self._isSelected = isSelected
+        self.categoryIDs = categoryIDs
+        self.gender = gender
+        self.id = id
+        self.label = label
+        self.looks = looks
+        self.name = name
     }
     
     // MARK: - Methods

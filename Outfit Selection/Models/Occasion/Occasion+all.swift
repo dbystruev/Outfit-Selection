@@ -12,7 +12,11 @@ extension Occasion {
     
     // MARK: - Stored Properties
     /// All occasions, not selected by default
-    static var all: [String: Occasion] = [:]
+    static var all: [String: Occasion] = [:] {
+        didSet {
+            debug("\(all.count): \(all)")
+        }
+    }
     
     // MARK: - Computed Properties
     /// The names of all occasions
