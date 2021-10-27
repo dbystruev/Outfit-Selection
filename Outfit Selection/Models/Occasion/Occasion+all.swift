@@ -32,6 +32,9 @@ extension Occasion {
     /// The list of selected occasions
     static var selected: [Occasion] { all.values.filter { $0.isSelected }}
     
+    /// The list of selected occasions with unique title
+    static var selectedUniqueTitle: [Occasion] { selectedTitles.compactMap { byTitle[$0]?.first }}
+    
     /// The ids of selected occasions
     static var selectedIDs: [Int] { selected.map { $0.id }}
     

@@ -18,6 +18,7 @@ class OccasionsViewController: NextButtonViewController {
     @IBOutlet weak var occasionsTableView: UITableView!
     
     // MARK: - Stored Properties
+    /// Occasions with unique titles which could be selected
     var occasions: [Occasion] = Occasion.byTitle.keys.sorted().compactMap { Occasion.byTitle[$0]?.first }
     
     // MARK: - Custom Methods
