@@ -38,4 +38,15 @@ extension Occasion {
     
     /// The list of unselected occasions
     static var unselected: [Occasion] { all.values.filter { !$0.isSelected }}
+    
+    // MARK: - Methods
+    /// Select/deselect all occasions with given title
+    /// - Parameters:
+    ///   - title: the title to search for
+    ///   - shouldSelect: true to select, false to unselect
+    static func select(title: String, shouldSelect: Bool) {
+        all.values
+            .filter { $0.title == title }
+            .forEach { $0.isSelected = shouldSelect }
+    }
 }
