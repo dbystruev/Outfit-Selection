@@ -171,7 +171,7 @@ class NetworkManager {
     ///   - completion: closure called when request is finished, with items if successfull, or with nil if not
     func getItems(_ ids: [String], completion: @escaping ([Item]?) -> Void) {
         // Include id=in.(..., ...) parameter
-        let parameters = ["id": "in.(\(ids.joined(separator: ",")))"]
+        let parameters = ["id": "in.(\(ids.commaJoined))"]
         
         // Request the items from the API
         getItems(with: parameters, completion: completion)
@@ -253,18 +253,26 @@ class NetworkManager {
         sale: Bool,
         filteredBy fullVendorNames: [String]
     ) -> [String: Any] {
+        // Alias Item.CodingKeys for shorter code
+        typealias Keys = Item.CodingKeys
+        
         // Prepare parameters
         var parameters: [String: Any] = [
             "limit": limit ?? Item.maxCount
         ]
         
-        // Add "category_id" parameter
-        parameters[Item.CodingKeys.categoryID.rawValue] = categories.isEmpty
+        // Add "category_id=in.(1,2,3)" parameter
+        parameters[Keys.categoryID.rawValue] = categories.isEmpty
             ? nil
-            : "in.(\(categories.map { "\($0)" }.joined(separator: ",")))"
+            : "in.(\(categories.commaJoined))"
+        
+        // Add "categories=ov.{1,2,3}" parameter (ov for overlap)
+        parameters[Keys.subcategoryIDs.rawValue] = subcategories.isEmpty
+            ? nil
+            : "ov(\(subcategories.commaJoined))"
         
         // Add "old_price" not null parameter
-        parameters[Item.CodingKeys.oldPrice.rawValue] = sale ? "not.is.null" : nil
+        parameters[Keys.oldPrice.rawValue] = sale ? "not.is.null" : nil
         
         // Make vendors alphanumeric and lowercased
         let shortVendorNames: [String] = fullVendorNames.map { fullVendorName in
@@ -274,14 +282,14 @@ class NetworkManager {
         }
         
         // Add "vendor" parameter
-        parameters[Item.CodingKeys.vendorName.rawValue] = fullVendorNames.isEmpty
+        parameters[Keys.vendorName.rawValue] = fullVendorNames.isEmpty
             ? nil
-            : "in.(\(shortVendorNames.joined(separator: ",")))"
+            : "in.(\(shortVendorNames.commaJoined))"
         
         // Add "gender" parameter
         if let gender = gender {
             let genders = [gender == .other ? "\(Gender.male),\(Gender.female)" : gender.rawValue, "\(Gender.other)"]
-            parameters[Item.CodingKeys.gender.rawValue] = "in.(\(genders.joined(separator: ",")))"
+            parameters[Keys.gender.rawValue] = "in.(\(genders.commaJoined))"
         }
         
         return parameters

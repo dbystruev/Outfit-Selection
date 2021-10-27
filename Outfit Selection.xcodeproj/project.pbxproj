@@ -190,6 +190,7 @@
 		69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640325E66EDE00C805B6 /* ProgressViewController.swift */; };
 		69BA640B25E6BB2000C805B6 /* SelectableButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */; };
 		69BEC0EB2729591C0034F454 /* Occasions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EA2729591C0034F454 /* Occasions.swift */; };
+		69BEC0ED272970510034F454 /* Array+commaJoined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EC272970510034F454 /* Array+commaJoined.swift */; };
 		69C18F1B271F0762006D7B47 /* UserDefault+propertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */; };
 		69C18F1D271F0845006D7B47 /* UserDefaults+static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C18F1C271F0845006D7B47 /* UserDefaults+static.swift */; };
 		69C3695525E77549000A8E5E /* OccasionsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3695425E77549000A8E5E /* OccasionsPopupViewController.swift */; };
@@ -420,6 +421,7 @@
 		69BA640325E66EDE00C805B6 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButtonItem.swift; sourceTree = "<group>"; };
 		69BEC0EA2729591C0034F454 /* Occasions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occasions.swift; sourceTree = "<group>"; };
+		69BEC0EC272970510034F454 /* Array+commaJoined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+commaJoined.swift"; sourceTree = "<group>"; };
 		69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+propertyWrapper.swift"; sourceTree = "<group>"; };
 		69C18F1C271F0845006D7B47 /* UserDefaults+static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+static.swift"; sourceTree = "<group>"; };
 		69C3695425E77549000A8E5E /* OccasionsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsPopupViewController.swift; sourceTree = "<group>"; };
@@ -599,7 +601,7 @@
 		692C9415254708670075BD92 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				695A1ACE27186F920028FB9D /* Array+chunked.swift */,
+				69BEC0EE272971410034F454 /* Array */,
 				691C5F3B26E764F200DF0758 /* CGSize+CustomStringConvertible.swift */,
 				699632AE26FCB0EA00841B6F /* Character */,
 				6963C64127188FC100F03541 /* Collection */,
@@ -1133,6 +1135,15 @@
 			path = UIViewController;
 			sourceTree = "<group>";
 		};
+		69BEC0EE272971410034F454 /* Array */ = {
+			isa = PBXGroup;
+			children = (
+				695A1ACE27186F920028FB9D /* Array+chunked.swift */,
+				69BEC0EC272970510034F454 /* Array+commaJoined.swift */,
+			);
+			path = Array;
+			sourceTree = "<group>";
+		};
 		69C18F19271F071A006D7B47 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
@@ -1509,6 +1520,7 @@
 				69007CFB26EA7323001170D0 /* UIView+reuseId.swift in Sources */,
 				699812432703764E007B7024 /* IBPCollectionViewCompositionalLayoutInteroperability.swift in Sources */,
 				69F046F926FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift in Sources */,
+				69BEC0ED272970510034F454 /* Array+commaJoined.swift in Sources */,
 				697CCE5C26CFA47E00B69763 /* FeedItemCell.swift in Sources */,
 				691C5F4426E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift in Sources */,
 				69A0C9E1270460A500C49977 /* ColorCompatibility.swift in Sources */,
