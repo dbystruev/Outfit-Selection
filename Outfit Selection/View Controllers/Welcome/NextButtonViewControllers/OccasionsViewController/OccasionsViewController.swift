@@ -18,7 +18,7 @@ class OccasionsViewController: NextButtonViewController {
     @IBOutlet weak var occasionsTableView: UITableView!
     
     // MARK: - Stored Properties
-    var occasions: [Occasion] = Occasion.all.keys.sorted().compactMap { Occasion.all[$0] }
+    var occasions: [Occasion] = Occasion.byTitle.keys.sorted().compactMap { Occasion.byTitle[$0]?.first }
     
     // MARK: - Custom Methods
     /// Set top right button to clear or select all

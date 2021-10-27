@@ -12,14 +12,22 @@ extension Occasion {
     
     // MARK: - Stored Properties
     /// All occasions, not selected by default
-    static var all: [Int: Occasion] = [:]
+    static var all: [Int: Occasion] = [:] {
+        didSet {
+            byTitle.removeAll()
+            titles.forEach { byTitle[$0] = with(title: $0) }
+        }
+    }
+    
+    /// All occasions by title
+    static var byTitle: [String: [Occasion]] = [:]
     
     // MARK: - Computed Properties
-    /// The labels of all occasions
-    static var labels: [String] { all.values.map({ $0.label })}
+    /// The set of labels of all occasions
+    static var labels: Set<String> { Set(all.values.map({ $0.label }))}
     
-    /// The names of all occasions
-    static var names: [String] { all.values.map({ $0.name })}
+    /// The set of names of all occasions
+    static var names: Set<String> { Set(all.values.map({ $0.name }))}
     
     /// The list of selected occasions
     static var selected: [Occasion] { all.values.filter { $0.isSelected }}
@@ -27,14 +35,17 @@ extension Occasion {
     /// The ids of selected occasions
     static var selectedIDs: [Int] { selected.map { $0.id }}
     
-    /// The labels of selected occasions
-    static var selectedLabels: [String] { selected.map { $0.label }}
+    /// The set of labels of selected occasions
+    static var selectedLabels: Set<String> { Set(selected.map { $0.label })}
     
-    /// The names of selected occasions
-    static var selectedNames: [String] { selected.map { $0.name }}
+    /// The set of names of selected occasions
+    static var selectedNames: Set<String> { Set(selected.map { $0.name })}
     
-    /// The titles (name: label) of selected occasions
-    static var selectedTitles: [String] { selected.map { $0.title }}
+    /// The set of titles (name: label) of selected occasions
+    static var selectedTitles: Set<String> { Set(selected.map { $0.title })}
+    
+    /// The set of titles (name: label) of all occasions
+    static var titles: Set<String> { Set(all.values.map { $0.title })}
     
     /// The list of unselected occasions
     static var unselected: [Occasion] { all.values.filter { !$0.isSelected }}
@@ -45,8 +56,13 @@ extension Occasion {
     ///   - title: the title to search for
     ///   - shouldSelect: true to select, false to unselect
     static func select(title: String, shouldSelect: Bool) {
-        all.values
-            .filter { $0.title == title }
-            .forEach { $0.isSelected = shouldSelect }
+        with(title: title).forEach { $0.isSelected = shouldSelect }
+    }
+    
+    /// Return all occasions with given title
+    /// - Parameter title: the title to look for
+    /// - Returns: the list of occasions with the title
+    static func with(title: String) -> [Occasion] {
+        all.values.filter { $0.title == title }
     }
 }
