@@ -146,13 +146,12 @@ class FeedCollectionViewController: LoggingViewController {
                 return []
             }
         }()
-        let categories = categoryIDs.compactMap { Categories.all[safe: $0] }
         
         // If feed type is sale get items with old prices set
         let sale = kind == .sale
         
         NetworkManager.shared.getItems(
-            in: categories,
+            in: categoryIDs,
             filteredBy: brandNames,
             limited: maxItemsInSection,
             sale: sale

@@ -20,7 +20,7 @@ extension Occasion {
     }
     
     /// All occasions by title
-    static var byTitle: [String: [Occasion]] = [:]
+    static var byTitle: [String: Occasions] = [:]
     
     // MARK: - Computed Properties
     /// The set of labels of all occasions
@@ -30,10 +30,10 @@ extension Occasion {
     static var names: Set<String> { Set(all.values.map({ $0.name }))}
     
     /// The list of selected occasions
-    static var selected: [Occasion] { all.values.filter { $0.isSelected }}
+    static var selected: Occasions { all.values.filter { $0.isSelected }}
     
     /// The list of selected occasions with unique title
-    static var selectedUniqueTitle: [Occasion] { selectedTitles.compactMap { byTitle[$0]?.first }}
+    static var selectedUniqueTitle: Occasions { selectedTitles.compactMap { byTitle[$0]?.first }}
     
     /// The ids of selected occasions
     static var selectedIDs: [Int] { selected.map { $0.id }}
@@ -54,7 +54,7 @@ extension Occasion {
     static var titles: Set<String> { Set(all.values.map { $0.title })}
     
     /// The list of unselected occasions
-    static var unselected: [Occasion] { all.values.filter { !$0.isSelected }}
+    static var unselected: Occasions { all.values.filter { !$0.isSelected }}
     
     // MARK: - Methods
     /// Select/deselect all occasions with given title
@@ -80,7 +80,7 @@ extension Occasion {
     /// Return all occasions with given title
     /// - Parameter title: the title to look for
     /// - Returns: the list of occasions with the title
-    static func with(title: String) -> [Occasion] {
+    static func with(title: String) -> Occasions {
         all.values.filter { $0.title == title }
     }
 }

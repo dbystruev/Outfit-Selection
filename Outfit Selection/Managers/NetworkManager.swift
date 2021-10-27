@@ -179,15 +179,17 @@ class NetworkManager {
     
     /// Add /items?category_id=in.(..., ...)&vendor=in.(..., ...)&limit=... to server URL and call the API
     /// - Parameters:
-    ///   - categories: the list of categories to filter items by, empty (all categories) by default
     ///   - gender: load female. male, or other (all) items, Gender.current by default
+    ///   - categories: the list of category IDs to filter items by, empty (all categories) by default
+    ///   - subcategories: the list of subcategory IDs to filter items by, empty (all subcategories) by default
     ///   - vendorNames: the list of vendors to filter items by
     ///   - limit: limit the number of items by given number, nil by default
     ///   - sale: old price should not be null, false by default
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
     func getItems(
-        in categories: [Category] = [],
         for gender: Gender? = Gender.current,
+        in categories: [Int] = [],
+        subcategories: [Int] = [],
         filteredBy vendorNames: [String] = [],
         limited limit: Int? = nil,
         sale: Bool = false,
@@ -195,8 +197,9 @@ class NetworkManager {
     {
         // Prepare parameters
         let parameters = parameters(
-            in: categories,
             for: gender,
+            in: categories,
+            subcategories: subcategories,
             limited: limit,
             sale: sale,
             filteredBy: vendorNames
@@ -223,7 +226,7 @@ class NetworkManager {
     
     /// Call /occasions API
     /// - Parameter completion: closure called after the request is finished, with list of occasions if successfull, or with nil if not
-    func getOccasions(completion: @escaping (_ categories: [Occasion]?) -> Void) {
+    func getOccasions(completion: @escaping (_ categories: Occasions?) -> Void) {
         get("occasions", completion: completion)
     }
     
@@ -235,15 +238,17 @@ class NetworkManager {
     
     /// Prepare parameters dictionary for given categories, gender, and vendors
     /// - Parameters:
-    ///   - categories: the list of categories to filter items by
     ///   - gender: load female, male, or other items
+    ///   - categories: the list of category IDs to filter items by, empty (all categories) by default
+    ///   - subcategories: the list of subcategory IDs to filter items by, empty (all subcategories) by default
     ///   - limit: limit the number of items by given number, nil by default
     ///   - sale: old price should not be null
     ///   - fullVendorNames: the list of vendors to filter items by
     /// - Returns: dictionary with parameters suitable to call get()
     func parameters(
-        in categories: [Category],
         for gender: Gender?,
+        in categories: [Int],
+        subcategories: [Int],
         limited limit: Int?,
         sale: Bool,
         filteredBy fullVendorNames: [String]
@@ -256,7 +261,7 @@ class NetworkManager {
         // Add "category_id" parameter
         parameters[Item.CodingKeys.categoryID.rawValue] = categories.isEmpty
             ? nil
-            : "in.(\(categories.map { "\($0.id)" }.joined(separator: ",")))"
+            : "in.(\(categories.map { "\($0)" }.joined(separator: ",")))"
         
         // Add "old_price" not null parameter
         parameters[Item.CodingKeys.oldPrice.rawValue] = sale ? "not.is.null" : nil

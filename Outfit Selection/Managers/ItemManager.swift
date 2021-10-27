@@ -212,8 +212,8 @@ class ItemManager {
             for brandNames in brandNamesSlice {
                 DispatchManager.shared.itemManagerGroup.enter()
                 NetworkManager.shared.getItems(
-                    in: categories,
                     for: gender,
+                    in: categories.map { $0.id },
                     filteredBy: brandNames
                 ) { items in
                     // Check if any items were loaded
