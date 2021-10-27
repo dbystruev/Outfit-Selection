@@ -197,10 +197,6 @@ class ItemManager {
         // Assume all requests went fine until told otherwise
         success = true
         
-        // Prepare all categories and selected brand names for parallel network requests
-        let allCategories = Categories.filtered(by: gender)
-        let occasionCategories = allCategories.map { $0.filtered(by: Occasion.selected) }
-        
         // Remove all items before loading them again
         Item.removeAll()
         
@@ -209,13 +205,18 @@ class ItemManager {
         DispatchManager.shared.itemManagerGroup.enter()
         
         // Run network requests for different corners and brand names in parallel
+        let categoriesCount: Int
         if Occasion.all.isEmpty {
-            for categories in allCategories {
+            let categoriesByCorners = Categories.filtered(by: gender)
+            categoriesCount = categoriesByCorners.flatMap { $0 }.count
+            for categories in categoriesByCorners {
                 loadItemsByBrands(gender: gender, categoryIDs: categories.ids)
             }
         } else {
-            for subcategories in occasionCategories {
-                loadItemsByBrands(gender: gender, subcategoryIDs: subcategories.ids)
+            let subcategoryIDsByOccasions = Occasion.selected.flatMap { $0.looks }
+            categoriesCount = subcategoryIDsByOccasions.flatMap { $0 }.count
+            for subcategoryIDs in subcategoryIDsByOccasions {
+                loadItemsByBrands(gender: gender, subcategoryIDs: subcategoryIDs)
             }
         }
         
@@ -237,7 +238,6 @@ class ItemManager {
             let passedTime = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
             
             if self.success {
-                let categoriesCount = occasionCategories.flatMap { $0 }.count
                 debug(
                     Item.all.count,
                     gender?.rawValue,
