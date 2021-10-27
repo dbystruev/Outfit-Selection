@@ -94,29 +94,28 @@ extension Occasion {
     /// Load selected occasion names from user defaults and updated Occasion.all
     static func restore() {
         // Get selected occasion names and make sure they are not empty
-        let selectedNamesRestored = UserDefaults.selectedOccasions
-        guard !selectedNamesRestored.isEmpty else {
+        let selectedIdsRestored = UserDefaults.selectedOccasionIDs
+        guard !selectedIdsRestored.isEmpty else {
             debug("WARNING: Occasion list in user defaults is empty")
             return
         }
         
         var selectedOccasionsCount = 0
         
-        for selectedRestoredName in selectedNamesRestored {
-            guard let occasion = Occasion.all[selectedRestoredName.lowercased()] else { continue }
+        for selectedRestoredId in selectedIdsRestored {
+            guard let occasion = Occasion.all[selectedRestoredId] else { continue }
             occasion.isSelected = true
             selectedOccasionsCount += 1
         }
         
         debug(
-            "Occasions: \(selectedNamesRestored.count) loaded,",
+            "Occasions: \(selectedIdsRestored.count) loaded,",
             "\(selectedOccasionsCount) of \(Occasion.all.count) selected"
         )
     }
     
     /// Save selected occasion names to user defaults
     static func saveSelectedOccasions() {
-        let selectedNamesLowercased = self.selectedNames.map { $0.lowercased() }
-        UserDefaults.selectedOccasions = selectedNamesLowercased
+        UserDefaults.selectedOccasionIDs = selectedIDs
     }
 }

@@ -31,7 +31,7 @@ class FeedItemCell: FeedBaseCell {
         }
     }
     
-    override var title: String {
+    override var title: String? {
         get { name ?? super.title }
     }
     

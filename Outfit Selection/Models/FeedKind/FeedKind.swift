@@ -15,20 +15,24 @@ enum FeedKind {
     
     // MARK: - Enum
     case brands
+    case collections(String)
     case newItems
-    case occasions(String)
+    case occasions(Int)
     case sale
     
     // MARK: - Computed Properties
     /// Title in feed collection section
-    var title: String {
+    var title: String? {
         switch self {
         case .brands:
             return "Favorite brands"
+        case .collections(let name):
+            return name
         case .newItems:
             return "New items for you"
-        case .occasions(let occasion):
-            return occasion
+        case .occasions(let id):
+            guard let occasion = Occasion.all[id] else { return nil }
+            return "\(occasion.name): \(occasion.label)"
         case .sale:
             return "Sales"
         }

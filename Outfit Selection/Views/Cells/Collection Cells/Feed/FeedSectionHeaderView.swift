@@ -37,7 +37,7 @@ class FeedSectionHeaderView: UICollectionReusableView {
     var kind: FeedKind = .sale
     
     // MARK: - Computed Properties
-    var title: String { kind.title }
+    var title: String? { kind.title }
     
     // MARK: - Init
     override init(frame: CGRect) {

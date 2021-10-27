@@ -48,7 +48,7 @@ class FeedBaseCell: UITableViewCell {
     var kind: FeedKind = .sale
     
     // MARK: - Computed Properties
-    var title: String { kind.title }
+    var title: String? { kind.title }
     
     // MARK: - Inherited Methods
     override func awakeFromNib() {

@@ -24,8 +24,8 @@ extension UserDefaults {
     static var selectedBrands: [String]
     
     /// The list of occasions selected by the user
-    @UserDefault(key: "GetOutfitSelectedOccasionsBrandsKey", defaultValue: [])
-    static var selectedOccasions: [String]
+    @UserDefault(key: "GetOutfitSelectedOccasionsKey", defaultValue: [])
+    static var selectedOccasionIDs: [Int]
     
     /// Wishlist items data saved by the user
     @UserDefault(key: "GetOutfitWishlistKey", defaultValue: nil)

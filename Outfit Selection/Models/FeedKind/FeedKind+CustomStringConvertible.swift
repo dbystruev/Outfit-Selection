@@ -12,10 +12,12 @@ extension FeedKind: CustomStringConvertible {
         switch self {
         case .brands:
             return ".brands"
+        case .collections(let collectionName):
+            return ".collections(\(collectionName)"
         case .newItems:
             return ".newItems"
-        case .occasions(let occasion):
-            return ".occasions(\(occasion))"
+        case .occasions(let occasionID):
+            return ".occasions(\(occasionID))"
         case .sale:
             return ".sale"
         }

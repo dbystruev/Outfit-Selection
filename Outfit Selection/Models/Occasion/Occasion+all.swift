@@ -12,18 +12,22 @@ extension Occasion {
     
     // MARK: - Stored Properties
     /// All occasions, not selected by default
-    static var all: [String: Occasion] = [:] {
-        didSet {
-            debug("\(all.count): \(all)")
-        }
-    }
+    static var all: [Int: Occasion] = [:]
     
     // MARK: - Computed Properties
+    /// The labels of all occasions
+    static var labels: [String] { all.values.map({ $0.label })}
     /// The names of all occasions
-    static var names: [String] { all.values.map({ $0.name }) }
+    static var names: [String] { all.values.map({ $0.name })}
     
     /// The list of selected occasions
     static var selected: [Occasion] { all.values.filter { $0.isSelected }}
+    
+    /// The ids of selected occasions
+    static var selectedIDs: [Int] { selected.map { $0.id }}
+    
+    /// The labels of selected occasions
+    static var selectedLabels: [String] { selected.map { $0.label }}
     
     /// The names of selected occasions
     static var selectedNames: [String] { selected.map { $0.name }}

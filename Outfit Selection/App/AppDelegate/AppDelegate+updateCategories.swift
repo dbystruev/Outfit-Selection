@@ -35,9 +35,7 @@ extension AppDelegate {
             
             // Fill occasions with the new list of occasions
             Occasion.all.removeAll()
-            occasions.forEach {
-                Occasion.all[$0.name.lowercased()] = $0
-            }
+            occasions.forEach { Occasion.all[$0.id] = $0 }
             
             // Restore additional occasions from user defaults
             Occasion.restore()
