@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tgY-lx-hfU">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="tgY-lx-hfU">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -22,8 +22,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New items for you" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrC-1i-09K">
-                                <rect key="frame" x="24" y="100" width="143" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New items for you" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MrC-1i-09K">
+                                <rect key="frame" x="24" y="100" width="366" height="22"/>
                                 <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="16"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -45,6 +45,7 @@
                         <constraints>
                             <constraint firstItem="MTN-nF-Tsj" firstAttribute="bottom" secondItem="yQn-b3-YtV" secondAttribute="bottom" id="2rp-w5-FtK"/>
                             <constraint firstItem="yQn-b3-YtV" firstAttribute="leading" secondItem="MTN-nF-Tsj" secondAttribute="leading" constant="24" id="MJI-rp-Umu"/>
+                            <constraint firstItem="MTN-nF-Tsj" firstAttribute="trailing" secondItem="MrC-1i-09K" secondAttribute="trailing" constant="24" id="PxX-KO-Lfp"/>
                             <constraint firstItem="yQn-b3-YtV" firstAttribute="top" secondItem="MrC-1i-09K" secondAttribute="bottom" constant="20" id="Ye1-y5-J6Z"/>
                             <constraint firstItem="MrC-1i-09K" firstAttribute="leading" secondItem="MTN-nF-Tsj" secondAttribute="leading" constant="24" id="Z55-9o-HHN"/>
                             <constraint firstItem="MrC-1i-09K" firstAttribute="top" secondItem="MTN-nF-Tsj" secondAttribute="top" constant="12" id="mEP-9D-xLH"/>
