@@ -99,7 +99,7 @@ extension Categories {
     /// - Parameter occasions: occasions to filter categories by
     /// - Returns: the list of categories filtered by occasions
     func filtered(by occasions: Occasions) -> [Category] {
-        let uniqueCategoryIDs = occasions.flatMap({ $0.categoryIDs }).unique
+        let uniqueCategoryIDs = occasions.flatMap({ $0.looks }).flatMap({ $0 }).unique
         return filter { uniqueCategoryIDs.contains($0.id) }
     }
 }

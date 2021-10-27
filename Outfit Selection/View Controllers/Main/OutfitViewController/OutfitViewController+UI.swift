@@ -149,7 +149,7 @@ extension OutfitViewController {
         let buttonUnderlineStackViews = occasionsStackView.arrangedSubviews.compactMap { $0 as? UIStackView }
         let buttons = buttonUnderlineStackViews.compactMap { $0.arrangedSubviews.first as? OccasionButton }
         guard let firstButton = buttons.first, buttons.count == buttonUnderlineStackViews.count else {
-            debug("ERROR: no buttons in occasions stack view")
+            debug("WARNING: no buttons in occasions stack view")
             return
         }
         

@@ -39,7 +39,7 @@ var lastDebugLineRepeatCount = 0
     #if DEBUG
     let file = file.lastComponent.dropExtension
     let message = messages.reduce("") { "\($0)\(separator)\($1?.description ?? "nil")" }
-    let suffix = message.count < 1025 ? "" : " \(message.count - 1024) more symbols..."
+    let suffix = message.count < 1025 ? "" : "... (\(message.count - 1024) more symbols)"
     let newLine = "\(prefix)\(line) \(file).\(function)\(message.prefix(1024))\(suffix)"
     if (lastDebugLine == newLine) {
         lastDebugLineRepeatCount += 1

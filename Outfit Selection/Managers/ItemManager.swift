@@ -19,6 +19,9 @@ class ItemManager {
     /// imagePrefixes should correspond to scrollViews
     let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
     
+    // All item load requests success status
+    private var success = true
+    
     /// Array of category image collection view models
     let viewModels: [ImageCollectionViewModel] = (0 ..< Categories.all.count).map { _ in ImageCollectionViewModel.empty }
     
@@ -192,12 +195,11 @@ class ItemManager {
         let startTime = Date()
         
         // Assume all requests went fine until told otherwise
-        var success = true
+        success = true
         
         // Prepare all categories and selected brand names for parallel network requests
         let allCategories = Categories.filtered(by: gender)
         let occasionCategories = allCategories.map { $0.filtered(by: Occasion.selected) }
-        let selectedBrandNames = BrandManager.shared.selectedBrandNames
         
         // Remove all items before loading them again
         Item.removeAll()
@@ -207,24 +209,12 @@ class ItemManager {
         DispatchManager.shared.itemManagerGroup.enter()
         
         // Run network requests for different corners and brand names in parallel
-        for categories in occasionCategories {
-            let brandNamesSlice = selectedBrandNames.chunked(into: selectedBrandNames.count / 3 + 1)
-            for brandNames in brandNamesSlice {
-                DispatchManager.shared.itemManagerGroup.enter()
-                NetworkManager.shared.getItems(
-                    for: gender,
-                    in: categories.map { $0.id },
-                    filteredBy: brandNames
-                ) { items in
-                    // Check if any items were loaded
-                    if let items = items {
-                        Item.append(contentsOf: items)
-                    } else {
-                        success = false
-                    }
-                    
-                    DispatchManager.shared.itemManagerGroup.leave()
-                }
+        if occasionCategories.isEmpty {
+            let categories = allCategories.flatMap { $0.map { $0.id }}
+            loadItemsByBrands(gender: gender, categories: categories)
+        } else {
+            for subcategories in occasionCategories {
+                loadItemsByBrands(gender: gender, subcategories: subcategories)
             }
         }
         
@@ -234,7 +224,7 @@ class ItemManager {
             if let itemsFromWishlists = itemsFromWishlists {
                 Item.append(contentsOf: itemsFromWishlists)
             } else {
-                success = false
+                self.success = false
             }
             
             DispatchManager.shared.itemManagerGroup.leave()
@@ -245,7 +235,7 @@ class ItemManager {
             let endTime = Date()
             let passedTime = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
             
-            if success {
+            if self.success {
                 let categoriesCount = occasionCategories.flatMap { $0 }.count
                 debug(
                     Item.all.count,
@@ -256,7 +246,30 @@ class ItemManager {
                 )
             }
             
-            completion(success)
+            completion(self.success)
+        }
+    }
+    
+    func loadItemsByBrands(gender: Gender?, categories: [Int] = [], subcategories: [Category] = []) {
+        let selectedBrandNames = BrandManager.shared.selectedBrandNames
+        let brandNamesSlice = selectedBrandNames.chunked(into: selectedBrandNames.count / 3 + 1)
+        for brandNames in brandNamesSlice {
+            DispatchManager.shared.itemManagerGroup.enter()
+            NetworkManager.shared.getItems(
+                for: gender,
+                in: categories,
+                subcategories: subcategories.map { $0.id },
+                filteredBy: brandNames
+            ) { items in
+                // Check if any items were loaded
+                if let items = items {
+                    Item.append(contentsOf: items)
+                } else {
+                    self.success = false
+                }
+                
+                DispatchManager.shared.itemManagerGroup.leave()
+            }
         }
     }
     

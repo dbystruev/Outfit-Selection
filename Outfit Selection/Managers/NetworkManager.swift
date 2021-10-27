@@ -127,7 +127,7 @@ class NetworkManager {
             // Store the message in logger cache
             let message = String(data: data, encoding: .utf8)
             Logger.log(key: request.absoluteString, message)
-            debug(request.absoluteString, "\n", message)
+//            debug(request.absoluteString, "\n", message)
             completion(decodedData)
         }
         
@@ -195,14 +195,16 @@ class NetworkManager {
         sale: Bool = false,
         completion: @escaping ([Item]?) -> Void)
     {
+        debug("subcategories:", subcategories.count)
+        
         // Prepare parameters
         let parameters = parameters(
             for: gender,
-            in: categories,
-            subcategories: subcategories,
-            limited: limit,
-            sale: sale,
-            filteredBy: vendorNames
+               in: categories,
+               subcategories: subcategories,
+               limited: limit,
+               sale: sale,
+               filteredBy: vendorNames
         )
         
         // Request the items from the API
@@ -263,12 +265,12 @@ class NetworkManager {
         
         // Add "category_id=in.(1,2,3)" parameter
         parameters[Keys.categoryID.rawValue] = categories.isEmpty
-            ? nil
+        ? nil
         : "in.(\(categories.unique.commaJoined))"
         
         // Add "categories=ov.{1,2,3}" parameter (ov for overlap)
         parameters[Keys.subcategoryIDs.rawValue] = subcategories.isEmpty
-            ? nil
+        ? nil
         : "ov.{\(subcategories.unique.commaJoined)}"
         
         // Add "old_price" not null parameter
@@ -283,7 +285,7 @@ class NetworkManager {
         
         // Add "vendor" parameter
         parameters[Keys.vendorName.rawValue] = fullVendorNames.isEmpty
-            ? nil
+        ? nil
         : "in.(\(shortVendorNames.unique.commaJoined))"
         
         // Add "gender" parameter

@@ -19,6 +19,9 @@ extension BrandsViewController {
             return
         }
         
+        // Start loading items
+        NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+        
         // Transition to progress
         performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
     }
