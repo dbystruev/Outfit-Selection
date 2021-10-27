@@ -42,7 +42,7 @@ extension AppDelegate: UIApplicationDelegate {
         NetworkManager.shared.updateURL() { _ in
             // Load onboarding screens if the user has not seen them yet
             if !UserDefaults.hasSeenAppIntroduction {
-                self.updateOnboarding { _ in
+                AppDelegate.updateOnboarding { _ in
                     group.leave()
                 }
             } else {
@@ -50,10 +50,10 @@ extension AppDelegate: UIApplicationDelegate {
             }
             
             // Update the list of categories from the server
-            self.updateCategories()
+            AppDelegate.updateCategories()
             
             // Update the list of occasions from the server
-            self.updateOccasions()
+            AppDelegate.updateOccasions()
         }
         
         // Change global tint color

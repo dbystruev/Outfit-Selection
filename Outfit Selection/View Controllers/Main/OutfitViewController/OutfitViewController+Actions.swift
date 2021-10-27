@@ -78,16 +78,24 @@ extension OutfitViewController {
             return
         }
         
-        // Get occasions view controller
-        guard let occasionsViewController = welcomeNavigationController.findViewController(
+        // Get occasions, brands, or gender view controller
+        guard let popViewController = welcomeNavigationController.findViewController(
             ofType: OccasionsViewController.self
+        ) ?? welcomeNavigationController.findViewController(
+            ofType: BrandsViewController.self
+        ) ?? welcomeNavigationController.findViewController(
+            ofType: GenderViewController.self
         ) else {
-            debug("WARNING: Can't find \(OccasionsViewController.self) in", welcomeNavigationController)
+            debug(
+                "WARNING: Can't find \(OccasionsViewController.self)",
+                "or \(BrandsViewController.self) or \(GenderViewController.self) in",
+                welcomeNavigationController
+            )
             return
         }
         
-        // Pop to occasions view controller
-        welcomeNavigationController.popToViewController(occasionsViewController, animated: true)
+        // Pop to occasions, brands, or gender view controller
+        welcomeNavigationController.popToViewController(popViewController, animated: true)
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {

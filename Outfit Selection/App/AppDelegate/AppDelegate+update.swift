@@ -1,5 +1,5 @@
 //
-//  AppDelegate+updateCategories.swift
+//  AppDelegate+update.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 23.09.2021.
@@ -11,7 +11,7 @@ import Foundation
 extension AppDelegate {
     // MARK: - Methods
     /// Update the list of categories from the server
-    func updateCategories() {
+    static func updateCategories() {
         let startTime = Date()
         
         NetworkManager.shared.getCategories { categories in
@@ -26,7 +26,7 @@ extension AppDelegate {
     }
     
     /// Update the list of occasions from the server
-    func updateOccasions() {
+    static func updateOccasions() {
         let startTime = Date()
         
         NetworkManager.shared.getOccasions { occasions in
@@ -48,7 +48,7 @@ extension AppDelegate {
     
     /// Load onboarding screens
     /// - Parameter completion: a closure with bool parameter called in case of success (true) or failure (false)
-    func updateOnboarding(completion: @escaping (_ success: Bool) -> Void) {
+    static func updateOnboarding(completion: @escaping (_ success: Bool) -> Void) {
         let startTime = Date()
         
         NetworkManager.shared.getOnboarding { onboardings in

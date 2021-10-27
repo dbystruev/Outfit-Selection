@@ -14,6 +14,11 @@ enum Gender: String, Codable {
         didSet {
             // Update occasions to current gender only
             Occasion.updateWith(gender: current)
+            
+            // Load new occasions if we are changing from non-nil gender
+            if current != oldValue && oldValue != nil {
+                AppDelegate.updateOccasions()
+            }
         }
     }
     
