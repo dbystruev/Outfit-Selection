@@ -116,8 +116,14 @@ extension OutfitViewController {
     /// Scroll outfit's scroll views to the given occasion
     /// - Parameter occasion: the occasion to scroll the scroll views to
     func scrollTo(occasion: Occasion?) {
-        guard let occasion = occasion else { return }
-        let occasionItems = items.filter { occasion.categoryIDs.contains($0.categoryID) }
+        // Select random look from given occasion
+        guard let look = occasion?.looks.randomElement() else { return }
+        
+        // Filter items which belong to the selected look
+        let lookCategoryIDs = Set(look)
+        let occasionItems = items.filter { !lookCategoryIDs.union($0.subcategoryIDs).isEmpty }
+        
+        // Scroll to the selected items
         scrollTo(items: occasionItems.shuffled())
     }
     
@@ -157,7 +163,7 @@ extension OutfitViewController {
         for (button, occasion) in zip(buttons, selectedOccasions) {
             // Set next occasion name as button name
             button.occasion = occasion
-            button.setTitle(occasion.title, for: .normal)
+            button.setTitle(occasion.label, for: .normal)
         }
         
         // If there are no enough buttons add more buttons
