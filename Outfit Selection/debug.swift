@@ -53,5 +53,7 @@ var lastDebugLineRepeatCount = 0
         lastDebugLineRepeatCount = 1
         return true
     }
+    #else
+    return true
     #endif
 }
