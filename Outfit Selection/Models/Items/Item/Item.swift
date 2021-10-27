@@ -48,7 +48,7 @@ final class Item: Codable {
     let id: String
     
     /// Item's category id
-    let categoryId: Int
+    let categoryID: Int
     
     /// Whether an item has been disliked
     var disliked = false
@@ -74,6 +74,9 @@ final class Item: Codable {
     /// Item's size
     let size: String
     
+    /// Item's subcategory IDs for occasion selection
+    let subcategoryIDs: [Int]
+    
     /// The item URL to purchase
     let url: URL
     
@@ -84,7 +87,7 @@ final class Item: Codable {
     var wishlisted = false
     
     enum CodingKeys: String, CodingKey {
-        case categoryId = "category_id"
+        case categoryID = "category_id"
         case color
         case gender
         case id
@@ -94,6 +97,7 @@ final class Item: Codable {
         case pictures
         case price
         case size
+        case subcategoryIDs = "categories"
         case url
         case vendorName = "vendor"
     }
@@ -123,7 +127,7 @@ final class Item: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
         // Decode each of the properties
-        categoryId = try values.decode(Int.self, forKey: .categoryId)
+        categoryID = try values.decode(Int.self, forKey: .categoryID)
         color = try values.decode(String.self, forKey: .color)
         gender = try values.decode(Gender.self, forKey: .gender)
         id = try values.decode(String.self, forKey: .id)
@@ -135,6 +139,7 @@ final class Item: Codable {
         price = try values.decode(Double.self, forKey: .price)
         size = try values.decode(String.self, forKey: .size)
         url = try values.decode(URL.self, forKey: .url)
+        subcategoryIDs = try values.decode([Int].self, forKey: .subcategoryIDs)
         vendorName = try values.decode(String.self, forKey: .vendorName)
     }
     

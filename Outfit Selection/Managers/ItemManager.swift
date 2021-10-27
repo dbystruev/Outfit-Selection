@@ -67,7 +67,7 @@ class ItemManager {
                 // Select only the items which belong to one of the categories given
                 let categoryFilteredItems = (allWishlistItems + Item.all.values).filter {
                     // Check that item's category id is in the list of category ids looked for
-                    categoryIds.contains($0.categoryId)
+                    categoryIds.contains($0.categoryID)
                 }
                 
                 // Filter category items by the brand given

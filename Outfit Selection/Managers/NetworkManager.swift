@@ -177,7 +177,7 @@ class NetworkManager {
         getItems(with: parameters, completion: completion)
     }
     
-    /// Add /items?categoryId=in.(..., ...)&vendor=in.(..., ...)&limit=... to server URL and call the API
+    /// Add /items?category_id=in.(..., ...)&vendor=in.(..., ...)&limit=... to server URL and call the API
     /// - Parameters:
     ///   - categories: the list of categories to filter items by, empty (all categories) by default
     ///   - gender: load female. male, or other (all) items, Gender.current by default
@@ -254,7 +254,7 @@ class NetworkManager {
         ]
         
         // Add "category_id" parameter
-        parameters[Item.CodingKeys.categoryId.rawValue] = categories.isEmpty
+        parameters[Item.CodingKeys.categoryID.rawValue] = categories.isEmpty
             ? nil
             : "in.(\(categories.map { "\($0.id)" }.joined(separator: ",")))"
         

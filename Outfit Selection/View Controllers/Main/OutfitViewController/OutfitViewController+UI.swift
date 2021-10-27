@@ -117,7 +117,7 @@ extension OutfitViewController {
     /// - Parameter occasion: the occasion to scroll the scroll views to
     func scrollTo(occasion: Occasion?) {
         guard let occasion = occasion else { return }
-        let occasionItems = items.filter { occasion.categoryIDs.contains($0.categoryId) }
+        let occasionItems = items.filter { occasion.categoryIDs.contains($0.categoryID) }
         scrollTo(items: occasionItems.shuffled())
     }
     
