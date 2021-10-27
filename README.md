@@ -43,6 +43,8 @@ REST/JSON server with the following API calls implemented with [PostgREST](https
 * [onboarding](http://spb.getoutfit.co:3000/onboarding)
 * [server](http://spb.getoutfit.co:3000/server)
 
+Example request: [/items?gender=in.(male,unisex)&limit=45&order=modified_time.desc&vendor=in.(acoldwall,acnestudios)](http://spb.getoutfit.co:3000/items?gender=in.(male,unisex%29&limit=45&order=modified_time.desc&vendor=in.(acoldwall,acnestudios%29)
+
 ## Acknowledgments
 
 Get Outfit [Team](https://www.getoutfit.ru/aboutus) for invaluable contributions.
