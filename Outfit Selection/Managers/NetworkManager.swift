@@ -127,7 +127,7 @@ class NetworkManager {
             // Store the message in logger cache
             let message = String(data: data, encoding: .utf8)
             Logger.log(key: request.absoluteString, message)
-//            debug(request.absoluteString, "\n", message)
+            debug(request.absoluteString, "\n", message)
             completion(decodedData)
         }
         
@@ -264,12 +264,12 @@ class NetworkManager {
         // Add "category_id=in.(1,2,3)" parameter
         parameters[Keys.categoryID.rawValue] = categories.isEmpty
             ? nil
-            : "in.(\(categories.commaJoined))"
+        : "in.(\(categories.unique.commaJoined))"
         
         // Add "categories=ov.{1,2,3}" parameter (ov for overlap)
         parameters[Keys.subcategoryIDs.rawValue] = subcategories.isEmpty
             ? nil
-            : "ov(\(subcategories.commaJoined))"
+        : "ov.{\(subcategories.unique.commaJoined)}"
         
         // Add "old_price" not null parameter
         parameters[Keys.oldPrice.rawValue] = sale ? "not.is.null" : nil
@@ -284,7 +284,7 @@ class NetworkManager {
         // Add "vendor" parameter
         parameters[Keys.vendorName.rawValue] = fullVendorNames.isEmpty
             ? nil
-            : "in.(\(shortVendorNames.commaJoined))"
+        : "in.(\(shortVendorNames.unique.commaJoined))"
         
         // Add "gender" parameter
         if let gender = gender {

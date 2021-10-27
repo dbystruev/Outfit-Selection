@@ -191,6 +191,7 @@
 		69BA640B25E6BB2000C805B6 /* SelectableButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */; };
 		69BEC0EB2729591C0034F454 /* Occasions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EA2729591C0034F454 /* Occasions.swift */; };
 		69BEC0ED272970510034F454 /* Array+commaJoined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EC272970510034F454 /* Array+commaJoined.swift */; };
+		69BEC0F027298C250034F454 /* StandardErrorOutputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EF27298C250034F454 /* StandardErrorOutputStream.swift */; };
 		69C18F1B271F0762006D7B47 /* UserDefault+propertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */; };
 		69C18F1D271F0845006D7B47 /* UserDefaults+static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C18F1C271F0845006D7B47 /* UserDefaults+static.swift */; };
 		69C3695525E77549000A8E5E /* OccasionsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3695425E77549000A8E5E /* OccasionsPopupViewController.swift */; };
@@ -422,6 +423,7 @@
 		69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButtonItem.swift; sourceTree = "<group>"; };
 		69BEC0EA2729591C0034F454 /* Occasions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occasions.swift; sourceTree = "<group>"; };
 		69BEC0EC272970510034F454 /* Array+commaJoined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+commaJoined.swift"; sourceTree = "<group>"; };
+		69BEC0EF27298C250034F454 /* StandardErrorOutputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardErrorOutputStream.swift; sourceTree = "<group>"; };
 		69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+propertyWrapper.swift"; sourceTree = "<group>"; };
 		69C18F1C271F0845006D7B47 /* UserDefaults+static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+static.swift"; sourceTree = "<group>"; };
 		69C3695425E77549000A8E5E /* OccasionsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsPopupViewController.swift; sourceTree = "<group>"; };
@@ -593,6 +595,7 @@
 				693D7291256BFDD700540C10 /* ItemManager.swift */,
 				699AAB7F26CD72AE001F6522 /* Logger.swift */,
 				692C940E254700FC0075BD92 /* NetworkManager.swift */,
+				69BEC0EF27298C250034F454 /* StandardErrorOutputStream.swift */,
 				69A0C9E92705B3F200C49977 /* WhiteLabel.swift */,
 			);
 			path = Managers;
@@ -1434,6 +1437,7 @@
 				69D0FDA525EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift in Sources */,
 				694E7BF225DC1D9D006607CD /* BrandsViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				69E0641F26FA57B900C68A6A /* ItemImage.swift in Sources */,
+				69BEC0F027298C250034F454 /* StandardErrorOutputStream.swift in Sources */,
 				6964207D270B2A4200FCDF5A /* Items+Equatable.swift in Sources */,
 				698990D82323B9B0002DCA29 /* OutfitViewController+Shake.swift in Sources */,
 				69D0FD9F25EB621800FC15F6 /* ProfileViewController.swift in Sources */,

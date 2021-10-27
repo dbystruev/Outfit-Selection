@@ -139,9 +139,9 @@ class FeedCollectionViewController: LoggingViewController {
         let brandNames = brandManager.selectedBrandNames
         
         // Categories should be limited for occasions
-        let categoryIDs: [Int] = {
+        let subcategoryIDs: [Int] = {
             if case let .occasions(id) = kind {
-                return Occasion.all[id]?.categoryIDs ?? []
+                return Occasion.all[id]?.looks.flatMap { $0 } ?? []
             } else {
                 return []
             }
@@ -151,7 +151,7 @@ class FeedCollectionViewController: LoggingViewController {
         let sale = kind == .sale
         
         NetworkManager.shared.getItems(
-            in: categoryIDs,
+            subcategories: subcategoryIDs,
             filteredBy: brandNames,
             limited: maxItemsInSection,
             sale: sale
