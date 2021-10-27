@@ -253,7 +253,7 @@ class FeedCollectionViewController: LoggingViewController {
             FeedKind.brands,
             FeedKind.newItems,
             FeedKind.sale,
-        ] + Occasion.selectedIDs.map { .occasions($0) }
+        ] + Occasion.selectedIDsUniqueTitle.map { .occasions($0) }
         
         // Set self as data source and register collection view cells and header
         setup(feedCollectionView, withBrandsOnTop: true)

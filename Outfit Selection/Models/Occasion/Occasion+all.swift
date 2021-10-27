@@ -38,6 +38,9 @@ extension Occasion {
     /// The ids of selected occasions
     static var selectedIDs: [Int] { selected.map { $0.id }}
     
+    /// The ids of selected occasions with unique title
+    static var selectedIDsUniqueTitle: [Int] { selectedUniqueTitle.map { $0.id }}
+    
     /// The set of labels of selected occasions
     static var selectedLabels: Set<String> { Set(selected.map { $0.label })}
     
