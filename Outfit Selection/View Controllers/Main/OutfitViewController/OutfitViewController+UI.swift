@@ -119,7 +119,7 @@ extension OutfitViewController {
         // Get all items in all scroll views, including non-visible
         let items = items
         
-        // Select random look from given occasion
+        // Filter occasions by items in subcategories
         guard
             let occasionTitle = occasion?.title,
             let occasions = Occasions.byTitle[occasionTitle]?.filter({ occasion in
@@ -131,6 +131,8 @@ extension OutfitViewController {
                 }
                 return true
             }),
+            
+            // Select random look from filtered occasions
             let occasion = occasions.randomElement()
         else { return }
         

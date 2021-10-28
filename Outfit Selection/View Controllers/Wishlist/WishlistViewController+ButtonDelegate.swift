@@ -26,15 +26,15 @@ extension WishlistViewController: ButtonDelegate {
         }
         
         // Try to get collection item from sender
-        guard let collectionItem: CollectionItems = {
+        guard let collectionItem: CollectionItemCatalog = {
             // Check if sender is an item
             if let item = wishlistCell.element as? Item {
                 // Try to get collection item from an item
-                return CollectionItems(item)
+                return CollectionItemCatalog(item)
             // Or if sender is a wishlist
-            } else if let wishlist = wishlistCell.element as? WishlistItems {
+            } else if let wishlist = wishlistCell.element as? WishlistItemCatalog {
                 // Try to get collection item from the list of wishlist items
-                return CollectionItems(wishlist.items.values.map { $0 })
+                return CollectionItemCatalog(wishlist.items.values.map { $0 })
             } else { return nil }
         }() else {
             debug("WARNING: \(wishlistCell) is not a wishlist item or outfit cell")

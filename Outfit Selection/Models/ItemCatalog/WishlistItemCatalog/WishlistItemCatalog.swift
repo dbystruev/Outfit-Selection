@@ -1,5 +1,5 @@
 //
-//  WishlistItems.swift
+//  WishlistItemCatalog.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 08.09.2021.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class WishlistItems: Items {
+final class WishlistItemCatalog: ItemCatalog {
     
     // MARK: - Types
     enum CodingKeys: String, CodingKey {

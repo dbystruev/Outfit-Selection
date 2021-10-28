@@ -1,12 +1,13 @@
 //
-//  Items.swift
+//  ItemCatalog.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 04.10.2021.
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
-class Items: Codable {
+/// Base calss for collection and wishlist item catalogs
+class ItemCatalog: Codable {
     // MARK: - Types
     enum CodingKeys: String, CodingKey {
         case itemIDs = "item_ids"

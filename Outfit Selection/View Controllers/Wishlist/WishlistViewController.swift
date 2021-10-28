@@ -31,7 +31,7 @@ class WishlistViewController: LoggingViewController {
     }
     
     /// Either collections, items, or outfits depending on which tab is selected
-    var wishlist: [WishlistItems] {
+    var wishlist: [WishlistItemCatalog] {
         let kind = tabSelected ?? Wishlist.largestKind
         switch kind {
         case .collection:
@@ -68,7 +68,7 @@ class WishlistViewController: LoggingViewController {
     let feedController = FeedCollectionViewController()
     
     /// Contains the currently selected tab: collections, items, or outfits
-    var tabSelected: WishlistItems.Kind? {
+    var tabSelected: WishlistItemCatalog.Kind? {
         didSet {
             if tabSelected == nil {
                 tabSelected = Wishlist.largestKind ?? .item

@@ -1,12 +1,12 @@
 //
-//  CollectionItems.swift
+//  CollectionItemCatalog.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 06.09.2021.
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
-final class CollectionItems: Items {    
+final class CollectionItemCatalog: ItemCatalog {    
     // MARK: - Init
     convenience init?(_ item: Item?) {
         guard let item = item else { return nil }
