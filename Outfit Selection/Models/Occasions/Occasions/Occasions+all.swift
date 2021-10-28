@@ -55,7 +55,8 @@ extension Occasions {
     /// Append given occasion to `byId` and `byTitle`
     /// - Parameter occasion: occasion to add
     static func append(_ occasion: Occasion) {
-        // MARK: TODO Ensure unique look categories
+        // Ensure unique look categories
+        occasion.looks = occasion.looks.map { $0.map { $0 }.unique }
         byID[occasion.id] = occasion
         
         // Update occasions by title
@@ -86,6 +87,10 @@ extension Occasions {
         byID.values
             .filter { $0.gender != gender }
             .forEach { byID[$0.id] = nil }
+        
+        // Match `by title` to `by id`
+        byTitle.removeAll()
+        titles.forEach { byTitle[$0] = with(title: $0) }
     }
     
     /// Return all occasions with given title

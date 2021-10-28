@@ -25,7 +25,7 @@ final class Occasion: Codable {
     let label: String
     
     /// Occasion looks (subcategories)
-    let looks: [[Int]]
+    var looks: [[Int]]
     
     /// The name of the occasion
     let name: String
