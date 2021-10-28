@@ -59,6 +59,9 @@ extension OutfitViewController {
     }
     
     @IBAction func occasionButtonTapped(_ sender: OccasionButton) {
+        // Hide bubles when we started occasion selection
+        hideBubbles()
+        
         // Scroll to tapped occasion
         scrollTo(occasion: sender.occasion)
         

@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - Gestures
-extension OutfitViewController {
+extension OutfitViewController {    
     func setupGestures() {
         scrollViews.forEach { scrollView in
             let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(pinImage(_:)))

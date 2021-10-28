@@ -121,7 +121,7 @@ extension OutfitViewController {
         
         // Filter items which belong to the selected look
         let lookCategoryIDs = Set(look)
-        let occasionItems = items.filter { !lookCategoryIDs.union($0.subcategoryIDs).isEmpty }
+        let occasionItems = items.filter { !lookCategoryIDs.intersection($0.subcategoryIDs).isEmpty }
         
         // Scroll to the selected items
         scrollTo(items: occasionItems.shuffled())

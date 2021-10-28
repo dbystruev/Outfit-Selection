@@ -17,3 +17,10 @@ struct Category: Codable {
     /// Parent's category identifier
     let parentId: Int?
 }
+
+// MARK: - CustomStringConvertible
+extension Category: CustomStringConvertible {
+    var description: String {
+        "\(id) \(name)"
+    }
+}
