@@ -46,7 +46,7 @@ class NetworkManager {
     }() {
         didSet {
             guard oldValue.keys.count != fullVendorNames.keys.count else { return }
-            Item.updateVendorNames(with: fullVendorNames)
+            Items.updateVendorNames(with: fullVendorNames)
             Wishlist.updateVendorNames(with: fullVendorNames)
         }
     }
@@ -258,7 +258,7 @@ class NetworkManager {
         
         // Prepare parameters
         var parameters: [String: Any] = [
-            "limit": limit ?? Item.maxCount
+            "limit": limit ?? Items.maxCount
         ]
         
         // Add "category_id=in.(1,2,3)" parameter

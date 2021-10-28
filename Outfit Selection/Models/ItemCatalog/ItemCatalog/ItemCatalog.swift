@@ -94,7 +94,7 @@ class ItemCatalog: Codable {
     func updateItems(for itemIDs: [String]) {
         // Set already loaded items
         itemIDs.forEach {
-            guard let item = Item.all[$0] else { return }
+            guard let item = Items.byID[$0] else { return }
             items[$0] = item
         }
         
@@ -103,7 +103,7 @@ class ItemCatalog: Codable {
         
         NetworkManager.shared.getItems(newItemIDs) { newItems in
             guard let newItems = newItems, !newItems.isEmpty else { return }
-            Item.append(contentsOf: newItems)
+            Items.append(contentsOf: newItems)
             newItems.forEach {
                 self.items[$0.id] = $0
             }

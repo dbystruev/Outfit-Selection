@@ -73,7 +73,7 @@ class ItemManager {
                 let categoryIds = categories.ids
                 
                 // Select only the items which belong to one of the categories given
-                let categoryFilteredItems = (allWishlistItems + Item.all.values).filter {
+                let categoryFilteredItems = (allWishlistItems + Items.byID.values).filter {
                     // Check that item's category id is in the list of category ids looked for
                     categoryIds.contains($0.categoryID)
                 }
@@ -186,7 +186,7 @@ class ItemManager {
         success = true
         
         // Remove all items before loading them again
-        Item.removeAll()
+        Items.removeAll()
         
         // Make sure we don't forget wishlist items
         let allWishlistItemsIds = Array(Wishlist.allItemsIdSet)
@@ -220,7 +220,7 @@ class ItemManager {
         NetworkManager.shared.getItems(allWishlistItemsIds) { itemsFromWishlists in
             // Check if any items were loaded
             if let itemsFromWishlists = itemsFromWishlists {
-                Item.append(contentsOf: itemsFromWishlists)
+                Items.append(contentsOf: itemsFromWishlists)
             } else {
                 self.success = false
             }
@@ -235,7 +235,7 @@ class ItemManager {
             
             if self.success {
                 debug(
-                    Item.all.count,
+                    Items.byID.count,
                     gender?.rawValue,
                     "items from \(categoriesCount) categories loaded in",
                     passedTime.asTime,
@@ -277,7 +277,7 @@ class ItemManager {
             ) { items in
                 // Check if any items were loaded
                 if let items = items {
-                    Item.append(contentsOf: items)
+                    Items.append(contentsOf: items)
                 } else {
                     self.success = false
                 }

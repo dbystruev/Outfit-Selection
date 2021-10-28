@@ -98,7 +98,7 @@ class FeedItemCell: FeedBaseCell {
         }
         
         // Get items from Item.all and filter them by presense of price, old price and brand
-        let itemsWithOldPrices = Item.all.values.filter { $0.oldPrice != nil }
+        let itemsWithOldPrices = Items.byID.values.filter { $0.oldPrice != nil }
         let itemsWithOldPricesByBrands = itemsWithOldPrices.filter { $0.branded(brandNames) }
         let filteredItems = itemsWithOldPricesByBrands.isEmpty ? itemsWithOldPrices : itemsWithOldPricesByBrands
         

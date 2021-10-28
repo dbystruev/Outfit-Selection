@@ -95,7 +95,7 @@ struct Wishlist: Codable {
     /// - Parameters:
     ///   - items: the list of items to add to the outfit wishlist
     ///   - occasion: Occasion for the outfit
-    static func add(_ items: [Item], occasion: String) {
+    static func add(_ items: Items, occasion: String) {
         // Make sure we don't add an empty wishlist with no occasion
         guard 0 < items.count && !occasion.isEmpty else { return }
         

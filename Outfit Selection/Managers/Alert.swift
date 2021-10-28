@@ -50,7 +50,7 @@ enum Alert {
             actionTitles: ["Yes", "Cancel"],
             styles: [.default, .cancel],
             handlers: [{ action in
-                Item.dislike(item)
+                Items.dislike(item)
                 handler?(action)
             }]
         )
