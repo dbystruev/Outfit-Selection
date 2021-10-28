@@ -13,12 +13,12 @@ extension Categories {
     /// The full  list of categories
     static var all: [Category] = [] {
         didSet {
-            all.forEach { byId[$0.id] = $0 }
+            all.forEach { byID[$0.id] = $0 }
         }
     }
     
     /// The list of categories by id
-    private(set) static var byId: [Int: Category] = [:]
+    private(set) static var byID: [Int: Category] = [:]
     
     /// Female categories filtered by chosen female category names
     static let female: [[Category]] = {
@@ -103,7 +103,7 @@ extension Categories {
     /// - Parameter occasions: occasions to filter categories by
     /// - Returns: the list of categories filtered by occasions
     func filtered(by occasions: Occasions) -> [Category] {
-        let uniqueCategoryIDs = occasions.flatMap({ $0.looks }).flatMap({ $0 }).unique
+        let uniqueCategoryIDs = occasions.flatMap({ $0.corners }).flatMap({ $0 }).unique
         return filter { uniqueCategoryIDs.contains($0.id) }
     }
 }

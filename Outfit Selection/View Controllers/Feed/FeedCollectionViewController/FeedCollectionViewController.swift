@@ -141,7 +141,7 @@ class FeedCollectionViewController: LoggingViewController {
         // Categories should be limited for occasions
         let subcategoryIDs: [Int] = {
             if case let .occasions(id) = kind {
-                return Occasions.byID[id]?.looks.flatMap { $0 } ?? []
+                return Occasions.byID[id]?.corners.flatMap { $0 } ?? []
             } else {
                 return []
             }

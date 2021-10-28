@@ -23,6 +23,7 @@
 		690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */; };
 		690491F6260C732A0098F1FD /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */; };
 		6905DC8E272B0BE80088A34E /* Occasions+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6905DC8D272B0BE80088A34E /* Occasions+UserDefaults.swift */; };
+		6905DC92272B12760088A34E /* Item+Occasion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6905DC91272B12760088A34E /* Item+Occasion.swift */; };
 		690623A1270C633800813089 /* Screenshot09.png in Resources */ = {isa = PBXBuildFile; fileRef = 69062391270C633800813089 /* Screenshot09.png */; };
 		690623A2270C633800813089 /* Screenshot14.png in Resources */ = {isa = PBXBuildFile; fileRef = 69062392270C633800813089 /* Screenshot14.png */; };
 		690623A3270C633800813089 /* Screenshot11.png in Resources */ = {isa = PBXBuildFile; fileRef = 69062393270C633800813089 /* Screenshot11.png */; };
@@ -256,6 +257,7 @@
 		690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+configureFont.swift"; sourceTree = "<group>"; };
 		690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.ttf"; sourceTree = "<group>"; };
 		6905DC8D272B0BE80088A34E /* Occasions+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occasions+UserDefaults.swift"; sourceTree = "<group>"; };
+		6905DC91272B12760088A34E /* Item+Occasion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Occasion.swift"; sourceTree = "<group>"; };
 		69062391270C633800813089 /* Screenshot09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot09.png; sourceTree = "<group>"; };
 		69062392270C633800813089 /* Screenshot14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot14.png; sourceTree = "<group>"; };
 		69062393270C633800813089 /* Screenshot11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot11.png; sourceTree = "<group>"; };
@@ -756,6 +758,7 @@
 				69560ECB2587E7C700337F35 /* Item+Branded.swift */,
 				694935AD270D9DFB00168EB6 /* Item+CustomStringConvertible.swift */,
 				69E0641C26FA4E2B00C68A6A /* Item+Equatable.swift */,
+				6905DC91272B12760088A34E /* Item+Occasion.swift */,
 			);
 			path = Item;
 			sourceTree = "<group>";
@@ -1569,6 +1572,7 @@
 				695A1ACF27186F920028FB9D /* Array+chunked.swift in Sources */,
 				69AE955F256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift in Sources */,
 				6962099D26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift in Sources */,
+				6905DC92272B12760088A34E /* Item+Occasion.swift in Sources */,
 				69E0641D26FA4E2B00C68A6A /* Item+Equatable.swift in Sources */,
 				6924900125504DFD00106681 /* DispatchManager.swift in Sources */,
 				69A0C9E32704635700C49977 /* FeedCollectionViewController+ButtonDelegate.swift in Sources */,

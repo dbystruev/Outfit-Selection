@@ -16,19 +16,13 @@ extension OutfitViewController {
         case .motionShake:
             if let occasion = occasionSelected {
                 // Get unique subcategory IDs for occasion
-                let occasionSubcategoryIDs = occasion.looks.flatMap { $0 }.unique
-                debug(occasion.looks.map { $0.compactMap { Categories.byId[$0] }})
+                debug(occasion.corners.map { $0.compactMap { Categories.byID[$0] }})
                 
                 // Go through each item and show its subcategory in occasion
                 for item in visibleItems {
-                    // Get common subcategories present in both item and occasion
-                    let commonSubcategoryIDs = Set(item.subcategoryIDs).intersection(occasionSubcategoryIDs)
-                    let commonSubcategories = commonSubcategoryIDs.compactMap { Categories.byId[$0] }
-                    
-                    debug(item.name, commonSubcategories)
+                    debug(item.name, item.subcategories(in: occasion))
                 }
             }
-//            shuffleBubbleTapped()
         default:
             break
         }

@@ -117,14 +117,25 @@ extension OutfitViewController {
     /// - Parameter occasion: the occasion to scroll the scroll views to
     func scrollTo(occasion: Occasion?) {
         // Select random look from given occasion
-        guard let look = occasion?.looks.randomElement() else { return }
+        guard
+            let occasionTitle = occasion?.title,
+            let occasion = Occasions.byTitle[occasionTitle]?.randomElement()
+        else { return }
+        
+        // Go through the corners and select items for each corner
+        var occasionItems: [Item] = []
+        for cornerCategoryIDs in occasion.corners {
+            guard let cornerItem = items.filter({
+                !$0.subcategories(in: cornerCategoryIDs).isEmpty
+            }).randomElement() else { return }
+            occasionItems.append(cornerItem)
+        }
         
         // Filter items which belong to the selected look
-        let lookCategoryIDs = Set(look)
-        let occasionItems = items.filter { !lookCategoryIDs.intersection($0.subcategoryIDs).isEmpty }
+        debug(occasionItems.count, occasionItems)
         
         // Scroll to the selected items
-        scrollTo(items: occasionItems.shuffled())
+        scrollTo(items: occasionItems)
     }
     
     /// Scroll to random items

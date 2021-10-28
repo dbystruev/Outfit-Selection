@@ -18,14 +18,14 @@ final class Occasion: Codable {
     /// Category IDs which belong to the occasion
     let categoryIDs: [Int]
     
+    /// Occasion corners from top left clockwise with the list of subcategories in each corner
+    var corners: [[Int]]
+    
     /// Occasion gender
     let gender: Gender
     
     /// Occasion label (2nd level name)
     let label: String
-    
-    /// Occasion looks (subcategories)
-    var looks: [[Int]]
     
     /// The name of the occasion
     let name: String
@@ -46,16 +46,21 @@ final class Occasion: Codable {
         }
     }
     
+    /// All subcategory IDs for the occasion
+    var subcategoryIDs: [Int] {
+        corners.flatMap { $0.map { $0 }}.unique
+    }
+    
     /// Occasion name and title togeher
     var title: String { "\(name): \(label)" }
     
     // MARK: - Types
     enum CodingKeys: String, CodingKey {
         case categoryIDs = "category_ids"
+        case corners = "looks"
         case gender
         case id
         case label
-        case looks
         case name
     }
     
@@ -80,7 +85,7 @@ final class Occasion: Codable {
         self.gender = gender
         self.id = id
         self.label = label
-        self.looks = looks
+        self.corners = looks
         self.name = name
     }
     
