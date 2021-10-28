@@ -16,14 +16,12 @@ class ItemManager {
     private init() {}
     
     // MARK: - Stored Properties
-    /// imagePrefixes should correspond to scrollViews
-    let imagePrefixes = ["TopLeft", "BottomLeft", "TopRight", "MiddleRight", "BottomRight"]
-    
     // All item load requests success status
     private var success = true
     
     /// Array of category image collection view models
-    let viewModels: [ImageCollectionViewModel] = (0 ..< Categories.all.count).map { _ in ImageCollectionViewModel.empty }
+    let viewModels: [ImageCollectionViewModel] = (0 ..< Categories.all.count).map { _ in ImageCollectionViewModel.empty
+    }
     
     // MARK: - Computed Properties
     /// Number of items loaded into view models
@@ -167,24 +165,6 @@ class ItemManager {
                 scrollView.insert(image: image).item = image.item
             }
         }
-    }
-    
-    /// Load placeholder images in app bundle before items from the server are ready
-    /// - Parameter scrollViews: scroll views to insert images into, one scroll view for each category
-    /// - Returns: the number of images inserted
-    func loadImagesFromAssets(into scrollViews: [PinnableScrollView]) -> Int {
-        var count = 0
-        // Image names are "\(prefix)01", "\(prefix)02" etc.
-        for (prefix, scrollView) in zip(imagePrefixes, scrollViews) {
-            for suffixCount in 1... {
-                let suffix = String(format: "%02d", suffixCount)
-                let imageName = "\(prefix)\(suffix)"
-                guard let image = UIImage(named: imageName) else { break }
-                count += 1
-                scrollView.insert(image: image).tag = -1
-            }
-        }
-        return count
     }
     
     /// Load items from the server to Item.all array
