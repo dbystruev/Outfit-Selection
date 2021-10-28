@@ -196,21 +196,21 @@ class ItemManager {
         let categoriesCount: Int
         if Occasion.all.isEmpty {
             let categoriesByCorners = Categories.filtered(by: gender)
-            categoriesCount = categoriesByCorners.flatMap { $0 }.count
+            categoriesCount = categoriesByCorners.flatMap { $0.ids }.unique.count
             for categories in categoriesByCorners {
                 loadItemsByBrands(
                     gender: gender,
-                    categoryIDs: categories.ids,
+                    categoryIDs: categories.ids.unique,
                     totalRequests: categoriesByCorners.count
                 )
             }
         } else {
             let subcategoryIDsByOccasions = Occasion.selected.flatMap { $0.looks }
-            categoriesCount = subcategoryIDsByOccasions.flatMap { $0 }.count
+            categoriesCount = subcategoryIDsByOccasions.flatMap { $0 }.unique.count
             for subcategoryIDs in subcategoryIDsByOccasions {
                 loadItemsByBrands(
                     gender: gender,
-                    subcategoryIDs: subcategoryIDs,
+                    subcategoryIDs: subcategoryIDs.unique,
                     totalRequests: subcategoryIDsByOccasions.count
                 )
             }
@@ -261,7 +261,8 @@ class ItemManager {
         totalRequests: Int
     ) {
         let selectedBrandNames = BrandManager.shared.selectedBrandNames
-        let brandNamesSlice = selectedBrandNames.chunked(into: selectedBrandNames.count / 3 + 1)
+        let chunkSize = selectedBrandNames.count * totalRequests / 16 + 1
+        let brandNamesSlice = selectedBrandNames.chunked(into: chunkSize)
         
         // Adjust current and total requests to the number of total requests
         let totalRequests = brandNamesSlice.count * totalRequests
@@ -285,7 +286,10 @@ class ItemManager {
                 
                 // Update progress bar
                 self.currentRequest += 1
-                ProgressViewController.default?.updateProgressBar(current: self.currentRequest, total: totalRequests, maxValue: 0.5)
+                ProgressViewController.default?.updateProgressBar(
+                    current: self.currentRequest,
+                    total: totalRequests, maxValue: 0.5
+                )
             }
         }
     }
