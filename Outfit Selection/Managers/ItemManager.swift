@@ -23,7 +23,8 @@ class ItemManager {
     private var success = true
     
     /// Array of category image collection view models
-    let viewModels: [ImageCollectionViewModel] = (0 ..< Categories.all.count).map { _ in ImageCollectionViewModel.empty
+    let viewModels: [ImageCollectionViewModel] = (0 ..< Categories.all.count).map { _ in
+        ImageCollectionViewModel.empty
     }
     
     // MARK: - Computed Properties
@@ -57,25 +58,26 @@ class ItemManager {
         // Move everything to async queue in order not to hang execution
         DispatchQueue.global(qos: .background).async {
             
-            // Wait for network group load images to finish
+            // Wait for network group load items to finish
             DispatchManager.shared.itemManagerGroup.wait()
             
             // Counts for progress view update
             var current = 0
             var total = 0
             
+            // MARK: TODO Implement categories from occasions
             /// Loop all categories and view models, whatever number is lower
-            for (categories, viewModel) in zip(Categories.filtered(by: gender), ItemManager.shared.viewModels) {
+            for (categories, viewModel) in zip(Categories.filtered(by: gender), self.viewModels) {
                 // The names of the items already loaded in this category
                 var loadedItemNames = [String]()
                 
                 // Get category identifiers
-                let categoryIds = categories.ids
+                let categoryIDs = categories.IDs
                 
                 // Select only the items which belong to one of the categories given
                 let categoryFilteredItems = (allWishlistItems + Items.byID.values).filter {
-                    // Check that item's category id is in the list of category ids looked for
-                    categoryIds.contains($0.categoryID)
+                    // Check that item's category id is in the list of category IDs looked for
+                    categoryIDs.contains($0.categoryID)
                 }
                 
                 // Filter category items by the brand given
@@ -196,11 +198,11 @@ class ItemManager {
         let categoriesCount: Int
         if Occasions.byID.isEmpty {
             let categoriesByCorners = Categories.filtered(by: gender)
-            categoriesCount = categoriesByCorners.flatMap { $0.ids }.unique.count
+            categoriesCount = categoriesByCorners.flatMap { $0.IDs }.unique.count
             for categories in categoriesByCorners {
                 loadItemsByBrands(
                     gender: gender,
-                    categoryIDs: categories.ids.unique,
+                    categoryIDs: categories.IDs.unique,
                     totalRequests: categoriesByCorners.count
                 )
             }

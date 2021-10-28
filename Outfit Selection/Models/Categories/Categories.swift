@@ -96,7 +96,7 @@ extension Categories {
     
     // MARK: - Computed Properties
     /// IDs of categories
-    var ids: [Int] { map { $0.id }}
+    var IDs: [Int] { map { $0.id }}
     
     // MARK: - Custom Methods
     /// Return the list of categories filtered by given occasions
