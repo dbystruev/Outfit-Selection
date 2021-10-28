@@ -31,7 +31,7 @@ enum FeedKind {
         case .newItems:
             return "New items for you"
         case .occasions(let id):
-            guard let occasion = Occasion.all[id] else { return nil }
+            guard let occasion = Occasions.byID[id] else { return nil }
             return occasion.title
         case .sale:
             return "Sales"

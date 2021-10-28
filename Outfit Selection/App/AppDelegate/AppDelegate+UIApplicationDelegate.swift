@@ -84,7 +84,7 @@ extension AppDelegate: UIApplicationDelegate {
         _ = group.wait(timeout: .now() + 3)
         
         // Transfer to the initial view controller
-        let next = UserDefaults.hasSeenAppIntroduction || Occasion.all.count < 1
+        let next = UserDefaults.hasSeenAppIntroduction || Occasions.byID.count < 1
             ? "GenderNavigationViewController"
             : "OnboardingNavigationViewController"
         window?.rootViewController = storyboard.instantiateViewController(withIdentifier: next)

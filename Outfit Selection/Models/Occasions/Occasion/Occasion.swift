@@ -41,7 +41,7 @@ final class Occasion: Codable {
             guard _isSelected != newValue else { return }
             _isSelected = newValue
             DispatchQueue.global(qos: .background).async {
-                Occasion.saveSelectedOccasions()
+                Occasions.saveSelectedOccasions()
             }
         }
     }
@@ -89,37 +89,5 @@ final class Occasion: Codable {
     /// - Parameter isSelected: true if should select, false if should unselect
     func selectWithoutSaving(_ isSelected: Bool) {
         _isSelected = isSelected
-    }
-}
-
-// MARK: - UserDefaults
-extension Occasion {
-    // MARK: - Static Methods
-    /// Load selected occasion names from user defaults and updated Occasion.all
-    static func restore() {
-        // Get selected occasion names and make sure they are not empty
-        let selectedIdsRestored = UserDefaults.selectedOccasionIDs
-        guard !selectedIdsRestored.isEmpty else {
-            debug("WARNING: Occasion list in user defaults is empty")
-            return
-        }
-        
-        var selectedOccasionsCount = 0
-        
-        for selectedRestoredId in selectedIdsRestored {
-            guard let occasion = Occasion.all[selectedRestoredId] else { continue }
-            occasion.isSelected = true
-            selectedOccasionsCount += 1
-        }
-        
-        debug(
-            "Occasions: \(selectedIdsRestored.count) loaded,",
-            "\(selectedOccasionsCount) of \(Occasion.all.count) selected"
-        )
-    }
-    
-    /// Save selected occasion names to user defaults
-    static func saveSelectedOccasions() {
-        UserDefaults.selectedOccasionIDs = selectedIDs
     }
 }

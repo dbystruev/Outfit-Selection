@@ -19,17 +19,17 @@ class OccasionsViewController: NextButtonViewController {
     
     // MARK: - Stored Properties
     /// Occasions with unique titles which could be selected
-    var occasions: Occasions = Occasion.byTitle.keys.sorted().compactMap { Occasion.byTitle[$0]?.first }
+    var occasions: Occasions = Occasions.byTitle.keys.sorted().compactMap { Occasions.byTitle[$0]?.first }
     
     // MARK: - Custom Methods
     /// Set top right button to clear or select all
     func configureAllButton() {
-        allButton.isButtonSelected = Occasion.unselected.count < Occasion.selected.count
+        allButton.isButtonSelected = Occasions.unselected.count < Occasions.selected.count
     }
     
     /// Set go button background color and enable / disable it depending on number of occasions selected
     func configureGoButton() {
-        let occasionsSelected = Occasion.selected.count
+        let occasionsSelected = Occasions.selected.count
         let isEnabled = 0 < occasionsSelected
         nextButton.backgroundColor = isEnabled
             ? Globals.Color.Button.enabled

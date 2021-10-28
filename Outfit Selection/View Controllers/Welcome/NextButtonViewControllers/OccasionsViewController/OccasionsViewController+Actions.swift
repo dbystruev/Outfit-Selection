@@ -24,8 +24,8 @@ extension OccasionsViewController {
         let isSelected = sender.isButtonSelected
         
         // Select / deselect all occasions save the selection to permanent storage
-        Occasion.all.forEach { $0.value.selectWithoutSaving(isSelected) }
-        Occasion.saveSelectedOccasions()
+        Occasions.byID.forEach { $0.value.selectWithoutSaving(isSelected) }
+        Occasions.saveSelectedOccasions()
         
         // Reload occasions and enable / disable go button
         occasionsTableView.reloadData()

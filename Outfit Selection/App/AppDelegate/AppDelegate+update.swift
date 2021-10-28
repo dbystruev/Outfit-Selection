@@ -34,15 +34,15 @@ extension AppDelegate {
             guard let occasions = occasions, !occasions.isEmpty else { return }
             
             // Fill occasions with the new list of occasions
-            Occasion.all.removeAll()
-            occasions.currentGender.forEach { Occasion.all[$0.id] = $0 }
+            Occasions.removeAll()
+            occasions.currentGender.forEach { Occasions.append($0) }
             
             // Restore additional occasions from user defaults
-            Occasion.restore()
+            Occasions.restore()
             
             // Show elapsed time
             let elapsed = Date().timeIntervalSince(startTime)
-            debug("INFO: Loaded \(Occasion.all.count) occasions in \(elapsed.asTime) s")
+            debug("INFO: Loaded \(Occasions.byID.count) occasions in \(elapsed.asTime) s")
         }
     }
     

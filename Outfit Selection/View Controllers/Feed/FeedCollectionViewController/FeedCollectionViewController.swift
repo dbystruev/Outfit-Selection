@@ -141,7 +141,7 @@ class FeedCollectionViewController: LoggingViewController {
         // Categories should be limited for occasions
         let subcategoryIDs: [Int] = {
             if case let .occasions(id) = kind {
-                return Occasion.all[id]?.looks.flatMap { $0 } ?? []
+                return Occasions.byID[id]?.looks.flatMap { $0 } ?? []
             } else {
                 return []
             }
@@ -252,7 +252,7 @@ class FeedCollectionViewController: LoggingViewController {
             FeedKind.brands,
             FeedKind.newItems,
             FeedKind.sale,
-        ] + Occasion.selectedIDsUniqueTitle.map { .occasions($0) }
+        ] + Occasions.selectedIDsUniqueTitle.map { .occasions($0) }
         
         // Set self as data source and register collection view cells and header
         setup(feedCollectionView, withBrandsOnTop: true)

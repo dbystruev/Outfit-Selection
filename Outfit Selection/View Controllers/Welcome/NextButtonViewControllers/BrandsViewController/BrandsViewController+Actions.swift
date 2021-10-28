@@ -14,7 +14,7 @@ extension BrandsViewController {
     /// - Parameter sender: the get outfit button which was tapped
     override func nextButtonTapped(_ sender: UIButton) {
         // Transition to occasions if they are not empty
-        guard Occasion.all.isEmpty else {
+        guard Occasions.byID.isEmpty else {
             performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)
             return
         }

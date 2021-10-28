@@ -16,7 +16,7 @@ extension OccasionsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Toggle all occasions with the same title and reload the table
         let occasion = occasions[indexPath.row]
-        Occasion.select(title: occasion.title, shouldSelect: !occasion.isSelected)
+        Occasions.select(title: occasion.title, shouldSelect: !occasion.isSelected)
         tableView.reloadRows(at: [indexPath], with: .automatic)
         
         // Configure the buttons

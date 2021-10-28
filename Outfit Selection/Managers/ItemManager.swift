@@ -194,7 +194,7 @@ class ItemManager {
         
         // Run network requests for different corners and brand names in parallel
         let categoriesCount: Int
-        if Occasion.all.isEmpty {
+        if Occasions.byID.isEmpty {
             let categoriesByCorners = Categories.filtered(by: gender)
             categoriesCount = categoriesByCorners.flatMap { $0.ids }.unique.count
             for categories in categoriesByCorners {
@@ -205,7 +205,7 @@ class ItemManager {
                 )
             }
         } else {
-            let subcategoryIDsByOccasions = Occasion.selected.flatMap { $0.looks }
+            let subcategoryIDsByOccasions = Occasions.selected.flatMap { $0.looks }
             categoriesCount = subcategoryIDsByOccasions.flatMap { $0 }.unique.count
             for subcategoryIDs in subcategoryIDsByOccasions {
                 loadItemsByBrands(

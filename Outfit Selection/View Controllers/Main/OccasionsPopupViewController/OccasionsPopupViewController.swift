@@ -17,7 +17,7 @@ class OccasionsPopupViewController: LoggingViewController {
     var items = [Item]()
     
     /// Sorted names of all occasions
-    let occasionNames = Occasion.names.sorted()
+    let occasionNames = Occasions.names.sorted()
 
     // MARK: - Inherited Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
