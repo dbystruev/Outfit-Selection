@@ -124,18 +124,27 @@ extension OutfitViewController {
             let occasionTitle = occasion?.title,
             let occasions = Occasions.byTitle[occasionTitle]?.filter({ occasion in
                 // Keep occasions for which we could find items
-                let items = items.filter { !$0.subcategoryIDs(in: occasion).isEmpty }
-                return !items.isEmpty
+                for cornerCategoryIDs in occasion.corners {
+                    guard !items.filter({
+                        !$0.subcategories(in: cornerCategoryIDs).isEmpty
+                    }).isEmpty else { return false }
+                }
+                return true
             }),
             let occasion = occasions.randomElement()
         else { return }
+        
+        debug(occasion)
         
         // Go through the corners and select items for each corner
         var occasionItems: [Item] = []
         for cornerCategoryIDs in occasion.corners {
             guard let cornerItem = items.filter({
                 !$0.subcategories(in: cornerCategoryIDs).isEmpty
-            }).randomElement() else { return }
+            }).randomElement() else {
+                debug("WARNING: No item matching subcategories \(cornerCategoryIDs)")
+                return
+            }
             occasionItems.append(cornerItem)
         }
         
