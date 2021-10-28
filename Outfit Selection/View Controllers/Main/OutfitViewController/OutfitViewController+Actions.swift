@@ -63,10 +63,8 @@ extension OutfitViewController {
         hideBubbles()
         
         // Scroll to tapped occasion
-        scrollTo(occasion: sender.occasion)
-        
-        // Updated selected occasion property and UI
-        occasionSelected = sender.occasion
+        guard let occasion = sender.occasion else { return }
+        scrollTo(occasion: occasion)
     }
     
     /// Move to occasions view controller when left screen edge is panned

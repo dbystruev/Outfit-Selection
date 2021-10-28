@@ -116,10 +116,18 @@ extension OutfitViewController {
     /// Scroll outfit's scroll views to the given occasion
     /// - Parameter occasion: the occasion to scroll the scroll views to
     func scrollTo(occasion: Occasion?) {
+        // Get all items in all scroll views, including non-visible
+        let items = items
+        
         // Select random look from given occasion
         guard
             let occasionTitle = occasion?.title,
-            let occasion = Occasions.byTitle[occasionTitle]?.randomElement()
+            let occasions = Occasions.byTitle[occasionTitle]?.filter({ occasion in
+                // Keep occasions for which we could find items
+                let items = items.filter { !$0.subcategoryIDs(in: occasion).isEmpty }
+                return !items.isEmpty
+            }),
+            let occasion = occasions.randomElement()
         else { return }
         
         // Go through the corners and select items for each corner
@@ -136,6 +144,9 @@ extension OutfitViewController {
         
         // Scroll to the selected items
         scrollTo(items: occasionItems)
+        
+        // Update selected occasion property and UI
+        occasionSelected = occasion
     }
     
     /// Scroll to random items
@@ -294,7 +305,7 @@ extension OutfitViewController {
         // Go through all occastion buttons and underline the selected one
         for (button, underline) in zip(buttons, underlines) {
             // Set button opacity depending on whether it is selected
-            let isSelected = button.occasion == occasionSelected
+            let isSelected = button.occasion?.title == occasionSelected?.title
             button.alpha = isSelected ? 1 : 0.5
 
             // Set button underline visibility depending on whether the button is selected
