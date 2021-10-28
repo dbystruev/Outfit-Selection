@@ -16,7 +16,10 @@ class ItemManager {
     private init() {}
     
     // MARK: - Stored Properties
-    // All item load requests success status
+    /// Currently running request number for updating progress bar
+    private var currentRequest = 0
+    
+    /// All item load requests success status
     private var success = true
     
     /// Array of category image collection view models
@@ -175,7 +178,8 @@ class ItemManager {
     /// - Parameter gender: load female, male or other items only
     /// - Parameter completion: closure with bool parameter which is called with true in case of success, with false otherwise
     func loadItems(for gender: Gender?, completion: @escaping (_ success: Bool?) -> Void) {
-        // Measure the accumulated time for all requests
+        // Measure the number of requests and elapsed time
+        currentRequest = 0
         let startTime = Date()
         
         // Assume all requests went fine until told otherwise
@@ -193,22 +197,20 @@ class ItemManager {
         if Occasion.all.isEmpty {
             let categoriesByCorners = Categories.filtered(by: gender)
             categoriesCount = categoriesByCorners.flatMap { $0 }.count
-            for (count, categories) in categoriesByCorners.enumerated() {
+            for categories in categoriesByCorners {
                 loadItemsByBrands(
                     gender: gender,
                     categoryIDs: categories.ids,
-                    currentRequest: count,
                     totalRequests: categoriesByCorners.count
                 )
             }
         } else {
             let subcategoryIDsByOccasions = Occasion.selected.flatMap { $0.looks }
             categoriesCount = subcategoryIDsByOccasions.flatMap { $0 }.count
-            for (count, subcategoryIDs) in subcategoryIDsByOccasions.enumerated() {
+            for subcategoryIDs in subcategoryIDsByOccasions {
                 loadItemsByBrands(
                     gender: gender,
                     subcategoryIDs: subcategoryIDs,
-                    currentRequest: count,
                     totalRequests: subcategoryIDsByOccasions.count
                 )
             }
@@ -256,17 +258,15 @@ class ItemManager {
         gender: Gender?,
         categoryIDs: [Int] = [],
         subcategoryIDs: [Int] = [],
-        currentRequest: Int,
         totalRequests: Int
     ) {
         let selectedBrandNames = BrandManager.shared.selectedBrandNames
         let brandNamesSlice = selectedBrandNames.chunked(into: selectedBrandNames.count / 3 + 1)
         
         // Adjust current and total requests to the number of total requests
-        let currentRequest = brandNamesSlice.count * currentRequest
         let totalRequests = brandNamesSlice.count * totalRequests
         
-        for (index, brandNames) in brandNamesSlice.enumerated() {
+        for brandNames in brandNamesSlice {
             DispatchManager.shared.itemManagerGroup.enter()
             NetworkManager.shared.getItems(
                 for: gender,
@@ -284,7 +284,8 @@ class ItemManager {
                 DispatchManager.shared.itemManagerGroup.leave()
                 
                 // Update progress bar
-                ProgressViewController.default?.updateProgressBar(current: currentRequest + index, total: totalRequests, maxValue: 0.5)
+                self.currentRequest += 1
+                ProgressViewController.default?.updateProgressBar(current: self.currentRequest, total: totalRequests, maxValue: 0.5)
             }
         }
     }

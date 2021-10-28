@@ -61,7 +61,6 @@ class ProgressViewController: LoggingViewController {
         
         // Update progress view
         DispatchQueue.main.async {
-            debug("\(value) between \(minValue) and \(maxValue)")
             self.progressView.progress = minValue + (maxValue - minValue) * value
         }
     }
