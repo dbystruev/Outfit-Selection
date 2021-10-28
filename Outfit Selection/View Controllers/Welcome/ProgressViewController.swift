@@ -33,6 +33,10 @@ class ProgressViewController: LoggingViewController {
         }
     }
     
+    // MARK: - Static Properties
+    /// Link to self for others to find
+    static weak var `default`: ProgressViewController?
+    
     // MARK: - Stored Properties
     /// The collection of brand images
     let brandedImages = BrandManager.shared.brandedImages
@@ -43,10 +47,32 @@ class ProgressViewController: LoggingViewController {
     // MARK: - Inherited Properties
     /// Hide status bar during progress screen
     override var prefersStatusBarHidden: Bool { true }
+    
+    // MARK: - Methods
+    /// Update progress bar in main dispatch queue
+    /// - Parameters:
+    ///   - current: number of items processed
+    ///   - total: total number of items to process
+    ///   - minValue: the minimum value where indicator should start, from 0 to 1, 0 by default
+    ///   - maxValue: the maximum value where indicator should end, from 0 to 1, 1 by default
+    func updateProgressBar(current: Int, total: Int, minValue: Float = 0, maxValue: Float = 1) {
+        // Get value as current fraction of total value
+        let value = total == 0 ? 0 : Float(current) / Float(total)
+        
+        // Update progress view
+        DispatchQueue.main.async {
+            debug("\(value) between \(minValue) and \(maxValue)")
+            self.progressView.progress = minValue + (maxValue - minValue) * value
+        }
+    }
 
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Make sure others can find ourselves
+        ProgressViewController.default = self
+        
         view.backgroundColor = WhiteLabel.Color.Background.light
     }
     
@@ -77,9 +103,8 @@ class ProgressViewController: LoggingViewController {
         let startTime = Date().timeIntervalSince1970
         ItemManager.shared.loadImages(filteredBy: Gender.current) { itemsLoaded, itemsTotal in
             // If not all items loaded — update progress view and continue
-            DispatchQueue.main.async {
-                self.progressView.progress = itemsTotal == 0 ? 0 : Float(itemsLoaded) / Float(itemsTotal)
-            }
+            self.updateProgressBar(current: itemsLoaded, total: itemsTotal, minValue: 0.5)
+            
             guard itemsLoaded == itemsTotal else { return }
             
             let passedTime = Date().timeIntervalSince1970 - startTime

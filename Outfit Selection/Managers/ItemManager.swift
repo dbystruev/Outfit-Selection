@@ -40,7 +40,11 @@ class ItemManager {
     ///   - gender: gender to filter images by
     ///   - brandNames: brand names to filter images by
     ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
-    func loadImages(filteredBy gender: Gender?, andBy brandNames: [String] = [], completion: @escaping (_ current: Int, _ total: Int) -> Void) {
+    func loadImages(
+        filteredBy gender: Gender?,
+        andBy brandNames: [String] = [],
+        completion: @escaping (_ current: Int, _ total: Int) -> Void
+    ) {
         // Clear all view models
         clearViewModels()
         
@@ -48,7 +52,7 @@ class ItemManager {
         let allWishlistItems = Wishlist.allItems
         
         // Move everything to async queue in order not to hang execution
-        DispatchQueue.main.async {
+        DispatchQueue.global(qos: .background).async {
             
             // Wait for network group load images to finish
             DispatchManager.shared.itemManagerGroup.wait()
@@ -171,7 +175,7 @@ class ItemManager {
     /// - Parameter gender: load female, male or other items only
     /// - Parameter completion: closure with bool parameter which is called with true in case of success, with false otherwise
     func loadItems(for gender: Gender?, completion: @escaping (_ success: Bool?) -> Void) {
-        // Measure the accumulated time of all item requests
+        // Measure the accumulated time for all requests
         let startTime = Date()
         
         // Assume all requests went fine until told otherwise
@@ -189,14 +193,24 @@ class ItemManager {
         if Occasion.all.isEmpty {
             let categoriesByCorners = Categories.filtered(by: gender)
             categoriesCount = categoriesByCorners.flatMap { $0 }.count
-            for categories in categoriesByCorners {
-                loadItemsByBrands(gender: gender, categoryIDs: categories.ids)
+            for (count, categories) in categoriesByCorners.enumerated() {
+                loadItemsByBrands(
+                    gender: gender,
+                    categoryIDs: categories.ids,
+                    currentRequest: count,
+                    totalRequests: categoriesByCorners.count
+                )
             }
         } else {
             let subcategoryIDsByOccasions = Occasion.selected.flatMap { $0.looks }
             categoriesCount = subcategoryIDsByOccasions.flatMap { $0 }.count
-            for subcategoryIDs in subcategoryIDsByOccasions {
-                loadItemsByBrands(gender: gender, subcategoryIDs: subcategoryIDs)
+            for (count, subcategoryIDs) in subcategoryIDsByOccasions.enumerated() {
+                loadItemsByBrands(
+                    gender: gender,
+                    subcategoryIDs: subcategoryIDs,
+                    currentRequest: count,
+                    totalRequests: subcategoryIDsByOccasions.count
+                )
             }
         }
         
@@ -236,10 +250,23 @@ class ItemManager {
     ///   - gender: load female. male, or other (all) items
     ///   - categoryIDs: the list of category IDs to filter items by, empty (all categories) by default
     ///   - subcategoryIDs: the list of subcategory IDs to filter items by, empty (all subcategories) by default
-    func loadItemsByBrands(gender: Gender?, categoryIDs: [Int] = [], subcategoryIDs: [Int] = []) {
+    ///   - currentRequest: request number currently running
+    ///   - totalRequests: the total number of parallel calls to this function
+    func loadItemsByBrands(
+        gender: Gender?,
+        categoryIDs: [Int] = [],
+        subcategoryIDs: [Int] = [],
+        currentRequest: Int,
+        totalRequests: Int
+    ) {
         let selectedBrandNames = BrandManager.shared.selectedBrandNames
         let brandNamesSlice = selectedBrandNames.chunked(into: selectedBrandNames.count / 3 + 1)
-        for brandNames in brandNamesSlice {
+        
+        // Adjust current and total requests to the number of total requests
+        let currentRequest = brandNamesSlice.count * currentRequest
+        let totalRequests = brandNamesSlice.count * totalRequests
+        
+        for (index, brandNames) in brandNamesSlice.enumerated() {
             DispatchManager.shared.itemManagerGroup.enter()
             NetworkManager.shared.getItems(
                 for: gender,
@@ -255,6 +282,9 @@ class ItemManager {
                 }
                 
                 DispatchManager.shared.itemManagerGroup.leave()
+                
+                // Update progress bar
+                ProgressViewController.default?.updateProgressBar(current: currentRequest + index, total: totalRequests, maxValue: 0.5)
             }
         }
     }
