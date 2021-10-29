@@ -57,11 +57,11 @@ extension OutfitViewController {
         
         if showHangerButtons {
             // Make unpinned scroll views half transparent
-            scrollViews.setUnpinned(alpha: 0.5)
+            scrollViews.setUnpinned(alpha: 0.75)
             
             // Make pinned scroll view's hanger buttons fully opaque
             for (hangerButton, scrollView) in zip(hangerButtons, scrollViews) {
-                hangerButton.alpha = scrollView.isPinned ? 1 : 0.5
+                hangerButton.alpha = scrollView.isPinned ? 1 : 0.75
             }
         } else {
             // If hanger buttons are hidden make scroll views fully visible and don't pin any
@@ -337,7 +337,7 @@ extension OutfitViewController {
         for (button, underline) in zip(buttons, underlines) {
             // Set button opacity depending on whether it is selected
             let isSelected = button.occasion?.title == occasionSelected?.title
-            button.alpha = isSelected ? 1 : 0.5
+            button.alpha = isSelected ? 1 : 0.75
 
             // Set button underline visibility depending on whether the button is selected
             underline.isHidden = !isSelected

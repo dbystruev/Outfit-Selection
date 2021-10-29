@@ -36,8 +36,8 @@ extension OutfitViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scrollViews.forEach { $0.delegate = self }
-        configureTapGestures()
+        
+        // Configure the buttons with hungers next to them
         configureHangerButtons()
         
         // Load images into the outfit view controller's scroll views
@@ -52,8 +52,14 @@ extension OutfitViewController {
         // Configure occasions stack view
         configureOccasions()
         
+        // Configure single, double, and triple tap gestures
+        configureTapGestures()
+        
         // Configure navigation controller's bar font
         navigationController?.configureFont()
+        
+        // Use self as scroll view delegate for each scroll view
+        scrollViews.forEach { $0.delegate = self }
     }
     
     override func viewDidAppear(_ animated: Bool) {

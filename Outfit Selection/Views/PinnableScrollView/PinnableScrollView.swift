@@ -13,7 +13,7 @@ class PinnableScrollView: UIScrollView {
     /// True if this scroll view is pinned, false otherwise
     private(set) var isPinned = false {
         didSet {
-            alpha = isPinned ? 1 : unpinnedAlpha
+            alpha = isPinned ? 0.75 : unpinnedAlpha
         }
     }
     
@@ -50,7 +50,7 @@ class PinnableScrollView: UIScrollView {
     }
     
     /// Toggle pin/unpin status
-    public func toggle() {
+    public func togglePinned() {
         isPinned.toggle()
     }
     

@@ -31,7 +31,7 @@ extension OutfitViewController {
         guard let selectedIndex = hangerButtons.firstIndex(of: sender) else { return }
         
         // Toggle (pin/unpin) selected scroll view
-        scrollViews[selectedIndex].toggle()
+        scrollViews[selectedIndex].togglePinned()
         
         // Disable refresh button if all scroll views are pinned
         shuffleButton.isEnabled = !scrollViews.allPinned

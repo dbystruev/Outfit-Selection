@@ -38,7 +38,7 @@ extension PinnableScrollViews {
     }
     
     /// Set scroll views' unpinned alpha to given value
-    /// - Parameter alpha: the value to set unpinned scroll views' alpha to, usually 0.5 or 1
+    /// - Parameter alpha: the value to set unpinned scroll views' alpha to, usually 0.75 or 1
     func setUnpinned(alpha: CGFloat) {
         forEach { $0.unpinnedAlpha = alpha }
     }

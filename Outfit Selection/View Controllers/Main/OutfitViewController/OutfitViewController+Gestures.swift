@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Gestures
 extension OutfitViewController {
-    // Configure tap, double tap, and long press gestures
+    // Configure single, double, and triple tap gestures
     func configureTapGestures() {
         scrollViews.forEach { scrollView in
             let tripleTapRecognizer = UITapGestureRecognizer(
@@ -29,11 +29,11 @@ extension OutfitViewController {
             doubleTapRecognizer.numberOfTapsRequired = 2
             scrollView.addGestureRecognizer(doubleTapRecognizer)
             
-//            let longPressRecognizer = UILongPressGestureRecognizer(
-//                target: self,
-//                action: #selector(pinImage(_:))
-//            )
-//            scrollView.addGestureRecognizer(longPressRecognizer)
+            let longPressRecognizer = UILongPressGestureRecognizer(
+                target: self,
+                action: #selector(pinImage(_:))
+            )
+            scrollView.addGestureRecognizer(longPressRecognizer)
             
             let singleTapRecognizer = UITapGestureRecognizer(
                 target: self,
@@ -46,7 +46,7 @@ extension OutfitViewController {
     
     @objc func pinImage(_ sender: UIGestureRecognizer) {
         guard let scrollView = sender.view as? PinnableScrollView else { return }
-        scrollView.toggle()
+        scrollView.togglePinned()
         shuffleButton.isEnabled = !scrollViews.allPinned
     }
     
