@@ -114,8 +114,8 @@ extension Categories {
             subcategoryIDs[cornerIndex] = subcategoryIDs[cornerIndex].unique
         }
         
-        // Map IDs into categories
-        return subcategoryIDs.map { $0.compactMap { Categories.byID[$0] }}
+        // Map IDs into categories and reorder them from occasions
+        return subcategoryIDs.map { $0.compactMap { Categories.byID[$0] }}.corners(.occasions)
     }
     
     // MARK: - Computed Properties
@@ -123,6 +123,15 @@ extension Categories {
     var IDs: [Int] { map { $0.id }}
     
     // MARK: - Custom Methods
+    /// Reorder the categories by given corners
+    /// - Parameter corners: the corners to reorder the categories by
+    /// - Returns: the reordered categories
+    func corners(_ corners: Corners) -> Categories {
+        corners.compactMap {
+            self[safe: $0.rawValue]
+        }
+    }
+    
     /// Return the list of categories filtered by given occasions
     /// - Parameter occasions: occasions to filter categories by
     /// - Returns: the list of categories filtered by occasions
