@@ -31,10 +31,10 @@ class OccasionsViewController: NextButtonViewController {
     func configureGoButton() {
         let occasionsSelected = Occasions.selected.count
         let isEnabled = 0 < occasionsSelected
-        nextButton.backgroundColor = isEnabled
+        nextButton?.backgroundColor = isEnabled
             ? Globals.Color.Button.enabled
             : Globals.Color.Button.disabled
-        nextButton.isEnabled = isEnabled
+        nextButton?.isEnabled = isEnabled
     }
     
     // MARK: - Inherited Methods

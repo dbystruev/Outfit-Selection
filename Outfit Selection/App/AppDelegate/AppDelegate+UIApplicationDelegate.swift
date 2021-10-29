@@ -68,7 +68,11 @@ extension AppDelegate: UIApplicationDelegate {
         let temporaryDirectory = NSTemporaryDirectory()
         
         // Create a cache using 25 megabytes of memory and 50 megabytes of disk
-        URLCache.shared = URLCache(memoryCapacity: 25_000_000, diskCapacity: 50_000_000, diskPath: temporaryDirectory)
+        URLCache.shared = URLCache(
+            memoryCapacity: 25_000_000,
+            diskCapacity: 50_000_000,
+            diskPath: temporaryDirectory
+        )
         
         // Configure AppsFlyer
         appsFlyer(configureFor: application)

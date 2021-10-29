@@ -11,7 +11,7 @@ import UIKit
 class NextButtonViewController: LoggingViewController {
     // MARK: - Outlets
     /// Next button at the bottom of the screen
-    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var nextButton: UIButton?
     
     /// Left swipe gesture recognizer for view
     let leftSwipeGesture = UISwipeGestureRecognizer()
@@ -23,10 +23,10 @@ class NextButtonViewController: LoggingViewController {
     /// Set next button background color and enable / disable it
     /// - Parameter isEnabled: true if button should be enabled (default), false otherwise
     func configureNextButton(_ isEnabled: Bool = true) {
-        nextButton.backgroundColor = isEnabled
+        nextButton?.backgroundColor = isEnabled
             ? Globals.Color.Button.enabled
             : Globals.Color.Button.disabled
-        nextButton.isEnabled = isEnabled
+        nextButton?.isEnabled = isEnabled
     }
     
     // MARK: - Inherited Methods
@@ -43,7 +43,7 @@ class NextButtonViewController: LoggingViewController {
         }
         
         // Add next button action
-        nextButton.addTarget(self, action: #selector(nextButtonTapped(_:)), for: .touchUpInside)
+        nextButton?.addTarget(self, action: #selector(nextButtonTapped(_:)), for: .touchUpInside)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,7 +67,7 @@ class NextButtonViewController: LoggingViewController {
         // Perform default actions on each gesture
         switch sender.direction {
         case .left:
-            guard nextButton.isEnabled else { return }
+            guard let nextButton = nextButton, nextButton.isEnabled else { return }
             nextButtonTapped(nextButton)
         case .right:
             navigationController?.popViewController(animated: true)
