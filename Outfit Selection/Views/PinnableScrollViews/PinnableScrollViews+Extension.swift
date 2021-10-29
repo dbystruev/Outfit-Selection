@@ -44,12 +44,23 @@ extension PinnableScrollViews {
     }
     
     /// Scroll its views to the given tags
-    /// - Parameter ids: the ids to scroll the scroll views to
-    func scrollToElements(with IDs: [String]) {
-        // Check each scroll view for the presense of id and scroll to it
-        for scrollView in self {
-            for id in IDs {
+    /// - Parameters:
+    ///   - IDs: the ids to scroll the scroll views to
+    ///   - ordered: if true assume IDs are given in the same order as scroll views
+    func scrollToElements(with IDs: [String], ordered: Bool) {
+        debug(IDs)
+        
+        if ordered {
+            // Scroll each scroll view to the matching item ID
+            for (id, scrollView) in zip(IDs, self) {
                 scrollView.scrollToElementIfPresent(with: id)
+            }
+        } else {
+            // Check each scroll view for the presense of item ID and scroll to it
+            for scrollView in self {
+                for id in IDs {
+                    scrollView.scrollToElementIfPresent(with: id)
+                }
             }
         }
     }

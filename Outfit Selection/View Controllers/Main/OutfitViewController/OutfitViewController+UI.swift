@@ -186,16 +186,18 @@ extension OutfitViewController {
     }
     
     /// Scroll outfit's scroll views to the given items
-    /// - Parameter scrollItems: the items to scroll the scroll views to
-    func scrollTo(items scrollItems: [Item]) {
+    /// - Parameters:
+    ///   - scrollItems: the items to scroll the scroll views to
+    ///   - ordered: if true assume IDs are given in the same order as scroll views
+    func scrollTo(items scrollItems: [Item], ordered: Bool) {
         // Scroll to the given item IDs
-        scrollViews?.scrollToElements(with: scrollItems.IDs)
+        scrollViews?.scrollToElements(with: scrollItems.IDs, ordered: ordered)
         
         let unmatchedItems = Set(scrollItems.IDs).symmetricDifference(visibleItems.IDs).items
         debug("\(unmatchedItems.count) unmatched items:", unmatchedItems)
         
         if !unmatchedItems.isEmpty {
-            debug(itemsByCorner.map { $0.filter { unmatchedItems.IDs.contains($0.id) } })
+            debug(itemsByCorner.map { $0.filter { unmatchedItems.IDs.contains($0.id) }})
         }
         
         // Update like button and price
@@ -243,7 +245,7 @@ extension OutfitViewController {
         debug(occasionItems.count, occasionItems)
         
         // Scroll to the selected items
-        scrollTo(items: occasionItems)
+        scrollTo(items: occasionItems.corners(.occasions), ordered: true)
         
         // Update selected occasion property and UI
         occasionSelected = occasion
@@ -283,7 +285,6 @@ extension OutfitViewController {
                     self.shuffleBubble?.alpha = 1
                 }
             }
-            
         }
     }
     
@@ -295,7 +296,7 @@ extension OutfitViewController {
             
             // Go through each item and show its subcategory in occasion
             for item in visibleItems {
-                debug(item.name, item.subcategories(in: occasion))
+                debug(item.id, item.name, item.subcategories(in: occasion))
             }
         }
     }

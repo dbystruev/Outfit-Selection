@@ -229,17 +229,17 @@ class NetworkManager {
     func getOccasions(completion: @escaping (_ occasions: Occasions?) -> Void) {
         get("occasions") { (occasions: Occasions?) in
             occasions?.forEach {
-                // Remove non-latin characters from the beginning of name
+                // Remove non-latin characters from the beginning of the name
                 $0.name = $0
                     .name
                     .replacingOccurrences(
-                        of: "^[^a-z]*",
+                        of: "^[^a-z0-9]*",
                         with: "",
                         options: [.caseInsensitive, .regularExpression]
                     )
                     .trimmingCharacters(in: .whitespacesAndNewlines)
                 
-                // Remove anything in brackets in the labels
+                // Remove anything in brackets inside the labels
                 $0.label = $0
                     .label
                     .replacingOccurrences(

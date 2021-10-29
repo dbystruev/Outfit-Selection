@@ -74,7 +74,7 @@ extension OutfitViewController {
                 scrollTo(occasion: occasionSelected)
             }
         } else {
-            scrollTo(items: scrollToItems)
+            scrollTo(items: scrollToItems, ordered: false)
             scrollToItems.removeAll()
         }
         
