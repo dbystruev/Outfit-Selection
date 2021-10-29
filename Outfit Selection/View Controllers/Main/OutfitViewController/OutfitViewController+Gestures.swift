@@ -74,7 +74,7 @@ extension OutfitViewController {
             pinImage(sender)
             
         case 3:
-            showLookDetails()
+            toggleSubcategoryLabels()
             
         default:
             debug("WARNING: Unknown number of taps \(taps)")

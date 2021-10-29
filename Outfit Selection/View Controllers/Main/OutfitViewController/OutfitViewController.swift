@@ -28,7 +28,7 @@ class OutfitViewController: LoggingViewController {
         didSet {
             subcategoryLabels.forEach {
                 $0.clipsToBounds = true
-                $0.layer.cornerRadius = 16
+                $0.layer.cornerRadius = 8
             }
         }
     }

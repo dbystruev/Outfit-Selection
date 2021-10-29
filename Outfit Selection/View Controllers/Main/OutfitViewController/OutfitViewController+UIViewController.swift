@@ -86,6 +86,8 @@ extension OutfitViewController {
         super.viewDidLayoutSubviews()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.scrollViews.forEach { $0.scrollToCurrentElement() }
+            
+            // Updates like button, total price, and subcategory labels
             self.updateUI()
         }
         
@@ -95,7 +97,10 @@ extension OutfitViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Updates like button, total price, and subcategory labels
         updateUI()
+        
         showBubbles()
     }
     

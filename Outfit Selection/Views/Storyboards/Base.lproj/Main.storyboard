@@ -116,7 +116,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Блокноты и канцелярские товары" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="E9E-xt-JrF">
-                                                                <rect key="frame" x="16" y="30" width="124" height="57.5"/>
+                                                                <rect key="frame" x="16" y="60" width="124" height="57.5"/>
                                                                 <color key="backgroundColor" red="0.32052502040000003" green="0.37435173989999998" blue="0.37976023549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -126,7 +126,6 @@
                                                         <constraints>
                                                             <constraint firstAttribute="trailing" secondItem="E9E-xt-JrF" secondAttribute="trailing" constant="16" id="0i5-Qi-HHf"/>
                                                             <constraint firstItem="r2m-cA-WkI" firstAttribute="top" secondItem="soe-qC-gFy" secondAttribute="top" constant="16" id="9P0-2V-OyW"/>
-                                                            <constraint firstItem="E9E-xt-JrF" firstAttribute="centerY" secondItem="soe-qC-gFy" secondAttribute="centerY" id="Bk7-2M-wal"/>
                                                             <constraint firstAttribute="trailing" secondItem="r2m-cA-WkI" secondAttribute="trailing" constant="16" id="KTa-OA-n4F"/>
                                                             <constraint firstItem="yAK-fJ-kYJ" firstAttribute="height" secondItem="soe-qC-gFy" secondAttribute="height" id="KfH-pk-U6v"/>
                                                             <constraint firstItem="e2j-61-yTt" firstAttribute="leading" secondItem="soe-qC-gFy" secondAttribute="leading" id="LML-ak-1at"/>
@@ -134,6 +133,7 @@
                                                             <constraint firstItem="yAK-fJ-kYJ" firstAttribute="width" secondItem="soe-qC-gFy" secondAttribute="width" id="Th9-r1-vd6"/>
                                                             <constraint firstAttribute="bottom" secondItem="e2j-61-yTt" secondAttribute="bottom" id="Umi-6v-RPv"/>
                                                             <constraint firstItem="E9E-xt-JrF" firstAttribute="leading" secondItem="soe-qC-gFy" secondAttribute="leading" constant="16" id="YOq-bA-oao"/>
+                                                            <constraint firstAttribute="bottom" secondItem="E9E-xt-JrF" secondAttribute="bottom" id="hxg-oy-iIH"/>
                                                             <constraint firstAttribute="trailing" secondItem="e2j-61-yTt" secondAttribute="trailing" id="j7J-Gk-96a"/>
                                                         </constraints>
                                                     </view>
@@ -172,7 +172,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Блокноты и канцелярские товары" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="14x-PM-o3f">
-                                                                <rect key="frame" x="16" y="89" width="124" height="57.5"/>
+                                                                <rect key="frame" x="16" y="178" width="124" height="57.5"/>
                                                                 <color key="backgroundColor" red="0.32052502040000003" green="0.37435173989999998" blue="0.37976023549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -185,10 +185,10 @@
                                                             <constraint firstItem="McV-FV-yxk" firstAttribute="leading" secondItem="q3p-Hb-HCX" secondAttribute="leading" id="Anj-FU-Qey"/>
                                                             <constraint firstItem="3gk-iW-dx9" firstAttribute="width" secondItem="q3p-Hb-HCX" secondAttribute="width" id="B4F-rg-fXi"/>
                                                             <constraint firstAttribute="trailing" secondItem="0yi-5U-Vzn" secondAttribute="trailing" constant="16" id="END-gk-4y1"/>
+                                                            <constraint firstAttribute="bottom" secondItem="14x-PM-o3f" secondAttribute="bottom" id="EzU-85-mtp"/>
                                                             <constraint firstAttribute="trailing" secondItem="14x-PM-o3f" secondAttribute="trailing" constant="16" id="JFg-HH-o6d"/>
                                                             <constraint firstItem="3gk-iW-dx9" firstAttribute="height" secondItem="q3p-Hb-HCX" secondAttribute="height" id="KHt-Ak-bnd"/>
                                                             <constraint firstItem="McV-FV-yxk" firstAttribute="top" secondItem="q3p-Hb-HCX" secondAttribute="top" id="cCK-f0-LTG"/>
-                                                            <constraint firstItem="14x-PM-o3f" firstAttribute="centerY" secondItem="q3p-Hb-HCX" secondAttribute="centerY" id="edZ-2t-NDh"/>
                                                             <constraint firstAttribute="bottom" secondItem="McV-FV-yxk" secondAttribute="bottom" id="k4G-SP-JBA"/>
                                                             <constraint firstItem="0yi-5U-Vzn" firstAttribute="top" secondItem="q3p-Hb-HCX" secondAttribute="top" constant="16" id="k6Q-Tr-b46"/>
                                                         </constraints>
@@ -236,7 +236,7 @@
                                                                 </connections>
                                                             </button>
                                                             <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Блокноты и канцелярские товары" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m21-ey-gXZ">
-                                                                <rect key="frame" x="16" y="30" width="124" height="57.5"/>
+                                                                <rect key="frame" x="16" y="60" width="124" height="57.5"/>
                                                                 <color key="backgroundColor" red="0.32052502040000003" green="0.37435173989999998" blue="0.37976023549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -244,13 +244,13 @@
                                                             </label>
                                                         </subviews>
                                                         <constraints>
-                                                            <constraint firstItem="m21-ey-gXZ" firstAttribute="centerY" secondItem="ZMD-nX-CLZ" secondAttribute="centerY" id="8Mt-oy-1aY"/>
                                                             <constraint firstItem="gbr-Gx-rxa" firstAttribute="width" secondItem="ZMD-nX-CLZ" secondAttribute="width" id="9w0-dQ-UZ8"/>
                                                             <constraint firstAttribute="trailing" secondItem="m21-ey-gXZ" secondAttribute="trailing" constant="16" id="Eju-nk-cCS"/>
                                                             <constraint firstItem="nrI-94-QGh" firstAttribute="leading" secondItem="ZMD-nX-CLZ" secondAttribute="leading" id="OUB-QY-gnQ"/>
                                                             <constraint firstAttribute="trailing" secondItem="nrI-94-QGh" secondAttribute="trailing" id="YHX-cf-Tk8"/>
                                                             <constraint firstItem="nrI-94-QGh" firstAttribute="top" secondItem="ZMD-nX-CLZ" secondAttribute="top" id="cYA-rs-Heo"/>
                                                             <constraint firstAttribute="bottom" secondItem="nrI-94-QGh" secondAttribute="bottom" id="f2v-HN-PdP"/>
+                                                            <constraint firstAttribute="bottom" secondItem="m21-ey-gXZ" secondAttribute="bottom" id="iZh-fM-y7R"/>
                                                             <constraint firstItem="m21-ey-gXZ" firstAttribute="leading" secondItem="ZMD-nX-CLZ" secondAttribute="leading" constant="16" id="tuq-DA-eye"/>
                                                             <constraint firstAttribute="trailing" secondItem="3oI-QJ-jlu" secondAttribute="trailing" constant="16" id="uel-TW-K7X"/>
                                                             <constraint firstItem="3oI-QJ-jlu" firstAttribute="top" secondItem="ZMD-nX-CLZ" secondAttribute="top" constant="16" id="vcp-7Y-p7s"/>
@@ -295,7 +295,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Блокноты и канцелярские товары" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikB-Nx-472">
-                                                                        <rect key="frame" x="16" y="30.5" width="124" height="57.5"/>
+                                                                        <rect key="frame" x="16" y="60.5" width="124" height="57.5"/>
                                                                         <color key="backgroundColor" red="0.32052502040000003" green="0.37435173989999998" blue="0.37976023549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -303,9 +303,9 @@
                                                                     </label>
                                                                 </subviews>
                                                                 <constraints>
-                                                                    <constraint firstItem="ikB-Nx-472" firstAttribute="centerY" secondItem="CIz-Li-wcf" secondAttribute="centerY" id="4Q0-Pt-FqL"/>
                                                                     <constraint firstItem="YAH-LD-FOj" firstAttribute="leading" secondItem="CIz-Li-wcf" secondAttribute="leading" constant="16" id="6mc-yB-cWf"/>
                                                                     <constraint firstAttribute="bottom" secondItem="YAH-LD-FOj" secondAttribute="bottom" id="Pnm-KC-AnF"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="ikB-Nx-472" secondAttribute="bottom" id="RwH-Vw-rxO"/>
                                                                     <constraint firstAttribute="trailing" secondItem="YAH-LD-FOj" secondAttribute="trailing" constant="16" id="WSR-oA-Icx"/>
                                                                     <constraint firstAttribute="trailing" secondItem="ikB-Nx-472" secondAttribute="trailing" constant="16" id="YMh-oo-7fM"/>
                                                                     <constraint firstItem="slC-JN-DLX" firstAttribute="height" secondItem="CIz-Li-wcf" secondAttribute="height" constant="-32" id="Yc3-ki-6kI"/>
@@ -351,7 +351,7 @@
                                                                         </connections>
                                                                     </button>
                                                                     <label hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Блокноты и канцелярские товары" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tM5-HZ-6Mt">
-                                                                        <rect key="frame" x="16" y="30" width="124" height="57.5"/>
+                                                                        <rect key="frame" x="16" y="60" width="124" height="57.5"/>
                                                                         <color key="backgroundColor" red="0.32052502040000003" green="0.37435173989999998" blue="0.37976023549999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -360,7 +360,6 @@
                                                                 </subviews>
                                                                 <constraints>
                                                                     <constraint firstItem="E0I-hd-Y8I" firstAttribute="width" secondItem="ACr-z5-nl2" secondAttribute="width" constant="-32" id="1qF-fy-20o"/>
-                                                                    <constraint firstItem="tM5-HZ-6Mt" firstAttribute="centerY" secondItem="ACr-z5-nl2" secondAttribute="centerY" id="NKY-QR-9XE"/>
                                                                     <constraint firstItem="7mM-sh-37O" firstAttribute="top" secondItem="ACr-z5-nl2" secondAttribute="top" id="Nzx-2G-ff0"/>
                                                                     <constraint firstAttribute="trailing" secondItem="7mM-sh-37O" secondAttribute="trailing" constant="16" id="Sfh-id-Dxl"/>
                                                                     <constraint firstAttribute="bottom" secondItem="7mM-sh-37O" secondAttribute="bottom" constant="32" id="WOD-u5-bUd"/>
@@ -369,6 +368,7 @@
                                                                     <constraint firstItem="E0I-hd-Y8I" firstAttribute="height" secondItem="ACr-z5-nl2" secondAttribute="height" constant="-32" id="hWB-L0-PL3"/>
                                                                     <constraint firstAttribute="trailing" secondItem="NT3-Ff-VD4" secondAttribute="trailing" constant="16" id="hou-xe-hoD"/>
                                                                     <constraint firstItem="tM5-HZ-6Mt" firstAttribute="leading" secondItem="ACr-z5-nl2" secondAttribute="leading" constant="16" id="mKg-Sy-Jdv"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="tM5-HZ-6Mt" secondAttribute="bottom" id="pcw-tT-PV0"/>
                                                                     <constraint firstAttribute="trailing" secondItem="tM5-HZ-6Mt" secondAttribute="trailing" constant="16" id="sof-hf-8Wn"/>
                                                                 </constraints>
                                                             </view>

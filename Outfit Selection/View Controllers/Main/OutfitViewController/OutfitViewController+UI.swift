@@ -200,7 +200,7 @@ extension OutfitViewController {
             debug(itemsByCorner.map { $0.filter { unmatchedItems.IDs.contains($0.id) }})
         }
         
-        // Update like button and price
+        // Updates like button, total price, and subcategory labels
         updateUI()
     }
     
@@ -260,7 +260,7 @@ extension OutfitViewController {
             }
         }
         
-        // Update like button and price
+        // Updates like button, total price, and subcategory labels
         updateUI()
     }
     
@@ -288,20 +288,10 @@ extension OutfitViewController {
         }
     }
     
-    /// Show information about currently presented look
-    func showLookDetails() {
+    /// Show / hide subcategory labels with information about currently presented look
+    func toggleSubcategoryLabels() {
         // Toggle visibility of subcategory labels
         showSubcategoryLabels.toggle()
-        
-        if let occasion = occasionSelected {
-            // Get unique subcategory IDs for occasion
-            debug(occasion.corners.map { $0.categories })
-            
-            // Go through each item and show its subcategory in occasion
-            for item in visibleItems {
-                debug(item.id, item.name, item.subcategories(in: occasion))
-            }
-        }
     }
     
     func unpin() {
@@ -310,13 +300,27 @@ extension OutfitViewController {
         scrollViews.unpin()
     }
     
+    func updateItemCount() {
+        updatePriceLabelWithItemCount(with: itemCount)
+        updateUI()
+    }
+    
     func updatePriceLabelWithItemCount(with count: Int) {
         priceLabel.text = "Items: \(count)"
     }
     
-    func updateItemCount() {
-        updatePriceLabelWithItemCount(with: itemCount)
-        updateUI()
+    /// Update subcategory labels with information about currently presented look
+    func updateSubcategoryLabels() {
+        if let occasion = occasionSelected {
+            // Go through each item and show its subcategory in occasion
+            for (item, subcategoryLabel) in zip(visibleItems, subcategoryLabels) {
+                let text = item
+                    .subcategories(in: occasion)
+                    .map { $0.name }
+                    .joined(separator: ", ")
+                subcategoryLabel.text = " \(text) "
+            }
+        }
     }
     
     /// Update layout when rotating
@@ -371,12 +375,15 @@ extension OutfitViewController {
         }
     }
     
-    /// Updates like button and price
+    /// Updates like button, total price, and subcategory labels
     func updateUI() {
         // Update like button
         updateLikeButton()
         
         // Update price label
         updatePriceUI()
+        
+        // Update subcategory labels
+        updateSubcategoryLabels()
     }
 }

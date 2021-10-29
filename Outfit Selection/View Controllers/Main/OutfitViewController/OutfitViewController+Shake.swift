@@ -19,7 +19,7 @@ extension OutfitViewController {
         switch motion {
             
         case .motionShake:
-            showLookDetails()
+            toggleSubcategoryLabels()
             
         default:
             break
