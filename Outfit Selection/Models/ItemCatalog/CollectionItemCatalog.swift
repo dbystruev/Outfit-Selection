@@ -15,6 +15,6 @@ final class CollectionItemCatalog: ItemCatalog {
 
     convenience init?(_ outfit: [Item]?) {
         guard let outfit = outfit, !outfit.isEmpty else { return nil }
-        self.init(kind: .outfit, itemIDs: outfit.map { $0.id })
+        self.init(kind: .outfit, itemIDs: outfit.IDs)
     }
 }

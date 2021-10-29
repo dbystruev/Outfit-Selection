@@ -38,7 +38,7 @@ struct Wishlist: Codable {
     
     /// Set of item indexes found in collections
     static var collectionsItemsIdSet: Set<String> {
-        Set(collectionsItems.compactMap { $0.id })
+        Set(collectionsItems.IDs)
     }
     
     /// Wishlist items with type .item
@@ -70,7 +70,7 @@ struct Wishlist: Codable {
     
     /// Set of item indexes found in outfits
     static var outfitsItemsIdSet: Set<String> {
-        Set(outfitsItems.compactMap { $0.id })
+        Set(outfitsItems.IDs)
     }
     
     // MARK: - Static Methods
@@ -146,7 +146,7 @@ struct Wishlist: Codable {
         guard itemsCount == outfit.items.count else { return false }
         
         // Make two sets of outfit item indexes
-        let newOutfitSet = Set(items.map { $0.id })
+        let newOutfitSet = Set(items.IDs)
         
         // Compare two sets of outfit item indexes
         return newOutfitSet == outfit.itemsIdSet

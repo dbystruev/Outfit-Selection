@@ -64,117 +64,14 @@ extension OutfitViewController {
                 hangerButton.alpha = scrollView.isPinned ? 1 : 0.5
             }
         } else {
-            // If hanger buttons are hidden make scroll views fully visible and don't pin any scroll views
+            // If hanger buttons are hidden make scroll views fully visible and don't pin any
             scrollViews.setUnpinned(alpha: 1)
             scrollViews.unpin()
         }
-        
     }
     
-    /// Configure refresh bubble once in the beginning
-    func configureShuffleBubble() {
-        shuffleBubble?.alpha = 0
-        shuffleBubble?.text = "Check out the next outfit"
-        
-        // Add tap gesture on refresh bubble
-        shuffleBubble?.addTapOnce(target: self, action: #selector(shuffleBubbleTapped))
-    }
-    
-    /// Hide hanger and refresh bubbles immediately
-    func hideBubbles() {
-        shouldHideBubbles = true
-        hangerBubble.alpha = 0
-        shuffleBubble?.alpha = 0
-    }
-    
-    /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
-    func loadImages() {
-        // Clear scroll views
-        scrollViews.clear()
-        
-        // Load images from view models into scroll view
-        ItemManager.shared.loadImages(into: scrollViews)
-        
-        // Update the number of images loaded
-        updateItemCount()
-    }
-    
-    func pin() {
-        shuffleButton.isEnabled = false
-        scrollViews.pin()
-    }
-    
-    /// Scroll outfit's scroll views to the given items
-    /// - Parameter items: the items to scroll the scroll views to
-    func scrollTo(items: [Item]) {
-        scrollViews?.scrollToElements(with: items.map { $0.id })
-        
-        // Update like button and price
-        updateUI()
-    }
-    
-    /// Scroll outfit's scroll views to the given occasion
-    /// - Parameter occasion: the occasion to scroll the scroll views to
-    func scrollTo(occasion: Occasion?) {
-        // Get all items in all scroll views, including non-visible
-        let items = items
-        
-        // Filter occasions by items in subcategories
-        guard
-            let occasionTitle = occasion?.title,
-            let occasions = Occasions.byTitle[occasionTitle]?.filter({ occasion in
-                // Keep occasions for which we could find items
-                for cornerCategoryIDs in occasion.corners {
-                    guard !items.filter({
-                        !$0.subcategories(in: cornerCategoryIDs).isEmpty
-                    }).isEmpty else { return false }
-                }
-                return true
-            }),
-            
-            // Select random look from filtered occasions
-            let occasion = occasions.randomElement()
-        else { return }
-        
-        debug(occasion)
-        
-        // Go through the corners and select items for each corner
-        var occasionItems: [Item] = []
-        for cornerCategoryIDs in occasion.corners {
-            guard let cornerItem = items.filter({
-                !$0.subcategories(in: cornerCategoryIDs).isEmpty
-            }).randomElement() else {
-                debug("WARNING: No item matching subcategories \(cornerCategoryIDs)")
-                return
-            }
-            occasionItems.append(cornerItem)
-        }
-        
-        // Filter items which belong to the selected look
-        debug(occasionItems.count, occasionItems)
-        
-        // Scroll to the selected items
-        scrollTo(items: occasionItems)
-        
-        // Update selected occasion property and UI
-        occasionSelected = occasion
-    }
-    
-    /// Scroll to random items
-    /// - Parameter duration: duration of each scroll, 1 second by default
-    func scrollToRandomItems(duration: TimeInterval = 1) {
-        scrollViews.forEach {
-            if !$0.isPinned {
-                $0.scrollToRandomElement(duration: duration)
-            }
-        }
-        
-        // Update like button and price
-        updateUI()
-    }
-    
-    /// Setup occasions stack view
-    func setupOccasions() {
+    /// Configure occasions stack view
+    func configureOccasions() {
         // By default make the first occasion selected
         let selectedOccasions = Occasions.selectedUniqueTitle.sorted()
         occasionSelected = occasionSelected ?? selectedOccasions.first
@@ -246,6 +143,108 @@ extension OutfitViewController {
         
         // Update occasions
         updateOccasionsUI()
+    }
+    
+    /// Configure refresh bubble once in the beginning
+    func configureShuffleBubble() {
+        shuffleBubble?.alpha = 0
+        shuffleBubble?.text = "Check out the next outfit"
+        
+        // Add tap gesture on refresh bubble
+        shuffleBubble?.addTapOnce(target: self, action: #selector(shuffleBubbleTapped))
+    }
+    
+    /// Hide hanger and refresh bubbles immediately
+    func hideBubbles() {
+        shouldHideBubbles = true
+        hangerBubble.alpha = 0
+        shuffleBubble?.alpha = 0
+    }
+    
+    /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
+    func loadImages() {
+        // Clear scroll views
+        scrollViews.clear()
+        
+        // Load images from view models into scroll view
+        ItemManager.shared.loadImages(into: scrollViews)
+        
+        // Update the number of images loaded
+        updateItemCount()
+    }
+    
+    func pin() {
+        shuffleButton.isEnabled = false
+        scrollViews.pin()
+    }
+    
+    /// Scroll outfit's scroll views to the given items
+    /// - Parameter items: the items to scroll the scroll views to
+    func scrollTo(items: [Item]) {
+        scrollViews?.scrollToElements(with: items.IDs)
+        
+        // Update like button and price
+        updateUI()
+    }
+    
+    /// Scroll outfit's scroll views to the given occasion
+    /// - Parameter occasion: the occasion to scroll the scroll views to
+    func scrollTo(occasion: Occasion?) {
+        // Get all items in all scroll views, including non-visible
+        let items = items
+        
+        // Filter occasions by items in subcategories
+        guard
+            let occasionTitle = occasion?.title,
+            let occasions = Occasions.byTitle[occasionTitle]?.filter({ occasion in
+                // Keep occasions for which we could find items
+                for cornerCategoryIDs in occasion.corners {
+                    guard !items.filter({
+                        !$0.subcategories(in: cornerCategoryIDs).isEmpty
+                    }).isEmpty else { return false }
+                }
+                return true
+            }),
+            
+            // Select random look from filtered occasions
+            let occasion = occasions.randomElement()
+        else { return }
+        
+        debug(occasion)
+        
+        // Go through the corners and select items for each corner
+        var occasionItems: [Item] = []
+        for cornerCategoryIDs in occasion.corners {
+            guard let cornerItem = items.filter({
+                !$0.subcategories(in: cornerCategoryIDs).isEmpty
+            }).randomElement() else {
+                debug("WARNING: No item matching subcategories \(cornerCategoryIDs)")
+                return
+            }
+            occasionItems.append(cornerItem)
+        }
+        
+        // Filter items which belong to the selected look
+        debug(occasionItems.count, occasionItems)
+        
+        // Scroll to the selected items
+        scrollTo(items: occasionItems)
+        
+        // Update selected occasion property and UI
+        occasionSelected = occasion
+    }
+    
+    /// Scroll to random items
+    /// - Parameter duration: duration of each scroll, 1 second by default
+    func scrollToRandomItems(duration: TimeInterval = 1) {
+        scrollViews.forEach {
+            if !$0.isPinned {
+                $0.scrollToRandomElement(duration: duration)
+            }
+        }
+        
+        // Update like button and price
+        updateUI()
     }
     
     /// Show hanger and refresh bubbles after initial pause
@@ -338,9 +337,6 @@ extension OutfitViewController {
     
     /// Updates like button and price
     func updateUI() {
-        // Setup occasions stack view
-        setupOccasions()
-        
         // Update like button
         updateLikeButton()
         

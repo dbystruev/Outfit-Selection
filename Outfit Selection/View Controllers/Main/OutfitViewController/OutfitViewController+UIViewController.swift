@@ -49,6 +49,9 @@ extension OutfitViewController {
         // Configure the bubble next to hanger icon
         configureHangerBubble()
         
+        // Configure occasions stack view
+        configureOccasions()
+        
         // Configure navigation controller's bar font
         navigationController?.configureFont()
     }

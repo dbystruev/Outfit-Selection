@@ -10,6 +10,6 @@ extension Collection: Equatable {
     static func == (lhs: Collection, rhs: Collection) -> Bool {
         lhs.itemCount == rhs.itemCount
         && lhs.gender == rhs.gender
-        && Set(lhs.items.map { $0.id }) == Set(rhs.items.map { $0.id })
+        && Set(lhs.items.IDs) == Set(rhs.items.IDs)
     }
 }

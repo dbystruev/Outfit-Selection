@@ -39,10 +39,8 @@ extension PinnableScrollView {
         stackView?.arrangedSubviews.compactMap { ($0 as? UIImageView)?.item } ?? []
     }
     
-    /// Item ids of each of the arranged subviews of the pinnable scroll view
-    var itemIds: [String] {
-        items.map { $0.id }
-    }
+    /// Item IDs of each of the arranged subviews of the pinnable scroll view
+    var itemIDs: [String] { items.IDs }
     
     var stackView: UIStackView? {
         subviews.first as? UIStackView
@@ -89,7 +87,7 @@ extension PinnableScrollView {
     /// - Parameter id: the id to search for
     /// - Returns: the index of the first element with the given id
     func index(of id: String) -> Int? {
-        itemIds.firstIndex(of: id)
+        itemIDs.firstIndex(of: id)
     }
     
     func insert(image: UIImage?, atIndex index: Int? = nil) -> UIImageView {

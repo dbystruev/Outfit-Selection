@@ -29,7 +29,7 @@ final class WishlistItemCatalog: ItemCatalog {
     init(gender: Gender, kind: Kind, items: [Item], name: String) {
         self.gender = gender
         self.name = name
-        super.init(kind: kind, itemIDs: items.map { $0.id })
+        super.init(kind: kind, itemIDs: items.IDs)
     }
     
     // MARK: - Decodable

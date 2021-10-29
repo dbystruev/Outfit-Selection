@@ -39,4 +39,8 @@ extension Items {
     static func updateVendorNames(with fullVendorNames: [String: String]) {
         byID.forEach { $0.value.updateVendorName(with: fullVendorNames) }
     }
+    
+    // MARK: - Computed Properties
+    /// IDs of items
+    var IDs: [String] { map { $0.id }}
 }
