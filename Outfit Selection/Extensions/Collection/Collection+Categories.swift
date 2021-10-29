@@ -1,5 +1,5 @@
 //
-//  Collection+Categories.swift
+//  Collection+categories.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 29.10.2021.

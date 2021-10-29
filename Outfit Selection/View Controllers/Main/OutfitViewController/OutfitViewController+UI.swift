@@ -179,9 +179,17 @@ extension OutfitViewController {
     }
     
     /// Scroll outfit's scroll views to the given items
-    /// - Parameter items: the items to scroll the scroll views to
-    func scrollTo(items: [Item]) {
-        scrollViews?.scrollToElements(with: items.IDs)
+    /// - Parameter scrollItems: the items to scroll the scroll views to
+    func scrollTo(items scrollItems: [Item]) {
+        // Scroll to the given item IDs
+        scrollViews?.scrollToElements(with: scrollItems.IDs)
+        
+        let unmatchedItems = Set(scrollItems.IDs).symmetricDifference(visibleItems.IDs).items
+        debug("\(unmatchedItems.count) unmatched items:", unmatchedItems)
+        
+        if !unmatchedItems.isEmpty {
+            debug(itemsByCorner.map { $0.filter { unmatchedItems.IDs.contains($0.id) } })
+        }
         
         // Update like button and price
         updateUI()

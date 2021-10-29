@@ -79,7 +79,12 @@ class OutfitViewController: LoggingViewController {
     // MARK: - Computed Properties
     /// Items in all scroll views' image views, including currently non-visible
     var items: [Item] {
-        scrollViews.flatMap { $0.items }
+        itemsByCorner.flatMap { $0 }
+    }
+    
+    /// Items in all scroll views' image views, including currently non-visible, ordered by corners
+    var itemsByCorner: [[Item]] {
+        scrollViews.map { $0.items }
     }
     
     /// The number of items in all scroll views
