@@ -38,13 +38,13 @@ extension Item {
     }
     
     func subcategories(in IDs: [Int]) -> Categories {
-        subcategoryIDs(in: IDs).compactMap { Categories.byID[$0] }
+        subcategoryIDs(in: IDs).categories
     }
     
     /// Returns subcategories present both in item and in occasion
     /// - Parameter occasion: the occasion to check
     /// - Returns: subcategories present both in item and in occasion
     func subcategories(in occasion: Occasion) -> Categories {
-        subcategoryIDs(in: occasion).compactMap { Categories.byID[$0] }
+        subcategoryIDs(in: occasion).categories
     }
 }

@@ -16,7 +16,7 @@ extension OutfitViewController {
         case .motionShake:
             if let occasion = occasionSelected {
                 // Get unique subcategory IDs for occasion
-                debug(occasion.corners.map { $0.compactMap { Categories.byID[$0] }})
+                debug(occasion.corners.map { $0.categories })
                 
                 // Go through each item and show its subcategory in occasion
                 for item in visibleItems {

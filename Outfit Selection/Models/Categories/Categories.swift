@@ -109,13 +109,13 @@ extension Categories {
             }
         }
         
-        // Make sure there are no subcategory ID doubles
+        // Remove doubles in subcategory IDs
         for cornerIndex in 0 ..< subcategoryIDs.count {
             subcategoryIDs[cornerIndex] = subcategoryIDs[cornerIndex].unique
         }
         
         // Map IDs into categories and reorder them from occasions
-        return subcategoryIDs.map { $0.compactMap { Categories.byID[$0] }}.corners(.occasions)
+        return subcategoryIDs.map { $0.categories }.corners(.occasions)
     }
     
     // MARK: - Computed Properties
