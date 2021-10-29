@@ -67,7 +67,7 @@ class ItemManager {
             
             // MARK: TODO Implement categories from occasions
             /// Loop all categories and view models, whatever number is lower
-            for (categories, viewModel) in zip(Categories.filtered(by: gender), self.viewModels) {
+            for (categories, viewModel) in zip(Categories.by(gender: gender), self.viewModels) {
                 // The names of the items already loaded in this category
                 var loadedItemNames = [String]()
                 
@@ -197,7 +197,7 @@ class ItemManager {
         // Run network requests for different corners and brand names in parallel
         let categoriesCount: Int
         if Occasions.byID.isEmpty {
-            let categoriesByCorners = Categories.filtered(by: gender)
+            let categoriesByCorners = Categories.by(gender: gender)
             categoriesCount = categoriesByCorners.flatMap { $0.IDs }.unique.count
             for categories in categoriesByCorners {
                 loadItemsByBrands(

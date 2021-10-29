@@ -136,7 +136,7 @@ class NetworkManager {
     
     /// Call /categories API
     /// - Parameter completion: closure called after the request is finished, with list of categories if successfull, or with nil if not
-    func getCategories(completion: @escaping (_ categories: [Category]?) -> Void) {
+    func getCategories(completion: @escaping (_ categories: Categories?) -> Void) {
         get("categories", completion: completion)
     }
     

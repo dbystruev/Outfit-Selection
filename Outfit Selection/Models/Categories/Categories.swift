@@ -11,7 +11,7 @@ typealias Categories = [Category]
 extension Categories {
     // MARK: - Stored Static Properties
     /// The full  list of categories
-    static var all: [Category] = [] {
+    static var all: Categories = [] {
         didSet {
             all.forEach { byID[$0.id] = $0 }
         }
@@ -21,7 +21,7 @@ extension Categories {
     private(set) static var byID: [Int: Category] = [:]
     
     /// Female categories filtered by chosen female category names
-    static let female: [[Category]] = {
+    static let female: [Categories] = {
         femaleNames.map { words in
             all.filter { category in
                 let categoryName = category.name.lowercased()
@@ -49,7 +49,7 @@ extension Categories {
     ]
     
     /// Male categories filtered by chosen male category names
-    static let male: [[Category]] = {
+    static let male: [Categories] = {
         maleNames.map { words in
             all.filter { category in
                 let categoryName = category.name.lowercased()
@@ -80,10 +80,10 @@ extension Categories {
     static let maxCornerCount = 100
     
     // MARK: - Static Methods
-    /// Return the list of the category lists filtered by gender
+    /// Return the generated list of the category lists by gender
     /// - Parameter gender: gender to filter categories by
     /// - Returns: the list of the category lists filtered by gender
-    static func filtered(by gender: Gender?) -> [[Category]] {
+    static func by(gender: Gender?) -> [Categories] {
         switch gender {
         case .female:
             return female
@@ -102,7 +102,7 @@ extension Categories {
     /// Return the list of categories filtered by given occasions
     /// - Parameter occasions: occasions to filter categories by
     /// - Returns: the list of categories filtered by occasions
-    func filtered(by occasions: Occasions) -> [Category] {
+    func filtered(by occasions: Occasions) -> Categories {
         let uniqueCategoryIDs = occasions.flatMap({ $0.corners }).flatMap({ $0 }).unique
         return filter { uniqueCategoryIDs.contains($0.id) }
     }
