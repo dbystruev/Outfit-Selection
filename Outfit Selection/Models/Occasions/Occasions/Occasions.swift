@@ -9,6 +9,9 @@
 typealias Occasions = [Occasion]
 
 extension Occasions {
+    /// True if array or occasions is empty, false otherwise
+    var areEmpty: Bool { isEmpty }
+    
     /// Occasions filtered by current gender
     var currentGender: Occasions {
         filter {

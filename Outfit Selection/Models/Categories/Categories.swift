@@ -94,6 +94,30 @@ extension Categories {
         }
     }
     
+    /// Return the list of subcategory lists from the given occasions
+    /// - Parameter occasions: the occasions to generate the list of subcategories from
+    /// - Returns: the list of subcategories from occasions
+    static func by(occasions: Occasions) -> [Categories] {
+        // Occasions -> corners -> subcategories
+        var subcategoryIDs = [[Int]](repeating: [], count: Corner.allCases.count)
+        
+        // Append subcategory IDs for corresponding corners of each occasion
+        for occasion in occasions {
+            let subcategoryIDsByCorners = occasion.corners
+            for cornerIndex in 0 ..< Swift.min(subcategoryIDs.count, subcategoryIDsByCorners.count) {
+                subcategoryIDs[cornerIndex].append(contentsOf: subcategoryIDsByCorners[cornerIndex])
+            }
+        }
+        
+        // Make sure there are no subcategory ID doubles
+        for cornerIndex in 0 ..< subcategoryIDs.count {
+            subcategoryIDs[cornerIndex] = subcategoryIDs[cornerIndex].unique
+        }
+        
+        // Map IDs into categories
+        return subcategoryIDs.map { $0.compactMap { Categories.byID[$0] }}
+    }
+    
     // MARK: - Computed Properties
     /// IDs of categories
     var IDs: [Int] { map { $0.id }}

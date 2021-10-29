@@ -65,9 +65,14 @@ class ItemManager {
             var current = 0
             var total = 0
             
-            // MARK: TODO Implement categories from occasions
+            // Generate categories or subcategories from occasions
+            let useOccasions = !Occasions.selected.areEmpty
+            let categoriesByCorner = useOccasions
+                ? Categories.by(occasions: Occasions.selected)
+                : Categories.by(gender: gender)
+            
             /// Loop all categories and view models, whatever number is lower
-            for (categories, viewModel) in zip(Categories.by(gender: gender), self.viewModels) {
+            for (categories, viewModel) in zip(categoriesByCorner, self.viewModels) {
                 // The names of the items already loaded in this category
                 var loadedItemNames = [String]()
                 
@@ -75,13 +80,17 @@ class ItemManager {
                 let categoryIDs = categories.IDs
                 
                 // Select only the items which belong to one of the categories given
-                let categoryFilteredItems = (allWishlistItems + Items.byID.values).filter {
+                let categoryFilteredItems = (allWishlistItems + Items.byID.values).filter { item in
                     // Check that item's category id is in the list of category IDs looked for
-                    categoryIDs.contains($0.categoryID)
+                    useOccasions
+                        ? !item.subcategoryIDs(in: categoryIDs).isEmpty
+                        : categoryIDs.contains(item.categoryID)
                 }
                 
-                // Filter category items by the brand given
-                let brandFilteredItems = categoryFilteredItems.filter { $0.wishlisted == true || $0.branded(brandNames) }
+                // Filter category filtered items by the brand given
+                let brandFilteredItems = categoryFilteredItems.filter { item in
+                    item.wishlisted == true || item.branded(brandNames)
+                }
                 
                 // If brand filtering brought us an empty list, discard it
                 let items = brandFilteredItems.isEmpty ? categoryFilteredItems : brandFilteredItems
@@ -196,7 +205,7 @@ class ItemManager {
         
         // Run network requests for different corners and brand names in parallel
         let categoriesCount: Int
-        if Occasions.byID.isEmpty {
+        if Occasions.selected.areEmpty {
             let categoriesByCorners = Categories.by(gender: gender)
             categoriesCount = categoriesByCorners.flatMap { $0.IDs }.unique.count
             for categories in categoriesByCorners {

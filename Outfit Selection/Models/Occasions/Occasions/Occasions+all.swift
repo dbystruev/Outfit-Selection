@@ -18,6 +18,9 @@ extension Occasions {
     private(set) static var byTitle: [String: Occasions] = [:]
     
     // MARK: - Static Computed Properties
+    /// True if occasions are empty, false otherwise
+    static var areEmpty: Bool { byID.isEmpty }
+    
     /// The set of labels of all occasions
     static var labels: Set<String> { Set(byID.values.map({ $0.label }))}
     
