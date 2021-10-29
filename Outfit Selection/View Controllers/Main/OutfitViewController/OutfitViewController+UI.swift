@@ -280,6 +280,19 @@ extension OutfitViewController {
         }
     }
     
+    /// Show information about currently presented look
+    func showLookDetails() {
+        if let occasion = occasionSelected {
+            // Get unique subcategory IDs for occasion
+            debug(occasion.corners.map { $0.categories })
+            
+            // Go through each item and show its subcategory in occasion
+            for item in visibleItems {
+                debug(item.name, item.subcategories(in: occasion))
+            }
+        }
+    }
+    
     func unpin() {
         hangerButtons.forEach { $0.isSelected = false }
         shuffleButton.isEnabled = true

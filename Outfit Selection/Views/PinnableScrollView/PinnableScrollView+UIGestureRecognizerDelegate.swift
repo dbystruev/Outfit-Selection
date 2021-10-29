@@ -9,11 +9,35 @@
 import UIKit
 
 extension PinnableScrollView: UIGestureRecognizerDelegate {
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        gestureRecognizer == singleTapRecognizer && otherGestureRecognizer == doubleTapRecognizer
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldRequireFailureOf otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
+        if
+            let tap = gestureRecognizer as? UITapGestureRecognizer,
+            let otherTap = otherGestureRecognizer as? UITapGestureRecognizer
+        {
+            return tap.numberOfTapsRequired < otherTap.numberOfTapsRequired
+            
+        } else {
+            
+            return false
+        }
     }
     
-    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        gestureRecognizer == doubleTapRecognizer && otherGestureRecognizer == singleTapRecognizer
+    func gestureRecognizer(
+        _ gestureRecognizer: UIGestureRecognizer,
+        shouldBeRequiredToFailBy otherGestureRecognizer: UIGestureRecognizer
+    ) -> Bool {
+        if
+            let tap = gestureRecognizer as? UITapGestureRecognizer,
+            let otherTap = otherGestureRecognizer as? UITapGestureRecognizer
+        {
+            return otherTap.numberOfTapsRequired < tap.numberOfTapsRequired
+            
+        } else {
+            
+            return false
+        }
     }
 }

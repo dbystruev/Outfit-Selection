@@ -9,20 +9,18 @@
 import UIKit
 
 extension OutfitViewController {
+    /// Process shake motion
+    /// - Parameters:
+    ///   - motion: the motion which happened
+    ///   - event: the UI event associated with the motion
     override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         super.motionEnded(motion, with: event)
         
         switch motion {
+            
         case .motionShake:
-            if let occasion = occasionSelected {
-                // Get unique subcategory IDs for occasion
-                debug(occasion.corners.map { $0.categories })
-                
-                // Go through each item and show its subcategory in occasion
-                for item in visibleItems {
-                    debug(item.name, item.subcategories(in: occasion))
-                }
-            }
+            showLookDetails()
+            
         default:
             break
         }

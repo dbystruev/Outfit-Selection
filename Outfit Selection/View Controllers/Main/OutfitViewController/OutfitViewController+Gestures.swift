@@ -9,23 +9,38 @@
 import UIKit
 
 // MARK: - Gestures
-extension OutfitViewController {    
-    func setupGestures() {
+extension OutfitViewController {
+    // Configure tap, double tap, and long press gestures
+    func configureTapGestures() {
         scrollViews.forEach { scrollView in
-            let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(pinImage(_:)))
+            let tripleTapRecognizer = UITapGestureRecognizer(
+                target: self,
+                action: #selector(scrollViewTapped(_:))
+            )
+            tripleTapRecognizer.delegate = scrollView
+            tripleTapRecognizer.numberOfTapsRequired = 3
+            scrollView.addGestureRecognizer(tripleTapRecognizer)
+            
+            let doubleTapRecognizer = UITapGestureRecognizer(
+                target: self,
+                action: #selector(scrollViewTapped(_:))
+            )
             doubleTapRecognizer.delegate = scrollView
-            doubleTapRecognizer.numberOfTouchesRequired = 2
+            doubleTapRecognizer.numberOfTapsRequired = 2
             scrollView.addGestureRecognizer(doubleTapRecognizer)
             
-            let longPressRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(pinImage(_:)))
-            scrollView.addGestureRecognizer(longPressRecognizer)
+//            let longPressRecognizer = UILongPressGestureRecognizer(
+//                target: self,
+//                action: #selector(pinImage(_:))
+//            )
+//            scrollView.addGestureRecognizer(longPressRecognizer)
             
-            let singleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(scrollViewTappedOnce(_:)))
+            let singleTapRecognizer = UITapGestureRecognizer(
+                target: self,
+                action: #selector(scrollViewTapped(_:))
+            )
             singleTapRecognizer.delegate = scrollView
             scrollView.addGestureRecognizer(singleTapRecognizer)
-            
-            scrollView.doubleTapRecognizer = doubleTapRecognizer
-            scrollView.singleTapRecognizer = singleTapRecognizer
         }
     }
     
@@ -35,8 +50,18 @@ extension OutfitViewController {
         shuffleButton.isEnabled = !scrollViews.allPinned
     }
     
-    @objc func scrollViewTappedOnce(_ sender: UIGestureRecognizer) {
-        if sender.numberOfTouches == 1 {
+    /// Called when scroll view is tapped one, two, or three times
+    /// - Parameter sender: the gesture recognizer which recognized the taps
+    @objc func scrollViewTapped(_ sender: UIGestureRecognizer) {
+        
+        guard let taps = (sender as? UITapGestureRecognizer)?.numberOfTapsRequired else {
+            debug("WARNING: \(sender) is not a \(UITapGestureRecognizer.self)")
+            return
+        }
+        
+        switch taps {
+            
+        case 1:
             guard let scrollView = sender.view as? PinnableScrollView else { return }
             guard let imageView = scrollView.getImageView() else { return }
             guard imageView.item != nil else {
@@ -44,8 +69,15 @@ extension OutfitViewController {
                 return
             }
             performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: sender)
-        } else {
+            
+        case 2:
             pinImage(sender)
+            
+        case 3:
+            showLookDetails()
+            
+        default:
+            debug("WARNING: Unknown number of taps \(taps)")
         }
     }
 }

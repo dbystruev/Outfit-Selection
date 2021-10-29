@@ -10,18 +10,12 @@ import UIKit
 
 class PinnableScrollView: UIScrollView {
     // MARK: - Stored Properties
-    /// Gesture recognizer for double tap
-    var doubleTapRecognizer: UITapGestureRecognizer!
-    
     /// True if this scroll view is pinned, false otherwise
     private(set) var isPinned = false {
         didSet {
             alpha = isPinned ? 1 : unpinnedAlpha
         }
     }
-    
-    /// Gesture recognizer for a single tap
-    var singleTapRecognizer: UITapGestureRecognizer!
     
     /// Alpha for unpinned state
     var unpinnedAlpha: CGFloat = 1 {
