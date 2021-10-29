@@ -149,7 +149,7 @@ extension OutfitViewController {
         }
         
         // Update occasions
-        updateOccasionsUI()
+        updateOccasionsUI(selectedTitle: occasionSelected?.title)
     }
     
     /// Configure refresh bubble once in the beginning
@@ -335,7 +335,11 @@ extension OutfitViewController {
     }
     
     /// Update occasions stack view when user taps an occasion button
-    func updateOccasionsUI() {
+    /// - Parameter selectedTitle: the title to select, if nil — use title of selected occasion
+    func updateOccasionsUI(selectedTitle: String?) {
+        // If selected title is given, underline it
+        let titleToUnderline = selectedTitle ?? occasionSelected?.title
+        
         // Get all occasion buttons and underlines
         let buttonUnderlineStackViews = occasionsStackView.arrangedSubviews.compactMap { $0 as? UIStackView }
         let buttons = buttonUnderlineStackViews.compactMap { $0.arrangedSubviews.first as? OccasionButton }
@@ -344,7 +348,7 @@ extension OutfitViewController {
         // Go through all occastion buttons and underline the selected one
         for (button, underline) in zip(buttons, underlines) {
             // Set button opacity depending on whether it is selected
-            let isSelected = button.occasion?.title == occasionSelected?.title
+            let isSelected = button.occasion?.title == titleToUnderline
             button.alpha = isSelected ? 1 : 0.75
 
             // Set button underline visibility depending on whether the button is selected

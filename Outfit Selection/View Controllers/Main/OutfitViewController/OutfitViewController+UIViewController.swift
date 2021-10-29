@@ -64,8 +64,8 @@ extension OutfitViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        // Scroll to wishlist items or random elements on first appearance
-        if scrollToItems.isEmpty {
+        // Scroll to wishlist items or occasions selected / random elements on first appearance
+        if wishlistItems.isEmpty {
             if firstAppearance {
                 guard occasionSelected != nil else {
                     scrollToRandomItems()
@@ -74,8 +74,9 @@ extension OutfitViewController {
                 scrollTo(occasion: occasionSelected)
             }
         } else {
-            scrollTo(items: scrollToItems, ordered: false)
-            scrollToItems.removeAll()
+            scrollTo(items: wishlistItems, ordered: false)
+            updateOccasionsUI(selectedTitle: wishlistName)
+            wishlistItems.removeAll()
         }
         
         firstAppearance = false

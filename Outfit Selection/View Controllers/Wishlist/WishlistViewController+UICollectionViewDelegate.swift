@@ -37,7 +37,9 @@ extension WishlistViewController: UICollectionViewDelegate {
             tabBarController?.selectedIndex = 0
             
             // Scroll to the items in the current outfit
-            outfitViewController.scrollToItems = wishlist[indexPath.row].items.values.map { $0 }
+            let catalog = wishlist[indexPath.row]
+            outfitViewController.wishlistName = catalog.name
+            outfitViewController.wishlistItems = catalog.items.values.map { $0 }
             
         case nil:
             debug("ERROR: selected tab should not be nil")

@@ -42,12 +42,9 @@ class OutfitViewController: LoggingViewController {
     /// Occasion which is currently selected by the user
     weak var occasionSelected: Occasion? {
         didSet {
-            updateOccasionsUI()
+            updateOccasionsUI(selectedTitle: occasionSelected?.title)
         }
     }
-    
-    /// Scroll to items in this list if there are any
-    var scrollToItems: [Item] = []
     
     /// Share view with current outfit
     var shareView: ShareView?
@@ -75,6 +72,12 @@ class OutfitViewController: LoggingViewController {
             shuffleBubble?.isHidden = !showShuffleBubble
         }
     }
+    
+    /// Wishlist items to scroll to
+    var wishlistItems: [Item] = []
+    
+    /// The name of wishlist if any
+    var wishlistName: String?
     
     // MARK: - Computed Properties
     /// Items in all scroll views' image views, including currently non-visible
