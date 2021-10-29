@@ -193,13 +193,6 @@ extension OutfitViewController {
         // Scroll to the given item IDs
         scrollViews?.scrollToElements(with: scrollItems.IDs, ordered: ordered)
         
-        let unmatchedItems = Set(scrollItems.IDs).symmetricDifference(visibleItems.IDs).items
-        debug("\(unmatchedItems.count) unmatched items:", unmatchedItems)
-        
-        if !unmatchedItems.isEmpty {
-            debug(itemsByCorner.map { $0.filter { unmatchedItems.IDs.contains($0.id) }})
-        }
-        
         // Updates like button, total price, and subcategory labels
         updateUI()
     }
@@ -227,8 +220,6 @@ extension OutfitViewController {
             let occasion = occasions.randomElement()
         else { return }
         
-        debug(occasion)
-        
         // Go through the corners and select items for each corner
         var occasionItems: [Item] = []
         for cornerCategoryIDs in occasion.corners {
@@ -240,9 +231,6 @@ extension OutfitViewController {
             }
             occasionItems.append(cornerItem)
         }
-        
-        // Filter items which belong to the selected look
-        debug(occasionItems.count, occasionItems)
         
         // Scroll to the selected items
         scrollTo(items: occasionItems.corners(.occasions), ordered: true)

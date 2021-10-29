@@ -96,7 +96,17 @@ extension Occasions {
         titles.forEach { byTitle[$0] = with(title: $0) }
     }
     
-    /// Return all occasions with given title
+    /// Returns all occasions with subcategories matching the items
+    /// - Parameter items: items whose subcategories will be checked for intersection with occasions
+    /// - Returns: the list of occasions matchin items subcategories
+    static func with(items: Items) -> Occasions {
+        byID.values.filter { occasion in
+            // Make sure all items have subcategories common with occasion
+            items.count == items.filter { !$0.subcategories(in: occasion).isEmpty }.count
+        }
+    }
+    
+    /// Returns all occasions with given title
     /// - Parameter title: the title to look for
     /// - Returns: the list of occasions with the title
     static func with(title: String) -> Occasions {

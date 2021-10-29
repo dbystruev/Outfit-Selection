@@ -75,7 +75,11 @@ extension OutfitViewController {
             }
         } else {
             scrollTo(items: wishlistItems, ordered: false)
-            updateOccasionsUI(selectedTitle: wishlistName)
+            if let matchingOccasion = Occasions.with(items: wishlistItems).randomElement() {
+                occasionSelected = matchingOccasion
+            } else {
+                updateOccasionsUI(selectedTitle: wishlistName)
+            }
             wishlistItems.removeAll()
         }
         

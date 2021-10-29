@@ -71,7 +71,9 @@ extension OutfitViewController {
             performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: sender)
             
         case 2:
-            pinImage(sender)
+            // MARK: TODO Temporary Disabled
+            // pinImage(sender)
+            break
             
         case 3:
             toggleSubcategoryLabels()

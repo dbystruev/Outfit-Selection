@@ -48,8 +48,6 @@ extension PinnableScrollViews {
     ///   - IDs: the ids to scroll the scroll views to
     ///   - ordered: if true assume IDs are given in the same order as scroll views
     func scrollToElements(with IDs: [String], ordered: Bool) {
-        debug(IDs)
-        
         if ordered {
             // Scroll each scroll view to the matching item ID
             for (id, scrollView) in zip(IDs, self) {
