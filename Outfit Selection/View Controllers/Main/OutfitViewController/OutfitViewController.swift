@@ -24,6 +24,14 @@ class OutfitViewController: LoggingViewController {
         }
     }
     @IBOutlet weak var shuffleButton: UIButton!
+    @IBOutlet var subcategoryLabels: [UILabel]! {
+        didSet {
+            subcategoryLabels.forEach {
+                $0.clipsToBounds = true
+                $0.layer.cornerRadius = 16
+            }
+        }
+    }
     @IBOutlet weak var topStackView: UIStackView!
     
     // MARK: - Stored Properties
@@ -70,6 +78,13 @@ class OutfitViewController: LoggingViewController {
     var showShuffleBubble = false {
         didSet {
             shuffleBubble?.isHidden = !showShuffleBubble
+        }
+    }
+    
+    /// True when subcategory labels should be shown
+    var showSubcategoryLabels = false {
+        didSet {
+            subcategoryLabels.forEach { $0.isHidden = !showSubcategoryLabels }
         }
     }
     

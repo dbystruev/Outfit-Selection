@@ -290,6 +290,9 @@ extension OutfitViewController {
     
     /// Show information about currently presented look
     func showLookDetails() {
+        // Toggle visibility of subcategory labels
+        showSubcategoryLabels.toggle()
+        
         if let occasion = occasionSelected {
             // Get unique subcategory IDs for occasion
             debug(occasion.corners.map { $0.categories })
