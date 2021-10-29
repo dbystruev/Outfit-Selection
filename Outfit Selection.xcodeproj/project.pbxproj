@@ -233,6 +233,9 @@
 		69F046F726FDD1D2002E16C0 /* BrandsSearchCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F046F626FDD1D2002E16C0 /* BrandsSearchCollectionView.swift */; };
 		69F046F926FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F046F826FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift */; };
 		69F046FC26FDDB87002E16C0 /* BrandsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F046FB26FDDB87002E16C0 /* BrandsCollectionView.swift */; };
+		69F60BCC272BC5EB004C4EA3 /* Corner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F60BCB272BC5EB004C4EA3 /* Corner.swift */; };
+		69F60BCE272BC676004C4EA3 /* Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F60BCD272BC676004C4EA3 /* Corners.swift */; };
+		69F60BD0272BC7D9004C4EA3 /* Iterms+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F60BCF272BC7D9004C4EA3 /* Iterms+Corners.swift */; };
 		69F6465B270227360059A46C /* FeedCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F6465A270227360059A46C /* FeedCollectionViewController.swift */; };
 		69F78DF626CBF047007843C4 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 69F78DF526CBF047007843C4 /* Feed.storyboard */; };
 		69FB0E9F271460BB006C20E9 /* OccasionButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FB0E9E271460BB006C20E9 /* OccasionButton.swift */; };
@@ -468,6 +471,9 @@
 		69F046F626FDD1D2002E16C0 /* BrandsSearchCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsSearchCollectionView.swift; sourceTree = "<group>"; };
 		69F046F826FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+UISearchBarDelegate.swift"; sourceTree = "<group>"; };
 		69F046FB26FDDB87002E16C0 /* BrandsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsCollectionView.swift; sourceTree = "<group>"; };
+		69F60BCB272BC5EB004C4EA3 /* Corner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner.swift; sourceTree = "<group>"; };
+		69F60BCD272BC676004C4EA3 /* Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corners.swift; sourceTree = "<group>"; };
+		69F60BCF272BC7D9004C4EA3 /* Iterms+Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Iterms+Corners.swift"; sourceTree = "<group>"; };
 		69F6465A270227360059A46C /* FeedCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedCollectionViewController.swift; sourceTree = "<group>"; };
 		69F78DF526CBF047007843C4 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
 		69FB0E9E271460BB006C20E9 /* OccasionButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionButton.swift; sourceTree = "<group>"; };
@@ -595,6 +601,7 @@
 				6963C6422718927600F03541 /* Categories */,
 				698A7F9026E8E49B006C36FD /* Coders */,
 				6906A99326E6070200386267 /* Collections */,
+				69F60BCA272BC5CD004C4EA3 /* Corners */,
 				69A0C9E42704675400C49977 /* FeedKind */,
 				69C3A4B325EBCF3100F8F968 /* Gender */,
 				69642076270B238D00FCDF5A /* ItemCatalog */,
@@ -779,6 +786,7 @@
 			isa = PBXGroup;
 			children = (
 				6964C64F272B4A2B00A71C8F /* Items.swift */,
+				69F60BCF272BC7D9004C4EA3 /* Iterms+Corners.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -1308,6 +1316,15 @@
 			path = Collections;
 			sourceTree = "<group>";
 		};
+		69F60BCA272BC5CD004C4EA3 /* Corners */ = {
+			isa = PBXGroup;
+			children = (
+				69F60BCB272BC5EB004C4EA3 /* Corner.swift */,
+				69F60BCD272BC676004C4EA3 /* Corners.swift */,
+			);
+			path = Corners;
+			sourceTree = "<group>";
+		};
 		69F646592702270E0059A46C /* FeedCollectionViewController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1570,12 +1587,15 @@
 				6910BDE4260B6D7B00A26F90 /* Bubble.swift in Sources */,
 				695367F425F7AC430024EC8B /* Character+isDigit.swift in Sources */,
 				69AE765E260B9971009CF863 /* HangerBubble.swift in Sources */,
+				69F60BD0272BC7D9004C4EA3 /* Iterms+Corners.swift in Sources */,
 				692C941B25470B8F0075BD92 /* Item.swift in Sources */,
 				69007CFD26EA7462001170D0 /* OccasionCell.swift in Sources */,
 				694935AE270D9DFB00168EB6 /* Item+CustomStringConvertible.swift in Sources */,
 				691277382707766B00FB6107 /* Collections.swift in Sources */,
+				69F60BCE272BC676004C4EA3 /* Corners.swift in Sources */,
 				69007CEF26EA63AA001170D0 /* Occasions+all.swift in Sources */,
 				69149DAD272B46A30083DA27 /* ItemCatalog.swift in Sources */,
+				69F60BCC272BC5EB004C4EA3 /* Corner.swift in Sources */,
 				6900142526DA4BDC007F1A44 /* FeedBrandCell+UICollectionViewDelegate.swift in Sources */,
 				69E0641B26FA4DB600C68A6A /* UIImaveView+Item.swift in Sources */,
 				69F6465B270227360059A46C /* FeedCollectionViewController.swift in Sources */,
