@@ -13,12 +13,16 @@ class OccasionsPopupViewController: LoggingViewController {
     @IBOutlet weak var occasionPickerView: UIPickerView!
     
     // MARK: - Properties
+    
     /// Items in the current outfit
     var items = [Item]()
     
-    /// Sorted names of all occasions
-    let occasionNames = Occasions.names.sorted()
-
+    /// The occasions currently selected if any at the calling outfit view controller
+    weak var occasionSelected: Occasion?
+    
+    /// Sorted titles of all occasions
+    let occasionTitles = Occasions.titles.sorted()
+    
     // MARK: - Inherited Methods
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         dismiss(animated: true)
@@ -31,26 +35,27 @@ class OccasionsPopupViewController: LoggingViewController {
         occasionPickerView.dataSource = self
         occasionPickerView.delegate = self
         
-        // Find the first non-occupied index
+        // Try to use selected occasion if available
         if
-            let firstName = occasionNames.first,
-            var shouldSelectRow = occasionNames.firstIndex(of: firstName)
+            let searchTitle = occasionSelected?.title ?? occasionTitles.first,
+            var selectedRow = occasionTitles.firstIndex(of: searchTitle)
         {
-            let occasionsCount = occasionNames.count
-            if Wishlist.outfits.count < occasionsCount {
-                while Wishlist.contains(occasionNames[shouldSelectRow]) {
-                    shouldSelectRow = (shouldSelectRow + 1) % occasionsCount
+            let occasionsCount = occasionTitles.count
+            if occasionSelected == nil && Wishlist.outfits.count < occasionsCount {
+                // Find the first non-occupied index
+                while Wishlist.contains(occasionTitles[selectedRow]) {
+                    selectedRow = (selectedRow + 1) % occasionsCount
                 }
             }
-            occasionPickerView.selectRow(shouldSelectRow, inComponent: 0, animated: false)
+            occasionPickerView.selectRow(selectedRow, inComponent: 0, animated: false)
         }
     }
     
     // MARK: - Actions
     @IBAction func saveButtonTapped(_ sender: UIButton) {
         let occasionIndex = occasionPickerView.selectedRow(inComponent: 0)
-        guard 0 <= occasionIndex && occasionIndex < occasionNames.count else { return }
-        Wishlist.add(items, occasion: occasionNames[occasionIndex])
+        guard 0 <= occasionIndex && occasionIndex < occasionTitles.count else { return }
+        Wishlist.add(items, occasion: occasionTitles[occasionIndex])
         
         dismiss(animated: true)
         

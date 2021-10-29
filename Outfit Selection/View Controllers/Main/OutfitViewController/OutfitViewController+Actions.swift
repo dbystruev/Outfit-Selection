@@ -52,8 +52,15 @@ extension OutfitViewController {
             let controller = storyboard?.instantiateViewController(
                 withIdentifier: OccasionsPopupViewController.storyboardId
             )
-            guard let occasionsPopupViewController = controller as? OccasionsPopupViewController else { return }
+            guard
+                let occasionsPopupViewController = controller as? OccasionsPopupViewController
+            else { return }
+            
+            // Update properties
             occasionsPopupViewController.items = visibleItems
+            occasionsPopupViewController.occasionSelected = occasionSelected
+            
+            // Show occasions popup
             present(occasionsPopupViewController, animated: true)
         }
     }

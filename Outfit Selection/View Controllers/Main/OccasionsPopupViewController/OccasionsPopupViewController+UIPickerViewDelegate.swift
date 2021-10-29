@@ -9,5 +9,5 @@
 import UIKit
 
 extension OccasionsPopupViewController: UIPickerViewDelegate {
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { occasionNames[row] }
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? { occasionTitles[row] }
 }
