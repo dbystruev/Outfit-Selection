@@ -17,7 +17,7 @@ class OccasionButton: UIButton {
     init(_ occasion: Occasion) {
         super.init(frame: CGRect.zero)
         self.occasion = occasion
-        setTitle(occasion.title, for: .normal)
+        setTitle(occasion.label, for: .normal)
     }
     
     required init?(coder: NSCoder) {

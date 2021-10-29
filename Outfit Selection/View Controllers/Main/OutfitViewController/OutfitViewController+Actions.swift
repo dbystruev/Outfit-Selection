@@ -114,13 +114,18 @@ extension OutfitViewController {
         performSegue(withIdentifier: "shareViewControllerSegue", sender: self)
     }
     
-    /// Called when the user taps refresh bubble
+    /// Called when the user taps shuffle bubble
     @objc func shuffleBubbleTapped() {
         showShuffleBubble = false
     }
     
     @IBAction func shuffleButtonTapped(_ sender: Any) {
         showShuffleBubble = false
-        scrollToRandomItems()
+        
+        if let occasion = occasionSelected {
+            scrollTo(occasion: occasion)
+        } else {
+            scrollToRandomItems()
+        }
     }
 }

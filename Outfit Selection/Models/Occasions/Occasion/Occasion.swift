@@ -25,10 +25,10 @@ final class Occasion: Codable {
     let gender: Gender
     
     /// Occasion label (2nd level name)
-    let label: String
+    var label: String
     
     /// The name of the occasion
-    let name: String
+    var name: String
     
     /// Occasion id (for Equatable)
     let id: Int

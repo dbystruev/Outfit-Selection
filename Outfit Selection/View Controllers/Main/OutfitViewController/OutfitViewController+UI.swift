@@ -82,9 +82,16 @@ extension OutfitViewController {
         occasionsStackViewHeightConstraint.constant = isHidden ? 0 : 44
         
         // Get buttons from occasions stack view
-        let buttonUnderlineStackViews = occasionsStackView.arrangedSubviews.compactMap { $0 as? UIStackView }
-        let buttons = buttonUnderlineStackViews.compactMap { $0.arrangedSubviews.first as? OccasionButton }
-        guard let firstButton = buttons.first, buttons.count == buttonUnderlineStackViews.count else {
+        let buttonUnderlineStackViews = occasionsStackView.arrangedSubviews.compactMap {
+            $0 as? UIStackView
+        }
+        let buttons = buttonUnderlineStackViews.compactMap {
+            $0.arrangedSubviews.first as? OccasionButton
+        }
+        guard
+            let firstButton = buttons.first,
+            buttons.count == buttonUnderlineStackViews.count else
+        {
             debug("WARNING: no buttons in occasions stack view")
             return
         }

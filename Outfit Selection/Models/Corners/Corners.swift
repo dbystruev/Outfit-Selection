@@ -9,6 +9,9 @@
 typealias Corners = [Corner]
 
 extension Corners {
+    // The number of corners
+    static var count: Int { Corner.allCases.count }
+    
     // Convert corners from occasions order to outfit order
     static var occasions: Corners {
         [.topLeft, .bottomLeft, .topRight, .middleRight, .bottomRight]

@@ -99,7 +99,7 @@ extension Categories {
     /// - Returns: the list of subcategories from occasions
     static func by(occasions: Occasions) -> [Categories] {
         // Occasions -> corners -> subcategories
-        var subcategoryIDs = [[Int]](repeating: [], count: Corner.allCases.count)
+        var subcategoryIDs = [[Int]](repeating: [], count: Corners.count)
         
         // Append subcategory IDs for corresponding corners of each occasion
         for occasion in occasions {

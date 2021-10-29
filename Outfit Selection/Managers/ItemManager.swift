@@ -23,7 +23,7 @@ class ItemManager {
     private var success = true
     
     /// Array of category image collection view models
-    let viewModels: [ImageCollectionViewModel] = (0 ..< Categories.all.count).map { _ in
+    let viewModels: [ImageCollectionViewModel] = (0 ..< Corners.count).map { _ in
         ImageCollectionViewModel.empty
     }
     
@@ -71,9 +71,9 @@ class ItemManager {
                 ? Categories.by(occasions: Occasions.selected)
                 : Categories.by(gender: gender)
             
-            /// Loop all categories and view models, whatever number is lower
+            /// Loop all corners
             for (categories, viewModel) in zip(categoriesByCorner, self.viewModels) {
-                // The names of the items already loaded in this category
+                // The names of the items already loaded in this corner
                 var loadedItemNames = [String]()
                 
                 // Get category identifiers
@@ -101,7 +101,7 @@ class ItemManager {
                 // Loop all items in given category
                 for item in items {
                     // Check that there is no item with the same name already in the list, unless it is wishlisted
-                    guard !loadedItemNames.contains(item.name) else {
+                    guard item.wishlisted || !loadedItemNames.contains(item.name) else {
                         // Items with similar names - that's not an error, but a warning
                         //debug("WARNING: \(itemName) already loaded in category \(category.name)")
                         continue
@@ -176,7 +176,7 @@ class ItemManager {
     ///   - scrollViews: scroll views to load images into, one scroll view for each category
     func loadImages(into scrollViews: [PinnableScrollView]) {
         /// Loop all view models and scroll views, whatever number is lower
-        for (viewModel, scrollView) in zip(ItemManager.shared.viewModels, scrollViews) {
+        for (viewModel, scrollView) in zip(viewModels, scrollViews) {
             // Loop all items in given category filtered by brands
             for index in 0 ..< viewModel.count {
                 let image = viewModel[index]

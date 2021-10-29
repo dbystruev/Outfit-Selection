@@ -226,8 +226,31 @@ class NetworkManager {
     
     /// Call /occasions API
     /// - Parameter completion: closure called after the request is finished, with list of occasions if successfull, or with nil if not
-    func getOccasions(completion: @escaping (_ categories: Occasions?) -> Void) {
-        get("occasions", completion: completion)
+    func getOccasions(completion: @escaping (_ occasions: Occasions?) -> Void) {
+        get("occasions") { (occasions: Occasions?) in
+            occasions?.forEach {
+                // Remove non-latin characters from the beginning of name
+                $0.name = $0
+                    .name
+                    .replacingOccurrences(
+                        of: "^[^a-z]*",
+                        with: "",
+                        options: [.caseInsensitive, .regularExpression]
+                    )
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                // Remove anything in brackets in the labels
+                $0.label = $0
+                    .label
+                    .replacingOccurrences(
+                        of: #"\(.*\)"#,
+                        with: "",
+                        options: [.regularExpression]
+                    )
+                    .trimmingCharacters(in: .whitespacesAndNewlines)
+            }
+            completion(occasions)
+        }
     }
     
     /// Call /onboarding API
