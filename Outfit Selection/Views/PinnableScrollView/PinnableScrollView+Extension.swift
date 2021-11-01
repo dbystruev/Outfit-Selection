@@ -130,9 +130,12 @@ extension PinnableScrollView {
     func scrollToElement(withIndex index: Int, duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
         guard 0 < count else { return }
         let index = (index + count) % count
-        UIView.animate(withDuration: duration, animations: {
-            self.contentOffset.x = self.elementWidth * CGFloat(index)
-        }, completion: completion)
+        
+        UIView.animate(
+            withDuration: duration,
+            animations: { self.contentOffset.x = self.elementWidth * CGFloat(index) },
+            completion: completion
+        )
     }
     
     /// Scroll to element with the given tag

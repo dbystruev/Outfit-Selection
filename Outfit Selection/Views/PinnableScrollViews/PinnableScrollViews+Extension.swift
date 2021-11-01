@@ -14,9 +14,33 @@ extension PinnableScrollViews {
     // MARK: - Computed Properties
     /// True if all scroll views are pinned, false otherwise
     var allPinned: Bool {
-        return reduce(true) { $0 && $1.isPinned }
+        reduce(true) { $0 && $1.isPinned }
     }
     
+    /// True if any scroll view is decelerating
+    var isDecelerating: Bool {
+        reduce(false) { $0 || $1.isDecelerating }
+    }
+    
+    /// True if any scroll view is dragging
+    var isDragging: Bool {
+        reduce(false) { $0 || $1.isDragging }
+    }
+    
+    /// True if any scroll view is scrolling (decelerating or dragging)
+    var isScrolling: Bool { isDecelerating || isDragging }
+    
+    /// True if any scroll view is tracking
+    var isTracking: Bool {
+        reduce(false) { $0 || $1.isTracking }
+    }
+    
+    /// Time when offset of any of scroll views was last changed
+    var offsetChanged: Date? {
+        compactMap { $0.offsetChanged }.max()
+    }
+    
+    // MARK: - Methods
     /// Clear all scroll views
     func clear() {
         forEach { $0.clear() }

@@ -90,9 +90,6 @@ extension OutfitViewController {
         super.viewDidLayoutSubviews()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.scrollViews.forEach { $0.scrollToCurrentElement() }
-            
-            // Updates like button, total price, and subcategory labels
-            self.updateUI()
         }
         
         // Configure constraints for hanger bubble
@@ -102,9 +99,7 @@ extension OutfitViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        // Updates like button, total price, and subcategory labels
-        updateUI()
-        
+        // Show the helper bubbles        
         showBubbles()
     }
     

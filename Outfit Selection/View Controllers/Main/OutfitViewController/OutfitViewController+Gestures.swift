@@ -13,7 +13,7 @@ extension OutfitViewController {
     // Configure single, double, and triple tap gestures
     func configureTapGestures() {
         scrollViews.forEach { scrollView in
-            // Add single, dobule, and triple tap recognizers to each scroll view
+            // Add single, double, and triple tap recognizers to each scroll view
             for tapsRequired in 1 ... 3 {
                 let tapRecognizer = UITapGestureRecognizer(
                     target: self,
@@ -45,18 +45,21 @@ extension OutfitViewController {
     /// - Parameter sender: the gesture recognizer which recognized the taps
     @objc func scrollViewTapped(_ sender: UIGestureRecognizer) {
         
-        guard let taps = (sender as? UITapGestureRecognizer)?.numberOfTapsRequired else {
+        // Make sure we were called from tap gesture recognizer
+        guard let numberOfTaps = (sender as? UITapGestureRecognizer)?.numberOfTapsRequired else {
             debug("WARNING: \(sender) is not a \(UITapGestureRecognizer.self)")
             return
         }
         
-        switch taps {
+        switch numberOfTaps {
             
         case 1:
-            guard let scrollView = sender.view as? PinnableScrollView else { return }
-            guard let imageView = scrollView.getImageView() else { return }
-            guard imageView.item != nil else {
-                debug("ERROR: Can't get an item from \(imageView)")
+            guard
+                let scrollView = sender.view as? PinnableScrollView,
+                let imageView = scrollView.getImageView(),
+                imageView.item != nil
+            else {
+                debug("ERROR: Can't get an item from", sender.view)
                 return
             }
             performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: sender)
@@ -70,7 +73,7 @@ extension OutfitViewController {
             toggleSubcategoryLabels()
             
         default:
-            debug("WARNING: Unknown number of taps: \(taps)")
+            debug("WARNING: Unknown number of taps: \(numberOfTaps)")
         }
     }
 }

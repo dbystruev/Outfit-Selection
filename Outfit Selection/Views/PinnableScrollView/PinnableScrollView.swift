@@ -17,6 +17,9 @@ class PinnableScrollView: UIScrollView {
         }
     }
     
+    /// Ttime when offset was last changed
+    private(set) var offsetChanged: Date?
+    
     /// Alpha for unpinned state
     var unpinnedAlpha: CGFloat = 1 {
         didSet {
@@ -27,6 +30,15 @@ class PinnableScrollView: UIScrollView {
     }
     
     // MARK: - Computed Properties
+    /// Repeats parent's content offset and updates time when offset was changed
+    override var contentOffset: CGPoint {
+        get { super.contentOffset }
+        set {
+            super.contentOffset = newValue
+            offsetChanged = Date()
+        }
+    }
+    
     /// Item which this scroll view is currently showing
     var item: Item? {
         getImageView()?.item

@@ -519,6 +519,7 @@
 			children = (
 				69007CF226EA6A4B001170D0 /* OccasionsViewController.swift */,
 				69FB0EA227148AAE006C20E9 /* OccasionsViewController+Actions.swift */,
+				69007CFF26EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift */,
 				69007D0126EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift */,
 			);
 			path = OccasionsViewController;
@@ -1322,7 +1323,6 @@
 		69ECB1A62323746F00FB42B9 /* PinnableScrollView */ = {
 			isa = PBXGroup;
 			children = (
-				69007CFF26EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift */,
 				69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */,
 				69739EAF22BA5DF80077E45D /* PinnableScrollView+Extension.swift */,
 				69AE955E256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift */,

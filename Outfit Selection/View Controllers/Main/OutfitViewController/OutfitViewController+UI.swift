@@ -192,9 +192,6 @@ extension OutfitViewController {
     func scrollTo(items scrollItems: [Item], ordered: Bool) {
         // Scroll to the given item IDs
         scrollViews?.scrollToElements(with: scrollItems.IDs, ordered: ordered)
-        
-        // Updates like button, total price, and subcategory labels
-        updateUI()
     }
     
     /// Scroll outfit's scroll views to the given occasion
@@ -247,9 +244,6 @@ extension OutfitViewController {
                 $0.scrollToRandomElement(duration: duration)
             }
         }
-        
-        // Updates like button, total price, and subcategory labels
-        updateUI()
     }
     
     /// Show hanger and refresh bubbles after initial pause
@@ -336,8 +330,11 @@ extension OutfitViewController {
         let titleToUnderline = selectedTitle ?? occasionSelected?.title
         
         // Get all occasion buttons and underlines
-        let buttonUnderlineStackViews = occasionsStackView.arrangedSubviews.compactMap { $0 as? UIStackView }
-        let buttons = buttonUnderlineStackViews.compactMap { $0.arrangedSubviews.first as? OccasionButton }
+        let buttonUnderlineStackViews = occasionsStackView
+            .arrangedSubviews
+            .compactMap { $0 as? UIStackView }
+        let buttons = buttonUnderlineStackViews
+            .compactMap { $0.arrangedSubviews.first as? OccasionButton }
         let underlines = buttonUnderlineStackViews.compactMap { $0.arrangedSubviews.last }
         
         // Go through all occastion buttons and underline the selected one

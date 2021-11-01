@@ -174,7 +174,7 @@ class ItemManager {
     /// Load images from view models into scroll views
     /// - Parameters:
     ///   - scrollViews: scroll views to load images into, one scroll view for each category
-    func loadImages(into scrollViews: [PinnableScrollView]) {
+    func loadImages(into scrollViews: PinnableScrollViews) {
         /// Loop all view models and scroll views, whatever number is lower
         for (viewModel, scrollView) in zip(viewModels, scrollViews) {
             // Loop all items in given category filtered by brands

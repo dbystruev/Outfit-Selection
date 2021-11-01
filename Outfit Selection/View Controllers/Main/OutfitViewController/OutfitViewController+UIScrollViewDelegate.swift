@@ -10,20 +10,44 @@ import UIKit
 
 // MARK: - UIScrollViewDelegate
 extension OutfitViewController: UIScrollViewDelegate {
+    // MARK: - Static Constants
+    /// Track when scroll views need to be updated
+    private static var scrollGroup = DispatchGroup()
+    
+    /// Flag showing if scroll group notification was set
+    private static var scrollGroupNotificationSet = false
+    
+    // MARK: - UIScrollViewDelegate Methods
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if decelerate { return }
         guard let pinnableScrollView = scrollView as? PinnableScrollView else { return }
         pinnableScrollView.scrollToCurrentElement()
-        
-        // Updates like button, total price, and subcategory labels
-        updateUI()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard let pinnableScrollView = scrollView as? PinnableScrollView else { return }
         pinnableScrollView.scrollToCurrentElement()
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // Don't update UI if any scroll view is still scrolling
+        guard !self.scrollViews.isScrolling else { return }
         
-        // Updates like button, total price, and subcategory labels
-        updateUI()
+        // Delay for 0.1 s to let other scroll views to finish scrolling
+        OutfitViewController.scrollGroup.enter()
+        DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + 0.1) {
+            OutfitViewController.scrollGroup.leave()
+        }
+        
+        // Setup scroll group notification
+        if !OutfitViewController.scrollGroupNotificationSet {
+            OutfitViewController.scrollGroupNotificationSet = true
+            OutfitViewController.scrollGroup.notify(queue: .main) {
+                OutfitViewController.scrollGroupNotificationSet = false
+                
+                // Updates like button, total price, and subcategory labels
+                self.updateUI()
+            }
+        }
     }
 }

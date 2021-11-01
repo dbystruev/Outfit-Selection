@@ -73,7 +73,7 @@ enum Alert {
                 // Reload gender section with new gender
                 Gender.current = newGender
                 guard let tabBarController = sender.tabBarController as? TabBarController else {
-                    debug("Error: can't cast", sender.tabBarController, "to TabBarConroller")
+                    debug("ERROR: can't cast", sender.tabBarController, "to TabBarConroller")
                     return
                 }
                 tabBarController.reloadItems()
