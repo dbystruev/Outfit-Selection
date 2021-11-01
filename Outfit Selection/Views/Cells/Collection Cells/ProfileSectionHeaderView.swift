@@ -9,10 +9,6 @@
 import UIKit
 
 class ProfileSectionHeaderView: UICollectionReusableView {
-    // MARK: - Static Properties
-    /// The nib object containing this section header
-    static let nib = UINib(nibName: className, bundle: nil)
-    
     // MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     

@@ -219,6 +219,7 @@
 		69D0FDA525EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */; };
 		69D3FEAD26F8D73200D31A5F /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D3FEAC26F8D73200D31A5F /* Server.swift */; };
 		69D984E6272FC3CE003E1BAC /* NSObject+className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D984E5272FC3CE003E1BAC /* NSObject+className.swift */; };
+		69D984E8272FC62E003E1BAC /* UIView+nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D984E7272FC62E003E1BAC /* UIView+nib.swift */; };
 		69DA85D426D5FA5000D16B25 /* FeedBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */; };
 		69DA85D726D5FD2F00D16B25 /* FeedBrandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */; };
 		69DA85DB26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */; };
@@ -461,6 +462,7 @@
 		69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69D3FEAC26F8D73200D31A5F /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		69D984E5272FC3CE003E1BAC /* NSObject+className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+className.swift"; sourceTree = "<group>"; };
+		69D984E7272FC62E003E1BAC /* UIView+nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+nib.swift"; sourceTree = "<group>"; };
 		69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBrandCell.swift; sourceTree = "<group>"; };
 		69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedBrandCell.xib; sourceTree = "<group>"; };
 		69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 				69AE7661260BCE2C009CF863 /* UIView+addGestureOnce.swift */,
 				692AF3D12601209700D37269 /* UIView+asImage.swift */,
 				694E7BED25DBFFFB006607CD /* UIView+findSuperview.swift */,
+				69D984E7272FC62E003E1BAC /* UIView+nib.swift */,
 				69007CFA26EA7323001170D0 /* UIView+reuseId.swift */,
 				6900142026DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift */,
 			);
@@ -1572,6 +1575,7 @@
 				69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */,
 				69575660271590CB007ADE02 /* OnboardingViewController.swift in Sources */,
 				6963C6442718929000F03541 /* Categories.swift in Sources */,
+				69D984E8272FC62E003E1BAC /* UIView+nib.swift in Sources */,
 				69A0C9E6270467DC00C49977 /* FeedKind+CustomStringConvertible.swift in Sources */,
 				69007CF126EA6619001170D0 /* Occasion+Comparable.swift in Sources */,
 				69560EC82587E5D400337F35 /* Branded.swift in Sources */,

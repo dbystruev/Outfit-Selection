@@ -19,10 +19,6 @@ class FeedItem: UIView {
     @IBOutlet weak var oldPriceLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     
-    // MARK: - Class Properties
-    /// The nib object containing this feed item
-    static let nib = UINib(nibName: className, bundle: nil)    
-    
     // MARK: - Class Methods
     class func instanceFromNib() -> FeedItem? {
         nib.instantiate(withOwner: nil, options: nil).first as? FeedItem

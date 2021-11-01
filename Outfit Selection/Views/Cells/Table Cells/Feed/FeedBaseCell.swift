@@ -21,9 +21,6 @@ class FeedBaseCell: UITableViewCell {
     /// Feed cell identifier, which matches nib and class name
     class var identifier: String { className }
     
-    /// The nib object containing this feed item cell
-    class var nib: UINib { UINib(nibName: className, bundle: nil) }
-    
     /// Default item sizes
     class var itemHeight: CGFloat { 206 * designFactor }
     class var itemWidth: CGFloat { 120 * designFactor }

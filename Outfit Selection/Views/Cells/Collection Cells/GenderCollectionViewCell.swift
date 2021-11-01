@@ -9,10 +9,6 @@
 import UIKit
 
 class GenderCollectionViewCell: UICollectionViewCell {
-    // MARK: - Static Properties
-    /// The nib object containing this gender cell
-    static let nib = UINib(nibName: className, bundle: nil)
-    
     // MARK: - Outlets
     @IBOutlet weak var genderLabel: UILabel!
     @IBOutlet weak var radioImageView: UIImageView!
