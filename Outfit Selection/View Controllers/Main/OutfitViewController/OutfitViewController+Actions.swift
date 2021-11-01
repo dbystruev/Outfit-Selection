@@ -50,7 +50,7 @@ extension OutfitViewController {
             Wishlist.remove(visibleItems)
         } else {
             let controller = storyboard?.instantiateViewController(
-                withIdentifier: OccasionsPopupViewController.storyboardId
+                withIdentifier: OccasionsPopupViewController.className
             )
             guard
                 let occasionsPopupViewController = controller as? OccasionsPopupViewController

@@ -11,6 +11,6 @@ import UIKit
 extension UIView {
     // MARK: - Static Properties
     @objc class var reuseId: String {
-        "\(String(describing: Self.self).decapitalizingFirstLetter)ReuseId"
+        "\(className.decapitalizingFirstLetter)ReuseId"
     }
 }

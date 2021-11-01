@@ -119,9 +119,9 @@ class OnboardingViewController: NextButtonViewController {
         // Transition to another onboarding screen if there are any remaining
         guard Onboarding.all.count <= Onboarding.currentIndex + 1 else {
             guard let nextPage = storyboard?.instantiateViewController(
-                withIdentifier: OnboardingViewController.storyboardId
+                withIdentifier: OnboardingViewController.className
             ) else {
-                debug("ERROR: Can't instantiate \(OnboardingViewController.storyboardId) from", storyboard)
+                debug("ERROR: Can't instantiate \(OnboardingViewController.className) from", storyboard)
                 return
             }
             navigationController?.pushViewController(nextPage, animated: true)

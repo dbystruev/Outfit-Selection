@@ -9,13 +9,9 @@
 import UIKit
 
 class GenderCollectionViewCell: UICollectionViewCell {
-    // MARK: - Class Properties
-    /// Nib name is the same as the class name
-    class var nibName: String { String(describing: Self.self) }
-    
     // MARK: - Static Properties
     /// The nib object containing this gender cell
-    static let nib = UINib(nibName: nibName, bundle: nil)
+    static let nib = UINib(nibName: className, bundle: nil)
     
     // MARK: - Outlets
     @IBOutlet weak var genderLabel: UILabel!

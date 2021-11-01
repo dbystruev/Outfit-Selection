@@ -9,10 +9,6 @@
 import UIKit
 
 class BrandCollectionViewCell: UICollectionViewCell {
-    // MARK: - Class Properties
-    /// Nib name is the same as the class name
-    class var nibName: String { String(describing: Self.self) }
-    
     // MARK: - Static Properties
     static let height: CGFloat = 98
     static let width: CGFloat = 98
@@ -33,7 +29,7 @@ class BrandCollectionViewCell: UICollectionViewCell {
     }
     
     /// The nib object containing this brand cell
-    static let nib = UINib(nibName: nibName, bundle: nil)
+    static let nib = UINib(nibName: className, bundle: nil)
     
     /// Vertical margin between brand image view container and the container
     static var verticalMargin: CGFloat = 8 {

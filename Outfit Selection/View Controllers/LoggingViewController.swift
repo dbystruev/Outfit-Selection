@@ -29,7 +29,7 @@ class LoggingViewController: UIViewController {
             "outfits": Wishlist.outfits.count,
             "uuid": LoggingViewController.uuid as Any
         ]
-        let names = String(describing: Self.self).drop(suffix: "ViewController").splitBefore { $0.isUppercased }
+        let names = className.drop(suffix: "ViewController").splitBefore { $0.isUppercased }
         let name = String(names.joined(separator: " "))
         AppsFlyerLib.shared().logEvent(name, withValues: dictinary)
     }

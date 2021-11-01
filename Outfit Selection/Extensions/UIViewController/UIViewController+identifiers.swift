@@ -12,9 +12,6 @@ extension UIViewController {
     // MARK: - Static Properties
     /// Segue ID
     class var segueIdentifier: String {
-        "\(storyboardId.decapitalizingFirstLetter)Segue"
+        "\(className.decapitalizingFirstLetter)Segue"
     }
-    
-    /// Storyboard ID
-    class var storyboardId: String { String(describing: Self.self) }
 }

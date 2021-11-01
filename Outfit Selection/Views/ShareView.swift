@@ -31,13 +31,9 @@ class ShareView: UIView {
         case more
     }
     
-    // MARK: - Class Properties
-    /// Nib name is the same as the class name
-    class var nibName: String { String(describing: Self.self) }
-    
     // MARK: - Static Properties
     /// The nib object containing this share view
-    static let nib = UINib(nibName: nibName, bundle: nil)
+    static let nib = UINib(nibName: className, bundle: nil)
     
     // MARK: - Class Functions
     class func instanceFromNib() -> ShareView {
