@@ -13,37 +13,28 @@ extension OutfitViewController {
     // Configure single, double, and triple tap gestures
     func configureTapGestures() {
         scrollViews.forEach { scrollView in
-            let tripleTapRecognizer = UITapGestureRecognizer(
-                target: self,
-                action: #selector(scrollViewTapped(_:))
-            )
-            tripleTapRecognizer.delegate = scrollView
-            tripleTapRecognizer.numberOfTapsRequired = 3
-            scrollView.addGestureRecognizer(tripleTapRecognizer)
+            // Add single, dobule, and triple tap recognizers to each scroll view
+            for tapsRequired in 1 ... 3 {
+                let tapRecognizer = UITapGestureRecognizer(
+                    target: self,
+                    action: #selector(scrollViewTapped(_:))
+                )
+                tapRecognizer.delegate = scrollView
+                tapRecognizer.numberOfTapsRequired = tapsRequired
+                scrollView.addGestureRecognizer(tapRecognizer)
+            }
             
-            let doubleTapRecognizer = UITapGestureRecognizer(
-                target: self,
-                action: #selector(scrollViewTapped(_:))
-            )
-            doubleTapRecognizer.delegate = scrollView
-            doubleTapRecognizer.numberOfTapsRequired = 2
-            scrollView.addGestureRecognizer(doubleTapRecognizer)
-            
+            // Add long press recognizer to each scroll view
             let longPressRecognizer = UILongPressGestureRecognizer(
                 target: self,
                 action: #selector(pinImage(_:))
             )
             scrollView.addGestureRecognizer(longPressRecognizer)
-            
-            let singleTapRecognizer = UITapGestureRecognizer(
-                target: self,
-                action: #selector(scrollViewTapped(_:))
-            )
-            singleTapRecognizer.delegate = scrollView
-            scrollView.addGestureRecognizer(singleTapRecognizer)
         }
     }
     
+    /// Called when double tap or long press gesture is recognized
+    /// - Parameter sender: the object which recognized the gesture
     @objc func pinImage(_ sender: UIGestureRecognizer) {
         guard let scrollView = sender.view as? PinnableScrollView else { return }
         scrollView.togglePinned()
@@ -79,7 +70,7 @@ extension OutfitViewController {
             toggleSubcategoryLabels()
             
         default:
-            debug("WARNING: Unknown number of taps \(taps)")
+            debug("WARNING: Unknown number of taps: \(taps)")
         }
     }
 }
