@@ -1,0 +1,54 @@
+
+/* Class = "UIButton"; normalTitle = "Male"; ObjectID = "6S1-yY-6qz"; */
+"6S1-yY-6qz.normalTitle" = "Для него";
+
+/* Class = "UINavigationItem"; title = "Tell us your favourites"; ObjectID = "7c8-X2-Glo"; */
+"7c8-X2-Glo.title" = "Tell us your favourites";
+
+/* Class = "UILabel"; text = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore"; ObjectID = "8JL-Sb-b4R"; */
+"8JL-Sb-b4R.text" = "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore";
+
+/* Class = "UILabel"; text = "Picking up the right pieces for your perfect outfit"; ObjectID = "Dcs-wl-iOq"; */
+"Dcs-wl-iOq.text" = "Picking up the right pieces for your perfect outfit";
+
+/* Class = "UIButton"; normalTitle = "Female"; ObjectID = "DlK-nQ-O3M"; */
+"DlK-nQ-O3M.normalTitle" = "Для неё";
+
+/* Class = "UIBarButtonItem"; title = "Select all"; ObjectID = "Gwb-FF-9cf"; */
+"Gwb-FF-9cf.title" = "Select all";
+
+/* Class = "UILabel"; text = "Choose one or more brands you like "; ObjectID = "MB4-2h-AF5"; */
+"MB4-2h-AF5.text" = "Choose one or more brands you like ";
+
+/* Class = "UILabel"; text = "Choose your favourite occasions "; ObjectID = "O7I-pz-nl1"; */
+"O7I-pz-nl1.text" = "Choose your favourite occasions ";
+
+/* Class = "UILabel"; text = "Concept Group  — your personal styling platform"; ObjectID = "TuD-oz-zdU"; */
+"TuD-oz-zdU.text" = "Concept Group  — your personal styling platform";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "UTd-n8-W7x"; */
+"UTd-n8-W7x.normalTitle" = "Next";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "VUX-05-YHx"; */
+"VUX-05-YHx.normalTitle" = "Next";
+
+/* Class = "UIBarButtonItem"; title = " "; ObjectID = "WiI-Nr-TGQ"; */
+"WiI-Nr-TGQ.title" = " ";
+
+/* Class = "UILabel"; text = "B-day"; ObjectID = "XtT-NA-IVE"; */
+"XtT-NA-IVE.text" = "B-day";
+
+/* Class = "UINavigationItem"; title = "Occasions"; ObjectID = "emN-yU-cqq"; */
+"emN-yU-cqq.title" = "Occasions";
+
+/* Class = "UIButton"; normalTitle = "Non-binary"; ObjectID = "gGx-FZ-Ytv"; */
+"gGx-FZ-Ytv.normalTitle" = "Для всех";
+
+/* Class = "UIButton"; normalTitle = "Next"; ObjectID = "hZS-Fj-0sN"; */
+"hZS-Fj-0sN.normalTitle" = "Next";
+
+/* Class = "UILabel"; text = "An outfit for any occasion"; ObjectID = "i7k-TD-g8Y"; */
+"i7k-TD-g8Y.text" = "An outfit for any occasion";
+
+/* Class = "UIBarButtonItem"; title = "Select all"; ObjectID = "oR3-nD-fqp"; */
+"oR3-nD-fqp.title" = "Select all";
