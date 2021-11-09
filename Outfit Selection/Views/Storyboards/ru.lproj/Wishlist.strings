@@ -3,7 +3,7 @@
 "K5c-mB-Tvd.text" = " Cotton Shirt";
 
 /* Class = "UITabBarItem"; title = "Wish list"; ObjectID = "KAX-o3-svL"; */
-"KAX-o3-svL.title" = "Wish list";
+"KAX-o3-svL.title" = "Избранное";
 
 /* Class = "UILabel"; text = "LOUIS VUITTON"; ObjectID = "LUw-qT-H7L"; */
 "LUw-qT-H7L.text" = "LOUIS VUITTON";
@@ -24,28 +24,28 @@
 "akK-pw-Dlp.text" = "Cotton shirt";
 
 /* Class = "UIButton"; normalTitle = "Shop now"; ObjectID = "bhy-eM-JDA"; */
-"bhy-eM-JDA.normalTitle" = "Shop now";
+"bhy-eM-JDA.normalTitle" = "Купить сейчас";
 
 /* Class = "UIButton"; normalTitle = "Collections"; ObjectID = "bml-DR-8nI"; */
-"bml-DR-8nI.normalTitle" = "Collections";
+"bml-DR-8nI.normalTitle" = "Коллекции";
 
 /* Class = "UILabel"; text = "Louis Vuitton"; ObjectID = "d2A-HP-2lw"; */
 "d2A-HP-2lw.text" = "Louis Vuitton";
 
 /* Class = "UILabel"; text = "Now taking you to FARFETCH..."; ObjectID = "hVC-wd-Fqz"; */
-"hVC-wd-Fqz.text" = "Now taking you to FARFETCH...";
+"hVC-wd-Fqz.text" = "А теперь перенесем вас в FARFETCH…";
 
 /* Class = "UIButton"; normalTitle = "Items"; ObjectID = "hXU-ae-I4h"; */
-"hXU-ae-I4h.normalTitle" = "Items";
+"hXU-ae-I4h.normalTitle" = "Вещи";
 
 /* Class = "UIButton"; normalTitle = "Outfits"; ObjectID = "jae-n2-Kh4"; */
-"jae-n2-Kh4.normalTitle" = "Outfits";
+"jae-n2-Kh4.normalTitle" = "Образы";
 
 /* Class = "UILabel"; text = "199 500 ₽"; ObjectID = "p7A-GE-xy4"; */
 "p7A-GE-xy4.text" = "199 500 ₽";
 
 /* Class = "UINavigationItem"; title = "Wish list"; ObjectID = "qJk-1t-eWX"; */
-"qJk-1t-eWX.title" = "Wish list";
+"qJk-1t-eWX.title" = "Избранное";
 
 /* Class = "UIButton"; normalTitle = " Add to collection"; ObjectID = "uHM-YP-a8l"; */
-"uHM-YP-a8l.normalTitle" = " Add to collection";
+"uHM-YP-a8l.normalTitle" = "Добавить в коллекцию";
