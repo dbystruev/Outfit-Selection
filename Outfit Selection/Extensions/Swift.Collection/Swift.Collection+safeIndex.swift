@@ -1,5 +1,5 @@
 //
-//  Collection+safeIndex.swift
+//  Swift.Collection+safeIndex.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 31.12.2020.

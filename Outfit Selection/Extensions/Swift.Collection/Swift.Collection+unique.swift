@@ -1,5 +1,5 @@
 //
-//  Collection+unique.swift
+//  Swift.Collection+unique.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 14.10.2021.
