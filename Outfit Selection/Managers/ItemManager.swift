@@ -96,7 +96,7 @@ class ItemManager {
                 let items = brandFilteredItems.isEmpty ? categoryFilteredItems : brandFilteredItems
                 
                 // The maximum number of network image loads in one corner
-                var remainingLoads = Categories.maxCornerCount
+                var remainingLoads = Items.maxCornerCount
                 
                 // Loop all items in given category
                 for item in items {

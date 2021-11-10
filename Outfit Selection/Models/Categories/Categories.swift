@@ -76,9 +76,6 @@ extension Categories {
         ["броги", "оксфорды", "лоферы", "сапоги"],
     ]
     
-    /// The maximum number of items in one corner, all of them displayed
-    static let maxCornerCount = 100
-    
     // MARK: - Static Methods
     /// Return the generated list of the category lists by gender
     /// - Parameter gender: gender to filter categories by

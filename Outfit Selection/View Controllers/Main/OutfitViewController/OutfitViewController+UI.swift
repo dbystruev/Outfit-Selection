@@ -17,7 +17,7 @@ extension OutfitViewController {
         // Add hidden prompt bubble on top of the screen, above navigation controller
         hangerBubble.alpha = 0
         hangerBubble.frame = CGRect(x: 0, y: 0, width: 238, height: 58)
-        hangerBubble.text = "Pin an item you like!"
+        hangerBubble.text = "Pin an item you like!"~
         navigationController.view.addSubview(hangerBubble)
         
         // Setup hanger bubble constraints

@@ -281,7 +281,7 @@ class NetworkManager {
         
         // Prepare parameters
         var parameters: [String: Any] = [
-            "limit": limit ?? Items.maxCount
+            "limit": limit ?? Items.maxCornerCount
         ]
         
         // Add "category_id=in.(1,2,3)" parameter

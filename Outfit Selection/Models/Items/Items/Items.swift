@@ -14,7 +14,7 @@ extension Items {
     private(set) static var byID = [String: Item]()
     
     /// The maximum number of items for one outfit corner
-    static let maxCount = 100
+    static let maxCornerCount = 50
     
     // MARK: - Static Methods
     /// Appends items to Item.all. Mimics generic collection's method append(contentsOf:) while saving current index in itemIndex property of each item
