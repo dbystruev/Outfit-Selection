@@ -13,7 +13,7 @@ class SelectableButtonItem: UIBarButtonItem {
     /// True if button is selected, false otherwise
     var isButtonSelected = false {
         didSet {
-            title = isButtonSelected ? "Clear all" : "Select all"
+            title = isButtonSelected ? "Clear all"~ : "Select all"~
         }
     }
 }
