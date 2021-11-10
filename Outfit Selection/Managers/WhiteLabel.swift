@@ -41,11 +41,11 @@ struct WhiteLabel {
     static let fullName: String = {
         switch kind {
         case .concept:
-            return "Concept Group"
+            return "Concept Group"~
         case .getoutfit:
-            return "Get Outfit"
+            return "Get Outfit"~
         case .raskroi:
-            return "Raskroi"
+            return "Raskroi"~
         }
     }()
     
@@ -163,7 +163,7 @@ struct WhiteLabel {
         /// Gender screen text
         enum Gender {
             /// Gender screen text below logo
-            static let description = "\(fullName) — your personal styling platform"
+            static let description = "\(fullName) — " + "your personal styling platform"~
         }
     }
 }

@@ -21,7 +21,7 @@ enum Alert {
     static func configured(
         _ title: String?,
         message: String? = nil,
-        actionTitles: [String] = ["OK"],
+        actionTitles: [String] = ["OK"~],
         styles: [UIAlertAction.Style] = [.default],
         handlers: [(UIAlertAction) -> Void] = []
     ) -> UIAlertController {
@@ -45,9 +45,9 @@ enum Alert {
     /// - Returns: the configured UI alert controller
     static func dislike(_ item: Item?, handler: ((UIAlertAction) -> Void)? = nil) -> UIAlertController {
         configured(
-            "Dislike",
-            message: "Do you really want to dislike the item?",
-            actionTitles: ["Yes", "Cancel"],
+            "Dislike"~,
+            message: "Do you really want to dislike the item?"~,
+            actionTitles: ["Yes"~, "Cancel"~],
             styles: [.default, .cancel],
             handlers: [{ action in
                 Items.dislike(item)
@@ -61,9 +61,9 @@ enum Alert {
         sender: ProfileViewController
     ) -> UIAlertController {
         configured(
-            "Change to \(newGender)",
-            message: "Will reload items and wishlists",
-            actionTitles: ["Don't", "Change"],
+            "Change to"~ + " \(newGender)",
+            message: "Will reload items and wishlists"~,
+            actionTitles: ["Don't"~, "Change"~],
             styles: [.cancel, .destructive],
             handlers: [{ _ in
                 // Keep gender to current

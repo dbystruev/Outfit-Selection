@@ -155,7 +155,7 @@ extension OutfitViewController {
     /// Configure refresh bubble once in the beginning
     func configureShuffleBubble() {
         shuffleBubble?.alpha = 0
-        shuffleBubble?.text = "Check out the next outfit"
+        shuffleBubble?.text = "Check out the next outfit"~
         
         // Add tap gesture on refresh bubble
         shuffleBubble?.addTapOnce(target: self, action: #selector(shuffleBubbleTapped))
@@ -355,8 +355,8 @@ extension OutfitViewController {
             return
         }
         
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            self.priceLabel.text = "Outfit price: \(self.price.asPrice)"
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
+            self.priceLabel.text = "Outfit price"~ + ": \(self.price.asPrice)"
         }
     }
     

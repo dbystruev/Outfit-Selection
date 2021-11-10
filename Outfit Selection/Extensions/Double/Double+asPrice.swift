@@ -13,7 +13,9 @@ extension Double {
         let formatter = NumberFormatter()
         formatter.locale = Locale(identifier: "ru_RU")
         formatter.numberStyle = .currency
-        guard let fullAmount = formatter.string(from: NSNumber(value: self)) else { return "\(Int(self.rounded())) ₽" }
-        return String(fullAmount.dropLast(5)) + " ₽"
+        guard let fullAmount = formatter.string(from: NSNumber(value: self)) else {
+            return "\(Int(self.rounded())) " + "RUB"~
+        }
+        return String(fullAmount.dropLast(5)) + " " + "RUB"~
     }
 }

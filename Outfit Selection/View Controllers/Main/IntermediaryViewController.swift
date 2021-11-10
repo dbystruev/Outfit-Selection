@@ -15,11 +15,11 @@ class IntermediaryViewController: LoggingViewController {
     // MARK: - Properties
     /// Item url to take user to
     var url: URL?
-
+    
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Hide navigation and tab bars
         navigationController?.isNavigationBarHidden = true
         tabBarController?.tabBar.isHidden = true
@@ -27,7 +27,9 @@ class IntermediaryViewController: LoggingViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        takingYouLabel.text = url == nil ? "Taking you back to GET OUTFIT..." : "Now taking you to FARFETCH..."
+        takingYouLabel.text = url == nil
+        ? "Taking you back to GET OUTFIT..."~
+        : "Now taking you to FARFETCH..."~
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -53,5 +55,5 @@ class IntermediaryViewController: LoggingViewController {
         // Clear url to pop back after we return
         self.url = nil
     }
-
+    
 }

@@ -11,7 +11,7 @@ import UIKit
 // MARK: - UICollectionViewDataSource
 extension ProfileViewController: UICollectionViewDataSource {
     // MARK: - Static Properties
-    static let sectionHeaders = ["Gender", "Brands"]
+    static let sectionHeaders = ["Gender"~, "Brands"~]
     
     // MARK: - UICollectionViewDataSource Methods
     /// Get cell for the given index path in profile collection view

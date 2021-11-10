@@ -89,7 +89,7 @@ extension AppDelegate: UIApplicationDelegate {
         
         // Transfer to the initial view controller
         let next = UserDefaults.hasSeenAppIntroduction || Occasions.byID.count < 1
-            ? "GenderNavigationViewController"
+            ? "GenderNavigationViewController"  // there are no classes to use .className
             : "OnboardingNavigationViewController"
         window?.rootViewController = storyboard.instantiateViewController(withIdentifier: next)
         window?.makeKeyAndVisible()

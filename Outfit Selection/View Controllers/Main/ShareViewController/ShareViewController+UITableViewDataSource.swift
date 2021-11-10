@@ -32,7 +32,7 @@ extension ShareViewController: UITableViewDataSource {
         cell.accessoryView?.alpha = 0.5
         cell.selectionStyle = .none
         cell.textLabel?.font = UIFont(name: "NotoSans-Regular", size: 15)
-        cell.textLabel?.text = cellTypes[row].rawValue.capitalizingFirstLetter
+        cell.textLabel?.text = cellTypes[row].rawValue~.capitalizingFirstLetter
         cell.textLabel?.textColor = color
         cell.imageView?.image = UIImage(named: imageNames[row])
         

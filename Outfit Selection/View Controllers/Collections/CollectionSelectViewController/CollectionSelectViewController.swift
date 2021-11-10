@@ -26,7 +26,9 @@ class CollectionSelectViewController: CollectionBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionNameLabel.text = "Add something to collection \(collectionName ?? "collection")"
+        collectionNameLabel.text = "Add something to collection"~
+        + " "
+        + (collectionName ?? "collection"~)
         
         // Set data source and flow layout delegate for collection view
         collectionView.dataSource = wishlistViewController

@@ -19,7 +19,7 @@ class GenderCollectionViewCell: UICollectionViewCell {
     ///   - gender: the gender to confiture cell with
     ///   - selected: gender which is currently selected
     func configure(gender: Gender, selected: Gender?) {
-        genderLabel.text = gender == .other ? "Non-binary" : gender.rawValue.capitalizingFirstLetter
+        genderLabel.text = gender == .other ? "Non-binary"~ : gender.rawValue~.capitalizingFirstLetter
         radioImageView.isHidden = gender != selected
     }
 }
