@@ -239,8 +239,7 @@ extension OutfitViewController {
         // Scroll to the selected items
         scrollTo(items: occasionItems.corners(.occasions), ordered: true) { _ in
             // Show elements matching occasion and hide those not matching
-            // MARK: TODO Hide non-matching elements
-//            self.setElements(in: occasion.corneredSubcategoryIDs.corners(.occasions), visible: true)
+            self.setElements(in: occasion.corneredSubcategoryIDs.corners(.occasions), visible: true)
         }
         
         // Update selected occasion property and UI

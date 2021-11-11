@@ -188,10 +188,10 @@ extension PinnableScrollView {
                 // Compare occasion subcategories with item's
                 if subcategoryIDSet.intersection(itemSubcategoryIDs).isEmpty {
                     // Hide (when visible is true) if there are no subcategories in common
-                    imageView.isHidden = visible
+                    imageView.alpha = visible ? 0 : 1
                 } else {
                     // Show (when visible is true) if there are subcategories in common
-                    imageView.isHidden = !visible
+                    imageView.alpha = visible ? 1 : 0
                 }
             }
     }
