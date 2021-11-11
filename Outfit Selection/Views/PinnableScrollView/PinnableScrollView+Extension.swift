@@ -83,9 +83,9 @@ extension PinnableScrollView {
         return stackView?.arrangedSubviews[index] as? UIImageView
     }
     
-    /// Search for the first element with a given id and return its index if found, or nil if not found
-    /// - Parameter id: the id to search for
-    /// - Returns: the index of the first element with the given id
+    /// Search for the first element with a given ID and return its index if found, or nil if not found
+    /// - Parameter id: the ID to search for
+    /// - Returns: the index of the first element with the given ID
     func index(of id: String) -> Int? {
         itemIDs.firstIndex(of: id)
     }
@@ -138,8 +138,8 @@ extension PinnableScrollView {
         )
     }
     
-    /// Scroll to element with the given tag
-    /// - Parameter id: the id to search for and scroll to
+    /// Scroll to element with the given ID
+    /// - Parameter id: the ID to search for and scroll to
     func scrollToElementIfPresent(with id: String) {
         guard let index = index(of: id) else { return }
         scrollToElement(withIndex: index)
@@ -157,5 +157,43 @@ extension PinnableScrollView {
         } else {
             mask = nil
         }
+    }
+    
+    /// Set element visibility with the given ID
+    /// - Parameters:
+    ///   - id: the ID of element to set visibility of
+    ///   - visible: show if true, hide if false
+    func setElement(with id: String, visible: Bool) {
+        guard let index = index(of: id) else { return }
+        setElement(withIndex: index, visible: visible)
+    }
+    
+    /// Set element visibility with the given index
+    /// - Parameters:
+    ///   - id: the index of the element to set visibility of
+    ///   - visible: show if true, hide if false
+    func setElement(withIndex index: Int, visible: Bool) {
+        guard 0 < count else { return }
+        let index = (index + count) % count
+        stackView?.arrangedSubviews[index].isHidden = !visible
+    }
+    
+    /// Set visibility of all elements in the scroll view's stack view
+    /// - Parameters:
+    ///   - IDs: IDs of elements whose visibility is defined by visible parameter, all other elements are set to !visible
+    ///   - visible: show if true, hide if false
+    func setElements(with IDs: [String], visible: Bool) {
+        // Go through all elements in the scroll view's stack view and show/hide them
+        stackView?
+            .arrangedSubviews
+            .compactMap { $0 as? UIImageView }
+            .forEach { imageView in
+                guard let itemID = imageView.item?.id else { return }
+                if IDs.contains(itemID) {
+                    imageView.isHidden = !visible
+                } else {
+                    imageView.isHidden = visible
+                }
+            }
     }
 }

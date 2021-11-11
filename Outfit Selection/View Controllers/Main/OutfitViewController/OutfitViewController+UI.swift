@@ -220,9 +220,13 @@ extension OutfitViewController {
         // Go through the corners and select items for each corner
         var occasionItems: [Item] = []
         for cornerCategoryIDs in occasion.corners {
-            guard let cornerItem = items.filter({
+            // Get all items in corner suitable for the occasion
+            let cornerItems = items.filter {
                 !$0.subcategories(in: cornerCategoryIDs).isEmpty
-            }).randomElement() else {
+            }
+            
+            // Select random item among suitable
+            guard let cornerItem = cornerItems.randomElement() else {
                 debug("WARNING: No item matching subcategories \(cornerCategoryIDs)")
                 return
             }
