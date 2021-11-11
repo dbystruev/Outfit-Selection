@@ -18,8 +18,8 @@ final class Occasion: Codable {
     /// Category IDs which belong to the occasion
     let categoryIDs: [Int]
     
-    /// Occasion corners from top left clockwise with the list of subcategories in each corner
-    var corners: [[Int]]
+    /// Occasion corners from top left clockwise with the list of subcategsubcategory IDs in each corner
+    var corneredSubcategoryIDs: [[Int]]
     
     /// Occasion gender
     let gender: Gender
@@ -34,6 +34,11 @@ final class Occasion: Codable {
     let id: Int
     
     // MARK: - Computed Properties
+    /// Unique flat subcategory IDs for the occasion
+    var flatSubcategoryIDs: [Int] {
+        corneredSubcategoryIDs.flatMap { $0.map { $0 }}.unique
+    }
+    
     /// True if occasion is selected, false otherwise. When set, user defaults is updated.
     var isSelected: Bool {
         get { _isSelected }
@@ -46,18 +51,13 @@ final class Occasion: Codable {
         }
     }
     
-    /// All subcategory IDs for the occasion
-    var subcategoryIDs: [Int] {
-        corners.flatMap { $0.map { $0 }}.unique
-    }
-    
     /// Occasion name and title togeher
     var title: String { "\(name): \(label)" }
     
     // MARK: - Types
     enum CodingKeys: String, CodingKey {
         case categoryIDs = "category_ids"
-        case corners = "looks"
+        case corneredSubcategoryIDs = "looks"
         case gender
         case id
         case label
@@ -85,7 +85,7 @@ final class Occasion: Codable {
         self.gender = gender
         self.id = id
         self.label = label
-        self.corners = looks
+        self.corneredSubcategoryIDs = looks
         self.name = name
     }
     

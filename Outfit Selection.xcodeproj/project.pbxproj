@@ -248,7 +248,6 @@
 		69F046FC26FDDB87002E16C0 /* BrandsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F046FB26FDDB87002E16C0 /* BrandsCollectionView.swift */; };
 		69F60BCC272BC5EB004C4EA3 /* Corner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F60BCB272BC5EB004C4EA3 /* Corner.swift */; };
 		69F60BCE272BC676004C4EA3 /* Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F60BCD272BC676004C4EA3 /* Corners.swift */; };
-		69F60BD0272BC7D9004C4EA3 /* Iterms+Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F60BCF272BC7D9004C4EA3 /* Iterms+Corners.swift */; };
 		69F60BD2272BDDBB004C4EA3 /* Array+corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F60BD1272BDDBB004C4EA3 /* Array+corners.swift */; };
 		69F60BD4272BEDC2004C4EA3 /* Swift.Collection+categories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F60BD3272BEDC2004C4EA3 /* Swift.Collection+categories.swift */; };
 		69F60BD6272BFBD6004C4EA3 /* Swift.Collection+items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F60BD5272BFBD6004C4EA3 /* Swift.Collection+items.swift */; };
@@ -511,7 +510,6 @@
 		69F046FB26FDDB87002E16C0 /* BrandsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandsCollectionView.swift; sourceTree = "<group>"; };
 		69F60BCB272BC5EB004C4EA3 /* Corner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner.swift; sourceTree = "<group>"; };
 		69F60BCD272BC676004C4EA3 /* Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corners.swift; sourceTree = "<group>"; };
-		69F60BCF272BC7D9004C4EA3 /* Iterms+Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Iterms+Corners.swift"; sourceTree = "<group>"; };
 		69F60BD1272BDDBB004C4EA3 /* Array+corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+corners.swift"; sourceTree = "<group>"; };
 		69F60BD3272BEDC2004C4EA3 /* Swift.Collection+categories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift.Collection+categories.swift"; sourceTree = "<group>"; };
 		69F60BD5272BFBD6004C4EA3 /* Swift.Collection+items.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift.Collection+items.swift"; sourceTree = "<group>"; };
@@ -741,8 +739,12 @@
 		69560ECE2587E7D300337F35 /* Items */ = {
 			isa = PBXGroup;
 			children = (
-				69642077270B23B700FCDF5A /* Item */,
-				6964C64E272B4A0B00A71C8F /* Items */,
+				692C941A25470B8F0075BD92 /* Item.swift */,
+				69560ECB2587E7C700337F35 /* Item+Branded.swift */,
+				694935AD270D9DFB00168EB6 /* Item+CustomStringConvertible.swift */,
+				69E0641C26FA4E2B00C68A6A /* Item+Equatable.swift */,
+				6905DC91272B12760088A34E /* Item+Occasion.swift */,
+				6964C64F272B4A2B00A71C8F /* Items.swift */,
 			);
 			path = Items;
 			sourceTree = "<group>";
@@ -807,18 +809,6 @@
 			path = ItemCatalog;
 			sourceTree = "<group>";
 		};
-		69642077270B23B700FCDF5A /* Item */ = {
-			isa = PBXGroup;
-			children = (
-				692C941A25470B8F0075BD92 /* Item.swift */,
-				69560ECB2587E7C700337F35 /* Item+Branded.swift */,
-				694935AD270D9DFB00168EB6 /* Item+CustomStringConvertible.swift */,
-				69E0641C26FA4E2B00C68A6A /* Item+Equatable.swift */,
-				6905DC91272B12760088A34E /* Item+Occasion.swift */,
-			);
-			path = Item;
-			sourceTree = "<group>";
-		};
 		6964207E270B2BAD00FCDF5A /* ItemCatalog */ = {
 			isa = PBXGroup;
 			children = (
@@ -826,15 +816,6 @@
 				6964207C270B2A4200FCDF5A /* ItemCatalog+Equatable.swift */,
 			);
 			path = ItemCatalog;
-			sourceTree = "<group>";
-		};
-		6964C64E272B4A0B00A71C8F /* Items */ = {
-			isa = PBXGroup;
-			children = (
-				6964C64F272B4A2B00A71C8F /* Items.swift */,
-				69F60BCF272BC7D9004C4EA3 /* Iterms+Corners.swift */,
-			);
-			path = Items;
 			sourceTree = "<group>";
 		};
 		69739EAE22BA5DCD0077E45D /* Views */ = {
@@ -1704,7 +1685,6 @@
 				6910BDE4260B6D7B00A26F90 /* Bubble.swift in Sources */,
 				695367F425F7AC430024EC8B /* Character+isDigit.swift in Sources */,
 				69AE765E260B9971009CF863 /* HangerBubble.swift in Sources */,
-				69F60BD0272BC7D9004C4EA3 /* Iterms+Corners.swift in Sources */,
 				692C941B25470B8F0075BD92 /* Item.swift in Sources */,
 				69007CFD26EA7462001170D0 /* OccasionCell.swift in Sources */,
 				694935AE270D9DFB00168EB6 /* Item+CustomStringConvertible.swift in Sources */,

@@ -96,11 +96,11 @@ extension Categories {
     /// - Returns: the list of subcategories from occasions
     static func by(occasions: Occasions) -> [Categories] {
         // Occasions -> corners -> subcategories
-        var subcategoryIDs = [[Int]](repeating: [], count: Corners.count)
+        var subcategoryIDs = Corners.empty
         
         // Append subcategory IDs for corresponding corners of each occasion
         for occasion in occasions {
-            let subcategoryIDsByCorners = occasion.corners
+            let subcategoryIDsByCorners = occasion.corneredSubcategoryIDs
             for cornerIndex in 0 ..< Swift.min(subcategoryIDs.count, subcategoryIDsByCorners.count) {
                 subcategoryIDs[cornerIndex].append(contentsOf: subcategoryIDsByCorners[cornerIndex])
             }
@@ -133,7 +133,7 @@ extension Categories {
     /// - Parameter occasions: occasions to filter categories by
     /// - Returns: the list of categories filtered by occasions
     func filtered(by occasions: Occasions) -> Categories {
-        let uniqueCategoryIDs = occasions.flatMap({ $0.corners }).flatMap({ $0 }).unique
+        let uniqueCategoryIDs = occasions.flatMap({ $0.corneredSubcategoryIDs }).flatMap({ $0 }).unique
         return filter { uniqueCategoryIDs.contains($0.id) }
     }
 }

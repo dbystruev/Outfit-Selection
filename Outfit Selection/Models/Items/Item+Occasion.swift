@@ -34,7 +34,7 @@ extension Item {
     /// - Parameter occasion: the occasion to check
     /// - Returns: the set of subcategory IDs present both in item and in occasion
     func subcategoryIDs(in occasion: Occasion) -> Set<Int> {
-        subcategoryIDs(in: occasion.subcategoryIDs)
+        subcategoryIDs(in: occasion.flatSubcategoryIDs)
     }
     
     func subcategories(in IDs: [Int]) -> Categories {

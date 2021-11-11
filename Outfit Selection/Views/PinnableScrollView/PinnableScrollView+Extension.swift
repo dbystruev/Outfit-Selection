@@ -128,7 +128,11 @@ extension PinnableScrollView {
     }
     
     func scrollToElement(withIndex index: Int, duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
-        guard 0 < count else { return }
+        // If there are no views to scroll, complete with success status
+        guard 0 < count else {
+            completion?(true)
+            return
+        }
         let index = (index + count) % count
         
         UIView.animate(
@@ -139,10 +143,16 @@ extension PinnableScrollView {
     }
     
     /// Scroll to element with the given ID
-    /// - Parameter id: the ID to search for and scroll to
-    func scrollToElementIfPresent(with id: String) {
-        guard let index = index(of: id) else { return }
-        scrollToElement(withIndex: index)
+    /// - Parameters:
+    ///   - id: the ID to search for and scroll to
+    ///   - completion: the block of code to be executed when scrolling ends
+    func scrollToElementIfPresent(with id: String, completion: ((Bool) -> Void)? = nil) {
+        // If element to scroll to not found, complete with success
+        guard let index = index(of: id) else {
+            completion?(true)
+            return
+        }
+        scrollToElement(withIndex: index, completion: completion)
     }
     
     func scrollToLastElement(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
@@ -159,40 +169,29 @@ extension PinnableScrollView {
         }
     }
     
-    /// Set element visibility with the given ID
-    /// - Parameters:
-    ///   - id: the ID of element to set visibility of
-    ///   - visible: show if true, hide if false
-    func setElement(with id: String, visible: Bool) {
-        guard let index = index(of: id) else { return }
-        setElement(withIndex: index, visible: visible)
-    }
-    
-    /// Set element visibility with the given index
-    /// - Parameters:
-    ///   - id: the index of the element to set visibility of
-    ///   - visible: show if true, hide if false
-    func setElement(withIndex index: Int, visible: Bool) {
-        guard 0 < count else { return }
-        let index = (index + count) % count
-        stackView?.arrangedSubviews[index].isHidden = !visible
-    }
-    
     /// Set visibility of all elements in the scroll view's stack view
     /// - Parameters:
-    ///   - IDs: IDs of elements whose visibility is defined by visible parameter, all other elements are set to !visible
+    ///   - subcategoryIDs: subcategory IDs of elements whose visibility is defined by visible parameter, all other elements are set to !visible
     ///   - visible: show if true, hide if false
-    func setElements(with IDs: [String], visible: Bool) {
+    func setElements(with subcategoryIDs: [Int], visible: Bool) {
+        // Make a set of subcategory IDs to make comparisons easier
+        let subcategoryIDSet = Set(subcategoryIDs)
+        
         // Go through all elements in the scroll view's stack view and show/hide them
         stackView?
             .arrangedSubviews
             .compactMap { $0 as? UIImageView }
             .forEach { imageView in
-                guard let itemID = imageView.item?.id else { return }
-                if IDs.contains(itemID) {
-                    imageView.isHidden = !visible
-                } else {
+                // Get the list of item subcategory IDs
+                guard let itemSubcategoryIDs = imageView.item?.subcategoryIDs else { return }
+                
+                // Compare occasion subcategories with item's
+                if subcategoryIDSet.intersection(itemSubcategoryIDs).isEmpty {
+                    // Hide (when visible is true) if there are no subcategories in common
                     imageView.isHidden = visible
+                } else {
+                    // Show (when visible is true) if there are subcategories in common
+                    imageView.isHidden = !visible
                 }
             }
     }

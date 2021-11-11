@@ -9,14 +9,19 @@
 typealias Corners = [Corner]
 
 extension Corners {
-    // The number of corners
+    /// The number of corners
     static var count: Int { Corner.allCases.count }
     
-    // Convert corners from occasions order to outfit order
+    /// The array of empty corners matching count
+    static var empty: [[Int]] {
+        [[Int]](repeating: [], count: count)
+    }
+    
+    /// Convert corners from occasions order to outfit order
     static var occasions: Corners {
         [.topLeft, .bottomLeft, .topRight, .middleRight, .bottomRight]
     }
     
-    // Convert corners from outfit order to the same outfit order
+    /// Convert corners from outfit order to the same outfit order
     static var outfit: Corners { Corner.allCases }
 }

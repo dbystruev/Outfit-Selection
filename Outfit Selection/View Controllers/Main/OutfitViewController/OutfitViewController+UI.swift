@@ -189,9 +189,10 @@ extension OutfitViewController {
     /// - Parameters:
     ///   - scrollItems: the items to scroll the scroll views to
     ///   - ordered: if true assume IDs are given in the same order as scroll views
-    func scrollTo(items scrollItems: [Item], ordered: Bool) {
+    ///   - completion: the block of code to be executed when scrolling ends
+    func scrollTo(items scrollItems: [Item], ordered: Bool, completion: ((Bool) -> Void)? = nil) {
         // Scroll to the given item IDs
-        scrollViews?.scrollToElements(with: scrollItems.IDs, ordered: ordered)
+        scrollViews?.scrollToElements(with: scrollItems.IDs, ordered: ordered, completion: completion)
     }
     
     /// Scroll outfit's scroll views to the given occasion
@@ -205,21 +206,20 @@ extension OutfitViewController {
             let occasionTitle = occasion?.title,
             let occasions = Occasions.byTitle[occasionTitle]?.filter({ occasion in
                 // Keep occasions for which we could find items
-                for cornerCategoryIDs in occasion.corners {
+                for cornerCategoryIDs in occasion.corneredSubcategoryIDs {
                     guard !items.filter({
                         !$0.subcategories(in: cornerCategoryIDs).isEmpty
                     }).isEmpty else { return false }
                 }
                 return true
             }),
-            
             // Select random look from filtered occasions
             let occasion = occasions.randomElement()
         else { return }
         
         // Go through the corners and select items for each corner
         var occasionItems: [Item] = []
-        for cornerCategoryIDs in occasion.corners {
+        for cornerCategoryIDs in occasion.corneredSubcategoryIDs {
             // Get all items in corner suitable for the occasion
             let cornerItems = items.filter {
                 !$0.subcategories(in: cornerCategoryIDs).isEmpty
@@ -233,8 +233,15 @@ extension OutfitViewController {
             occasionItems.append(cornerItem)
         }
         
+        // Set no elements invisible = set all elements visible
+        setElements(in: Corners.empty, visible: false)
+        
         // Scroll to the selected items
-        scrollTo(items: occasionItems.corners(.occasions), ordered: true)
+        scrollTo(items: occasionItems.corners(.occasions), ordered: true) { _ in
+            // Show elements matching occasion and hide those not matching
+            // MARK: TODO Hide non-matching elements
+//            self.setElements(in: occasion.corneredSubcategoryIDs.corners(.occasions), visible: true)
+        }
         
         // Update selected occasion property and UI
         occasionSelected = occasion
@@ -248,6 +255,15 @@ extension OutfitViewController {
                 $0.scrollToRandomElement(duration: duration)
             }
         }
+    }
+    
+    /// Set visibility of items with subcategories given in the same order as scroll views
+    /// - Parameters:
+    ///   - corneredSubcategories: the item subcategories to set visibility of
+    ///   - visible: if true show matching items and hide non-matching items, if false — the other way around
+    func setElements(in corneredSubcategories: [[Int]], visible: Bool) {
+        // Set visibility of items in the scroll views
+        scrollViews?.setElements(in: corneredSubcategories, visible: visible)
     }
     
     /// Show hanger and refresh bubbles after initial pause

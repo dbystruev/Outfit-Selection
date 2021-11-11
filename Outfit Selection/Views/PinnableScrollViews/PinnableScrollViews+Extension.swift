@@ -71,23 +71,54 @@ extension PinnableScrollViews {
     /// - Parameters:
     ///   - IDs: the ids to scroll the scroll views to
     ///   - ordered: if true assume IDs are given in the same order as scroll views
-    func scrollToElements(with IDs: [String], ordered: Bool) {
+    ///   - completion: the block of code to be executed when scrolling ends
+    func scrollToElements(with IDs: [String], ordered: Bool, completion: ((Bool) -> Void)? = nil) {
+        // Scroll group to control completion of all scrolls
+        let scrollGroup = DispatchGroup()
+        
+        // Flag to check if all scrolls are completed
+        var isCompleted = true
+        
         if ordered {
             // Scroll each scroll view to the matching item ID
             for (id, scrollView) in zip(IDs, self) {
-                scrollView.scrollToElementIfPresent(with: id)
+                scrollGroup.enter()
+                scrollView.scrollToElementIfPresent(with: id) { completed in
+                    isCompleted = completed && isCompleted
+                    scrollGroup.leave()
+                }
             }
         } else {
             // Check each scroll view for the presense of item ID and scroll to it
             for scrollView in self {
                 for id in IDs {
-                    scrollView.scrollToElementIfPresent(with: id)
+                    scrollGroup.enter()
+                    scrollView.scrollToElementIfPresent(with: id) { completed in
+                        isCompleted = completed && isCompleted
+                        scrollGroup.leave()
+                    }
                 }
             }
         }
+        
+        // Call completion only when all scrolls are completed
+        scrollGroup.notify(queue: .main) {
+            completion?(isCompleted)
+        }
     }
     
-    /// Unping all scroll views
+    /// Set visibility of items with subcategories given in the same order as scroll views
+    /// - Parameters:
+    ///   - corneredSubcategories: the cornered item subcategories to set visibility of
+    ///   - visible: if true show matching items and hide non-matching items, if false — the other way around
+    func setElements(in corneredSubcategoryIDs: [[Int]], visible: Bool) {
+        // Set visibility of items in the scroll views
+        for (scrollView, subcategoryIDs) in zip(self, corneredSubcategoryIDs) {
+            scrollView.setElements(with: subcategoryIDs, visible: visible)
+        }
+    }
+    
+    /// Unpin all scroll views
     func unpin() {
         forEach { $0.unpin() }
     }

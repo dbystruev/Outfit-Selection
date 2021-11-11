@@ -216,7 +216,7 @@ class ItemManager {
                 )
             }
         } else {
-            let subcategoryIDsByOccasions = Occasions.selected.flatMap { $0.corners }
+            let subcategoryIDsByOccasions = Occasions.selected.flatMap { $0.corneredSubcategoryIDs }
             categoriesCount = subcategoryIDsByOccasions.flatMap { $0 }.unique.count
             for subcategoryIDs in subcategoryIDsByOccasions {
                 loadItemsByBrands(

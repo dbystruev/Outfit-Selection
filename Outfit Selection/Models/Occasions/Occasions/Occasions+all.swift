@@ -59,7 +59,7 @@ extension Occasions {
     /// - Parameter occasion: occasion to add
     static func append(_ occasion: Occasion) {
         // Ensure unique look categories
-        occasion.corners = occasion.corners.map { $0.map { $0 }.unique }
+        occasion.corneredSubcategoryIDs = occasion.corneredSubcategoryIDs.map { $0.map { $0 }.unique }
         byID[occasion.id] = occasion
         
         // Update occasions by title
