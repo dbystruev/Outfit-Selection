@@ -68,6 +68,7 @@ extension OutfitViewController {
                     scrollToRandomItems()
                     return
                 }
+                debug("TEST3")
                 scrollTo(occasion: occasionSelected)
             }
         } else {
@@ -85,8 +86,14 @@ extension OutfitViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            self.scrollViews.forEach { $0.scrollToCurrentElement() }
+            debug("TEST2")
+            self.scrollViews.forEach {
+                $0.scrollToCurrentElement { _ in
+                    debug("FINISHED")
+                }
+            }
         }
         
         // Configure constraints for hanger bubble

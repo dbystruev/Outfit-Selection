@@ -17,6 +17,9 @@ class PinnableScrollView: UIScrollView {
         }
     }
     
+    /// Used by scrollToElement(withIndex:duration:) not to interfere with scrolling
+    var isScrolling = false
+    
     /// Ttime when offset was last changed
     private(set) var offsetChanged: Date?
     

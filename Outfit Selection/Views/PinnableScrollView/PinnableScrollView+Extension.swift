@@ -91,6 +91,7 @@ extension PinnableScrollView {
         let index = index ?? currentIndex + 1
         let imageView = insert(image: image, atIndex: index)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            debug("TEST")
             self.scrollToElement(withIndex: index, duration: 1, completion: completion)
         }
         return imageView
@@ -101,23 +102,36 @@ extension PinnableScrollView {
     ///   - imageView: the image view to delete (nil by default — search by index)
     ///   - indexToDelete: the index of image view to delete
     func removeImageView(_ imageView: UIImageView? = nil, withIndex indexToDelete: Int) {
+        return
+        
+        // Get currently shown item ID in order to scroll to it after deletions
+        guard let itemID = getImageView()?.item?.id else {
+            debug("WARNING: Can't obtain item for currently selected image view")
+            return
+        }
+
         // Make sure we have an image view to delete
         guard let imageView = imageView ?? getImageView(withIndex: indexToDelete) else { return }
         
         // Don't delete the first image view — instead copy the second one to its place and remove it
         if indexToDelete < 1 {
-            guard let secondImageView = getImageView(withIndex: 1) else { return }
+            guard let secondImageView = getImageView(withIndex: indexToDelete + 1) else {
+                debug("WARNING: Can't obtain image view with index \(indexToDelete + 1)")
+                return
+            }
+            guard let item = secondImageView.item else {
+                debug("WARNING: Can't obtain item from image view with index \(indexToDelete + 1)")
+                return
+            }
             imageView.image = secondImageView.image
+            imageView.item = item
             imageView.tag = secondImageView.tag
             secondImageView.removeFromSuperview()
         } else {
             imageView.removeFromSuperview()
         }
         
-        // Correct content offset
-        if indexToDelete < currentIndex || indexToDelete == count - 1 {
-            contentOffset.x -= elementWidth
-        }
+        scrollToElementIfPresent(with: itemID)
     }
     
     /// Remove  images views not matching subcategory IDs from this scroll view
@@ -143,7 +157,6 @@ extension PinnableScrollView {
             
             // Remove image views which have no common subcategories with given set
             guard subcategoryIDSet.intersection(subcategoryIDs).isEmpty else {
-                debug(imageView.item?.name, subcategoryIDs.categoriesDescription)
                 continue
             }
             removeImageView(imageView, withIndex: index)
@@ -157,10 +170,12 @@ extension PinnableScrollView {
                 random = .random(in: 0 ..< count)
             } while random == currentIndex
         }
+        debug("TEST")
         scrollToElement(withIndex: random, duration: duration)
     }
     
     func scrollToCurrentElement(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
+        debug("TEST")
         scrollToElement(withIndex: currentIndex, duration: duration, completion: completion)
     }
     
@@ -172,10 +187,24 @@ extension PinnableScrollView {
         }
         let index = (index + count) % count
         
+        // Don't scroll if already scrolling
+        guard !isScrolling else {
+            completion?(true)
+            return
+        }
+        
+        isScrolling = true
+        debug(index)
+        
         UIView.animate(
             withDuration: duration,
-            animations: { self.contentOffset.x = self.elementWidth * CGFloat(index) },
-            completion: completion
+            animations: {
+                self.contentOffset.x = self.elementWidth * CGFloat(index)
+            },
+            completion: { finished in
+                self.isScrolling = false
+                completion?(finished)
+            }
         )
     }
     
@@ -186,13 +215,16 @@ extension PinnableScrollView {
     func scrollToElementIfPresent(with id: String, completion: ((Bool) -> Void)? = nil) {
         // If element to scroll to not found, complete with success
         guard let index = index(of: id) else {
+            debug("WARNING: Item with ID \(id) is not found")
             completion?(true)
             return
         }
+        debug("TEST")
         scrollToElement(withIndex: index, completion: completion)
     }
     
     func scrollToLastElement(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
+        debug("TEST")
         scrollToElement(withIndex: count - 1, duration: duration, completion: completion)
     }
     

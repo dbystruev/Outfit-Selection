@@ -322,7 +322,7 @@ extension OutfitViewController {
                 let occasionSubcategories = subcategoryIDs.categoriesDescription
                 let shouldWarn = Set(item.subcategoryIDs).intersection(subcategoryIDs).isEmpty
                 let warning = shouldWarn ? "!!! " : ""
-                subcategoryLabel.text = "\(warning)\(occasionSubcategories): \(itemSubcategories)"
+                subcategoryLabel.text = "\(warning)\(occasionSubcategories) — \(itemSubcategories)"
             }
         }
     }

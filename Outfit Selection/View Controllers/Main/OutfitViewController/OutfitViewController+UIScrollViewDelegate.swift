@@ -21,19 +21,19 @@ extension OutfitViewController: UIScrollViewDelegate {
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if decelerate { return }
         guard let pinnableScrollView = scrollView as? PinnableScrollView else { return }
+        debug("TEST2")
         pinnableScrollView.scrollToCurrentElement()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard let pinnableScrollView = scrollView as? PinnableScrollView else { return }
+        debug("TEST2")
         pinnableScrollView.scrollToCurrentElement()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Don't update UI if any scroll view is still scrolling
         guard !self.scrollViews.isUserScrolling else { return }
-        
-        debug(Date())
         
         // Delay for 0.1 s to let other scroll views to finish scrolling
         OutfitViewController.scrollGroup.enter()
