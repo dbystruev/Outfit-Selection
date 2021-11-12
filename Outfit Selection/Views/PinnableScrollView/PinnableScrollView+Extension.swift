@@ -115,7 +115,7 @@ extension PinnableScrollView {
         }
         
         // Correct content offset
-        if indexToDelete < currentIndex {
+        if indexToDelete < currentIndex || indexToDelete == count - 1 {
             contentOffset.x -= elementWidth
         }
     }
@@ -124,19 +124,28 @@ extension PinnableScrollView {
     /// - Parameters:
     ///   - subcategoryIDs: subcategory IDs from occasion
     func removeImageViews(notMatching subcategoryIDs: [Int]) {
+        debug(subcategoryIDs.categoriesDescription)
+        
         // Make a set of subcategory IDs to make comparisons easier
         let subcategoryIDSet = Set(subcategoryIDs)
         
         // Loop each image view from last to first
         for index in stride(from: count - 1, to: 0, by: -1) {
-            guard let imageView = getImageView(withIndex: index) else { continue }
+            guard let imageView = getImageView(withIndex: index) else {
+                debug("WARNING: Can't get image view with index \(index)")
+                continue
+            }
             guard let subcategoryIDs = imageView.item?.subcategoryIDs else {
+                debug("WARNING: Can't get item from image view \(imageView)")
                 removeImageView(imageView, withIndex: index)
                 continue
             }
             
             // Remove image views which have no common subcategories with given set
-            guard subcategoryIDSet.intersection(subcategoryIDs).isEmpty else { continue }
+            guard subcategoryIDSet.intersection(subcategoryIDs).isEmpty else {
+                debug(imageView.item?.name, subcategoryIDs.categoriesDescription)
+                continue
+            }
             removeImageView(imageView, withIndex: index)
         }
     }

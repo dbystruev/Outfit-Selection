@@ -91,10 +91,10 @@ extension OutfitViewController {
         guard
             let firstButton = buttons.first,
             buttons.count == buttonUnderlineStackViews.count else
-        {
-            debug("WARNING: no buttons in occasions stack view")
-            return
-        }
+            {
+                debug("WARNING: no buttons in occasions stack view")
+                return
+            }
         
         // Fill existing arranged subviews with selected occasions
         for (button, occasion) in zip(buttons, selectedOccasions) {
@@ -134,7 +134,7 @@ extension OutfitViewController {
                 // Add the button and underline to occasions stack view
                 occasionsStackView.addArrangedSubview(buttonUnderlineStackView)
             }
-        // If there are too many buttons remove remaining
+            // If there are too many buttons remove remaining
         } else if selectedOccasions.count < buttons.count {
             // How many buttons to remove
             let buttonsToRemoveCount = buttons.count - selectedOccasions.count
@@ -200,7 +200,7 @@ extension OutfitViewController {
     func scrollTo(occasion: Occasion?) {
         // Load images into the outfit view controller's scroll views
         loadImages()
-
+        
         // Get all items in all scroll views, including non-visible
         let items = items
         
@@ -239,7 +239,9 @@ extension OutfitViewController {
         // Scroll to the selected items
         scrollTo(items: occasionItems.corners(.occasions), ordered: true) { _ in
             // Remove images not matching occasion subcategory IDs
-            self.scrollViews.removeImages(notMatching: occasion.corneredSubcategoryIDs.corners(.occasions))
+            self.scrollViews.removeImages(
+                notMatching: occasion.corneredSubcategoryIDs.corners(.occasions)
+            )
         }
         
         // Update selected occasion property and UI
@@ -314,12 +316,13 @@ extension OutfitViewController {
     func updateSubcategoryLabels() {
         if let occasion = occasionSelected {
             // Go through each item and show its subcategory in occasion
-            for (item, subcategoryLabel) in zip(visibleItems, subcategoryLabels) {
-                let text = item
-                    .subcategories(in: occasion)
-                    .map { $0.name }
-                    .joined(separator: ", ")
-                subcategoryLabel.text = " \(text) "
+            let subcategoryIDsAndLabels = zip(occasion.corneredSubcategoryIDs.corners(.occasions), subcategoryLabels)
+            for (item, (subcategoryIDs, subcategoryLabel)) in zip(visibleItems, subcategoryIDsAndLabels) {
+                let itemSubcategories = item.subcategoryIDs.categoryIDsDescription
+                let occasionSubcategories = subcategoryIDs.categoriesDescription
+                let shouldWarn = Set(item.subcategoryIDs).intersection(subcategoryIDs).isEmpty
+                let warning = shouldWarn ? "!!! " : ""
+                subcategoryLabel.text = "\(warning)\(occasionSubcategories): \(itemSubcategories)"
             }
         }
     }
@@ -361,7 +364,7 @@ extension OutfitViewController {
             // Set button opacity depending on whether it is selected
             let isSelected = button.occasion?.title == titleToUnderline
             button.alpha = isSelected ? 1 : 0.75
-
+            
             // Set button underline visibility depending on whether the button is selected
             underline.isHidden = !isSelected
         }

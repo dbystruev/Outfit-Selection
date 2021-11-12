@@ -27,13 +27,13 @@ extension PinnableScrollViews {
         reduce(false) { $0 || $1.isDragging }
     }
     
-    /// True if any scroll view is scrolling (decelerating or dragging)
-    var isScrolling: Bool { isDecelerating || isDragging }
-    
     /// True if any scroll view is tracking
     var isTracking: Bool {
         reduce(false) { $0 || $1.isTracking }
     }
+    
+    /// True if any scroll view is scrolled by the user (dragged or tracked)
+    var isUserScrolling: Bool { isDragging }
     
     /// Time when offset of any of scroll views was last changed
     var offsetChanged: Date? {

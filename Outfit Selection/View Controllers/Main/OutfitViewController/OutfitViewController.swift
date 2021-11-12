@@ -85,6 +85,7 @@ class OutfitViewController: LoggingViewController {
     var showSubcategoryLabels = false {
         didSet {
             subcategoryLabels.forEach { $0.isHidden = !showSubcategoryLabels }
+            updateSubcategoryLabels()
         }
     }
     

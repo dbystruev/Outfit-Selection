@@ -7,6 +7,17 @@
 //
 
 extension Swift.Collection where Element: BinaryInteger  {
-    /// Get categories from IDs
+    /// Return the list of categories
     var categories: Categories { compactMap { Categories.byID[Int($0)] }}
+    
+    /// Return category IDs and names joined by comma with space
+    var categoriesDescription: String {
+        categories.map { "\($0)" }.joined(separator: ", ")
+    }
+    
+    /// Return category IDs joined by comma with space
+    var categoryIDsDescription: String { categories.map { "\($0.id)" }.joined(separator: ", ") }
+    
+    /// Return category names joined by comma with space
+    var categoryNamesDescription: String { categories.map { $0.name }.joined(separator: ", ") }
 }

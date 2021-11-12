@@ -31,7 +31,9 @@ extension OutfitViewController: UIScrollViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Don't update UI if any scroll view is still scrolling
-        guard !self.scrollViews.isScrolling else { return }
+        guard !self.scrollViews.isUserScrolling else { return }
+        
+        debug(Date())
         
         // Delay for 0.1 s to let other scroll views to finish scrolling
         OutfitViewController.scrollGroup.enter()
