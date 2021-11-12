@@ -56,6 +56,16 @@ extension PinnableScrollViews {
         forEach { $0.pin() }
     }
     
+    /// Remove the images not matching cornered subcategory IDs from scroll views
+    /// - Parameters:
+    ///   - corneredSubcategoryIDs: cornered subcategory IDs from occasions
+    func removeImages(notMatching corneredSubcategoryIDs: [[Int]]) {
+        // Loop all scroll views and remove the items
+        for (subcategoryIDs, scrollView) in zip(corneredSubcategoryIDs, self) {
+            scrollView.removeImageViews(notMatching: subcategoryIDs)
+        }
+    }
+    
     /// Restore borders of all scroll views
     func restoreBorders() {
         forEach { $0.restoreBorder() }

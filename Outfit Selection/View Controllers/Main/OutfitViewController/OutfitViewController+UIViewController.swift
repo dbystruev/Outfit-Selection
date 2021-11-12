@@ -39,10 +39,7 @@ extension OutfitViewController {
         
         // Configure the buttons with hungers next to them
         configureHangerButtons()
-        
-        // Load images into the outfit view controller's scroll views
-        loadImages()
-        
+                
         // Configure hanger icon in navigation bar
         configureHangerBarButtonItem()
         

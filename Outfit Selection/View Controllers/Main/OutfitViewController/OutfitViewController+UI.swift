@@ -198,6 +198,9 @@ extension OutfitViewController {
     /// Scroll outfit's scroll views to the given occasion
     /// - Parameter occasion: the occasion to scroll the scroll views to
     func scrollTo(occasion: Occasion?) {
+        // Load images into the outfit view controller's scroll views
+        loadImages()
+
         // Get all items in all scroll views, including non-visible
         let items = items
         
@@ -233,13 +236,10 @@ extension OutfitViewController {
             occasionItems.append(cornerItem)
         }
         
-        // Set no elements invisible = set all elements visible
-        setElements(in: Corners.empty, visible: false)
-        
         // Scroll to the selected items
         scrollTo(items: occasionItems.corners(.occasions), ordered: true) { _ in
-            // Show elements matching occasion and hide those not matching
-            self.setElements(in: occasion.corneredSubcategoryIDs.corners(.occasions), visible: true)
+            // Remove images not matching occasion subcategory IDs
+            self.scrollViews.removeImages(notMatching: occasion.corneredSubcategoryIDs.corners(.occasions))
         }
         
         // Update selected occasion property and UI

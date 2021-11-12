@@ -59,23 +59,6 @@ extension PinnableScrollView {
         imageView?.tag = -1
     }
     
-    func deleteImageView(withIndex deleteIndex: Int) {
-        guard let imageView = getImageView(withIndex: deleteIndex) else { return }
-        if deleteIndex == 0 {
-            contentOffset.x = 0
-            imageView.image = nil
-            guard let secondImageView = getImageView(withIndex: 1) else { return }
-            imageView.image = secondImageView.image
-            imageView.tag = secondImageView.tag
-            secondImageView.removeFromSuperview()
-        } else {
-            if deleteIndex < count - 1 {
-                contentOffset.x -= elementWidth
-            }
-            imageView.removeFromSuperview()
-        }
-    }
-    
     func getImageView(withIndex index: Int? = nil) -> UIImageView? {
         guard 0 < count else { return nil }
         let index = index ?? currentIndex
@@ -111,6 +94,51 @@ extension PinnableScrollView {
             self.scrollToElement(withIndex: index, duration: 1, completion: completion)
         }
         return imageView
+    }
+    
+    /// Remove image view with given index
+    /// - Parameters:
+    ///   - imageView: the image view to delete (nil by default — search by index)
+    ///   - indexToDelete: the index of image view to delete
+    func removeImageView(_ imageView: UIImageView? = nil, withIndex indexToDelete: Int) {
+        // Make sure we have an image view to delete
+        guard let imageView = imageView ?? getImageView(withIndex: indexToDelete) else { return }
+        
+        // Don't delete the first image view — instead copy the second one to its place and remove it
+        if indexToDelete < 1 {
+            guard let secondImageView = getImageView(withIndex: 1) else { return }
+            imageView.image = secondImageView.image
+            imageView.tag = secondImageView.tag
+            secondImageView.removeFromSuperview()
+        } else {
+            imageView.removeFromSuperview()
+        }
+        
+        // Correct content offset
+        if indexToDelete < currentIndex {
+            contentOffset.x -= elementWidth
+        }
+    }
+    
+    /// Remove  images views not matching subcategory IDs from this scroll view
+    /// - Parameters:
+    ///   - subcategoryIDs: subcategory IDs from occasion
+    func removeImageViews(notMatching subcategoryIDs: [Int]) {
+        // Make a set of subcategory IDs to make comparisons easier
+        let subcategoryIDSet = Set(subcategoryIDs)
+        
+        // Loop each image view from last to first
+        for index in stride(from: count - 1, to: 0, by: -1) {
+            guard let imageView = getImageView(withIndex: index) else { continue }
+            guard let subcategoryIDs = imageView.item?.subcategoryIDs else {
+                removeImageView(imageView, withIndex: index)
+                continue
+            }
+            
+            // Remove image views which have no common subcategories with given set
+            guard subcategoryIDSet.intersection(subcategoryIDs).isEmpty else { continue }
+            removeImageView(imageView, withIndex: index)
+        }
     }
     
     func scrollToRandomElement(duration: TimeInterval = 1) {
