@@ -86,8 +86,6 @@ extension OutfitViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         
-        debug(Date())
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
             self.scrollViews.forEach {
                 $0.scrollToRecent()

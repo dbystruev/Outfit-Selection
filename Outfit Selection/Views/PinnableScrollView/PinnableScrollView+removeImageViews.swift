@@ -9,21 +9,27 @@
 import UIKit
 
 extension PinnableScrollView {
-    /// Remove image view with given index
+    /// Remove image view with given item ID
     /// - Parameters:
-    ///   - imageView: the image view to delete (nil by default — search by index)
-    ///   - indexToDelete: the index of image view to delete
-    func removeImageView(_ imageView: UIImageView? = nil, withIndex indexToDelete: Int) {
-        return
+    ///   - itemID: the item ID to delete
+    func removeImageView(withItemID itemID: String) {
+        // Get currently shown item ID in order to scroll to it after the deletion
+        guard let shownItemID = getImageView()?.item?.id else {
+            debug("WARNING: Can't obtain item for currently shown image view")
+            return
+        }
         
-        // Get currently shown item ID in order to scroll to it after deletions
-        guard let itemID = getImageView()?.item?.id else {
-            debug("WARNING: Can't obtain item for currently selected image view")
+        // Find the index of element we need to delete
+        guard let indexToDelete = itemIDs.firstIndex(of: itemID) else {
+            debug("WARNING: Not found item ID \(itemID) in the scroll view")
             return
         }
 
         // Make sure we have an image view to delete
-        guard let imageView = imageView ?? getImageView(withIndex: indexToDelete) else { return }
+        guard let imageView = getImageView(withIndex: indexToDelete) else {
+            debug("WARNING: Can't find image view with index \(indexToDelete)")
+            return
+        }
         
         // Don't delete the first image view — instead copy the second one to its place and remove it
         if indexToDelete < 1 {
@@ -43,7 +49,10 @@ extension PinnableScrollView {
             imageView.removeFromSuperview()
         }
         
-        scrollToElement(withID: itemID)
+        // Scroll to previously shown item if it does not match the one we deleted
+        if shownItemID != itemID {
+            scrollToElement(withID: shownItemID, duration: 0)
+        }
     }
     
     /// Remove  images views not matching subcategory IDs from this scroll view
@@ -59,17 +68,15 @@ extension PinnableScrollView {
                 debug("WARNING: Can't get image view with index \(index)")
                 continue
             }
-            guard let subcategoryIDs = imageView.item?.subcategoryIDs else {
-                debug("WARNING: Can't get item from image view \(imageView)")
-                removeImageView(imageView, withIndex: index)
+            guard let item = imageView.item else {
+                debug("WARNING: Can't get an item from image view \(imageView)")
                 continue
             }
             
             // Remove image views which have no common subcategories with given set
-            guard subcategoryIDSet.intersection(subcategoryIDs).isEmpty else {
-                continue
+            if subcategoryIDSet.intersection(item.subcategoryIDs).isEmpty {
+                removeImageView(withItemID: item.id)
             }
-            removeImageView(imageView, withIndex: index)
         }
     }
 }
