@@ -138,8 +138,6 @@ extension PinnableScrollView {
     /// - Parameters:
     ///   - subcategoryIDs: subcategory IDs from occasion
     func removeImageViews(notMatching subcategoryIDs: [Int]) {
-        debug(subcategoryIDs.categoriesDescription)
-        
         // Make a set of subcategory IDs to make comparisons easier
         let subcategoryIDSet = Set(subcategoryIDs)
         
@@ -161,71 +159,6 @@ extension PinnableScrollView {
             }
             removeImageView(imageView, withIndex: index)
         }
-    }
-    
-    func scrollToRandomElement(duration: TimeInterval = 1) {
-        var random = 0
-        if 1 < count {
-            repeat {
-                random = .random(in: 0 ..< count)
-            } while random == currentIndex
-        }
-        debug("TEST")
-        scrollToElement(withIndex: random, duration: duration)
-    }
-    
-    func scrollToCurrentElement(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
-        debug("TEST")
-        scrollToElement(withIndex: currentIndex, duration: duration, completion: completion)
-    }
-    
-    func scrollToElement(withIndex index: Int, duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
-        // If there are no views to scroll, complete with success status
-        guard 0 < count else {
-            completion?(true)
-            return
-        }
-        let index = (index + count) % count
-        
-        // Don't scroll if already scrolling
-        guard !isScrolling else {
-            completion?(true)
-            return
-        }
-        
-        isScrolling = true
-        debug(index)
-        
-        UIView.animate(
-            withDuration: duration,
-            animations: {
-                self.contentOffset.x = self.elementWidth * CGFloat(index)
-            },
-            completion: { finished in
-                self.isScrolling = false
-                completion?(finished)
-            }
-        )
-    }
-    
-    /// Scroll to element with the given ID
-    /// - Parameters:
-    ///   - id: the ID to search for and scroll to
-    ///   - completion: the block of code to be executed when scrolling ends
-    func scrollToElementIfPresent(with id: String, completion: ((Bool) -> Void)? = nil) {
-        // If element to scroll to not found, complete with success
-        guard let index = index(of: id) else {
-            debug("WARNING: Item with ID \(id) is not found")
-            completion?(true)
-            return
-        }
-        debug("TEST")
-        scrollToElement(withIndex: index, completion: completion)
-    }
-    
-    func scrollToLastElement(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
-        debug("TEST")
-        scrollToElement(withIndex: count - 1, duration: duration, completion: completion)
     }
     
     func setEditing(_ editing: Bool) {

@@ -68,7 +68,6 @@ extension OutfitViewController {
                     scrollToRandomItems()
                     return
                 }
-                debug("TEST3")
                 scrollTo(occasion: occasionSelected)
             }
         } else {
@@ -88,11 +87,8 @@ extension OutfitViewController {
         super.viewDidLayoutSubviews()
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-            debug("TEST2")
             self.scrollViews.forEach {
-                $0.scrollToCurrentElement { _ in
-                    debug("FINISHED")
-                }
+                $0.scrollToCurrentElement()
             }
         }
         
