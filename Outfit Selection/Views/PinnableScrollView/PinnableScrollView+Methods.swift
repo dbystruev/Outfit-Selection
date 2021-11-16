@@ -1,5 +1,5 @@
 //
-//  PinnableScrollView+Extension.swift
+//  PinnableScrollView+Methods.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 19/06/2019.
@@ -10,42 +10,6 @@ import UIKit
 
 // MARK: - Extension
 extension PinnableScrollView {
-    // MARK: - Computed Properties
-    var count: Int {
-        stackView?.arrangedSubviews.count ?? 0
-    }
-    
-    var itemCount: Int {
-        stackView?.arrangedSubviews.reduce(0, { result, view in
-            let result = result ?? 0
-            guard let imageView = view as? UIImageView else { return result }
-            guard imageView.image != nil && 0 <= imageView.tag else { return result }
-            return result + 1
-        }) ?? 0
-    }
-    
-    var currentIndex: Int {
-        guard 0 < elementWidth else { return 0 }
-        return Int(round(contentOffset.x / elementWidth))
-    }
-    
-    var elementWidth: CGFloat {
-        guard 0 < count else { return 0 }
-        return contentSize.width / CGFloat(count)
-    }
-    
-    /// Items of each of the arranged subviews of the pinnable scroll view
-    var items: [Item] {
-        stackView?.arrangedSubviews.compactMap { ($0 as? UIImageView)?.item } ?? []
-    }
-    
-    /// Item IDs of each of the arranged subviews of the pinnable scroll view
-    var itemIDs: [String] { items.IDs }
-    
-    var stackView: UIStackView? {
-        subviews.first as? UIStackView
-    }
-    
     // MARK: - Methods
     func clear() {
         unpin()
