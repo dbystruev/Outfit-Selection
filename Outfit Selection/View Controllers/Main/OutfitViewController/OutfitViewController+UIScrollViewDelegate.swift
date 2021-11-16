@@ -22,13 +22,13 @@ extension OutfitViewController: UIScrollViewDelegate {
         if decelerate { return }
         guard let pinnableScrollView = scrollView as? PinnableScrollView else { return }
         debug("TEST2")
-        pinnableScrollView.scrollToCurrentElement()
+        pinnableScrollView.scrollToRecent()
     }
     
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         guard let pinnableScrollView = scrollView as? PinnableScrollView else { return }
         debug("TEST2")
-        pinnableScrollView.scrollToCurrentElement()
+        pinnableScrollView.scrollToRecent()
     }
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {

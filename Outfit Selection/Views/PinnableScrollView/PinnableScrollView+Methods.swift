@@ -100,7 +100,7 @@ extension PinnableScrollView {
             imageView.removeFromSuperview()
         }
         
-        scrollToElementIfPresent(with: itemID)
+        scrollToElement(withID: itemID)
     }
     
     /// Remove  images views not matching subcategory IDs from this scroll view

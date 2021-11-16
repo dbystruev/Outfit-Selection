@@ -253,7 +253,7 @@ extension OutfitViewController {
     func scrollToRandomItems(duration: TimeInterval = 1) {
         scrollViews.forEach {
             if !$0.isPinned {
-                $0.scrollToRandomElement(duration: duration)
+                $0.scrollToRandom(duration: duration)
             }
         }
     }

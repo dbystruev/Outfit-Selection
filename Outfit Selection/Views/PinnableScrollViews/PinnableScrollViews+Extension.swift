@@ -93,7 +93,7 @@ extension PinnableScrollViews {
             // Scroll each scroll view to the matching item ID
             for (id, scrollView) in zip(IDs, self) {
                 scrollGroup.enter()
-                scrollView.scrollToElementIfPresent(with: id) { completed in
+                scrollView.scrollToElement(withID: id) { completed in
                     isCompleted = completed && isCompleted
                     scrollGroup.leave()
                 }
@@ -103,7 +103,7 @@ extension PinnableScrollViews {
             for scrollView in self {
                 for id in IDs {
                     scrollGroup.enter()
-                    scrollView.scrollToElementIfPresent(with: id) { completed in
+                    scrollView.scrollToElement(withID: id) { completed in
                         isCompleted = completed && isCompleted
                         scrollGroup.leave()
                     }

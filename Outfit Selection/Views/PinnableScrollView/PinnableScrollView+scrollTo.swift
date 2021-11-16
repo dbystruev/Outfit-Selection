@@ -11,7 +11,7 @@ import UIKit
 extension PinnableScrollView {
     /// Scroll to random element in the scroll view
     /// - Parameter duration: scroll duration in seconds, 1 s by default
-    func scrollToRandomElement(duration: TimeInterval = 1) {
+    func scrollToRandom(duration: TimeInterval = 1) {
         // Copy computed properties to local variables
         let count = count
         let currentIndex = currentIndex
@@ -24,14 +24,6 @@ extension PinnableScrollView {
             } while randomIndex == currentIndex
         }
         scrollToElement(withIndex: randomIndex, duration: duration)
-    }
-    
-    /// Scroll to current element in the scroll view
-    /// - Parameters:
-    ///   - duration: scroll duration in seconds, 0.5 s by default
-    ///   - completion: the block of code with bool parameter to call when scroll is completed, nil by default
-    func scrollToCurrentElement(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
-        scrollToElement(withIndex: scrolledIndex, duration: duration, completion: completion)
     }
     
     /// Scroll to element with given index in the scroll view
@@ -77,7 +69,7 @@ extension PinnableScrollView {
     /// - Parameters:
     ///   - id: the ID to search for and scroll to
     ///   - completion: the block of code with bool parameter to call when scroll is completed, nil by default
-    func scrollToElementIfPresent(with id: String, completion: ((Bool) -> Void)? = nil) {
+    func scrollToElement(withID id: String, completion: ((Bool) -> Void)? = nil) {
         // If element to scroll to not found, complete with success
         guard let index = index(of: id) else {
             debug("WARNING: Item with ID \(id) is not found")
@@ -91,7 +83,15 @@ extension PinnableScrollView {
     /// - Parameters:
     ///   - duration: scroll duration in seconds, 0.5 s by default
     ///   - completion: the block of code with bool parameter to call when scroll is completed, nil by default
-    func scrollToLastElement(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
+    func scrollToLast(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
         scrollToElement(withIndex: count - 1, duration: duration, completion: completion)
+    }
+    
+    /// Scroll to element most recently scrolled to in the scroll view
+    /// - Parameters:
+    ///   - duration: scroll duration in seconds, 0.5 s by default
+    ///   - completion: the block of code with bool parameter to call when scroll is completed, nil by default
+    func scrollToRecent(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
+        scrollToElement(withIndex: scrolledIndex, duration: duration, completion: completion)
     }
 }
