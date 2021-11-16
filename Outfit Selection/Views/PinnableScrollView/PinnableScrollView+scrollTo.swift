@@ -24,7 +24,7 @@ extension PinnableScrollView {
     func scrollToElement(withID id: String, completion: ((Bool) -> Void)? = nil) {
         // If element to scroll to not found, complete with success
         guard let index = index(of: id) else {
-            debug("WARNING: Item with ID \(id) is not found")
+            debug("WARNING: Not found item", Items.byID[id])
             completion?(true)
             return
         }

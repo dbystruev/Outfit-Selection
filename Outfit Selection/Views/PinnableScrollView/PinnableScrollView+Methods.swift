@@ -60,74 +60,9 @@ extension PinnableScrollView {
         let index = index ?? currentIndex + 1
         let imageView = insert(image: image, atIndex: index)
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            debug("TEST")
             self.scrollToElement(withIndex: index, duration: 1, completion: completion)
         }
         return imageView
-    }
-    
-    /// Remove image view with given index
-    /// - Parameters:
-    ///   - imageView: the image view to delete (nil by default — search by index)
-    ///   - indexToDelete: the index of image view to delete
-    func removeImageView(_ imageView: UIImageView? = nil, withIndex indexToDelete: Int) {
-        return
-        
-        // Get currently shown item ID in order to scroll to it after deletions
-        guard let itemID = getImageView()?.item?.id else {
-            debug("WARNING: Can't obtain item for currently selected image view")
-            return
-        }
-
-        // Make sure we have an image view to delete
-        guard let imageView = imageView ?? getImageView(withIndex: indexToDelete) else { return }
-        
-        // Don't delete the first image view — instead copy the second one to its place and remove it
-        if indexToDelete < 1 {
-            guard let secondImageView = getImageView(withIndex: indexToDelete + 1) else {
-                debug("WARNING: Can't obtain image view with index \(indexToDelete + 1)")
-                return
-            }
-            guard let item = secondImageView.item else {
-                debug("WARNING: Can't obtain item from image view with index \(indexToDelete + 1)")
-                return
-            }
-            imageView.image = secondImageView.image
-            imageView.item = item
-            imageView.tag = secondImageView.tag
-            secondImageView.removeFromSuperview()
-        } else {
-            imageView.removeFromSuperview()
-        }
-        
-        scrollToElement(withID: itemID)
-    }
-    
-    /// Remove  images views not matching subcategory IDs from this scroll view
-    /// - Parameters:
-    ///   - subcategoryIDs: subcategory IDs from occasion
-    func removeImageViews(notMatching subcategoryIDs: [Int]) {
-        // Make a set of subcategory IDs to make comparisons easier
-        let subcategoryIDSet = Set(subcategoryIDs)
-        
-        // Loop each image view from last to first
-        for index in stride(from: count - 1, to: 0, by: -1) {
-            guard let imageView = getImageView(withIndex: index) else {
-                debug("WARNING: Can't get image view with index \(index)")
-                continue
-            }
-            guard let subcategoryIDs = imageView.item?.subcategoryIDs else {
-                debug("WARNING: Can't get item from image view \(imageView)")
-                removeImageView(imageView, withIndex: index)
-                continue
-            }
-            
-            // Remove image views which have no common subcategories with given set
-            guard subcategoryIDSet.intersection(subcategoryIDs).isEmpty else {
-                continue
-            }
-            removeImageView(imageView, withIndex: index)
-        }
     }
     
     /// Restore the border around the scroll view

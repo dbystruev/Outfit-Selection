@@ -191,6 +191,8 @@ extension OutfitViewController {
     ///   - ordered: if true assume IDs are given in the same order as scroll views
     ///   - completion: the block of code to be executed when scrolling ends
     func scrollTo(items scrollItems: [Item], ordered: Bool, completion: ((Bool) -> Void)? = nil) {
+        debug(scrollItems)
+        
         // Scroll to the given item IDs
         scrollViews?.scrollToElements(with: scrollItems.IDs, ordered: ordered, completion: completion)
     }
@@ -201,46 +203,60 @@ extension OutfitViewController {
         // Load images into the outfit view controller's scroll views
         loadImages()
         
-        // Get all items in all scroll views, including non-visible
-        let items = items
+        // Get the title of the given occasion
+        guard let occasionTitle = occasion?.title else {
+            debug("WARNING: Given occasion is nil")
+            return
+        }
         
-        // Filter occasions by items in subcategories
-        guard
-            let occasionTitle = occasion?.title,
-            let occasions = Occasions.byTitle[occasionTitle]?.filter({ occasion in
-                // Keep occasions for which we could find items
-                for cornerCategoryIDs in occasion.corneredSubcategoryIDs {
-                    guard !items.filter({
-                        !$0.subcategories(in: cornerCategoryIDs).isEmpty
-                    }).isEmpty else { return false }
-                }
-                return true
-            }),
-            // Select random look from filtered occasions
-            let occasion = occasions.randomElement()
-        else { return }
+        // Get all occasions with the same title
+        guard let occasionsTitled = Occasions.byTitle[occasionTitle] else {
+            debug("WARNING: There are no occasions with title \(occasionTitle)")
+            return
+        }
+        
+        // Get all items in all scroll views, including non-visible
+        let itemsByCorner = itemsByCorner
+        
+        // Filter out occasions which do not have items currenly found in corners
+        let occasions = occasionsTitled.filter({ occasion in
+            // Check if subcategories of each occasion have
+            for (occasionSubcategoryIDs, itemsInViews) in zip(
+                occasion.subcategoryIDs,
+                itemsByCorner
+            ) {
+                let matchingItems = itemsInViews.filter({ !$0.subcategories(in: occasionSubcategoryIDs).isEmpty })
+                if matchingItems.isEmpty { return false }
+            }
+            return true
+        })
+        
+        // Select random look from filtered occasions
+        guard let occasion = occasions.randomElement() else { return }
         
         // Go through the corners and select items for each corner
         var occasionItems: [Item] = []
-        for cornerCategoryIDs in occasion.corneredSubcategoryIDs {
-            // Get all items in corner suitable for the occasion
-            let cornerItems = items.filter {
-                !$0.subcategories(in: cornerCategoryIDs).isEmpty
-            }
+        for (occasionSubcategoryIDs, itemsInViews) in zip(
+            occasion.subcategoryIDs,
+            itemsByCorner
+        ) {
+            // Get all matching items in the corner suitable for the occasion
+            let matchingItems = itemsInViews.filter({ !$0.subcategories(in: occasionSubcategoryIDs).isEmpty })
             
             // Select random item among suitable
-            guard let cornerItem = cornerItems.randomElement() else {
-                debug("WARNING: No item matching subcategories \(cornerCategoryIDs)")
+            guard let selectedItem = matchingItems.randomElement() else {
+                debug("WARNING: No item matching subcategories \(occasionSubcategoryIDs)")
                 return
             }
-            occasionItems.append(cornerItem)
+            
+            occasionItems.append(selectedItem)
         }
         
         // Scroll to the selected items
-        scrollTo(items: occasionItems.corners(.occasions), ordered: true) { _ in
+        scrollTo(items: occasionItems, ordered: true) { _ in
             // Remove images not matching occasion subcategory IDs
             self.scrollViews.removeImages(
-                notMatching: occasion.corneredSubcategoryIDs.corners(.occasions)
+                notMatching: occasion.subcategoryIDs
             )
         }
         
@@ -316,7 +332,7 @@ extension OutfitViewController {
     func updateSubcategoryLabels() {
         if let occasion = occasionSelected {
             // Go through each item and show its subcategory in occasion
-            let subcategoryIDsAndLabels = zip(occasion.corneredSubcategoryIDs.corners(.occasions), subcategoryLabels)
+            let subcategoryIDsAndLabels = zip(occasion.subcategoryIDs, subcategoryLabels)
             for (item, (subcategoryIDs, subcategoryLabel)) in zip(visibleItems, subcategoryIDsAndLabels) {
                 let itemSubcategories = item.subcategoryIDs.categoryIDsDescription
                 let occasionSubcategories = subcategoryIDs.categoriesDescription

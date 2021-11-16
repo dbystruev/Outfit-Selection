@@ -51,6 +51,11 @@ final class Occasion: Codable {
         }
     }
     
+    /// Occasion corners in top left, bottom left, top right, middle right, and bottom right order
+    var subcategoryIDs: [[Int]] {
+        corneredSubcategoryIDs.corners(.occasions)
+    }
+    
     /// Occasion name and title togeher
     var title: String { "\(name): \(label)" }
     
