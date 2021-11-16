@@ -309,7 +309,7 @@ extension OutfitViewController {
     }
     
     func updatePriceLabelWithItemCount(with count: Int) {
-        priceLabel.text = "Items: \(count)"
+        priceLabel.text = "Items"~ + ": \(count)"
     }
     
     /// Update subcategory labels with information about currently presented look

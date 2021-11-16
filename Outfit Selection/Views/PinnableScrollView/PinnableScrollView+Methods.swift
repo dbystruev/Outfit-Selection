@@ -23,6 +23,11 @@ extension PinnableScrollView {
         imageView?.tag = -1
     }
     
+    /// Clear the border around the scroll view
+    public func clearBorder() {
+        layer.borderWidth = 0
+    }
+    
     func getImageView(withIndex index: Int? = nil) -> UIImageView? {
         guard 0 < count else { return nil }
         let index = index ?? currentIndex
@@ -123,6 +128,12 @@ extension PinnableScrollView {
             }
             removeImageView(imageView, withIndex: index)
         }
+    }
+    
+    /// Restore the border around the scroll view
+    public func restoreBorder() {
+        layer.borderColor = tintColor.cgColor
+        layer.borderWidth = isPinned ? 1 : 0
     }
     
     func setEditing(_ editing: Bool) {

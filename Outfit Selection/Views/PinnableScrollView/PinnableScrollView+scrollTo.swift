@@ -31,7 +31,7 @@ extension PinnableScrollView {
     ///   - duration: scroll duration in seconds, 0.5 s by default
     ///   - completion: the block of code with bool parameter to call when scroll is completed, nil by default
     func scrollToCurrentElement(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
-        scrollToElement(withIndex: currentIndex, duration: duration, completion: completion)
+        scrollToElement(withIndex: scrolledIndex, duration: duration, completion: completion)
     }
     
     /// Scroll to element with given index in the scroll view
@@ -57,7 +57,9 @@ extension PinnableScrollView {
             return
         }
         
+        // Update stored properties
         isScrolling = true
+        scrolledIndex = index
         
         UIView.animate(
             withDuration: duration,

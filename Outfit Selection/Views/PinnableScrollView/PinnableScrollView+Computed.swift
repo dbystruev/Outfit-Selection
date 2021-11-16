@@ -15,6 +15,11 @@ extension PinnableScrollView {
         stackView?.arrangedSubviews.count ?? 0
     }
     
+    /// Item which this scroll view is currently showing
+    var item: Item? {
+        getImageView()?.item
+    }
+    
     /// The number of items in the scroll view
     var itemCount: Int { items.count }
     
