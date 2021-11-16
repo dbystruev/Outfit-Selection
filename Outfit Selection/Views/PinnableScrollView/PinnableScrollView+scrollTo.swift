@@ -9,23 +9,28 @@
 import UIKit
 
 extension PinnableScrollView {
-    /// Scroll to random element in the scroll view
-    /// - Parameter duration: scroll duration in seconds, 1 s by default
-    func scrollToRandom(duration: TimeInterval = 1) {
-        // Copy computed properties to local variables
-        let count = count
-        let currentIndex = currentIndex
-        
-        // Find random index not equal to current index
-        var randomIndex = 0
-        if 1 < count {
-            repeat {
-                randomIndex = .random(in: 0 ..< count)
-            } while randomIndex == currentIndex
-        }
-        scrollToElement(withIndex: randomIndex, duration: duration)
+    /// Scroll to current element in the scroll view
+    /// - Parameters:
+    ///   - duration: scroll duration in seconds, 0.5 s by default
+    ///   - completion: the block of code with bool parameter to call when scroll is completed, nil by default
+    func scrollToCurrent(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
+        scrollToElement(withIndex: currentIndex, duration: duration, completion: completion)
     }
     
+    /// Scroll to element with the given ID
+    /// - Parameters:
+    ///   - id: the ID to search for and scroll to
+    ///   - completion: the block of code with bool parameter to call when scroll is completed, nil by default
+    func scrollToElement(withID id: String, completion: ((Bool) -> Void)? = nil) {
+        // If element to scroll to not found, complete with success
+        guard let index = index(of: id) else {
+            debug("WARNING: Item with ID \(id) is not found")
+            completion?(true)
+            return
+        }
+        scrollToElement(withIndex: index, completion: completion)
+    }
+
     /// Scroll to element with given index in the scroll view
     /// - Parameters:
     ///   - index: index of element to scroll to
@@ -65,26 +70,29 @@ extension PinnableScrollView {
         )
     }
     
-    /// Scroll to element with the given ID
-    /// - Parameters:
-    ///   - id: the ID to search for and scroll to
-    ///   - completion: the block of code with bool parameter to call when scroll is completed, nil by default
-    func scrollToElement(withID id: String, completion: ((Bool) -> Void)? = nil) {
-        // If element to scroll to not found, complete with success
-        guard let index = index(of: id) else {
-            debug("WARNING: Item with ID \(id) is not found")
-            completion?(true)
-            return
-        }
-        scrollToElement(withIndex: index, completion: completion)
-    }
-    
     /// Scroll to the last element in the scroll view
     /// - Parameters:
     ///   - duration: scroll duration in seconds, 0.5 s by default
     ///   - completion: the block of code with bool parameter to call when scroll is completed, nil by default
     func scrollToLast(duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
         scrollToElement(withIndex: count - 1, duration: duration, completion: completion)
+    }
+    
+    /// Scroll to random element in the scroll view
+    /// - Parameter duration: scroll duration in seconds, 1 s by default
+    func scrollToRandom(duration: TimeInterval = 1) {
+        // Copy computed properties to local variables
+        let count = count
+        let currentIndex = currentIndex
+        
+        // Find random index not equal to current index
+        var randomIndex = 0
+        if 1 < count {
+            repeat {
+                randomIndex = .random(in: 0 ..< count)
+            } while randomIndex == currentIndex
+        }
+        scrollToElement(withIndex: randomIndex, duration: duration)
     }
     
     /// Scroll to element most recently scrolled to in the scroll view
