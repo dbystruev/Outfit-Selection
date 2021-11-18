@@ -222,6 +222,7 @@
 		69D3FEAD26F8D73200D31A5F /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D3FEAC26F8D73200D31A5F /* Server.swift */; };
 		69D984E6272FC3CE003E1BAC /* NSObject+className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D984E5272FC3CE003E1BAC /* NSObject+className.swift */; };
 		69D984E8272FC62E003E1BAC /* UIView+nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D984E7272FC62E003E1BAC /* UIView+nib.swift */; };
+		69DA789A2746B34E00196615 /* ImageCollectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA78992746B34E00196615 /* ImageCollectionViewModels.swift */; };
 		69DA85D426D5FA5000D16B25 /* FeedBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */; };
 		69DA85D726D5FD2F00D16B25 /* FeedBrandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */; };
 		69DA85DB26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */; };
@@ -479,6 +480,7 @@
 		69D3FEAC26F8D73200D31A5F /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		69D984E5272FC3CE003E1BAC /* NSObject+className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+className.swift"; sourceTree = "<group>"; };
 		69D984E7272FC62E003E1BAC /* UIView+nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+nib.swift"; sourceTree = "<group>"; };
+		69DA78992746B34E00196615 /* ImageCollectionViewModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCollectionViewModels.swift; sourceTree = "<group>"; };
 		69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBrandCell.swift; sourceTree = "<group>"; };
 		69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedBrandCell.xib; sourceTree = "<group>"; };
 		69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
@@ -873,6 +875,7 @@
 			isa = PBXGroup;
 			children = (
 				6978202E2587BCAA007D4CCB /* ImageCollectionViewModel.swift */,
+				69DA78992746B34E00196615 /* ImageCollectionViewModels.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -1734,6 +1737,7 @@
 				696209A426FB969400B46FE8 /* LoggingViewController.swift in Sources */,
 				69297C5225EB852700A8684E /* BrandCollectionViewCell.swift in Sources */,
 				69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */,
+				69DA789A2746B34E00196615 /* ImageCollectionViewModels.swift in Sources */,
 				6957565B27158987007ADE02 /* Onboarding.swift in Sources */,
 				69A0C9DC27044E6600C49977 /* FeedSectionHeaderView.swift in Sources */,
 				69FB0EA327148AAE006C20E9 /* OccasionsViewController+Actions.swift in Sources */,

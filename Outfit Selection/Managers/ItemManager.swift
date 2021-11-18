@@ -43,7 +43,7 @@ class ItemManager {
     /// - Parameters:
     ///   - gender: gender to filter images by
     ///   - brandNames: brand names to filter images by
-    ///   - completion: closure with int parameter which is called when all images are processed, parameter holds the number of items loaded
+    ///   - completion: (int, int) closure called while images are processed, gets current and total number of items loaded
     func loadImages(
         filteredBy gender: Gender?,
         andBy brandNames: [String] = [],
@@ -103,14 +103,14 @@ class ItemManager {
                     // Check that there is no item with the same name already in the list, unless it is wishlisted
                     guard item.wishlisted || !loadedItemNames.contains(item.name) else {
                         // Items with similar names - that's not an error, but a warning
-                        //debug("WARNING: \(itemName) already loaded in category \(category.name)")
+                        debug("WARNING: \(item.name) already loaded")
                         continue
                     }
                     
                     // Get the item picture url
                     guard let pictureURL = item.pictures.first else {
                         // No picture — that's an error
-                        debug("ERROR: No picture URLs for the item", item.name, item.url)
+                        debug("ERROR: No picture URLs for the item", item, item.url)
                         continue
                     }
                     
@@ -165,7 +165,10 @@ class ItemManager {
             }
             
             // Get here when all image network requests are finished
-            DispatchManager.shared.itemManagerGroup.notify(queue: DispatchQueue.global(qos: .background)) {
+            DispatchManager.shared.itemManagerGroup.notify(
+                queue: DispatchQueue.global(qos: .background)
+            ) {
+                Occasions.filter(by: self.viewModels.items)
                 completion(self.count, self.count)
             }
         }

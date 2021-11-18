@@ -11,11 +11,17 @@ import Foundation
 extension Occasions {
     
     // MARK: - Static Stored Properties
-    /// All occasions by ID, not selected by default
+    /// All occasions as received from the server
+    private static var all: [Occasion] = []
+    
+    /// Occasions by ID, not selected by default
     private(set) static var byID: [Int: Occasion] = [:]
     
-    /// All occasions by title
+    /// Occasions by title
     private(set) static var byTitle: [String: Occasions] = [:]
+    
+    /// The minimum number of items to keep the look in occasion
+    private static let minItemsInLook = 2
     
     // MARK: - Static Computed Properties
     /// True if occasions are empty, false otherwise
@@ -58,16 +64,52 @@ extension Occasions {
     /// Append given occasion to `byId` and `byTitle`
     /// - Parameter occasion: occasion to add
     static func append(_ occasion: Occasion) {
+        // Update server occasions
+        all.append(occasion)
+        
         // Ensure unique look categories
-        occasion.corneredSubcategoryIDs = occasion.corneredSubcategoryIDs.map { $0.map { $0 }.unique }
+        occasion.corneredSubcategoryIDs = occasion.corneredSubcategoryIDs.map {
+            $0.map { $0 }.unique
+        }
         byID[occasion.id] = occasion
         
         // Update occasions by title
         byTitle[occasion.title] = with(title: occasion.title)
     }
     
+    /// Only keep occasions which have enough items to choose from
+    /// - Parameter corneredItems: list of item lists in outfit view order
+    static func filter(by corneredItems: [Items]) {
+        // Save server occasions for future use and start from scratch
+        let allOccasions = all
+        removeAll()
+        
+        // Go through all occasions and keep only those which have enough items
+        for occasion in allOccasions {
+            // Go through each occasion look and check for enough items
+            let subcategories = zip(corneredItems, occasion.subcategoryIDs)
+                .filter { items, subcategoryIDs in
+                    let matchingItems = items.filter {
+                        $0.isMatching(subcategoryIDs)
+                    }
+                    return minItemsInLook <= matchingItems.count
+                }
+            
+            // Add occasions which have items in each corner
+            guard Corners.count == subcategories.count else { continue }
+            append(occasion)
+        }
+        
+        debug(
+            "Occasions original: \(allOccasions.count),",
+            "removed: \(allOccasions.count - all.count),",
+            "left: \(all.count)"
+        )
+    }
+    
     /// Clears all occasions dictionary
     static func removeAll() {
+        all.removeAll()
         byID.removeAll()
         byTitle.removeAll()
     }

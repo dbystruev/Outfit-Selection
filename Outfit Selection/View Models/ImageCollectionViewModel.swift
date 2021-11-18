@@ -22,6 +22,9 @@ class ImageCollectionViewModel {
     /// The number of images stored in view model
     public var count: Int { images.count }
     
+    /// Items associated with images stored in the view model
+    public var items: Items { images.compactMap { $0.item } }
+    
     /// Subscript to get access to images and tags
     subscript(_ index: Int) -> ItemImage { images[index] }
     
