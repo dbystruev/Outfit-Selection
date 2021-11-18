@@ -23,6 +23,13 @@ extension Item {
         return Categories.byID[categoryID]
     }
     
+    /// Returns true if item has any subcategory IDs matching given, false otherwise
+    /// - Parameter occasionSubcategoryIDs: occasion subcategory IDs to match
+    /// - Returns: true if any item's subcategory ID matches one of the given
+    func isMatching(_ occasionSubcategoryIDs: [Int]) -> Bool {
+        !subcategoryIDs(in: occasionSubcategoryIDs).isEmpty
+    }
+    
     /// Returns the set of subcategory IDs present both in item and in the given list of IDs
     /// - Parameter IDs: the list of subcategory IDs to check
     /// - Returns: the set of subcategory IDs present both in item and in the given list of IDs
