@@ -13,12 +13,6 @@ extension PinnableScrollView {
     /// - Parameters:
     ///   - itemID: the item ID to delete
     func removeImageView(withItemID itemID: String) {
-        // Get currently shown item ID in order to scroll to it after the deletion
-        guard let shownItemID = getImageView()?.item?.id else {
-            debug("WARNING: Can't obtain item for currently shown image view")
-            return
-        }
-        
         // Find the index of element we need to delete
         guard let indexToDelete = itemIDs.firstIndex(of: itemID) else {
             debug("WARNING: Not found item ID \(itemID) in the scroll view")
@@ -47,11 +41,6 @@ extension PinnableScrollView {
             secondImageView.removeFromSuperview()
         } else {
             imageView.removeFromSuperview()
-        }
-        
-        // Scroll to previously shown item if it does not match the one we deleted
-        if shownItemID != itemID {
-            scrollToElement(withID: shownItemID, duration: 0)
         }
     }
     

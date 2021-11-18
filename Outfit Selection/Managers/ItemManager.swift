@@ -174,12 +174,20 @@ class ItemManager {
     /// Load images from view models into scroll views
     /// - Parameters:
     ///   - scrollViews: scroll views to load images into, one scroll view for each category
-    func loadImages(into scrollViews: PinnableScrollViews) {
-        // Loop all view models and scroll views, whatever number is lower
-        for (viewModel, scrollView) in zip(viewModels, scrollViews) {
+    ///   - corneredSubcategoryIDs: subcategory IDs from occasion
+    func loadImages(into scrollViews: PinnableScrollViews, matching corneredSubcategoryIDs: [[Int]]) {
+        // Loop all view models, scroll views, and subcategory IDs, whatever number is lower
+        for (viewModel, (scrollView, subcategoryIDs)) in zip(viewModels, zip(scrollViews, corneredSubcategoryIDs)) {
             // Loop all items in given category filtered by brands
             for index in 0 ..< viewModel.count {
+                // Skip images which do not have associated items
                 let image = viewModel[index]
+                guard let item = image.item else { continue }
+                
+                // Skip items which do not have matching subcategories
+                guard !Set(item.subcategoryIDs).intersection(subcategoryIDs).isEmpty else { continue }
+                
+                // Inset image into scroll view
                 scrollView.insert(image: image).item = image.item
             }
         }

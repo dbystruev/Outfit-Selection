@@ -169,12 +169,13 @@ extension OutfitViewController {
     }
     
     /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
-    func loadImages() {
+    /// - Parameter corneredSubcategoryIDs: subcategory IDs from occasion
+    func loadImages(matching corneredSubcategoryIDs: [[Int]]) {
         // Clear scroll views
         scrollViews.clear()
         
         // Load images from view models into scroll view
-        ItemManager.shared.loadImages(into: scrollViews)
+        ItemManager.shared.loadImages(into: scrollViews, matching: corneredSubcategoryIDs)
         
         // Update the number of images loaded
         updateItemCount()
@@ -198,9 +199,6 @@ extension OutfitViewController {
     /// Scroll outfit's scroll views to the given occasion
     /// - Parameter occasion: the occasion to scroll the scroll views to
     func scrollTo(occasion: Occasion?) {
-        // Load images into the outfit view controller's scroll views
-        loadImages()
-        
         // Get the title of the given occasion
         guard let occasionTitle = occasion?.title else {
             debug("WARNING: Given occasion is nil")
@@ -208,55 +206,31 @@ extension OutfitViewController {
         }
         
         // Get all occasions with the same title
-        guard let occasionsTitled = Occasions.byTitle[occasionTitle] else {
+        guard let occasions = Occasions.byTitle[occasionTitle] else {
             debug("WARNING: There are no occasions with title \(occasionTitle)")
             return
         }
         
-        // Get all items in all scroll views, including non-visible
-        let itemsByCorner = itemsByCorner
+        // Select random occasion from filtered occasions
+        guard let occasion = occasions.randomElement() else {
+            debug("WARNING: No occasions with items matching occasion \(occasionTitle)")
+            return
+        }
         
-        // Filter out occasions which do not have items currenly found in corners
-        let occasions = occasionsTitled.filter({ occasion in
-            // Check if subcategories of each occasion have
-            for (occasionSubcategoryIDs, itemsInViews) in zip(
-                occasion.subcategoryIDs,
-                itemsByCorner
-            ) {
-                let matchingItems = itemsInViews.filter({ !$0.subcategories(in: occasionSubcategoryIDs).isEmpty })
-                if matchingItems.isEmpty { return false }
-            }
-            return true
-        })
-        
-        // Select random look from filtered occasions
-        guard let occasion = occasions.randomElement() else { return }
+        // Load images into the outfit view controller's scroll views
+        loadImages(matching: occasion.subcategoryIDs)
         
         // Go through the corners and select items for each corner
-        var occasionItems: [Item] = []
-        for (occasionSubcategoryIDs, itemsInViews) in zip(
-            occasion.subcategoryIDs,
-            itemsByCorner
-        ) {
-            // Get all matching items in the corner suitable for the occasion
-            let matchingItems = itemsInViews.filter({ !$0.subcategories(in: occasionSubcategoryIDs).isEmpty })
-            
-            // Select random item among suitable
-            guard let selectedItem = matchingItems.randomElement() else {
-                debug("WARNING: No item matching subcategories \(occasionSubcategoryIDs)")
-                return
-            }
-            
-            occasionItems.append(selectedItem)
+        let occasionItems = itemsByCorner.compactMap { $0.randomElement() }
+        
+        // Check that we didn't lose any items while removing items
+        guard occasionItems.count == itemsByCorner.count else {
+            debug("WARNING: Don't have enough items to match occasion \(occasionTitle)")
+            return
         }
         
         // Scroll to the selected items
-        scrollTo(items: occasionItems, ordered: true) { _ in
-            // Remove images not matching occasion subcategory IDs
-            self.scrollViews.removeImages(
-                notMatching: occasion.subcategoryIDs
-            )
-        }
+        scrollTo(items: occasionItems, ordered: true)
         
         // Update selected occasion property and UI
         occasionSelected = occasion

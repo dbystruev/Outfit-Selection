@@ -59,7 +59,7 @@ extension PinnableScrollViews {
     /// Remove the images not matching cornered subcategory IDs from scroll views
     /// - Parameters:
     ///   - corneredSubcategoryIDs: cornered subcategory IDs from occasions
-    func removeImages(notMatching corneredSubcategoryIDs: [[Int]]) {
+    func removeItems(notMatching corneredSubcategoryIDs: [[Int]]) {
         // Loop all scroll views and remove the items
         for (subcategoryIDs, scrollView) in zip(corneredSubcategoryIDs, self) {
             scrollView.removeImageViews(notMatching: subcategoryIDs)
@@ -83,6 +83,8 @@ extension PinnableScrollViews {
     ///   - ordered: if true assume IDs are given in the same order as scroll views
     ///   - completion: the block of code to be executed when scrolling ends
     func scrollToElements(with IDs: [String], ordered: Bool, completion: ((Bool) -> Void)? = nil) {
+        debug(IDs.items)
+        
         // Scroll group to control completion of all scrolls
         let scrollGroup = DispatchGroup()
         
