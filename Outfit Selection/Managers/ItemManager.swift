@@ -185,7 +185,7 @@ class ItemManager {
                 guard let item = image.item else { continue }
                 
                 // Skip items which do not have matching subcategories
-                guard !Set(item.subcategoryIDs).intersection(subcategoryIDs).isEmpty else { continue }
+                guard item.isMatching(subcategoryIDs) else { continue }
                 
                 // Inset image into scroll view
                 scrollView.insert(image: image).item = image.item
@@ -317,6 +317,7 @@ class ItemManager {
     /// - Parameter brands: the names of the brands to filter view models by
     /// - Returns: image collection view model array
     func viewModels(branded brands: [String]) -> [ImageCollectionViewModel] {
+        // TODO: Filter view models by brands
         viewModels
     }
 }

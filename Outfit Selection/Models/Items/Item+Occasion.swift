@@ -24,7 +24,7 @@ extension Item {
     }
     
     /// Returns the set of subcategory IDs present both in item and in the given list of IDs
-    /// - Parameter IDs: the list of IDs to check
+    /// - Parameter IDs: the list of subcategory IDs to check
     /// - Returns: the set of subcategory IDs present both in item and in the given list of IDs
     func subcategoryIDs(in IDs: [Int]) -> Set<Int> {
         Set(subcategoryIDs).intersection(IDs)
@@ -37,6 +37,9 @@ extension Item {
         subcategoryIDs(in: occasion.flatSubcategoryIDs)
     }
     
+    /// Returns the list of subcategories present both in item and in the given list of subcategory IDs
+    /// - Parameter IDs: the list of subcategory IDs to check
+    /// - Returns: the list of categories present both in item and in the given list of subcategory IDs
     func subcategories(in IDs: [Int]) -> Categories {
         subcategoryIDs(in: IDs).categories
     }

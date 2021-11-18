@@ -86,24 +86,18 @@ extension PinnableScrollView {
     ///   - subcategoryIDs: subcategory IDs of elements whose visibility is defined by visible parameter, all other elements are set to !visible
     ///   - visible: show if true, hide if false
     func setElements(with subcategoryIDs: [Int], visible: Bool) {
-        // Make a set of subcategory IDs to make comparisons easier
-        let subcategoryIDSet = Set(subcategoryIDs)
-        
         // Go through all elements in the scroll view's stack view and show/hide them
         stackView?
             .arrangedSubviews
             .compactMap { $0 as? UIImageView }
             .forEach { imageView in
-                // Get the list of item subcategory IDs
-                guard let itemSubcategoryIDs = imageView.item?.subcategoryIDs else { return }
-                
                 // Compare occasion subcategories with item's
-                if subcategoryIDSet.intersection(itemSubcategoryIDs).isEmpty {
-                    // Hide (when visible is true) if there are no subcategories in common
-                    imageView.alpha = visible ? 0 : 1
-                } else {
+                if imageView.item?.isMatching(subcategoryIDs) == true {
                     // Show (when visible is true) if there are subcategories in common
                     imageView.alpha = visible ? 1 : 0
+                } else {
+                    // Hide (when visible is true) if there are no subcategories in common
+                    imageView.alpha = visible ? 0 : 1
                 }
             }
     }

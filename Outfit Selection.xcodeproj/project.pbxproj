@@ -222,6 +222,7 @@
 		69D3FEAD26F8D73200D31A5F /* Server.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D3FEAC26F8D73200D31A5F /* Server.swift */; };
 		69D984E6272FC3CE003E1BAC /* NSObject+className.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D984E5272FC3CE003E1BAC /* NSObject+className.swift */; };
 		69D984E8272FC62E003E1BAC /* UIView+nib.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69D984E7272FC62E003E1BAC /* UIView+nib.swift */; };
+		69DA78982746528A00196615 /* Item+matches.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA78972746528A00196615 /* Item+matches.swift */; };
 		69DA85D426D5FA5000D16B25 /* FeedBrandCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */; };
 		69DA85D726D5FD2F00D16B25 /* FeedBrandCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */; };
 		69DA85DB26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */; };
@@ -479,6 +480,7 @@
 		69D3FEAC26F8D73200D31A5F /* Server.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Server.swift; sourceTree = "<group>"; };
 		69D984E5272FC3CE003E1BAC /* NSObject+className.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+className.swift"; sourceTree = "<group>"; };
 		69D984E7272FC62E003E1BAC /* UIView+nib.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+nib.swift"; sourceTree = "<group>"; };
+		69DA78972746528A00196615 /* Item+matches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+matches.swift"; sourceTree = "<group>"; };
 		69DA85D326D5FA5000D16B25 /* FeedBrandCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBrandCell.swift; sourceTree = "<group>"; };
 		69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedBrandCell.xib; sourceTree = "<group>"; };
 		69DA85DA26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectionViewDelegateFlowLayout.swift"; sourceTree = "<group>"; };
@@ -746,6 +748,7 @@
 				69560ECB2587E7C700337F35 /* Item+Branded.swift */,
 				694935AD270D9DFB00168EB6 /* Item+CustomStringConvertible.swift */,
 				69E0641C26FA4E2B00C68A6A /* Item+Equatable.swift */,
+				69DA78972746528A00196615 /* Item+matches.swift */,
 				6905DC91272B12760088A34E /* Item+Occasion.swift */,
 				6964C64F272B4A2B00A71C8F /* Items.swift */,
 			);
@@ -1588,6 +1591,7 @@
 				69007CEC26EA6324001170D0 /* Occasion.swift in Sources */,
 				69C5CBDA260A045A00DE22E6 /* Swift.Collection+safeIndex.swift in Sources */,
 				695367FB25F7B0AA0024EC8B /* AppDelegate+UNUserNotificationCenterDelegate.swift in Sources */,
+				69DA78982746528A00196615 /* Item+matches.swift in Sources */,
 				69F60BD6272BFBD6004C4EA3 /* Swift.Collection+items.swift in Sources */,
 				698A7F9226E8E4B1006C36FD /* PList.swift in Sources */,
 				6986611B25700ED2008F94CA /* Double+asTime.swift in Sources */,

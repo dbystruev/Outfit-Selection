@@ -48,9 +48,6 @@ extension PinnableScrollView {
     /// - Parameters:
     ///   - subcategoryIDs: subcategory IDs from occasion
     func removeImageViews(notMatching subcategoryIDs: [Int]) {
-        // Make a set of subcategory IDs to make comparisons easier
-        let subcategoryIDSet = Set(subcategoryIDs)
-        
         // Loop each image view from last to first
         for index in stride(from: count - 1, to: 0, by: -1) {
             guard let imageView = getImageView(withIndex: index) else {
@@ -62,8 +59,8 @@ extension PinnableScrollView {
                 continue
             }
             
-            // Remove image views which have no common subcategories with given set
-            if subcategoryIDSet.intersection(item.subcategoryIDs).isEmpty {
+            // Remove image views which have no common subcategories with given subcategories
+            if !item.isMatching(subcategoryIDs) {
                 removeImageView(withItemID: item.id)
             }
         }

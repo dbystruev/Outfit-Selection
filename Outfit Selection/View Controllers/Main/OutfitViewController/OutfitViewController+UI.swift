@@ -308,8 +308,7 @@ extension OutfitViewController {
             for (item, (subcategoryIDs, subcategoryLabel)) in zip(visibleItems, subcategoryIDsAndLabels) {
                 let itemSubcategories = item.subcategoryIDs.categoryIDsDescription
                 let occasionSubcategories = subcategoryIDs.categoriesDescription
-                let shouldWarn = Set(item.subcategoryIDs).intersection(subcategoryIDs).isEmpty
-                let warning = shouldWarn ? "!!! " : ""
+                let warning = item.isMatching(subcategoryIDs) ? "" : "!!! "
                 subcategoryLabel.text = "\(warning)\(occasionSubcategories) — \(itemSubcategories)"
             }
         }
