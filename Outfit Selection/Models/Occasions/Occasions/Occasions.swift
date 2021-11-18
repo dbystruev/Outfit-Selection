@@ -9,6 +9,7 @@
 typealias Occasions = [Occasion]
 
 extension Occasions {
+    // MARK: - Computed Properties
     /// True if array or occasions is empty, false otherwise
     var areEmpty: Bool { isEmpty }
     
@@ -21,5 +22,10 @@ extension Occasions {
             // For unisex all occasions are OK, otherwise match occasion gender
             return $0.gender == currentGender || .other == currentGender
         }
+    }
+    
+    /// First occasion which is selected
+    var firstSelected: Occasion? {
+        self.first { $0.isSelected }
     }
 }

@@ -19,7 +19,10 @@ class OccasionsViewController: NextButtonViewController {
     
     // MARK: - Stored Properties
     /// Occasions with unique titles which could be selected
-    var occasions: Occasions = Occasions.byTitle.keys.sorted().compactMap { Occasions.byTitle[$0]?.first }
+    var occasions: Occasions = Occasions.byTitle.keys.sorted().compactMap {
+        let occasions = Occasions.byTitle[$0]?.currentGender
+        return occasions?.firstSelected ?? occasions?.first
+    }
     
     // MARK: - Custom Methods
     /// Set top right button to clear or select all

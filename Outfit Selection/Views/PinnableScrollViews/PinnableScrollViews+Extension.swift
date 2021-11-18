@@ -83,8 +83,6 @@ extension PinnableScrollViews {
     ///   - ordered: if true assume IDs are given in the same order as scroll views
     ///   - completion: the block of code to be executed when scrolling ends
     func scrollToElements(with IDs: [String], ordered: Bool, completion: ((Bool) -> Void)? = nil) {
-        debug(IDs.items)
-        
         // Scroll group to control completion of all scrolls
         let scrollGroup = DispatchGroup()
         

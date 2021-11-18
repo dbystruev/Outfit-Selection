@@ -22,9 +22,11 @@ extension PinnableScrollView {
     ///   - id: the ID to search for and scroll to
     ///   - duration: scroll duration in seconds, 0.5 s by default
     ///   - completion: the block of code with bool parameter to call when scroll is completed, nil by default
-    func scrollToElement(withID id: String, duration: TimeInterval = 0.5, completion: ((Bool) -> Void)? = nil) {
-        debug(id.item)
-        
+    func scrollToElement(
+        withID id: String,
+        duration: TimeInterval = 0.5,
+        completion: ((Bool) -> Void)? = nil
+    ) {
         // If element to scroll to not found, complete with success
         guard let index = index(of: id) else {
             debug("WARNING: Not found item", Items.byID[id])

@@ -35,10 +35,12 @@ extension AppDelegate {
             
             // Fill occasions with the new list of occasions
             Occasions.removeAll()
-            occasions.currentGender.forEach { Occasions.append($0) }
+            occasions.currentGender.forEach { occasion in
+                Occasions.append(occasion)
+            }
             
-            // Restore additional occasions from user defaults
-            Occasions.restore()
+            // Restore selected occasions from user defaults
+            Occasions.restoreSelectedOccasions()
             
             // Show elapsed time
             let elapsed = Date().timeIntervalSince(startTime)

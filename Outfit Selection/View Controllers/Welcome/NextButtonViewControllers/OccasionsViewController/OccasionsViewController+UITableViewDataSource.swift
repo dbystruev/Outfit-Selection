@@ -9,11 +9,15 @@
 import UIKit
 
 extension OccasionsViewController: UITableViewDataSource {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int { occasions.count }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        occasions.count
+    }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let occasionCell: OccasionCell = {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: OccasionCell.reuseId) as? OccasionCell else {
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: OccasionCell.reuseId
+            ) as? OccasionCell else {
                 debug("WARNING: Can't dequeue a \(OccasionCell.reuseId) cell from \(tableView)")
                 return OccasionCell()
             }

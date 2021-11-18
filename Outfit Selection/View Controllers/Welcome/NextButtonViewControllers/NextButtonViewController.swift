@@ -66,11 +66,14 @@ class NextButtonViewController: LoggingViewController {
         
         // Perform default actions on each gesture
         switch sender.direction {
+            
         case .left:
             guard let nextButton = nextButton, nextButton.isEnabled else { return }
             nextButtonTapped(nextButton)
+            
         case .right:
             navigationController?.popViewController(animated: true)
+            
         default:
             debug("WARNING: Unknown gesture recognizer \(sender)")
         }
