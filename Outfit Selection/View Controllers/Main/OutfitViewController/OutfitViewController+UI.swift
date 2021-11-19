@@ -73,7 +73,7 @@ extension OutfitViewController {
     /// Configure occasions stack view
     func configureOccasions() {
         // By default make the first occasion selected
-        let selectedOccasions = Occasions.selectedUniqueTitle.sorted()
+        let selectedOccasions = Occasions.selectedUniqueTitle.sorted(by: { $0.label < $1.label })
         occasionSelected = occasionSelected ?? selectedOccasions.first
         
         // Hide occasions stack view if no occasions are selected
