@@ -119,7 +119,16 @@ extension Occasions {
     ///   - title: the title to search for
     ///   - shouldSelect: true to select, false to unselect
     static func select(title: String, shouldSelect: Bool) {
-        with(title: title).forEach { $0.isSelected = shouldSelect }
+        selectWithoutSaving(title: title, shouldSelect: shouldSelect)
+        Occasions.saveSelectedOccasions()
+    }
+    
+    /// Select/deselect all occasions with given title without saving to user defaults
+    /// - Parameters:
+    ///   - title: the title to search for
+    ///   - shouldSelect: true to select, false to unselect
+    static func selectWithoutSaving(title: String, shouldSelect: Bool) {
+        with(title: title).forEach { $0.selectWithoutSaving(shouldSelect) }
     }
     
     /// Update all occasions with given gender
