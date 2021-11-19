@@ -72,6 +72,7 @@ class ItemManager {
                 : Categories.by(gender: gender)
             
             /// Loop all corners
+            var itemsSkipped = 0
             for (categories, viewModel) in zip(categoriesByCorner, self.viewModels) {
                 // The names of the items already loaded in this corner
                 var loadedItemNames = [String]()
@@ -102,8 +103,8 @@ class ItemManager {
                 for item in items {
                     // Check that there is no item with the same name already in the list, unless it is wishlisted
                     guard item.wishlisted || !loadedItemNames.contains(item.name) else {
-                        // Items with similar names - that's not an error, but a warning
-                        debug("WARNING: \(item.name) already loaded")
+                        // Skip items with similar names
+                        itemsSkipped += 1
                         continue
                     }
                     
@@ -164,6 +165,11 @@ class ItemManager {
                 }
             }
             
+            // Items with similar names - that's not an error, but a warning
+            if 0 < itemsSkipped {
+                debug("WARNING: Similar items skipped: \(itemsSkipped)")
+            }
+            
             // Get here when all image network requests are finished
             DispatchManager.shared.itemManagerGroup.notify(
                 queue: DispatchQueue.global(qos: .background)
@@ -215,6 +221,7 @@ class ItemManager {
         DispatchManager.shared.itemManagerGroup.enter()
         
         // Run network requests for different corners and brand names in parallel
+        /// Used for debug message
         let categoriesCount: Int
         if Occasions.selected.areEmpty {
             let categoriesByCorners = Categories.by(gender: gender)
@@ -228,13 +235,20 @@ class ItemManager {
             }
         } else {
             let subcategoryIDsByOccasions = Occasions.selected.flatMap { $0.corneredSubcategoryIDs }
-            categoriesCount = subcategoryIDsByOccasions.flatMap { $0 }.unique.count
-            for subcategoryIDs in subcategoryIDsByOccasions {
-                loadItemsByBrands(
-                    gender: gender,
-                    subcategoryIDs: subcategoryIDs.unique,
-                    totalRequests: subcategoryIDsByOccasions.count
-                )
+            let flatSubcategoryIDs = subcategoryIDsByOccasions.flatMap { $0 }.unique
+            categoriesCount = flatSubcategoryIDs.count
+            
+            // If we exceeded the recommended number of requests, decrease them
+            if NetworkManager.shared.requestsRecommended < subcategoryIDsByOccasions.count {
+                loadItemsByBrands(gender: gender, subcategoryIDs: flatSubcategoryIDs, totalRequests: 1)
+            } else {
+                for subcategoryIDs in subcategoryIDsByOccasions {
+                    loadItemsByBrands(
+                        gender: gender,
+                        subcategoryIDs: subcategoryIDs.unique,
+                        totalRequests: subcategoryIDsByOccasions.count
+                    )
+                }
             }
         }
         
@@ -283,7 +297,7 @@ class ItemManager {
         totalRequests: Int
     ) {
         let selectedBrandNames = BrandManager.shared.selectedBrandNames
-        let chunkSize = selectedBrandNames.count * totalRequests / 16 + 1
+        let chunkSize = selectedBrandNames.count * totalRequests / NetworkManager.shared.requestsRecommended + 1
         let brandNamesSlice = selectedBrandNames.chunked(into: chunkSize)
         
         // Adjust current and total requests to the number of total requests
@@ -310,7 +324,8 @@ class ItemManager {
                 self.currentRequest += 1
                 ProgressViewController.default?.updateProgressBar(
                     current: self.currentRequest,
-                    total: totalRequests, maxValue: 0.5
+                    total: totalRequests,
+                    maxValue: 0.5
                 )
             }
         }

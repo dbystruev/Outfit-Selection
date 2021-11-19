@@ -18,19 +18,22 @@ class NetworkManager {
     
     // MARK: - Stored Properties
     /// Maximum number of simultaneous get requests (image loading is not counted)
-    let maxNumberOfRequestsLimit = 1024
+    let requestsLimit = 1024
     
     /// The maximum number of parallel requests reached
-    var maxNumberOfRequestsReached = 0
+    var requestsReached = 0
+    
+    /// The maximum number of parallel requests recommended
+    let requestsRecommended = 16
     
     /// Number of get requests currently running (image loading is not counted)
-    var numberOfRequestsRunning = 0 {
+    var requestsRunning = 0 {
         didSet {
-            if numberOfRequestsRunning < 1 {
-                debug("Max:", maxNumberOfRequestsReached)
-                maxNumberOfRequestsReached = 0
+            if requestsRunning < 1 {
+                debug("Max:", requestsReached)
+                requestsReached = 0
             } else {
-                maxNumberOfRequestsReached = max(maxNumberOfRequestsReached, numberOfRequestsRunning)
+                requestsReached = max(requestsReached, requestsRunning)
             }
         }
     }
@@ -97,17 +100,17 @@ class NetworkManager {
         }
         
         // Check that we don't run more than allowed number of get requests in parallel
-        guard numberOfRequestsRunning <= maxNumberOfRequestsLimit else {
-            debug("ERROR: the number of network get requests should not exceed \(maxNumberOfRequestsLimit)")
+        guard requestsRunning <= requestsLimit else {
+            debug("ERROR: the number of network get requests should not exceed \(requestsLimit)")
             completion(nil)
             return
         }
         
-        numberOfRequestsRunning += 1
+        requestsRunning += 1
         
         let task = URLSession.shared.dataTask(with: request) { data, _, error in
             
-            self.numberOfRequestsRunning -= 1
+            self.requestsRunning -= 1
             
             // Check if we haven't received nil
             guard let data = data else {
