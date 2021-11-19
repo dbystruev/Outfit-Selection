@@ -83,31 +83,32 @@ extension PinnableScrollViews {
     ///   - ordered: if true assume IDs are given in the same order as scroll views
     ///   - completion: the block of code to be executed when scrolling ends
     func scrollToElements(with IDs: [String], ordered: Bool, completion: ((Bool) -> Void)? = nil) {
-        // Scroll group to control completion of all scrolls
-        let scrollGroup = DispatchGroup()
+        debug(IDs.items)
         
         // Flag to check if all scrolls are completed
         var isCompleted = true
         
-        if ordered {
-            // Scroll each scroll view to the matching item ID
-            for (id, scrollView) in zip(IDs, self) {
-                scrollGroup.enter()
-                scrollView.scrollToElement(withID: id) { completed in
-                    isCompleted = completed && isCompleted
-                    scrollGroup.leave()
-                }
-            }
-        } else {
-            // Check each scroll view for the presense of item ID and scroll to it
-            for scrollView in self {
-                for id in IDs {
-                    scrollGroup.enter()
-                    scrollView.scrollToElement(withID: id) { completed in
-                        isCompleted = completed && isCompleted
-                        scrollGroup.leave()
-                    }
-                }
+        // Get the IDs of items to scroll to
+        let scrollIDs = ordered
+        ? IDs
+        : compactMap { $0.firstItemID(with: IDs) }
+        
+        // Make sure we have
+        guard scrollIDs.count == count else {
+            debug("WARNING: wrong number of items to scroll to: \(scrollIDs.count)")
+            completion?(isCompleted)
+            return
+        }
+        
+        // Scroll group to control completion of all scrolls
+        let scrollGroup = DispatchGroup()
+        
+        // Scroll each scroll view to the matching item ID
+        for (id, scrollView) in zip(scrollIDs, self) {
+            scrollGroup.enter()
+            scrollView.scrollToElement(withID: id) { completed in
+                isCompleted = completed && isCompleted
+                scrollGroup.leave()
             }
         }
         
