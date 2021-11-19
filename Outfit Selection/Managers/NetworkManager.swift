@@ -242,13 +242,18 @@ class NetworkManager {
                     )
                     .trimmingCharacters(in: .whitespacesAndNewlines)
                 
-                // Remove anything in brackets inside the labels
+                // Remove anything in brackets inside the labels and non-lating characters from the end
                 $0.label = $0
                     .label
                     .replacingOccurrences(
                         of: #"\(.*\)"#,
                         with: "",
                         options: [.regularExpression]
+                    )
+                    .replacingOccurrences(
+                        of: "[^a-z0-9]*$",
+                        with: "",
+                        options: [.caseInsensitive, .regularExpression]
                     )
                     .trimmingCharacters(in: .whitespacesAndNewlines)
             }

@@ -18,7 +18,7 @@ extension PinnableScrollView {
     /// - Parameter IDs: item IDs to search for
     /// - Returns: first item IDs matching given IDs or nil if not found
     func firstItemID(with IDs: [String]) -> String? {
-        itemIDs.first
+        itemIDs(with: IDs).first
     }
     
     /// Find items with IDs from the list of given IDs present in the scroll view
