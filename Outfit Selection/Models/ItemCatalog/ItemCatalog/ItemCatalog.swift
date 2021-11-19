@@ -41,7 +41,7 @@ class ItemCatalog: Codable {
     let kind: Kind
     
     /// The list of item ids
-    let itemIDs: [String]
+    var itemIDs: [String]
     
     /// The dictionary of items (or single item in case of .item type)
     var items: [String: Item] = [:]
@@ -63,7 +63,7 @@ class ItemCatalog: Codable {
         self.kind = kind
         self.itemIDs = itemIDs
         
-        updateItems(for: itemIDs)
+        updateItems()
     }
     
     // MARK: - Methods
@@ -86,12 +86,12 @@ class ItemCatalog: Codable {
         itemIDs = try values.decode([String].self, forKey: .itemIDs)
         
         // Init items with given item IDs
-        updateItems(for: itemIDs)
+        updateItems()
     }
     
     /// Update items with given item IDs
     /// - Parameter itemIDs: item IDs to init items from
-    func updateItems(for itemIDs: [String]) {
+    func updateItems() {
         // Set already loaded items
         itemIDs.forEach {
             guard let item = Items.byID[$0] else { return }
@@ -102,11 +102,13 @@ class ItemCatalog: Codable {
         let newItemIDs = itemIDs.filter { items[$0] == nil }
         
         NetworkManager.shared.getItems(newItemIDs) { newItems in
-            guard let newItems = newItems, !newItems.isEmpty else { return }
+            // Append new items loaded from the server
+            let newItems = newItems ?? []
             Items.append(contentsOf: newItems)
-            newItems.forEach {
-                self.items[$0.id] = $0
-            }
+            newItems.forEach { self.items[$0.id] = $0 }
+            
+            // Remove item IDs not present in items
+            self.itemIDs = self.itemIDs.filter { self.items[$0] != nil }
         }
     }
     
