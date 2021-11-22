@@ -26,6 +26,24 @@ extension Occasions {
     
     /// First occasion which is selected
     var firstSelected: Occasion? {
-        self.first { $0.isSelected }
+        selected.first
+    }
+    
+    /// All selected occasions
+    var selected: Occasions {
+        filter { $0.isSelected }
+    }
+    
+    /// All occasions, but selected are first
+    var selectedFirst: Occasions {
+        selected + unselected
+    }
+    
+    /// The set of titles (name: label) of all occasions
+    var titles: Set<String> { Set(map { $0.title })}
+    
+    /// All unselected occasions
+    var unselected: Occasions {
+        filter { !$0.isSelected }
     }
 }

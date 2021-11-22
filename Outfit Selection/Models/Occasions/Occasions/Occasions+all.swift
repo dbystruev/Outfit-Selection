@@ -27,6 +27,11 @@ extension Occasions {
     /// True if occasions are empty, false otherwise
     static var areEmpty: Bool { byID.isEmpty }
     
+    /// Occasions filtered by current gender
+    static var currentGender: Occasions {
+        byID.values.filter { $0.gender == Gender.current || Gender.current == .other }
+    }
+    
     /// The set of labels of all occasions
     static var labels: Set<String> { Set(byID.values.map({ $0.label }))}
     
@@ -102,6 +107,7 @@ extension Occasions {
         
         debug(
             "Occasions original: \(allOccasions.count),",
+            "selected: \(allOccasions.selected.count)",
             "removed: \(allOccasions.count - all.count),",
             "left: \(all.count)"
         )

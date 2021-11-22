@@ -17,11 +17,15 @@ class OccasionsViewController: NextButtonViewController {
     /// The main table view with occasion list
     @IBOutlet weak var occasionsTableView: UITableView!
     
-    // MARK: - Stored Properties
+    // MARK: - Computed Properties
     /// Occasions with unique titles which could be selected
-    var occasions: Occasions = Occasions.byTitle.keys.sorted().compactMap {
-        let occasions = Occasions.byTitle[$0]?.currentGender
-        return occasions?.firstSelected ?? occasions?.first
+    var occasions: Occasions {
+        occasionTitles.compactMap { Occasions.byTitle[$0]?.selectedFirst.first }
+    }
+    
+    ///  All occasion titles for current gender sorted
+    var occasionTitles: [String] {
+        Occasions.currentGender.titles.sorted()
     }
     
     // MARK: - Custom Methods
@@ -35,8 +39,8 @@ class OccasionsViewController: NextButtonViewController {
         let occasionsSelected = Occasions.selected.count
         let isEnabled = 0 < occasionsSelected
         nextButton?.backgroundColor = isEnabled
-            ? Globals.Color.Button.enabled
-            : Globals.Color.Button.disabled
+        ? Globals.Color.Button.enabled
+        : Globals.Color.Button.disabled
         nextButton?.isEnabled = isEnabled
     }
     

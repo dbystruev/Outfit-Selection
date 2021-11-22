@@ -20,17 +20,14 @@ extension Occasions {
             return
         }
         
-        var selectedOccasionsCount = 0
-        
         for selectedRestoredID in selectedIDsRestored {
             guard let occasion = Occasions.byID[selectedRestoredID] else { continue }
             occasion.isSelected = true
-            selectedOccasionsCount += 1
         }
         
         debug(
             "Occasions: \(selectedIDsRestored.count) loaded,",
-            "\(selectedOccasionsCount) of \(Occasions.byID.count) selected"
+            "\(Occasions.selectedTitles.count) of \(Occasions.titles.count) titles selected"
         )
     }
     
