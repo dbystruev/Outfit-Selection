@@ -16,7 +16,7 @@ class ImageCollectionViewModel: ItemSearchable {
     
     // MARK: - Stored Properties
     /// Images stored in view model
-    private var images: [ItemImage] = []
+    private(set) var images: [ItemImage] = []
         
     // MARK: - Computed properties
     /// The number of images stored in view model

@@ -86,6 +86,9 @@ extension PinnableScrollViews {
         // Flag to check if all scrolls are completed
         var isCompleted = true
         
+        // Get all item IDs from view models
+        let viewModels = ItemManager.shared.viewModels
+        
         // Get the IDs of the items to scroll to
         let scrollIDs = ordered
         ? IDs
@@ -93,17 +96,25 @@ extension PinnableScrollViews {
             // If item to scroll to is found — return its id
             if let itemID = scrollView.firstItemID(with: IDs) { return itemID }
             
-            // If item is not found — make sure we have it in view models
-            guard
-                let viewModel = ItemManager.shared.viewModels[safe: cornerIndex],
-                let itemID = viewModel.firstItemID(with: IDs)
-            else {
-                debug("No items with IDs \(IDs) were found in view model for corner with index \(cornerIndex)")
+            // Obtain view model corresponding to current corner
+            guard let viewModel = viewModels[safe: cornerIndex] else {
+                debug("No view model for corner with index \(cornerIndex) was found")
                 return nil
             }
             
-            // Insert an item with found id from the view model into the scroll view
-            return scrollView.insert(image: viewModel.image(for: itemID)).item?.id
+            guard let itemID = viewModel.firstItemID(with: IDs) ?? viewModels.firstItemID(with: IDs) else {
+                debug("No items with IDs \(IDs) were found in any view models")
+                return nil
+            }
+            
+            // Obtain an image corresponding to the item
+            guard let image = viewModels.image(for: itemID) else {
+                debug("No image for item with ID \(itemID) was found in any view models")
+                return nil
+            }
+            
+            // Insert an image for found item into the scroll view
+            return scrollView.insert(image: image).item?.id
         }
         
         // Make sure we have all elements to scroll to
