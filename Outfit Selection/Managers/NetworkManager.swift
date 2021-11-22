@@ -172,7 +172,7 @@ class NetworkManager {
     /// - Parameters:
     ///   - ids: items ids
     ///   - completion: closure called when request is finished, with items if successfull, or with nil if not
-    func getItems(_ ids: [String], completion: @escaping ([Item]?) -> Void) {
+    func getItems(_ ids: [String], completion: @escaping (Items?) -> Void) {
         // Include id=in.(..., ...) parameter
         let parameters = ["id": "in.(\(ids.commaJoined))"]
         
@@ -196,7 +196,7 @@ class NetworkManager {
         filteredBy vendorNames: [String] = [],
         limited limit: Int? = nil,
         sale: Bool = false,
-        completion: @escaping ([Item]?) -> Void)
+        completion: @escaping (Items?) -> Void)
     {
         // Prepare parameters
         let parameters = parameters(
@@ -216,13 +216,13 @@ class NetworkManager {
     /// - Parameters:
     ///   - parameters: API query parameters
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
-    func getItems(with parameters: [String: Any], completion: @escaping ([Item]?) -> Void) {
+    func getItems(with parameters: [String: Any], completion: @escaping (Items?) -> Void) {
         // Sort by modified time from newest to oldest
         var parameters = parameters
         parameters["order"] = "modified_time.desc"
         
         // Process get request
-        get("items", parameters: parameters) { (items: [Item]?) in
+        get("items", parameters: parameters) { (items: Items?) in
             self.restoreVendorFullNames(items: items, completion: completion)
         }
     }
@@ -339,7 +339,7 @@ class NetworkManager {
     /// - Parameters:
     ///   - items: iterms with short vendor names received from the API
     ///   - completion: closure called when full vendor names are restored, with items with replaced vendor names
-    func restoreVendorFullNames(items: [Item]?, completion: @escaping ([Item]?) -> Void) {
+    func restoreVendorFullNames(items: Items?, completion: @escaping (Items?) -> Void) {
         guard let items = items else {
             completion(nil)
             return

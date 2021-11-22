@@ -39,6 +39,13 @@ class ItemManager {
         viewModels.forEach { $0.removeAll() }
     }
     
+    /// Return an item in view model with given ID or nil if not found
+    /// - Parameter id: ID of the item to search for
+    /// - Returns: item in view model with given ID or nil if not found
+    func item(with id: String) -> Item? {
+        nil
+    }
+    
     /// Load images filtered by categories into view models
     /// - Parameters:
     ///   - gender: gender to filter images by

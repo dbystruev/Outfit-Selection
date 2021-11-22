@@ -15,7 +15,7 @@ class FeedItemCell: FeedBaseCell {
     
     // MARK: - Stored Properties
     /// Items to display in the item stack view
-    var items: [Item] = []
+    var items: Items = []
     
     /// The name of the feed
     var name: String?
@@ -47,7 +47,7 @@ class FeedItemCell: FeedBaseCell {
     /// - Parameters:
     ///   - items: items to add
     ///   - isInteractive: if true allow clicks on buttons and items, if not — disable them
-    func configure(items: [Item], isInteractive: Bool) {
+    func configure(items: Items, isInteractive: Bool) {
         // Make sure items are not empty
         guard 0 < items.count else { return }
         self.items = items
@@ -84,7 +84,7 @@ class FeedItemCell: FeedBaseCell {
     ///   - brandNames: put items with given brand names first
     ///   - items: the items to configure the content for
     ///   - isInteractive: if true allow clicks on buttons and items, if not — disable them
-    func configureContent(for kind: FeedKind, title: String, brandNames: [String], items: [Item], isInteractive: Bool) {
+    func configureContent(for kind: FeedKind, title: String, brandNames: [String], items: Items, isInteractive: Bool) {
         // Configure kind, title, and `see all` button visibility
         self.kind = kind
         name = title
@@ -116,7 +116,7 @@ class FeedItemCell: FeedBaseCell {
         let maxItemsPerBrand = numberOfItems / brandNames.count + 1
         
         // Compose the items in the same order as brand names
-        var orderedItems = [Item]()
+        var orderedItems = Items()
         for brandName in brandNames {
             let brandedItems = shuffledItems.filter { $0.branded([brandName]) }
             let brandedItemsCount = min(brandedItems.count, maxItemsPerBrand)

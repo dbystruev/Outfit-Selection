@@ -89,9 +89,18 @@ extension PinnableScrollViews {
         // Get the IDs of items to scroll to
         let scrollIDs = ordered
         ? IDs
-        : compactMap { $0.firstItemID(with: IDs) }
+        : compactMap { scrollView in
+            // If item to scroll to is found — return its id
+            if let itemID = scrollView.firstItemID(with: IDs) { return itemID }
+            
+            // If item is not found — make sure we have it in view model
+            
+            // Insert item from view model to the scroll view
+            
+            return nil
+        }
         
-        // Make sure we have
+        // Make sure we have all elements to scroll to
         guard scrollIDs.count == count else {
             debug("WARNING: wrong number of items to scroll to: \(scrollIDs.count)")
             completion?(isCompleted)

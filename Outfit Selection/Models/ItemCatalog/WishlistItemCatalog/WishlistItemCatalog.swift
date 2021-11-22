@@ -26,7 +26,7 @@ final class WishlistItemCatalog: ItemCatalog {
     var name: String?
     
     // MARK: - Init
-    init(gender: Gender, kind: Kind, items: [Item], name: String) {
+    init(gender: Gender, kind: Kind, items: Items, name: String) {
         self.gender = gender
         self.name = name
         super.init(kind: kind, itemIDs: items.IDs)

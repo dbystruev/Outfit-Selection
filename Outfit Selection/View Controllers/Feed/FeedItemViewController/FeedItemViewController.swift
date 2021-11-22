@@ -19,7 +19,7 @@ class FeedItemViewController: LoggingViewController {
     let itemCollectionViewLayout = FeedItemCollectionViewLayout()
     
     /// Items to display in the item collection view
-    var items: [Item] = []
+    var items: Items = []
     
     /// Kind (type) of the items
     var kind: FeedKind = .newItems
@@ -33,7 +33,7 @@ class FeedItemViewController: LoggingViewController {
     ///   - kind: feed item collection type (kind)
     ///   - items: the list of included items
     ///   - name: name of the collection
-    func configure(_ kind: FeedKind, with items: [Item]?, named name: String?) {
+    func configure(_ kind: FeedKind, with items: Items?, named name: String?) {
         self.kind = kind
         self.name = name
         self.items = items ?? []

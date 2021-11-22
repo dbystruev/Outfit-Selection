@@ -16,7 +16,7 @@ struct Wishlist: Codable {
         
     // MARK: - Computed Static Properties
     /// All items in collections, item wishlist, and outfit wishlist
-    static var allItems: [Item] {
+    static var allItems: Items {
         let items = all.flatMap { $0.items.values }
         return items
     }
@@ -32,7 +32,7 @@ struct Wishlist: Codable {
     }
     
     /// The items inside all collections
-    static var collectionsItems: [Item] {
+    static var collectionsItems: Items {
         collections.flatMap { $0.items.values }
     }
     
@@ -64,7 +64,7 @@ struct Wishlist: Codable {
     }
     
     /// The items inside all outfits
-    static var outfitsItems: [Item] {
+    static var outfitsItems: Items {
         outfits.flatMap { $0.items.values }
     }
     
@@ -126,7 +126,7 @@ struct Wishlist: Codable {
     ///   - items: the items in the new outfit
     ///   - occasion: the occasion for the outfit, if nil search all occasions
     /// - Returns: true if outfit is contained in the outfit wishlist, false if not, nil if items or occasion are empty
-    static func contains(_ items: [Item], occasion: String? = nil) -> Bool? {
+    static func contains(_ items: Items, occasion: String? = nil) -> Bool? {
         // Return nil if new items or occasion is empty
         let itemsCount = items.count
         guard 0 < itemsCount && occasion?.isEmpty != true else { return nil }
@@ -168,7 +168,7 @@ struct Wishlist: Codable {
     /// Finds given items in the wishlist and returns occasion name for them, or nil if there are no such items in the wishlist
     /// - Parameter items: the collection of items to search for in the wishlist
     /// - Returns: occasion name for the given items, or nil if there are no occasion with such items
-    static func occasion(_ items: [Item]) -> String? {
+    static func occasion(_ items: Items) -> String? {
         for outfit in outfits {
             if contains(items, occasion: outfit.name) == true { return outfit.name }
         }
@@ -188,7 +188,7 @@ struct Wishlist: Codable {
     
     /// Remove items from the outfit wishlist if they are present there
     /// - Parameter items: the items in outfit to remove
-    static func remove(_ items: [Item]) {
+    static func remove(_ items: Items) {
         // Check all occasions and remove similar items from them
         for outfit in outfits {
             if contains(items, occasion: outfit.name) == true {

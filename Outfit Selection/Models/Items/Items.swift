@@ -19,7 +19,7 @@ extension Items {
     // MARK: - Static Methods
     /// Appends items to Item.all. Mimics generic collection's method append(contentsOf:) while saving current index in itemIndex property of each item
     /// - Parameter newItems: collection of new items to be added to the Item.all
-    static func append(contentsOf newItems: [Item]) {
+    static func append(contentsOf newItems: Items) {
         newItems.forEach { byID[$0.id] = $0 }
     }
     

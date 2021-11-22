@@ -15,7 +15,7 @@ class OccasionsPopupViewController: LoggingViewController {
     // MARK: - Properties
     
     /// Items in the current outfit
-    var items = [Item]()
+    var items = Items()
     
     /// The occasions currently selected if any at the calling outfit view controller
     weak var occasionSelected: Occasion?

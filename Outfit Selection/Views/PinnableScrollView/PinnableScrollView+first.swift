@@ -32,7 +32,7 @@ extension PinnableScrollView {
     /// Find items with IDs from the list of given IDs present in the scroll view
     /// - Parameter IDs: item IDs to search for
     /// - Returns: the list of items with given IDs
-    func items(with IDs: [String]) -> [Item] {
+    func items(with IDs: [String]) -> Items {
         itemIDs(with: IDs).compactMap { Items.byID[$0] }
     }
 }

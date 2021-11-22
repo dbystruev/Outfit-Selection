@@ -191,7 +191,7 @@ extension OutfitViewController {
     ///   - scrollItems: the items to scroll the scroll views to
     ///   - ordered: if true assume IDs are given in the same order as scroll views
     ///   - completion: the block of code to be executed when scrolling ends
-    func scrollTo(items scrollItems: [Item], ordered: Bool, completion: ((Bool) -> Void)? = nil) {
+    func scrollTo(items scrollItems: Items, ordered: Bool, completion: ((Bool) -> Void)? = nil) {
         // Scroll to the given item IDs
         scrollViews?.scrollToElements(with: scrollItems.IDs, ordered: ordered, completion: completion)
     }

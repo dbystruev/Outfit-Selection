@@ -18,7 +18,7 @@ class FeedCollectionViewController: LoggingViewController {
     let brandedImages = BrandManager.shared.brandedImages.prioritizeSelected
     
     /// Items for each of the kinds
-    var items: [FeedKind: [Item]] = [:]
+    var items: [FeedKind: Items] = [:]
     
     /// The maximum number of items in each section
     let maxItemsInSection = BrandManager.shared.brandedImages.count
@@ -37,7 +37,7 @@ class FeedCollectionViewController: LoggingViewController {
     /// - Parameters:
     ///   - items: items to append to the section
     ///   - section: the section type (kind) to append the items to
-    func addSection(items: [Item], to section: FeedKind) {
+    func addSection(items: Items, to section: FeedKind) {
         sections.append(section)
         guard !items.isEmpty else {
             getItems(for: section)

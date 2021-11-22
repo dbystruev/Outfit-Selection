@@ -36,7 +36,7 @@ extension PinnableScrollView {
     }
     
     /// Items in the scroll view
-    var items: [Item] {
+    var items: Items {
         stackView?.arrangedSubviews.compactMap { ($0 as? UIImageView)?.item } ?? []
     }
     

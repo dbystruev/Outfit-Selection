@@ -90,19 +90,19 @@ class OutfitViewController: LoggingViewController {
     }
     
     /// Wishlist items to scroll to
-    var wishlistItems: [Item] = []
+    var wishlistItems: Items = []
     
     /// The name of wishlist if any
     var wishlistName: String?
     
     // MARK: - Computed Properties
     /// Items in all scroll views' image views, including currently non-visible
-    var items: [Item] {
+    var items: Items {
         itemsByCorner.flatMap { $0 }
     }
     
     /// Items in all scroll views' image views, including currently non-visible, ordered by corners
-    var itemsByCorner: [[Item]] {
+    var itemsByCorner: [Items] {
         scrollViews.map { $0.items }
     }
     
@@ -122,7 +122,7 @@ class OutfitViewController: LoggingViewController {
     }
     
     /// Items for currently visible image views
-    var visibleItems: [Item] {
+    var visibleItems: Items {
         scrollViews.compactMap({ $0.getImageView()?.item })
     }
 }

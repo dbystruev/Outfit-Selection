@@ -22,7 +22,7 @@ final class Collection: Codable {
     // MARK: - Computed Propeties
     var isEmpty: Bool { items.isEmpty }
     var itemCount: Int { items.count }
-    var items: [Item] {
+    var items: Items {
         collectionItems.flatMap { $0.items.values }
     }
     
@@ -63,7 +63,7 @@ final class Collection: Codable {
     /// Returns true or false depending on whether collection contains a look
     /// - Parameter look: collection items to check for
     /// - Returns: true or false depending on result
-    func contains(_ outfit: [Item]) -> Bool {
+    func contains(_ outfit: Items) -> Bool {
         guard let collectionOutfit = CollectionItemCatalog(outfit) else { return false }
         return contains(collectionOutfit)
     }

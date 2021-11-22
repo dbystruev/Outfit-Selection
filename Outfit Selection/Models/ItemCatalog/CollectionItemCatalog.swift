@@ -13,7 +13,7 @@ final class CollectionItemCatalog: ItemCatalog {
         self.init(kind: .item, itemIDs: [item.id])
     }
 
-    convenience init?(_ outfit: [Item]?) {
+    convenience init?(_ outfit: Items?) {
         guard let outfit = outfit, !outfit.isEmpty else { return nil }
         self.init(kind: .outfit, itemIDs: outfit.IDs)
     }

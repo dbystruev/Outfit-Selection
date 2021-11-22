@@ -40,14 +40,14 @@ class ShareView: UIView {
     }
     
     // MARK: - Stored Properties
-    var items: [Item] = []
+    var items: Items = []
     
     // MARK: - Custom Functions
     /// Configure share view with the list of images
     /// - Parameters:
     ///   - images: the list of images — from top to bottom, from left to right
     ///   - items: items corresponding to the images
-    func configureContent(with images: [UIImage?], items: [Item]) {
+    func configureContent(with images: [UIImage?], items: Items) {
         for (image, pictureImageView) in zip(images, pictureImageViews) {
             pictureImageView.image = image
         }

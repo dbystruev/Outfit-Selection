@@ -14,5 +14,5 @@ extension Collections {
     var itemCount: Int { items.count }
     
     /// All items in all collections
-    var items: [Item] { flatMap({ $0.items })}
+    var items: Items { flatMap({ $0.items })}
 }
