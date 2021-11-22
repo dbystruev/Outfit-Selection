@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: - Computed Properties
-extension PinnableScrollView {
+extension PinnableScrollView: ItemSearchable {
     /// The number of item placeholders in the scroll view
     var count: Int {
         stackView?.arrangedSubviews.count ?? 0
@@ -39,9 +39,6 @@ extension PinnableScrollView {
     var items: Items {
         stackView?.arrangedSubviews.compactMap { ($0 as? UIImageView)?.item } ?? []
     }
-    
-    /// Item IDs of each of the arranged subviews of the pinnable scroll view
-    var itemIDs: [String] { items.IDs }
     
     /// Stack view which stores item images in the scroll view
     var stackView: UIStackView? {

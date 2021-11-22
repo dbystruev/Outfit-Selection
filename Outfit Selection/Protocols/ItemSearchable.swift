@@ -1,12 +1,21 @@
 //
-//  PinnableScrollView+first.swift
+//  ItemSearchable.swift
 //  Outfit Selection
 //
-//  Created by Denis Bystruev on 19.11.2021.
+//  Created by Denis Bystruev on 22.11.2021.
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
-extension PinnableScrollView {
+/// Protocol which contains items property and adds methods to search for them
+protocol ItemSearchable {
+    /// The items found in the object
+    var items: Items { get }
+}
+
+extension ItemSearchable {
+    /// Item IDs of each of the items
+    var itemIDs: [String] { items.IDs }
+    
     /// Find first item with ID from the list of given IDs, return nil if not found
     /// - Parameter IDs: item IDs to search for
     /// - Returns: first item with given IDs or nil if not found
