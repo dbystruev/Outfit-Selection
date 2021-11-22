@@ -42,6 +42,11 @@ extension PinnableScrollView {
         itemIDs.firstIndex(of: id)
     }
     
+    /// Insert image into scroll view at given index and return its image view
+    /// - Parameters:
+    ///   - image: image to insert
+    ///   - index: index to insert image at, if nil insert at the end (append)
+    /// - Returns: image view of inserted image, or nil if insert failed
     func insert(image: UIImage?, atIndex index: Int? = nil) -> UIImageView {
         if let lastImageView = stackView?.arrangedSubviews.last as? UIImageView {
             guard lastImageView.image != nil else {

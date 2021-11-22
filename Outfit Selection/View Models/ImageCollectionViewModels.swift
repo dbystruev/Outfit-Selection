@@ -8,9 +8,14 @@
 
 typealias ImageCollectionViewModels = [ImageCollectionViewModel]
 
-extension ImageCollectionViewModels {
+extension ImageCollectionViewModels: ItemSearchable {
     /// Items stored in all view models
-    var items: [Items] {
+    var corneredItems: [Items] {
         map { $0.items }
+    }
+    
+    /// All items in all view models
+    var items: Items {
+        flatMap { $0.items }
     }
 }

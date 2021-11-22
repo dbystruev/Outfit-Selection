@@ -174,7 +174,7 @@ class ItemManager {
             DispatchManager.shared.itemManagerGroup.notify(
                 queue: DispatchQueue.global(qos: .background)
             ) {
-                Occasions.filter(by: self.viewModels.items)
+                Occasions.filter(by: self.viewModels.corneredItems)
                 completion(self.count, self.count)
             }
         }

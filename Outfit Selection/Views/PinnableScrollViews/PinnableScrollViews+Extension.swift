@@ -86,18 +86,24 @@ extension PinnableScrollViews {
         // Flag to check if all scrolls are completed
         var isCompleted = true
         
-        // Get the IDs of items to scroll to
+        // Get the IDs of the items to scroll to
         let scrollIDs = ordered
         ? IDs
-        : compactMap { scrollView in
+        : enumerated().compactMap { (cornerIndex, scrollView) in
             // If item to scroll to is found — return its id
             if let itemID = scrollView.firstItemID(with: IDs) { return itemID }
             
-            // If item is not found — make sure we have it in view model
+            // If item is not found — make sure we have it in view models
+            guard
+                let viewModel = ItemManager.shared.viewModels[safe: cornerIndex],
+                let itemID = viewModel.firstItemID(with: IDs)
+            else {
+                debug("No items with IDs \(IDs) were found in view model for corner with index \(cornerIndex)")
+                return nil
+            }
             
-            // Insert item from view model to the scroll view
-            
-            return nil
+            // Insert an item with found id from the view model into the scroll view
+            return scrollView.insert(image: viewModel.image(for: itemID)).item?.id
         }
         
         // Make sure we have all elements to scroll to

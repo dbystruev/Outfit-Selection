@@ -9,7 +9,7 @@
 import UIKit
 
 /// Class  to store images before inserting them into scroll views
-class ImageCollectionViewModel {
+class ImageCollectionViewModel: ItemSearchable {
     // MARK: - Static Computed Properties
     /// Empty image collection view model
     public static var empty: ImageCollectionViewModel { ImageCollectionViewModel() }
@@ -48,6 +48,13 @@ class ImageCollectionViewModel {
     /// - Returns: filtered branded image array
     func branded(_ brandNames: [String]) -> [ItemImage] {
         images.filter { $0.item?.branded(brandNames) == true }
+    }
+    
+    /// Get an image for the given item ID
+    /// - Parameter itemID: item ID to search for
+    /// - Returns: image corresponsing to the given item ID, or nil if not found
+    func image(for itemID: String) -> UIImage? {
+        images.first { $0.item?.id == itemID }
     }
     
     /// Clear all images stored in image collection view model
