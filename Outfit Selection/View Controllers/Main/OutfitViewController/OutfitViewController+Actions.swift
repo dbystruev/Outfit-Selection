@@ -102,6 +102,9 @@ extension OutfitViewController {
             return
         }
         
+        // Reload occasions
+        AppDelegate.updateOccasions()
+        
         // Pop to occasions, brands, or gender view controller
         welcomeNavigationController.popToViewController(popViewController, animated: true)
     }
