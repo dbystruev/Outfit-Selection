@@ -35,6 +35,11 @@ extension Occasions {
         byID.values.filter { $0.gender == Gender.current || Gender.current == .other }
     }
     
+    /// Unique flat subcategory IDs for all occasion
+    static var flatSubcategoryIDs: [Int] {
+        all.flatMap { $0.flatSubcategoryIDs }.unique
+    }
+    
     /// The set of labels of all occasions
     static var labels: Set<String> { Set(byID.values.map({ $0.label }))}
     
@@ -100,10 +105,11 @@ extension Occasions {
         }
         
         debug(
-            "Occasions original: \(allOccasions.count) / \(allOccasions.titles.count),",
-            "selected: \(allOccasions.selected.count) / \(allOccasions.selected.titles.count)",
+            "Occasions: \(allOccasions.count) / \(allOccasions.titles.count),",
+            "selected: \(allOccasions.selected.count) / \(allOccasions.selected.titles.count),",
             "removed: \(allOccasions.count - all.count) / \(allOccasions.titles.count - all.titles.count),",
-            "left: \(all.count) / \(all.titles.count)"
+            "left: \(all.count) / \(all.titles.count),",
+            "subcategories: \(all.flatSubcategoryIDs.count) of \(allOccasions.flatSubcategoryIDs.count)"
         )
     }
     

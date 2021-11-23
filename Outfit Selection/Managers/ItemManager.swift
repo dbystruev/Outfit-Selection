@@ -81,7 +81,7 @@ class ItemManager {
                 let categoryIDs = categories.IDs
                 
                 // Select only the items which belong to one of the categories given
-                let categoryFilteredItems = (allWishlistItems + Items.byID.values).filter { item in
+                let categoryFilteredItems = (allWishlistItems + Items.values).filter { item in
                     // Check that item's category id is in the list of category IDs looked for
                     useOccasions
                         ? !item.subcategoryIDs(in: categoryIDs).isEmpty
@@ -274,8 +274,8 @@ class ItemManager {
                     Items.count,
                     gender?.rawValue,
                     "items from \(categoriesCount) categories loaded in",
-                    passedTime.asTime,
-                    "s"
+                    "\(passedTime.asTime) s,",
+                    "subcategories: \(Items.flatSubcategoryIDs.count)"
                 )
             }
             

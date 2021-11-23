@@ -47,4 +47,13 @@ extension Items {
     // MARK: - Computed Properties
     /// IDs of items
     var IDs: [String] { map { $0.id }}
+    
+    /// Flat subcategories of all items
+    static var flatSubcategoryIDs: [Int] { values.flatSubcategoryIDs }
+    
+    /// Flat subcategories of items
+    var flatSubcategoryIDs: [Int] { flatMap { $0.subcategoryIDs }.unique }
+    
+    /// All items
+    static var values: Items { byID.values.map { $0 }}
 }

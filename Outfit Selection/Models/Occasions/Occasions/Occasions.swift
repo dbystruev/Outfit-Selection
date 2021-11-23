@@ -29,6 +29,11 @@ extension Occasions {
         selected.first
     }
     
+    /// Unique flat subcategory IDs for all occasions
+    var flatSubcategoryIDs: [Int] {
+        flatMap { $0.flatSubcategoryIDs }.unique
+    }
+    
     /// All selected occasions
     var selected: Occasions {
         filter { $0.isSelected }
