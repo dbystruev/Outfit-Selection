@@ -9,12 +9,16 @@
 typealias Items = [Item]
 
 extension Items {
-    // MARK: - Static Properties
+    // MARK: - Static Stored Properties
     /// All items loaded from the server
     private(set) static var byID = [String: Item]()
     
     /// The maximum number of items for one outfit corner
     static let maxCornerCount = 50
+    
+    // MARK: - Static Computed Properties
+    /// The number of items
+    static var count: Int { byID.count }
     
     // MARK: - Static Methods
     /// Appends items to Item.all. Mimics generic collection's method append(contentsOf:) while saving current index in itemIndex property of each item

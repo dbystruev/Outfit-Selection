@@ -27,6 +27,9 @@ extension Occasions {
     /// True if occasions are empty, false otherwise
     static var areEmpty: Bool { byID.isEmpty }
     
+    /// The number of occasions
+    static var count: Int { byID.count }
+    
     /// Occasions filtered by current gender
     static var currentGender: Occasions {
         byID.values.filter { $0.gender == Gender.current || Gender.current == .other }
@@ -42,22 +45,13 @@ extension Occasions {
     static var selected: Occasions { byID.values.filter { $0.isSelected }}
     
     /// The list of selected occasions with unique title
-    static var selectedUniqueTitle: Occasions { selectedTitles.compactMap { byTitle[$0]?.first }}
+    static var selectedUniqueTitle: Occasions { selected.titles.compactMap { byTitle[$0]?.first }}
     
     /// The ids of selected occasions
     static var selectedIDs: [Int] { selected.map { $0.id }}
     
     /// The ids of selected occasions with unique title
     static var selectedIDsUniqueTitle: [Int] { selectedUniqueTitle.map { $0.id }}
-    
-    /// The set of labels of selected occasions
-    static var selectedLabels: Set<String> { Set(selected.map { $0.label })}
-    
-    /// The set of names of selected occasions
-    static var selectedNames: Set<String> { Set(selected.map { $0.name })}
-    
-    /// The set of titles (name: label) of selected occasions
-    static var selectedTitles: Set<String> { Set(selected.map { $0.title })}
     
     /// The set of titles (name: label) of all occasions
     static var titles: Set<String> { Set(byID.values.map { $0.title })}
@@ -106,10 +100,10 @@ extension Occasions {
         }
         
         debug(
-            "Occasions original: \(allOccasions.count),",
-            "selected: \(allOccasions.selected.count)",
-            "removed: \(allOccasions.count - all.count),",
-            "left: \(all.count)"
+            "Occasions original: \(allOccasions.count) / \(allOccasions.titles.count),",
+            "selected: \(allOccasions.selected.count) / \(allOccasions.selected.titles.count)",
+            "removed: \(allOccasions.count - all.count) / \(allOccasions.titles.count - all.titles.count),",
+            "left: \(all.count) / \(all.titles.count)"
         )
     }
     
@@ -124,9 +118,10 @@ extension Occasions {
     /// - Parameters:
     ///   - title: the title to search for
     ///   - shouldSelect: true to select, false to unselect
-    static func select(title: String, shouldSelect: Bool) {
+    ///   - permanent: if true save to permanent storage (default), if false — don't
+    static func select(title: String, shouldSelect: Bool, permanent: Bool = true) {
         selectWithoutSaving(title: title, shouldSelect: shouldSelect)
-        Occasions.saveSelectedOccasions()
+        if permanent { Occasions.saveSelectedOccasions() }
     }
     
     /// Select/deselect all occasions with given title without saving to user defaults

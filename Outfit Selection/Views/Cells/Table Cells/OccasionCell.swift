@@ -27,7 +27,6 @@ class OccasionCell: UITableViewCell {
     /// Configures this cell with a given occasion
     /// - Parameter occasion: the occasion to configure this cell with
     func configureContent(with occasion: Occasion) {
-        debug(occasion.title, "\(occasion.isSelected ? "" : "de")selected")
         checkBoxImageView.isHighlighted = occasion.isSelected
         occasionNameLabel.text = occasion.title
     }

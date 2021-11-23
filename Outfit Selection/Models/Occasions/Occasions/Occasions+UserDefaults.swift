@@ -14,31 +14,26 @@ extension Occasions {
     /// Load selected occasion IDs from user defaults and update selected status
     static func restoreSelectedOccasions() {
         // Get selected occasion names and make sure they are not empty
-        let selectedIDsRestored = UserDefaults.selectedOccasionIDs
-        guard !selectedIDsRestored.isEmpty else {
-            debug("WARNING: Occasion list in user defaults is empty")
+        let restoredTitles = UserDefaults.selectedOccasionTitles
+        guard !restoredTitles.isEmpty else {
+            debug("WARNING: The list of occasion titles in user defaults is empty")
             return
         }
         
-        for selectedRestoredID in selectedIDsRestored {
-            guard let occasion = Occasions.byID[selectedRestoredID] else { continue }
-            occasion.isSelected = true
+        for title in restoredTitles {
+            Occasions.select(title: title, shouldSelect: true, permanent: false)
         }
         
         debug(
-            "Occasions: \(selectedIDsRestored.count) loaded,",
-            "\(Occasions.selectedTitles.count) of \(Occasions.titles.count) titles selected"
+            "Occasions: \(restoredTitles.count) restored,",
+            "\(Occasions.selected.count) / \(Occasions.selected.titles.count) of",
+            "\(Occasions.count) / \(Occasions.titles.count) selected"
         )
     }
     
     /// Save selected occasion names to user defaults
     static func saveSelectedOccasions() {
-        // Get occasion IDs for other genders
-        let storedOccasionIDs = UserDefaults.selectedOccasionIDs.filter {
-            Occasions.byID[$0]?.gender != Gender.current
-        }
-        
         // Save occasion IDs for all genders
-        UserDefaults.selectedOccasionIDs = (selectedIDs + storedOccasionIDs).unique
+        UserDefaults.selectedOccasionTitles = [String](selected.titles)
     }
 }

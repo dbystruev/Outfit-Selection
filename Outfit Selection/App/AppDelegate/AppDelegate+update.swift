@@ -35,7 +35,7 @@ extension AppDelegate {
             
             // Fill occasions with the new list of occasions
             Occasions.removeAll()
-            occasions.currentGender.forEach { occasion in
+            occasions.forEach { occasion in
                 Occasions.append(occasion)
             }
             
@@ -44,7 +44,7 @@ extension AppDelegate {
             
             // Show elapsed time
             let elapsed = Date().timeIntervalSince(startTime)
-            debug("INFO: Loaded \(Occasions.byID.count) occasions in \(elapsed.asTime) s")
+            debug("INFO: Loaded \(Occasions.count) / \(Occasions.titles.count) occasions in \(elapsed.asTime) s")
         }
     }
     

@@ -271,7 +271,7 @@ class ItemManager {
             
             if self.success {
                 debug(
-                    Items.byID.count,
+                    Items.count,
                     gender?.rawValue,
                     "items from \(categoriesCount) categories loaded in",
                     passedTime.asTime,

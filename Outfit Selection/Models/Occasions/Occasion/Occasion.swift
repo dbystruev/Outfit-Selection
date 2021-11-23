@@ -13,11 +13,7 @@ final class Occasion: Codable {
     
     // MARK: - Stored Properties
     /// Flag showing if occasion is selected by the user
-    private var _isSelected = false {
-        didSet {
-            debug(title, "is", "\(_isSelected ? "" : "de")selected")
-        }
-    }
+    private var _isSelected = false
     
     /// Category IDs which belong to the occasion
     let categoryIDs: [Int]
