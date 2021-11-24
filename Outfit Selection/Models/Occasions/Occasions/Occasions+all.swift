@@ -35,7 +35,12 @@ extension Occasions {
         byID.values.filter { $0.gender == Gender.current || Gender.current == .other }
     }
     
-    /// Unique flat subcategory IDs for all occasion
+    /// Unique flat item IDs for all occasions
+    static var flatItemIDs: [String] {
+        all.flatMap { $0.flatItemIDs }.unique
+    }
+    
+    /// Unique flat subcategory IDs for all occasions
     static var flatSubcategoryIDs: [Int] {
         all.flatMap { $0.flatSubcategoryIDs }.unique
     }
@@ -52,10 +57,10 @@ extension Occasions {
     /// The list of selected occasions with unique title
     static var selectedUniqueTitle: Occasions { selected.titles.compactMap { byTitle[$0]?.first }}
     
-    /// The ids of selected occasions
+    /// The IDs of selected occasions
     static var selectedIDs: [Int] { selected.map { $0.id }}
     
-    /// The ids of selected occasions with unique title
+    /// The IDs of selected occasions with unique title
     static var selectedIDsUniqueTitle: [Int] { selectedUniqueTitle.map { $0.id }}
     
     /// The set of titles (name: label) of all occasions

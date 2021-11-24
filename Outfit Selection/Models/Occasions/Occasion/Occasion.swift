@@ -18,7 +18,10 @@ final class Occasion: Codable {
     /// Category IDs which belong to the occasion
     let categoryIDs: [Int]
     
-    /// Occasion corners from top left clockwise with the list of subcategsubcategory IDs in each corner
+    /// Item IDs from top left clockwise matching cornered subcategory IDs
+    var corneredItemIDs: [[String]]
+    
+    /// Occasion corners from top left clockwise with the list of subcategory IDs in each corner
     var corneredSubcategoryIDs: [[Int]]
     
     /// Occasion gender
@@ -34,6 +37,11 @@ final class Occasion: Codable {
     let id: Int
     
     // MARK: - Computed Properties
+    /// Unique flat item IDs for the occasion
+    var flatItemIDs: [String] {
+        corneredItemIDs.flatMap { $0.map { $0 }}.unique
+    }
+    
     /// Unique flat subcategory IDs for the occasion
     var flatSubcategoryIDs: [Int] {
         corneredSubcategoryIDs.flatMap { $0.map { $0 }}.unique
@@ -62,6 +70,7 @@ final class Occasion: Codable {
     // MARK: - Types
     enum CodingKeys: String, CodingKey {
         case categoryIDs = "category_ids"
+        case corneredItemIDs = "items"
         case corneredSubcategoryIDs = "looks"
         case gender
         case id
@@ -74,15 +83,20 @@ final class Occasion: Codable {
     /// - Parameters:
     ///   - name: the name of the occasion
     ///   - label: occasion label (2nd level name)
+    ///   - gender: gender occasion is suitable for
     ///   - categoryIDs: category IDs which belong to the occasion
+    ///   - looks: 5 arrays of subcategory IDs for each corner
+    ///   - id: occasion ID
+    ///   - items: 5 arrays of item IDs for each corner
     ///   - isSelected: whether the occasion is selected by the user, false by default
     init(
         _ name: String,
         label: String,
-        categoryIDs: [Int],
         gender: Gender,
-        looks: [[Int]],
+        categoryIDs: [Int],
+        looks corneredSubcategoryIDs: [[Int]],
         id: Int,
+        items corneredItemIDs: [[String]],
         isSelected: Bool = false
     ) {
         self._isSelected = isSelected
@@ -90,7 +104,8 @@ final class Occasion: Codable {
         self.gender = gender
         self.id = id
         self.label = label
-        self.corneredSubcategoryIDs = looks
+        self.corneredSubcategoryIDs = corneredSubcategoryIDs
+        self.corneredItemIDs = corneredItemIDs
         self.name = name
     }
     

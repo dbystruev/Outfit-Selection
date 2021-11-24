@@ -40,7 +40,7 @@ class ItemCatalog: Codable {
     /// Kind (type) of the items
     let kind: Kind
     
-    /// The list of item ids
+    /// The list of item IDs
     var itemIDs: [String]
     
     /// The dictionary of items (or single item in case of .item type)
@@ -50,7 +50,7 @@ class ItemCatalog: Codable {
     /// The first item of the items array
     var item: Item? { items.values.first }
     
-    /// The set of items ids
+    /// The set of items IDs
     var itemsIdSet: Set<String> { Set(itemIDs)}
     
     /// Price of all items combined

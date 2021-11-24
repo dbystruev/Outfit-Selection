@@ -168,13 +168,13 @@ class NetworkManager {
         task.resume()
     }
     
-    /// Get  items with given ids
+    /// Get  items with given IDs
     /// - Parameters:
-    ///   - ids: items ids
+    ///   - IDs: items IDs
     ///   - completion: closure called when request is finished, with items if successfull, or with nil if not
-    func getItems(_ ids: [String], completion: @escaping (Items?) -> Void) {
+    func getItems(_ IDs: [String], completion: @escaping (Items?) -> Void) {
         // Include id=in.(..., ...) parameter
-        let parameters = ["id": "in.(\(ids.commaJoined))"]
+        let parameters = ["id": "in.(\(IDs.commaJoined))"]
         
         // Request the items from the API
         getItems(with: parameters, completion: completion)

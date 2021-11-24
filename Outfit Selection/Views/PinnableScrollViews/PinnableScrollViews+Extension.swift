@@ -79,7 +79,7 @@ extension PinnableScrollViews {
     
     /// Scroll its views to the given tags
     /// - Parameters:
-    ///   - IDs: the ids to scroll the scroll views to
+    ///   - IDs: the IDs to scroll the scroll views to
     ///   - ordered: if true assume IDs are given in the same order as scroll views
     ///   - completion: the block of code to be executed when scrolling ends
     func scrollToElements(with IDs: [String], ordered: Bool, completion: ((Bool) -> Void)? = nil) {

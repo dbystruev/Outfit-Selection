@@ -71,7 +71,7 @@ extension Wishlist {
             let count = items.reduce(0) { $0 + $1.itemIDs.count }
             messages.append("\(count) \(gender)")
         }
-        debug("Wishlists:", messages.joined(separator: ", "), "item ids loaded")
+        debug("Wishlists:", messages.joined(separator: ", "), "item IDs loaded")
     }
     
     /// Save wishlist to user defaults
