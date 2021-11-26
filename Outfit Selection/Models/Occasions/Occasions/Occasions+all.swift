@@ -37,12 +37,12 @@ extension Occasions {
     
     /// Unique flat item IDs for all occasions
     static var flatItemIDs: [String] {
-        all.flatMap { $0.flatItemIDs }.unique
+        [String](all.flatMap { $0.flatItemIDs }.uniqued())
     }
     
     /// Unique flat subcategory IDs for all occasions
     static var flatSubcategoryIDs: [Int] {
-        all.flatMap { $0.flatSubcategoryIDs }.unique
+        [Int](all.flatMap { $0.flatSubcategoryIDs }.uniqued())
     }
     
     /// The set of labels of all occasions
@@ -78,7 +78,7 @@ extension Occasions {
         
         // Ensure unique look categories
         occasion.corneredSubcategoryIDs = occasion.corneredSubcategoryIDs.map {
-            $0.map { $0 }.unique
+            [Int]($0.map { $0 }.uniqued())
         }
         byID[occasion.id] = occasion
         

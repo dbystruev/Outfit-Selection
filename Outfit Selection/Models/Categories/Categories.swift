@@ -108,7 +108,7 @@ extension Categories {
         
         // Remove doubles in subcategory IDs
         for cornerIndex in 0 ..< subcategoryIDs.count {
-            subcategoryIDs[cornerIndex] = subcategoryIDs[cornerIndex].unique
+            subcategoryIDs[cornerIndex] = [Int](subcategoryIDs[cornerIndex].uniqued())
         }
         
         // Map IDs into categories and reorder them from occasions
@@ -133,7 +133,7 @@ extension Categories {
     /// - Parameter occasions: occasions to filter categories by
     /// - Returns: the list of categories filtered by occasions
     func filtered(by occasions: Occasions) -> Categories {
-        let uniqueCategoryIDs = occasions.flatMap({ $0.corneredSubcategoryIDs }).flatMap({ $0 }).unique
+        let uniqueCategoryIDs = occasions.flatMap({ $0.corneredSubcategoryIDs }).flatMap({ $0 }).uniqued()
         return filter { uniqueCategoryIDs.contains($0.id) }
     }
 }

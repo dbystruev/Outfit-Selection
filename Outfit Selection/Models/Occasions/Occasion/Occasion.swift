@@ -39,12 +39,12 @@ final class Occasion: Codable {
     // MARK: - Computed Properties
     /// Unique flat item IDs for the occasion
     var flatItemIDs: [String] {
-        corneredItemIDs.flatMap { $0.map { $0 }}.unique
+        [String](corneredItemIDs.flatMap { $0.map { $0 }}.uniqued())
     }
     
     /// Unique flat subcategory IDs for the occasion
     var flatSubcategoryIDs: [Int] {
-        corneredSubcategoryIDs.flatMap { $0.map { $0 }}.unique
+        [Int](corneredSubcategoryIDs.flatMap { $0.map { $0 }}.uniqued())
     }
     
     /// True if occasion is selected, false otherwise. When set, user defaults is updated.

@@ -52,7 +52,7 @@ extension Items {
     static var flatSubcategoryIDs: [Int] { values.flatSubcategoryIDs }
     
     /// Flat subcategories of items
-    var flatSubcategoryIDs: [Int] { flatMap { $0.subcategoryIDs }.unique }
+    var flatSubcategoryIDs: [Int] { [Int](flatMap { $0.subcategoryIDs }.uniqued()) }
     
     /// All items
     static var values: Items { byID.values.map { $0 }}

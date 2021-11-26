@@ -295,12 +295,12 @@ class NetworkManager {
         // Add "category_id=in.(1,2,3)" parameter
         parameters[Keys.categoryID.rawValue] = categories.isEmpty
         ? nil
-        : "in.(\(categories.unique.commaJoined))"
+        : "in.(\([Int](categories.uniqued()).commaJoined))"
         
         // Add "categories=ov.{1,2,3}" parameter (ov for overlap)
         parameters[Keys.subcategoryIDs.rawValue] = subcategoryIDs.isEmpty
         ? nil
-        : "ov.{\(subcategoryIDs.unique.commaJoined)}"
+        : "ov.{\([Int](subcategoryIDs.uniqued()).commaJoined)}"
         
         // Add "old_price" not null parameter
         parameters[Keys.oldPrice.rawValue] = sale ? "not.is.null" : nil
@@ -315,7 +315,7 @@ class NetworkManager {
         // Add "vendor" parameter
         parameters[Keys.vendorName.rawValue] = fullVendorNames.isEmpty
         ? nil
-        : "in.(\(shortVendorNames.unique.commaJoined))"
+        : "in.(\([String](shortVendorNames.uniqued()).commaJoined))"
         
         // Add "gender" parameter
         if let gender = gender {

@@ -15,9 +15,8 @@ extension Occasions {
     static func restoreSelectedOccasions() {
         // Get selected occasion names and make sure they are not empty
         let restoredTitles = UserDefaults.selectedOccasionTitles
-        guard !restoredTitles.isEmpty else {
+        if restoredTitles.isEmpty {
             debug("WARNING: The list of occasion titles in user defaults is empty")
-            return
         }
         
         for title in restoredTitles {

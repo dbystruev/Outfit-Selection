@@ -225,17 +225,17 @@ class ItemManager {
         let categoriesCount: Int
         if Occasions.selected.areEmpty {
             let categoriesByCorners = Categories.by(gender: gender)
-            categoriesCount = categoriesByCorners.flatMap { $0.IDs }.unique.count
+            categoriesCount = [Int](categoriesByCorners.flatMap { $0.IDs }.uniqued()).count
             for categories in categoriesByCorners {
                 loadItemsByBrands(
                     gender: gender,
-                    categoryIDs: categories.IDs.unique,
+                    categoryIDs: [Int](categories.IDs.uniqued()),
                     totalRequests: categoriesByCorners.count
                 )
             }
         } else {
             let subcategoryIDsByOccasions = Occasions.selected.flatMap { $0.corneredSubcategoryIDs }
-            let flatSubcategoryIDs = subcategoryIDsByOccasions.flatMap { $0 }.unique
+            let flatSubcategoryIDs = [Int](subcategoryIDsByOccasions.flatMap { $0 }.uniqued())
             categoriesCount = flatSubcategoryIDs.count
             
             // If we exceeded the recommended number of requests, decrease them
@@ -245,7 +245,7 @@ class ItemManager {
                 for subcategoryIDs in subcategoryIDsByOccasions {
                     loadItemsByBrands(
                         gender: gender,
-                        subcategoryIDs: subcategoryIDs.unique,
+                        subcategoryIDs: [Int](subcategoryIDs.uniqued()),
                         totalRequests: subcategoryIDsByOccasions.count
                     )
                 }

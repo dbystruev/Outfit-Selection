@@ -80,6 +80,7 @@
 		692C9417254708830075BD92 /* URL+withQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C9416254708830075BD92 /* URL+withQueries.swift */; };
 		692C941B25470B8F0075BD92 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 692C941A25470B8F0075BD92 /* Item.swift */; };
 		69322E2B26008CDD00CAFBFA /* ItemViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69322E2A26008CDD00CAFBFA /* ItemViewController+Actions.swift */; };
+		6933089A2750FCDA0096C13E /* Algorithms in Frameworks */ = {isa = PBXBuildFile; productRef = 693308992750FCDA0096C13E /* Algorithms */; };
 		693D7286256BF1EA00540C10 /* Brands.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 693D7285256BF1EA00540C10 /* Brands.bundle */; };
 		693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D7289256BF3FB00540C10 /* BrandsViewController.swift */; };
 		693D728E256BF4CA00540C10 /* BrandManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 693D728D256BF4CA00540C10 /* BrandManager.swift */; };
@@ -106,7 +107,6 @@
 		69575660271590CB007ADE02 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957565F271590CB007ADE02 /* OnboardingViewController.swift */; };
 		695756632715961B007ADE02 /* NextButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695756622715961B007ADE02 /* NextButtonViewController.swift */; };
 		695A1ACF27186F920028FB9D /* Array+chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695A1ACE27186F920028FB9D /* Array+chunked.swift */; };
-		695A1AD2271882480028FB9D /* Swift.Collection+unique.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695A1AD1271882480028FB9D /* Swift.Collection+unique.swift */; };
 		695EE0042586449E00E2BB57 /* BrandsViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695EE0032586449E00E2BB57 /* BrandsViewController+Actions.swift */; };
 		6962099D26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6962099C26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift */; };
 		696209A026FB927E00B46FE8 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 6962099F26FB927E00B46FE8 /* AppsFlyerLib */; };
@@ -360,7 +360,6 @@
 		6957565F271590CB007ADE02 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		695756622715961B007ADE02 /* NextButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonViewController.swift; sourceTree = "<group>"; };
 		695A1ACE27186F920028FB9D /* Array+chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+chunked.swift"; sourceTree = "<group>"; };
-		695A1AD1271882480028FB9D /* Swift.Collection+unique.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Swift.Collection+unique.swift"; sourceTree = "<group>"; };
 		695EE0032586449E00E2BB57 /* BrandsViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+Actions.swift"; sourceTree = "<group>"; };
 		6962099C26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Gender+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		696209A326FB969400B46FE8 /* LoggingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggingViewController.swift; sourceTree = "<group>"; };
@@ -533,6 +532,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6933089A2750FCDA0096C13E /* Algorithms in Frameworks */,
 				696209A026FB927E00B46FE8 /* AppsFlyerLib in Frameworks */,
 				6998124027037590007B7024 /* IBPCollectionViewCompositionalLayout in Frameworks */,
 			);
@@ -793,7 +793,6 @@
 				69F60BD3272BEDC2004C4EA3 /* Swift.Collection+categories.swift */,
 				69F60BD5272BFBD6004C4EA3 /* Swift.Collection+items.swift */,
 				69C5CBD9260A045A00DE22E6 /* Swift.Collection+safeIndex.swift */,
-				695A1AD1271882480028FB9D /* Swift.Collection+unique.swift */,
 			);
 			path = Swift.Collection;
 			sourceTree = "<group>";
@@ -1478,6 +1477,7 @@
 			packageProductDependencies = (
 				6962099F26FB927E00B46FE8 /* AppsFlyerLib */,
 				6998123F27037590007B7024 /* IBPCollectionViewCompositionalLayout */,
+				693308992750FCDA0096C13E /* Algorithms */,
 			);
 			productName = "Outfit Selection";
 			productReference = 69A6F6F022BA26B7002A3B49 /* Get Outfit.app */;
@@ -1511,6 +1511,7 @@
 			packageReferences = (
 				6962099E26FB927E00B46FE8 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 				6998123E27037590007B7024 /* XCRemoteSwiftPackageReference "IBPCollectionViewCompositionalLayout" */,
+				693308982750FCDA0096C13E /* XCRemoteSwiftPackageReference "swift-algorithms" */,
 			);
 			productRefGroup = 69A6F6F122BA26B7002A3B49 /* Products */;
 			projectDirPath = "";
@@ -1733,7 +1734,6 @@
 				69B3E2352743F21200A9426D /* PinnableScrollView+scrollTo.swift in Sources */,
 				69A6F70E22BA438A002A3B49 /* OutfitViewController+UIViewController.swift in Sources */,
 				698990D22323808B002DCA29 /* PinnableScrollViews+Extension.swift in Sources */,
-				695A1AD2271882480028FB9D /* Swift.Collection+unique.swift in Sources */,
 				6986612125704F1A008F94CA /* UIImage+resize.swift in Sources */,
 				69C3697125E7D127000A8E5E /* WishlistItemCell.swift in Sources */,
 				69297C5A25EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
@@ -2298,6 +2298,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		693308982750FCDA0096C13E /* XCRemoteSwiftPackageReference "swift-algorithms" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apple/swift-algorithms.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 		6962099E26FB927E00B46FE8 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
@@ -2317,6 +2325,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		693308992750FCDA0096C13E /* Algorithms */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 693308982750FCDA0096C13E /* XCRemoteSwiftPackageReference "swift-algorithms" */;
+			productName = Algorithms;
+		};
 		6962099F26FB927E00B46FE8 /* AppsFlyerLib */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6962099E26FB927E00B46FE8 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;

@@ -6,6 +6,8 @@
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
+import Algorithms
+
 typealias Occasions = [Occasion]
 
 extension Occasions {
@@ -31,7 +33,7 @@ extension Occasions {
     
     /// Unique flat subcategory IDs for all occasions
     var flatSubcategoryIDs: [Int] {
-        flatMap { $0.flatSubcategoryIDs }.unique
+        [Int](flatMap { $0.flatSubcategoryIDs }.uniqued())
     }
     
     /// All selected occasions
