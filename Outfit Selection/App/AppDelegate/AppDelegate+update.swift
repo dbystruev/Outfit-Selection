@@ -45,7 +45,7 @@ extension AppDelegate {
             // Show elapsed time
             let elapsed = Date().timeIntervalSince(startTime)
             debug(
-                "INFO: Loaded \(Occasions.count) / \(Occasions.titles.count) occasions in \(elapsed.asTime) s,",
+                "INFO: Loaded \(Occasions.titles.count) / \(Occasions.count) occasions in \(elapsed.asTime) s,",
                 "subcategories: \(Occasions.flatSubcategoryIDs.count),",
                 "items: \(Occasions.flatItemIDs.count)"
             )

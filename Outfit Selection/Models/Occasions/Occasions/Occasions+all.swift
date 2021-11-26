@@ -110,10 +110,10 @@ extension Occasions {
         }
         
         debug(
-            "Occasions: \(allOccasions.count) / \(allOccasions.titles.count),",
-            "selected: \(allOccasions.selected.count) / \(allOccasions.selected.titles.count),",
-            "removed: \(allOccasions.count - all.count) / \(allOccasions.titles.count - all.titles.count),",
-            "left: \(all.count) / \(all.titles.count),",
+            "Occasions: \(allOccasions.titles.count) / \(allOccasions.count),",
+            "selected: \(allOccasions.selected.titles.count) / \(allOccasions.selected.count),",
+            "removed: \(allOccasions.titles.count - all.titles.count) / \(allOccasions.count - all.count),",
+            "left: \(all.titles.count) / \(all.count),",
             "subcategories: \(all.flatSubcategoryIDs.count) of \(allOccasions.flatSubcategoryIDs.count)"
         )
     }

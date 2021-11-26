@@ -25,8 +25,8 @@ extension Occasions {
         
         debug(
             "Occasions: \(restoredTitles.count) restored,",
-            "\(Occasions.selected.count) / \(Occasions.selected.titles.count) of",
-            "\(Occasions.count) / \(Occasions.titles.count) selected"
+            "\(Occasions.selected.titles.count) / \(Occasions.selected.count) of",
+            "\(Occasions.titles.count) / \(Occasions.count) selected"
         )
     }
     
