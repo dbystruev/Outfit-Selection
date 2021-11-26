@@ -212,6 +212,8 @@ class ItemManager {
         occasionTitle: String? = nil,
         completion: @escaping (_ success: Bool?) -> Void
     ) {
+        debug(gender, occasionTitle)
+        
         // Measure the number of requests and elapsed time
         currentRequest = 0
         let startTime = Date()
@@ -378,7 +380,6 @@ class ItemManager {
     ///   - currentRequest: the number of current request
     ///   - totalRequests: the total number of parallel calls
     func updateProgressBar(currentRequest: Int, totalRequests: Int) {
-        debug(currentRequest, totalRequests)
         ProgressViewController.default?.updateProgressBar(
             current: currentRequest,
             total: totalRequests,

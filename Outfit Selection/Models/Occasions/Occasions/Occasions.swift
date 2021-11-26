@@ -22,7 +22,9 @@ extension Occasions {
         
         // Go through each corner from top left clockwise
         for cornerIndex in 0 ..< count {
-            let itemIDs = flatMap { $0.corneredItemIDs[cornerIndex] }.uniqued()
+            let itemIDs = compactMap { $0.corneredItemIDs[safe: cornerIndex] }
+                .flatMap { $0 }
+                .uniqued()
             corneredItemIDs[cornerIndex] = [String](itemIDs)
         }
         

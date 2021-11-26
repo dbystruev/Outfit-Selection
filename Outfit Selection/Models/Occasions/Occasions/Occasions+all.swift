@@ -54,6 +54,9 @@ extension Occasions {
     /// The list of selected occasions
     static var selected: Occasions { byID.values.filter { $0.isSelected }}
     
+    /// Occasion title currently selected
+    static var selectedTitle: String?
+    
     /// The list of selected occasions with unique title
     static var selectedUniqueTitle: Occasions { selected.titles.compactMap { byTitle[$0]?.first }}
     
@@ -90,11 +93,11 @@ extension Occasions {
     /// - Parameter corneredItems: list of item lists in outfit view order
     static func filter(by corneredItems: [Items]) {
         // Save server occasions for future use and start from scratch
-        let allOccasions = all
+        let oldOccasions = all.currentGender
         removeAll()
         
         // Go through all occasions and keep only those which have enough items
-        for occasion in allOccasions {
+        for occasion in oldOccasions {
             // Go through each occasion look and check for enough items
             let subcategories = zip(corneredItems, occasion.subcategoryIDs)
                 .filter { items, subcategoryIDs in
@@ -109,12 +112,15 @@ extension Occasions {
             append(occasion)
         }
         
+        let newOccasions = all.currentGender
+        
         debug(
-            "Occasions: \(allOccasions.titles.count) / \(allOccasions.count),",
-            "selected: \(allOccasions.selected.titles.count) / \(allOccasions.selected.count),",
-            "removed: \(allOccasions.titles.count - all.titles.count) / \(allOccasions.count - all.count),",
-            "left: \(all.titles.count) / \(all.count),",
-            "subcategories: \(all.flatSubcategoryIDs.count) of \(allOccasions.flatSubcategoryIDs.count)"
+            "Occasions: \(oldOccasions.titles.count) / \(oldOccasions.count),",
+            "selected: \(oldOccasions.selected.titles.count) / \(oldOccasions.selected.count),",
+            "removed: \(oldOccasions.titles.count - newOccasions.titles.count)",
+            "/ \(oldOccasions.count - newOccasions.count),",
+            "left: \(newOccasions.titles.count) / \(newOccasions.count),",
+            "subcategories: \(newOccasions.flatSubcategoryIDs.count) of \(oldOccasions.flatSubcategoryIDs.count)"
         )
     }
     
@@ -140,6 +146,9 @@ extension Occasions {
     ///   - title: the title to search for
     ///   - shouldSelect: true to select, false to unselect
     static func selectWithoutSaving(title: String, shouldSelect: Bool) {
+        if shouldSelect {
+            Occasions.selectedTitle = title
+        }
         with(title: title).forEach { $0.selectWithoutSaving(shouldSelect) }
     }
     
