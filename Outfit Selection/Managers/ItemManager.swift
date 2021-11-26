@@ -203,9 +203,15 @@ class ItemManager {
     }
     
     /// Load items from the server to Item.all array
-    /// - Parameter gender: load female, male or other items only
-    /// - Parameter completion: closure with bool parameter which is called with true in case of success, with false otherwise
-    func loadItems(for gender: Gender?, completion: @escaping (_ success: Bool?) -> Void) {
+    /// - Parameters:
+    ///   - gender: load female, male or other items only
+    ///   - occasionTitle: occasion title to load images for, nil by default
+    ///   - completion: closure with bool parameter which is called with true in case of success, with false otherwise
+    func loadItems(
+        for gender: Gender?,
+        occasionTitle: String? = nil,
+        completion: @escaping (_ success: Bool?) -> Void
+    ) {
         // Measure the number of requests and elapsed time
         currentRequest = 0
         let startTime = Date()
@@ -216,14 +222,30 @@ class ItemManager {
         // Remove all items before loading them again
         Items.removeAll()
         
-        // Make sure we don't forget wishlist items
-        let allWishlistItemsIds = Array(Wishlist.allItemsIdSet)
-        DispatchManager.shared.itemManagerGroup.enter()
+        /// Count the number of (sub)categories for loaded items
+        var categoriesCount = 0
         
-        // Run network requests for different corners and brand names in parallel
-        /// Used for debug message
-        let categoriesCount: Int
-        if Occasions.selected.areEmpty {
+        /// The total number of requests
+        var totalRequests = 0
+        
+        // Run network request for wishlist items in parallel
+        loadItemsByID(Array(Wishlist.allItemsIdSet))
+        
+        // If occasion title is given — get items from the occasion
+        if
+            let occasionTitle = occasionTitle,
+            let occasions = Occasions.byTitle[occasionTitle],
+            !occasions.isEmpty
+        {
+            // Load items for each corner in parallel
+            let corneredItemIDs = occasions.corneredItemIDs
+            totalRequests = corneredItemIDs.count
+            for itemIDs in corneredItemIDs {
+                loadItemsByID(itemIDs, totalRequests: totalRequests, subcategoriesCount: &categoriesCount)
+            }
+            
+        // If no occasions are selected — load items for corner categories
+        } else if Occasions.selected.areEmpty {
             let categoriesByCorners = Categories.by(gender: gender)
             categoriesCount = [Int](categoriesByCorners.flatMap { $0.IDs }.uniqued()).count
             for categories in categoriesByCorners {
@@ -233,35 +255,28 @@ class ItemManager {
                     totalRequests: categoriesByCorners.count
                 )
             }
+            
+        // If there are occasions selected — load items for subcategories
         } else {
             let subcategoryIDsByOccasions = Occasions.selected.flatMap { $0.corneredSubcategoryIDs }
             let flatSubcategoryIDs = [Int](subcategoryIDsByOccasions.flatMap { $0 }.uniqued())
             categoriesCount = flatSubcategoryIDs.count
             
             // If we exceeded the recommended number of requests, decrease them
-            if NetworkManager.shared.requestsRecommended < subcategoryIDsByOccasions.count {
-                loadItemsByBrands(gender: gender, subcategoryIDs: flatSubcategoryIDs, totalRequests: 1)
+            let tooManyRequests = NetworkManager.shared.requestsRecommended < subcategoryIDsByOccasions.count
+            totalRequests = tooManyRequests ? 1 : subcategoryIDsByOccasions.count
+            
+            if tooManyRequests {
+                loadItemsByBrands(gender: gender, subcategoryIDs: flatSubcategoryIDs, totalRequests: totalRequests)
             } else {
                 for subcategoryIDs in subcategoryIDsByOccasions {
                     loadItemsByBrands(
                         gender: gender,
                         subcategoryIDs: [Int](subcategoryIDs.uniqued()),
-                        totalRequests: subcategoryIDsByOccasions.count
+                        totalRequests: totalRequests
                     )
                 }
             }
-        }
-        
-        // Run network request for wishlist items in parallel
-        NetworkManager.shared.getItems(allWishlistItemsIds) { itemsFromWishlists in
-            // Check if any items were loaded
-            if let itemsFromWishlists = itemsFromWishlists {
-                Items.append(contentsOf: itemsFromWishlists)
-            } else {
-                self.success = false
-            }
-            
-            DispatchManager.shared.itemManagerGroup.leave()
         }
         
         // Complete when all dispatch group tasks are finished
@@ -322,13 +337,53 @@ class ItemManager {
                 
                 // Update progress bar
                 self.currentRequest += 1
-                ProgressViewController.default?.updateProgressBar(
-                    current: self.currentRequest,
-                    total: totalRequests,
-                    maxValue: 0.5
-                )
+                self.updateProgressBar(currentRequest: self.currentRequest, totalRequests: totalRequests)
             }
         }
+    }
+    
+    /// Load items from the server and append them to Item.all
+    /// - Parameters:
+    ///   - itemIDs: the list of item IDs to load
+    ///   - totalRequests: the total number of parallel calls to this function, nil by default
+    ///   - subcategoriesCount: inout counter of loaded item's subcategories, nil by default
+    func loadItemsByID(
+        _ itemIDs: [String],
+        totalRequests: Int? = nil,
+        subcategoriesCount: UnsafeMutablePointer<Int>? = nil
+    ) {
+        DispatchManager.shared.itemManagerGroup.enter()
+        NetworkManager.shared.getItems(itemIDs) { items in
+            // Check if any items were loaded
+            if let items = items {
+                Items.append(contentsOf: items)
+                subcategoriesCount?.pointee = items.flatSubcategoryIDs.count
+            } else {
+                self.success = false
+                subcategoriesCount?.pointee = 0
+            }
+            
+            DispatchManager.shared.itemManagerGroup.leave()
+            
+            // Update progress bar
+            if let totalRequests = totalRequests {
+                self.currentRequest += 1
+                self.updateProgressBar(currentRequest: self.currentRequest, totalRequests: totalRequests)
+            }
+        }
+    }
+    
+    /// Update progress bar in progress view controller
+    /// - Parameters:
+    ///   - currentRequest: the number of current request
+    ///   - totalRequests: the total number of parallel calls
+    func updateProgressBar(currentRequest: Int, totalRequests: Int) {
+        debug(currentRequest, totalRequests)
+        ProgressViewController.default?.updateProgressBar(
+            current: currentRequest,
+            total: totalRequests,
+            maxValue: 0.5
+        )
     }
     
     /// Return image collection view models filetered by brands

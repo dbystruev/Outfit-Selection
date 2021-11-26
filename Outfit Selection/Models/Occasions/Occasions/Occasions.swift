@@ -15,6 +15,20 @@ extension Occasions {
     /// True if array or occasions is empty, false otherwise
     var areEmpty: Bool { isEmpty }
     
+    /// Item IDs from top left clockwise matching cornered subcategory IDs
+    var corneredItemIDs: [[String]] {
+        // Array where we accumulate items from different corners
+        var corneredItemIDs = [[String]](repeating: [], count: count)
+        
+        // Go through each corner from top left clockwise
+        for cornerIndex in 0 ..< count {
+            let itemIDs = flatMap { $0.corneredItemIDs[cornerIndex] }.uniqued()
+            corneredItemIDs[cornerIndex] = [String](itemIDs)
+        }
+        
+        return corneredItemIDs
+    }
+    
     /// Occasions filtered by current gender
     var currentGender: Occasions {
         filter {
