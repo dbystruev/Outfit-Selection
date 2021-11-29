@@ -23,21 +23,34 @@ extension WishlistViewController: UICollectionViewDelegate {
             
         case .outfit:
             // Get the navigation controller for the outfit view controller
-            guard let navigationController = tabBarController?.viewControllers?.first as? UINavigationController else { return }
+            guard
+                let navigationController = tabBarController?.viewControllers?.first as? UINavigationController
+            else { return }
             
             // Find outfit view controller in navigation stack
-            guard let outfitViewController = navigationController.findViewController(ofType: OutfitViewController.self) else { return }
+            guard
+                let outfitViewController = navigationController.findViewController(ofType: OutfitViewController.self)
+            else { return }
             
             // Quickly navigate back from item view controller in case we are there
             if (navigationController.viewControllers.last as? ItemViewController) != nil {
                 navigationController.popViewController(animated: false)
             }
             
+            // Check if an occasion with the same name is selected
+            let catalog = wishlist[indexPath.row]
+            guard outfitViewController.occasionSelected?.title == catalog.name else {
+                debug(
+                    "WARNING: Trying to go from", outfitViewController.occasionSelected?.title,
+                    "to", catalog.name
+                )
+                return
+            }
+            
             // Switch to the first (outfit view controller) tab
             tabBarController?.selectedIndex = 0
             
             // Scroll to the items in the current outfit
-            let catalog = wishlist[indexPath.row]
             outfitViewController.wishlistName = catalog.name
             outfitViewController.wishlistItems = catalog.items.values.map { $0 }
             
