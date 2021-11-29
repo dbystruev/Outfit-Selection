@@ -23,6 +23,18 @@ extension Occasions {
     /// The minimum number of items to keep the look in occasion
     private static let minItemsInLook = 2
     
+    /// Occasion title currently selected
+    static var selectedTitle: String? {
+        didSet {
+            guard let selectedTitle = selectedTitle else { return }
+            let currentGenderTitles = currentGender.titles
+            guard currentGenderTitles.isEmpty || currentGenderTitles.contains(selectedTitle) else {
+                debug("WARNING: \(currentGender.titles.count) titles do not contain \(selectedTitle)")
+                return
+            }
+        }
+    }
+    
     // MARK: - Static Computed Properties
     /// True if occasions are empty, false otherwise
     static var areEmpty: Bool { byID.isEmpty }
@@ -53,17 +65,6 @@ extension Occasions {
     
     /// The list of selected occasions
     static var selected: Occasions { byID.values.filter { $0.isSelected }}
-    
-    /// Occasion title currently selected
-    static var selectedTitle: String? {
-        didSet {
-            guard let selectedTitle = selectedTitle else { return }
-            guard currentGender.titles.contains(selectedTitle) else {
-                debug("WARNING: \(currentGender.titles.count) titles do not contain \(selectedTitle)")
-                return
-            }
-        }
-    }
     
     /// The list of selected occasions with unique title
     static var selectedUniqueTitle: Occasions { selected.titles.compactMap { byTitle[$0]?.first }}
@@ -130,7 +131,6 @@ extension Occasions {
             "left: \(newOccasions.titles.count) / \(newOccasions.count),",
             "subcategories: \(newOccasions.flatSubcategoryIDs.count) of \(oldOccasions.flatSubcategoryIDs.count)"
         )
-        debug("Removed:", oldOccasions.titles.symmetricDifference(newOccasions.titles).sorted())
     }
     
     /// Clears all occasions dictionary

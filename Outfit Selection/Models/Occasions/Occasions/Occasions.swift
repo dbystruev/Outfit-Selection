@@ -18,10 +18,15 @@ extension Occasions {
     /// Item IDs from top left clockwise matching cornered subcategory IDs
     var corneredItemIDs: [[String]] {
         // Array where we accumulate items from different corners
-        var corneredItemIDs = [[String]](repeating: [], count: count)
+        guard let maxCount = self
+                .max(by: { $0.corneredItemIDs.count < $1.corneredItemIDs.count })?
+                .corneredItemIDs
+                .count
+        else { return [] }
+        var corneredItemIDs = [[String]](repeating: [], count: maxCount)
         
         // Go through each corner from top left clockwise
-        for cornerIndex in 0 ..< count {
+        for cornerIndex in 0 ..< maxCount {
             let itemIDs = compactMap { $0.corneredItemIDs[safe: cornerIndex] }
                 .flatMap { $0 }
                 .uniqued()

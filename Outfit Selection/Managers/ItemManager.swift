@@ -75,11 +75,6 @@ class ItemManager {
             ? Categories.by(occasions: occasionsSelectedForGender)
             : Categories.by(gender: gender)
             
-            debug("DEBUG: Total items: \(Items.count)")
-            categoriesByCorner.forEach {
-                debug("DEBUG: items for \($0): \(Items.values.matching(subcategoryIDs: $0.IDs).count)")
-            }
-            
             /// Loop all corners
             var itemsSkipped = 0
             for (categories, viewModel) in zip(categoriesByCorner, self.viewModels) {
@@ -104,8 +99,6 @@ class ItemManager {
                 
                 // The maximum number of network image loads in one corner
                 var remainingLoads = Items.maxCornerCount
-                
-                debug("DEBUG: category IDs: \(categoryIDs), items: \(items.count)\(items.count < 4 ? " \(items)" : "")")
                 
                 // Loop all items in given category
                 for item in items {
@@ -291,7 +284,7 @@ class ItemManager {
         }
         
         // Complete when all dispatch group tasks are finished
-        DispatchManager.shared.itemManagerGroup.notify(queue: .main) {
+        DispatchManager.shared.itemManagerGroup.notify(queue: .global(qos: .background)) {
             let endTime = Date()
             let passedTime = endTime.timeIntervalSince1970 - startTime.timeIntervalSince1970
             
