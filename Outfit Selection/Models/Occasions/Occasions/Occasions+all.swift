@@ -58,8 +58,8 @@ extension Occasions {
     static var selectedTitle: String? {
         didSet {
             guard let selectedTitle = selectedTitle else { return }
-            guard titles.contains(selectedTitle) else {
-                debug("WARNING: \(titles.count) titles do not contain \(selectedTitle)")
+            guard currentGender.titles.contains(selectedTitle) else {
+                debug("WARNING: \(currentGender.titles.count) titles do not contain \(selectedTitle)")
                 return
             }
         }

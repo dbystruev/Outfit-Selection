@@ -65,11 +65,20 @@ class ItemManager {
             var current = 0
             var total = 0
             
+            // Select from all loaded items, including wishlist items
+            let allItems = allWishlistItems + Items.values
+            
             // Generate categories or subcategories from occasions
-            let useOccasions = !Occasions.selected.areEmpty
+            let occasionsSelectedForGender = Occasions.selected.gender(gender)
+            let useOccasions = !occasionsSelectedForGender.areEmpty
             let categoriesByCorner = useOccasions
-                ? Categories.by(occasions: Occasions.selected)
-                : Categories.by(gender: gender)
+            ? Categories.by(occasions: occasionsSelectedForGender)
+            : Categories.by(gender: gender)
+            
+            debug("DEBUG: Total items: \(Items.count)")
+            categoriesByCorner.forEach {
+                debug("DEBUG: items for \($0): \(Items.values.matching(subcategoryIDs: $0.IDs).count)")
+            }
             
             /// Loop all corners
             var itemsSkipped = 0
@@ -81,12 +90,9 @@ class ItemManager {
                 let categoryIDs = categories.IDs
                 
                 // Select only the items which belong to one of the categories given
-                let categoryFilteredItems = (allWishlistItems + Items.values).filter { item in
-                    // Check that item's category id is in the list of category IDs looked for
-                    useOccasions
-                        ? !item.subcategoryIDs(in: categoryIDs).isEmpty
-                        : categoryIDs.contains(item.categoryID)
-                }
+                let categoryFilteredItems = useOccasions
+                ? allItems.matching(subcategoryIDs: categoryIDs)
+                : allItems.matching(categoryIDs: categoryIDs)
                 
                 // Filter category filtered items by the brand given
                 let brandFilteredItems = categoryFilteredItems.filter { item in
@@ -98,6 +104,8 @@ class ItemManager {
                 
                 // The maximum number of network image loads in one corner
                 var remainingLoads = Items.maxCornerCount
+                
+                debug("DEBUG: category IDs: \(categoryIDs), items: \(items.count)\(items.count < 4 ? " \(items)" : "")")
                 
                 // Loop all items in given category
                 for item in items {
@@ -244,8 +252,8 @@ class ItemManager {
                 loadItemsByID(itemIDs, totalRequests: totalRequests, subcategoriesCount: &categoriesCount)
             }
             
-        // If no occasions are selected — load items for corner categories
-        } else if Occasions.selected.areEmpty {
+            // If no occasions are selected — load items for corner categories
+        } else if Occasions.selected.gender(gender).areEmpty {
             let categoriesByCorners = Categories.by(gender: gender)
             categoriesCount = [Int](categoriesByCorners.flatMap { $0.IDs }.uniqued()).count
             for categories in categoriesByCorners {
@@ -256,9 +264,12 @@ class ItemManager {
                 )
             }
             
-        // If there are occasions selected — load items for subcategories
+            // If there are occasions selected — load items for subcategories
         } else {
-            let subcategoryIDsByOccasions = Occasions.selected.flatMap { $0.corneredSubcategoryIDs }
+            let subcategoryIDsByOccasions = Occasions
+                .selected
+                .gender(gender)
+                .flatMap { $0.corneredSubcategoryIDs }
             let flatSubcategoryIDs = [Int](subcategoryIDsByOccasions.flatMap { $0 }.uniqued())
             categoriesCount = flatSubcategoryIDs.count
             
@@ -323,9 +334,9 @@ class ItemManager {
             DispatchManager.shared.itemManagerGroup.enter()
             NetworkManager.shared.getItems(
                 for: gender,
-                in: categoryIDs,
-                subcategoryIDs: subcategoryIDs,
-                filteredBy: brandNames
+                   in: categoryIDs,
+                   subcategoryIDs: subcategoryIDs,
+                   filteredBy: brandNames
             ) { items in
                 // Check if any items were loaded
                 if let items = items {

@@ -130,7 +130,7 @@ class NetworkManager {
             // Store the message in logger cache
             let message = String(data: data, encoding: .utf8)
             Logger.log(key: request.absoluteString, message)
-//            debug(request.absoluteString, "\n", message)
+            //            debug(request.absoluteString, "\n", message)
             completion(decodedData)
         }
         
@@ -334,16 +334,16 @@ class NetworkManager {
         // By default make the first occasion selected
         lazy var selectedOccasions = Occasions
             .selectedUniqueTitle
-            .for(gender: gender)
+            .gender(gender)
             .sorted(by: { $0.label < $1.label })
-        Occasions.selectedTitle = Occasions.selectedTitle ?? selectedOccasions.first?.title
-        
-        // Load items if none are found
-        ItemManager.shared.loadItems(
-            for: gender,
-            occasionTitle: Occasions.selectedTitle,
-            completion: completion
-        )
+            Occasions.selectedTitle = selectedOccasions.first?.title
+                    
+                    // Load items if none are found
+                    ItemManager.shared.loadItems(
+                        for: gender,
+                           occasionTitle: Occasions.selectedTitle,
+                           completion: completion
+                    )
     }
     
     /// Restore full names for item vendors using self.fullVendorNames dictionary

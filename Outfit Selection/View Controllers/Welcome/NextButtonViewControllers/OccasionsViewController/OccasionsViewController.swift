@@ -31,7 +31,8 @@ class OccasionsViewController: NextButtonViewController {
     // MARK: - Custom Methods
     /// Set top right button to clear or select all
     func configureAllButton() {
-        allButton.isButtonSelected = Occasions.unselected.count < Occasions.selected.count
+        let occasions = Occasions.currentGender
+        allButton.isButtonSelected = occasions.unselected.count < occasions.selected.count
     }
     
     /// Set go button background color and enable / disable it depending on number of occasions selected

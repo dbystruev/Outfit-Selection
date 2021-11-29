@@ -59,6 +59,11 @@ final class Occasion: Codable {
         }
     }
     
+    /// Cornered item IDs in view order: top left, bottom left, top right, middle right, and bottom right
+    var itemIDs: [[String]] {
+        corneredItemIDs.corners(.occasions)
+    }
+    
     /// Occasion corners in top left, bottom left, top right, middle right, and bottom right order
     var subcategoryIDs: [[Int]] {
         corneredSubcategoryIDs.corners(.occasions)

@@ -20,6 +20,12 @@ extension Items {
     /// The number of items
     static var count: Int { byID.count }
     
+    /// Flat subcategories of all items
+    static var flatSubcategoryIDs: [Int] { values.flatSubcategoryIDs }
+    
+    /// All items
+    static var values: Items { byID.values.map { $0 }}
+    
     // MARK: - Static Methods
     /// Appends items to Item.all. Mimics generic collection's method append(contentsOf:) while saving current index in itemIndex property of each item
     /// - Parameter newItems: collection of new items to be added to the Item.all
@@ -48,12 +54,21 @@ extension Items {
     /// IDs of items
     var IDs: [String] { map { $0.id }}
     
-    /// Flat subcategories of all items
-    static var flatSubcategoryIDs: [Int] { values.flatSubcategoryIDs }
-    
     /// Flat subcategories of items
     var flatSubcategoryIDs: [Int] { [Int](flatMap { $0.subcategoryIDs }.uniqued()) }
     
-    /// All items
-    static var values: Items { byID.values.map { $0 }}
+    // MARK: - Methods
+    /// Returns the list of items matching given category IDs
+    /// - Parameter categoryIDs: category IDs to match
+    /// - Returns: the list of items matching given category IDs
+    func matching(categoryIDs: [Int]) -> Items {
+        filter { categoryIDs.contains($0.categoryID) }
+    }
+    
+    /// Returns the list of items matching given subcategory IDs
+    /// - Parameter occasionSubcategoryIDs: occasion subcategory IDs to match
+    /// - Returns: the list of items matching given subcategory IDs
+    func matching(subcategoryIDs occasionSubcategoryIDs: [Int]) -> Items {
+        filter { $0.isMatching(occasionSubcategoryIDs) }
+    }
 }

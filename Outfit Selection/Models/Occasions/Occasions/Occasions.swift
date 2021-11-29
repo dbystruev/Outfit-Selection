@@ -33,7 +33,7 @@ extension Occasions {
     
     /// Occasions filtered by current gender
     var currentGender: Occasions {
-        self.for(gender: Gender.current)
+        gender(Gender.current)
     }
     
     /// First occasion which is selected
@@ -65,7 +65,10 @@ extension Occasions {
     }
     
     // MARK: - Methods
-    func `for`(gender: Gender?) -> Occasions {
+    /// Filter occasions for given gender
+    /// - Parameter gender: the gender to filter occasions for
+    /// - Returns: the list of occasions with given or .other gender, or all occasions if given gender is nil or _other
+    func gender(_ gender: Gender?) -> Occasions {
         // If gender is not set or is .other all occasions are OK
         guard let gender = gender, gender != .other else { return self }
         
