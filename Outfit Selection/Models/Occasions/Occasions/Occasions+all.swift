@@ -55,7 +55,15 @@ extension Occasions {
     static var selected: Occasions { byID.values.filter { $0.isSelected }}
     
     /// Occasion title currently selected
-    static var selectedTitle: String?
+    static var selectedTitle: String? {
+        didSet {
+            guard let selectedTitle = selectedTitle else { return }
+            guard titles.contains(selectedTitle) else {
+                debug("WARNING: \(titles.count) titles do not contain \(selectedTitle)")
+                return
+            }
+        }
+    }
     
     /// The list of selected occasions with unique title
     static var selectedUniqueTitle: Occasions { selected.titles.compactMap { byTitle[$0]?.first }}
@@ -122,6 +130,7 @@ extension Occasions {
             "left: \(newOccasions.titles.count) / \(newOccasions.count),",
             "subcategories: \(newOccasions.flatSubcategoryIDs.count) of \(oldOccasions.flatSubcategoryIDs.count)"
         )
+        debug("Removed:", oldOccasions.titles.symmetricDifference(newOccasions.titles).sorted())
     }
     
     /// Clears all occasions dictionary

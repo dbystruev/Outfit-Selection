@@ -332,7 +332,10 @@ class NetworkManager {
     ///   - completion: closure called when all requests are finished, with true if successfull or false otherwise
     func reloadItems(for gender: Gender?, completion: @escaping (Bool?) -> Void) {
         // By default make the first occasion selected
-        lazy var selectedOccasions = Occasions.selectedUniqueTitle.sorted(by: { $0.label < $1.label })
+        lazy var selectedOccasions = Occasions
+            .selectedUniqueTitle
+            .for(gender: gender)
+            .sorted(by: { $0.label < $1.label })
         Occasions.selectedTitle = Occasions.selectedTitle ?? selectedOccasions.first?.title
         
         // Load items if none are found

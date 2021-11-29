@@ -74,6 +74,7 @@ extension OutfitViewController {
     func configureOccasions() {
         // By default make the first occasion selected
         if let occasionTitle = Occasions.selectedTitle {
+            debug(occasionTitle, Occasions.titles.sorted())
             occasionSelected = Occasions.byTitle[occasionTitle]?.firstSelected
         }
         lazy var selectedOccasions = Occasions.selectedUniqueTitle.sorted(by: { $0.label < $1.label })

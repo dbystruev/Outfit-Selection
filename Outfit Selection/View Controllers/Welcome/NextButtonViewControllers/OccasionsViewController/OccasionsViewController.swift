@@ -36,7 +36,7 @@ class OccasionsViewController: NextButtonViewController {
     
     /// Set go button background color and enable / disable it depending on number of occasions selected
     func configureGoButton() {
-        let occasionsSelected = Occasions.selected.count
+        let occasionsSelected = Occasions.selected.currentGender.count
         let isEnabled = 0 < occasionsSelected
         nextButton?.backgroundColor = isEnabled
         ? Globals.Color.Button.enabled

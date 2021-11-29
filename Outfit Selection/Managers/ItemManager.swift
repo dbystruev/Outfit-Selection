@@ -212,8 +212,6 @@ class ItemManager {
         occasionTitle: String? = nil,
         completion: @escaping (_ success: Bool?) -> Void
     ) {
-        debug(gender, occasionTitle)
-        
         // Measure the number of requests and elapsed time
         currentRequest = 0
         let startTime = Date()
@@ -290,6 +288,7 @@ class ItemManager {
                 debug(
                     Items.count,
                     gender?.rawValue,
+                    occasionTitle,
                     "items from \(categoriesCount) categories loaded in",
                     "\(passedTime.asTime) s,",
                     "subcategories: \(Items.flatSubcategoryIDs.count)"
