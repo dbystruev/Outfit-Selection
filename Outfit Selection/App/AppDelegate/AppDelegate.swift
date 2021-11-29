@@ -11,5 +11,9 @@ import UIKit
 @UIApplicationMain
 class AppDelegate: UIResponder {
     // MARK: - Stored Properties
+    /// Call testst
+    let shouldTest = true
+    
+    /// Main application window
     var window: UIWindow?
 }

@@ -29,7 +29,15 @@ extension AppDelegate: UIApplicationDelegate {
     ///   - application: the singleton app object
     ///   - launchOptions: a dictionary indicating the reason the app was launched (if any), may be empty when the user launched the app directly
     /// - Returns: true if a URL should be handled, system combines it with application(_:willFinishLaunchingWithOptions:)
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+    func application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
+    ) -> Bool {
+        // Test occasion items if `should test` is true
+        if shouldTest {
+            testOccasionItems()
+        }
+        
         // Initialize the window
         window = UIWindow(frame: UIScreen.main.bounds)
         let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
