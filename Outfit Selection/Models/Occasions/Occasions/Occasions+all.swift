@@ -103,10 +103,16 @@ extension Occasions {
     static func filter(by corneredItems: [Items]) {
         // Save server occasions for future use and start from scratch
         let oldOccasions = all.currentGender
-        removeAll()
         
-        // Go through all occasions and keep only those which have enough items
-        for occasion in oldOccasions {
+        // Remove occasions for selected title if given
+        guard
+            let selectedTitle = Occasions.selectedTitle,
+            let selectedTitleOccasions = byTitle[selectedTitle]
+        else { return }
+        remove(occasionTitle: selectedTitle)
+        
+        // Go through all occasions for selected title and keep only those which have enough items
+        for occasion in selectedTitleOccasions {
             // Go through each occasion look and check for enough items
             let subcategories = zip(corneredItems, occasion.subcategoryIDs)
                 .filter { items, subcategoryIDs in
@@ -138,6 +144,14 @@ extension Occasions {
         all.removeAll()
         byID.removeAll()
         byTitle.removeAll()
+    }
+    
+    /// Remove all occasions with given title
+    /// - Parameter occasionTitle: occasion title to remove
+    static func remove(occasionTitle: String) {
+        all.removeAll { $0.title == occasionTitle }
+        byTitle[occasionTitle]?.forEach { byID.removeValue(forKey: $0.id) }
+        byTitle.removeValue(forKey: occasionTitle)
     }
     
     /// Select/deselect all occasions with given title
