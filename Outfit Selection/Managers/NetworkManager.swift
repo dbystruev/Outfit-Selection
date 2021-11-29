@@ -329,21 +329,25 @@ class NetworkManager {
     /// Load (or reload) items from the server first time or when something has changed
     /// - Parameters:
     ///   - gender: gender to load the items for
+    ///   - occasionTitle: occasion title to reload the items for
     ///   - completion: closure called when all requests are finished, with true if successfull or false otherwise
-    func reloadItems(for gender: Gender?, completion: @escaping (Bool?) -> Void) {
+    func reloadItems(
+        for gender: Gender?,
+        completion: @escaping (Bool?) -> Void
+    ) {
         // By default make the first occasion selected
         lazy var selectedOccasions = Occasions
             .selectedUniqueTitle
             .gender(gender)
             .sorted(by: { $0.label < $1.label })
-            Occasions.selectedTitle = selectedOccasions.first?.title
-                    
-                    // Load items if none are found
-                    ItemManager.shared.loadItems(
-                        for: gender,
-                           occasionTitle: Occasions.selectedTitle,
-                           completion: completion
-                    )
+        Occasions.selectedTitle = Occasions.selectedTitle ?? selectedOccasions.first?.title
+        
+        // Load items if none are found
+        ItemManager.shared.loadItems(
+            for: gender,
+               occasionTitle: Occasions.selectedTitle,
+               completion: completion
+        )
     }
     
     /// Restore full names for item vendors using self.fullVendorNames dictionary

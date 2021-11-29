@@ -69,9 +69,37 @@ extension OutfitViewController {
         // Hide bubles when we started occasion selection
         hideBubbles()
         
-        // Scroll to tapped occasion
+        
+        // Get the occasion from the button
         guard let occasion = sender.occasion else { return }
-        scrollTo(occasion: occasion)
+        
+        // If we tapped an occasion with the same title, scroll to it
+        guard occasionSelected?.title != occasion.title else {
+            scrollTo(occasion: occasion)
+            return
+        }
+        
+        // Find out where progress view controller is
+        guard
+            let navigationController = tabBarController?.navigationController,
+            let progressViewController = navigationController
+                .findViewController(ofType: ProgressViewController.self)
+        else {
+            debug(
+                "WARNING: Can't find \(ProgressViewController.self) in",
+                tabBarController?.navigationController
+            )
+            return
+        }
+        
+        // If we tapped an occasion with different title, reload it
+        Occasions.selectedTitle = occasion.title
+        
+        // Start loading items
+        NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+        
+        // Pop to progress view controller
+        navigationController.popToViewController(progressViewController, animated: true)
     }
     
     /// Move to occasions view controller when left screen edge is panned
