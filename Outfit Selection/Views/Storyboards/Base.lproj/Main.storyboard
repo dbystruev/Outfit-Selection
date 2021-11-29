@@ -480,6 +480,7 @@
                         <outlet property="hangerBarButtonItem" destination="ka5-GL-mJm" id="IvH-vr-Biu"/>
                         <outlet property="iconsStackView" destination="Ggf-Jf-cb6" id="bfG-jS-Zh5"/>
                         <outlet property="likeButton" destination="kYh-UG-gmm" id="aT9-7N-MF8"/>
+                        <outlet property="occasionsScrollView" destination="IAX-S5-SzT" id="r15-CK-XXW"/>
                         <outlet property="occasionsStackView" destination="N2o-hb-U88" id="Xbd-Wl-hJU"/>
                         <outlet property="occasionsStackViewHeightConstraint" destination="nDl-gS-Ksk" id="S83-NH-n0E"/>
                         <outlet property="priceLabel" destination="TjY-vq-NEy" id="a2R-Fu-TWq"/>
