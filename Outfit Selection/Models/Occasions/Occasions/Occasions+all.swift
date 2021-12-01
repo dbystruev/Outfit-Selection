@@ -169,7 +169,7 @@ extension Occasions {
     ///   - title: the title to search for
     ///   - shouldSelect: true to select, false to unselect
     static func selectWithoutSaving(title: String, shouldSelect: Bool) {
-        if shouldSelect {
+        if shouldSelect && Occasions.currentGender.titles.contains(title) {
             Occasions.selectedTitle = title
         }
         with(title: title).forEach { $0.selectWithoutSaving(shouldSelect) }

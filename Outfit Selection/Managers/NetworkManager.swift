@@ -345,8 +345,8 @@ class NetworkManager {
         // Load items if none are found
         ItemManager.shared.loadItems(
             for: gender,
-               occasionTitle: Occasions.selectedTitle,
-               completion: completion
+            occasionTitle: Occasions.selectedTitle,
+            completion: completion
         )
     }
     
