@@ -36,6 +36,9 @@ class OutfitViewController: LoggingViewController {
     @IBOutlet weak var topStackView: UIStackView!
     
     // MARK: - Stored Properties
+    /// Shuffle is allowed when enough item images are loaded
+    var allowShuffle = false
+    
     /// First appearance for view will appear
     var firstAppearance = true
     
@@ -47,13 +50,6 @@ class OutfitViewController: LoggingViewController {
     
     /// Confstraint for the trailing of hanger bubble
     var hangerBubbleTrailingConstraint: NSLayoutConstraint!
-    
-    /// Occasion which is currently selected by the user
-    weak var occasionSelected: Occasion? {
-        didSet {
-            updateOccasionsUI(selectedTitle: occasionSelected?.title)
-        }
-    }
     
     /// Share view with current outfit
     var shareView: ShareView?
@@ -110,6 +106,15 @@ class OutfitViewController: LoggingViewController {
     /// The number of items in all scroll views
     var itemCount: Int {
         scrollViews.reduce(0) { $0 + $1.itemCount }
+    }
+    
+    /// Occasion which is currently selected by the user
+    var occasionSelected: Occasion? {
+        get { Occasion.selected }
+        set {
+            Occasion.selected = newValue ?? Occasion.selected
+            updateOccasionsUI(selectedTitle: occasionSelected?.title)
+        }
     }
     
     /// Total price of all visible items

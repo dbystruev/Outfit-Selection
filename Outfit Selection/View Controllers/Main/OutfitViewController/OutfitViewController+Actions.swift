@@ -69,13 +69,15 @@ extension OutfitViewController {
         // Hide bubles when we started occasion selection
         hideBubbles()
         
-        
         // Get the occasion from the button
-        guard let occasion = sender.occasion else { return }
+        guard let tappedOccasion = sender.occasion else { return }
         
         // If we tapped an occasion with the same title, scroll to it
-        guard occasionSelected?.title != occasion.title else {
-            scrollTo(occasion: occasion)
+        guard occasionSelected?.title != tappedOccasion.title else {
+            // Make sure enough item images are loaded
+            guard allowShuffle else { return }
+            
+            scrollTo(occasion: tappedOccasion)
             return
         }
         
@@ -93,7 +95,7 @@ extension OutfitViewController {
         }
         
         // If we tapped an occasion with different title, reload it
-        Occasions.selectedTitle = occasion.title
+        Occasion.selected = tappedOccasion
         
         // Start loading items
         NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
@@ -159,6 +161,9 @@ extension OutfitViewController {
     
     @IBAction func shuffleButtonTapped(_ sender: Any) {
         showShuffleBubble = false
+        
+        // Make sure enough item images are loaded
+        guard allowShuffle else { return }
         
         if let occasion = occasionSelected {
             scrollTo(occasion: occasion)

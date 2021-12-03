@@ -23,18 +23,6 @@ extension Occasions {
     /// The minimum number of items to keep the look in occasion
     private static let minItemsInLook = 2
     
-    /// Occasion title currently selected
-    static var selectedTitle: String? {
-        didSet {
-            guard let selectedTitle = selectedTitle else { return }
-            let currentGenderTitles = currentGender.titles
-            guard currentGenderTitles.isEmpty || currentGenderTitles.contains(selectedTitle) else {
-                debug("WARNING: \(currentGender.titles.count) titles do not contain \(selectedTitle)")
-                return
-            }
-        }
-    }
-    
     // MARK: - Static Computed Properties
     /// True if occasions are empty, false otherwise
     static var areEmpty: Bool { byID.isEmpty }
@@ -106,7 +94,7 @@ extension Occasions {
         
         // Remove occasions for selected title if given
         guard
-            let selectedTitle = Occasions.selectedTitle,
+            let selectedTitle = Occasion.selected?.title,
             let selectedTitleOccasions = byTitle[selectedTitle]
         else { return }
         remove(occasionTitle: selectedTitle)
@@ -169,10 +157,12 @@ extension Occasions {
     ///   - title: the title to search for
     ///   - shouldSelect: true to select, false to unselect
     static func selectWithoutSaving(title: String, shouldSelect: Bool) {
-        if shouldSelect && Occasions.currentGender.titles.contains(title) {
-            Occasions.selectedTitle = title
+        let occasionsWithTitle = with(title: title)
+        let currentGenderOccasionsWithTitle = occasionsWithTitle.currentGender
+        if shouldSelect && !currentGenderOccasionsWithTitle.isEmpty {
+            Occasion.selected = currentGenderOccasionsWithTitle.randomElement()
         }
-        with(title: title).forEach { $0.selectWithoutSaving(shouldSelect) }
+        occasionsWithTitle.forEach { $0.selectWithoutSaving(shouldSelect) }
     }
     
     /// Update all occasions with given gender

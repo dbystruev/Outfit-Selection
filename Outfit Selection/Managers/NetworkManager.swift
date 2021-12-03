@@ -340,12 +340,12 @@ class NetworkManager {
             .selectedUniqueTitle
             .gender(gender)
             .sorted(by: { $0.label < $1.label })
-        Occasions.selectedTitle = Occasions.selectedTitle ?? selectedOccasions.first?.title
+        Occasion.selected = Occasion.selected ?? selectedOccasions.randomElement()
         
         // Load items if none are found
         ItemManager.shared.loadItems(
             for: gender,
-            occasionTitle: Occasions.selectedTitle,
+            occasionTitle: Occasion.selected?.title,
             completion: completion
         )
     }

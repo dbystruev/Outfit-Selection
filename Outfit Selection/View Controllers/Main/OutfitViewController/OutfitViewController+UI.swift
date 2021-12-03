@@ -72,12 +72,9 @@ extension OutfitViewController {
     
     /// Configure occasions stack view
     func configureOccasions() {
-        // By default make the first occasion selected
-        if let occasionTitle = Occasions.selectedTitle {
-            occasionSelected = Occasions.byTitle[occasionTitle]?.firstSelected
-        }
+        // Select new occasion if occasion selected is not set
         lazy var selectedOccasions = Occasions.selectedUniqueTitle.sorted(by: { $0.label < $1.label })
-        occasionSelected = occasionSelected ?? selectedOccasions.first
+        occasionSelected = occasionSelected ?? selectedOccasions.randomElement()
         
         // Hide occasions stack view if no occasions are selected
         let isHidden = selectedOccasions.isEmpty
@@ -201,25 +198,7 @@ extension OutfitViewController {
     
     /// Scroll outfit's scroll views to the given occasion
     /// - Parameter occasion: the occasion to scroll the scroll views to
-    func scrollTo(occasion: Occasion?) {
-        // Get the title of the given occasion
-        guard let occasionTitle = occasion?.title else {
-            debug("WARNING: Given occasion is nil")
-            return
-        }
-        
-        // Get all occasions with the same title
-        guard let occasions = Occasions.byTitle[occasionTitle] else {
-            debug("WARNING: There are no occasions with title \(occasionTitle)")
-            return
-        }
-        
-        // Select random occasion from filtered occasions
-        guard let occasion = occasions.randomElement() else {
-            debug("WARNING: No occasions with items matching occasion \(occasionTitle)")
-            return
-        }
-        
+    func scrollTo(occasion: Occasion) {
         // Load images into the outfit view controller's scroll views
         loadImages(matching: occasion.subcategoryIDs)
         
@@ -228,7 +207,7 @@ extension OutfitViewController {
         
         // Check that we didn't lose any items while removing items
         guard occasionItems.count == itemsByCorner.count else {
-            debug("WARNING: Don't have enough items to match occasion \(occasionTitle)")
+            debug("WARNING: Don't have enough items to match occasion \(occasion)")
             return
         }
         

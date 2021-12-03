@@ -43,10 +43,12 @@ class ItemManager {
     /// - Parameters:
     ///   - gender: gender to filter images by
     ///   - brandNames: brand names to filter images by
+    ///   - limit: the number of images to load in each corner per occasion with selected title, Items.maxCornerCount by default
     ///   - completion: (int, int) closure called while images are processed, gets current and total number of items loaded
     func loadImages(
         filteredBy gender: Gender?,
         andBy brandNames: [String] = [],
+        cornerLimit limit: Int = Items.maxCornerCount,
         completion: @escaping (_ current: Int, _ total: Int) -> Void
     ) {
         // Clear all view models
@@ -69,7 +71,9 @@ class ItemManager {
             let allItems = allWishlistItems + Items.values
             
             // Generate categories or subcategories from occasions
-            let occasionsSelectedForGender = Occasions.selected.gender(gender)
+            let occasionsSelectedForGender = limit == 1
+            ? [Occasion.selected].compactMap { $0 }
+            : Occasions.selected.gender(gender)
             let useOccasions = !occasionsSelectedForGender.areEmpty
             let categoriesByCorner = useOccasions
             ? Categories.by(occasions: occasionsSelectedForGender)
@@ -83,6 +87,8 @@ class ItemManager {
                 
                 // Get category identifiers
                 let categoryIDs = categories.IDs
+                
+                debug(categories)
                 
                 // Select only the items which belong to one of the categories given
                 let categoryFilteredItems = useOccasions
@@ -98,7 +104,7 @@ class ItemManager {
                 let items = brandFilteredItems.isEmpty ? categoryFilteredItems : brandFilteredItems
                 
                 // The maximum number of network image loads in one corner
-                var remainingLoads = Items.maxCornerCount
+                var remainingLoads = limit
                 
                 // Loop all items in given category
                 for item in items {
@@ -175,7 +181,21 @@ class ItemManager {
             DispatchManager.shared.itemManagerGroup.notify(
                 queue: DispatchQueue.global(qos: .background)
             ) {
-                Occasions.filter(by: self.viewModels.corneredItems)
+                // Filter out occasions without images in view models
+                // Occasions.filter(by: self.viewModels.corneredItems)
+                
+                // Make sure selected occasion has images in view models
+                let currentGenderOccasions = Occasions.currentGender
+                if let selectedOccasion = Occasion.selected {
+                    if !currentGenderOccasions.contains(selectedOccasion) {
+                        Occasion.selected = currentGenderOccasions
+                            .with(title: selectedOccasion.title)
+                            .randomElement()
+                        ?? currentGenderOccasions.randomElement()
+                    }
+                } else {
+                    Occasion.selected = currentGenderOccasions.randomElement()
+                }
                 completion(self.count, self.count)
             }
         }

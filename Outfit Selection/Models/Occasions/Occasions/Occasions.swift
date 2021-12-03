@@ -82,4 +82,11 @@ extension Occasions {
             $0.gender == gender || $0.gender == .other
         }
     }
+    
+    /// Returns all occasions with given title
+    /// - Parameter title: the title to look for
+    /// - Returns: the list of occasions with the title
+    func with(title: String) -> Occasions {
+        filter { $0.title == title }
+    }
 }
