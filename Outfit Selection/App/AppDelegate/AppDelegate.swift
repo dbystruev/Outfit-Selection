@@ -12,7 +12,7 @@ import UIKit
 class AppDelegate: UIResponder {
     // MARK: - Stored Properties
     /// Call testOccasionItems()
-    let shouldTest = false // true
+    let shouldTest = true // false
     
     /// Main application window
     var window: UIWindow?

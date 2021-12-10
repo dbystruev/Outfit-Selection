@@ -32,8 +32,6 @@ class ImageCollectionViewModel: ItemSearchable {
     /// Append a non-nil image to image collection view model
     /// - Parameter image: the image to append, not appending if nil
     func append(_ image: UIImage?, item: Item) {
-        debug(item, item.subcategoryIDs)
-        
         // Don't use nil images
         guard let cgImage = image?.cgImage else { return }
         

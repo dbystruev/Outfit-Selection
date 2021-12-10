@@ -69,6 +69,8 @@ extension Items {
     /// - Parameter occasionSubcategoryIDs: occasion subcategory IDs to match
     /// - Returns: the list of items matching given subcategory IDs
     func matching(subcategoryIDs occasionSubcategoryIDs: [Int]) -> Items {
-        filter { $0.isMatching(occasionSubcategoryIDs) }
+        let result = filter { $0.isMatching(occasionSubcategoryIDs) }
+        debug(result.count, occasionSubcategoryIDs)
+        return result
     }
 }

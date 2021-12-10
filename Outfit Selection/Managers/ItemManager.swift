@@ -88,8 +88,6 @@ class ItemManager {
                 // Get category identifiers
                 let categoryIDs = categories.IDs
                 
-                debug(categories)
-                
                 // Select only the items which belong to one of the categories given
                 let categoryFilteredItems = useOccasions
                 ? allItems.matching(subcategoryIDs: categoryIDs)
@@ -103,11 +101,18 @@ class ItemManager {
                 // If brand filtering brought us an empty list, discard it
                 let items = brandFilteredItems.isEmpty ? categoryFilteredItems : brandFilteredItems
                 
+                // Select the limited number of random items
+                let limitedItems = limit < items.count
+                ? items.randomSample(count: limit)
+                : items
+                
                 // The maximum number of network image loads in one corner
                 var remainingLoads = limit
                 
                 // Loop all items in given category
-                for item in items {
+                for item in limitedItems {
+                    debug(item.name, item.subcategoryIDs)
+                    
                     // Check that there is no item with the same name already in the list, unless it is wishlisted
                     guard item.wishlisted || !loadedItemNames.contains(item.name) else {
                         // Skip items with similar names
@@ -182,12 +187,13 @@ class ItemManager {
                 queue: DispatchQueue.global(qos: .background)
             ) {
                 // Filter out occasions without images in view models
-                // Occasions.filter(by: self.viewModels.corneredItems)
+//                Occasions.filter(by: self.viewModels.corneredItems)
                 
                 // Make sure selected occasion has images in view models
                 let currentGenderOccasions = Occasions.currentGender
                 if let selectedOccasion = Occasion.selected {
-                    if !currentGenderOccasions.contains(selectedOccasion) {
+                    if !currentGenderOccasions.titles.contains(selectedOccasion.title) {
+                        debug("WARNING: \(currentGenderOccasions.titles) do not contain \(selectedOccasion.title)")
                         Occasion.selected = currentGenderOccasions
                             .with(title: selectedOccasion.title)
                             .randomElement()
@@ -233,6 +239,8 @@ class ItemManager {
         occasionTitle: String? = nil,
         completion: @escaping (_ success: Bool?) -> Void
     ) {
+        debug(gender, occasionTitle)
+        
         // Measure the number of requests and elapsed time
         currentRequest = 0
         let startTime = Date()
@@ -310,11 +318,8 @@ class ItemManager {
             
             if self.success {
                 debug(
-                    Items.count,
-                    gender?.rawValue,
-                    occasionTitle,
-                    "items from \(categoriesCount) categories loaded in",
-                    "\(passedTime.asTime) s,",
+                    Items.count, gender?.rawValue, "items for occasion",
+                    Occasion.selected, "loaded in \(passedTime.asTime) s,",
                     "subcategories: \(Items.flatSubcategoryIDs.count)"
                 )
             }

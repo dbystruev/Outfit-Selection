@@ -9,9 +9,5 @@
 extension Occasion {
     // MARK: - Static Properties
     /// Currently selected occasion
-    static var selected: Occasion? {
-        didSet {
-            debug(selected)
-        }
-    }
+    static var selected: Occasion?
 }

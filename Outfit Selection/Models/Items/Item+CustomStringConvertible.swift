@@ -8,6 +8,6 @@
 
 extension Item: CustomStringConvertible {
     var description: String {
-        "\(id): \(name) by \(vendorName)"
+        "\(id): \(name) by \(vendorName) \(subcategoryIDs)"
     }
 }

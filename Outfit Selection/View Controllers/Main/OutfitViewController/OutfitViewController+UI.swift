@@ -340,7 +340,7 @@ extension OutfitViewController {
             // Scroll to selected button
             if isSelected {
                 occasionsScrollView.scrollRectToVisible(
-                    button.convert(button.bounds, to: occasionsScrollView),
+                    button.convert(button.bounds, to: occasionsScrollView).insetBy(dx: 16, dy: 0),
                     animated: true
                 )
             }
