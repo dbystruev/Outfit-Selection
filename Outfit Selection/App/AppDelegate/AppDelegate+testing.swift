@@ -78,27 +78,44 @@ extension AppDelegate {
     }
     
     /// Test occasion with given ID
-    /// - Parameter id: ID of the occasion to test
-    func testOccasion(_ id: Int) {
+    /// - Parameters:
+    ///   - id: ID of the occasion to test
+    ///   - completion: closure with Bool argument, which is true if occasion items match its subcategories, false if not
+    func testOccasion(_ id: Int, completion: @escaping (Bool) -> Void) {
+        let group = DispatchGroup()
+        var result = true
+        
         // Get an occasion with given ID
+        group.enter()
         NetworkManager.shared.getOccasions([id]) { occasions in
             guard let occasion = occasions?.first else {
                 debug("ERROR: Can't load occasion with id \(id)")
+                result = false
+                group.leave()
                 return
             }
             
             // Get items for each occasion corner
-            for (index, (subcategoryIDs, itemIDs)) in zip(occasion.subcategoryIDs, occasion.itemIDs).enumerated() {
+            for (index, (subcategoryIDs, itemIDs)) in zip(occasion.corneredSubcategoryIDs, occasion.corneredItemIDs).enumerated() {
+                group.enter()
                 NetworkManager.shared.getItems(itemIDs) { items in
                     guard let items = items else {
                         debug("WARNING: Can't load items for corner \(index + 1) of occasion \(occasion)")
+                        result = false
+                        group.leave()
                         return
                     }
                     
-                    debug("Total:", items.count, "Matching:", items.matching(subcategoryIDs: subcategoryIDs).count)
+                    result = result && !items.matching(subcategoryIDs: subcategoryIDs).isEmpty
+                    group.leave()
                 }
             }
             
+            group.leave()
+        }
+        
+        group.notify(queue: DispatchQueue.global(qos: .background)) {
+            completion(result)
         }
     }
     

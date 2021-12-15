@@ -36,7 +36,30 @@ extension AppDelegate: UIApplicationDelegate {
         // Test occasion items if `should test` is true
         if shouldTest {
             // testAllOccasionItems()
-            testOccasion(1855)
+            NetworkManager.shared.getOccasions { occasions in
+                guard let occasions = occasions else {
+                    debug("ERROR: Can't get occasions")
+                    return
+                }
+                
+                let group = DispatchGroup()
+                var result = true
+
+                for occasion in occasions {
+                    group.enter()
+                    self.testOccasion(occasion.id) { testResult in
+                        if !testResult {
+                            debug("DEBUG: Occasion \(occasion) has not passed")
+                        }
+                        result = result && testResult
+                        group.leave()
+                    }
+                }
+                
+                group.notify(queue: .global(qos: .background)) {
+                    debug("DEBUG: \(occasions.count) occasions \(result ? "": "NOT ")passed")
+                }
+            }
         }
         
         // Initialize the window

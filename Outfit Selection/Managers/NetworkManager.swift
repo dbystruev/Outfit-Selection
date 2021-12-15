@@ -233,7 +233,7 @@ class NetworkManager {
     ///   - completion: closure called after the request is finished, with list of occasions if successfull, or with nil if not
     func getOccasions(_ IDs: [Int]? = nil, completion: @escaping (_ occasions: Occasions?) -> Void) {
         // Include id=in.(..., ...) parameter
-        let parameters = ["id": "in.(\((IDs ?? []).commaJoined))"]
+        let parameters = IDs == nil || IDs?.count == 0 ? [:] : ["id": "in.(\((IDs ?? []).commaJoined))"]
         
         get("occasions", parameters: parameters) { (occasions: Occasions?) in
             occasions?.forEach {
