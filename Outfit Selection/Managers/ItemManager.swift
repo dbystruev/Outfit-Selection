@@ -322,6 +322,11 @@ class ItemManager {
                     Occasion.selected, "loaded in \(passedTime.asTime) s,",
                     "subcategories: \(Items.flatSubcategoryIDs.count)"
                 )
+                let items = Items.values
+                for (index, subcategoryIDs) in (Occasion.selected?.subcategoryIDs ?? []).enumerated() {
+                    let matchCount = items.matching(subcategoryIDs: subcategoryIDs).count
+                    debug("Corner \(index + 1): matching \(matchCount) items")
+                }
             }
             
             completion(self.success)
