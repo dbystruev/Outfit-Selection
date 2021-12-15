@@ -35,7 +35,8 @@ extension AppDelegate: UIApplicationDelegate {
     ) -> Bool {
         // Test occasion items if `should test` is true
         if shouldTest {
-            testOccasionItems()
+            // testAllOccasionItems()
+            testOccasion(1855)
         }
         
         // Initialize the window

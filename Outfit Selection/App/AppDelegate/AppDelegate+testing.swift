@@ -10,7 +10,7 @@ import Foundation
 
 extension AppDelegate {
     /// Load occasion items and check that their subcategories match
-    func testOccasionItems() {
+    func testAllOccasionItems() {
         debug()
         
         // Dispatch group to wait for all requests to finish
@@ -76,4 +76,30 @@ extension AppDelegate {
             debug("DEBUG: all occasion items were checked, are all valid: \(valid)")
         }
     }
+    
+    /// Test occasion with given ID
+    /// - Parameter id: ID of the occasion to test
+    func testOccasion(_ id: Int) {
+        // Get an occasion with given ID
+        NetworkManager.shared.getOccasions([id]) { occasions in
+            guard let occasion = occasions?.first else {
+                debug("ERROR: Can't load occasion with id \(id)")
+                return
+            }
+            
+            // Get items for each occasion corner
+            for (index, (subcategoryIDs, itemIDs)) in zip(occasion.subcategoryIDs, occasion.itemIDs).enumerated() {
+                NetworkManager.shared.getItems(itemIDs) { items in
+                    guard let items = items else {
+                        debug("WARNING: Can't load items for corner \(index + 1) of occasion \(occasion)")
+                        return
+                    }
+                    
+                    debug("Total:", items.count, "Matching:", items.matching(subcategoryIDs: subcategoryIDs).count)
+                }
+            }
+            
+        }
+    }
+    
 }

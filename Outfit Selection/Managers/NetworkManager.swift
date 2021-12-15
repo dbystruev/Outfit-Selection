@@ -228,9 +228,14 @@ class NetworkManager {
     }
     
     /// Call /occasions API
-    /// - Parameter completion: closure called after the request is finished, with list of occasions if successfull, or with nil if not
-    func getOccasions(completion: @escaping (_ occasions: Occasions?) -> Void) {
-        get("occasions") { (occasions: Occasions?) in
+    /// - Parameters:
+    ///   - IDs: the list of occasion IDs to get, if nil (default) — get all
+    ///   - completion: closure called after the request is finished, with list of occasions if successfull, or with nil if not
+    func getOccasions(_ IDs: [Int]? = nil, completion: @escaping (_ occasions: Occasions?) -> Void) {
+        // Include id=in.(..., ...) parameter
+        let parameters = ["id": "in.(\((IDs ?? []).commaJoined))"]
+        
+        get("occasions", parameters: parameters) { (occasions: Occasions?) in
             occasions?.forEach {
                 // Remove non-latin characters from the beginning of the name
                 $0.name = $0
