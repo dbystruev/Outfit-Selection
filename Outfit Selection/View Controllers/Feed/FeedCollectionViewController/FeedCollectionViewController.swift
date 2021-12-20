@@ -259,6 +259,9 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Add initial values for each section
         sections.forEach { addSection(items: items[$0] ?? [], to: $0) }
+        
+        // Set navigation item title
+        title = "Feed"~
     }
     
     override func viewWillAppear(_ animated: Bool) {
