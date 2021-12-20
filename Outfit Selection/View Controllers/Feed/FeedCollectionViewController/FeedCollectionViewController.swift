@@ -132,8 +132,10 @@ class FeedCollectionViewController: LoggingViewController {
     }
     
     /// Gets items depending on feed type (kind)
-    /// - Parameter kind: feed type (kind)
-    func getItems(for kind: FeedKind) {
+    /// - Parameters:
+    ///   - kind: feed type (kind)
+    ///   - ignoreBrands: should we ignore brands (false by default)
+    func getItems(for kind: FeedKind, ignoreBrands: Bool = false) {
         // All sections will need to be filtered by brands
         let brandManager = BrandManager.shared
         let brandNames = brandManager.selectedBrandNames
@@ -152,11 +154,17 @@ class FeedCollectionViewController: LoggingViewController {
         
         NetworkManager.shared.getItems(
             subcategoryIDs: subcategoryIDs,
-            filteredBy: brandNames,
+            filteredBy: ignoreBrands ? [] : brandNames,
             limited: maxItemsInSection,
             sale: sale
         ) { items in
-            guard var items = items?.shuffled() else { return }
+            guard var items = items?.shuffled(), !items.isEmpty else {
+                // If no items were returned try again ignoring brands
+                if !ignoreBrands {
+                    self.getItems(for: kind, ignoreBrands: true)
+                }
+                return
+            }
             
             // Put the last selected brand name first
             if let lastSelectedBrandName = brandManager.lastSelected?.brandName {
