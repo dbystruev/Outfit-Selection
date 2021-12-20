@@ -199,6 +199,55 @@ class ItemManager {
         }
     }
     
+    /// Load images for given item IDs into view models
+    /// - Parameters:
+    ///   - itemIDs: IDs for items to load images for
+    ///   - viewModel: view model to load the images into
+    func loadImages(for itemIDs: [String], into viewModel: ImageCollectionViewModel) {
+        // Count elapsed time
+        let startTime = Date()
+        
+        // Dispatch group to wait for all loads to finish
+        let group = DispatchGroup()
+        
+        // Loaded / skipped items count
+        var itemsLoaded = 0
+        
+        // Go through all items and load images one by one
+        DispatchQueue.global(qos: .background).async {
+            group.enter()
+            for item in itemIDs.items {
+                // Get item image URL or skip
+                guard let pictureURL = item.pictures.first else { continue }
+                
+                group.enter()
+                NetworkManager.shared.getImage(pictureURL) { image in
+                    // Check that we've got the actual image
+                    guard let image = image else {
+                        group.leave()
+                        return
+                    }
+                    
+                    // Append image to the view model
+                    viewModel.append(image.halved, item: item)
+                    itemsLoaded += 1
+                    group.leave()
+                }
+                
+                group.wait()
+            }
+            group.leave()
+        }
+        
+        
+        // Show stats when all loads are finished
+        group.notify(queue: .global(qos: .background)) {
+            let elapsedTime = Date().timeIntervalSince(startTime)
+            debug("INFO: loaded \(itemsLoaded), skipped \(itemIDs.count - itemsLoaded)",
+                  "of \(itemIDs.count) images in \(elapsedTime.asTime) s")
+        }
+    }
+    
     /// Load images from view models into scroll views
     /// - Parameters:
     ///   - scrollViews: scroll views to load images into, one scroll view for each category
