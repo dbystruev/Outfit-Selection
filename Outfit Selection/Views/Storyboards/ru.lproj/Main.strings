@@ -15,7 +15,7 @@
 "QSs-rB-2If.normalTitle" = "Cлучаи";
 
 /* Class = "UILabel"; text = "Loading..."; ObjectID = "TjY-vq-NEy"; */
-"TjY-vq-NEy.text" = "Загрузка...";
+"TjY-vq-NEy.text" = "Считаем...";
 
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "VWM-Gw-av5"; */
 "VWM-Gw-av5.title" = "Вещь";
