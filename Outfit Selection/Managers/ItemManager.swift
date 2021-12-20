@@ -106,15 +106,19 @@ class ItemManager {
                 let items = brandFilteredItems.isEmpty ? categoryFilteredItems : brandFilteredItems
                 
                 // Select the limited number of random items
-                let limitedItems = limit < items.count
+                let itemsToLoadImmediately = limit < items.count
                 ? items.randomSample(count: limit)
                 : items
+                
+                // Remember item IDs to load after immediate items are loaded
+                let itemIDsToLoadImmediately = itemsToLoadImmediately.IDs
+                let itemIDsToLoadLater = items.IDs.filter { !itemIDsToLoadImmediately.contains($0) }
                 
                 // The maximum number of network image loads in one corner
                 var remainingLoads = limit
                 
                 // Loop all items in given category
-                for item in limitedItems {
+                for item in itemsToLoadImmediately {
                     // Check that there is no item with the same name already in the list, unless it is wishlisted
                     guard item.wishlisted || !loadedItemNames.contains(item.name) else {
                         // Skip items with similar names
@@ -168,6 +172,9 @@ class ItemManager {
                         // Append image to the end of corresponding image collection view model
                         viewModel.append(image.halved, item: item)
                         
+                        // Load other images in background
+                        self.loadImages(for: itemIDsToLoadLater, into: viewModel)
+                        
                         // Update the number of currently loaded images
                         current += 1
                         
@@ -215,7 +222,6 @@ class ItemManager {
         
         // Go through all items and load images one by one
         DispatchQueue.global(qos: .background).async {
-            group.enter()
             for item in itemIDs.items {
                 // Get item image URL or skip
                 guard let pictureURL = item.pictures.first else { continue }
@@ -236,12 +242,8 @@ class ItemManager {
                 
                 group.wait()
             }
-            group.leave()
-        }
-        
-        
-        // Show stats when all loads are finished
-        group.notify(queue: .global(qos: .background)) {
+            
+            // Show stats when all loads are finished
             let elapsedTime = Date().timeIntervalSince(startTime)
             debug("INFO: loaded \(itemsLoaded), skipped \(itemIDs.count - itemsLoaded)",
                   "of \(itemIDs.count) images in \(elapsedTime.asTime) s")
