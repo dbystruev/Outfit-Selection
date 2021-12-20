@@ -19,6 +19,7 @@ extension OccasionsViewController: UITableViewDataSource {
         occasionNames.count
     }
     
+    /// Configure occasion cell for given section and row
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let occasionCell: OccasionCell = {
             guard let cell = tableView.dequeueReusableCell(
@@ -41,5 +42,10 @@ extension OccasionsViewController: UITableViewDataSource {
         }
         occasionCell.configureContent(with: occasion)
         return occasionCell
+    }
+    
+    /// Section titles are names
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        occasionNames[section]
     }
 }

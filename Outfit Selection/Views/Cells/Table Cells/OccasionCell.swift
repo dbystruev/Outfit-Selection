@@ -28,7 +28,7 @@ class OccasionCell: UITableViewCell {
     /// - Parameter occasion: the occasion to configure this cell with
     func configureContent(with occasion: Occasion) {
         checkBoxImageView.isHighlighted = occasion.isSelected
-        occasionNameLabel.text = occasion.title
+        occasionNameLabel.text = occasion.label
     }
     
     /// Configure the cell's look and feel once at the beginning
