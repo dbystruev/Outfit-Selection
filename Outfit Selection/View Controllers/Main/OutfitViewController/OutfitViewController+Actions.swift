@@ -81,27 +81,28 @@ extension OutfitViewController {
             return
         }
         
-        // Find out where progress view controller is
-        guard
-            let navigationController = tabBarController?.navigationController,
-            let progressViewController = navigationController
-                .findViewController(ofType: ProgressViewController.self)
-        else {
-            debug(
-                "WARNING: Can't find \(ProgressViewController.self) in",
-                tabBarController?.navigationController
-            )
-            return
-        }
-        
         // If we tapped an occasion with different title, reload it
         Occasion.selected = tappedOccasion
         
-        // Start loading items
-        NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
-        
-        // Pop to progress view controller
-        navigationController.popToViewController(progressViewController, animated: true)
+        // Reload items and images
+        let gender = Gender.current
+        NetworkManager.shared.reloadItems(for: gender) { success in
+            guard success == true else {
+                debug("ERROR reloading items for", gender)
+                return
+            }
+            
+            // Load images for items
+            ItemManager.shared.loadImages(filteredBy: gender, cornerLimit: 1) { current, total in
+                // Wait until all images are loaded
+                guard current == total else { return }
+                
+                // Scroll to newly selected occasion
+                DispatchQueue.main.async {
+                    self.scrollTo(occasion: tappedOccasion)
+                }
+            }
+        }
     }
     
     /// Move to occasions view controller when left screen edge is panned

@@ -111,8 +111,6 @@ class ItemManager {
                 
                 // Loop all items in given category
                 for item in limitedItems {
-                    debug(item.name, item.subcategoryIDs)
-                    
                     // Check that there is no item with the same name already in the list, unless it is wishlisted
                     guard item.wishlisted || !loadedItemNames.contains(item.name) else {
                         // Skip items with similar names
@@ -277,11 +275,6 @@ class ItemManager {
                     Items.count, "items for occasion", occasion,
                     "loaded in \(passedTime.asTime) s"
                 )
-                let items = Items.values
-                for (index, subcategoryIDs) in (Occasion.selected?.subcategoryIDs ?? []).enumerated() {
-                    let matchCount = items.matching(subcategoryIDs: subcategoryIDs).count
-                    debug("Corner \(index + 1): matching \(matchCount) items")
-                }
             }
             
             completion(self.success)
