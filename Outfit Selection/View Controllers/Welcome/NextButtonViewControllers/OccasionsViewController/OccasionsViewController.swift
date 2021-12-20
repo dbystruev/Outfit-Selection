@@ -8,6 +8,7 @@
 
 import UIKit
 
+/// Occasion selection view controller
 class OccasionsViewController: NextButtonViewController {
     
     // MARK: - Outlets
@@ -17,12 +18,14 @@ class OccasionsViewController: NextButtonViewController {
     /// The main table view with occasion list
     @IBOutlet weak var occasionsTableView: UITableView!
     
-    // MARK: - Computed Properties
-    /// Occasions with unique titles which could be selected
-    var occasions: Occasions {
-        occasionTitles.compactMap { Occasions.byTitle[$0]?.selectedFirst.first }
-    }
+    // MARK: - Stored Properties
+    /// Dictionary of occasion labels with occasion names as keys
+    var occasionLabels: [String: [String]] = [:]
     
+    /// Array of occasion names
+    var occasionNames: [String] = []
+    
+    // MARK: - Computed Properties
     ///  All occasion titles for current gender sorted
     var occasionTitles: [String] {
         Occasions.currentGender.titles.sorted()
@@ -48,6 +51,13 @@ class OccasionsViewController: NextButtonViewController {
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Setup data source
+        let currentGenderOccasions = Occasions.currentGender
+        occasionNames = currentGenderOccasions.names.sorted()
+        occasionNames.forEach { name in
+            occasionLabels[name] = currentGenderOccasions.with(name: name).labels.sorted()
+        }
         
         // Setup occasions table view
         occasionsTableView.dataSource = self

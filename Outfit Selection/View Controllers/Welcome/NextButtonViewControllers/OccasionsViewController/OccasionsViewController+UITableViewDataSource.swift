@@ -9,8 +9,14 @@
 import UIKit
 
 extension OccasionsViewController: UITableViewDataSource {
+    /// Table rows are occasion labels for the given name
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        occasions.count
+        occasionLabels[occasionNames[section]]?.count ?? 0
+    }
+    
+    /// Table sections are occasion names
+    func numberOfSections(in tableView: UITableView) -> Int {
+        occasionNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -24,9 +30,16 @@ extension OccasionsViewController: UITableViewDataSource {
             return cell
         }()
         
-        occasionCell.configureContent(with: occasions[indexPath.row])
+        let name = occasionNames[indexPath.section]
+        guard let label = occasionLabels[name]?[safe: indexPath.row] else {
+            debug("ERROR: There are no occasions with name \(name)")
+            return occasionCell
+        }
+        guard let occasion = Occasions.currentGender.with(name: name).with(label: label).first else {
+            debug("ERROR: There are no occasions with name \(name) and label \(label)")
+            return occasionCell
+        }
+        occasionCell.configureContent(with: occasion)
         return occasionCell
     }
-    
-    
 }

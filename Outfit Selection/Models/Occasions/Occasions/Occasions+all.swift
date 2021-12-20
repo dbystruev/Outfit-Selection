@@ -191,6 +191,13 @@ extension Occasions {
         }
     }
     
+    /// Returns all occasions with given name
+    /// - Parameter name: the name to look for
+    /// - Returns: the list of occasions with the name
+    static func with(name: String) -> Occasions {
+        byID.values.filter { $0.name == name }
+    }
+    
     /// Returns all occasions with given title
     /// - Parameter title: the title to look for
     /// - Returns: the list of occasions with the title

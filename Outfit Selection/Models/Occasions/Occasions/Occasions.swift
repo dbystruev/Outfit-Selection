@@ -51,6 +51,16 @@ extension Occasions {
         [Int](flatMap { $0.flatSubcategoryIDs }.uniqued())
     }
     
+    /// Occasion labels
+    var labels: UniquedSequence<[String], String> {
+        map { $0.label }.uniqued()
+    }
+    
+    /// Occasion names
+    var names: UniquedSequence<[String], String> {
+        map { $0.name }.uniqued()
+    }
+    
     /// All selected occasions
     var selected: Occasions {
         filter { $0.isSelected }
@@ -81,6 +91,20 @@ extension Occasions {
         return filter {
             $0.gender == gender || $0.gender == .other
         }
+    }
+    
+    /// Returns all occasions with given name
+    /// - Parameter name: the title to look for
+    /// - Returns: the list of occasions with the name
+    func with(name: String) -> Occasions {
+        filter { $0.name == name }
+    }
+    
+    /// Returns all occasions with given label
+    /// - Parameter label: the label to look for
+    /// - Returns: the list of occasions with the label
+    func with(label: String) -> Occasions {
+        filter { $0.label == label }
     }
     
     /// Returns all occasions with given title

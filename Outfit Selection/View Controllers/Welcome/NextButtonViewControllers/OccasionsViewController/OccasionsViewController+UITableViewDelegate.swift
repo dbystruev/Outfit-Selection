@@ -15,7 +15,15 @@ extension OccasionsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         // Toggle all occasions with the same title and reload the table
-        let occasion = occasions[indexPath.row]
+        let name = occasionNames[indexPath.section]
+        guard let label = occasionLabels[name]?[safe: indexPath.row] else {
+            debug("ERROR: There are no occasions with name \(name)")
+            return
+        }
+        guard let occasion = Occasions.currentGender.with(name: name).with(label: label).first else {
+            debug("ERROR: There are no occasions with name \(name) and label \(label)")
+            return
+        }
         Occasions.select(title: occasion.title, shouldSelect: !occasion.isSelected)
         tableView.reloadRows(at: [indexPath], with: .automatic)
         
