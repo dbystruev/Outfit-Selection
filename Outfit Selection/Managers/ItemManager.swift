@@ -58,9 +58,6 @@ class ItemManager {
         // Clear all view models
         clearViewModels()
         
-        // Get all wishlist items
-        let allWishlistItems = Wishlist.allItems
-        
         // Move everything to async queue in order not to hang execution
         DispatchQueue.global(qos: .background).async {
             
@@ -71,8 +68,8 @@ class ItemManager {
             var current = 0
             var total = 0
             
-            // Select from all loaded items, including wishlist items
-            let itemsToLoad = Items.values + allWishlistItems
+            // Save loaded items
+            let itemsToLoad = Items.values
             
             // Generate categories or subcategories from occasions
             let occasionsSelectedForGender = limit == 1

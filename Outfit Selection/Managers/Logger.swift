@@ -31,7 +31,7 @@ class Logger {
     }()
     
     /// Duration in seconds when cache should be used
-    static let cacheDuration: TimeInterval = 1 // 3600
+    static let cacheDuration: TimeInterval = 3600 // 1
     
     /// Load logs from filesystem files
     private static let filesystemLogs: [String: String] = {

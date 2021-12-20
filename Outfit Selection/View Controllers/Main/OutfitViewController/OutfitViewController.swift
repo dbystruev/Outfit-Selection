@@ -37,7 +37,7 @@ class OutfitViewController: LoggingViewController {
     
     // MARK: - Stored Properties
     /// Shuffle is allowed when enough item images are loaded
-    var allowShuffle = false
+    var allowShuffle = true
     
     /// First appearance for view will appear
     var firstAppearance = true
