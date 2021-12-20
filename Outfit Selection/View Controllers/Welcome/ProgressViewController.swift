@@ -99,7 +99,6 @@ class ProgressViewController: LoggingViewController {
         Wishlist.tabSuggested = Wishlist.largestKind
         
         // Load view models with the new images
-        let startTime = Date().timeIntervalSince1970
         ItemManager.shared.loadImages(
             filteredBy: Gender.current,
             cornerLimit: 1
@@ -108,13 +107,6 @@ class ProgressViewController: LoggingViewController {
             self.updateProgressBar(current: itemsLoaded, total: itemsTotal, minValue: 0.5)
             
             guard itemsLoaded == itemsTotal else { return }
-            
-            let passedTime = Date().timeIntervalSince1970 - startTime
-            
-            debug(
-                "\(itemsTotal) images are loaded from the server into view models in",
-                "\(passedTime.asTime) seconds"
-            )
             
             // Save brand images for future selection change
             BrandManager.shared.brandedImages = self.brandedImages

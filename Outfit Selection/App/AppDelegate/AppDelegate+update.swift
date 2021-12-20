@@ -20,8 +20,8 @@ extension AppDelegate {
             
             // Update the categories
             Categories.all = categories
-            let elapsed = Date().timeIntervalSince(startTime)
-            debug("INFO: Loaded \(categories.count) categories in \(elapsed.asTime) s")
+            let elapsedTime = Date().timeIntervalSince(startTime)
+            debug("INFO: Loaded \(categories.count) categories in \(elapsedTime.asTime) s")
         }
     }
     
@@ -43,9 +43,9 @@ extension AppDelegate {
             Occasions.restoreSelectedOccasions()
             
             // Show elapsed time
-            let elapsed = Date().timeIntervalSince(startTime)
+            let elapsedTime = Date().timeIntervalSince(startTime)
             debug(
-                "INFO: Loaded \(Occasions.titles.count) / \(Occasions.count) occasions in \(elapsed.asTime) s,",
+                "INFO: Loaded \(Occasions.titles.count) / \(Occasions.count) occasions in \(elapsedTime.asTime) s,",
                 "subcategories: \(Occasions.flatSubcategoryIDs.count),",
                 "items: \(Occasions.flatItemIDs.count)"
             )
@@ -69,8 +69,8 @@ extension AppDelegate {
             Onboarding.currentIndex = 0
             
             // Show elapsed time
-            let elapsed = Date().timeIntervalSince(startTime)
-            debug("INFO: Loaded \(Onboarding.all.count) onboarding screens in \(elapsed.asTime) s")
+            let elapsedTime = Date().timeIntervalSince(startTime)
+            debug("INFO: Loaded \(Onboarding.all.count) onboarding screens in \(elapsedTime.asTime) s")
             
             completion(true)
         }

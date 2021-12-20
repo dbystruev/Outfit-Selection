@@ -44,6 +44,7 @@ class ItemManager {
     ///   - gender: gender to filter images by
     ///   - brandNames: brand names to filter images by
     ///   - limit: the number of images to load in each corner per occasion with selected title, Items.maxCornerCount by default
+    ///   - continueLoading: the process of loading remaining images in background continues, false by default
     ///   - completion: (int, int) closure called while images are processed, gets current and total number of items loaded
     func loadImages(
         filteredBy gender: Gender?,
@@ -51,6 +52,9 @@ class ItemManager {
         cornerLimit limit: Int = Items.maxCornerCount,
         completion: @escaping (_ current: Int, _ total: Int) -> Void
     ) {
+        // Count elapsed time
+        let startTime = Date()
+        
         // Clear all view models
         clearViewModels()
         
@@ -68,7 +72,7 @@ class ItemManager {
             var total = 0
             
             // Select from all loaded items, including wishlist items
-            let allItems = allWishlistItems + Items.values
+            let itemsToLoad = Items.values + allWishlistItems
             
             // Generate categories or subcategories from occasions
             let occasionsSelectedForGender = limit == 1
@@ -90,8 +94,8 @@ class ItemManager {
                 
                 // Select only the items which belong to one of the categories given
                 let categoryFilteredItems = useOccasions
-                ? allItems.matching(subcategoryIDs: categoryIDs)
-                : allItems.matching(categoryIDs: categoryIDs)
+                ? itemsToLoad.matching(subcategoryIDs: categoryIDs)
+                : itemsToLoad.matching(categoryIDs: categoryIDs)
                 
                 // Filter category filtered items by the brand given
                 let brandFilteredItems = categoryFilteredItems.filter { item in
@@ -187,20 +191,10 @@ class ItemManager {
                 // Filter out occasions without images in view models
 //                Occasions.filter(by: self.viewModels.corneredItems)
                 
-                // Make sure selected occasion has images in view models
-                let currentGenderOccasions = Occasions.currentGender
-                if let selectedOccasion = Occasion.selected {
-                    if !currentGenderOccasions.titles.contains(selectedOccasion.title) {
-                        debug("WARNING: \(currentGenderOccasions.titles) do not contain \(selectedOccasion.title)")
-                        Occasion.selected = currentGenderOccasions
-                            .with(title: selectedOccasion.title)
-                            .randomElement()
-                        ?? currentGenderOccasions.randomElement()
-                    }
-                } else {
-                    Occasion.selected = currentGenderOccasions.randomElement()
-                }
                 completion(self.count, self.count)
+                
+                let elapsedTime = Date().timeIntervalSince(startTime)
+                debug("Loaded", self.count, gender, "images in \(elapsedTime.asTime) s")
             }
         }
     }

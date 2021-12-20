@@ -51,7 +51,7 @@
 "woy-Nu-Rvd.title" = "Вещь";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "xLI-2y-iWG"; */
-"xLI-2y-iWG.normalTitle" = "Сохранить";
+"xLI-2y-iWG.normalTitle" = "Готово";
 
 /* Class = "UIViewController"; title = "Share"; ObjectID = "zS2-Fi-i4G"; */
 "zS2-Fi-i4G.title" = "Поделиться";
