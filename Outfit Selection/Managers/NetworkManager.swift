@@ -348,11 +348,7 @@ class NetworkManager {
         Occasion.selected = Occasion.selected ?? selectedOccasions.randomElement()
         
         // Load items if none are found
-        ItemManager.shared.loadItems(
-            for: gender,
-            occasionTitle: Occasion.selected?.title,
-            completion: completion
-        )
+        ItemManager.shared.loadItems(for: Occasion.selected, completion: completion)
     }
     
     /// Restore full names for item vendors using self.fullVendorNames dictionary

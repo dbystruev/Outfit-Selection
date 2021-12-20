@@ -231,15 +231,17 @@ class ItemManager {
     
     /// Load items from the server to Item.all array
     /// - Parameters:
-    ///   - gender: load female, male or other items only
-    ///   - occasionTitle: occasion title to load images for, nil by default
+    ///   - occasion: occasion to load the items for
     ///   - completion: closure with bool parameter which is called with true in case of success, with false otherwise
     func loadItems(
-        for gender: Gender?,
-        occasionTitle: String? = nil,
+        for occasion: Occasion?,
         completion: @escaping (_ success: Bool?) -> Void
     ) {
-        debug(gender, occasionTitle)
+        // Check that occasion is not nil
+        guard let occasion = occasion else {
+            completion(false)
+            return
+        }
         
         // Measure the number of requests and elapsed time
         currentRequest = 0
@@ -254,61 +256,15 @@ class ItemManager {
         /// Count the number of (sub)categories for loaded items
         var categoriesCount = 0
         
+        // Occasion item IDs from top left clockwise matching cornered subcategory IDs
+        let corneredItemIDs = occasion.corneredItemIDs
+        
         /// The total number of requests
-        var totalRequests = 0
+        let totalRequests = corneredItemIDs.count
         
-        // Run network request for wishlist items in parallel
-        loadItemsByID(Array(Wishlist.allItemsIdSet))
-        
-        // If occasion title is given — get items from the occasion
-        if
-            let occasionTitle = occasionTitle,
-            let occasions = Occasions.byTitle[occasionTitle],
-            !occasions.isEmpty
-        {
-            // Load items for each corner in parallel
-            let corneredItemIDs = occasions.corneredItemIDs
-            totalRequests = corneredItemIDs.count
-            for itemIDs in corneredItemIDs {
-                loadItemsByID(itemIDs, totalRequests: totalRequests, subcategoriesCount: &categoriesCount)
-            }
-            
-            // If no occasions are selected — load items for corner categories
-        } else if Occasions.selected.gender(gender).areEmpty {
-            let categoriesByCorners = Categories.by(gender: gender)
-            categoriesCount = [Int](categoriesByCorners.flatMap { $0.IDs }.uniqued()).count
-            for categories in categoriesByCorners {
-                loadItemsByBrands(
-                    gender: gender,
-                    categoryIDs: [Int](categories.IDs.uniqued()),
-                    totalRequests: categoriesByCorners.count
-                )
-            }
-            
-            // If there are occasions selected — load items for subcategories
-        } else {
-            let subcategoryIDsByOccasions = Occasions
-                .selected
-                .gender(gender)
-                .flatMap { $0.corneredSubcategoryIDs }
-            let flatSubcategoryIDs = [Int](subcategoryIDsByOccasions.flatMap { $0 }.uniqued())
-            categoriesCount = flatSubcategoryIDs.count
-            
-            // If we exceeded the recommended number of requests, decrease them
-            let tooManyRequests = NetworkManager.shared.requestsRecommended < subcategoryIDsByOccasions.count
-            totalRequests = tooManyRequests ? 1 : subcategoryIDsByOccasions.count
-            
-            if tooManyRequests {
-                loadItemsByBrands(gender: gender, subcategoryIDs: flatSubcategoryIDs, totalRequests: totalRequests)
-            } else {
-                for subcategoryIDs in subcategoryIDsByOccasions {
-                    loadItemsByBrands(
-                        gender: gender,
-                        subcategoryIDs: [Int](subcategoryIDs.uniqued()),
-                        totalRequests: totalRequests
-                    )
-                }
-            }
+        // Go through each corner and load items IDs for the occasion
+        for itemIDs in corneredItemIDs {
+            loadItemsByID(itemIDs, totalRequests: totalRequests, subcategoriesCount: &categoriesCount)
         }
         
         // Complete when all dispatch group tasks are finished
@@ -318,9 +274,8 @@ class ItemManager {
             
             if self.success {
                 debug(
-                    Items.count, gender?.rawValue, "items for occasion",
-                    Occasion.selected, "loaded in \(passedTime.asTime) s,",
-                    "subcategories: \(Items.flatSubcategoryIDs.count)"
+                    Items.count, "items for occasion", occasion,
+                    "loaded in \(passedTime.asTime) s"
                 )
                 let items = Items.values
                 for (index, subcategoryIDs) in (Occasion.selected?.subcategoryIDs ?? []).enumerated() {

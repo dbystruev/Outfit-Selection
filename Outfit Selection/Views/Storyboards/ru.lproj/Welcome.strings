@@ -18,7 +18,7 @@
 "Gwb-FF-9cf.title" = "Выбрать все";
 
 /* Class = "UILabel"; text = "Choose one or more brands you like "; ObjectID = "MB4-2h-AF5"; */
-"MB4-2h-AF5.text" = "Выберите один или несколько брендов, которые вам нравятся ";
+"MB4-2h-AF5.text" = "Выберите бренды, которые вам нравятся ";
 
 /* Class = "UILabel"; text = "Choose your favourite occasions "; ObjectID = "O7I-pz-nl1"; */
 "O7I-pz-nl1.text" = "Выберите ваши любимые случаи для создания образа ";
