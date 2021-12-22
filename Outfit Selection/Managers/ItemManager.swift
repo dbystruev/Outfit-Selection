@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ItemManager {
+/// Class responsible for item loads
+final class ItemManager {
     // MARK: - Static Properties
     static let shared = ItemManager()
     
@@ -58,9 +59,6 @@ class ItemManager {
         // Clear all view models
         clearViewModels()
         
-        // Capture view models in local constant to use in closure below without self
-        let viewModels = viewModels
-        
         // Move everything to async queue in order not to hang execution
         DispatchQueue.global(qos: .background).async {
             
@@ -85,7 +83,7 @@ class ItemManager {
             
             /// Loop all corners
             var itemsSkipped = 0
-            for (categories, viewModel) in zip(categoriesByCorner, viewModels) {
+            for (categories, viewModel) in zip(categoriesByCorner, self.viewModels) {
                 // The names of the items already loaded in this corner
                 var loadedItemNames = [String]()
                 
@@ -112,7 +110,7 @@ class ItemManager {
                 
                 // Remember item IDs to load after immediate items are loaded
                 let itemIDsToLoadImmediately = itemsToLoadImmediately.IDs
-                let itemIDsToLoadLater = items.IDs.filter { !itemIDsToLoadImmediately.contains($0) }
+                let itemIDsToLoadInBackground = items.IDs.filter { !itemIDsToLoadImmediately.contains($0) }
                 
                 // The maximum number of network image loads in one corner
                 var remainingLoads = limit
@@ -179,7 +177,7 @@ class ItemManager {
                         viewModel.append(image.halved, item: item)
                         
                         // Load other images in background
-                        self.loadImages(for: itemIDsToLoadLater, into: viewModel)
+                        self.loadImagesInBackground(for: itemIDsToLoadInBackground, into: viewModel)
                         
                         // Update the number of currently loaded images
                         current += 1
@@ -216,7 +214,7 @@ class ItemManager {
     /// - Parameters:
     ///   - itemIDs: IDs for items to load images for
     ///   - viewModel: view model to load the images into
-    func loadImages(for itemIDs: [String], into viewModel: ImageCollectionViewModel) {
+    func loadImagesInBackground(for itemIDs: [String], into viewModel: ImageCollectionViewModel) {
         // Count elapsed time
         let startTime = Date()
         
@@ -228,9 +226,12 @@ class ItemManager {
         
         // Go through all items and load images one by one
         DispatchQueue.global(qos: .background).async {
-            for item in itemIDs.items {
+            for itemID in itemIDs {
                 // Get item image URL or skip
-                guard let pictureURL = item.pictures.first else { continue }
+                guard
+                    let item = itemID.item,
+                    let pictureURL = item.pictures.first
+                else { continue }
                 
                 group.enter()
                 NetworkManager.shared.getImage(pictureURL) { image in
