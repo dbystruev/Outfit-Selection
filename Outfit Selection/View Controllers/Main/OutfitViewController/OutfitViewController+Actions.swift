@@ -93,7 +93,13 @@ extension OutfitViewController {
             }
             
             // Load images for items
-            ItemManager.shared.loadImages(filteredBy: gender, cornerLimit: 1) { current, total in
+            ItemManager.shared.loadImages(filteredBy: gender, cornerLimit: 1) { [weak self] current, total in
+                // Check for self availability
+                guard let self = self else {
+                    debug("ERROR: self is not available")
+                    return
+                }
+                
                 // Wait until all images are loaded
                 guard current == total else { return }
                 
@@ -161,6 +167,8 @@ extension OutfitViewController {
     }
     
     @IBAction func shuffleButtonTapped(_ sender: Any) {
+        debug("items loaded: \(scrollViews.itemCount) of \(Items.count)")
+        
         showShuffleBubble = false
         
         // Make sure enough item images are loaded

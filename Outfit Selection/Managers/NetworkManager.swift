@@ -108,7 +108,13 @@ class NetworkManager {
         
         requestsRunning += 1
         
-        let task = URLSession.shared.dataTask(with: request) { data, _, error in
+        let task = URLSession.shared.dataTask(with: request) { [weak self] data, _, error in
+            // Check for self availability
+            guard let self = self else {
+                debug("ERROR: self is not available")
+                completion(nil)
+                return
+            }
             
             self.requestsRunning -= 1
             
@@ -222,7 +228,14 @@ class NetworkManager {
         parameters["order"] = "modified_time.desc"
         
         // Process get request
-        get("items", parameters: parameters) { (items: Items?) in
+        get("items", parameters: parameters) { [weak self] (items: Items?) in
+            // Check for self availability
+            guard let self = self else {
+                debug("ERROR: self is not available")
+                completion(nil)
+                return
+            }
+            
             self.restoreVendorFullNames(items: items, completion: completion)
         }
     }
@@ -372,7 +385,14 @@ class NetworkManager {
     /// Update the main url we have to use in the future
     /// - Parameter completion: closure called when request is finished, with true if request is succesfull, and false if not
     func updateURL(completion: @escaping (_ success: Bool) -> Void) {
-        get("server") { (server: Server?) in
+        get("server") { [weak self] (server: Server?) in
+            // Check for self availability
+            guard let self = self else {
+                debug("ERROR: self is not available")
+                completion(false)
+                return
+            }
+            
             guard let server = server else {
                 debug("ERROR: Can't find server in \(String(describing: server))")
                 completion(false)

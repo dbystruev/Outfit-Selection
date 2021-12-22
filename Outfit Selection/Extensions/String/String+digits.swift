@@ -15,7 +15,7 @@ extension String {
     /// - Returns: string of digits with length no more than limit
     func digits(_ limit: Int) -> String {
         // Keep only digits from "0" to "9"
-        let digits = self.digits
+        let digits = digits
         
         // Drop the digits above the given limit
         return String(digits.dropLast(max(0, digits.count - limit)))

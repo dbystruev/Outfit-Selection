@@ -36,7 +36,13 @@ extension AppDelegate: UIApplicationDelegate {
         // Test occasion items if `should test` is true
         if shouldTest {
             // testAllOccasionItems()
-            NetworkManager.shared.getOccasions { occasions in
+            NetworkManager.shared.getOccasions { [weak self] occasions in
+                // Check for self availability
+                guard let self = self else {
+                    debug("ERROR: self is not available")
+                    return
+                }
+                
                 guard let occasions = occasions else {
                     debug("ERROR: Can't get occasions")
                     return

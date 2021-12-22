@@ -157,7 +157,13 @@ class FeedCollectionViewController: LoggingViewController {
             filteredBy: ignoreBrands ? [] : brandNames,
             limited: maxItemsInSection,
             sale: sale
-        ) { items in
+        ) { [weak self] items in
+            // Check for self availability
+            guard let self = self else {
+                debug("ERROR: self is not available")
+                return
+            }
+            
             guard var items = items?.shuffled(), !items.isEmpty else {
                 // If no items were returned try again ignoring brands
                 if !ignoreBrands {

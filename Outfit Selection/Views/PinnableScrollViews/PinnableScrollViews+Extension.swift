@@ -35,6 +35,9 @@ extension PinnableScrollViews {
     /// True if any scroll view is scrolled by the user (dragged or tracked)
     var isUserScrolling: Bool { isDragging }
     
+    /// The number of items in all scroll views
+    var itemCount: Int { reduce(0) { $0 + $1.itemCount }}
+    
     /// Time when offset of any of scroll views was last changed
     var offsetChanged: Date? {
         compactMap { $0.offsetChanged }.max()

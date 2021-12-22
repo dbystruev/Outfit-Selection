@@ -12,6 +12,6 @@ extension Double {
     var asTime: String {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        return formatter.string(from: NSNumber(value: self)) ?? self.description
+        return formatter.string(from: NSNumber(value: self)) ?? description
     }
 }

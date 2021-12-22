@@ -102,7 +102,13 @@ class ProgressViewController: LoggingViewController {
         ItemManager.shared.loadImages(
             filteredBy: Gender.current,
             cornerLimit: 1
-        ) { itemsLoaded, itemsTotal in
+        ) { [weak self] itemsLoaded, itemsTotal in
+            // Check for self availability
+            guard let self = self else {
+                debug("ERROR: self is not available")
+                return
+            }
+            
             // If not all items loaded — update progress view and continue
             self.updateProgressBar(current: itemsLoaded, total: itemsTotal, minValue: 0.5)
             

@@ -102,7 +102,13 @@ class ItemViewController: LoggingViewController {
         
         // Load images into stack view
         for imageURL in imageURLs.dropFirst() {
-            NetworkManager.shared.getImage(imageURL) { image in
+            NetworkManager.shared.getImage(imageURL) { [weak self] image in
+                // Check for self availability
+                guard let self = self else {
+                    debug("ERROR: self is not available")
+                    return
+                }
+                
                 guard let image = image else { return }
                 DispatchQueue.main.async {
                     let imageView = UIImageView(image: image)

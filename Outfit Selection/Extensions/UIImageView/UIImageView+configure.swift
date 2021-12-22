@@ -13,10 +13,17 @@ extension UIImageView {
     /// - Parameter url: the URL to load image from
     func configure(with url: URL?) {
         guard let url = url else { return }
-        NetworkManager.shared.getImage(url) { image in
-            guard let image = image else { return }
+        NetworkManager.shared.getImage(url) { [weak self] newImage in
+            guard let newImage = newImage else { return }
+            
+            // Check for self availability
+            guard let self = self else {
+                debug("ERROR: self is not available")
+                return
+            }
+            
             DispatchQueue.main.async {
-                self.image = image
+                self.image = newImage
             }
         }
     }

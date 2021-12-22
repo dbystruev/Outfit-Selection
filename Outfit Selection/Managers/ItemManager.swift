@@ -58,6 +58,9 @@ class ItemManager {
         // Clear all view models
         clearViewModels()
         
+        // Capture view models in local constant to use in closure below without self
+        let viewModels = viewModels
+        
         // Move everything to async queue in order not to hang execution
         DispatchQueue.global(qos: .background).async {
             
@@ -82,7 +85,7 @@ class ItemManager {
             
             /// Loop all corners
             var itemsSkipped = 0
-            for (categories, viewModel) in zip(categoriesByCorner, self.viewModels) {
+            for (categories, viewModel) in zip(categoriesByCorner, viewModels) {
                 // The names of the items already loaded in this corner
                 var loadedItemNames = [String]()
                 
@@ -144,9 +147,15 @@ class ItemManager {
                     total += 1
                     
                     // Try to get an image for the current item
-                    NetworkManager.shared.getImage(pictureURL) { optionalImage in
+                    NetworkManager.shared.getImage(pictureURL) { [weak self] optionalImage in
                         // Make sure we always leave the group
                         defer { DispatchManager.shared.itemManagerGroup.leave() }
+                        
+                        // Check for self availability
+                        guard let self = self else {
+                            debug("ERROR: self is not available")
+                            return
+                        }
                         
                         // Didn't get the image — that's an error
                         guard let image = optionalImage else {
@@ -350,7 +359,13 @@ class ItemManager {
                    in: categoryIDs,
                    subcategoryIDs: subcategoryIDs,
                    filteredBy: brandNames
-            ) { items in
+            ) { [weak self] items in
+                // Check for self availability
+                guard let self = self else {
+                    debug("ERROR: self is not available")
+                    return
+                }
+                
                 // Check if any items were loaded
                 if let items = items {
                     Items.append(contentsOf: items)
@@ -378,7 +393,17 @@ class ItemManager {
         subcategoriesCount: UnsafeMutablePointer<Int>? = nil
     ) {
         DispatchManager.shared.itemManagerGroup.enter()
-        NetworkManager.shared.getItems(itemIDs) { items in
+        NetworkManager.shared.getItems(itemIDs) { [weak self] items in
+            defer {
+                DispatchManager.shared.itemManagerGroup.leave()
+            }
+            
+            // Check for self availability
+            guard let self = self else {
+                debug("ERROR: self is not available")
+                return
+            }
+            
             // Check if any items were loaded
             if let items = items {
                 Items.append(contentsOf: items)
@@ -387,8 +412,6 @@ class ItemManager {
                 self.success = false
                 subcategoriesCount?.pointee = 0
             }
-            
-            DispatchManager.shared.itemManagerGroup.leave()
             
             // Update progress bar
             if let totalRequests = totalRequests {
