@@ -111,7 +111,9 @@ extension OutfitViewController {
                 guard current == total else { return }
                 
                 // Set status occasions elements
-                self.occasionItemsAreLoading = false
+                defer {
+                    self.occasionItemsAreLoading = false
+                }
                 
                 // Scroll to newly selected occasion
                 DispatchQueue.main.async {

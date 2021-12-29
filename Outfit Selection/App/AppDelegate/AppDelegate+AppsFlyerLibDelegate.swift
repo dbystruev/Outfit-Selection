@@ -11,10 +11,10 @@ import UIKit
 
 extension AppDelegate: AppsFlyerLibDelegate {
     /// AppsFlyer Dev Key found in AppsFlyer.com dashboard > App Settings > DevKey
-    static let appsFlyerDevKey = "JX8UnQW4Zx2PxoLETzdBVY" // Replace with your AppsFlyer Dev Key
+    static let appsFlyerDevKey = "..." // Replace with your AppsFlyer Dev Key
     
     /// AppsFlyer App ID found in AppsFlyer.com Dashboard > id in top left corner (without "id")
-    static let appleAppID = "1479321113" // Replace with your App ID
+    static let appleAppID = "..." // Replace with your App ID
     
     /// Configures AppsFlyer developer key, app ID, App Tracking Transparency (ATT) support, and other settings
     /// - Parameter application: the singleton app object
