@@ -51,6 +51,13 @@ class OutfitViewController: LoggingViewController {
     /// Confstraint for the trailing of hanger bubble
     var hangerBubbleTrailingConstraint: NSLayoutConstraint!
     
+    /// Current status loading occasions elements
+    var occasionItemsAreLoading = false {
+        didSet {
+            debug("Status occasionsItemsIsLoading was changed to \(occasionItemsAreLoading)" )
+        }
+    }
+    
     /// Share view with current outfit
     var shareView: ShareView?
     
