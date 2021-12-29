@@ -93,14 +93,23 @@ extension OutfitViewController {
         // Set status occasions elements
         occasionItemsAreLoading = true
         
-        NetworkManager.shared.reloadItems(for: gender) { success in
+        NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
             guard success == true else {
                 debug("ERROR reloading items for", gender)
+                
+                // Set status occasions elements
+                self?.occasionItemsAreLoading = false
                 return
             }
             
             // Load images for items
             ItemManager.shared.loadImages(filteredBy: gender, cornerLimit: 1) { [weak self] current, total in
+                
+                // Set status occasions elements
+                defer {
+                    self?.occasionItemsAreLoading = false
+                }
+                
                 // Check for self availability
                 guard let self = self else {
                     debug("ERROR: self is not available")
@@ -109,11 +118,6 @@ extension OutfitViewController {
                 
                 // Wait until all images are loaded
                 guard current == total else { return }
-                
-                // Set status occasions elements
-                defer {
-                    self.occasionItemsAreLoading = false
-                }
                 
                 // Scroll to newly selected occasion
                 DispatchQueue.main.async {
