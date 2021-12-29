@@ -69,6 +69,9 @@ extension OutfitViewController {
         // Hide bubles when we started occasion selection
         hideBubbles()
         
+        // Check status are loading elements
+        guard !occasionItemsAreLoading else { return }
+        
         // Get the occasion from the button
         guard let tappedOccasion = sender.occasion else { return }
         
@@ -86,6 +89,10 @@ extension OutfitViewController {
         
         // Reload items and images
         let gender = Gender.current
+        
+        // Set status occasions elements
+        occasionItemsAreLoading = true
+        
         NetworkManager.shared.reloadItems(for: gender) { success in
             guard success == true else {
                 debug("ERROR reloading items for", gender)
@@ -102,6 +109,11 @@ extension OutfitViewController {
                 
                 // Wait until all images are loaded
                 guard current == total else { return }
+                
+                // Set status occasions elements
+                defer {
+                    self.occasionItemsAreLoading = false
+                }
                 
                 // Scroll to newly selected occasion
                 DispatchQueue.main.async {
