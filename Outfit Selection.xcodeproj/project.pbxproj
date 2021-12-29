@@ -1967,7 +1967,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2021.12.20;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1982,7 +1982,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.6.9;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.concept;
+				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.concept;
 				PRODUCT_NAME = "Concept Group";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -2065,7 +2065,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2021.12.20;
-				DEVELOPMENT_TEAM = W4C8NP3WVQ;
+				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2080,7 +2080,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.6.9;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.raskroi;
+				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.raskroi;
 				PRODUCT_NAME = Raskroi;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -2224,7 +2224,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2021.12.20;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2255,7 +2255,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 2021.12.20;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
