@@ -20,8 +20,6 @@ extension OutfitViewController {
     /// Called when the user taps hanger bubble
     @objc func hangerBubbleTapped() {
         showHangerBubble = false
-        showShuffleBubble = true
-        showBubbles()
     }
     
     /// Called when one of individual hanger buttons in a scroll view is tapped
@@ -70,7 +68,10 @@ extension OutfitViewController {
         hideBubbles()
         
         // Check status are loading elements
-        guard !occasionItemsAreLoading else { return }
+        guard !occasionItemsAreLoading else {
+            debug("DEBUG Ignoring tap: occasion items are loading")
+            return
+        }
         
         // Get the occasion from the button
         guard let tappedOccasion = sender.occasion else { return }
@@ -104,8 +105,10 @@ extension OutfitViewController {
             
             // Load images for items
             ItemManager.shared.loadImages(filteredBy: gender, cornerLimit: 1) { [weak self] current, total in
+                // Wait until all images are loaded
+                guard current == total else { return }
                 
-                // Set status occasions elements
+                // Make sure we clear occasion items loading flag in any case
                 defer {
                     self?.occasionItemsAreLoading = false
                 }
@@ -115,9 +118,6 @@ extension OutfitViewController {
                     debug("ERROR: self is not available")
                     return
                 }
-                
-                // Wait until all images are loaded
-                guard current == total else { return }
                 
                 // Scroll to newly selected occasion
                 DispatchQueue.main.async {
@@ -179,7 +179,9 @@ extension OutfitViewController {
     
     /// Called when the user taps shuffle bubble
     @objc func shuffleBubbleTapped() {
+        showHangerBubble = true
         showShuffleBubble = false
+        showBubbles()
     }
     
     @IBAction func shuffleButtonTapped(_ sender: Any) {

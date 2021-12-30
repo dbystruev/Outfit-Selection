@@ -12,18 +12,18 @@ import UIKit
 extension OutfitViewController {
     /// Configure helper bubble next to hanger icon
     func configureHangerBubble() {
-        guard let navigationController = navigationController else { return }
+        guard let navView = navigationController?.view else { return }
         
         // Add hidden prompt bubble on top of the screen, above navigation controller
         hangerBubble.alpha = 0
         hangerBubble.frame = CGRect(x: 0, y: 0, width: 238, height: 58)
         hangerBubble.text = "Pin an item you like!"~
-        navigationController.view.addSubview(hangerBubble)
+        navView.addSubview(hangerBubble)
         
         // Setup hanger bubble constraints
         hangerBubble.translatesAutoresizingMaskIntoConstraints = false
-        hangerBubbleCenterYConstraint = hangerBubble.centerYAnchor.constraint(equalTo: navigationController.view.topAnchor)
-        hangerBubbleTrailingConstraint = hangerBubble.trailingAnchor.constraint(equalTo: navigationController.view.leadingAnchor)
+        hangerBubbleCenterYConstraint = hangerBubble.centerYAnchor.constraint(equalTo: navView.topAnchor)
+        hangerBubbleTrailingConstraint = hangerBubble.trailingAnchor.constraint(equalTo: navView.leadingAnchor)
         NSLayoutConstraint.activate([
             hangerBubbleCenterYConstraint,
             hangerBubble.heightAnchor.constraint(equalToConstant: 58),

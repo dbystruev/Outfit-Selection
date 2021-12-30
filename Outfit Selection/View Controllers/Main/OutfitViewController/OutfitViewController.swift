@@ -52,11 +52,7 @@ class OutfitViewController: LoggingViewController {
     var hangerBubbleTrailingConstraint: NSLayoutConstraint!
     
     /// Current status loading occasions elements
-    var occasionItemsAreLoading = false {
-        didSet {
-            debug("Status occasionsItemsIsLoading was changed to \(occasionItemsAreLoading)" )
-        }
-    }
+    var occasionItemsAreLoading = false
     
     /// Share view with current outfit
     var shareView: ShareView?
@@ -65,7 +61,7 @@ class OutfitViewController: LoggingViewController {
     var shouldHideBubbles = false
     
     /// True if hanger bubble should be shown, false otherwise
-    var showHangerBubble = true {
+    var showHangerBubble = false {
         didSet {
             hangerBubble.isHidden = !showHangerBubble
         }
@@ -79,7 +75,7 @@ class OutfitViewController: LoggingViewController {
     }
     
     /// True when we want to show refresh bubble, false otherwise
-    var showShuffleBubble = false {
+    var showShuffleBubble = true {
         didSet {
             shuffleBubble?.isHidden = !showShuffleBubble
         }
