@@ -1,5 +1,5 @@
 //
-//  ViewController+UI.swift
+//  OutfitViewController+UI.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 19/06/2019.
@@ -341,7 +341,7 @@ extension OutfitViewController {
             // Scroll to selected button
             if isSelected {
                 occasionsScrollView.scrollRectToVisible(
-                    button.convert(button.bounds, to: occasionsScrollView).insetBy(dx: 16, dy: 0),
+                    button.convert(button.bounds, to: occasionsScrollView).insetBy(dx: -16, dy: 0),
                     animated: true
                 )
             }
