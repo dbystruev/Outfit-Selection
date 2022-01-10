@@ -161,6 +161,56 @@ extension OutfitViewController {
         shuffleBubble?.addTapOnce(target: self, action: #selector(shuffleBubbleTapped))
     }
     
+    
+    /// Set button taped if loading was error
+    func returnOccasionButtonTapped(currentOccasionSelected: Occasion) {
+        // Set status occasions elements
+        occasionItemsAreLoading = true
+        
+        // Set selected button by the user
+        occasionSelected = currentOccasionSelected
+        
+        // If we tapped an occasion with different title, reload it
+        Occasion.selected = currentOccasionSelected
+        
+        // Reload items and images
+        let gender = Gender.current
+        
+        
+        NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
+            guard success == true else {
+                debug("ERROR reloading items for", gender)
+                // Set status occasions elements
+                self?.occasionItemsAreLoading = false
+                return
+            }
+            
+            // Load images for items
+            ItemManager.shared.loadImages(filteredBy: gender, cornerLimit: 1) { [weak self] current, total in
+                // Wait until all images are loaded
+                guard current == total else { return }
+                
+                // Make sure we clear occasion items loading flag in any case
+                defer {
+                    self?.occasionItemsAreLoading = false
+
+                }
+                
+                // Check for self availability
+                guard let self = self else {
+                    debug("ERROR: self is not available")
+                    return
+                }
+                
+                // Scroll to newly selected occasion
+                DispatchQueue.main.async {
+                    self.scrollTo(occasion: currentOccasionSelected)
+                }
+            }
+        }
+    }
+ 
+    
     /// Hide hanger and refresh bubbles immediately
     func hideBubbles() {
         shouldHideBubbles = true
@@ -333,7 +383,17 @@ extension OutfitViewController {
         for (button, underline) in zip(buttons, underlines) {
             // Set button opacity depending on whether it is selected
             let isSelected = button.occasion?.title == titleToUnderline
-            button.alpha = isSelected ? 1 : 0.75
+            
+            // Check and set alpha and isEnabled for buttons
+            if !occasionItemsAreLoading {
+                button.alpha = isSelected ? 1 : 0.75
+                // Unlock a button
+                button.isEnabled = true
+            } else {
+                button.alpha = isSelected ? 1 : 0.25
+                // Lock a button
+                button.isEnabled = false
+            }
             
             // Set button underline visibility depending on whether the button is selected
             underline.isHidden = !isSelected

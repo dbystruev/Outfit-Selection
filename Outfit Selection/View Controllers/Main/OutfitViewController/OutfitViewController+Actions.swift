@@ -64,6 +64,10 @@ extension OutfitViewController {
     }
     
     @IBAction func occasionButtonTapped(_ sender: OccasionButton) {
+        
+        // Current selected occasion Button
+        let currentOccasionSelected = occasionSelected
+        
         // Hide bubles when we started occasion selection
         hideBubbles()
         
@@ -85,14 +89,18 @@ extension OutfitViewController {
             return
         }
         
+        // Set status occasions elements
+        occasionItemsAreLoading = true
+        
+        // Set selected button by the user
+        occasionSelected = sender.occasion
+        
         // If we tapped an occasion with different title, reload it
         Occasion.selected = tappedOccasion
         
         // Reload items and images
         let gender = Gender.current
         
-        // Set status occasions elements
-        occasionItemsAreLoading = true
         
         NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
             guard success == true else {
@@ -100,6 +108,9 @@ extension OutfitViewController {
                 
                 // Set status occasions elements
                 self?.occasionItemsAreLoading = false
+                
+                // Return Occasion Selected Button
+                self?.returnOccasionButtonTapped(currentOccasionSelected: currentOccasionSelected!)
                 return
             }
             
