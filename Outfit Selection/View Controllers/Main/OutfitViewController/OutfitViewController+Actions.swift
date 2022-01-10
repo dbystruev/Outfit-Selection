@@ -65,8 +65,11 @@ extension OutfitViewController {
     
     @IBAction func occasionButtonTapped(_ sender: OccasionButton) {
         
-        // Current selected occasion Button
-        let currentOccasionSelected = occasionSelected
+        // Get currently selected occasion Button
+        guard let currentOccasionSelected = occasionSelected else {
+            debug("ERROR: No occasion button was selected")
+            return
+        }
         
         // Hide bubles when we started occasion selection
         hideBubbles()
@@ -101,7 +104,7 @@ extension OutfitViewController {
         // Reload items and images
         let gender = Gender.current
         
-        
+        // Reload items from the server for changed occasion
         NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
             guard success == true else {
                 debug("ERROR reloading items for", gender)
@@ -110,7 +113,7 @@ extension OutfitViewController {
                 self?.occasionItemsAreLoading = false
                 
                 // Return Occasion Selected Button
-                self?.returnOccasionButtonTapped(currentOccasionSelected: currentOccasionSelected!)
+                self?.returnOccasionButtonTapped(currentOccasionSelected: currentOccasionSelected)
                 return
             }
             

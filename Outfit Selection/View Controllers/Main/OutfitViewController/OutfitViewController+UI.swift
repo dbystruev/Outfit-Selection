@@ -161,10 +161,10 @@ extension OutfitViewController {
         shuffleBubble?.addTapOnce(target: self, action: #selector(shuffleBubbleTapped))
     }
     
-    
     /// Set button taped if loading was error
+    /// - Parameter currentOccasionSelected: currently selected occasion
     func returnOccasionButtonTapped(currentOccasionSelected: Occasion) {
-        // Set status occasions elements
+        // Flag occasion elements loading process
         occasionItemsAreLoading = true
         
         // Set selected button by the user
@@ -176,7 +176,7 @@ extension OutfitViewController {
         // Reload items and images
         let gender = Gender.current
         
-        
+        // Reload items for changed occasion
         NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
             guard success == true else {
                 debug("ERROR reloading items for", gender)
@@ -193,7 +193,6 @@ extension OutfitViewController {
                 // Make sure we clear occasion items loading flag in any case
                 defer {
                     self?.occasionItemsAreLoading = false
-
                 }
                 
                 // Check for self availability
