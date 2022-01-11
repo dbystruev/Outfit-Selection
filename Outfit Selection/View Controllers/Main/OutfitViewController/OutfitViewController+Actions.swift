@@ -81,7 +81,7 @@ extension OutfitViewController {
         }
         
         // Get the occasion from the button
-        guard let tappedOccasion = sender.occasion else { return }
+        guard var tappedOccasion = sender.occasion else { return }
         
         // If we tapped an occasion with the same title, scroll to it
         guard occasionSelected?.title != tappedOccasion.title else {
@@ -106,15 +106,25 @@ extension OutfitViewController {
         
         // Reload items from the server for changed occasion
         NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
-            guard success == true else {
+            if success == true {} else {
                 debug("ERROR reloading items for", gender)
                 
                 // Set status occasions elements
                 self?.occasionItemsAreLoading = false
                 
-                // Return Occasion Selected Button
-                self?.returnOccasionButtonTapped(currentOccasionSelected: currentOccasionSelected)
-                return
+                // Return occasion selected button
+                tappedOccasion = currentOccasionSelected
+                
+                // Return occasion selected
+                Occasion.selected = currentOccasionSelected
+                
+                // Load items occasion selected before
+                ItemManager.shared.loadItems(for: Occasion.selected) { success in
+                    guard success == true else {
+                        debug("ERROR loading items for", gender)
+                        return
+                    }
+                }
             }
             
             // Load images for items
