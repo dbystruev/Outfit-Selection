@@ -161,55 +161,6 @@ extension OutfitViewController {
         shuffleBubble?.addTapOnce(target: self, action: #selector(shuffleBubbleTapped))
     }
     
-    /// Set button taped if loading was error
-    /// - Parameter currentOccasionSelected: currently selected occasion
-    func returnOccasionButtonTapped(currentOccasionSelected: Occasion) {
-        // Flag occasion elements loading process
-        occasionItemsAreLoading = true
-        
-        // Set selected button by the user
-        occasionSelected = currentOccasionSelected
-        
-        // If we tapped an occasion with different title, reload it
-        Occasion.selected = currentOccasionSelected
-        
-        // Reload items and images
-        let gender = Gender.current
-        
-        // Reload items for changed occasion
-        NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
-            guard success == true else {
-                debug("ERROR reloading items for", gender)
-                // Set status occasions elements
-                self?.occasionItemsAreLoading = false
-                return
-            }
-            
-            // Load images for items
-            ItemManager.shared.loadImages(filteredBy: gender, cornerLimit: 1) { [weak self] current, total in
-                // Wait until all images are loaded
-                guard current == total else { return }
-                
-                // Make sure we clear occasion items loading flag in any case
-                defer {
-                    self?.occasionItemsAreLoading = false
-                }
-                
-                // Check for self availability
-                guard let self = self else {
-                    debug("ERROR: self is not available")
-                    return
-                }
-                
-                // Scroll to newly selected occasion
-                DispatchQueue.main.async {
-                    self.scrollTo(occasion: currentOccasionSelected)
-                }
-            }
-        }
-    }
- 
-    
     /// Hide hanger and refresh bubbles immediately
     func hideBubbles() {
         shouldHideBubbles = true
