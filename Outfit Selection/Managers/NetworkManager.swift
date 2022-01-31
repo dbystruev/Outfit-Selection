@@ -6,8 +6,8 @@
 //  Copyright © 2020 Denis Bystruev. All rights reserved.
 //
 
-import UIKit
 import AVFAudio
+import UIKit
 
 class NetworkManager {
     // MARK: - Static Properties
