@@ -22,6 +22,9 @@ extension AppDelegate: UIApplicationDelegate {
         // Log deep links with OneLink
         appsFlyer(continue: userActivity)
         
+        // For test, it will delete in the future
+        findVC()
+        
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
               let url = userActivity.webpageURL else { return false }
         
