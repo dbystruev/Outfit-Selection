@@ -24,6 +24,9 @@ extension ShareViewController: UITableViewDelegate {
         case .instagramPost:
             shareToInstagramPost(selectedCell)
             
+        case .copyLink:
+            shareCopyLink(for: cellType, selectedCell)
+            
         default:
             shareImage(for: cellType, selectedCell)
         }

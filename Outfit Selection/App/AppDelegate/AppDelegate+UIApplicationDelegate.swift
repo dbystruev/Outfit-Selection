@@ -21,6 +21,43 @@ extension AppDelegate: UIApplicationDelegate {
                      restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
         // Log deep links with OneLink
         appsFlyer(continue: userActivity)
+        
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+              let url = userActivity.webpageURL else { return false }
+        
+        // Try to get parametr from URL
+        guard let id = url.getParametrs!["id"]?.dropExtension else{
+            debug("ERROR: url without id")
+            return true }
+        
+        // Pars items from url
+        let itemString = String(describing: url)
+            .replacingOccurrences(
+                of: "\(String(describing: url).dropExtension).",
+                with: ""
+            )
+        
+        switch id {
+        case "eq":
+            let items = itemString.components(separatedBy: ",")
+            debug(items)
+        case "in":
+            // Remove characters and add to array items
+            let items = itemString
+                .replacingOccurrences(
+                    of: "(",
+                    with: ""
+                )
+                .replacingOccurrences(
+                    of: ")",
+                    with: ""
+                )
+                .components(separatedBy: ",")
+            debug(items)
+        default:
+            debug("ERROR: id not found in this switch")
+        }
+        
         return true
     }
     

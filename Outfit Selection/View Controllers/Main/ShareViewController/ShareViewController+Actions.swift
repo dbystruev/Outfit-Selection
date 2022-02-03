@@ -32,6 +32,48 @@ extension ShareViewController {
         UIApplication.shared.open(url)
     }
     
+    /// Called when a link cell is selected
+    /// - Parameter sender: the cell which was selected by the user
+    ///   - type: type of the image to share
+    func shareCopyLink(for type: ShareView.ShareType, _ sender: UITableViewCell) {
+        // Get current items from layout
+        let items = outfitView.layout(for: type).items.compactMap { $0.id }
+        
+        // Chech items
+        guard !items.isEmpty else { return }
+        
+        // Parts of the universal link
+        let scheme = Globals.UniversalLinks.scheme.https
+        let subdomain = Globals.UniversalLinks.subdomain.www
+        let domain = Globals.UniversalLinks.domain.getoutfit
+        let patch = Globals.UniversalLinks.path.items
+        
+        // Convert array items to string
+        var itemsCommaJoined = items.commaJoined
+        
+        // Identificator for universal share link
+        var id: String
+        
+        // Check and
+        if items.count > 1 {
+            id = "in."
+            itemsCommaJoined = "(\(itemsCommaJoined))"
+        } else {
+            id = "eq."
+        }
+        
+        // Build share link
+        let shareLink = URL(string: scheme + subdomain + domain + patch + id + itemsCommaJoined)
+
+        debug(shareLink)
+        
+        // Share the link
+        let activityController = UIActivityViewController(activityItems: [shareLink as Any], applicationActivities: nil)
+        activityController.popoverPresentationController?.sourceView = sender.accessoryView
+        present(activityController, animated: true)
+        navigationController?.popViewController(animated: true)
+    }
+    
     /// Called when more cell is selected
     /// - Parameters:
     ///   - type: type of the image to share
