@@ -37,10 +37,11 @@ extension ShareViewController {
     ///   - type: type of the image to share
     func shareCopyLink(for type: ShareView.ShareType, _ sender: UITableViewCell) {
         // Get current items from layout
-        let items = outfitView.layout(for: type).items.compactMap { $0.id }
+        let items = outfitView.items
+        let itemIDs = items.compactMap { $0.id }
         
         // Chech items
-        guard !items.isEmpty else { return }
+        guard !itemIDs.isEmpty else { return }
         
         // Parts of the universal link
         let scheme = Globals.UniversalLinks.scheme.https
@@ -49,13 +50,13 @@ extension ShareViewController {
         let patch = Globals.UniversalLinks.path.items
         
         // Convert array items to string
-        var itemsCommaJoined = items.commaJoined
+        var itemsCommaJoined = itemIDs.commaJoined
         
         // Identificator for universal share link
         var id: String
         
         // Check and
-        if items.count > 1 {
+        if itemIDs.count > 1 {
             id = "in."
             itemsCommaJoined = "(\(itemsCommaJoined))"
         } else {
