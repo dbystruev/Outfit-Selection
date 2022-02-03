@@ -73,4 +73,35 @@ enum Globals {
         /// Logo image
         static let logo = UIImage(named: WhiteLabel.logo)!
     }
+    
+    /// Universal links
+    enum UniversalLinks {
+        enum scheme {
+            /// Web protocol "http://"
+            static let http = "http://"
+            
+            /// Web protocol "https://"
+            static let https = "https://"
+        }
+        
+        enum subdomain {
+            /// Subdomain "www."
+            static let www = "www."
+            
+            /// Subdomain "oracle."
+            static let oracle = "oracle."
+        }
+        
+        enum domain {
+            /// Domain "getoutfit.app"
+            static let getoutfit = "getoutfit.app"
+        }
+        
+        enum path {
+            /// Parametr "/items?="
+            static let items = "/items?="
+        }
+        
+    }
+    
 }
