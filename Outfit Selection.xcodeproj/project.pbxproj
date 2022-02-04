@@ -262,6 +262,7 @@
 		69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69FBB20622F1ABE000187562 /* GenderViewController.swift */; };
 		7A1C8A4727AA85490038DF28 /* URL+getParametrs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C8A4627AA85490038DF28 /* URL+getParametrs.swift */; };
 		7ACA9C6827ABB027004B7D63 /* AppDelegate+universalLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACA9C6727ABB027004B7D63 /* AppDelegate+universalLinks.swift */; };
+		7ACB354327AD093B00DC0EDC /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB354227AD093B00DC0EDC /* NavigationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -534,6 +535,7 @@
 		69FBB20622F1ABE000187562 /* GenderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderViewController.swift; sourceTree = "<group>"; };
 		7A1C8A4627AA85490038DF28 /* URL+getParametrs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+getParametrs.swift"; sourceTree = "<group>"; };
 		7ACA9C6727ABB027004B7D63 /* AppDelegate+universalLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+universalLinks.swift"; sourceTree = "<group>"; };
+		7ACB354227AD093B00DC0EDC /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -683,6 +685,7 @@
 				6998124127037632007B7024 /* IBPCollectionViewCompositionalLayout */,
 				693D7291256BFDD700540C10 /* ItemManager.swift */,
 				699AAB7F26CD72AE001F6522 /* Logger.swift */,
+				7ACB354227AD093B00DC0EDC /* NavigationManager.swift */,
 				692C940E254700FC0075BD92 /* NetworkManager.swift */,
 				69BEC0EF27298C250034F454 /* StandardErrorOutputStream.swift */,
 				69A0C9E92705B3F200C49977 /* WhiteLabel.swift */,
@@ -1746,6 +1749,7 @@
 				695A1ACF27186F920028FB9D /* Array+chunked.swift in Sources */,
 				69AE955F256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift in Sources */,
 				6962099D26FB8CF300B46FE8 /* Gender+CustomStringConvertible.swift in Sources */,
+				7ACB354327AD093B00DC0EDC /* NavigationManager.swift in Sources */,
 				6905DC92272B12760088A34E /* Item+Occasion.swift in Sources */,
 				69E0641D26FA4E2B00C68A6A /* Item+Equatable.swift in Sources */,
 				6924900125504DFD00106681 /* DispatchManager.swift in Sources */,

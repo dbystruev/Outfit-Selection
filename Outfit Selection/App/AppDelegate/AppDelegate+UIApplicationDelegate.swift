@@ -22,35 +22,11 @@ extension AppDelegate: UIApplicationDelegate {
         // Log deep links with OneLink
         appsFlyer(continue: userActivity)
         
-        // For test, it will delete in the future
-        findVC()
-        
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
               let url = userActivity.webpageURL else { return false }
         
-        // Try to get parametr from URL
-        guard let id = url.getParametrs!["id"]?.dropExtension else {
-            debug("ERROR: url without id")
-            return false }
-        
-        // Pars items from url, remove dot and replace "(",")"
-        guard let items = parsItemIDs(url: url) as? [String] else {
-            debug("ERROR: array is empty")
-            return false }
-        
-        // Check items for valid with network manager
-        guard let checkedItemIDs = checkItemIDs(itemIDs: items) as? [String] else {
-            debug("ERROR: ids is not correct")
-            return false }
-        
-        switch id {
-        case "eq":
-            debug("ID: \(id) ITEMS: \(checkedItemIDs)")
-        case "in":
-            debug("ID: \(id) ITEMS: \(checkedItemIDs)")
-        default:
-            debug("ERROR: id not found in this switch")
-        }
+        // Check universal link
+        checkUniversalLink(url: url)
         
         return true
     }
