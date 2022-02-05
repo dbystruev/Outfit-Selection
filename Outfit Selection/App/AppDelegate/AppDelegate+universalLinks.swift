@@ -14,18 +14,19 @@ extension AppDelegate {
     /// - Parameter itemIDs: String array with itemIDs
     /// - Returns: [String] with valid itemIDs
     func checkItemIDs(itemIDs: [String]) -> Any {
-        var checkedItemIDs: [String] = []
+        var checkedItemIDs: Items = []
         NetworkManager.shared.getItems(itemIDs, completion: { checkitemIDs in
-            checkedItemIDs = checkitemIDs!.IDs
+            checkedItemIDs = checkitemIDs!
+            
         })
         return checkedItemIDs.isEmpty ? "Empty" : checkedItemIDs
     }
     
-    /// Pars, drop and separeted IDs
+    /// Parser, drop and separeted IDs
     /// - Parameter URL: the url with IDs for convert to array
     /// - Parameter String: for separat symbol, default = ","
     /// - Returns: [String]
-    func parsItemIDs(url: URL, separat: String = ",") -> Any {
+    func parserItemIDs(url: URL, separator: String = ",") -> Any {
         let cutLink =  String(describing: url)
             .replacingOccurrences(
                 of: "\(String(describing: url).dropExtension).",
@@ -49,34 +50,38 @@ extension AppDelegate {
         return cutLink.isEmpty ? "Empty" : cutLink
     }
     
-    /// Pars, drop and separeted IDs
-    /// - Parameter VC:
-    func findVC() {
+    /// Checker universal link
+    /// - Parameter URL: the url universal link
+    func checkUniversalLink(url: URL){
         
-        // Get app delegate — should be available
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            debug( "App delegate is not found")
-            return
+        // Try to get parametr from URL
+        guard let id = url.getParametrs!["id"]?.dropExtension else {
+            debug("ERROR: url without id")
+            return }
+        
+        // Parser items from url, remove dot and replace "(",")"
+        guard let items = parserItemIDs(url: url) as? [String] else {
+            debug("ERROR: array is empty")
+            return }
+        
+        // Check items for valid with network manager
+        guard let checkedItemIDs = checkItemIDs(itemIDs: items) as? Items else {
+            debug("ERROR: ids is not correct")
+            return }
+        
+        switch id {
+        case "eq":
+            
+            debug("INFO: id: \(id), items: \(checkedItemIDs)")
+            
+        case "in":
+            let navigation = NavigationManager()
+            navigation.goToOutfitViewController(items: checkedItemIDs)
+            
+            debug("INFO: id: \(id), items: \(checkedItemIDs)")
+            
+        default:
+            debug("ERROR: id not found in this switch")
         }
-        
-        // Get root view controller
-        guard let rootViewController = appDelegate.window?.rootViewController else {
-            debug( "Root view controller is not available")
-            return
-        }
-        
-        // Find tabBar view controller in Root view controller
-        guard let tabBar = rootViewController as? UITabBarController else {
-            debug( "TabBar is not found")
-            return
-        }
-        
-        // Find outfit view controller in navigation
-        guard let outfitViewController = tabBar.findViewController(ofType: OutfitViewController.self) else {
-            debug( "OutfitViewController is not found")
-            return
-        }
-        
-        debug("Congratulation: Found \(outfitViewController)"  )
     }
 }

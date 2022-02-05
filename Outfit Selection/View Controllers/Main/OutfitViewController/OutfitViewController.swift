@@ -51,7 +51,8 @@ class OutfitViewController: LoggingViewController {
     /// Confstraint for the trailing of hanger bubble
     var hangerBubbleTrailingConstraint: NSLayoutConstraint!
     
-    var itemsToShow: Items?
+    /// Items to show
+    var itemsToShow: Items = []
     
     /// True if occasion elements are being loaded
     var occasionItemsAreLoading = false
