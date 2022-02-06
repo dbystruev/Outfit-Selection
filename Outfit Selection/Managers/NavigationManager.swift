@@ -49,8 +49,7 @@ class NavigationManager: AppDelegate {
         
         // The set items for to show
         outfitViewController.itemsToShow = items
-        
-        debug(items)
+    
         debug(outfitViewController.itemsToShow)
         
         // Show Navigation Controller

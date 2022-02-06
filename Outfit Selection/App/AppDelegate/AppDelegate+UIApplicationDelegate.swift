@@ -22,11 +22,8 @@ extension AppDelegate: UIApplicationDelegate {
         // Log deep links with OneLink
         appsFlyer(continue: userActivity)
         
-        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-              let url = userActivity.webpageURL else { return false }
-        
         // Check universal link
-        checkUniversalLink(url: url)
+        checkUniversalLink(continue: userActivity)
         
         return true
     }
