@@ -20,9 +20,6 @@ final class ItemManager {
     /// Currently running request number for updating progress bar
     private var currentRequest = 0
     
-    /// Array of itemIDs after check to valid
-    private var itemsIDsCheked = Items()
-    
     /// All item load requests success status
     private var success = true
     
@@ -46,22 +43,25 @@ final class ItemManager {
     /// Check all itemIDs
     /// - Parameters:
     ///   - itemIDs: string array with IDs
-    ///   - return: return valid Items
-    func chekItemsByID(_ itemIDs: [String]) -> Any  {
+    func checkItemsByID(_ itemIDs: [String], completion: @escaping (Items?) -> Void)  {
+        DispatchManager.shared.itemManagerGroup.enter()
         NetworkManager.shared.getItems(itemIDs) { items in
             
-            // Check if any items were loaded
-            if let items = items {
-                self.itemsIDsCheked.append(contentsOf: items)
-            } else {
-                self.success = false
+            // Make sure we always leave the group
+            defer {
+                DispatchManager.shared.itemManagerGroup.leave()
             }
             
-            // Check success status, it will be changed after all items load
-            guard self.success else { return }
+            guard let items = items else {
+                completion(nil)
+                return
+            }
+            
+            // Back to the main thread
+            DispatchQueue.main.async {
+                completion(items)
+            }
         }
-        // Return array with items
-        return itemsIDsCheked
     }
         
     /// Load images filtered by categories into view models

@@ -74,6 +74,11 @@ enum Globals {
         static let logo = UIImage(named: WhiteLabel.logo)!
     }
     
+    enum tabBarIndex {
+        /// Index outfit view controller from tabBarController
+        static let outfit = 0
+    }
+    
     /// Universal links
     enum UniversalLinks {
         enum scheme {

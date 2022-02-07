@@ -9,6 +9,7 @@
 import UIKit
 
 extension AppDelegate {
+    
     // MARK: - Methods
     /// - Parameters:
     ///   - userActivity: the activity object containing the data associated with the task the user was performing
@@ -27,25 +28,23 @@ extension AppDelegate {
             debug("ERROR: array is empty")
             return }
         
-        // Check items for valid with network manager
-        guard let checkedItemIDs = ItemManager.shared.chekItemsByID(items) as? Items else {
-            debug("ERROR: ids is not correct")
-            return }
         
-        // Check id and go to NavigationManager
-        switch id {
-        case "eq":
+        ItemManager.shared.checkItemsByID(items) { item in
             
-            debug("INFO: id: \(id), items: \(checkedItemIDs)")
-            
-        case "in":
-            let navigation = NavigationManager()
-            navigation.goToOutfitViewController(items: checkedItemIDs)
-            
-            debug("INFO: id: \(id), items: \(checkedItemIDs)")
-            
-        default:
-            debug("ERROR: id not found in this switch")
+            // Check id and go to NavigationManager
+            switch id {
+            case "eq":
+                debug("INFO: id: \(id), items: \(item!)")
+                
+            case "in":
+                
+                // Go to presentOutfitViewController
+                debug("INFO: id: \(id), items: \(item!)")
+                NavigationManager.navigate(to: .outfit(items: item!))
+                
+            default:
+                debug("ERROR: id not found in this switch")
+            } 
         }
     }
     
