@@ -40,6 +40,30 @@ final class ItemManager {
         viewModels.forEach { $0.removeAll() }
     }
     
+    /// Check all itemIDs
+    /// - Parameters:
+    ///   - itemIDs: string array with IDs
+    func checkItemsByID(_ itemIDs: [String], completion: @escaping (Items?) -> Void)  {
+        DispatchManager.shared.itemManagerGroup.enter()
+        NetworkManager.shared.getItems(itemIDs) { items in
+            
+            // Make sure we always leave the group
+            defer {
+                DispatchManager.shared.itemManagerGroup.leave()
+            }
+            
+            guard let items = items else {
+                completion(nil)
+                return
+            }
+            
+            // Back to the main thread
+            DispatchQueue.main.async {
+                completion(items)
+            }
+        }
+    }
+        
     /// Load images filtered by categories into view models
     /// - Parameters:
     ///   - gender: gender to filter images by

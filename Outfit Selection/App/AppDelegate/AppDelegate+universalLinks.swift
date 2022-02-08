@@ -9,17 +9,43 @@
 import UIKit
 
 extension AppDelegate {
+    
     // MARK: - Methods
-    /// Checker valid items
-    /// - Parameter itemIDs: String array with itemIDs
-    /// - Returns: [String] with valid itemIDs
-    func checkItemIDs(itemIDs: [String]) -> Any {
-        var checkedItemIDs: Items = []
-        NetworkManager.shared.getItems(itemIDs, completion: { checkitemIDs in
-            checkedItemIDs = checkitemIDs!
+    /// - Parameters:
+    ///   - userActivity: the activity object containing the data associated with the task the user was performing
+    func checkUniversalLink(continue userActivity: NSUserActivity){
+        
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
+              let url = userActivity.webpageURL else { return }
+        
+        // Try to get parametr from URL
+        guard let id = url.getParametrs!["id"]?.dropExtension else {
+            debug("ERROR: url without id")
+            return }
+        
+        // Parser items from url, remove dot and replace "(",")"
+        guard let items = parserItemIDs(url: url) as? [String] else {
+            debug("ERROR: array is empty")
+            return }
+        
+        
+        ItemManager.shared.checkItemsByID(items) { item in
             
-        })
-        return checkedItemIDs.isEmpty ? "Empty" : checkedItemIDs
+            // Check id and go to NavigationManager
+            switch id {
+            case "eq":
+                debug("INFO: id: \(id), items: \(item!)")
+                
+            case "in":
+                
+                // Go to presentOutfitViewController
+                debug("INFO: id: \(id), items: \(item!)")
+                NavigationManager.navigate(to: .outfit(items: item!))
+                
+            default:
+                debug("ERROR: id not found in this switch")
+            } 
+        }
     }
     
     /// Parser, drop and separeted IDs
@@ -50,38 +76,4 @@ extension AppDelegate {
         return cutLink.isEmpty ? "Empty" : cutLink
     }
     
-    /// Checker universal link
-    /// - Parameter URL: the url universal link
-    func checkUniversalLink(url: URL){
-        
-        // Try to get parametr from URL
-        guard let id = url.getParametrs!["id"]?.dropExtension else {
-            debug("ERROR: url without id")
-            return }
-        
-        // Parser items from url, remove dot and replace "(",")"
-        guard let items = parserItemIDs(url: url) as? [String] else {
-            debug("ERROR: array is empty")
-            return }
-        
-        // Check items for valid with network manager
-        guard let checkedItemIDs = checkItemIDs(itemIDs: items) as? Items else {
-            debug("ERROR: ids is not correct")
-            return }
-        
-        switch id {
-        case "eq":
-            
-            debug("INFO: id: \(id), items: \(checkedItemIDs)")
-            
-        case "in":
-            let navigation = NavigationManager()
-            navigation.goToOutfitViewController(items: checkedItemIDs)
-            
-            debug("INFO: id: \(id), items: \(checkedItemIDs)")
-            
-        default:
-            debug("ERROR: id not found in this switch")
-        }
-    }
 }
