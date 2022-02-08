@@ -104,7 +104,7 @@ enum Globals {
         
         enum path {
             /// Parametr "/items?="
-            static let items = "/items?="
+            static let items = "/items?id="
         }
         
     }

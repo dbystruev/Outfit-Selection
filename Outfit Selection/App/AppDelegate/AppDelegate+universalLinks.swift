@@ -19,7 +19,7 @@ extension AppDelegate {
               let url = userActivity.webpageURL else { return }
         
         // Try to get parametr from URL
-        guard let id = url.getParametrs!["id"]?.dropExtension else {
+        guard let id = url.getParameters["id"]?.dropExtension else {
             debug("ERROR: url without id")
             return }
         
@@ -28,19 +28,17 @@ extension AppDelegate {
             debug("ERROR: array is empty")
             return }
         
-        
         ItemManager.shared.checkItemsByID(items) { item in
+            guard let item = item else { return }
             
             // Check id and go to NavigationManager
             switch id {
             case "eq":
-                debug("INFO: id: \(id), items: \(item!)")
+                debug("INFO: id", id, "items", item.IDs)
                 
             case "in":
-                
-                // Go to presentOutfitViewController
-                debug("INFO: id: \(id), items: \(item!)")
-                NavigationManager.navigate(to: .outfit(items: item!))
+                debug("INFO: id", id, "items", item.IDs)
+                NavigationManager.navigate(to: .outfit(items: item))
                 
             default:
                 debug("ERROR: id not found in this switch")

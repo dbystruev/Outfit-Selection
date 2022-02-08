@@ -228,6 +228,38 @@ extension OutfitViewController {
         }
     }
     
+    /// Load and scrol to items from itemsToShow
+    func scrollitemsToShow() {
+        guard !itemsToShow.isEmpty else { return }
+        //TODO: Check items is loaded
+
+        scrollTo(items: itemsToShow, ordered: false) { completion in
+            guard completion else { return }
+            self.itemsToShow.removeAll()
+        }
+    }
+    
+    /// Scroll to wishlist items or occasions selected / random elements on first appearance
+    func scrollwishlistItems() {
+        if wishlistItems.isEmpty {
+            if firstAppearance {
+                guard let occasionSelected = occasionSelected else {
+                    scrollToRandomItems()
+                    return
+                }
+                scrollTo(occasion: occasionSelected)
+            }
+        } else {
+            scrollTo(items: wishlistItems, ordered: false)
+            if let matchingOccasion = Occasions.with(items: wishlistItems).randomElement() {
+                occasionSelected = matchingOccasion
+            } else {
+                updateOccasionsUI(selectedTitle: wishlistName)
+            }
+            wishlistItems.removeAll()
+        }
+    }
+    
     /// Set visibility of items with subcategories given in the same order as scroll views
     /// - Parameters:
     ///   - corneredSubcategories: the item subcategories to set visibility of
