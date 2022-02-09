@@ -11,9 +11,9 @@ import Foundation
 extension URL {
     /// Add parameter name and URL to get result
     /// - Returns: Parametr from URL
-    public var getParametrs: [String: String]? {
+    public var getParameters: [String: String] {
         guard let components = URLComponents(url: self, resolvingAgainstBaseURL: true),
-              let queryItems = components.queryItems else { return nil }
+              let queryItems = components.queryItems else { return [:] }
         return queryItems.reduce(into: [String: String]()) { (result, item) in
             result[item.name] = item.value
         }
