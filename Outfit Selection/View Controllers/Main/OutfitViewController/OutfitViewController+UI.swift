@@ -10,6 +10,19 @@ import UIKit
 
 // MARK: - UI
 extension OutfitViewController {
+    
+    /// Check items to show
+   func checkItemsToShow(){
+        if itemsToShow.isEmpty {
+            // Show the wishlistItems
+            scrollwishlistItems()
+            firstAppearance = false
+        } else {
+            // Load items to show
+            scrollitemsToShow()
+        }
+    }
+ 
     /// Configure helper bubble next to hanger icon
     func configureHangerBubble() {
         guard let navView = navigationController?.view else { return }
@@ -232,7 +245,7 @@ extension OutfitViewController {
     func scrollitemsToShow() {
         guard !itemsToShow.isEmpty else { return }
         //TODO: Check items is loaded
-
+        
         scrollTo(items: itemsToShow, ordered: false) { completion in
             guard completion else { return }
             self.itemsToShow.removeAll()

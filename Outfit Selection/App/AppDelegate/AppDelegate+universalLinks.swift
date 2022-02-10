@@ -29,17 +29,21 @@ extension AppDelegate {
             return }
         
         ItemManager.shared.checkItemsByID(items) { item in
-            guard let item = item else { return }
+            guard let items = item else { return }
             
             // Check id and go to NavigationManager
             switch id {
             case "eq":
-                debug("INFO: id", id, "items", item.IDs)
+                debug("INFO: id", id, "items", items.IDs)
                 
             case "in":
-                debug("INFO: id", id, "items", item.IDs)
-                NavigationManager.navigate(to: .outfit(items: item))
+                debug("INFO: id", id, "items", items.IDs)
                 
+                // Get images before navigate start
+                ItemManager.shared.loadImagesFromItems(items: items) {
+                    NavigationManager.navigate(to: .outfit(items: items))
+                }
+                         
             default:
                 debug("ERROR: id not found in this switch")
             } 
