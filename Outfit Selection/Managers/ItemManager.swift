@@ -64,6 +64,90 @@ final class ItemManager {
         }
     }
         
+    
+    func loadImagesFromItems(
+        items: Items,
+        completion: @escaping () -> Void
+    ) {
+            
+            // Count elapsed time
+            let startTime = Date()
+            
+            // Clear all view models
+            clearViewModels()
+            
+            // Dispatch group to wait for all loads to finish
+            let group = DispatchGroup()
+            // Go through all items and load images one by one
+    
+            DispatchQueue.global(qos: .background).async {
+                
+                // Save loaded items
+                let itemsToLoad = Items.values
+                
+            // var itemsSkipped = 0
+                for (item, viewModel) in zip(items, self.viewModels ) {
+                    
+                    // Get the item picture url
+                    guard let pictureURL = item.pictures.first else {
+                        debug("ERROR: No picture URLs for the item", item, item.url)
+                        continue
+                    }
+                    
+//                    guard !itemsToLoad.contains(item) else {
+//                        debug("ERROR: self is not available")
+//                        continue
+//                    }
+                    
+//                    guard !viewModel.items.contains(item) else {
+//                        debug("ERROR: The image was downloaded")
+//                        return
+//                    }
+//
+//                    // Find item with given id in corresponding view model
+//                    guard let itemID = viewModel.firstItemID(with: item) else {
+//
+//                        continue
+//                    }
+                    
+                    group.enter()
+                    NetworkManager.shared.getImage(pictureURL) { image in
+                        
+                        // Check for self availability
+                        guard let image = image else {
+                            debug("ERROR: self is not available")
+                            return
+                        }
+                        
+                        debug(item, pictureURL)
+                        
+                        // Append image to the view model
+                        viewModel.append(image.halved, item: item)
+                        
+                        debug("Added item ID: ", viewModel.items.IDs, "into viewModel" )
+                        debug("All items in viewModel: ", ItemManager.shared.viewModels.items.IDs)
+                        
+                        group.leave()
+                    }
+                    group.wait()
+                }
+                
+                // Get here when all image network requests are finished
+                DispatchManager.shared.itemManagerGroup.notify(
+                    queue: DispatchQueue.global(qos: .background)
+                ) {
+                    let elapsedTime = Date().timeIntervalSince(startTime)
+                    debug("Loaded", self.count, "images in \(elapsedTime.asTime) s")
+                }
+                DispatchQueue.main.async {
+                    completion()
+                }
+                
+            }
+        }
+    
+    
+    
     /// Load images filtered by categories into view models
     /// - Parameters:
     ///   - gender: gender to filter images by

@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 // Methods used for navigating between app's screens
-class NavigationManager: AppDelegate {
+class NavigationManager: LoggingViewController {
     // MARK: - Public Type
     /// Enum with the  screens to navigate to
     public enum Screen {
-        case outfit(items: Items)
+        case outfit(items: Items = [])
         case feed
         case wishlist
         case profile
@@ -22,6 +22,7 @@ class NavigationManager: AppDelegate {
     
     // MARK: - Static Properties
     static let shared = NavigationManager()
+    static weak var `default`: ProgressViewController?
     
     // MARK: - Public Static Methods
     /// Navigate to a given screen
@@ -48,20 +49,24 @@ class NavigationManager: AppDelegate {
         
         switch screen {
             
-        case .outfit(let itemIDs):
+        case .outfit(let items):
             
             // Find Tab Bar controller
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
                 debug("Tab Bar Controller is not available")
-                presentOutfitViewController(for: itemIDs, in: navigationController )
+                presentOutfitViewController(for: items, in: navigationController )
                 return
             }
             
-            presentOutfitViewControllerWithTabBar(
-                itemIDs: itemIDs,
-                navigationController: navigationController,
-                tabBarController: tabBarController
-            )
+            if items.isEmpty {
+                presentOutfitViewController(for: [], in: navigationController)
+            } else {
+                presentOutfitViewControllerWithTabBar(
+                    items: items,
+                    navigationController: navigationController,
+                    tabBarController: tabBarController
+                )
+            }
             
         case .feed:
             debug("feed")
@@ -75,11 +80,11 @@ class NavigationManager: AppDelegate {
     
     /// Present  tabBarController with index
     /// - Parameters:
-    ///   - itemIDs: itemIDs for present
+    ///   - Items: Items for present
     ///   - navigationController: the navigation controller
     ///   - tabBarController: the tab bar controller
     public static func presentOutfitViewControllerWithTabBar(
-        itemIDs: Items,
+        items: Items,
         navigationController: UINavigationController,
         tabBarController: UITabBarController
     ) {
@@ -108,13 +113,14 @@ class NavigationManager: AppDelegate {
         if tabBarController.selectedIndex == indexTabBar {
             debug("OutfitViewController is showing now")
             
-            outfitViewController.itemsToShow = itemIDs
-            outfitViewController.viewDidAppear(true)
+            outfitViewController.itemsToShow = items
+            outfitViewController.checkItemsToShow()
             
         } else {
             debug("OutfitViewController is not showing now, index:", tabBarController.selectedIndex)
-
-            outfitViewController.itemsToShow = itemIDs
+            
+            outfitViewController.itemsToShow = items
+            
             // Set tab bar index
             tabBarController.selectedIndex = indexTabBar
             
@@ -126,11 +132,22 @@ class NavigationManager: AppDelegate {
     /// - Parameters:
     ///   - itemIDs: itemIDs for present
     ///   - navigationController: the navigation controller
-    public static func presentOutfitViewController(
-        for itemIDs: Items,
+    public static func presentOutfitViewController (
+        for items: Items,
         in navigationController: UINavigationController
     ) {
- 
+        
+        let progressViewController = ProgressViewController.default
+        
+        // MARK: - Stored Properties
+        /// The collection of brand images
+        
+        // Hide navigation bar on top (needed when returning from profile view controller)
+        NavigationManager.shared.navigationController?.isNavigationBarHidden = true
+        
+        // Initiate progress with 0
+        progressViewController?.progressView.progress = 0
+        
         // Instantiate the tab bar controller
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = mainStoryboard.instantiateViewController(withIdentifier: "tabBarController")
@@ -139,26 +156,37 @@ class NavigationManager: AppDelegate {
             return
         }
         
-        // It make be sure that tabbar controller set to need position.
+        // Switch to tab saved in previous version of tab bar controller
         tabBarController.selectedIndex = Globals.tabBarIndex.outfit
+        
+        // Suggest the wishlist tab with the largest number of items
+        Wishlist.tabSuggested = Wishlist.largestKind
         
         // Load view models with the new images
         ItemManager.shared.loadImages(
             filteredBy: Gender.current,
             cornerLimit: 1
         ) { itemsLoaded, itemsTotal in
+            // Check for self availability
+//            guard let progressViewController = progressViewController else {
+//                debug("ERROR: self is not available")
+//                return
+//            }
+            
+            // If not all items loaded — update progress view and continue
+            ProgressViewController.default?.updateProgressBar(current: itemsLoaded, total: itemsTotal, minValue: 0.5)
             
             guard itemsLoaded == itemsTotal else { return }
+            
+            // Save brand images for future selection change
+           // BrandManager.shared.brandedImages = progressViewController.brandedImages
             
             DispatchQueue.main.async {
                 // Unhide top navigation bar
                 navigationController.isNavigationBarHidden = false
-                
                 // Push to tab bar view controller
-                navigationController.pushViewController(tabBarController, animated: false)
+                navigationController.pushViewController(tabBarController, animated: true)
             }
         }
     }
-    
-    
 }

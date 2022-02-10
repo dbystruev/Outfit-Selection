@@ -62,14 +62,7 @@ extension OutfitViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
        
-        if itemsToShow.isEmpty {
-            // Show the wishlistItems
-            scrollwishlistItems()
-            firstAppearance = false
-        } else {
-            // Load items to show
-            scrollitemsToShow()
-        }
+        checkItemsToShow()
     }
     
     override func viewDidLayoutSubviews() {
