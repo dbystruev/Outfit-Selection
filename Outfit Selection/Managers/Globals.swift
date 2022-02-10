@@ -53,6 +53,16 @@ enum Globals {
             static let text = WhiteLabel.Color.Text.onboarding
         }
     }
+        
+    /// Index outfit view controller from tabBarController
+    enum tabBar {
+        enum index {
+            static let outfit = 0
+        }
+        enum status {
+            static var found = false
+        }
+    }
     
     enum Font {
         enum Feed {
@@ -72,11 +82,6 @@ enum Globals {
     enum Image {
         /// Logo image
         static let logo = UIImage(named: WhiteLabel.logo)!
-    }
-    
-    enum tabBarIndex {
-        /// Index outfit view controller from tabBarController
-        static let outfit = 0
     }
     
     /// Universal links

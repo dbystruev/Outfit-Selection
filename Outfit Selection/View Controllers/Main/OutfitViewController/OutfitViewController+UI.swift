@@ -183,9 +183,10 @@ extension OutfitViewController {
     
     /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
     /// - Parameter corneredSubcategoryIDs: subcategory IDs from occasion
-    func loadImages(matching corneredSubcategoryIDs: [[Int]]) {
+    func loadImages(matching corneredSubcategoryIDs: [[Int]] = []) {
+        
         // Clear scroll views
-        scrollViews.clear()
+            scrollViews.clear()
         
         // Load images from view models into scroll view
         ItemManager.shared.loadImages(into: scrollViews, matching: corneredSubcategoryIDs)
@@ -244,8 +245,12 @@ extension OutfitViewController {
     /// Load and scrol to items from itemsToShow
     func scrollitemsToShow() {
         guard !itemsToShow.isEmpty else { return }
-        //TODO: Check items is loaded
         
+        if Globals.tabBar.status.found {
+            loadImages()
+        }
+
+        // Scrol to downloaded images
         scrollTo(items: itemsToShow, ordered: false) { completion in
             guard completion else { return }
             self.itemsToShow.removeAll()

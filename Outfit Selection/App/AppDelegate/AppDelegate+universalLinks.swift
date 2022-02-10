@@ -37,10 +37,12 @@ extension AppDelegate {
                 debug("INFO: id", id, "items", items.IDs)
                 
             case "in":
-                debug("INFO: id", id, "items", items.IDs)
+               // debug("INFO: id", id, "items", items.IDs)
                 
                 // Get images before navigate start
                 ItemManager.shared.loadImagesFromItems(items: items) {
+                    
+                    // Go to NavigationManager into outfit
                     NavigationManager.navigate(to: .outfit(items: items))
                 }
                          

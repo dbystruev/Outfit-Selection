@@ -54,6 +54,8 @@ class NavigationManager: LoggingViewController {
             // Find Tab Bar controller
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
                 debug("Tab Bar Controller is not available")
+                
+                // If tab bar controller is not available go to
                 presentOutfitViewController(for: items, in: navigationController )
                 return
             }
@@ -89,7 +91,7 @@ class NavigationManager: LoggingViewController {
         tabBarController: UITabBarController
     ) {
         // Get tab bat index
-        let indexTabBar = Globals.tabBarIndex.outfit
+        let indexTabBar = Globals.tabBar.index.outfit
         
         // Get the list of view controllers from tab bar
         guard let viewControllers = tabBarController.viewControllers else {
@@ -113,7 +115,10 @@ class NavigationManager: LoggingViewController {
         if tabBarController.selectedIndex == indexTabBar {
             debug("OutfitViewController is showing now")
             
+            // Set items to show
             outfitViewController.itemsToShow = items
+            
+            //Check items to show and download images
             outfitViewController.checkItemsToShow()
             
         } else {
@@ -136,7 +141,7 @@ class NavigationManager: LoggingViewController {
         for items: Items,
         in navigationController: UINavigationController
     ) {
-        
+
         let progressViewController = ProgressViewController.default
         
         // MARK: - Stored Properties
@@ -157,7 +162,16 @@ class NavigationManager: LoggingViewController {
         }
         
         // Switch to tab saved in previous version of tab bar controller
-        tabBarController.selectedIndex = Globals.tabBarIndex.outfit
+        tabBarController.selectedIndex = Globals.tabBar.index.outfit
+        
+        if !items.isEmpty {
+            guard let outfitViewController = tabBarController.findViewController(ofType: OutfitViewController.self) else {
+                debug("OutfitViewController not found")
+                return
+            }
+            outfitViewController.itemsToShow = items
+            outfitViewController.checkItemsToShow()
+        }
         
         // Suggest the wishlist tab with the largest number of items
         Wishlist.tabSuggested = Wishlist.largestKind
@@ -168,18 +182,17 @@ class NavigationManager: LoggingViewController {
             cornerLimit: 1
         ) { itemsLoaded, itemsTotal in
             // Check for self availability
-//            guard let progressViewController = progressViewController else {
-//                debug("ERROR: self is not available")
-//                return
-//            }
+            //            guard let self = self else {
+            //                debug("ERROR: self is not available")
+            //                return
+            //            }
             
             // If not all items loaded — update progress view and continue
             ProgressViewController.default?.updateProgressBar(current: itemsLoaded, total: itemsTotal, minValue: 0.5)
-            
             guard itemsLoaded == itemsTotal else { return }
             
             // Save brand images for future selection change
-           // BrandManager.shared.brandedImages = progressViewController.brandedImages
+            //BrandManager.shared.brandedImages = progressViewController!.brandedImages
             
             DispatchQueue.main.async {
                 // Unhide top navigation bar
