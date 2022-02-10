@@ -82,11 +82,11 @@ final class ItemManager {
     
             DispatchQueue.global(qos: .background).async {
                 
-                // Save loaded items
-                let itemsToLoad = Items.values
+                //let itemsCorner = items.corners(.outfit)
+                let itemsCorner = items.corners(.occasionsFromUrl)
                 
             // var itemsSkipped = 0
-                for (item, viewModel) in zip(items, self.viewModels ) {
+                for (item, viewModel) in zip(itemsCorner, self.viewModels ) {
                     
                     // Get the item picture url
                     guard let pictureURL = item.pictures.first else {
@@ -94,39 +94,17 @@ final class ItemManager {
                         continue
                     }
                     
-//                    guard !itemsToLoad.contains(item) else {
-//                        debug("ERROR: self is not available")
-//                        continue
-//                    }
-                    
-//                    guard !viewModel.items.contains(item) else {
-//                        debug("ERROR: The image was downloaded")
-//                        return
-//                    }
-//
-//                    // Find item with given id in corresponding view model
-//                    guard let itemID = viewModel.firstItemID(with: item) else {
-//
-//                        continue
-//                    }
-                    
                     group.enter()
                     NetworkManager.shared.getImage(pictureURL) { image in
-                        
                         // Check for self availability
                         guard let image = image else {
                             debug("ERROR: self is not available")
                             return
                         }
-                        
-                        debug(item, pictureURL)
-                        
+
                         // Append image to the view model
                         viewModel.append(image.halved, item: item)
-                        
-                        debug("Added item ID: ", viewModel.items.IDs, "into viewModel" )
-                        debug("All items in viewModel: ", ItemManager.shared.viewModels.items.IDs)
-                        
+                        debug("Added item ID:", viewModel.items.IDs, "into viewModel" )
                         group.leave()
                     }
                     group.wait()
@@ -136,6 +114,7 @@ final class ItemManager {
                 DispatchManager.shared.itemManagerGroup.notify(
                     queue: DispatchQueue.global(qos: .background)
                 ) {
+                    // Show stats when all loads are finished
                     let elapsedTime = Date().timeIntervalSince(startTime)
                     debug("Loaded", self.count, "images in \(elapsedTime.asTime) s")
                 }
@@ -369,7 +348,7 @@ final class ItemManager {
     /// - Parameters:
     ///   - scrollViews: scroll views to load images into, one scroll view for each category
     ///   - corneredSubcategoryIDs: subcategory IDs from occasion
-    func loadImages(into scrollViews: PinnableScrollViews, matching corneredSubcategoryIDs: [[Int]]) {
+    func loadImages(into scrollViews: PinnableScrollViews, matching corneredSubcategoryIDs: [[Int]] = []) {
         // Loop all view models, scroll views, and subcategory IDs, whatever number is lower
         for (viewModel, (scrollView, subcategoryIDs)) in zip(viewModels, zip(scrollViews, corneredSubcategoryIDs)) {
             // Loop all items in given category filtered by brands
@@ -379,7 +358,7 @@ final class ItemManager {
                 guard let item = image.item else { continue }
                 
                 // Skip items which do not have matching subcategories
-                guard item.isMatching(subcategoryIDs) else { continue }
+                guard !corneredSubcategoryIDs.isEmpty || item.isMatching(subcategoryIDs) else { continue }
                 
                 // Inset image into scroll view
                 scrollView.insert(image: image).item = image.item
