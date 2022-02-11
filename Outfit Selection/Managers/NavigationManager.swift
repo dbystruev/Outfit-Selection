@@ -164,17 +164,32 @@ class NavigationManager: LoggingViewController {
         // Switch to tab saved in previous version of tab bar controller
         tabBarController.selectedIndex = Globals.tabBar.index.outfit
         
-        if !items.isEmpty {
-            guard let outfitViewController = tabBarController.findViewController(ofType: OutfitViewController.self) else {
-                debug("OutfitViewController not found")
-                return
-            }
-            outfitViewController.itemsToShow = items
-            outfitViewController.checkItemsToShow()
+        // Find outfit view controller in tab bar hierarchy
+        guard let outfitViewController = tabBarController.findViewController(ofType: OutfitViewController.self) else {
+            debug("OutfitViewController not found")
+            return
         }
         
         // Suggest the wishlist tab with the largest number of items
         Wishlist.tabSuggested = Wishlist.largestKind
+        
+        // Check that view models contain needed items
+        let viewModelsItemIDs = Set(ItemManager.shared.viewModels.items.IDs)
+        debug(viewModelsItemIDs.count, items.IDs.count, viewModelsItemIDs.intersection(items.IDs).count)
+        guard items.isEmpty || !viewModelsItemIDs.isSubset(of: items.IDs) else {
+            debug(items.isEmpty, !viewModelsItemIDs.isSubset(of: items.IDs))
+            
+            // Unhide top navigation bar
+            navigationController.isNavigationBarHidden = false
+            
+            // Push to tab bar view controller
+            navigationController.pushViewController(tabBarController, animated: true)
+            
+            // Load items from view models to scroll views
+            outfitViewController.itemsToShow = items
+            outfitViewController.checkItemsToShow()
+            return
+        }
         
         // Load view models with the new images
         ItemManager.shared.loadImages(
@@ -197,8 +212,9 @@ class NavigationManager: LoggingViewController {
             DispatchQueue.main.async {
                 // Unhide top navigation bar
                 navigationController.isNavigationBarHidden = false
+                
                 // Push to tab bar view controller
-                navigationController.pushViewController(tabBarController, animated: true)
+                navigationController.pushViewController(tabBarController, animated: false)
             }
         }
     }
