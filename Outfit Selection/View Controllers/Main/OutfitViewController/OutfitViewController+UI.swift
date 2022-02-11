@@ -13,11 +13,14 @@ extension OutfitViewController {
     
     /// Check items to show
    func checkItemsToShow(){
+       debug(itemsToShow.count, ItemManager.shared.viewModels.items.count)
         if itemsToShow.isEmpty {
+            
             // Show the wishlistItems
             scrollwishlistItems()
             firstAppearance = false
         } else {
+            
             // Load items to show
             scrollitemsToShow()
         }
@@ -183,7 +186,13 @@ extension OutfitViewController {
     
     /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
     /// - Parameter corneredSubcategoryIDs: subcategory IDs from occasion
-    func loadImages(matching corneredSubcategoryIDs: [[Int]] = []) {
+    func loadImages(matching corneredSubcategoryIDs: [[Int]] = Corners.empty) {
+        
+        // Check Scroll views is nil
+        guard let scrollViews = scrollViews else {
+            debug("WARNING: scrollViews is nil" )
+            return
+        }
         
         // Clear scroll views
             scrollViews.clear()
@@ -246,10 +255,17 @@ extension OutfitViewController {
     func scrollitemsToShow() {
         guard !itemsToShow.isEmpty else { return }
         
-        if Globals.tabBar.status.found {
+        
+        debug(scrollViews?.itemCount, itemsToShow.count)
+        if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count
+        {
+            
+            
+            loadImages()
+        } else if Globals.tabBar.status.found {
             loadImages()
         }
-
+        
         // Scrol to downloaded images
         scrollTo(items: itemsToShow, ordered: false) { completion in
             guard completion else { return }
