@@ -25,7 +25,7 @@ extension OutfitViewController {
             scrollitemsToShow()
         }
     }
- 
+    
     /// Configure helper bubble next to hanger icon
     func configureHangerBubble() {
         guard let navView = navigationController?.view else { return }
@@ -195,7 +195,7 @@ extension OutfitViewController {
         }
         
         // Clear scroll views
-            scrollViews.clear()
+        scrollViews.clear()
         
         // Load images from view models into scroll view
         ItemManager.shared.loadImages(into: scrollViews, matching: corneredSubcategoryIDs)

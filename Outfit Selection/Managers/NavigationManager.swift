@@ -186,11 +186,18 @@ class NavigationManager: LoggingViewController {
         // Switch to tab saved in previous version of tab bar controller
         tabBarController.selectedIndex = Globals.tabBar.index.outfit
         
+        // Find outfit view controller in tab bar hierarchy
+        guard let outfitViewController = tabBarController.findViewController(ofType: OutfitViewController.self) else {
+            debug("OutfitViewController not found")
+            return
+        }
+        
         // Suggest the wishlist tab with the largest number of items
         Wishlist.tabSuggested = Wishlist.largestKind
         
         //  Get viewModels IDs
         let viewModelsItemIDs = Set(ItemManager.shared.viewModels.items.IDs)
+        debug(viewModelsItemIDs.count, items.IDs.count, viewModelsItemIDs.intersection(items.IDs).count)
         guard items.isEmpty || !viewModelsItemIDs.isSubset(of: items.IDs) else {
             
             NavigationManager.shared.pushViewController (navigationController, tabBarController)
