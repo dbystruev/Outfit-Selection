@@ -253,15 +253,17 @@ extension OutfitViewController {
     
     /// Load and scrol to items from itemsToShow
     func scrollitemsToShow() {
-        guard !itemsToShow.isEmpty else { return }
         
+        //Check items and scrollViews
+        guard !itemsToShow.isEmpty && scrollViews?.itemCount != nil else { return }
         
         debug(scrollViews?.itemCount, itemsToShow.count)
+        
+        // TODO: Test and make other if or guard
         if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count
         {
-            
-            
             loadImages()
+            
         } else if Globals.tabBar.status.found {
             loadImages()
         }

@@ -178,11 +178,6 @@ class NavigationManager: LoggingViewController {
             return
         }
         
-        guard let outfitViewController = tabBarController.findViewController(ofType: OutfitViewController.self) else {
-            debug("OutfitViewController controller is not available")
-            return
-        }
-        
         // Switch to tab saved in previous version of tab bar controller
         tabBarController.selectedIndex = Globals.tabBar.index.outfit
         
