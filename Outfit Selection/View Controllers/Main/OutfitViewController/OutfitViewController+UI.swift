@@ -12,13 +12,15 @@ import UIKit
 extension OutfitViewController {
     
     /// Check items to show
-    func checkItemsToShow(){
-        debug(itemsToShow.count, ItemManager.shared.viewModels.items.count)
+   func checkItemsToShow(){
+       debug(itemsToShow.count, ItemManager.shared.viewModels.items.count)
         if itemsToShow.isEmpty {
+            
             // Show the wishlistItems
             scrollwishlistItems()
             firstAppearance = false
         } else {
+            
             // Load items to show
             scrollitemsToShow()
         }
@@ -185,8 +187,10 @@ extension OutfitViewController {
     /// Load images for some items in Item.all filtered by category in Category.all.count into scroll views
     /// - Parameter corneredSubcategoryIDs: subcategory IDs from occasion
     func loadImages(matching corneredSubcategoryIDs: [[Int]] = Corners.empty) {
+        
+        // Check Scroll views is nil
         guard let scrollViews = scrollViews else {
-            debug("WARNING: scrollViews is nil")
+            debug("WARNING: scrollViews is nil" )
             return
         }
         
@@ -249,13 +253,17 @@ extension OutfitViewController {
     
     /// Load and scrol to items from itemsToShow
     func scrollitemsToShow() {
-        guard !itemsToShow.isEmpty else { return }
         
-        debug(Globals.tabBar.status.found)
-        debug(ItemManager.shared.viewModels.items.count, ItemManager.shared.viewModels.items)
-        debug(scrollViews?.itemCount)
-        if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count {
+        //Check items and scrollViews
+        guard !itemsToShow.isEmpty && scrollViews?.itemCount != nil else { return }
+        
+        debug(scrollViews?.itemCount, itemsToShow.count)
+        
+        // TODO: Test and make other if or guard
+        if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count
+        {
             loadImages()
+            
         } else if Globals.tabBar.status.found {
             loadImages()
         }

@@ -64,68 +64,68 @@ final class ItemManager {
         }
     }
         
-    
+    /// Load images filtered by categories into view models
+    /// - Parameters:
+    ///   - items: items to for download images
     func loadImagesFromItems(
         items: Items,
         completion: @escaping () -> Void
     ) {
+        
+        // Count elapsed time
+        let startTime = Date()
+        
+        // Clear all view models
+        clearViewModels()
+        
+        // Dispatch group to wait for all loads to finish
+        let group = DispatchGroup()
+        // Go through all items and load images one by one
+        
+        DispatchQueue.global(qos: .background).async {
             
-            // Count elapsed time
-            let startTime = Date()
+            //let itemsCorner = items.corners(.outfit)
+            let itemsCorner = items.corners(.occasionsFromUrl)
             
-            // Clear all view models
-            clearViewModels()
-            
-            // Dispatch group to wait for all loads to finish
-            let group = DispatchGroup()
-            // Go through all items and load images one by one
-    
-            DispatchQueue.global(qos: .background).async {
-                
-                //let itemsCorner = items.corners(.outfit)
-                let itemsCorner = items.corners(.occasionsFromUrl)
-                
             // var itemsSkipped = 0
-                for (item, viewModel) in zip(itemsCorner, self.viewModels ) {
-                    
-                    // Get the item picture url
-                    guard let pictureURL = item.pictures.first else {
-                        debug("ERROR: No picture URLs for the item", item, item.url)
-                        continue
-                    }
-                    
-                    group.enter()
-                    NetworkManager.shared.getImage(pictureURL) { image in
-                        // Check for self availability
-                        guard let image = image else {
-                            debug("ERROR: self is not available")
-                            return
-                        }
-
-                        // Append image to the view model
-                        viewModel.append(image.halved, item: item)
-                        debug("Added item ID:", viewModel.items.IDs, "into viewModel" )
-                        group.leave()
-                    }
-                    group.wait()
+            for (item, viewModel) in zip(itemsCorner, self.viewModels ) {
+                
+                // Get the item picture url
+                guard let pictureURL = item.pictures.first else {
+                    debug("ERROR: No picture URLs for the item", item, item.url)
+                    continue
                 }
                 
-                // Get here when all image network requests are finished
-                DispatchManager.shared.itemManagerGroup.notify(
-                    queue: DispatchQueue.global(qos: .background)
-                ) {
-                    // Show stats when all loads are finished
-                    let elapsedTime = Date().timeIntervalSince(startTime)
-                    debug("Loaded", self.count, "images in \(elapsedTime.asTime) s")
+                group.enter()
+                NetworkManager.shared.getImage(pictureURL) { image in
+                    // Check for self availability
+                    guard let image = image else {
+                        debug("ERROR: self is not available")
+                        return
+                    }
+                    
+                    // Append image to the view model
+                    viewModel.append(image.halved, item: item)
+                    debug("Added item ID:", viewModel.items.IDs, "into viewModel" )
+                    group.leave()
                 }
-                DispatchQueue.main.async {
-                    completion()
-                }
-                
+                group.wait()
             }
+            
+            // Get here when all image network requests are finished
+            DispatchManager.shared.itemManagerGroup.notify(
+                queue: DispatchQueue.global(qos: .background)
+            ) {
+                // Show stats when all loads are finished
+                let elapsedTime = Date().timeIntervalSince(startTime)
+                debug("Loaded", self.count, "images in \(elapsedTime.asTime) s")
+            }
+            DispatchQueue.main.async {
+                completion()
+            }
+            
         }
-    
-    
+    }
     
     /// Load images filtered by categories into view models
     /// - Parameters:
