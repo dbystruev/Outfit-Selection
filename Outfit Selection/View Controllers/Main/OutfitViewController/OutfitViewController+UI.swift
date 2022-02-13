@@ -12,15 +12,13 @@ import UIKit
 extension OutfitViewController {
     
     /// Check items to show
-   func checkItemsToShow(){
-       debug(itemsToShow.count, ItemManager.shared.viewModels.items.count)
+    func checkItemsToShow(){
         if itemsToShow.isEmpty {
             
             // Show the wishlistItems
             scrollwishlistItems()
             firstAppearance = false
         } else {
-            
             // Load items to show
             scrollitemsToShow()
         }
@@ -194,8 +192,12 @@ extension OutfitViewController {
             return
         }
         
+        debug(scrollViews.itemCount)
+        
         // Clear scroll views
         scrollViews.clear()
+        
+        debug(scrollViews.itemCount)
         
         // Load images from view models into scroll view
         ItemManager.shared.loadImages(into: scrollViews, matching: corneredSubcategoryIDs)
@@ -257,21 +259,26 @@ extension OutfitViewController {
         //Check items and scrollViews
         guard !itemsToShow.isEmpty && scrollViews?.itemCount != nil else { return }
         
-        debug(scrollViews?.itemCount, itemsToShow.count)
-        
         // TODO: Test and make other if or guard
         if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count
         {
+            debug(scrollViews?.itemCount, itemsToShow.count)
             loadImages()
             
         } else if Globals.tabBar.status.found {
+            debug(scrollViews?.itemCount, itemsToShow.count)
             loadImages()
         }
         
-        // Scrol to downloaded images
+        debug(scrollViews?.itemCount, itemsToShow.count)
+        
+        // Scrol to downloaded imagesitemsToShow
         scrollTo(items: itemsToShow, ordered: false) { completion in
             guard completion else { return }
-            self.itemsToShow.removeAll()
+            
+            ItemManager.shared.clearViewModels()
+            
+            Globals.tabBar.status.found = false
         }
     }
     
