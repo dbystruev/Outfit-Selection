@@ -63,6 +63,7 @@ extension OutfitViewController {
         super.viewDidAppear(animated)
        
         checkItemsToShow()
+        updateUI()
     }
     
     override func viewDidLayoutSubviews() {

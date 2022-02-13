@@ -116,12 +116,15 @@ final class ItemManager {
             DispatchManager.shared.itemManagerGroup.notify(
                 queue: DispatchQueue.global(qos: .background)
             ) {
+                
+                // Return to main thead and run completion
+                DispatchQueue.main.async {
+                    completion()
+                }
+            
                 // Show stats when all loads are finished
                 let elapsedTime = Date().timeIntervalSince(startTime)
                 debug("Loaded", self.count, "images in \(elapsedTime.asTime) s")
-            }
-            DispatchQueue.main.async {
-                completion()
             }
             
         }

@@ -149,6 +149,10 @@ extension OutfitViewController {
                 }
             }
         }
+        
+        // Remove items to show from universal link
+        self.itemsToShow.removeAll()
+        debug("Clear tems to show")
     }
     
     /// Move to occasions view controller when left screen edge is panned
@@ -209,6 +213,10 @@ extension OutfitViewController {
     }
     
     @IBAction func shuffleButtonTapped(_ sender: Any) {
+        
+        // Check itemsToShow
+        guard itemsToShow.isEmpty else { return }
+        
         debug("items loaded: \(scrollViews.itemCount) of \(Items.count)")
         
         showShuffleBubble = false

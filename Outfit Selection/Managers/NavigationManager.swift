@@ -25,7 +25,7 @@ class NavigationManager: LoggingViewController {
     static let shared = NavigationManager()
     
     // MARK: - Pravite Methods
-    /// pushViewController
+    /// Push use pushViewController
     /// - Parameters:
     ///   - navigationController: UINavigationController
     ///   - IUController: some  UIViewController, example tabBarVievController
@@ -133,10 +133,17 @@ class NavigationManager: LoggingViewController {
         if tabBarController.selectedIndex == indexTabBar {
             debug("OutfitViewController is showing now")
             
+            //If use this method, it will be removed not all items from scrollViews, but it looks correctly too.
+            outfitViewController.scrollViews.removeItems(notMatching: Corners.empty)
+            
+            // Clear scrollViews befor set new items to show
+            //outfitViewController.scrollViews.clear()
+            
             // Set items to show
             outfitViewController.itemsToShow = items
             
             //Check items to show and download images
+
             outfitViewController.checkItemsToShow()
             
         } else {
@@ -195,13 +202,11 @@ class NavigationManager: LoggingViewController {
         debug(viewModelsItemIDs.count, items.IDs.count, viewModelsItemIDs.intersection(items.IDs).count)
         guard items.isEmpty || !viewModelsItemIDs.isSubset(of: items.IDs) else {
             
-            NavigationManager.shared.pushViewController (navigationController, tabBarController)
-            
             // Set items to show
             outfitViewController.itemsToShow = items
             
-            //Check items to show and download images
-            outfitViewController.checkItemsToShow()
+            // Push NavigationController with tabBar
+            NavigationManager.shared.pushViewController (navigationController, tabBarController)
             
             return
         }

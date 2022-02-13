@@ -110,8 +110,7 @@ extension PinnableScrollViews {
                 for id in IDs {
                     debug(id, Items.values.IDs.contains(id))
                 }
-
-                debug("No items with IDs \(IDs) were found in any view models")
+//                debug("No items with IDs \(IDs) were found in any view models")
                 return nil
             }
             

@@ -37,7 +37,7 @@ extension AppDelegate {
                 debug("INFO: id", id, "items", items.IDs)
                 
             case "in":
-               // debug("INFO: id", id, "items", items.IDs)
+                debug("INFO: ID", id, "Items IDs count:", items.IDs.count, items)
                 
                 // Get images before navigate start
                 ItemManager.shared.loadImagesFromItems(items: items) {
