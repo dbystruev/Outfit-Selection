@@ -85,7 +85,7 @@ final class ItemManager {
         DispatchQueue.global(qos: .background).async {
             
             //let itemsCorner = items.corners(.outfit)
-            let itemsCorner = items.corners(.occasionsFromUrl)
+            let itemsCorner = items.corners(.occasions)
             
             // var itemsSkipped = 0
             for (item, viewModel) in zip(itemsCorner, self.viewModels ) {
@@ -101,6 +101,7 @@ final class ItemManager {
                     // Check for self availability
                     guard let image = image else {
                         debug("ERROR: self is not available")
+                        group.leave()
                         return
                     }
                     
@@ -109,11 +110,10 @@ final class ItemManager {
                     debug("Added item ID:", viewModel.items.IDs, "into viewModel" )
                     group.leave()
                 }
-                group.wait()
             }
             
             // Get here when all image network requests are finished
-            DispatchManager.shared.itemManagerGroup.notify(
+            group.notify(
                 queue: DispatchQueue.global(qos: .background)
             ) {
                 
@@ -148,7 +148,6 @@ final class ItemManager {
         
         // Clear all view models
         clearViewModels()
-        
         // Move everything to async queue in order not to hang execution
         DispatchQueue.global(qos: .background).async {
             
