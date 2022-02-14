@@ -16,17 +16,21 @@ extension AppDelegate {
     func checkUniversalLink(continue userActivity: NSUserActivity){
         
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-              let url = userActivity.webpageURL else { return }
+            let url = userActivity.webpageURL else { return }
         
         // Try to get parametr from URL
         guard let id = url.getParameters["id"]?.dropExtension else {
             debug("ERROR: url without id")
             return }
         
+        debug(url)
+        
         // Parser items from url, remove dot and replace "(",")"
         guard let items = parserItemIDs(url: url) as? [String] else {
             debug("ERROR: array is empty")
             return }
+        
+        debug(items)
         
         ItemManager.shared.checkItemsByID(items) { item in
             guard let items = item else { return }
@@ -37,20 +41,32 @@ extension AppDelegate {
                 debug("INFO: id", id, "items", items.IDs)
                 
             case "in":
-                debug("INFO: ID", id, "Items IDs count:", items.IDs.count, items)
+                debug(items.IDs)
                 
-                // Get images before navigate start
+                //  Get viewModels IDs
+                let viewModelsItemIDs = Set(ItemManager.shared.viewModels.items.IDs)
+                debug("ViewModels:", viewModelsItemIDs.count, "Items:", items.IDs.count, viewModelsItemIDs.intersection(items.IDs).count)
+                
+                
+                // Download all images and add to viewModels
                 ItemManager.shared.loadImagesFromItems(items: items) {
                     
-                    // Go to NavigationManager into outfit
-                    NavigationManager.navigate(to: .outfit(items: items))
+
+                let viewModelsItemIDs = Set(ItemManager.shared.viewModels.items.IDs)
+                debug("ViewModels:", viewModelsItemIDs.count, "Items:", items.IDs.count, viewModelsItemIDs.intersection(items.IDs).count)
+                    
+                    
+                // Go to NavigationManager into outfit
+                NavigationManager.navigate(to: .outfit(items: items))
                 }
-                         
+                
             default:
                 debug("ERROR: id not found in this switch")
-            } 
+            }
         }
+        
     }
+    
     
     /// Parser, drop and separeted IDs
     /// - Parameter URL: the url with IDs for convert to array

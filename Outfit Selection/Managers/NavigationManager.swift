@@ -128,33 +128,18 @@ class NavigationManager: LoggingViewController {
             debug("OutfitViewController controller is not available")
             return
         }
-        
-        // Check state tab bar controller
-        if tabBarController.selectedIndex == indexTabBar {
-            debug("OutfitViewController is showing now")
-            
-            //If use this method, it will be removed not all items from scrollViews, but it looks correctly too.
-            outfitViewController.scrollViews.removeItems(notMatching: Corners.empty)
-            
-            // Clear scrollViews befor set new items to show
-            //outfitViewController.scrollViews.clear()
-            
-            // Set items to show
-            outfitViewController.itemsToShow = items
-            
-            //Check items to show and download images
 
-            outfitViewController.checkItemsToShow()
-            
-        } else {
-            debug("OutfitViewController is not showing now, index:", tabBarController.selectedIndex)
-            
-            outfitViewController.itemsToShow = items
-            
-            // Set tab bar index
-            tabBarController.selectedIndex = indexTabBar
-            
-        }
+        outfitViewController.scrollViews.clear()
+
+        debug(outfitViewController.scrollViews.count)
+        // Set items to show
+        outfitViewController.itemsToShow = items
+        
+        outfitViewController.checkItemsToShow()
+                
+        // Check state tab bar controller
+        guard tabBarController.selectedIndex != indexTabBar else { return }
+        tabBarController.selectedIndex = indexTabBar
     }
     
     /// Present  viewController with Instantiate tabBarController
@@ -194,9 +179,6 @@ class NavigationManager: LoggingViewController {
             return
         }
         
-        // Suggest the wishlist tab with the largest number of items
-        Wishlist.tabSuggested = Wishlist.largestKind
-        
         //  Get viewModels IDs
         let viewModelsItemIDs = Set(ItemManager.shared.viewModels.items.IDs)
         debug(viewModelsItemIDs.count, items.IDs.count, viewModelsItemIDs.intersection(items.IDs).count)
@@ -210,6 +192,9 @@ class NavigationManager: LoggingViewController {
             
             return
         }
+        
+        // Suggest the wishlist tab with the largest number of items
+        Wishlist.tabSuggested = Wishlist.largestKind
         
         // Load view models with the new images
         ItemManager.shared.loadImages(
