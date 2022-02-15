@@ -21,7 +21,7 @@ extension OutfitViewController {
         } else {
             // Load items to show
             scrollitemsToShow()
-
+            
         }
     }
     
@@ -428,6 +428,13 @@ extension OutfitViewController {
             
             // Set button underline visibility depending on whether the button is selected
             underline.isHidden = !isSelected
+            
+            // Check itemsToShow and hide all underline, when itemToShow avaliable.
+            if itemsToShow.isEmpty {
+                underline.isHidden = !isSelected
+            } else {
+                underline.isHidden = true
+            }
             
             // Scroll to selected button
             if isSelected {
