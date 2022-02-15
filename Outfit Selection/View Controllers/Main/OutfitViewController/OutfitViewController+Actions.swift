@@ -65,6 +65,9 @@ extension OutfitViewController {
     
     @IBAction func occasionButtonTapped(_ sender: OccasionButton) {
         
+        // Lock / Unlock button suffle
+        self.shuffleButtonCheck(lock: true)
+        
         // Get currently selected occasion Button
         guard let currentOccasionSelected = occasionSelected else {
             debug("ERROR: No occasion button was selected")
@@ -104,25 +107,28 @@ extension OutfitViewController {
         // Reload items and images
         let gender = Gender.current
         
-        // Reload items from the server for changed occasion
-        NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
-            if success == true {} else {
-                debug("ERROR reloading items for", gender)
-                
-                // Set status occasions elements
-                self?.occasionItemsAreLoading = false
-                
-                // Return occasion selected button
-                tappedOccasion = currentOccasionSelected
-                
-                // Return occasion selected
-                Occasion.selected = currentOccasionSelected
-                
-                // Load items occasion selected before
-                ItemManager.shared.loadItems(for: Occasion.selected) { success in
-                    guard success == true else {
-                        debug("ERROR loading items for", gender)
-                        return
+        DispatchQueue.global(qos: .default).async {
+            
+            // Reload items from the server for changed occasion
+            NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
+                if success == true {} else {
+                    debug("ERROR reloading items for", gender)
+                    
+                    // Set status occasions elements
+                    self?.occasionItemsAreLoading = false
+                    
+                    // Return occasion selected button
+                    tappedOccasion = currentOccasionSelected
+                    
+                    // Return occasion selected
+                    Occasion.selected = currentOccasionSelected
+                    
+                    // Load items occasion selected before
+                    ItemManager.shared.loadItems(for: Occasion.selected) { success in
+                        guard success == true else {
+                            debug("ERROR loading items for", gender)
+                            return
+                        }
                     }
                 }
             }
@@ -146,13 +152,15 @@ extension OutfitViewController {
                 // Scroll to newly selected occasion
                 DispatchQueue.main.async {
                     self.scrollTo(occasion: tappedOccasion)
+                    
+                    // Remove items to show from universal link
+                    self.itemsToShow.removeAll()
+                    
+                    // Lock / Unlock button suffle
+                    self.shuffleButtonCheck(lock: false)
                 }
             }
         }
-        
-        // Remove items to show from universal link
-        self.itemsToShow.removeAll()
-        debug("Clear tems to show")
     }
     
     /// Move to occasions view controller when left screen edge is panned

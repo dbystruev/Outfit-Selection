@@ -21,6 +21,7 @@ extension OutfitViewController {
         } else {
             // Load items to show
             scrollitemsToShow()
+            
         }
     }
     
@@ -259,13 +260,8 @@ extension OutfitViewController {
         //Check items and scrollViews
         guard !itemsToShow.isEmpty && scrollViews?.itemCount != nil else { return }
         
-        // TODO: Test and make other if or guard
-        if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count
+        if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count || Globals.tabBar.status.found
         {
-            debug(scrollViews?.itemCount, itemsToShow.count)
-            loadImages()
-            
-        } else if Globals.tabBar.status.found {
             debug(scrollViews?.itemCount, itemsToShow.count)
             loadImages()
         }
@@ -273,12 +269,16 @@ extension OutfitViewController {
         debug(scrollViews?.itemCount, itemsToShow.count)
         
         // Scrol to downloaded imagesitemsToShow
-        scrollTo(items: itemsToShow, ordered: false) { completion in
+        scrollTo(items: itemsToShow, ordered: false) { [self] completion in
             guard completion else { return }
             
-            ItemManager.shared.clearViewModels()
-            
+            //ItemManager.shared.clearViewModels()
             Globals.tabBar.status.found = false
+            
+            // Set lock button shuffle
+            shuffleButtonCheck(lock: true)
+            
+            
         }
     }
     
@@ -336,6 +336,12 @@ extension OutfitViewController {
         }
     }
     
+    /// Show / hide shuffleButton
+    func shuffleButtonCheck(lock: Bool) {
+        shuffleButton.alpha = lock ? 0.25 : 1
+        shuffleButton.isEnabled = lock ? false : true
+    }
+
     /// Show / hide subcategory labels with information about currently presented look
     func toggleSubcategoryLabels() {
         // Toggle visibility of subcategory labels
@@ -422,6 +428,13 @@ extension OutfitViewController {
             
             // Set button underline visibility depending on whether the button is selected
             underline.isHidden = !isSelected
+            
+            // Check itemsToShow and hide all underline, when itemToShow avaliable.
+            if itemsToShow.isEmpty {
+                underline.isHidden = !isSelected
+            } else {
+                underline.isHidden = true
+            }
             
             // Scroll to selected button
             if isSelected {
