@@ -68,9 +68,6 @@ extension OutfitViewController {
         // Lock / Unlock button suffle
         self.shuffleButtonCheck(lock: true)
         
-        // Remove items to show from universal link
-        self.itemsToShow.removeAll()
-        
         // Get currently selected occasion Button
         guard let currentOccasionSelected = occasionSelected else {
             debug("ERROR: No occasion button was selected")
@@ -90,13 +87,16 @@ extension OutfitViewController {
         guard var tappedOccasion = sender.occasion else { return }
         
         // If we tapped an occasion with the same title, scroll to it
-        guard occasionSelected?.title != tappedOccasion.title else {
+        guard occasionSelected?.title != tappedOccasion.title || !itemsToShow.isEmpty  else {
             // Make sure enough item images are loaded
             guard allowShuffle else { return }
             
             scrollTo(occasion: tappedOccasion)
             return
         }
+
+        // Remove items to show from universal link
+        self.itemsToShow.removeAll()
         
         // Set status occasions elements
         occasionItemsAreLoading = true

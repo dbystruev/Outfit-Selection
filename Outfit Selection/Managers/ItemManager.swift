@@ -63,7 +63,7 @@ final class ItemManager {
             }
         }
     }
-        
+    
     /// Load images filtered by categories into view models
     /// - Parameters:
     ///   - items: items to for download images
@@ -71,6 +71,9 @@ final class ItemManager {
         items: Items,
         completion: @escaping () -> Void
     ) {
+        
+        // Remove all items before loading new items
+        Items.removeAll()
         
         // Count elapsed time
         let startTime = Date()
@@ -85,7 +88,7 @@ final class ItemManager {
         DispatchQueue.global(qos: .background).async {
             
             //let itemsCorner = items.corners(.outfit)
-            let itemsCorner = items.corners(.occasions)
+            let itemsCorner = items.corners(.occasionsFromUrl)
             
             // var itemsSkipped = 0
             for (item, viewModel) in zip(itemsCorner, self.viewModels ) {
@@ -148,6 +151,7 @@ final class ItemManager {
         
         // Clear all view models
         clearViewModels()
+        
         // Move everything to async queue in order not to hang execution
         DispatchQueue.global(qos: .background).async {
             
@@ -337,6 +341,7 @@ final class ItemManager {
                 }
                 
                 group.wait()
+                // debug("Loaded", itemsLoaded, "of", itemIDs.count)
             }
             
             // Show stats when all loads are finished

@@ -107,6 +107,7 @@ struct Wishlist: Codable {
             debug("WARNING: Gender.current is empty")
             return
         }
+        
         Wishlist.append(WishlistItemCatalog(gender: gender, kind: .outfit, items: items, name: occasion))
         
         // Set each item's wishlisted property
