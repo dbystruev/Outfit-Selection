@@ -68,6 +68,9 @@ extension OutfitViewController {
         // Lock / Unlock button suffle
         self.shuffleButtonCheck(lock: true)
         
+        // Remove items to show from universal link
+        self.itemsToShow.removeAll()
+        
         // Get currently selected occasion Button
         guard let currentOccasionSelected = occasionSelected else {
             debug("ERROR: No occasion button was selected")
@@ -107,58 +110,52 @@ extension OutfitViewController {
         // Reload items and images
         let gender = Gender.current
         
-        DispatchQueue.global(qos: .default).async {
-            
-            // Reload items from the server for changed occasion
-            NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
-                if success == true {} else {
-                    debug("ERROR reloading items for", gender)
-                    
-                    // Set status occasions elements
-                    self?.occasionItemsAreLoading = false
-                    
-                    // Return occasion selected button
-                    tappedOccasion = currentOccasionSelected
-                    
-                    // Return occasion selected
-                    Occasion.selected = currentOccasionSelected
-                    
-                    // Load items occasion selected before
-                    ItemManager.shared.loadItems(for: Occasion.selected) { success in
-                        guard success == true else {
-                            debug("ERROR loading items for", gender)
-                            return
-                        }
+        // Reload items from the server for changed occasion
+        NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
+            if success == true {} else {
+                debug("ERROR reloading items for", gender)
+                
+                // Set status occasions elements
+                self?.occasionItemsAreLoading = false
+                
+                // Return occasion selected button
+                tappedOccasion = currentOccasionSelected
+                
+                // Return occasion selected
+                Occasion.selected = currentOccasionSelected
+                
+                // Load items occasion selected before
+                ItemManager.shared.loadItems(for: Occasion.selected) { success in
+                    guard success == true else {
+                        debug("ERROR loading items for", gender)
+                        return
                     }
                 }
             }
+        }
+        
+        // Load images for items
+        ItemManager.shared.loadImages(filteredBy: gender, cornerLimit: 1) { [weak self] current, total in
+            // Wait until all images are loaded
+            guard current == total else { return }
             
-            // Load images for items
-            ItemManager.shared.loadImages(filteredBy: gender, cornerLimit: 1) { [weak self] current, total in
-                // Wait until all images are loaded
-                guard current == total else { return }
+            // Make sure we clear occasion items loading flag in any case
+            defer {
+                self?.occasionItemsAreLoading = false
+            }
+            
+            // Check for self availability
+            guard let self = self else {
+                debug("ERROR: self is not available")
+                return
+            }
+            
+            // Scroll to newly selected occasion
+            DispatchQueue.main.async {
+                self.scrollTo(occasion: tappedOccasion)
                 
-                // Make sure we clear occasion items loading flag in any case
-                defer {
-                    self?.occasionItemsAreLoading = false
-                }
-                
-                // Check for self availability
-                guard let self = self else {
-                    debug("ERROR: self is not available")
-                    return
-                }
-                
-                // Scroll to newly selected occasion
-                DispatchQueue.main.async {
-                    self.scrollTo(occasion: tappedOccasion)
-                    
-                    // Remove items to show from universal link
-                    self.itemsToShow.removeAll()
-                    
-                    // Lock / Unlock button suffle
-                    self.shuffleButtonCheck(lock: false)
-                }
+                // Lock / Unlock button suffle
+                self.shuffleButtonCheck(lock: false)
             }
         }
     }
