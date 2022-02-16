@@ -21,7 +21,7 @@ extension OutfitViewController {
         } else {
             // Load items to show
             scrollitemsToShow()
-            
+ 
         }
     }
     
@@ -193,12 +193,8 @@ extension OutfitViewController {
             return
         }
         
-        debug(scrollViews.itemCount)
-        
         // Clear scroll views
         scrollViews.clear()
-        
-        debug(scrollViews.itemCount)
         
         // Load images from view models into scroll view
         ItemManager.shared.loadImages(into: scrollViews, matching: corneredSubcategoryIDs)
@@ -225,6 +221,7 @@ extension OutfitViewController {
     /// Scroll outfit's scroll views to the given occasion
     /// - Parameter occasion: the occasion to scroll the scroll views to
     func scrollTo(occasion: Occasion) {
+        
         // Load images into the outfit view controller's scroll views
         loadImages(matching: occasion.subcategoryIDs)
         
@@ -262,7 +259,6 @@ extension OutfitViewController {
         
         if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count || Globals.tabBar.status.found
         {
-            debug(scrollViews?.itemCount, itemsToShow.count)
             loadImages()
         }
         
@@ -278,7 +274,7 @@ extension OutfitViewController {
             // Set lock button shuffle
             shuffleButtonCheck(lock: true)
             
-            
+            updateOccasionsUI(selectedTitle: occasionSelected?.title)
         }
     }
     
@@ -341,7 +337,7 @@ extension OutfitViewController {
         shuffleButton.alpha = lock ? 0.25 : 1
         shuffleButton.isEnabled = lock ? false : true
     }
-
+    
     /// Show / hide subcategory labels with information about currently presented look
     func toggleSubcategoryLabels() {
         // Toggle visibility of subcategory labels
@@ -426,14 +422,15 @@ extension OutfitViewController {
                 button.isEnabled = false
             }
             
-            // Set button underline visibility depending on whether the button is selected
-            underline.isHidden = !isSelected
-            
             // Check itemsToShow and hide all underline, when itemToShow avaliable.
             if itemsToShow.isEmpty {
+                
+                // Set button underline visibility depending on whether the button is selected
                 underline.isHidden = !isSelected
             } else {
                 underline.isHidden = true
+                button.alpha = 0.75
+                
             }
             
             // Scroll to selected button
