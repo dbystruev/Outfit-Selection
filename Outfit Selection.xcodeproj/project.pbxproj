@@ -136,6 +136,7 @@
 		697CCE6826D0035C00B69763 /* FeedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CCE6726D0035C00B69763 /* FeedItem.swift */; };
 		697CCE6A26D0039800B69763 /* FeedItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 697CCE6926D0039800B69763 /* FeedItem.xib */; };
 		697CCE6E26D010D000B69763 /* UIImageView+configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697CCE6D26D010D000B69763 /* UIImageView+configure.swift */; };
+		697D628727BDE9E900EA0F40 /* ProfileViewController+version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697D628627BDE9E900EA0F40 /* ProfileViewController+version.swift */; };
 		697E1FDD25ECF0E8008C85C9 /* UITabBarController+findViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */; };
 		697E1FE125ED01A6008C85C9 /* IntermediaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */; };
 		69827B1E273BD02900C59D68 /* strings.numbers in Resources */ = {isa = PBXBuildFile; fileRef = 69827B19273BD02900C59D68 /* strings.numbers */; };
@@ -394,6 +395,7 @@
 		697CCE6726D0035C00B69763 /* FeedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItem.swift; sourceTree = "<group>"; };
 		697CCE6926D0039800B69763 /* FeedItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedItem.xib; sourceTree = "<group>"; };
 		697CCE6D26D010D000B69763 /* UIImageView+configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+configure.swift"; sourceTree = "<group>"; };
+		697D628627BDE9E900EA0F40 /* ProfileViewController+version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+version.swift"; sourceTree = "<group>"; };
 		697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+findViewController.swift"; sourceTree = "<group>"; };
 		697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediaryViewController.swift; sourceTree = "<group>"; };
 		69827B19273BD02900C59D68 /* strings.numbers */ = {isa = PBXFileReference; lastKnownFileType = file; path = strings.numbers; sourceTree = "<group>"; };
@@ -1360,6 +1362,7 @@
 				69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */,
 				69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */,
 				69297C5925EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift */,
+				697D628627BDE9E900EA0F40 /* ProfileViewController+version.swift */,
 			);
 			path = ProfileViewController;
 			sourceTree = "<group>";
@@ -1700,6 +1703,7 @@
 				69007CF126EA6619001170D0 /* Occasion+Comparable.swift in Sources */,
 				69560EC82587E5D400337F35 /* Branded.swift in Sources */,
 				6900142126DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift in Sources */,
+				697D628727BDE9E900EA0F40 /* ProfileViewController+version.swift in Sources */,
 				69B86BB926D8B68700E1C868 /* FeedItemCollectionCell.swift in Sources */,
 				69F60BD2272BDDBB004C4EA3 /* Array+corners.swift in Sources */,
 				694935B0270DA48200168EB6 /* String+shortVendorName.swift in Sources */,
@@ -1993,7 +1997,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.01.31;
+				CURRENT_PROJECT_VERSION = 2022.02.17;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2008,7 +2012,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7.2;
+				MARKETING_VERSION = 0.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.concept;
 				PRODUCT_NAME = "Concept Group";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2092,7 +2096,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.01.31;
+				CURRENT_PROJECT_VERSION = 2022.02.17;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2107,7 +2111,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7.2;
+				MARKETING_VERSION = 0.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.raskroi;
 				PRODUCT_NAME = Raskroi;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2252,7 +2256,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.01.31;
+				CURRENT_PROJECT_VERSION = 2022.02.17;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2267,7 +2271,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7.2;
+				MARKETING_VERSION = 0.7.3;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "Get Outfit";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2284,7 +2288,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.01.31;
+				CURRENT_PROJECT_VERSION = 2022.02.17;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2298,7 +2302,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7.2;
+				MARKETING_VERSION = 0.7.3;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "Get Outfit";

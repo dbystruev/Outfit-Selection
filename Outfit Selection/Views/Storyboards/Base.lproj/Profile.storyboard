@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qhM-a0-caW">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="qhM-a0-caW">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSans-Regular.ttf">
+            <string>NotoSans-Regular</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Profile-->
         <scene sceneID="Psb-wc-ouy">
@@ -29,12 +34,21 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Unknown version" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="htJ-bF-RkQ">
+                                <rect key="frame" x="4" y="796.5" width="406" height="16.5"/>
+                                <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="3xA-Jr-4eB"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="KQC-49-CAd" firstAttribute="top" secondItem="3xA-Jr-4eB" secondAttribute="top" constant="12" id="CGW-Dm-eO9"/>
                             <constraint firstItem="KQC-49-CAd" firstAttribute="leading" secondItem="3xA-Jr-4eB" secondAttribute="leading" constant="4" id="NoS-an-z9H"/>
+                            <constraint firstItem="3xA-Jr-4eB" firstAttribute="trailing" secondItem="htJ-bF-RkQ" secondAttribute="trailing" constant="4" id="QJK-kH-nLt"/>
+                            <constraint firstItem="htJ-bF-RkQ" firstAttribute="leading" secondItem="3xA-Jr-4eB" secondAttribute="leading" constant="4" id="VlJ-nd-LV8"/>
+                            <constraint firstItem="3xA-Jr-4eB" firstAttribute="bottom" secondItem="htJ-bF-RkQ" secondAttribute="bottom" id="ZoU-ZK-zgR"/>
                             <constraint firstItem="3xA-Jr-4eB" firstAttribute="trailing" secondItem="KQC-49-CAd" secondAttribute="trailing" constant="4" id="ksJ-nx-A3U"/>
                             <constraint firstItem="3xA-Jr-4eB" firstAttribute="bottom" secondItem="KQC-49-CAd" secondAttribute="bottom" id="nck-Ti-QZR"/>
                         </constraints>
@@ -42,6 +56,7 @@
                     <navigationItem key="navigationItem" title="Profile" id="Uvh-RY-4gK"/>
                     <connections>
                         <outlet property="profileCollectionView" destination="KQC-49-CAd" id="beT-rb-Uvf"/>
+                        <outlet property="versionLabel" destination="htJ-bF-RkQ" id="Mzt-Db-XOO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QqA-WX-oAd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

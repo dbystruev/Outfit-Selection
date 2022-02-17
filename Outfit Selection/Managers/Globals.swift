@@ -52,8 +52,14 @@ enum Globals {
             /// Onboarding text color
             static let text = WhiteLabel.Color.Text.onboarding
         }
-    }
         
+        /// Colors for profile screen
+        enum Profile {
+            /// Version label color
+            static let version = ColorCompatibility.label // UIColor(red: 23, green: 23, blue: 23, alpha: 1)
+        }
+    }
+    
     /// Index outfit view controller from tabBarController
     enum tabBar {
         enum index {
@@ -76,6 +82,11 @@ enum Globals {
         enum Onboarding {
             /// UIFont(name: "NotoSans-Bold", size: 17)
             static let button = UIFont(name: "NotoSans-Bold", size: 17)!
+        }
+        
+        enum Profile {
+            /// UIFont(name: "NotoSans-Regular", size: 12)
+            static let version = UIFont(name: "NotoSans-Regular", size: 12)!
         }
     }
     

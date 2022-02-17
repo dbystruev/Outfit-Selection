@@ -11,6 +11,7 @@ import UIKit
 class ProfileViewController: LoggingViewController {
     // MARK: - Outlets
     @IBOutlet weak var profileCollectionView: UICollectionView!
+    @IBOutlet weak var versionLabel: UILabel!
     
     // MARK: - Stored Properties
     /// Brands view controller to use as profile collection view data source
@@ -18,6 +19,24 @@ class ProfileViewController: LoggingViewController {
     
     /// Gender to show in the collection view
     var shownGender: Gender?
+    
+    /// Version and build number
+    var version: String? {
+        didSet {
+            versionLabel?.text = version
+            
+            // Hide the version label
+            versionLabel.alpha = 0
+            
+            // Don't show version label if nil
+            guard version != nil else { return }
+            
+            // Make version label appear in 3 seconds
+            UIView.animate(withDuration: 1, delay: 3, options: []) {
+                self.versionLabel.alpha = 0.5
+            }
+        }
+    }
     
     // MARK: - Inhertited Methods
     override func viewDidLayoutSubviews() {
@@ -30,6 +49,9 @@ class ProfileViewController: LoggingViewController {
         
         // Find and configure brands view controller
         brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self)
+        
+        // Configure version label with version and build
+        configureVersionLabel()
         
         // Configure navigation controller's bar font
         navigationController?.configureFont()
