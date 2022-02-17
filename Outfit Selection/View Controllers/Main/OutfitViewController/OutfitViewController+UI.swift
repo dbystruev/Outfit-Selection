@@ -262,8 +262,6 @@ extension OutfitViewController {
             loadImages()
         }
         
-        debug(scrollViews?.itemCount, itemsToShow.count)
-        
         // Scrol to downloaded imagesitemsToShow
         scrollTo(items: itemsToShow, ordered: false) { [self] completion in
             guard completion else { return }
@@ -274,7 +272,11 @@ extension OutfitViewController {
             // Set lock button shuffle
             shuffleButtonCheck(lock: true)
             
+            // Update occasions
             updateOccasionsUI(selectedTitle: occasionSelected?.title)
+            
+            // Hide hints
+            hideBubbles()
         }
     }
     

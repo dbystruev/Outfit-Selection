@@ -42,8 +42,12 @@ extension AppDelegate {
                 // Download all images and add to viewModels
                 ItemManager.shared.loadImagesFromItems(items: items) {
                     
+                    // Load settings
+                    self.configureSettings()
+            
                     // Go to NavigationManager into outfit
                     NavigationManager.navigate(to: .outfit(items: items))
+                    
                 }
                 
             default:
