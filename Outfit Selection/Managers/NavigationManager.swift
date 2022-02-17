@@ -83,8 +83,8 @@ class NavigationManager: LoggingViewController {
             } else {
                 presentOutfitViewControllerWithTabBar(
                     items: items,
-                    navigationController: navigationController,
-                    tabBarController: tabBarController
+                    navigationController,
+                    tabBarController
                 )
             }
             
@@ -105,27 +105,27 @@ class NavigationManager: LoggingViewController {
     ///   - tabBarController: the tab bar controller
     public static func presentOutfitViewControllerWithTabBar(
         items: Items,
-        navigationController: UINavigationController,
-        tabBarController: UITabBarController
+        _ navigationController: UINavigationController,
+        _ tabBarController: UITabBarController
     ) {
         // Get tab bat index
         let indexTabBar = Globals.tabBar.index.outfit
         
         // Get the list of view controllers from tab bar
         guard let viewControllers = tabBarController.viewControllers else {
-            debug("There are no view controllers in tab bar")
+            debug("WARNING: There are no view controllers in tab bar")
             return
         }
         
         // Get navigation controller from tab bar with index
         guard let navigationController = viewControllers[indexTabBar] as? UINavigationController else {
-            debug("Navigation controller is not available")
+            debug("WARNING: Navigation controller is not available")
             return
         }
         
         // Get outfit view controller
         guard let outfitViewController = navigationController.findViewController(ofType: OutfitViewController.self) else {
-            debug("OutfitViewController controller is not available")
+            debug("WARNING: OutfitViewController controller is not available")
             return
         }
 
@@ -175,17 +175,27 @@ class NavigationManager: LoggingViewController {
         
         // Find outfit view controller in tab bar hierarchy
         guard let outfitViewController = tabBarController.findViewController(ofType: OutfitViewController.self) else {
-            debug("OutfitViewController not found")
+            debug("WARNING: OutfitViewController not found")
             return
         }
         
+//        guard let profileViewController = tabBarController.findViewController(ofType: ProfileViewController.self) else {
+//            debug("WARNING: ProfileViewController not found")
+//            return
+//        }
+                
+        
         //  Get viewModels IDs
         let viewModelsItemIDs = Set(ItemManager.shared.viewModels.items.IDs)
-        debug(viewModelsItemIDs.count, items.IDs.count, viewModelsItemIDs.intersection(items.IDs).count)
         guard items.isEmpty || !viewModelsItemIDs.isSubset(of: items.IDs) else {
             
             // Set items to show
             outfitViewController.itemsToShow = items
+            
+//            let brandsCollectionView =  profileViewController.brandsViewController?.brandsCollectionView
+//            brandsCollectionView?.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
+//
+
             
             // Push NavigationController with tabBar
             NavigationManager.shared.pushViewController (navigationController, tabBarController)

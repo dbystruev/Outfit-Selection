@@ -39,7 +39,7 @@ class ProgressViewController: LoggingViewController {
     
     // MARK: - Stored Properties
     /// The collection of brand images
-    let brandedImages = BrandManager.shared.brandedImages
+    // let brandedImages = BrandManager.shared.brandedImages
     
     /// Switch to tab bar index after the move to tab bar view controller
     var selectedTabBarIndex = 0

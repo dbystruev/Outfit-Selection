@@ -22,11 +22,6 @@ extension Corners {
         [.topLeft, .bottomLeft, .topRight, .middleRight, .bottomRight]
     }
     
-    /// Convert corners from occasions order to outfit order
-    static var occasionsFromUrl: Corners {
-        [.topRight, .middleRight, .bottomRight, .bottomLeft, .topLeft]
-    }
-    
     /// Convert corners from outfit order to the same outfit order
     static var outfit: Corners { Corner.allCases }
 }

@@ -86,12 +86,9 @@ final class ItemManager {
         // Go through all items and load images one by one
         
         DispatchQueue.global(qos: .background).async {
-            
-            //let itemsCorner = items.corners(.outfit)
-            let itemsCorner = items.corners(.occasionsFromUrl)
-            
+
             // var itemsSkipped = 0
-            for (item, viewModel) in zip(itemsCorner, self.viewModels ) {
+            for (item, viewModel) in zip(items, self.viewModels ) {
                 
                 // Get the item picture url
                 guard let pictureURL = item.pictures.first else {
@@ -124,7 +121,7 @@ final class ItemManager {
                 DispatchQueue.main.async {
                     completion()
                 }
-            
+                
                 // Show stats when all loads are finished
                 let elapsedTime = Date().timeIntervalSince(startTime)
                 debug("Loaded", self.count, "images in \(elapsedTime.asTime) s")
@@ -293,7 +290,7 @@ final class ItemManager {
                 queue: DispatchQueue.global(qos: .background)
             ) {
                 // Filter out occasions without images in view models
-//                Occasions.filter(by: self.viewModels.corneredItems)
+                //                Occasions.filter(by: self.viewModels.corneredItems)
                 
                 completion(self.count, self.count)
                 

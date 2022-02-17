@@ -179,11 +179,23 @@ class NetworkManager {
     ///   - IDs: items IDs
     ///   - completion: closure called when request is finished, with items if successfull, or with nil if not
     func getItems(_ IDs: [String], completion: @escaping (Items?) -> Void) {
+        
         // Include id=in.(..., ...) parameter
         let parameters = ["id": "in.(\(IDs.commaJoined))"]
         
         // Request the items from the API
-        getItems(with: parameters, completion: completion)
+        getItems(with: parameters) { items in
+            guard let items = items else {
+                completion(nil)
+                return
+            }
+            
+            let orderedItems = IDs.compactMap { id in
+                items.first { $0.id == id }
+            }
+            
+            completion(orderedItems)
+        }
     }
     
     /// Add /items?category_id=in.(..., ...)&vendor=in.(..., ...)&limit=... to server URL and call the API
