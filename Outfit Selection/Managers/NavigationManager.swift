@@ -30,16 +30,45 @@ class NavigationManager: LoggingViewController {
     ///   - navigationController: UINavigationController
     ///   - IUController: some  UIViewController, example tabBarVievController
     private func pushViewController (
-        _ navigationController: UINavigationController,
-        _ tabBarController: UIViewController
+        navigationController: UINavigationController,
+        viewController: UIViewController,
+        animated: Bool = true
     ) {
         
         // Unhide top navigation bar
         navigationController.isNavigationBarHidden = false
         
         // Push to tab bar view controller
-        navigationController.pushViewController(tabBarController, animated: true)
+        navigationController.pushViewController(viewController, animated: animated)
     }
+    
+    /// Get viewController from storyboard and push it into navigationController
+    /// - Parameters:
+    ///   - name: storyboard name
+    ///   - identity: Array with storyboard ID
+    ///   - navigate: UINavigationController
+    ///   - animated: bool for animated
+    private func pushViewController(
+        name: String,
+        identity:[String],
+        navigate: UINavigationController,
+        animated: Bool
+    ) {
+        for identity in identity {
+            
+            // Get storyboard use name
+            let storyboard = UIStoryboard(name: name, bundle: nil)
+            
+            // Find view controller use identity
+            let controller = storyboard.instantiateViewController(withIdentifier: identity)
+            
+            // Push view controller to the UINavigationController
+            navigate.pushViewController(controller, animated: animated)
+        }
+        
+        
+    }
+    
     
     // MARK: - Public Static Methods
     /// Navigate to a given screen
@@ -128,15 +157,16 @@ class NavigationManager: LoggingViewController {
             debug("WARNING: OutfitViewController controller is not available")
             return
         }
-
+        
+        // Clear all scroll views for new items
         outfitViewController.scrollViews.clear()
-
-        debug(outfitViewController.scrollViews.count)
-        // Set items to show
+        
+        // Set items to show scrollViews
         outfitViewController.itemsToShow = items
         
+        // Check items checkItemsToShow and download it if
         outfitViewController.checkItemsToShow()
-                
+        
         // Check state tab bar controller
         guard tabBarController.selectedIndex != indexTabBar else { return }
         tabBarController.selectedIndex = indexTabBar
@@ -179,12 +209,6 @@ class NavigationManager: LoggingViewController {
             return
         }
         
-//        guard let profileViewController = tabBarController.findViewController(ofType: ProfileViewController.self) else {
-//            debug("WARNING: ProfileViewController not found")
-//            return
-//        }
-                
-        
         //  Get viewModels IDs
         let viewModelsItemIDs = Set(ItemManager.shared.viewModels.items.IDs)
         guard items.isEmpty || !viewModelsItemIDs.isSubset(of: items.IDs) else {
@@ -192,13 +216,21 @@ class NavigationManager: LoggingViewController {
             // Set items to show
             outfitViewController.itemsToShow = items
             
-//            let brandsCollectionView =  profileViewController.brandsViewController?.brandsCollectionView
-//            brandsCollectionView?.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
-//
-
+            // Push BrandsViewController and OccasionsViewController
+            let identityIDs = ["BrandsViewController","OccasionsViewController"]
+            NavigationManager.shared.pushViewController(
+                name: "Welcome",
+                identity: identityIDs,
+                navigate: navigationController,
+                animated: false
+            )
             
             // Push NavigationController with tabBar
-            NavigationManager.shared.pushViewController (navigationController, tabBarController)
+            NavigationManager.shared.pushViewController (
+                navigationController: navigationController,
+                viewController: tabBarController,
+                animated: false
+            )
             
             return
         }
@@ -220,9 +252,11 @@ class NavigationManager: LoggingViewController {
             BrandManager.shared.brandedImages = brandedImages
             
             DispatchQueue.main.async {
-                NavigationManager.shared.pushViewController (navigationController, tabBarController)
+                NavigationManager.shared.pushViewController (
+                    navigationController: navigationController,
+                    viewController: tabBarController
+                )
             }
         }
     }
-
 }

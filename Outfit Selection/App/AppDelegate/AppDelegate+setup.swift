@@ -23,13 +23,17 @@ extension AppDelegate {
         
         // Load all collection of brand
         let brandedImages = BrandManager.shared.brandedImages
-        if BrandManager.shared.brandedImages.selected.count < 0 {
+        if BrandManager.shared.brandedImages.selected.count < 1 {
             brandedImages.forEach { $0.isSelected = true }
         }
 
+        debug("Occasions: ", Occasions.selected.count)
+        
         // Load all occasions
         let occasions = Occasions.currentGender
-        occasions.forEach { $0.isSelected = true }
+        if occasions.selected.count < 1 {
+            occasions.forEach { $0.isSelected = true }
+        }
 
     }
 }
