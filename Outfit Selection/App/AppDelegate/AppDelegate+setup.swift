@@ -15,17 +15,25 @@ extension AppDelegate {
     /// Configure default settings
     func configureSettings(){
         
-        // Set netral gender
-        Gender.current = Gender.other
-
+        // Check gender
+        if (Gender.current == nil) {
+            // Set netral gender
+            Gender.current = Gender.other
+        }
+        
         // Load all collection of brand
         let brandedImages = BrandManager.shared.brandedImages
-        brandedImages.forEach { $0.isSelected = true }
+        if BrandManager.shared.brandedImages.selected.count < 1 {
+            brandedImages.forEach { $0.isSelected = true }
+        }
+
+        debug("Occasions: ", Occasions.selected.count)
         
         // Load all occasions
         let occasions = Occasions.currentGender
-        occasions.forEach { $0.isSelected = true }
-
+        if occasions.selected.count < 1 {
+            occasions.forEach { $0.isSelected = true }
+        }
 
     }
 }
