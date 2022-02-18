@@ -6,11 +6,10 @@
 //  Copyright © 2022 Denis Bystruev. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 // Methods used for navigating between app's screens
-class NavigationManager: LoggingViewController {
+class NavigationManager {
     
     // MARK: - Public Type
     /// Enum with the  screens to navigate to
@@ -24,51 +23,48 @@ class NavigationManager: LoggingViewController {
     // MARK: - Static Properties
     static let shared = NavigationManager()
     
-    // MARK: - Pravite Methods
-    /// Push use pushViewController
+    // MARK: - Private Methods
+    private init() {}
+    
+    /// Unhide navigation bar and push view controller into navigation controller
     /// - Parameters:
-    ///   - navigationController: UINavigationController
-    ///   - IUController: some  UIViewController, example tabBarVievController
+    ///   - navigationController: navigation controller to push view controller into
+    ///   - viewController: view controller to push into navigation controller, for example tabBarViewController
     private func pushViewController (
         navigationController: UINavigationController,
         viewController: UIViewController,
         animated: Bool = true
     ) {
-        
         // Unhide top navigation bar
         navigationController.isNavigationBarHidden = false
         
-        // Push to tab bar view controller
+        // Push to navigation controller
         navigationController.pushViewController(viewController, animated: animated)
     }
     
-    /// Get viewController from storyboard and push it into navigationController
+    /// Push view controllers with given identities from given storyboard into given navigation controller
     /// - Parameters:
     ///   - name: storyboard name
-    ///   - identity: Array with storyboard ID
-    ///   - navigate: UINavigationController
-    ///   - animated: bool for animated
+    ///   - identity: array with identities of view controllers
+    ///   - navigationController: navigation controller to push view controller into
+    ///   - animated: true if should be animated
     private func pushViewController(
         name: String,
-        identity:[String],
-        navigate: UINavigationController,
+        identities: [String],
+        navigationController: UINavigationController,
         animated: Bool
     ) {
-        for identity in identity {
-            
-            // Get storyboard use name
-            let storyboard = UIStoryboard(name: name, bundle: nil)
-            
-            // Find view controller use identity
+        // Get storyboard with given name
+        let storyboard = UIStoryboard(name: name, bundle: nil)
+        
+        for identity in identities {
+            // Find view controller with given identity
             let controller = storyboard.instantiateViewController(withIdentifier: identity)
             
-            // Push view controller to the UINavigationController
-            navigate.pushViewController(controller, animated: animated)
+            // Push view controller to the navigation controller
+            navigationController.pushViewController(controller, animated: animated)
         }
-        
-        
     }
-    
     
     // MARK: - Public Static Methods
     /// Navigate to a given screen
@@ -77,19 +73,19 @@ class NavigationManager: LoggingViewController {
         
         // Get app delegate — should be available
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            debug("App delegate is not found")
+            debug("ERROR: App delegate is not found")
             return
         }
         
         // Get root view controller
         guard let rootViewController = appDelegate.window?.rootViewController else {
-            debug("Root view controller is not available")
+            debug("ERROR: Root view controller is not available")
             return
         }
         
         // Get navigation view controller
         guard let navigationController = rootViewController as? UINavigationController else {
-            debug("Navigation controller is not available")
+            debug("ERROR: Root view controller is not navigation controller")
             return
         }
         
@@ -97,7 +93,7 @@ class NavigationManager: LoggingViewController {
             
         case .outfit(let items):
             
-            // Find Tab Bar controller
+            // Find tab bar controller
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
                 debug("Tab Bar Controller is not available")
                 
@@ -220,8 +216,8 @@ class NavigationManager: LoggingViewController {
             let identityIDs = ["BrandsViewController","OccasionsViewController"]
             NavigationManager.shared.pushViewController(
                 name: "Welcome",
-                identity: identityIDs,
-                navigate: navigationController,
+                identities: identityIDs,
+                navigationController: navigationController,
                 animated: false
             )
             

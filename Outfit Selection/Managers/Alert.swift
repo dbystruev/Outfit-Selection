@@ -61,7 +61,7 @@ enum Alert {
         sender: ProfileViewController
     ) -> UIAlertController {
         configured(
-            "Change to"~ + " \(newGender)",
+            "Change to"~ + " \(newGender.rawValue~)",
             message: "Will reload items and wishlists"~,
             actionTitles: ["Don't"~, "Change"~],
             styles: [.cancel, .destructive],
