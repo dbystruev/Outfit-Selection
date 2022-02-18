@@ -56,8 +56,10 @@ class TabBarController: UITabBarController {
         // Start reloading the items
         NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
         
-        // If gender has been changed avoid extra checks
-        if !hasGenderChanged {
+        // Make sure outfit view controller contains occasions with current gender
+        if hasGenderChanged {
+            findViewController(ofType: OutfitViewController.self)?.configureOccasions()
+        } else {
             // Don't pop if we have changed to profile view controller
             guard let navigationController = selectedViewController as? UINavigationController else { return }
             guard let firstViewController = navigationController.viewControllers.first else { return }

@@ -87,9 +87,17 @@ extension OutfitViewController {
     
     /// Configure occasions stack view
     func configureOccasions() {
-        // Select new occasion if occasion selected is not set
-        lazy var selectedOccasions = Occasions.selectedUniqueTitle.sorted(by: { $0.label < $1.label })
-        occasionSelected = occasionSelected ?? selectedOccasions.randomElement()
+        // Select new occasion if occasion selected is not set or gender is different
+        lazy var selectedOccasions = Occasions
+            .selectedUniqueTitle
+            .gender(Gender.current)
+            .sorted(by: { $0.label < $1.label })
+        lazy var randomSelectedOccasion = selectedOccasions.randomElement()
+        
+        let gender = occasionSelected?.gender
+        occasionSelected = gender == Gender.current || Gender.current == .other
+            ? occasionSelected ?? randomSelectedOccasion
+            : randomSelectedOccasion
         
         // Hide occasions stack view if no occasions are selected
         let isHidden = selectedOccasions.isEmpty
@@ -114,8 +122,7 @@ extension OutfitViewController {
         // Fill existing arranged subviews with selected occasions
         for (button, occasion) in zip(buttons, selectedOccasions) {
             // Set next occasion name as button name
-            button.occasion = occasion
-            button.setTitle(occasion.label, for: .normal)
+            button.set(occasion: occasion)
         }
         
         // If there are no enough buttons add more buttons
@@ -411,7 +418,7 @@ extension OutfitViewController {
         // Go through all occastion buttons and underline the selected one
         for (button, underline) in zip(buttons, underlines) {
             // Set button opacity depending on whether it is selected
-            let isSelected = button.occasion?.title == titleToUnderline
+            let isSelected = button.title == titleToUnderline
             
             // Check and set alpha and isEnabled for buttons
             if !occasionItemsAreLoading {

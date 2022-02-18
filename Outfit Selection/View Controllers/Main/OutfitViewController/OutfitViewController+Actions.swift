@@ -84,25 +84,16 @@ extension OutfitViewController {
         }
         
         // Get the occasion from the button
-        guard var tappedOccasion = sender.occasion else { return }
-        
-        // If we tapped an occasion with the same title, scroll to it
-        guard occasionSelected?.title != tappedOccasion.title || !itemsToShow.isEmpty  else {
-            // Make sure enough item images are loaded
-            guard allowShuffle else { return }
-            
-            scrollTo(occasion: tappedOccasion)
-            return
-        }
+        guard var tappedOccasion = sender.occasion(for: Gender.current) else { return }
 
         // Remove items to show from universal link
-        self.itemsToShow.removeAll()
+        itemsToShow.removeAll()
         
         // Set status occasions elements
         occasionItemsAreLoading = true
         
         // Set selected button by the user
-        occasionSelected = sender.occasion
+        occasionSelected = sender.occasion(for: Gender.current)
         
         // If we tapped an occasion with different title, reload it
         Occasion.selected = tappedOccasion
@@ -111,9 +102,9 @@ extension OutfitViewController {
         let gender = Gender.current
         
         // Reload items from the server for changed occasion
-        NetworkManager.shared.reloadItems(for: gender) { [weak self] success in
+        NetworkManager.shared.reloadItems(from: tappedOccasion) { [weak self] success in
             if success == true {} else {
-                debug("ERROR reloading items for", gender)
+                debug("ERROR reloading items for", gender, tappedOccasion)
                 
                 // Set status occasions elements
                 self?.occasionItemsAreLoading = false

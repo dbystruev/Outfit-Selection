@@ -359,12 +359,16 @@ class NetworkManager {
     /// Load (or reload) items from the server first time or when something has changed
     /// - Parameters:
     ///   - gender: gender to load the items for
-    ///   - occasionTitle: occasion title to reload the items for
+    ///   - occasion: occasion to load the items for
     ///   - completion: closure called when all requests are finished, with true if successfull or false otherwise
     func reloadItems(
-        for gender: Gender?,
+        for gender: Gender? = nil,
+        from occasion: Occasion? = nil,
         completion: @escaping (Bool?) -> Void
     ) {
+        
+        debug(gender, occasion)
+        
         // Get occasions with the same title and given gender
         lazy var selectedOccasions = Occasions
             .selectedUniqueTitle
@@ -374,9 +378,8 @@ class NetworkManager {
         
         // Don't change occasion if gender is the same, do change for different gender
         let oldOccasion = Occasion.selected
-        Occasion.selected = gender == oldOccasion?.gender
-            ? oldOccasion ?? newOccasion
-            : newOccasion
+        Occasion.selected = occasion
+        ?? (gender == oldOccasion?.gender || gender == .other ? oldOccasion ?? newOccasion : newOccasion)
         
         // Load items if none are found
         ItemManager.shared.loadItems(for: Occasion.selected, completion: completion)
