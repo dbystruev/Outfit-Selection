@@ -365,12 +365,18 @@ class NetworkManager {
         for gender: Gender?,
         completion: @escaping (Bool?) -> Void
     ) {
-        // By default make the first occasion selected
+        // Get occasions with the same title and given gender
         lazy var selectedOccasions = Occasions
             .selectedUniqueTitle
             .gender(gender)
             .sorted(by: { $0.label < $1.label })
-        Occasion.selected = Occasion.selected ?? selectedOccasions.randomElement()
+        lazy var newOccasion = selectedOccasions.randomElement()
+        
+        // Don't change occasion if gender is the same, do change for different gender
+        let oldOccasion = Occasion.selected
+        Occasion.selected = gender == oldOccasion?.gender
+            ? oldOccasion ?? newOccasion
+            : newOccasion
         
         // Load items if none are found
         ItemManager.shared.loadItems(for: Occasion.selected, completion: completion)
