@@ -60,8 +60,13 @@ enum Globals {
         }
     }
     
+    /// NotificationCenter.default
+    enum Notification {
+        static let notificationCenter = NotificationCenter.default
+    }
+    
     /// Index outfit view controller from tabBarController
-    enum tabBar {
+    enum TabBar {
         enum index {
             static let outfit = 0
         }

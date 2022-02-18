@@ -134,7 +134,7 @@ class NavigationManager {
         _ tabBarController: UITabBarController
     ) {
         // Get tab bat index
-        let indexTabBar = Globals.tabBar.index.outfit
+        let indexTabBar = Globals.TabBar.index.outfit
         
         // Get the list of view controllers from tab bar
         guard let viewControllers = tabBarController.viewControllers else {
@@ -197,7 +197,7 @@ class NavigationManager {
         }
         
         // Switch to tab saved in previous version of tab bar controller
-        tabBarController.selectedIndex = Globals.tabBar.index.outfit
+        tabBarController.selectedIndex = Globals.TabBar.index.outfit
         
         // Find outfit view controller in tab bar hierarchy
         guard let outfitViewController = tabBarController.findViewController(ofType: OutfitViewController.self) else {

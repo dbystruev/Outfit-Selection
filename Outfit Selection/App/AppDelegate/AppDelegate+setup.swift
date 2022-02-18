@@ -6,7 +6,6 @@
 //  Copyright © 2022 Denis Bystruev. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
 extension AppDelegate {
