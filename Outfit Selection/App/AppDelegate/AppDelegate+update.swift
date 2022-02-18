@@ -44,6 +44,13 @@ extension AppDelegate {
             
             // Show elapsed time
             let elapsedTime = Date().timeIntervalSince(startTime)
+            
+            // Post notification with name
+            Globals.Notification.notificationCenter.post(
+                name: Notification.Name("updatedOccasions"),
+                object: nil
+            )
+            
             debug(
                 "INFO: Loaded \(Occasions.titles.count) / \(Occasions.count) occasions in \(elapsedTime.asTime) s,",
                 "subcategories: \(Occasions.flatSubcategoryIDs.count),",

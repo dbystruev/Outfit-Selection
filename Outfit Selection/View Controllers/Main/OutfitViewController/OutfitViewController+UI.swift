@@ -257,7 +257,7 @@ extension OutfitViewController {
         //Check items and scrollViews
         guard !itemsToShow.isEmpty && scrollViews?.itemCount != nil else { return }
         
-        if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count || Globals.tabBar.status.found
+        if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count || Globals.TabBar.status.found
         {
             loadImages()
         }
@@ -267,7 +267,7 @@ extension OutfitViewController {
             guard completion else { return }
             
             //ItemManager.shared.clearViewModels()
-            Globals.tabBar.status.found = false
+            Globals.TabBar.status.found = false
             
             // Set lock button shuffle
             shuffleButtonCheck(lock: true)
@@ -467,5 +467,20 @@ extension OutfitViewController {
         
         // Update subcategory labels
         updateSubcategoryLabels()
+    }
+    
+    @objc func updatedOccasions() {
+        
+        // Get the navigation controller for the outfit view controller
+        guard let navigationController = tabBarController?.viewControllers?.first as? UINavigationController else {
+            debug("ERROR: TabBar controller is not navigation controller")
+            return }
+        
+        // Find outfit view controller in navigation stack
+        guard let outfitViewController = navigationController.findViewController(ofType: OutfitViewController.self) else {
+            debug("ERROR: Didn't find outfit view controller")
+            return
+        }
+  
     }
 }

@@ -64,6 +64,7 @@ extension OutfitViewController {
        
         checkItemsToShow()
         updateUI()
+        Globals.Notification.notificationCenter.addObserver(self, selector: #selector(updatedOccasions), name: Notification.Name("updatedOccasions"), object: nil)
     }
     
     override func viewDidLayoutSubviews() {

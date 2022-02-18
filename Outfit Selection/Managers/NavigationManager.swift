@@ -95,7 +95,7 @@ class NavigationManager {
             
             // Find tab bar controller
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
-                debug("Tab Bar Controller is not available")
+                debug("INFO: Tab Bar Controller is not available")
                 
                 // If tab bar controller is not available go to
                 presentOutfitViewController(for: items, in: navigationController)
@@ -134,23 +134,23 @@ class NavigationManager {
         _ tabBarController: UITabBarController
     ) {
         // Get tab bat index
-        let indexTabBar = Globals.tabBar.index.outfit
+        let indexTabBar = Globals.TabBar.index.outfit
         
         // Get the list of view controllers from tab bar
         guard let viewControllers = tabBarController.viewControllers else {
-            debug("WARNING: There are no view controllers in tab bar")
+            debug("ERROR: There are no view controllers in tab bar")
             return
         }
         
         // Get navigation controller from tab bar with index
         guard let navigationController = viewControllers[indexTabBar] as? UINavigationController else {
-            debug("WARNING: Navigation controller is not available")
+            debug("ERROR: Navigation controller is not available")
             return
         }
         
         // Get outfit view controller
         guard let outfitViewController = navigationController.findViewController(ofType: OutfitViewController.self) else {
-            debug("WARNING: OutfitViewController controller is not available")
+            debug("ERROR: OutfitViewController controller is not available")
             return
         }
         
@@ -192,16 +192,16 @@ class NavigationManager {
         let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let controller = mainStoryboard.instantiateViewController(withIdentifier: "tabBarController")
         guard let tabBarController = controller as? UITabBarController else {
-            debug("WARNING: Can't get Tab Bar Controller from the storyboard", mainStoryboard)
+            debug("ERROR: Can't get Tab Bar Controller from the storyboard", mainStoryboard)
             return
         }
         
         // Switch to tab saved in previous version of tab bar controller
-        tabBarController.selectedIndex = Globals.tabBar.index.outfit
+        tabBarController.selectedIndex = Globals.TabBar.index.outfit
         
         // Find outfit view controller in tab bar hierarchy
         guard let outfitViewController = tabBarController.findViewController(ofType: OutfitViewController.self) else {
-            debug("WARNING: OutfitViewController not found")
+            debug("ERROR: OutfitViewController not found")
             return
         }
         
@@ -212,8 +212,12 @@ class NavigationManager {
             // Set items to show
             outfitViewController.itemsToShow = items
             
-            // Push BrandsViewController and OccasionsViewController
-            let identityIDs = ["BrandsViewController","OccasionsViewController"]
+            // Push ViewControllers
+            let identityIDs = [
+                "BrandsViewController",
+                "OccasionsViewController",
+                "ProgressViewController"
+            ]
             NavigationManager.shared.pushViewController(
                 name: "Welcome",
                 identities: identityIDs,
