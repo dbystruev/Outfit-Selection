@@ -29,6 +29,8 @@ extension AppDelegate {
     static func updateOccasions() {
         let startTime = Date()
         
+        let nameNotification = Globals.Notification.name.updatedOccasions
+        
         NetworkManager.shared.getOccasions { occasions in
             // Make sure we don't update to the empty list of occasions
             guard let occasions = occasions, !occasions.isEmpty else { return }
@@ -44,17 +46,17 @@ extension AppDelegate {
             
             // Show elapsed time
             let elapsedTime = Date().timeIntervalSince(startTime)
-            
-            // Post notification with name
-            Globals.Notification.notificationCenter.post(
-                name: Notification.Name("updatedOccasions"),
-                object: nil
-            )
-            
+
             debug(
                 "INFO: Loaded \(Occasions.titles.count) / \(Occasions.count) occasions in \(elapsedTime.asTime) s,",
                 "subcategories: \(Occasions.flatSubcategoryIDs.count),",
                 "items: \(Occasions.flatItemIDs.count)"
+            )
+            
+            // Post notification with name
+            Globals.Notification.notificationCenter.post(
+                name: Notification.Name(nameNotification),
+                object: nil
             )
         }
     }

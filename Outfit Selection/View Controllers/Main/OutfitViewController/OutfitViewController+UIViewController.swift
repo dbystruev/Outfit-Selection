@@ -64,7 +64,15 @@ extension OutfitViewController {
        
         checkItemsToShow()
         updateUI()
-        Globals.Notification.notificationCenter.addObserver(self, selector: #selector(updatedOccasions), name: Notification.Name("updatedOccasions"), object: nil)
+        
+        // Start observer updatedOccasions
+        Globals.Notification.notificationCenter.addObserver(
+            self,
+            selector: #selector(updatedOccasions),
+            name: Notification.Name(nameNotification),
+            object: nil
+        )
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -90,6 +98,11 @@ extension OutfitViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         hideBubbles()
+        
+        // Remove observer updatedOccasions
+        Globals.Notification.notificationCenter.removeObserver(self)
+        
+        debug("UpdatedOccasions observer was removed")
     }
     
     override func viewWillLayoutSubviews() {

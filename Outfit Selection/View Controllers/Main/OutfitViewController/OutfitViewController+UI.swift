@@ -111,6 +111,9 @@ extension OutfitViewController {
         let buttons = buttonUnderlineStackViews.compactMap {
             $0.arrangedSubviews.first as? OccasionButton
         }
+        
+        debug(buttons.count , buttonUnderlineStackViews.count)
+        
         guard
             let firstButton = buttons.first,
             buttons.count == buttonUnderlineStackViews.count else
@@ -201,7 +204,11 @@ extension OutfitViewController {
         }
         
         // Clear scroll views
-        scrollViews.clear()
+        for scrollView in scrollViews {
+            if !scrollView.isPinned {
+                scrollView.clear()
+            }
+        }
         
         // Load images from view models into scroll view
         ItemManager.shared.loadImages(into: scrollViews, matching: corneredSubcategoryIDs)
@@ -343,7 +350,7 @@ extension OutfitViewController {
     
     /// Show / hide shuffleButton
     func shuffleButtonCheck(lock: Bool) {
-        shuffleButton.alpha = lock ? 0.25 : 1
+        shuffleButton.alpha = lock ? 0.75 : 1
         shuffleButton.isEnabled = lock ? false : true
     }
     
@@ -476,18 +483,37 @@ extension OutfitViewController {
         updateSubcategoryLabels()
     }
     
+    /// Reload ocassions
     @objc func updatedOccasions() {
-        
-        // Get the navigation controller for the outfit view controller
-        guard let navigationController = tabBarController?.viewControllers?.first as? UINavigationController else {
-            debug("ERROR: TabBar controller is not navigation controller")
-            return }
-        
-        // Find outfit view controller in navigation stack
-        guard let outfitViewController = navigationController.findViewController(ofType: OutfitViewController.self) else {
-            debug("ERROR: Didn't find outfit view controller")
-            return
+    
+        // Return to main
+        DispatchQueue.main.async {
+            guard let tabBarController = self.tabBarController as? TabBarController else {
+                debug("ERROR: can't cast", self.tabBarController, "to TabBarConroller")
+                return
+            }
+
+            // Get the list of view controllers from tab bar
+            guard let viewControllers = tabBarController.viewControllers else {
+                debug("ERROR: There are no view controllers in tab bar")
+                return
+            }
+            
+            // Get navigation controller from tab bar with index
+            guard let navigationController = viewControllers[0] as? UINavigationController else {
+                debug("ERROR: Navigation controller is not available")
+                return
+            }
+            
+            // Get outfit view controller
+            guard let outfitViewController = navigationController.findViewController(ofType: OutfitViewController.self) else {
+                debug("ERROR: OutfitViewController controller is not available")
+                return
+            }
+            
+            // TODO: Load occasions
+            outfitViewController.configureOccasions()
+            
         }
-  
     }
 }

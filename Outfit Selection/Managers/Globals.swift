@@ -60,9 +60,15 @@ enum Globals {
         }
     }
     
-    /// NotificationCenter.default
+    /// NotificationCenter
     enum Notification {
+        /// NotificationCenter.default
         static let notificationCenter = NotificationCenter.default
+        
+        /// Names
+        enum name {
+            static let updatedOccasions = "updatedOccasions"
+        }
     }
     
     /// Index outfit view controller from tabBarController
