@@ -25,8 +25,6 @@ extension AppDelegate {
         if BrandManager.shared.brandedImages.selected.count < 1 {
             brandedImages.forEach { $0.isSelected = true }
         }
-
-        debug("Occasions: ", Occasions.selected.count)
         
         // Load all occasions
         let occasions = Occasions.currentGender

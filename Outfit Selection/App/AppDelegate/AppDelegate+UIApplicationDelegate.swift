@@ -95,7 +95,9 @@ extension AppDelegate: UIApplicationDelegate {
             AppDelegate.updateCategories()
             
             // Update the list of occasions from the server
-            AppDelegate.updateOccasions()
+//            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                AppDelegate.updateOccasions()
+//            }
         }
         
         // Change global tint color

@@ -137,6 +137,13 @@ extension PinnableScrollViews {
         // Scroll each scroll view to the matching item ID
         for (id, scrollView) in zip(scrollIDs, self) {
             scrollGroup.enter()
+            
+            // Is looking for where isPined set true
+            guard !scrollView.isPinned else {
+                scrollGroup.leave()
+                continue
+            }
+                    
             scrollView.scrollToElement(withID: id) { completed in
                 isCompleted = completed && isCompleted
                 scrollGroup.leave()
