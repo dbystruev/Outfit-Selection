@@ -68,6 +68,11 @@ extension OutfitViewController {
         // Lock / Unlock button suffle
         self.shuffleButtonCheck(lock: true)
         
+        // Check hanger buttons is showing
+        if showHangerButtons {
+            showHangerButtons = false
+        }
+        
         // Get currently selected occasion Button
         guard let currentOccasionSelected = occasionSelected else {
             debug("ERROR: No occasion button was selected")
@@ -147,6 +152,9 @@ extension OutfitViewController {
                 
                 // Lock / Unlock button suffle
                 self.shuffleButtonCheck(lock: false)
+                
+                // Disable refresh button if all scroll views are pinned
+//                self.shuffleButton.isEnabled = !self.scrollViews.allPinned
             }
         }
     }
