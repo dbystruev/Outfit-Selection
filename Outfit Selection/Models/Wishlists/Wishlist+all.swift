@@ -82,6 +82,8 @@ extension Wishlist {
             return
         }
         
+        debug(wishlistItems.first?.itemIDs)
+        
         debug("DEBUG: Saving \(data) to user defaults wishlists")
         UserDefaults.wishlists = data
     }

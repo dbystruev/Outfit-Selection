@@ -109,7 +109,7 @@ extension OutfitViewController {
         occasionsStackView.isHidden = isHidden
         
         // Underline from accasion
-        occasionsStackViewHeightConstraint.constant = isHidden ? 0 : 22 //44
+        occasionsStackViewHeightConstraint.constant = isHidden ? 0 : 28 //44
         
         // Get buttons from occasions stack view
         let buttonUnderlineStackViews = occasionsStackView.arrangedSubviews.compactMap {

@@ -13,6 +13,8 @@ extension WishlistViewController: UICollectionViewDelegate {
         // Don't select anything in case we are not on wishlist screen
         guard collectionView == wishlistCollectionView else { return }
         
+        debug(wishlist[indexPath.row].itemIDs)
+        
         switch tabSelected {
         
         case .collection:
