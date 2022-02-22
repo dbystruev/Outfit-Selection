@@ -12,7 +12,7 @@
 "NXz-cG-HPg.title" = "Образ";
 
 /* Class = "UIButton"; normalTitle = "Occasions"; ObjectID = "QSs-rB-2If"; */
-"QSs-rB-2If.normalTitle" = "Cлучаи";
+"QSs-rB-2If.normalTitle" = "Загрузка...";
 
 /* Class = "UILabel"; text = "Loading..."; ObjectID = "TjY-vq-NEy"; */
 "TjY-vq-NEy.text" = "Считаем...";

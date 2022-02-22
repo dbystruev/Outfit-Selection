@@ -94,6 +94,11 @@ extension OutfitViewController {
             .sorted(by: { $0.label < $1.label })
         lazy var randomSelectedOccasion = selectedOccasions.randomElement()
         
+        debug(selectedOccasions.count)
+        
+        // Return if occasions isEmpty
+        guard Occasions.count > 0 else { return }
+        
         let gender = occasionSelected?.gender
         occasionSelected = gender == Gender.current || Gender.current == .other
             ? occasionSelected ?? randomSelectedOccasion
@@ -510,8 +515,8 @@ extension OutfitViewController {
                 debug("ERROR: OutfitViewController controller is not available")
                 return
             }
-            
-            // TODO: Load occasions
+
+            // Configure occasions
             outfitViewController.configureOccasions()
             
         }
