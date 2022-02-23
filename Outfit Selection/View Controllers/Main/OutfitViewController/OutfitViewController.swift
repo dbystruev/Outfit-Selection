@@ -17,6 +17,7 @@ class OutfitViewController: LoggingViewController {
     @IBOutlet weak var occasionsScrollView: UIScrollView!
     @IBOutlet weak var occasionsStackView: UIStackView!
     @IBOutlet weak var occasionsStackViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var occasionsTopStackViewConstraint: NSLayoutConstraint!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet var scrollViews: PinnableScrollViews!
     @IBOutlet weak var shuffleBubble: RefreshBubble! {
