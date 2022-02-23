@@ -107,10 +107,10 @@ extension PinnableScrollViews {
             
             // Find item with given id in corresponding view model
             guard let itemID = viewModel.firstItemID(with: IDs) else {
-                for id in IDs {
-                    debug(id, Items.values.IDs.contains(id))
-                }
-//                debug("No items with IDs \(IDs) were found in any view models")
+//                for id in IDs {
+//                    debug(id, Items.values.IDs.contains(id))
+//                }
+                debug("No items with IDs \(IDs) were found in any view models")
                 return nil
             }
             
