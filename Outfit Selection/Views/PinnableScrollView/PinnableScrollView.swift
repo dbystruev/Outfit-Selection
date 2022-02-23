@@ -14,6 +14,7 @@ class PinnableScrollView: UIScrollView {
     private(set) var isPinned = false {
         didSet {
             alpha = isPinned ? 1 : unpinnedAlpha
+            self.isScrollEnabled = !isPinned
         }
     }
     

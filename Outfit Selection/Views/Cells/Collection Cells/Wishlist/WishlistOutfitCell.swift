@@ -29,12 +29,12 @@ class WishlistOutfitCell: WishlistBaseCell {
         priceLabel.text = outfit.price.asPrice
         
         // Sorter items value
-        let sorteredItem = outfit.itemIDs.compactMap { id in
+        let sorteredItems = outfit.itemIDs.compactMap { id in
             outfit.items.first { $0.value.id == id }
         }
         
         // Configure pictures
-        for (item, pictureImageView) in zip(sorteredItem, pictureImageViews) {
+        for (item, pictureImageView) in zip(sorteredItems, pictureImageViews) {
             //debug(item.value.id, pictureImageView.tag )
             
             pictureImageView.image = nil
