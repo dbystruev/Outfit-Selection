@@ -44,6 +44,7 @@ extension OutfitViewController {
         
         // Dislike if we already liked it, or like if we didn't
         if Wishlist.contains(visibleItems) == true {
+            
             sender.isSelected = false
             Wishlist.remove(visibleItems)
         } else {
