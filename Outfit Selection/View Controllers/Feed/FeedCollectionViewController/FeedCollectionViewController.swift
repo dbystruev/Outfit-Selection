@@ -276,6 +276,9 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Set navigation item title
         title = "Feed"~
+        
+        // Configure navigation controller's bar font
+        navigationController?.configureFont()
     }
     
     override func viewWillAppear(_ animated: Bool) {

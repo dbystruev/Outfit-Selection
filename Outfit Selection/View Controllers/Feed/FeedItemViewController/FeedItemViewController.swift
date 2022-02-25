@@ -72,4 +72,6 @@ class FeedItemViewController: LoggingViewController {
         super.viewWillTransition(to: size, with: coordinator)
         itemCollectionViewLayout.sizeViewWillTransitionTo = size
     }
+    
+  
 }
