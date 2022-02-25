@@ -78,6 +78,24 @@ class NetworkManager {
     }
     
     // MARK: - Methods
+    /// Call items API and return all count items
+    /// - Parameters:
+    ///   - parameters: API query parameters
+    ///   - header: header name for seacher
+    ///   - completion: closure called when request is finished, witn count if successfull, or with nil if not
+    func exactCount(with parameters: [String: Any], header: String, completion: @escaping (Int?) -> Void) {
+        // Process get request
+        head("items", parameters: parameters, header: header) { [weak self] (item: String?) in
+            // Check for self availability
+            guard self != nil else {
+                debug("ERROR: self is not available")
+                completion(nil)
+                return
+            }
+            completion(Int(item?.lastComponent ?? "0"))
+        }
+    }
+    
     /// Send get request with parameters and call completion when done
     /// - Parameters:
     ///   - path: path to add to server URL
@@ -140,6 +158,64 @@ class NetworkManager {
             completion(decodedData)
         }
         
+        task.resume()
+    }
+    
+    /// Send head request with parameters and call completion when done
+    /// - Parameters:
+    ///   - path: path to add to server URL
+    ///   - parameters: query parameters to add to request
+    ///   - header: header name for seacher
+    ///   - completion: closure called after request is finished, with value from header if successfull, or with nil if not
+    func head<T: Codable>(_ path: String, parameters: [String: Any] = [:], header: String, completion: @escaping (T?) -> Void) {
+        
+        // Compose the request URL
+        let requestPath = url.appendingPathComponent(path)
+        let request = parameters.isEmpty ? requestPath : requestPath.withQueries(parameters)
+        
+        // Configure URLSession
+        let configuration = URLSessionConfiguration.default
+        configuration.httpAdditionalHeaders = ["Prefer": "count=exact"]
+        
+        // Check that we don't run more than allowed number of get requests in parallel
+        guard requestsRunning <= requestsLimit else {
+            debug("ERROR: the number of network get requests should not exceed \(requestsLimit)")
+            completion(nil)
+            return
+        }
+        
+        requestsRunning += 1
+        
+        // Make URLSession with configuration
+        let session = URLSession(configuration: configuration)
+        
+        let task = session.dataTask(with: request) { [weak self] _, response, error in
+            
+            // Check for self availability
+            guard let self = self else {
+                debug("ERROR: self is not available")
+                completion(nil)
+                return
+            }
+            
+            self.requestsRunning -= 1
+            
+            // Cast response to HTTPURLResponse
+            guard let httpResponse = response as? HTTPURLResponse else {
+                debug("ERROR: response is not HTTPURLResponse")
+                completion(nil)
+                return
+            }
+            
+            // Get value from name header
+             guard let itemHeader = httpResponse.allHeaderFields[header] as? String else {
+                debug("ERROR: httpResponse is not contain \(header)")
+                completion(nil)
+                return
+            }
+            //debug(request.absoluteString)
+            completion(itemHeader as? T)
+        }
         task.resume()
     }
     
@@ -228,6 +304,11 @@ class NetworkManager {
         
         // Request the items from the API
         getItems(with: parameters, completion: completion)
+        
+        // TODO: DELETE Test function
+        self.exactCount(with: parameters, header: "Content-Range") { T in
+            debug("Content-Range:", T)
+        }
     }
     
     /// Call items API and replace vendor names in items with full versions after the call
