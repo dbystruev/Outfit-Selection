@@ -12,5 +12,6 @@ extension WishlistItemCatalog {
         lhs.gender == rhs.gender
             && lhs.itemsIdSet == rhs.itemsIdSet
             && lhs.kind == rhs.kind
+            && lhs.createdAt == rhs.createdAt
     }
 }

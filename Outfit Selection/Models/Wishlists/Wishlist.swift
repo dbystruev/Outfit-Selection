@@ -114,6 +114,23 @@ struct Wishlist: Codable {
         items.forEach { $0.setWishlisted() }
     }
     
+    /// Returns true if items count equals and items IDs equals too
+    /// - Parameters:
+    ///   - items: the items in the outfit
+    ///   - outfit: the wishlist items catalog
+    /// - Returns: true if item count and outfit items cout equal
+    static func checkCount(items: Items, outfit: WishlistItemCatalog) -> Bool {
+        
+        // Return false if the number of items in the outfits differ
+        guard items.count == outfit.items.count else { return false }
+        
+        // Make two sets of outfit item indexes
+        let newOutfitSet = Set(items.IDs)
+        
+        // Compare two sets of outfit item indexes
+        return newOutfitSet == outfit.itemsIdSet
+    }
+    
     /// Returns true if item is contained in the items wishlist already, false otherwise
     /// - Parameters:
     ///   - item: item to check for inclusion into the collection
@@ -135,22 +152,26 @@ struct Wishlist: Codable {
         // If occasion is nil search for all occasions
         guard let occasion = occasion else {
             for outfit in outfits {
-                if contains(items, occasion: outfit.name) == true { return true }
+                if contains(items, occasion: outfit) == true { return true }
             }
             return false
         }
         
         // Return false if there is no outfit for the occasion present
         guard let outfit = outfits.first(where: { $0.name == occasion }) else { return false }
+        return checkCount(items: items, outfit: outfit)
+    }
+    
+    /// Returns true if outfit is contained in the outfit wishlist already, false otherwise
+    /// - Parameters:
+    ///   - items: the items in the outfit
+    ///   - occasion: the wishlist items catalog
+    /// - Returns: true if outfit is contained in the outfit wishlist, false if not
+    static func contains(_ items: Items, occasion: WishlistItemCatalog) -> Bool? {
         
-        // Return false if the number of items in the outfits differ
-        guard itemsCount == outfit.items.count else { return false }
-        
-        // Make two sets of outfit item indexes
-        let newOutfitSet = Set(items.IDs)
-        
-        // Compare two sets of outfit item indexes
-        return newOutfitSet == outfit.itemsIdSet
+        // Return false if there is no outfit for the occasion present
+        guard let outfit = outfits.first(where: { $0 == occasion }) else { return false }
+        return checkCount(items: items, outfit: outfit)
     }
     
     /// Returns true if occasion exists in outfits dictionary, false otherwise

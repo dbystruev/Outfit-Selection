@@ -63,7 +63,7 @@ extension OutfitViewController {
         super.viewDidAppear(animated)
        
         checkItemsToShow()
-        updateUI()
+        //updateUI()
         
         // Start observer updatedOccasions
         Globals.Notification.notificationCenter.addObserver(
@@ -102,7 +102,7 @@ extension OutfitViewController {
         // Remove observer updatedOccasions
         Globals.Notification.notificationCenter.removeObserver(self)
         
-        debug("UpdatedOccasions observer was removed")
+//        debug("UpdatedOccasions observer was removed")
     }
     
     override func viewWillLayoutSubviews() {

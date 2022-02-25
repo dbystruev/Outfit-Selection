@@ -12,6 +12,7 @@ final class WishlistItemCatalog: ItemCatalog {
     
     // MARK: - Types
     enum CodingKeys: String, CodingKey {
+        case createdAt = "created_at"
         case gender
         case itemIDs = "item_ids"
         case kind
@@ -20,6 +21,7 @@ final class WishlistItemCatalog: ItemCatalog {
 
     // MARK: - Stored Properties
     /// Gender of wishlist item
+    var createdAt: Date
     var gender: Gender
     
     /// Name for collection, item, or occasion for outfit
@@ -27,6 +29,7 @@ final class WishlistItemCatalog: ItemCatalog {
     
     // MARK: - Init
     init(gender: Gender, kind: Kind, items: Items, name: String) {
+        self.createdAt = Date()
         self.gender = gender
         self.name = name
         super.init(kind: kind, itemIDs: items.IDs)
@@ -38,6 +41,7 @@ final class WishlistItemCatalog: ItemCatalog {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
         // Decode own properties
+        createdAt = (try? values.decode(Date.self, forKey: .createdAt)) ?? Date()
         gender = try values.decode(Gender.self, forKey: .gender)
         name = try? values.decode(String.self, forKey: .name)
         

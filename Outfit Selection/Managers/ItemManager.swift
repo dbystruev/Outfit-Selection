@@ -107,7 +107,7 @@ final class ItemManager {
                     
                     // Append image to the view model
                     viewModel.append(image.halved, item: item)
-                    debug("Added item ID:", viewModel.items.IDs, "into viewModel" )
+//                    debug("Added item ID:", viewModel.items.IDs, "into viewModel" )
                     group.leave()
                 }
             }
