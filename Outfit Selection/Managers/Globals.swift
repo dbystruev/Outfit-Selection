@@ -60,6 +60,19 @@ enum Globals {
         }
     }
     
+    /// TabBar item ViewController
+    enum Feed {
+        
+        /// Offset
+        static var countOffset  = 0
+        
+        /// Curren offset
+        static var currentOffset = 0
+        
+        /// Max items to load in section
+        static let maxItemsInSection = 50
+    }
+    
     /// NotificationCenter
     enum Notification {
         /// NotificationCenter.default

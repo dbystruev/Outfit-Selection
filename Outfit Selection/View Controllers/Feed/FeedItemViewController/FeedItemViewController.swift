@@ -21,6 +21,9 @@ class FeedItemViewController: LoggingViewController {
     /// Items to display in the item collection view
     var items: Items = []
     
+    /// Items download
+    var itemsDownloaded: Bool = false
+    
     /// Kind (type) of the items
     var kind: FeedKind = .newItems
     

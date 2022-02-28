@@ -154,7 +154,7 @@ class NetworkManager {
             // Store the message in logger cache
             let message = String(data: data, encoding: .utf8)
             Logger.log(key: request.absoluteString, message)
-            //            debug(request.absoluteString, "\n", message)
+            //debug(request.absoluteString)
             completion(decodedData)
         }
         
@@ -213,7 +213,7 @@ class NetworkManager {
                 completion(nil)
                 return
             }
-            //debug(request.absoluteString)
+//            debug(request.absoluteString)
             completion(itemHeader as? T)
         }
         task.resume()
@@ -304,21 +304,20 @@ class NetworkManager {
         
         // Request the items from the API
         getItems(with: parameters, completion: completion)
-        
-        // TODO: DELETE Test function
-        self.exactCount(with: parameters, header: "Content-Range") { T in
-            debug("Content-Range:", T)
-        }
     }
     
     /// Call items API and replace vendor names in items with full versions after the call
     /// - Parameters:
     ///   - parameters: API query parameters
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
-    func getItems(with parameters: [String: Any], completion: @escaping (Items?) -> Void) {
+    func getItems(with parameters: [String: Any], offset: Int = 0, completion: @escaping (Items?) -> Void) {
         // Sort by modified time from newest to oldest
         var parameters = parameters
         parameters["order"] = "modified_time.desc"
+
+        if offset != 0 {
+            parameters["offset"] = "\(offset)"
+        }
         
         // Process get request
         get("items", parameters: parameters) { [weak self] (items: Items?) in

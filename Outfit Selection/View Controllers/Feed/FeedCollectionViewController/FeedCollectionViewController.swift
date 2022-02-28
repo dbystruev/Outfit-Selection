@@ -21,7 +21,7 @@ class FeedCollectionViewController: LoggingViewController {
     var items: [FeedKind: Items] = [:]
     
     /// The maximum number of items in each section
-    let maxItemsInSection = BrandManager.shared.brandedImages.count
+    let maxItemsInSection = Globals.Feed.maxItemsInSection
     
     /// Parent navigation controller if called from another view controller
     var parentNavigationController: UINavigationController?
@@ -155,7 +155,7 @@ class FeedCollectionViewController: LoggingViewController {
         NetworkManager.shared.getItems(
             subcategoryIDs: subcategoryIDs,
             filteredBy: ignoreBrands ? [] : brandNames,
-            limited: maxItemsInSection,
+            limited: maxItemsInSection * 2,
             sale: sale
         ) { [weak self] items in
             // Check for self availability
