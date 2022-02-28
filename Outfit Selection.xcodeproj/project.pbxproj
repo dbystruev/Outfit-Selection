@@ -886,8 +886,8 @@
 		6976232926D76E7B00504F31 /* FeedItemViewController */ = {
 			isa = PBXGroup;
 			children = (
-				6900142226DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift */,
 				6976232426D76E6700504F31 /* FeedItemViewController.swift */,
+				6900142226DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift */,
 				69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */,
 			);
 			path = FeedItemViewController;
