@@ -63,14 +63,20 @@ enum Globals {
     /// TabBar item ViewController
     enum Feed {
         
-        /// Offset
-        static var countOffset  = 0
+        /// Content Range from API
+        static var contentRange  = 0
         
         /// Curren offset
         static var currentOffset = 0
         
         /// Max items to load in section
         static let maxItemsInSection = 50
+        
+        /// Limit for API call
+        static let limitCellApi = 1000
+        
+        /// Limit for section in ContentView
+        static let limitSection = 20_000
     }
     
     /// NotificationCenter

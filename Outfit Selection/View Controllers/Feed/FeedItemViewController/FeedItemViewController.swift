@@ -58,6 +58,9 @@ class FeedItemViewController: LoggingViewController {
         // Set custom collection view layout
         itemCollectionView.setCollectionViewLayout(itemCollectionViewLayout, animated: false)
         
+        // Hide scroll indicator
+        itemCollectionView.showsVerticalScrollIndicator = false
+        
         // Update the name of the feed
         titleLabel.text = name
     }
