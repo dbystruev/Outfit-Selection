@@ -48,7 +48,7 @@ extension FeedCollectionViewController: ButtonDelegate {
                 // Request head to get Content-Range from the API
                 NetworkManager.shared.exactCount(with: parametrs, header: "Content-Range") { T in
                     debug("Content-Range:", T)
-                    Globals.Feed.countOffset = T ?? 0
+                    Globals.Feed.contentRange = T ?? 0
                 }
                 
                 performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: feedHeader)

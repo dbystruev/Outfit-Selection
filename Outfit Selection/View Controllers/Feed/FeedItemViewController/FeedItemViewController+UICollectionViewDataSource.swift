@@ -8,15 +8,32 @@
 
 import UIKit
 
+//MARK: - Properties
+// Load Content-Range
+let contentRange = Globals.Feed.contentRange
+
+// Count of tries to get an answer from the API server
+let countTry = 2
+
 // Load current offset index
 let currentOffset = Globals.Feed.currentOffset
 
+// Local count of tries to get an answer from API
+var localCountTry = 0
+
+// Load limit section in CollectionView
+let limitSection = Globals.Feed.limitSection
+
+// Limit for API call
+let limitCellApi = Globals.Feed.limitCellApi
+
 extension FeedItemViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        items.count //Int.max
+        Int.max
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        
         // Dequeue or create feed item collection view cell
         let itemItem: FeedItemCollectionCell = {
             
@@ -28,14 +45,18 @@ extension FeedItemViewController: UICollectionViewDataSource {
                 
                 debug(indexCell)
                 
-                // Limit items for download
-                let limit = items.count > 500 ? (items.count * 2) : (items.count * 4)
-                
-                // Switch to true and wait download all items
-                itemsDownloaded.toggle()
-                
-                // Get and add new items into items
-                getNewItems(offset: items.count, limit: limit)
+                if limitSection > items.count {
+                    
+                    // Switch to true and wait download all items
+                    itemsDownloaded.toggle()
+                    
+                    // Get and add new items into items
+                    getNewItems(offset: items.count, limit: limitCellApi)
+                    
+                } else {
+                    
+                    debug("INFO: Limit in section. Count items: \(items.count) Limit: \(limitSection)"   )
+                }
             }
             
             let cell = collectionView.dequeueReusableCell(
@@ -51,7 +72,7 @@ extension FeedItemViewController: UICollectionViewDataSource {
         }()
         
         // Configure the cell with matching item and return
-        itemItem.configureContent(kind: kind, item: items[indexPath.row], isInteractive: true)
+        itemItem.configureContent(kind: kind, item: items[indexPath.row % items.count], isInteractive: true)
         
         // Set feed view controller as delegate for item button tapped
         let controllers = navigationController?.viewControllers
@@ -64,7 +85,7 @@ extension FeedItemViewController: UICollectionViewDataSource {
         return itemItem
     }
     
-    /// Download new items an add to current collectionView
+    /// Download new items and add to current collectionView
     /// - Parameters:
     ///   - offset: number offset for start get items
     ///   - limit: limit download items
@@ -73,8 +94,6 @@ extension FeedItemViewController: UICollectionViewDataSource {
         // All sections will need to be filtered by brands
         let brandManager = BrandManager.shared
         let brandNames = brandManager.selectedBrandNames
-    
-        debug(offset)
         
         // Categories should be limited for occasions
         let subcategoryIDs: [Int] = {
@@ -88,7 +107,7 @@ extension FeedItemViewController: UICollectionViewDataSource {
         // If feed type is sale get items with old prices set
         let sale = kind == .sale
         
-        // Make parameters for get
+        // Configure parameters for get
         let parametrs = NetworkManager.shared.parameters(
             for: Gender.current,
                in: [],
@@ -98,36 +117,76 @@ extension FeedItemViewController: UICollectionViewDataSource {
                filteredBy: brandNames
         )
         
-        // Request to get items from the API
-        NetworkManager.shared.getItems(with: parametrs, offset: items.count) { items in
+        DispatchQueue.global(qos: .default).async {
             
-            // Check for self availability
-            guard let items = items else {
-                return
-            }
+            // Current count items
+            let currentItemsCount = self.items.count
             
-            for item in items {
+            // Request to get items from the API
+            NetworkManager.shared.getItems(with: parametrs, offset: self.items.count) { items in
                 
-                // If contains current item in items
-                guard !self.items.contains(item) else { continue }
+                // Check for items availability
+                guard let items = items else {
+                    debug("ERROR: items is not available")
+                    return
+                }
                 
-                // Append item to collection view items
-                self.items.append(item)
+                // Check count items for zero
+                guard items.count != 0 else {
+                    debug("INFO: Items count equal zero")
+                    
+                    // Check Content-Range
+                    guard contentRange <= self.items.count else {
+                        debug("INFO: We have got already all items")
+                        
+                        // Switch to false
+                        self.itemsDownloaded = false
+                        return
+                    }
+                    
+                    // Check count tries and try to get items again
+                    if localCountTry < countTry {
+                        
+                        debug("INFO: How about to try to get items again, Try: ", localCountTry)
+                        
+                        // Cell function again
+                        self.getNewItems(offset: self.items.count, limit: limit)
+                        localCountTry += 1
+                    }
+                    return
+                }
                 
-                // Set current items count to offset
-                Globals.Feed.countOffset = self.items.count
-            }
-            
-            debug(self.items.count)
-            
-            // Return to main thead
-            DispatchQueue.main.async {
+                // Is filtering and add new items
+                self.items += items.filter { !self.items.contains($0) }
                 
-                // Reload data
-                self.itemCollectionView.reloadData()
                 
-                // Switch to false
-                self.itemsDownloaded.toggle()
+                // Complete when all dispatch group tasks are finished
+                DispatchManager.shared.itemManagerGroup.notify(queue: .global(qos: .default)) {
+                    
+                    debug(currentItemsCount, self.items.count)
+                    
+                    // Check limit
+                    if currentItemsCount == self.items.count || limitSection == self.items.count {
+                        
+                        // Switch to false and stop download new element
+                        self.itemsDownloaded = true
+                        
+                    } else {
+                        
+                        // Return to main thead
+                        DispatchQueue.main.async {
+                            
+                            // Reload data
+                            self.itemCollectionView.reloadData()
+                            
+                            // Switch to false
+                            self.itemsDownloaded = false
+                            
+                            // Set local counter to zero
+                            localCountTry = 0
+                        }
+                    }
+                }
             }
         }
     }
