@@ -57,6 +57,27 @@ extension OutfitViewController {
         customView.addTapOnce(target: self, action: #selector(hangerBarButtonItemTapped(_:)))
     }
     
+    /// Configure custom back button in navigation bar
+    func configureHangerBackBarButtonItem(isHiden: Bool) {
+        
+        // Configure a button
+        let barButton = UIButton(type: .system)
+        barButton.setImage(UIImage(named: "chevron"), for: .normal)
+        barButton.setTitle("  Back"~, for: .normal)
+        barButton.titleLabel?.font = Globals.Font.Onboarding.barButton
+        barButton.sizeToFit()
+
+        // Set status hide or visible for button
+        barButton.isHidden = isHiden
+
+        // Set button to bar button item
+        backBarButtonItem.customView = barButton
+        
+        // Selector for button tapped
+        barButton.addTarget(self, action: #selector(backBarButtonItemTapped), for: .touchUpInside)
+    }
+
+    
     /// Configure constraints for hanger bubble
     func configureHangerBubbleConstraints() {
         guard let hangerView = hangerBarButtonItem.customView else { return }

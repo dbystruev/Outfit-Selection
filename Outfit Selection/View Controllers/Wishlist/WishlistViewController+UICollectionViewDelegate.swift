@@ -13,8 +13,6 @@ extension WishlistViewController: UICollectionViewDelegate {
         // Don't select anything in case we are not on wishlist screen
         guard collectionView == wishlistCollectionView else { return }
         
-//        debug(wishlist[indexPath.row].itemIDs)
-        
         switch tabSelected {
         
         case .collection:
@@ -37,8 +35,8 @@ extension WishlistViewController: UICollectionViewDelegate {
             // Download all images and add to viewModels
             ItemManager.shared.loadImagesFromItems(items: sorteredItem) {
                 
-                // Go to NavigationManager into outfit
-                NavigationManager.navigate(to: .outfit(items: sorteredItem))
+                // Go to NavigationManager into outfit and show back button
+                NavigationManager.navigate(to: .outfit(items: sorteredItem, backButton: false))
             }
             
         case nil:

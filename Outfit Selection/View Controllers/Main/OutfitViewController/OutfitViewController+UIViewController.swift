@@ -57,14 +57,23 @@ extension OutfitViewController {
         
         // Use self as scroll view delegate for each scroll view
         scrollViews.forEach { $0.delegate = self }
+        
+        hideBackBarButtonItem = true
+        
+        // Configure back icon in navigation bar
+        configureHangerBackBarButtonItem(isHiden: hideBackBarButtonItem)
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-       
-        checkItemsToShow()
-        //updateUI()
         
+        // Configure back icon in navigation bar
+        configureHangerBackBarButtonItem(isHiden: hideBackBarButtonItem)
+        
+        // Check items to show
+        checkItemsToShow()
+
         // Start observer updatedOccasions
         Globals.Notification.notificationCenter.addObserver(
             self,
@@ -101,8 +110,6 @@ extension OutfitViewController {
         
         // Remove observer updatedOccasions
         Globals.Notification.notificationCenter.removeObserver(self)
-        
-//        debug("UpdatedOccasions observer was removed")
     }
     
     override func viewWillLayoutSubviews() {

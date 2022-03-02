@@ -14,7 +14,7 @@ class NavigationManager {
     // MARK: - Public Type
     /// Enum with the  screens to navigate to
     public enum Screen {
-        case outfit(items: Items = [])
+        case outfit(items: Items = [], backButton: Bool = true)
         case feed
         case wishlist
         case profile
@@ -90,8 +90,7 @@ class NavigationManager {
         }
         
         switch screen {
-            
-        case .outfit(let items):
+        case .outfit(let items, let backButton):
             
             // Find tab bar controller
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
@@ -106,21 +105,25 @@ class NavigationManager {
             if items.isEmpty {
                 presentOutfitViewController(in: navigationController)
             } else {
-                presentOutfitViewControllerWithTabBar(
-                    items: items,
-                    navigationController,
-                    tabBarController
-                )
+                presentOutfitViewControllerWithTabBar(items, navigationController, tabBarController, backButton)
             }
             
         case .feed:
             debug("feed")
         case .wishlist:
-            debug("wishlist")
+            
+            // Find tab bar controller
+            guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
+                debug("INFO: Tab Bar Controller is not available")
+                return
+            }
+             
+            // Change tabbar selected index
+            tabBarController.selectedIndex = Globals.TabBar.index.wishlist
+            
         case .profile:
             debug("profile")
         }
-        
     }
     
     /// Present  tabBarController with index
@@ -128,10 +131,12 @@ class NavigationManager {
     ///   - Items: Items for present
     ///   - navigationController: the navigation controller
     ///   - tabBarController: the tab bar controller
+    ///   - backButton: show back button if f status true
     public static func presentOutfitViewControllerWithTabBar(
-        items: Items,
+        _ items: Items,
         _ navigationController: UINavigationController,
-        _ tabBarController: UITabBarController
+        _ tabBarController: UITabBarController,
+        _ backButton: Bool
     ) {
         // Get tab bat index
         let indexTabBar = Globals.TabBar.index.outfit
@@ -159,6 +164,9 @@ class NavigationManager {
         
         // Set items to show scrollViews
         outfitViewController.itemsToShow = items
+        
+        // Set back button status
+        outfitViewController.hideBackBarButtonItem = backButton
         
         // Check items checkItemsToShow and download it if
         outfitViewController.checkItemsToShow()

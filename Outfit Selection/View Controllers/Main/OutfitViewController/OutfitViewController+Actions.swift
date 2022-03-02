@@ -22,6 +22,18 @@ extension OutfitViewController {
         showHangerBubble = false
     }
     
+    /// Calles when the taps back Button
+    @objc func backBarButtonItemTapped () {
+        
+        // Hide bar back button
+        hideBackBarButtonItem = true
+        configureHangerBackBarButtonItem(isHiden: true)
+        
+        // Go to NavigationManager into outfit
+        NavigationManager.navigate(to: .wishlist)
+        
+    }
+    
     /// Called when one of individual hanger buttons in a scroll view is tapped
     /// - Parameter sender: the hanger button which was tapped
     @IBAction func hangerButtonTapped(_ sender: UIButton) {
@@ -68,6 +80,10 @@ extension OutfitViewController {
         
         // Lock / Unlock button suffle
         self.shuffleButtonCheck(lock: true)
+        
+        // Hide bar back button
+        hideBackBarButtonItem = true
+        configureHangerBackBarButtonItem(isHiden: true)
         
         // Check hanger buttons is showing
         if showHangerButtons {
@@ -153,9 +169,6 @@ extension OutfitViewController {
                 
                 // Lock / Unlock button suffle
                 self.shuffleButtonCheck(lock: false)
-                
-                // Disable refresh button if all scroll views are pinned
-//                self.shuffleButton.isEnabled = !self.scrollViews.allPinned
             }
         }
     }
@@ -163,6 +176,7 @@ extension OutfitViewController {
     /// Move to occasions view controller when left screen edge is panned
     /// - Parameter sender: left screen edge pan gesture recognizer
     @IBAction func screenEdgePanned(_ sender: UIScreenEdgePanGestureRecognizer) {
+        
         // Make sure the gesture has ended
         guard sender.state == .ended else { return }
         
@@ -196,6 +210,11 @@ extension OutfitViewController {
     }
     
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
+        
+        // Hide bar back button
+        hideBackBarButtonItem = true
+        configureHangerBackBarButtonItem(isHiden: true)
+        
         // Get the images and check that all of them are not nil
         let imageViews = scrollViews.compactMap { $0.getImageView() }
         let images = imageViews.compactMap { $0.image }
@@ -218,6 +237,10 @@ extension OutfitViewController {
     }
     
     @IBAction func shuffleButtonTapped(_ sender: Any) {
+        
+        // Hide bar back button
+        hideBackBarButtonItem = true
+        configureHangerBackBarButtonItem(isHiden: true)
         
         // Check itemsToShow
         guard itemsToShow.isEmpty else { return }

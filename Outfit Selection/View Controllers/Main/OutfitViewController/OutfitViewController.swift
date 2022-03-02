@@ -11,6 +11,7 @@ import UIKit
 class OutfitViewController: LoggingViewController {
     // MARK: - Outlets
     @IBOutlet weak var hangerBarButtonItem: UIBarButtonItem!
+    @IBOutlet var backBarButtonItem: UIBarButtonItem!
     @IBOutlet var hangerButtons: [UIButton]!
     @IBOutlet weak var iconsStackView: UIStackView!
     @IBOutlet weak var likeButton: UIButton!
@@ -42,6 +43,9 @@ class OutfitViewController: LoggingViewController {
     
     /// First appearance for view will appear
     var firstAppearance = true
+    
+    /// Hide back bar button item
+    var hideBackBarButtonItem = true
     
     /// Heper bubble next to hanger icon
     let hangerBubble = HangerBubble()

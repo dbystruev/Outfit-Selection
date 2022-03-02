@@ -94,6 +94,7 @@ enum Globals {
     enum TabBar {
         enum index {
             static let outfit = 0
+            static let wishlist = 2
         }
         enum status {
             static var found = false
@@ -112,6 +113,9 @@ enum Globals {
         enum Onboarding {
             /// UIFont(name: "NotoSans-Bold", size: 17)
             static let button = UIFont(name: "NotoSans-Bold", size: 17)!
+            
+            /// UIFont(name: "NotoSans-Regular", size: 17)
+            static let barButton = UIFont(name: "NotoSans-Regular", size: 17)!
         }
         
         enum Profile {
