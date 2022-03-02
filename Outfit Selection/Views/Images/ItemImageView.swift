@@ -10,5 +10,5 @@ import UIKit
 
 class ItemImageView: UIImageView {
     /// Item whose image is being displayed
-    //weak var item: Item?
+    weak var item: Item?
 }

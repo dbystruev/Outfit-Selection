@@ -121,7 +121,7 @@ extension PinnableScrollViews {
             }
             
             // Insert an image for found item into the scroll view
-            return scrollView.insert(image: image).item?.id
+            return scrollView.insert(image: image).displayedItem?.id
         }
         
         // Make sure we have all elements to scroll to

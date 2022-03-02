@@ -13,7 +13,7 @@ class FeedItem: UIView {
     // MARK: - Outlets
     @IBOutlet weak var brandLabel: UILabel!
     @IBOutlet weak var itemButton: DelegatedButton!
-    @IBOutlet weak var itemImageView: UIImageView!
+    @IBOutlet weak var itemImageView: ItemImageView!
     @IBOutlet weak var likeButton: WishlistButton!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var oldPriceLabel: UILabel!
@@ -45,7 +45,7 @@ class FeedItem: UIView {
         configureLikeButton(isInteractive: isInteractive)
         
         // Load the first picture for item into item image view
-        itemImageView.configure(with: item.pictures.first)
+        itemImageView.configure(with: item)
         
         // Configure labels
         brandLabel.text = item.brand

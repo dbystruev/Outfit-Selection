@@ -97,7 +97,7 @@ extension PinnableScrollView {
             .compactMap { $0 as? UIImageView }
             .forEach { imageView in
                 // Compare occasion subcategories with item's
-                if imageView.item?.isMatching(subcategoryIDs) == true {
+                if imageView.displayedItem?.isMatching(subcategoryIDs) == true {
                     // Show (when visible is true) if there are subcategories in common
                     imageView.alpha = visible ? 1 : 0
                 } else {

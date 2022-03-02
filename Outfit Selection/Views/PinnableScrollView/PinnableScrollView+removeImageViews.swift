@@ -31,12 +31,12 @@ extension PinnableScrollView {
                 debug("WARNING: Can't obtain image view with index \(indexToDelete + 1)")
                 return
             }
-            guard let item = secondImageView.item else {
+            guard let item = secondImageView.displayedItem else {
                 debug("WARNING: Can't obtain item from image view with index \(indexToDelete + 1)")
                 return
             }
             imageView.image = secondImageView.image
-            imageView.item = item
+            imageView.displayedItem = item
             imageView.tag = secondImageView.tag
             secondImageView.removeFromSuperview()
         } else {
@@ -54,7 +54,7 @@ extension PinnableScrollView {
                 debug("WARNING: Can't get image view with index \(index)")
                 continue
             }
-            guard let item = imageView.item else {
+            guard let item = imageView.displayedItem else {
                 debug("WARNING: Can't get an item from image view \(imageView)")
                 continue
             }

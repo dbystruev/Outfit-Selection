@@ -365,7 +365,7 @@ final class ItemManager {
                 guard subcategoryIDs.isEmpty || item.isMatching(subcategoryIDs) else { continue }
                 
                 // Inset image into scroll view
-                scrollView.insert(image: image).item = image.item
+                scrollView.insert(image: image).displayedItem = image.item
             }
         }
     }

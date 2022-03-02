@@ -199,7 +199,7 @@ extension OutfitViewController {
         // Get the images and check that all of them are not nil
         let imageViews = scrollViews.compactMap { $0.getImageView() }
         let images = imageViews.compactMap { $0.image }
-        let items = imageViews.compactMap { $0.item }
+        let items = imageViews.compactMap { $0.displayedItem }
         guard images.count == scrollViews.count && images.count == items.count else { return }
         
         // Create a view for screenshot

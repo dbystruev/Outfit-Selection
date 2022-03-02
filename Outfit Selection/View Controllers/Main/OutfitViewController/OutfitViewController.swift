@@ -139,6 +139,6 @@ class OutfitViewController: LoggingViewController {
     
     /// Items for currently visible image views
     var visibleItems: Items {
-        scrollViews.compactMap({ $0.getImageView()?.item })
+        scrollViews.compactMap({ $0.getImageView()?.displayedItem })
     }
 }

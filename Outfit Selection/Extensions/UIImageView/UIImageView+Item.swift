@@ -11,7 +11,7 @@ import UIKit
 extension UIImageView {
     // MARK: - Computed Properties
     /// Item whose image is being displayed by image view
-    var item: Item? {
+    var displayedItem: Item? {
         get { itemImage?.item }
         set { itemImage?.item = newValue }
     }

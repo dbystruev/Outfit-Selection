@@ -57,7 +57,7 @@ extension OutfitViewController {
             guard
                 let scrollView = sender.view as? PinnableScrollView,
                 let imageView = scrollView.getImageView(),
-                imageView.item != nil
+                imageView.displayedItem != nil
             else {
                 debug("ERROR: Can't get an item from", sender.view)
                 return
