@@ -83,7 +83,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             return header
         }
         
-        feedHeader.configureContent(kind: sections[indexPath.section])
+        feedHeader.configureContent(kind: sections[indexPath.section % sections.count])
         feedHeader.delegate = self
         return feedHeader
     }

@@ -17,7 +17,7 @@ extension PinnableScrollView: ItemSearchable {
     
     /// Item which this scroll view is currently showing
     var item: Item? {
-        getImageView()?.item
+        getImageView()?.displayedItem
     }
     
     /// The number of items in the scroll view
@@ -37,7 +37,7 @@ extension PinnableScrollView: ItemSearchable {
     
     /// Items in the scroll view
     var items: Items {
-        stackView?.arrangedSubviews.compactMap { ($0 as? UIImageView)?.item } ?? []
+        stackView?.arrangedSubviews.compactMap { ($0 as? UIImageView)?.displayedItem } ?? []
     }
     
     /// Stack view which stores item images in the scroll view

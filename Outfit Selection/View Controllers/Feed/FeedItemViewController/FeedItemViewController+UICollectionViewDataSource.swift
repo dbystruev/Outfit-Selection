@@ -8,7 +8,6 @@
 
 import UIKit
 
-//MARK: - Properties
 // Load Content-Range
 let contentRange = Globals.Feed.contentRange
 
@@ -41,7 +40,7 @@ extension FeedItemViewController: UICollectionViewDataSource {
             let indexCell = indexPath.sorted()[1]
             
             // Check index items
-            if indexCell > items.count / 2  && !itemsDownloaded {
+            if indexCell > items.count / Int(1.3) && !itemsDownloaded {
                 
                 debug(indexCell)
                 
