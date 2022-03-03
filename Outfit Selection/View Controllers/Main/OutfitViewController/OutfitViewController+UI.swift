@@ -58,23 +58,22 @@ extension OutfitViewController {
     }
     
     /// Configure custom back button in navigation bar
-    func configureHangerBackBarButtonItem(isHiden: Bool) {
+    func configureBackBarButtonItem(isHiden: Bool) {
         
         // Configure a button
-        let barButton = UIButton(type: .system)
-        barButton.setImage(UIImage(named: "chevron"), for: .normal)
-        barButton.setTitle("  Back"~, for: .normal)
-        barButton.titleLabel?.font = Globals.Font.Onboarding.barButton
-        barButton.sizeToFit()
+//        let backBarButtonTitle = "Back"~
+//        backBarButton.setImage(UIImage(named: "back"), for: .normal)
+//        backBarButton.setTitle(backBarButtonTitle, for: .normal)
+        backBarButton.titleLabel?.font = Globals.Font.Onboarding.barButton
+        backBarButton.contentHorizontalAlignment = .left
+        backBarButton.contentVerticalAlignment = .center
+        backBarButton.sizeToFit()
 
         // Set status hide or visible for button
-        barButton.isHidden = isHiden
-
-        // Set button to bar button item
-        backBarButtonItem.customView = barButton
+        backBarButton.isHidden = isHiden
         
         // Selector for button tapped
-        barButton.addTarget(self, action: #selector(backBarButtonItemTapped), for: .touchUpInside)
+        backBarButton.addTarget(self, action: #selector(backBarButtonItemTapped), for: .touchUpInside)
     }
 
     

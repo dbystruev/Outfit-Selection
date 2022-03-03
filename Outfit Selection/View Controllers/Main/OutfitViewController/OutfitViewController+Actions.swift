@@ -27,7 +27,7 @@ extension OutfitViewController {
         
         // Hide bar back button
         hideBackBarButtonItem = true
-        configureHangerBackBarButtonItem(isHiden: true)
+        configureBackBarButtonItem(isHiden: true)
         
         // Go to NavigationManager into outfit
         NavigationManager.navigate(to: .wishlist)
@@ -83,7 +83,7 @@ extension OutfitViewController {
         
         // Hide bar back button
         hideBackBarButtonItem = true
-        configureHangerBackBarButtonItem(isHiden: true)
+        configureBackBarButtonItem(isHiden: true)
         
         // Check hanger buttons is showing
         if showHangerButtons {
@@ -213,7 +213,7 @@ extension OutfitViewController {
         
         // Hide bar back button
         hideBackBarButtonItem = true
-        configureHangerBackBarButtonItem(isHiden: true)
+        configureBackBarButtonItem(isHiden: true)
         
         // Get the images and check that all of them are not nil
         let imageViews = scrollViews.compactMap { $0.getImageView() }
@@ -240,7 +240,7 @@ extension OutfitViewController {
         
         // Hide bar back button
         hideBackBarButtonItem = true
-        configureHangerBackBarButtonItem(isHiden: true)
+        configureBackBarButtonItem(isHiden: true)
         
         // Check itemsToShow
         guard itemsToShow.isEmpty else { return }

@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
-        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -12,6 +11,9 @@
     <customFonts key="customFonts">
         <array key="NotoSans-Medium.ttf">
             <string>NotoSans-Medium</string>
+        </array>
+        <array key="NotoSans-Regular.ttf">
+            <string>NotoSans-Regular</string>
         </array>
         <array key="NotoSans-SemiBold.ttf">
             <string>NotoSans-SemiBold</string>
@@ -464,8 +466,14 @@
                         </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Outfit" leftItemsSupplementBackButton="YES" id="NXz-cG-HPg">
-                        <barButtonItem key="leftBarButtonItem" id="0Xa-XP-rbn">
-                            <imageReference key="image" image="chevron.left" catalog="system" symbolScale="default"/>
+                        <barButtonItem key="leftBarButtonItem" id="CtI-3f-hUP">
+                            <inset key="largeContentSizeImageInsets" minX="-20" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="UPd-k1-MS6">
+                                <rect key="frame" x="16" y="3" width="81" height="38"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="18"/>
+                                <state key="normal" title="Back" image="back"/>
+                            </button>
                         </barButtonItem>
                         <rightBarButtonItems>
                             <barButtonItem image="share" id="2AA-iP-MGy">
@@ -481,7 +489,7 @@
                         </rightBarButtonItems>
                     </navigationItem>
                     <connections>
-                        <outlet property="backBarButtonItem" destination="0Xa-XP-rbn" id="Xfx-hm-RbK"/>
+                        <outlet property="backBarButton" destination="UPd-k1-MS6" id="HqR-SK-rhR"/>
                         <outlet property="hangerBarButtonItem" destination="ka5-GL-mJm" id="IvH-vr-Biu"/>
                         <outlet property="iconsStackView" destination="Ggf-Jf-cb6" id="bfG-jS-Zh5"/>
                         <outlet property="likeButton" destination="kYh-UG-gmm" id="aT9-7N-MF8"/>
@@ -755,7 +763,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="chevron.left" catalog="system" width="96" height="128"/>
+        <image name="back" width="19" height="24"/>
         <image name="hanger" width="32" height="24"/>
         <image name="like" width="28" height="28"/>
         <image name="like_filled" width="28" height="28"/>
