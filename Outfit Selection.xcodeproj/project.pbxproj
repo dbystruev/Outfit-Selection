@@ -265,6 +265,10 @@
 		7A1C8A4727AA85490038DF28 /* URL+getParameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A1C8A4627AA85490038DF28 /* URL+getParameters.swift */; };
 		7ACA9C6827ABB027004B7D63 /* AppDelegate+universalLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACA9C6727ABB027004B7D63 /* AppDelegate+universalLinks.swift */; };
 		7ACB354327AD093B00DC0EDC /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB354227AD093B00DC0EDC /* NavigationManager.swift */; };
+		7AD80C1A27D0C36D005A36DC /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80C1927D0C36C005A36DC /* Brand.swift */; };
+		7AD80C1C27D0D1A3005A36DC /* Brands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80C1B27D0D1A3005A36DC /* Brands.swift */; };
+		7AD80C1E27D0D5CF005A36DC /* Brands+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80C1D27D0D5CF005A36DC /* Brands+all.swift */; };
+		7AD80C2027D0E0E2005A36DC /* brands.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AD80C1F27D0E0E2005A36DC /* brands.csv */; };
 		7AEB482527CE246A003360CF /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB482427CE246A003360CF /* ItemImageView.swift */; };
 		7AEB482E27CE5311003360CF /* ItemImageView+configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB482D27CE5311003360CF /* ItemImageView+configure.swift */; };
 /* End PBXBuildFile section */
@@ -542,6 +546,10 @@
 		7A1C8A4627AA85490038DF28 /* URL+getParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+getParameters.swift"; sourceTree = "<group>"; };
 		7ACA9C6727ABB027004B7D63 /* AppDelegate+universalLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+universalLinks.swift"; sourceTree = "<group>"; };
 		7ACB354227AD093B00DC0EDC /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
+		7AD80C1927D0C36C005A36DC /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
+		7AD80C1B27D0D1A3005A36DC /* Brands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brands.swift; sourceTree = "<group>"; };
+		7AD80C1D27D0D5CF005A36DC /* Brands+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brands+all.swift"; sourceTree = "<group>"; };
+		7AD80C1F27D0E0E2005A36DC /* brands.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = brands.csv; sourceTree = "<group>"; };
 		7AEB482427CE246A003360CF /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
 		7AEB482D27CE5311003360CF /* ItemImageView+configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemImageView+configure.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -666,6 +674,7 @@
 		692C94082546FB7A0075BD92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7AD80C1827D0C343005A36DC /* Brands */,
 				6963C6422718927600F03541 /* Categories */,
 				698A7F9026E8E49B006C36FD /* Coders */,
 				6906A99326E6070200386267 /* Collections */,
@@ -1218,6 +1227,7 @@
 		69A6F70622BA38CE002A3B49 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				7AD80C1F27D0E0E2005A36DC /* brands.csv */,
 				69A6F6FA22BA26BA002A3B49 /* Assets.xcassets */,
 				693D7285256BF1EA00540C10 /* Brands.bundle */,
 				69C5CBE6260A191700DE22E6 /* Fonts */,
@@ -1495,6 +1505,16 @@
 			path = URL;
 			sourceTree = "<group>";
 		};
+		7AD80C1827D0C343005A36DC /* Brands */ = {
+			isa = PBXGroup;
+			children = (
+				7AD80C1927D0C36C005A36DC /* Brand.swift */,
+				7AD80C1B27D0D1A3005A36DC /* Brands.swift */,
+				7AD80C1D27D0D5CF005A36DC /* Brands+all.swift */,
+			);
+			path = Brands;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1604,6 +1624,7 @@
 				690623A9270C633800813089 /* Screenshot02.png in Resources */,
 				693D7286256BF1EA00540C10 /* Brands.bundle in Resources */,
 				690623B6270C6FA000813089 /* get_outfit_app.png in Resources */,
+				7AD80C2027D0E0E2005A36DC /* brands.csv in Resources */,
 				690623A3270C633800813089 /* Screenshot11.png in Resources */,
 				69DFE5B32735276B00D46B5F /* Launch Screen Raskroi.storyboard in Resources */,
 				690623AC270C633800813089 /* Screenshot16.png in Resources */,
@@ -1661,6 +1682,7 @@
 				696E875B256463160061802E /* Double+asPrice.swift in Sources */,
 				697A3CFE25EACF5A007158B4 /* WishlistViewController+UICollectionViewDelegate.swift in Sources */,
 				697A3CFB25EACCCB007158B4 /* String+firstLetter.swift in Sources */,
+				7AD80C1A27D0C36D005A36DC /* Brand.swift in Sources */,
 				69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */,
 				69DA85D426D5FA5000D16B25 /* FeedBrandCell.swift in Sources */,
 				69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */,
@@ -1700,6 +1722,7 @@
 				697CCE6426CFF1ED00B69763 /* ButtonDelegate.swift in Sources */,
 				695367EE25F7AA520024EC8B /* AppDelegate+AppsFlyerLibDelegate.swift in Sources */,
 				699632B026FCB1A600841B6F /* String+dropSuffix.swift in Sources */,
+				7AD80C1E27D0D5CF005A36DC /* Brands+all.swift in Sources */,
 				693D7292256BFDD700540C10 /* ItemManager.swift in Sources */,
 				695367F825F7AFAC0024EC8B /* AppDelegate+UIApplicationDelegate.swift in Sources */,
 				69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */,
@@ -1809,6 +1832,7 @@
 				69A0C9EA2705B3F200C49977 /* WhiteLabel.swift in Sources */,
 				69AB228C22BA4BE400C7FA8D /* OutfitViewController+Actions.swift in Sources */,
 				69827B34273BF05B00C59D68 /* String+localized.swift in Sources */,
+				7AD80C1C27D0D1A3005A36DC /* Brands.swift in Sources */,
 				69FB0EA12714656D006C20E9 /* Occasion+CustomStringConvertible.swift in Sources */,
 				69007D0026EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift in Sources */,
 				69B539F2257F9C7A00116F98 /* UIViewController+dismissRoot.swift in Sources */,

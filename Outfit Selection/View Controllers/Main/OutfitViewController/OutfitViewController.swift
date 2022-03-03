@@ -11,7 +11,7 @@ import UIKit
 class OutfitViewController: LoggingViewController {
     // MARK: - Outlets
     @IBOutlet weak var hangerBarButtonItem: UIBarButtonItem!
-    @IBOutlet var backBarButtonItem: UIBarButtonItem!
+    @IBOutlet weak var backBarButton: UIButton!
     @IBOutlet var hangerButtons: [UIButton]!
     @IBOutlet weak var iconsStackView: UIStackView!
     @IBOutlet weak var likeButton: UIButton!

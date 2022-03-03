@@ -21,7 +21,6 @@ extension OutfitViewController {
         } else {
             // Load items to show
             scrollitemsToShow()
- 
         }
     }
     
@@ -58,25 +57,20 @@ extension OutfitViewController {
     }
     
     /// Configure custom back button in navigation bar
-    func configureHangerBackBarButtonItem(isHiden: Bool) {
+    func configureBackBarButtonItem(isHiden: Bool) {
         
         // Configure a button
-        let barButton = UIButton(type: .system)
-        barButton.setImage(UIImage(named: "chevron"), for: .normal)
-        barButton.setTitle("  Back"~, for: .normal)
-        barButton.titleLabel?.font = Globals.Font.Onboarding.barButton
-        barButton.sizeToFit()
-
+        backBarButton.titleLabel?.font = Globals.Font.Onboarding.barButton
+        backBarButton.contentHorizontalAlignment = .left
+        backBarButton.contentVerticalAlignment = .center
+        backBarButton.sizeToFit()
+        
         // Set status hide or visible for button
-        barButton.isHidden = isHiden
-
-        // Set button to bar button item
-        backBarButtonItem.customView = barButton
+        backBarButton.isHidden = isHiden
         
         // Selector for button tapped
-        barButton.addTarget(self, action: #selector(backBarButtonItemTapped), for: .touchUpInside)
+        backBarButton.addTarget(self, action: #selector(backBarButtonItemTapped), for: .touchUpInside)
     }
-
     
     /// Configure constraints for hanger bubble
     func configureHangerBubbleConstraints() {
@@ -115,15 +109,13 @@ extension OutfitViewController {
             .sorted(by: { $0.label < $1.label })
         lazy var randomSelectedOccasion = selectedOccasions.randomElement()
         
-        debug(selectedOccasions.count)
-        
         // Return if occasions isEmpty
         guard Occasions.count > 0 else { return }
         
         let gender = occasionSelected?.gender
         occasionSelected = gender == Gender.current || Gender.current == .other
-            ? occasionSelected ?? randomSelectedOccasion
-            : randomSelectedOccasion
+        ? occasionSelected ?? randomSelectedOccasion
+        : randomSelectedOccasion
         
         // Hide occasions stack view if no occasions are selected
         let isHidden = selectedOccasions.isEmpty
@@ -140,8 +132,6 @@ extension OutfitViewController {
         let buttons = buttonUnderlineStackViews.compactMap {
             $0.arrangedSubviews.first as? OccasionButton
         }
-        
-        debug(buttons.count , buttonUnderlineStackViews.count)
         
         guard
             let firstButton = buttons.first,
@@ -514,14 +504,14 @@ extension OutfitViewController {
     
     /// Reload ocassions
     @objc func updatedOccasions() {
-    
+        
         // Return to main
         DispatchQueue.main.async {
             guard let tabBarController = self.tabBarController as? TabBarController else {
                 debug("ERROR: can't cast", self.tabBarController, "to TabBarConroller")
                 return
             }
-
+            
             // Get the list of view controllers from tab bar
             guard let viewControllers = tabBarController.viewControllers else {
                 debug("ERROR: There are no view controllers in tab bar")
@@ -539,7 +529,7 @@ extension OutfitViewController {
                 debug("ERROR: OutfitViewController controller is not available")
                 return
             }
-
+            
             // Configure occasions
             outfitViewController.configureOccasions()
             

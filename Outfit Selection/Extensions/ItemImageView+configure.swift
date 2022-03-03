@@ -31,7 +31,7 @@ extension ItemImageView {
             
             // Check item to equals
             guard self.item?.id == item?.id else {
-                debug("WARNING:", item?.id, "changed to", self.item?.id)
+//                debug("WARNING:", item?.id, "changed to", self.item?.id)
                 return
             }
             

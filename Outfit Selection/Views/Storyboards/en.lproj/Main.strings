@@ -6,25 +6,28 @@
 "E9E-xt-JrF.text" = "Блокноты и канцелярские товары";
 
 /* Class = "UINavigationItem"; title = "Share"; ObjectID = "JPe-Xv-A0p"; */
-"JPe-Xv-A0p.title" = "Поделиться";
+"JPe-Xv-A0p.title" = "Share";
 
 /* Class = "UINavigationItem"; title = "Outfit"; ObjectID = "NXz-cG-HPg"; */
-"NXz-cG-HPg.title" = "Образ";
+"NXz-cG-HPg.title" = "Outfit";
 
-/* Class = "UIButton"; normalTitle = "Occasions"; ObjectID = "QSs-rB-2If"; */
-"QSs-rB-2If.normalTitle" = "Загрузка...";
+/* Class = "UIButton"; normalTitle = "Loading..."; ObjectID = "QSs-rB-2If"; */
+"QSs-rB-2If.normalTitle" = "Loading...";
 
 /* Class = "UILabel"; text = "Loading..."; ObjectID = "TjY-vq-NEy"; */
-"TjY-vq-NEy.text" = "Считаем...";
+"TjY-vq-NEy.text" = "Loading...";
+
+/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "UPd-k1-MS6"; */
+"UPd-k1-MS6.normalTitle" = "Back";
 
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "VWM-Gw-av5"; */
-"VWM-Gw-av5.title" = "Вещь";
+"VWM-Gw-av5.title" = "Item";
 
 /* Class = "UILabel"; text = "Choose the occasion"; ObjectID = "WwF-7x-wa1"; */
-"WwF-7x-wa1.text" = "Выбрать случай для образа";
+"WwF-7x-wa1.text" = "Choose the occasion";
 
 /* Class = "UITabBarItem"; title = "Outfit"; ObjectID = "cyd-Md-t2B"; */
-"cyd-Md-t2B.title" = "Образ";
+"cyd-Md-t2B.title" = "Outfit";
 
 /* Class = "UILabel"; text = "Блокноты и канцелярские товары"; ObjectID = "ikB-Nx-472"; */
 "ikB-Nx-472.text" = "Блокноты и канцелярские товары";
@@ -33,10 +36,10 @@
 "jnN-97-yUU.text" = "Summer";
 
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "kVb-Qh-4lr"; */
-"kVb-Qh-4lr.title" = "Вещь";
+"kVb-Qh-4lr.title" = "Item";
 
 /* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "ka5-GL-mJm"; */
-"ka5-GL-mJm.title" = "Вещь";
+"ka5-GL-mJm.title" = "Item";
 
 /* Class = "UILabel"; text = "Блокноты и канцелярские товары"; ObjectID = "m21-ey-gXZ"; */
 "m21-ey-gXZ.text" = "Блокноты и канцелярские товары";
@@ -45,16 +48,13 @@
 "tM5-HZ-6Mt.text" = "Блокноты и канцелярские товары";
 
 /* Class = "UILabel"; text = "Next"; ObjectID = "uTY-H1-Lz0"; */
-"uTY-H1-Lz0.text" = "Далее";
+"uTY-H1-Lz0.text" = "Next";
 
 /* Class = "UITabBarItem"; title = "Item"; ObjectID = "woy-Nu-Rvd"; */
-"woy-Nu-Rvd.title" = "Вещь";
+"woy-Nu-Rvd.title" = "Item";
 
 /* Class = "UIButton"; normalTitle = "Save"; ObjectID = "xLI-2y-iWG"; */
-"xLI-2y-iWG.normalTitle" = "Готово";
+"xLI-2y-iWG.normalTitle" = "Save";
 
 /* Class = "UIViewController"; title = "Share"; ObjectID = "zS2-Fi-i4G"; */
-"zS2-Fi-i4G.title" = "Поделиться";
-
-/* Class = "UIButton"; normalTitle = "Back"; ObjectID = "UPd-k1-MS6"; */
-"UPd-k1-MS6.normalTitle" = "Назад";
+"zS2-Fi-i4G.title" = "Share";

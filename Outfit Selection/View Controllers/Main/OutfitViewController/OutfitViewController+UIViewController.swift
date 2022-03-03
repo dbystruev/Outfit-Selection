@@ -61,7 +61,7 @@ extension OutfitViewController {
         hideBackBarButtonItem = true
         
         // Configure back icon in navigation bar
-        configureHangerBackBarButtonItem(isHiden: hideBackBarButtonItem)
+        configureBackBarButtonItem(isHiden: hideBackBarButtonItem)
         
     }
     
@@ -69,7 +69,7 @@ extension OutfitViewController {
         super.viewDidAppear(animated)
         
         // Configure back icon in navigation bar
-        configureHangerBackBarButtonItem(isHiden: hideBackBarButtonItem)
+        configureBackBarButtonItem(isHiden: hideBackBarButtonItem)
         
         // Check items to show
         checkItemsToShow()
