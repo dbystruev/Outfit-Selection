@@ -47,6 +47,22 @@ class BrandManager {
         fullNames.map { $0.lastComponent.dropExtension }
     }
     
+    /// Is loading file and make an array
+    var brandNamesFromFile: [String]  {
+        
+        // Get a file from resource
+        guard let path = Bundle.main.path(forResource: "brands", ofType: "csv") else {
+            debug("ERROR: resource file not found" )
+            return [] }
+        
+        // Load content from the file
+        guard let content = try? String(contentsOfFile: path, encoding: String.Encoding.utf8) else {
+            debug("ERROR: content can't loaded" )
+            return []
+        }
+        return content.components(separatedBy: "\n").sorted()
+    }
+    
     /// Sorted full file names of images with brand logos
     private var fullNames: [String] {
         let bundleURL = Bundle.main.bundleURL.appendingPathComponent("Brands.bundle")

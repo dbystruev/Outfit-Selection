@@ -100,6 +100,9 @@ extension AppDelegate: UIApplicationDelegate {
 //            }
         }
         
+        // TODO: DELETE IT
+        debug(BrandManager.shared.brandNamesFromFile)
+        
         // Change global tint color
         UIView.appearance().tintColor = #colorLiteral(red: 0.4693212509, green: 0.5382487178, blue: 0.5183649659, alpha: 1)
         
