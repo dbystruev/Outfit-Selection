@@ -48,7 +48,7 @@ class BrandManager {
     }
     
     /// Is loading file and make an array
-    var brandNamesFromFile: [String]  {
+    var brandNamesFromFile: [String] {
         
         // Get a file from resource
         guard let path = Bundle.main.path(forResource: "brands", ofType: "csv") else {
@@ -56,7 +56,7 @@ class BrandManager {
             return [] }
         
         // Load content from the file
-        guard let content = try? String(contentsOfFile: path, encoding: String.Encoding.utf8) else {
+        guard let content = try? String(contentsOfFile: path, encoding: .utf8) else {
             debug("ERROR: content can't loaded" )
             return []
         }

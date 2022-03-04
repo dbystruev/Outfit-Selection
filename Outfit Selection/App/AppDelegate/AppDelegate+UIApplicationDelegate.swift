@@ -95,13 +95,12 @@ extension AppDelegate: UIApplicationDelegate {
             AppDelegate.updateCategories()
             
             // Update the list of occasions from the server
-//            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                AppDelegate.updateOccasions()
-//            }
+            //            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            AppDelegate.updateOccasions()
+            //            }
         }
         
-        // TODO: DELETE IT
-        debug(BrandManager.shared.brandNamesFromFile)
+        AppDelegate.updateBrands()
         
         // Change global tint color
         UIView.appearance().tintColor = #colorLiteral(red: 0.4693212509, green: 0.5382487178, blue: 0.5183649659, alpha: 1)
@@ -136,8 +135,8 @@ extension AppDelegate: UIApplicationDelegate {
         
         // Transfer to the initial view controller
         let next = UserDefaults.hasSeenAppIntroduction || Occasions.count < 1
-            ? "GenderNavigationViewController"  // there are no classes to use .className
-            : "OnboardingNavigationViewController"
+        ? "GenderNavigationViewController"  // there are no classes to use .className
+        : "OnboardingNavigationViewController"
         window?.rootViewController = storyboard.instantiateViewController(withIdentifier: next)
         window?.makeKeyAndVisible()
         

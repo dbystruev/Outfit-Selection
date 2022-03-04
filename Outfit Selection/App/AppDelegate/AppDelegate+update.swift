@@ -10,6 +10,17 @@ import Foundation
 
 extension AppDelegate {
     // MARK: - Methods
+    
+    /// Update the list of barnds from the file and images
+    static func updateBrands() {
+        
+        // Load barnds from file and append
+        Brands.append(BrandManager.shared.brandedImages)
+        Brands.append(BrandManager.shared.brandNamesFromFile)
+        
+        debug("INFO: loaded brands:", Brands.count, "With image: ", Brands.withImage.count)
+    }
+    
     /// Update the list of categories from the server
     static func updateCategories() {
         let startTime = Date()
