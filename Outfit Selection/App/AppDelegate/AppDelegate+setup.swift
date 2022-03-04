@@ -9,7 +9,6 @@
 import UIKit
 
 extension AppDelegate {
-    //TODO: Add setting for profile
     
     /// Configure default settings
     func configureSettings(){

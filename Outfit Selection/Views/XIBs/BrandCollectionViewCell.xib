@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BrandCollectionViewCell" customModule="Outfit_Selection" customModuleProvider="target"/>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="BrandCollectionViewCell" customModule="Concept_Group" customModuleProvider="target"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="brandCollectionViewCellReuseId" id="gTV-IL-0wX" customClass="BrandCollectionViewCell" customModule="Outfit_Selection" customModuleProvider="target">
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="brandCollectionViewCellReuseId" id="gTV-IL-0wX" customClass="BrandCollectionViewCell" customModule="Concept_Group" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="138" height="98"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -30,12 +30,22 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="5pJ-er-qdO">
                                 <rect key="frame" x="28.5" y="20.5" width="57" height="41"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="12" translatesAutoresizingMaskIntoConstraints="NO" id="2cR-QR-yRs">
+                                <rect key="frame" x="5" y="5" width="104" height="72"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="2cR-QR-yRs" firstAttribute="top" secondItem="IUh-di-SW4" secondAttribute="top" constant="5" id="0cf-gI-COz"/>
                             <constraint firstItem="bJ3-ts-cYg" firstAttribute="top" secondItem="IUh-di-SW4" secondAttribute="top" id="1wP-Cy-ZxJ"/>
                             <constraint firstAttribute="bottom" secondItem="bJ3-ts-cYg" secondAttribute="bottom" id="96a-bO-gQo"/>
                             <constraint firstItem="bJ3-ts-cYg" firstAttribute="leading" secondItem="IUh-di-SW4" secondAttribute="leading" id="QWE-yk-ZYd"/>
+                            <constraint firstAttribute="trailing" secondItem="2cR-QR-yRs" secondAttribute="trailing" constant="5" id="RgG-02-7hu"/>
+                            <constraint firstAttribute="bottom" secondItem="2cR-QR-yRs" secondAttribute="bottom" constant="5" id="as0-RD-IqP"/>
+                            <constraint firstItem="2cR-QR-yRs" firstAttribute="leading" secondItem="IUh-di-SW4" secondAttribute="leading" constant="5" id="f6W-tg-08A"/>
                             <constraint firstAttribute="trailing" secondItem="bJ3-ts-cYg" secondAttribute="trailing" id="fhE-5F-RSo"/>
                             <constraint firstItem="5pJ-er-qdO" firstAttribute="centerX" secondItem="bJ3-ts-cYg" secondAttribute="centerX" id="iK9-pc-lXt"/>
                             <constraint firstItem="5pJ-er-qdO" firstAttribute="height" secondItem="bJ3-ts-cYg" secondAttribute="height" multiplier="0.5" id="nGS-ad-Ocf"/>
@@ -59,6 +69,7 @@
                 <outlet property="brandImageView" destination="bJ3-ts-cYg" id="7yp-lp-8hE"/>
                 <outlet property="brandImageViewHeightConstraint" destination="Hqi-Fa-g4U" id="iME-e4-qV4"/>
                 <outlet property="brandImageViewWidthConstraint" destination="Hfh-Zt-7MV" id="Uiz-ad-dIZ"/>
+                <outlet property="brandLabel" destination="2cR-QR-yRs" id="NGF-zn-2Ny"/>
                 <outlet property="checkmarkImageView" destination="5pJ-er-qdO" id="IAv-ol-h8U"/>
                 <outlet property="leadingMarginConstraint" destination="t1u-5e-ttR" id="FuF-Jy-5Sj"/>
                 <outlet property="leadingPaddingConstraint" destination="QWE-yk-ZYd" id="gmB-SQ-E5n"/>
@@ -67,7 +78,7 @@
                 <outlet property="trailingMarginConstraint" destination="P34-uk-fKN" id="UNo-pU-jW2"/>
                 <outlet property="trailingPaddingConstraint" destination="fhE-5F-RSo" id="gnw-uD-pNf"/>
             </connections>
-            <point key="canvasLocation" x="-338" y="57"/>
+            <point key="canvasLocation" x="-339.13043478260875" y="56.919642857142854"/>
         </collectionViewCell>
     </objects>
     <resources>

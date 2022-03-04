@@ -18,7 +18,7 @@ final class Brand {
     let name: String
     
     /// Brand logo image
-    let image: UIImage?
+    var image: UIImage?
     
     /// The URL to load image from
     let imageURL: URL?
@@ -35,10 +35,10 @@ final class Brand {
     ///   - imageURL: the image URL
     ///   - isSelected: whether the brand is selected by the user, false by default
     init(
-        id: Int?,
+        id: Int? = nil,
         name: String,
-        image: UIImage?,
-        imageURL: URL?,
+        image: UIImage? = nil,
+        imageURL: URL? = nil,
         isSelected: Bool
     ) {
         self.id = id

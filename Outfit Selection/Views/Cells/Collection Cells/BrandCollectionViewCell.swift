@@ -70,6 +70,9 @@ class BrandCollectionViewCell: UICollectionViewCell {
     /// Container view around brand image view
     @IBOutlet weak var brandImageContainerView: UIView!
     
+    /// Label for brand name
+    @IBOutlet weak var brandLabel: UILabel!
+    
     /// Image view with the brand logo
     @IBOutlet weak var brandImageView: UIImageView!
     
@@ -138,6 +141,39 @@ class BrandCollectionViewCell: UICollectionViewCell {
         // Configure cell background and border
         configureBackground(isSelected: brandedImage.isSelected)
     }
+    
+    
+    // MARK: - Methods
+    /// Configure brand cell with given branded image
+    /// - Parameters:
+    ///   - brandedImage: the branded image to configure the brand cell with
+    ///   - cellSize: the size of the branded collection view cell
+    func configure(brand: Brand, cellSize: CGSize) {
+        
+        // Brand image
+        let image = brand.image
+        
+        // Set brand name to label
+        brandLabel.text = image?.size == nil ? brand.name : ""
+        
+        // Configure brand image view
+        brandImageView.image = image
+        
+        // Configure horizontal and vertical margin and padding around constraints
+        horizontalMarginConstraints.forEach { $0.constant = BrandCollectionViewCell.horizontalMargin }
+        horizontalPaddingConstraints.forEach { $0.constant = BrandCollectionViewCell.horizontalPadding }
+        verticalMarginConstraints.forEach { $0.constant = BrandCollectionViewCell.verticalMargin }
+        verticalPaddingConstraints.forEach { $0.constant = BrandCollectionViewCell.verticalPadding }
+        
+        // Set min brand image view height and width
+        brandImageViewHeightConstraint.constant = cellSize.height - 2 * (BrandCollectionViewCell.verticalMargin + BrandCollectionViewCell.verticalPadding)
+        brandImageViewWidthConstraint.constant = cellSize.width - 2 * (BrandCollectionViewCell.horizontalMargin + BrandCollectionViewCell.horizontalPadding)
+        
+        // Configure cell background and border
+        configureBackground(isSelected: brand.isSelected)
+    }
+    
+    
     
     /// Configure cell's background depending on whether the image is selected or not
     /// - Parameter isSelected: true if image is selected, false otherwise
