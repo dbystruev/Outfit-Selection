@@ -18,7 +18,7 @@ extension AppDelegate {
         Brands.append(BrandManager.shared.brandedImages)
         Brands.append(BrandManager.shared.brandNamesFromFile)
         
-        debug("INFO: loaded brands:", Brands.count, "With image: ", Brands.withImage.count)
+        debug("INFO: loaded brands:", Brands.count, "| With image:", Brands.withImage.count)
     }
     
     /// Update the list of categories from the server
