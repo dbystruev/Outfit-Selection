@@ -10,6 +10,7 @@ import UIKit
 
 extension BrandsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        // Brands.count
         brandedImages.filtered.count
     }
     
@@ -18,8 +19,24 @@ extension BrandsViewController: UICollectionViewDataSource {
         if cell as? BrandCollectionViewCell == nil {
             debug("WARNING: Can't cast \(BrandCollectionViewCell.reuseId) to \(BrandCollectionViewCell.self)")
         }
+        
         let brandCell = cell as? BrandCollectionViewCell ?? BrandCollectionViewCell(frame: cell.frame)
         brandCell.configure(brandedImage: brandedImages.filtered[indexPath.row], cellSize: cellSize(for: collectionView))
+        
+//        // TODO: Delete me
+//        let brandCell = cell as? BrandCollectionViewCell ?? BrandCollectionViewCell(frame: cell.frame)
+//
+//        // Get brands with logos and sorted it by name
+//        let sorteredBrandWitnImages = Brands.withImage.map({ $0.value }).sorted(by: { $0.name < $1.name })
+//
+//        // Get brands without logos and sorted it by name
+//        let serteredBrandWithoutImages = Brands.withoutImage.map({ $0.value }).sorted(by: { $0.name < $1.name })
+//
+//        // Final sorted brands with logo sorted by name, after brand name sorted by name without logo
+//        let finalBrands = sorteredBrandWitnImages + serteredBrandWithoutImages
+//
+//        brandCell.configure(brand: finalBrands[indexPath.row], cellSize: cellSize(for: collectionView))
+        
         return brandCell
     }
     

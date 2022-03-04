@@ -21,11 +21,12 @@ extension Brands {
     /// All unselected brands
     var unselected: Brands { filter { !$0.value.isSelected } }
     
-    /// All  brands with logo image
+    /// All brands with logo image
     var withImage: Brands { filter { $0.value.image != nil } }
     
-    /// All  brands with logo image
+    /// All brands with logo image
     var withoutImage: Brands { filter { $0.value.image == nil } }
+    
     
     // MARK: - Static Computed Properties
     /// Unique brand names
@@ -37,9 +38,9 @@ extension Brands {
     /// All unselected brands
     static var unselected: Brands { byName.unselected }
     
-    /// All  brands with logo image
+    /// All brands with logo image
     static var withImage: Brands { byName.withImage }
     
-    /// All  brands with logo image
+    /// All brands with logo image
     static var withoutImage: Brands { byName.withoutImage }
 }
