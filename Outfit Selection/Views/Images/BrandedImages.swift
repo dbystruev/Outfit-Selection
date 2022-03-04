@@ -19,7 +19,7 @@ class BrandedImages {
     
     // MARK: - Properties
     /// Internal collection which holds branded images
-    private var images: [BrandedImage]
+    var images: [BrandedImage]
     
     // MARK: - Computed Properties
     /// The  names of the branded images
