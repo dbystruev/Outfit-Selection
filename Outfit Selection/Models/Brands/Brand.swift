@@ -10,6 +10,9 @@ import UIKit
 
 /// Brands to create
 final class Brand {
+    /// Sets whether this brand image is selected without updating user defaults
+    private var _isSelected: Bool?
+    
     // MARK: - Stored Properties
     /// Identificator for brand
     var id: Int?
@@ -24,7 +27,20 @@ final class Brand {
     let imageURL: URL?
     
     /// Status selected brand by the user
-    let isSelected: Bool
+    var isSelected: Bool {
+        get { _isSelected ?? false }
+        set {
+            guard newValue != _isSelected else { return }
+            _isSelected = newValue
+            BrandManager.shared.saveSelectedBrands()
+            if newValue {
+                Brands.lastSelected = isSelected
+            }
+        }
+    }
+    
+    /// True if this branded image was last selected by the user
+    var isLastSelected: Bool? { Brands.lastSelected }
     
     // MARK: - Init
     /// Constructor for brands
@@ -34,12 +50,14 @@ final class Brand {
     ///   - image: the image
     ///   - imageURL: the image URL
     ///   - isSelected: whether the brand is selected by the user, false by default
+    ///   - isLastSelected: it will be changet after isSelected
     init(
         id: Int? = nil,
         name: String,
         image: UIImage? = nil,
         imageURL: URL? = nil,
-        isSelected: Bool
+        isSelected: Bool,
+        isLastSelected: Bool? = nil
     ) {
         self.id = id
         self.name = name

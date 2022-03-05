@@ -17,6 +17,12 @@ extension BrandManager {
         brandedImages?.forEach { $0.isSelected = $0.branded(selectedBrands) }
     }
     
+    func loadSelectedBrands(into brandedImages: Brands?) {
+        let selectedBrands = UserDefaults.selectedBrands
+        guard !selectedBrands.isEmpty else { return }
+        brandedImages?.forEach { $0.value.isSelected = true}
+    }
+    
     /// Save selected brands to user defaults
     func saveSelectedBrands() {
         UserDefaults.selectedBrands = Array(selectedBrands)
