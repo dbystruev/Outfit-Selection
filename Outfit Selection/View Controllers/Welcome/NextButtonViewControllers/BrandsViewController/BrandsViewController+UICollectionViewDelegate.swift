@@ -21,11 +21,12 @@ extension BrandsViewController: UICollectionViewDelegate {
             debug("WARNING: Can't cast cell at \(indexPath) to \(BrandCollectionViewCell.self)")
             return
         }
-        let brandedImage = brandedImages[indexPath.row]
+        
+        let branded = Brands.sorted[indexPath.row]
         
         // Toggle alpha between 0.25 and 1
-        brandedImage.isSelected.toggle()
-        brandCell.configureBackground(isSelected: brandedImage.isSelected)
+        branded.isSelected.toggle()
+        brandCell.configureBackground(isSelected: branded.isSelected)
         
         // Configure the buttons
         configureAllButton()

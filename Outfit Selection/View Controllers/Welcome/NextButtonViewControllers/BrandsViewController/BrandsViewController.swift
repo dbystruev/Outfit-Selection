@@ -23,7 +23,9 @@ class BrandsViewController: NextButtonViewController {
     
     // MARK: - Stored Properties
     /// The collection of brand images
-    let brandedImages = BrandManager.shared.brandedImages
+    let brandedImages = Brands.self
+    
+    //let brandedImages = Brands.all
     
     /// Time of last click in search bar
     var lastClick: Date?
@@ -71,7 +73,8 @@ class BrandsViewController: NextButtonViewController {
     // MARK: - Methods
     /// Set top right button to clear or select all
     func configureAllButton() {
-        allButton.isButtonSelected = brandedImages.unselected.count < brandedImages.selected.count
+        //allButton.isButtonSelected = brandedImages.unselected.count < brandedImages.selected.count
+        allButton.isButtonSelected = Brands.unselected.count < Brands.selected.count
     }
     
     /// Set next button background color and enable / disable it depending on number of brands selected

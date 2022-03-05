@@ -41,7 +41,7 @@ class BrandManager {
             _brandedImages = newValue
         }
     }
-    
+
     /// Short names of available brand logos (e. g. ["burberry", "chanel", "fendi", "giorgio armani", "gucci", "hermès", "louis vuitton", "prada", "ralph lauren", "versace"])
     var brandNames: [String] {
         fullNames.map { $0.lastComponent.dropExtension }
@@ -74,16 +74,19 @@ class BrandManager {
     
     /// Short names of selected brand logos (e. g. ["burberry", "chanel", "fendi", "giorgio armani", "gucci", "hermès", "louis vuitton", "prada", "ralph lauren", "versace"])
     var selectedBrandNames: [String] {
-        selectedBrands.sorted()
+        //selectedBrands.sorted()
+        Brands.selected.map{ $0.value.name }
     }
     
     /// Brands currently selected by the user
     var selectedBrands: Set<String> {
-        Set(brandedImages.compactMap { $0.isSelected ? $0.brandName : nil })
+        //Set(brandedImages.compactMap { $0.isSelected ? $0.brandName : nil })
+        Set(Brands.selected.compactMap { $0.value.isSelected ? $0.value.name : nil })
     }
     
     /// Brands currently not selected by the user
     var unselectedBrands: Set<String> {
-        Set(brandedImages.compactMap { $0.isSelected ? nil : $0.brandName })
+        //Set(brandedImages.compactMap { $0.isSelected ? nil : $0.brandName })
+        Set(Brands.unselected.compactMap { $0.value.isSelected ? nil : $0.value.name })
     }
 }
