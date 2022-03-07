@@ -12,10 +12,10 @@ typealias Brands = [String: Brand]
 
 extension Brands {
     // MARK: - Computed Properties
-
-    /// Brand images filtere by brand
-    //var filtered: Brands { filter { filter.isEmpty ? true : $0.branded([filter]) } }
     
+//    /// Brand images filtere by brand
+//    var filtered: Brands { filter { filter ? true : $0.branded([filter]) } }
+//    
     /// Unique brand names
     var names: [String] { map { $0.value.name }.sorted() }
     
@@ -33,6 +33,9 @@ extension Brands {
     
     /// All unselected brands
     var unselected: Brands { filter { !$0.value.isSelected } }
+    
+    /// All branded images sorted by selected first
+    //var prioritizeSelected: Brands { selected + unselected }
     
     /// All brands with logo image
     var withImage: Brands { filter { $0.value.image != nil } }
@@ -67,4 +70,5 @@ extension Brands {
     
     /// All brands with logo image
     static var withoutImage: Brands { byName.withoutImage }
+
 }
