@@ -23,7 +23,7 @@ class BrandsViewController: NextButtonViewController {
     
     // MARK: - Stored Properties
     /// The collection of brand images
-    let brandedImages = Brands.self
+    let barnds = Brands.self
     
     //let brandedImages = Brands.all
     
@@ -42,7 +42,7 @@ class BrandsViewController: NextButtonViewController {
         super.viewDidDisappear(animated)
         
         // Clear brands search string when leaving brands selection screen
-        brandedImages.filter = ""
+        barnds.filter = ""
     }
     
     override func viewDidLoad() {
@@ -73,7 +73,6 @@ class BrandsViewController: NextButtonViewController {
     // MARK: - Methods
     /// Set top right button to clear or select all
     func configureAllButton() {
-        //allButton.isButtonSelected = brandedImages.unselected.count < brandedImages.selected.count
         allButton.isButtonSelected = Brands.unselected.count < Brands.selected.count
     }
     

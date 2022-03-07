@@ -15,7 +15,7 @@ extension FeedBrandCell: UICollectionViewDelegate {
     ///   - indexPath: item index path the user has tapped on
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let brandCell = collectionView.cellForItem(at: indexPath) as? BrandCollectionViewCell else { return }
-        let brandedImage = brandedImages[indexPath.row]
+        let brandedImage = Brands.sorted[indexPath.row]
         
         // Toggle alpha between 0.25 and 1
         brandedImage.isSelected.toggle()

@@ -56,7 +56,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let kind = sections[section]
-        let count = kind == .brands ? brandedImages.count : items[kind]?.count ?? 0
+        let count = kind == .brands ? Brands.sorted.count : items[kind]?.count ?? 0
         return count
     }
     
