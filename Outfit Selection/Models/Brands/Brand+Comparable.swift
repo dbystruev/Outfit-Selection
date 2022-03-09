@@ -10,12 +10,14 @@
 extension Brand: Comparable {
     
     static func < (lhs: Brand, rhs: Brand) -> Bool {
-        lhs.name.lowercased() < rhs.name.lowercased()
+        let lhsNil = lhs.image == nil
+        let rhsNil = rhs.image == nil
+        return !lhsNil && rhsNil
+        || lhsNil == rhsNil && lhs.name.lowercased() < rhs.name.lowercased()
     }
     
     static func == (lhs: Brand, rhs: Brand) -> Bool {
-        lhs.id == rhs.id &&
-        lhs.id != nil ||
+        lhs.id == rhs.id && lhs.id != nil ||
         lhs.name.lowercased() == rhs.name.lowercased()
     }
 }

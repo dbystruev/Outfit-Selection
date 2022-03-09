@@ -19,13 +19,18 @@ class BrandsViewController: NextButtonViewController {
     
     // MARK: - Static Constants
     /// Time delay before closing search keybaord
-    static let searchKeystrokeDelay: TimeInterval = 1
+    static let searchKeystrokeDelay: TimeInterval = 0.5
     
     // MARK: - Stored Properties
     /// The collection of brand images
-    let brands = Brands.self
+    var brands = Brands.filtered.sorted()
     
-    //let brandedImages = Brands.all
+    var filterString = "" {
+        didSet {
+            Brands.filterString = filterString
+            brands = Brands.filtered.sorted()
+        }
+    }
     
     /// Time of last click in search bar
     var lastClick: Date?
@@ -42,7 +47,7 @@ class BrandsViewController: NextButtonViewController {
         super.viewDidDisappear(animated)
         
         // Clear brands search string when leaving brands selection screen
-        brands.filter = ""
+        filterString = ""
     }
     
     override func viewDidLoad() {

@@ -32,7 +32,8 @@ extension BrandsViewController: UISearchBarDelegate {
     ///   - searchBar: the search bar that is being edited
     ///   - filter: the text to use for filter
     func finishEditing(_ searchBar: UISearchBar, filter: String? = nil) {
-        brands.filter = filter ?? ""
+        debug(filter)
+        filterString = filter ?? ""
         brandsCollectionView.searchBar = nil
         brandsCollectionView.reloadData()
         searchBar.endEditing(true)
@@ -40,7 +41,8 @@ extension BrandsViewController: UISearchBarDelegate {
     
     // MARK: - UISearchBarDelegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        brands.filter = searchBar.text ?? ""
+        debug(searchText)
+        filterString = searchBar.text ?? ""
         if lastClick == nil {
             deferredReload(searchBar)
         }
@@ -48,14 +50,17 @@ extension BrandsViewController: UISearchBarDelegate {
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        debug()
         finishEditing(searchBar)
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        debug()
         finishEditing(searchBar, filter: searchBar.text)
     }
     
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
-        finishEditing(searchBar, filter: searchBar.text)
+        debug()
+        //finishEditing(searchBar, filter: searchBar.text)
     }
 }

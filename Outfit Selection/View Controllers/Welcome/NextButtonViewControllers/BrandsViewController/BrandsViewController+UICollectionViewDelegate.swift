@@ -22,11 +22,11 @@ extension BrandsViewController: UICollectionViewDelegate {
             return
         }
         
-        let branded = Brands.sorted[indexPath.row]
+        let brand = brands[indexPath.row]
         
         // Toggle alpha between 0.25 and 1
-        branded.toggleSelection()
-        brandCell.configureBackground(isSelected: branded.isSelected)
+        brand.toggleSelection()
+        brandCell.configureBackground(isSelected: brand.isSelected)
         
         // Configure the buttons
         configureAllButton()

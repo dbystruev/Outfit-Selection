@@ -10,7 +10,7 @@ import UIKit
 
 extension BrandsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        Brands.count
+        brands.count
         //brandedImages.filtered.count
     }
     
@@ -22,7 +22,7 @@ extension BrandsViewController: UICollectionViewDataSource {
         
         let brandCell = cell as? BrandCollectionViewCell ?? BrandCollectionViewCell(frame: cell.frame)
         //brandCell.configure(brandedImage: brandedImages.filtered[indexPath.row], cellSize: cellSize(for: collectionView))
-        brandCell.configure(brand: Brands.sorted[indexPath.row], cellSize: cellSize(for: collectionView))
+        brandCell.configure(brand: brands[indexPath.row], cellSize: cellSize(for: collectionView))
         
         return brandCell
     }

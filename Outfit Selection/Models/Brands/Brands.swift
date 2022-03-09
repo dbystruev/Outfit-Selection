@@ -12,10 +12,13 @@ typealias Brands = [String: Brand]
 
 extension Brands {
     // MARK: - Computed Properties
+    /// Brands filtered by filter
+    var filtered: [Brand] {
+        let filterString = Brands.filterString.lowercased()
+        guard !filterString.isEmpty else { return Array(values) }
+        return values.filter { $0.name.lowercased().contains(filterString) }
+    }
     
-//    /// Brand images filtere by brand
-//    var filtered: Brands { filter { filter ? true : $0.branded([filter]) } }
-//    
     /// Unique brand names
     var names: [String] { map { $0.value.name }.sorted() }
     
@@ -44,14 +47,14 @@ extension Brands {
     var withoutImage: Brands { filter { $0.value.image == nil } }
     
     // MARK: - Static Computed Properties
+    /// Filter brand names by this string
+    static var filterString = ""
+    
+    /// Brands filtered by filter string
+    static var filtered: [Brand] { byName.filtered }
+    
     /// Last selected branded image
     static var lastSelected: Bool?
-    
-    /// Filter brand names by this string
-    static var filter = ""
-    
-    /// Brand images filtere by brand
-    //static var filtered: Brands { byName.filtered }
     
     /// Filter brand names by this string
     static var names: [String] { byName.names }
