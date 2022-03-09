@@ -13,10 +13,10 @@ typealias Brands = [String: Brand]
 extension Brands {
     // MARK: - Computed Properties
     /// Brands filtered by filter
-    var filtered: [Brand] {
+    var filtered: Brands {
         let filterString = Brands.filterString.lowercased()
-        guard !filterString.isEmpty else { return Array(values) }
-        return values.filter { $0.name.lowercased().contains(filterString) }
+        if filterString.isEmpty { return self }
+        return filter { $0.value.name.lowercased().contains(filterString) }
     }
     
     /// Unique brand names
@@ -51,7 +51,7 @@ extension Brands {
     static var filterString = ""
     
     /// Brands filtered by filter string
-    static var filtered: [Brand] { byName.filtered }
+    static var filtered: Brands { byName.filtered }
     
     /// Last selected branded image
     static var lastSelected: Bool?

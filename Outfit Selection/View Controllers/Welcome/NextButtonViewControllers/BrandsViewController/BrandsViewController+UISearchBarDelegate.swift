@@ -40,6 +40,7 @@ extension BrandsViewController: UISearchBarDelegate {
     // MARK: - UISearchBarDelegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filterString = searchBar.text ?? ""
+        configureAllButton()
         if lastClick == nil {
             deferredReload(searchBar)
         }

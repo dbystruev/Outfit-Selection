@@ -22,16 +22,17 @@ class BrandsViewController: NextButtonViewController {
     
     // MARK: - Static Constants
     /// Time delay before closing search keybaord
-    static let searchKeystrokeDelay: TimeInterval = 0.5
+    static let searchKeystrokeDelay: TimeInterval = 0.25
     
     // MARK: - Stored Properties
     /// The collection of brand images
-    var brands = Brands.filtered.sorted()
+    private(set) var brands: [Brand] = Brands.filtered.values.sorted()
     
+    /// The string to filter brand search results
     var filterString = "" {
         didSet {
             Brands.filterString = filterString
-            brands = Brands.filtered.sorted()
+            brands = Brands.filtered.values.sorted()
         }
     }
     
@@ -86,7 +87,8 @@ class BrandsViewController: NextButtonViewController {
     // MARK: - Methods
     /// Set top right button to clear or select all
     func configureAllButton() {
-        allButton.isButtonSelected = Brands.unselected.count < Brands.selected.count
+        let filteredBrands = Brands.filtered
+        allButton.isButtonSelected = filteredBrands.unselected.count < filteredBrands.selected.count
     }
     
     /// Set next button background color and enable / disable it depending on number of brands selected

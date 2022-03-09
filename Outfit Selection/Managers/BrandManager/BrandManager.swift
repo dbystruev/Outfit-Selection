@@ -76,7 +76,6 @@ class BrandManager {
     
     /// Short names of selected brand logos (e. g. ["burberry", "chanel", "fendi", "giorgio armani", "gucci", "hermès", "louis vuitton", "prada", "ralph lauren", "versace"])
     var selectedBrandNames: [String] {
-        //selectedBrands.sorted()
         Brands.selected.map{ $0.value.name }
     }
     
