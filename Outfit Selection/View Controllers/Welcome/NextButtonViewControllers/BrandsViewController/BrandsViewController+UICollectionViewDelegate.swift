@@ -15,7 +15,7 @@ extension BrandsViewController: UICollectionViewDelegate {
     ///   - collectionView: the brands collection view
     ///   - indexPath: item index path the user has tapped on
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        collectionView.endEditing(true)
+        searchBar.endEditing(true)
         
         guard let brandCell = collectionView.cellForItem(at: indexPath) as? BrandCollectionViewCell else {
             debug("WARNING: Can't cast cell at \(indexPath) to \(BrandCollectionViewCell.self)")

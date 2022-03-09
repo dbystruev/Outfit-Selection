@@ -239,34 +239,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Juc-Ac-YEM" customClass="BrandsCollectionView" customModule="Concept_Group" customModuleProvider="target">
-                                <rect key="frame" x="4" y="136.66666666666666" width="367" height="504.33333333333337"/>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nGZ-jY-H6z">
+                                <rect key="frame" x="8" y="137" width="359" height="51"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="delegate" destination="K50-Fg-dgI" id="8Pr-B0-e0h"/>
+                                </connections>
+                            </searchBar>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Juc-Ac-YEM">
+                                <rect key="frame" x="4" y="195.66666666666666" width="367" height="445.33333333333337"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-16" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gWM-CS-4u0">
                                     <size key="itemSize" width="128" height="128"/>
-                                    <size key="headerReferenceSize" width="50" height="50"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells/>
-                                <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="brandsSearchCollectionViewReuseId" id="FCk-fs-NBr" customClass="BrandsSearchCollectionView" customModule="Concept_Group" customModuleProvider="target">
-                                    <rect key="frame" x="0.0" y="0.0" width="367" height="50"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <searchBar contentMode="redraw" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nGZ-jY-H6z">
-                                            <rect key="frame" x="0.0" y="3" width="367" height="44"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                            <textInputTraits key="textInputTraits"/>
-                                            <connections>
-                                                <outlet property="delegate" destination="K50-Fg-dgI" id="8Pr-B0-e0h"/>
-                                            </connections>
-                                        </searchBar>
-                                    </subviews>
-                                    <connections>
-                                        <outlet property="searchBar" destination="nGZ-jY-H6z" id="3KT-Zf-N4q"/>
-                                    </connections>
-                                </collectionReusableView>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUX-05-YHx">
                                 <rect key="frame" x="24" y="649" width="327" height="56"/>
@@ -294,11 +284,14 @@
                             <constraint firstItem="VUX-05-YHx" firstAttribute="leading" secondItem="On4-rd-E6O" secondAttribute="leading" priority="750" constant="24" id="Cw6-3p-jNe"/>
                             <constraint firstItem="On4-rd-E6O" firstAttribute="trailing" secondItem="VUX-05-YHx" secondAttribute="trailing" priority="750" constant="24" id="CxS-Jw-VAi"/>
                             <constraint firstItem="MB4-2h-AF5" firstAttribute="leading" secondItem="Juc-Ac-YEM" secondAttribute="leading" constant="12" id="Efk-RP-LHJ"/>
+                            <constraint firstItem="nGZ-jY-H6z" firstAttribute="leading" secondItem="On4-rd-E6O" secondAttribute="leading" constant="8" id="KnL-Ds-dk3"/>
                             <constraint firstItem="MB4-2h-AF5" firstAttribute="leading" secondItem="On4-rd-E6O" secondAttribute="leading" constant="16" id="M4t-6U-895"/>
                             <constraint firstItem="MB4-2h-AF5" firstAttribute="top" secondItem="On4-rd-E6O" secondAttribute="top" constant="16" id="OQf-kc-MDr"/>
                             <constraint firstItem="VUX-05-YHx" firstAttribute="centerX" secondItem="6hA-3g-5Ux" secondAttribute="centerX" id="Vql-Rh-X74"/>
+                            <constraint firstItem="On4-rd-E6O" firstAttribute="trailing" secondItem="nGZ-jY-H6z" secondAttribute="trailing" constant="8" id="cYq-Yk-Hdd"/>
                             <constraint firstItem="VUX-05-YHx" firstAttribute="top" secondItem="Juc-Ac-YEM" secondAttribute="bottom" constant="8" id="fac-fk-j49"/>
-                            <constraint firstItem="Juc-Ac-YEM" firstAttribute="top" secondItem="MB4-2h-AF5" secondAttribute="bottom" constant="8" id="st6-cs-6CW"/>
+                            <constraint firstItem="nGZ-jY-H6z" firstAttribute="top" secondItem="MB4-2h-AF5" secondAttribute="bottom" constant="8" id="kgS-nO-2bf"/>
+                            <constraint firstItem="Juc-Ac-YEM" firstAttribute="top" secondItem="nGZ-jY-H6z" secondAttribute="bottom" constant="8" id="st6-cs-6CW"/>
                             <constraint firstItem="Juc-Ac-YEM" firstAttribute="trailing" secondItem="MB4-2h-AF5" secondAttribute="trailing" constant="12" id="vin-bT-YwB"/>
                         </constraints>
                     </view>
@@ -313,6 +306,7 @@
                         <outlet property="allButton" destination="Gwb-FF-9cf" id="I0V-2C-OO6"/>
                         <outlet property="brandsCollectionView" destination="Juc-Ac-YEM" id="25l-Xo-Zve"/>
                         <outlet property="nextButton" destination="VUX-05-YHx" id="Sf4-j0-uTh"/>
+                        <outlet property="searchBar" destination="nGZ-jY-H6z" id="1WC-nR-PGo"/>
                         <segue destination="21c-yn-AfK" kind="show" identifier="occasionsViewControllerSegue" id="wHC-E6-Atd"/>
                         <segue destination="Y68-Zi-Cgh" kind="show" identifier="progressViewControllerSegue" id="jyn-7A-y6N"/>
                     </connections>
@@ -594,7 +588,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="Y3I-SD-N7s"/>
+        <segue reference="jyn-7A-y6N"/>
         <segue reference="pRR-NZ-3hy"/>
     </inferredMetricsTieBreakers>
     <resources>

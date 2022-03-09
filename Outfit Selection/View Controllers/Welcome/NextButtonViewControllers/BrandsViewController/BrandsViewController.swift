@@ -15,7 +15,10 @@ class BrandsViewController: NextButtonViewController {
     @IBOutlet weak var allButton: SelectableButtonItem!
     
     /// Collection view with brand logos
-    @IBOutlet weak var brandsCollectionView: BrandsCollectionView!
+    @IBOutlet weak var brandsCollectionView: UICollectionView!
+    
+    /// Search bar for the brands
+    @IBOutlet weak var searchBar: UISearchBar!
     
     // MARK: - Static Constants
     /// Time delay before closing search keybaord
