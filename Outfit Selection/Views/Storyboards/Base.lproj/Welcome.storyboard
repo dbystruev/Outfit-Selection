@@ -240,7 +240,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nGZ-jY-H6z">
-                                <rect key="frame" x="8" y="137" width="359" height="51"/>
+                                <rect key="frame" x="8" y="136.66666666666666" width="359" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="K50-Fg-dgI" id="8Pr-B0-e0h"/>
