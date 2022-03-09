@@ -23,7 +23,7 @@ class BrandsViewController: NextButtonViewController {
     
     // MARK: - Stored Properties
     /// The collection of brand images
-    let barnds = Brands.self
+    let brands = Brands.self
     
     //let brandedImages = Brands.all
     
@@ -42,7 +42,7 @@ class BrandsViewController: NextButtonViewController {
         super.viewDidDisappear(animated)
         
         // Clear brands search string when leaving brands selection screen
-        barnds.filter = ""
+        brands.filter = ""
     }
     
     override func viewDidLoad() {
@@ -63,10 +63,15 @@ class BrandsViewController: NextButtonViewController {
         
         // Configure the buttons
         configureAllButton()
+        
+        // Reload data when coming from another tab
+        brandsCollectionView.reloadData()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
+        
+        // Reload data after rotation
         brandsCollectionView.reloadData()
     }
     

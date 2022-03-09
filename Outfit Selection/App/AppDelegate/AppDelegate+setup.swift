@@ -21,7 +21,7 @@ extension AppDelegate {
         
         // Load all collection of brand
         let brandedImages = BrandManager.shared.brandedImages
-        if BrandManager.shared.brandedImages.selected.count < 1 {
+        if brandedImages.selected.count < 1 {
             brandedImages.forEach { $0.isSelected = true }
         }
         

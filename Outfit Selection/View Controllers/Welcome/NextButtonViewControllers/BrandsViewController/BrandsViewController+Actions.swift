@@ -32,8 +32,8 @@ extension BrandsViewController {
         let isSelected = sender.isButtonSelected
         
         // Select / deselect all branded images and save the selection to permanent storage
-        Brands.sorted.forEach { $0.isSelected = isSelected }
-        BrandManager.shared.saveSelectedBrands()
+        Brands.all.forEach { $0.select(isSelected: isSelected, updateUserDefaults: false) }
+        Brands.saveSelectedBrands()
         
         brandsCollectionView.reloadData()
         configureNextButton()

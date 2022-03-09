@@ -21,6 +21,9 @@ extension Brands {
     /// The count of barnds
     static var count: Int { byName.count }
     
+    /// True if brands are empty, false otherwise
+    static var isEmpty: Bool { byName.isEmpty }
+    
     // MARK: - Static Methods
     /// Append  brand to  all brands
     /// - Parameter brand: brand to add
@@ -31,10 +34,11 @@ extension Brands {
     }
     
     /// Append array brands to all brands
-    /// - Parameter brands: array brands
-    static func append(_ brands: [String]) {
-        for brand in brands {
-            let newBrand = Brand(name: brand, isSelected: false)
+    /// - Parameter brandNames: array of brand names
+    static func append(_ brandNames: [String]) {
+        let selectedBrands = Brands.loadSelectedBrands().map { $0.lowercased() }
+        for brandName in brandNames {
+            let newBrand = Brand(name: brandName, isSelected: selectedBrands.contains(brandName.lowercased()))
             append(newBrand)
         }
     }
@@ -52,5 +56,29 @@ extension Brands {
             
             append(newBrand)
         }
+    }
+    
+    /// Select / deselect given brand
+    /// - Parameters:
+    ///   - brandName: the name of the brand to select / deselect
+    ///   - isSelected: true — select, false — deselect
+    ///   - updateUserDefaults: if true — update user defaults (default), if not — don't
+    static func select(_ brandName: String, isSelected: Bool, updateUserDefaults: Bool = true) {
+        byName[brandName.lowercased()]?.select(isSelected: isSelected, updateUserDefaults: updateUserDefaults)
+    }
+    
+    /// Update selection status of all brands and update user defaults
+    /// - Parameter selectedBrands: the list of selected brands
+    static func update(selectedBrands: [String]) {
+        // Clear selection of all brands
+        all.forEach { $0.select(isSelected: false, updateUserDefaults: false) }
+        
+        // Select the brands present in the given list
+        selectedBrands.forEach {
+            byName[$0.lowercased()]?.select(isSelected: true, updateUserDefaults: false)
+        }
+        
+        // Save all seleced brands
+        saveSelectedBrands()
     }
 }

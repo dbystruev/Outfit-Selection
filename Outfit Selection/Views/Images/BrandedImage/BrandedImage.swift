@@ -27,11 +27,14 @@ class BrandedImage: UIImage {
         set {
             guard newValue != _isSelected else { return }
             _isSelected = newValue
-            let brandManager = BrandManager.shared
-            brandManager.saveSelectedBrands()
             if newValue {
-                brandManager.lastSelected = self
+                BrandManager.shared.lastSelected = self
             }
+            
+            // Update selection of brand name in Brands
+            guard let brandName = brandName else { return }
+            Brands.select(brandName, isSelected: newValue)
+            Brands.saveSelectedBrands()
         }
     }
 }

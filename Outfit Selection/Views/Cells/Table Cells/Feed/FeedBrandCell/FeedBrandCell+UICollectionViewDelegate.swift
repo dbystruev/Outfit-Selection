@@ -18,9 +18,9 @@ extension FeedBrandCell: UICollectionViewDelegate {
         let brandedImage = Brands.sorted[indexPath.row]
         
         // Toggle alpha between 0.25 and 1
-        brandedImage.isSelected.toggle()
+        brandedImage.toggleSelection()
         brandCell.configureBackground(isSelected: brandedImage.isSelected)
-        
+
         // Make feed item cells reload
         delegate?.buttonTapped(brandedImage)
     }

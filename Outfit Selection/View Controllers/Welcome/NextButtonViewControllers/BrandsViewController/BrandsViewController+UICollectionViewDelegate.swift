@@ -25,7 +25,7 @@ extension BrandsViewController: UICollectionViewDelegate {
         let branded = Brands.sorted[indexPath.row]
         
         // Toggle alpha between 0.25 and 1
-        branded.isSelected.toggle()
+        branded.toggleSelection()
         brandCell.configureBackground(isSelected: branded.isSelected)
         
         // Configure the buttons

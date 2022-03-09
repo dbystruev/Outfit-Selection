@@ -50,6 +50,7 @@
 		6906A9AB26E6853700386267 /* CollectionNameViewController+UITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906A9AA26E6853700386267 /* CollectionNameViewController+UITextFieldDelegate.swift */; };
 		6906A9AE26E68C7C00386267 /* CollectionSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906A9AD26E68C7C00386267 /* CollectionSelectViewController.swift */; };
 		6906A9B026E68CEB00386267 /* CollectionBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906A9AF26E68CEB00386267 /* CollectionBaseViewController.swift */; };
+		690A212C27D8766C00BFDF45 /* Brands+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690A212B27D8766C00BFDF45 /* Brands+UserDefaults.swift */; };
 		690B42B226DD7601000C683B /* WishlistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690B42B126DD7601000C683B /* WishlistButton.swift */; };
 		6910BDE4260B6D7B00A26F90 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910BDE3260B6D7B00A26F90 /* Bubble.swift */; };
 		6910E0C6274B92F300C15F75 /* ItemSearchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910E0C5274B92F300C15F75 /* ItemSearchable.swift */; };
@@ -153,7 +154,6 @@
 		698990D22323808B002DCA29 /* PinnableScrollViews+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D12323808B002DCA29 /* PinnableScrollViews+Extension.swift */; };
 		698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D523238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift */; };
 		698990D82323B9B0002DCA29 /* OutfitViewController+Shake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698990D72323B9B0002DCA29 /* OutfitViewController+Shake.swift */; };
-		698A7F8C26E8C80C006C36FD /* BrandManager+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A7F8B26E8C80C006C36FD /* BrandManager+UserDefaults.swift */; };
 		698A7F9226E8E4B1006C36FD /* PList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A7F9126E8E4B1006C36FD /* PList.swift */; };
 		698A7F9626E8E8DB006C36FD /* WishlistItemCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A7F9526E8E8DB006C36FD /* WishlistItemCatalog.swift */; };
 		698A7F9826E92106006C36FD /* Wishlist+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 698A7F9726E92106006C36FD /* Wishlist+all.swift */; };
@@ -318,6 +318,7 @@
 		6906A9AA26E6853700386267 /* CollectionNameViewController+UITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionNameViewController+UITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		6906A9AD26E68C7C00386267 /* CollectionSelectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionSelectViewController.swift; sourceTree = "<group>"; };
 		6906A9AF26E68CEB00386267 /* CollectionBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionBaseViewController.swift; sourceTree = "<group>"; };
+		690A212B27D8766C00BFDF45 /* Brands+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brands+UserDefaults.swift"; sourceTree = "<group>"; };
 		690B42B126DD7601000C683B /* WishlistButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistButton.swift; sourceTree = "<group>"; };
 		6910BDE3260B6D7B00A26F90 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		6910E0C5274B92F300C15F75 /* ItemSearchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchable.swift; sourceTree = "<group>"; };
@@ -424,7 +425,6 @@
 		698990D12323808B002DCA29 /* PinnableScrollViews+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollViews+Extension.swift"; sourceTree = "<group>"; };
 		698990D523238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+UINavigationControllerDelegate.swift"; sourceTree = "<group>"; };
 		698990D72323B9B0002DCA29 /* OutfitViewController+Shake.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+Shake.swift"; sourceTree = "<group>"; };
-		698A7F8B26E8C80C006C36FD /* BrandManager+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandManager+UserDefaults.swift"; sourceTree = "<group>"; };
 		698A7F9126E8E4B1006C36FD /* PList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PList.swift; sourceTree = "<group>"; };
 		698A7F9526E8E8DB006C36FD /* WishlistItemCatalog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistItemCatalog.swift; sourceTree = "<group>"; };
 		698A7F9726E92106006C36FD /* Wishlist+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Wishlist+all.swift"; sourceTree = "<group>"; };
@@ -1081,7 +1081,6 @@
 			isa = PBXGroup;
 			children = (
 				693D728D256BF4CA00540C10 /* BrandManager.swift */,
-				698A7F8B26E8C80C006C36FD /* BrandManager+UserDefaults.swift */,
 			);
 			path = BrandManager;
 			sourceTree = "<group>";
@@ -1511,9 +1510,10 @@
 			isa = PBXGroup;
 			children = (
 				7AD80C1927D0C36C005A36DC /* Brand.swift */,
+				7AD80C2127D33567005A36DC /* Brand+Comparable.swift */,
 				7AD80C1B27D0D1A3005A36DC /* Brands.swift */,
 				7AD80C1D27D0D5CF005A36DC /* Brands+all.swift */,
-				7AD80C2127D33567005A36DC /* Brand+Comparable.swift */,
+				690A212B27D8766C00BFDF45 /* Brands+UserDefaults.swift */,
 			);
 			path = Brands;
 			sourceTree = "<group>";
@@ -1652,6 +1652,7 @@
 				691E5D732703904700C6CBD3 /* FeedKind.swift in Sources */,
 				69007D0226EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift in Sources */,
 				69E8ACE626FDF074000CC96A /* UIViewController+touchesBegan.swift in Sources */,
+				690A212C27D8766C00BFDF45 /* Brands+UserDefaults.swift in Sources */,
 				69AE95592563D43700850210 /* ItemViewController.swift in Sources */,
 				69007CEC26EA6324001170D0 /* Occasion.swift in Sources */,
 				69C5CBDA260A045A00DE22E6 /* Swift.Collection+safeIndex.swift in Sources */,
@@ -1767,7 +1768,6 @@
 				694935B2270DAF4F00168EB6 /* WishlistItemCatalog+CustomStringConvertible.swift in Sources */,
 				69B539FA257FBC3C00116F98 /* UIViewController+tabBar.swift in Sources */,
 				69248FFD25503F2F00106681 /* JSON.swift in Sources */,
-				698A7F8C26E8C80C006C36FD /* BrandManager+UserDefaults.swift in Sources */,
 				699AAB8026CD72AE001F6522 /* Logger.swift in Sources */,
 				694BFA2B25ECA6F100FBC27C /* String+letters.swift in Sources */,
 				6910BDE4260B6D7B00A26F90 /* Bubble.swift in Sources */,
@@ -2033,7 +2033,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.07;
+				CURRENT_PROJECT_VERSION = 2022.03.09;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2048,7 +2048,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7.8;
+				MARKETING_VERSION = 0.7.9;
 				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.concept;
 				PRODUCT_NAME = "Concept Group";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2132,7 +2132,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.07;
+				CURRENT_PROJECT_VERSION = 2022.03.09;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2147,7 +2147,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7.8;
+				MARKETING_VERSION = 0.7.9;
 				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.raskroi;
 				PRODUCT_NAME = Raskroi;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2292,7 +2292,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.07;
+				CURRENT_PROJECT_VERSION = 2022.03.09;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2307,7 +2307,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7.8;
+				MARKETING_VERSION = 0.7.9;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "Get Outfit";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2324,7 +2324,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.07;
+				CURRENT_PROJECT_VERSION = 2022.03.09;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2338,7 +2338,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.7.8;
+				MARKETING_VERSION = 0.7.9;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "Get Outfit";
