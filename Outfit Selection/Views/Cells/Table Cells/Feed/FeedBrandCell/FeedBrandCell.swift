@@ -22,10 +22,6 @@ class FeedBrandCell: FeedBaseCell {
     /// Default cell's height
     class override var height: CGFloat { 174 * designFactor }
     
-    // MARK: - Stored Properties
-    /// The collection of branded images
-    let brandedImages = BrandManager.shared.brandedImages.prioritizeSelected
-    
     // MARK: - Inherited Methods
     /// Called when we know for sure what items we want to display
     /// - Parameters:

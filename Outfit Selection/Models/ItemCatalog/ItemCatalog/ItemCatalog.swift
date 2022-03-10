@@ -72,7 +72,7 @@ class ItemCatalog: Codable {
     func updateVendorNames(with fullVendorNames: [String: String]) {
         items.forEach {
             $0.value.updateVendorName(with: fullVendorNames)
-            debug(items[$0.key], fullVendorNames)
+            //debug(items[$0.key], fullVendorNames)
         }
     }
     

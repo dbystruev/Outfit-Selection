@@ -50,6 +50,14 @@ class TabBarController: UITabBarController {
     
     /// Reload the items if brands selection or gender have changed
     func reloadItems() {
+        
+        // Reload section with brand from FeedCollectionViewController
+        if self.selectedIndex == Globals.TabBar.index.feed {
+            debug("INFO: reload section with brands")
+            guard let feedCollectionViewController = findViewController(ofType: FeedCollectionViewController.self) else { return }
+            feedCollectionViewController.feedCollectionView?.reloadSections(IndexSet([0]))
+        }
+        
         // Don't do anything if there are no changes in brands or gender
         guard haveBrandsChanged || hasGenderChanged else { return }
         

@@ -94,7 +94,9 @@ enum Globals {
     enum TabBar {
         enum index {
             static let outfit = 0
+            static let feed = 1
             static let wishlist = 2
+            static let profile = 3
         }
         enum status {
             static var found = false

@@ -15,7 +15,7 @@ class FeedCollectionViewController: LoggingViewController {
     
     // MARK: - Stored Properties
     /// The collection of branded images
-    let brandedImages = BrandManager.shared.brandedImages.prioritizeSelected
+    let brandedImages = Brands.prioritizeSelected
     
     /// Items for each of the kinds
     var items: [FeedKind: Items] = [:]
@@ -184,7 +184,7 @@ class FeedCollectionViewController: LoggingViewController {
                 section == kind ? index : nil
             }
             DispatchQueue.main.async {
-                self.feedCollectionView.reloadSections(IndexSet(updatedSections))
+                self.feedCollectionView?.reloadSections(IndexSet(updatedSections))
             }
         }
     }

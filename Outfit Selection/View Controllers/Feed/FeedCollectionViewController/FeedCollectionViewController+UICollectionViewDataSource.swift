@@ -26,7 +26,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
                 return cell
             }
             
-            brandCell.configure(brand: Brands.sorted[indexPath.item], cellSize: BrandCollectionViewCell.size)
+            brandCell.configure(brand: Brands.prioritizeSelected[indexPath.item], cellSize: BrandCollectionViewCell.size)
             return brandCell
             
         default:

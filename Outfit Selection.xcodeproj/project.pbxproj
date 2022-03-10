@@ -270,6 +270,8 @@
 		7AD80C2227D33567005A36DC /* Brand+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80C2127D33567005A36DC /* Brand+Comparable.swift */; };
 		7AEB482527CE246A003360CF /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB482427CE246A003360CF /* ItemImageView.swift */; };
 		7AEB482E27CE5311003360CF /* ItemImageView+configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB482D27CE5311003360CF /* ItemImageView+configure.swift */; };
+		7AF42A9527D9D00300D5CF53 /* occasions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7AF42A9427D9D00300D5CF53 /* occasions.txt */; };
+		7AF42A9727DA460400D5CF53 /* CollectionSelectViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF42A9627DA460400D5CF53 /* CollectionSelectViewController+Actions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -550,6 +552,8 @@
 		7AD80C2127D33567005A36DC /* Brand+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brand+Comparable.swift"; sourceTree = "<group>"; };
 		7AEB482427CE246A003360CF /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
 		7AEB482D27CE5311003360CF /* ItemImageView+configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemImageView+configure.swift"; sourceTree = "<group>"; };
+		7AF42A9427D9D00300D5CF53 /* occasions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = occasions.txt; sourceTree = "<group>"; };
+		7AF42A9627DA460400D5CF53 /* CollectionSelectViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionSelectViewController+Actions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -642,6 +646,7 @@
 			isa = PBXGroup;
 			children = (
 				6906A9AD26E68C7C00386267 /* CollectionSelectViewController.swift */,
+				7AF42A9627DA460400D5CF53 /* CollectionSelectViewController+Actions.swift */,
 			);
 			path = CollectionSelectViewController;
 			sourceTree = "<group>";
@@ -1223,11 +1228,12 @@
 		69A6F70622BA38CE002A3B49 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				7AD80C1F27D0E0E2005A36DC /* brands.csv */,
 				69A6F6FA22BA26BA002A3B49 /* Assets.xcassets */,
 				693D7285256BF1EA00540C10 /* Brands.bundle */,
+				7AD80C1F27D0E0E2005A36DC /* brands.csv */,
 				69C5CBE6260A191700DE22E6 /* Fonts */,
 				69827B28273BEFE300C59D68 /* Localization */,
+				7AF42A9327D9CFE600D5CF53 /* Logger */,
 				69A6F70F22BA4978002A3B49 /* Screenshots */,
 			);
 			path = Resources;
@@ -1504,6 +1510,14 @@
 			path = Brands;
 			sourceTree = "<group>";
 		};
+		7AF42A9327D9CFE600D5CF53 /* Logger */ = {
+			isa = PBXGroup;
+			children = (
+				7AF42A9427D9D00300D5CF53 /* occasions.txt */,
+			);
+			path = Logger;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1586,6 +1600,7 @@
 				69297C6025EBC9FE00A8684E /* GenderCollectionViewCell.xib in Resources */,
 				692AF3CE260113DB00D37269 /* ShareView.xib in Resources */,
 				690623AE270C633800813089 /* Screenshot10.png in Resources */,
+				7AF42A9527D9D00300D5CF53 /* occasions.txt in Resources */,
 				69827B30273BEFE300C59D68 /* strings.sh in Resources */,
 				690623A6270C633800813089 /* Screenshot12.png in Resources */,
 				69DFE594273524B600D46B5F /* Collections.storyboard in Resources */,
@@ -1760,6 +1775,7 @@
 				695367F425F7AC430024EC8B /* Character+isDigit.swift in Sources */,
 				69AE765E260B9971009CF863 /* HangerBubble.swift in Sources */,
 				692C941B25470B8F0075BD92 /* Item.swift in Sources */,
+				7AF42A9727DA460400D5CF53 /* CollectionSelectViewController+Actions.swift in Sources */,
 				69007CFD26EA7462001170D0 /* OccasionCell.swift in Sources */,
 				694935AE270D9DFB00168EB6 /* Item+CustomStringConvertible.swift in Sources */,
 				691277382707766B00FB6107 /* Collections.swift in Sources */,
