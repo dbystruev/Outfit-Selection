@@ -16,19 +16,25 @@ class CollectionSelectViewController: CollectionBaseViewController {
         }
     }
     
+    @IBOutlet weak var chooseItemsButton: UIButton! {
+        didSet {
+            debug()
+        }
+    }
+    
     @IBOutlet weak var collectionView: UICollectionView!
     
     // MARK: - Inherited Methods
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
-        wishlistViewController?.finishedSelectingCollectionItems()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionNameLabel.text = "Add something to collection"~
-        + " "
-        + (collectionName ?? "collection"~)
+//        collectionNameLabel.text = "Add something to collection"~
+//        + " "
+//        + (collectionName ?? "collection"~)
         
         // Set data source and flow layout delegate for collection view
         collectionView.dataSource = wishlistViewController

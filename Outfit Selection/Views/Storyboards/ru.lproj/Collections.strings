@@ -7,3 +7,6 @@
 
 /* Class = "UIButton"; normalTitle = "Add Items"; ObjectID = "wh4-Fk-apv"; */
 "wh4-Fk-apv.normalTitle" = "Добавить вещи";
+
+/* Class = "UIButton"; normalTitle = "Choose items"; ObjectID = "Zrj-S6-Hsa"; */
+"Zrj-S6-Hsa.normalTitle" = "Выберите вещи";

@@ -184,7 +184,7 @@ class FeedCollectionViewController: LoggingViewController {
                 section == kind ? index : nil
             }
             DispatchQueue.main.async {
-                self.feedCollectionView.reloadSections(IndexSet(updatedSections))
+                self.feedCollectionView?.reloadSections(IndexSet(updatedSections))
             }
         }
     }
