@@ -100,6 +100,7 @@ extension AppDelegate: UIApplicationDelegate {
             //            }
         }
         
+        // Load all brands 
         AppDelegate.updateBrands()
         
         // Change global tint color

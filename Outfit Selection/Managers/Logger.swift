@@ -13,7 +13,7 @@ class Logger {
     /// Load logs from bundled files
     private static let bundledLogs: [String: String] = {
         // The cache files which should be in the bundle
-        let bundledFiles = ["categories", "female", "male", "other", "server"]
+        let bundledFiles = ["categories", "female", "male", "other", "server", "occasion"]
         
         // The content of bundled files as dictinary to return
         var bundledContent: [String: String] = [:]

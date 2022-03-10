@@ -116,32 +116,6 @@ class BrandCollectionViewCell: UICollectionViewCell {
     /// Vertical padding constraints surrounding brand image view in the cell
     var verticalPaddingConstraints: [NSLayoutConstraint] { [bottomPaddingConstraint, topPaddingConstraint] }
     
-//    // MARK: - Methods
-//    /// Configure brand cell with given branded image
-//    /// - Parameters:
-//    ///   - brandedImage: the branded image to configure the brand cell with
-//    ///   - cellSize: the size of the branded collection view cell
-//    func configure(brandedImage: BrandedImage, cellSize: CGSize) {
-//        // Configure brand image view
-//        brandImageView.image = brandedImage
-//        
-//        // Configure horizontal and vertical margin and padding around constraints
-//        horizontalMarginConstraints.forEach { $0.constant = BrandCollectionViewCell.horizontalMargin }
-//        horizontalPaddingConstraints.forEach { $0.constant = BrandCollectionViewCell.horizontalPadding }
-//        verticalMarginConstraints.forEach { $0.constant = BrandCollectionViewCell.verticalMargin }
-//        verticalPaddingConstraints.forEach { $0.constant = BrandCollectionViewCell.verticalPadding }
-//        
-//        // Set min brand image view height and width
-//        brandImageViewHeightConstraint.constant = cellSize.height - 2 * (BrandCollectionViewCell.verticalMargin + BrandCollectionViewCell.verticalPadding)
-//        brandImageViewWidthConstraint.constant = cellSize.width - 2 * (BrandCollectionViewCell.horizontalMargin + BrandCollectionViewCell.horizontalPadding)
-//        
-//        // Need to layout constraints before configuring cell background
-//        layoutIfNeeded()
-//        
-//        // Configure cell background and border
-//        configureBackground(isSelected: brandedImage.isSelected)
-//    }
-    
     // MARK: - Methods
     /// Configure brand cell with given branded image
     /// - Parameters:
