@@ -42,9 +42,6 @@ class BrandedImages {
         return BrandedImages([lastSelected]) + filter { !$0.isLastSelected }
     }
     
-    /// All branded images sorted by selected first
-    var prioritizeSelected: BrandedImages { selected + unselected }
-    
     /// Branded images currently selected by the user
     var selected: BrandedImages { filter { $0.isSelected }}
     

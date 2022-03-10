@@ -22,6 +22,12 @@ extension Brands {
     /// Unique brand names
     var names: [String] { map { $0.value.name }.sorted() }
     
+    /// All branded images sorted by selected first
+    var prioritizeSelected: [Brand] {
+        selected.map ({$0.value}).sorted() +
+        unselected.map ({$0.value}).sorted()
+    }
+    
     /// Sortered array with brand, first brands with image, after sortered without image
     var sorted: [Brand] {
         // Brands with logos and sorted it by name
@@ -58,6 +64,9 @@ extension Brands {
     
     /// Filter brand names by this string
     static var names: [String] { byName.names }
+    
+    /// All branded images sorted by selected first
+    static var prioritizeSelected: [Brand] { byName.prioritizeSelected }
     
     /// Sortered array with brand, first brands with image, after sortered without image
     static var sorted: [Brand] { byName.sorted }
