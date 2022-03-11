@@ -14,6 +14,6 @@ extension CollectionSelectViewController {
     @IBAction func chooseItemsButtonTapped(_ sender: UIButton) {
         debug()
         wishlistViewController?.finishedSelectingCollectionItems()
-        dismiss(animated: true, completion: nil)
+        dismiss(animated: true)
     }
 }

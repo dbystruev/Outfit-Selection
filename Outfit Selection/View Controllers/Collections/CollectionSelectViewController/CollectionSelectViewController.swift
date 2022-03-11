@@ -10,15 +10,9 @@ import UIKit
 
 class CollectionSelectViewController: CollectionBaseViewController {
     // MARK: - Outlets
-    @IBOutlet weak var collectionNameLabel: UILabel! {
-        didSet {
-            wishlistViewController?.collectionNameLabel = collectionNameLabel
-        }
-    }
-    
     @IBOutlet weak var chooseItemsButton: UIButton! {
         didSet {
-            debug()
+            wishlistViewController?.chooseItemsButton = chooseItemsButton
         }
     }
     
@@ -32,12 +26,14 @@ class CollectionSelectViewController: CollectionBaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        collectionNameLabel.text = "Add something to collection"~
-//        + " "
-//        + (collectionName ?? "collection"~)
         
-        // Set data source and flow layout delegate for collection view
+        // Disable a chooseItemsButton
+        chooseItemsButton.backgroundColor = Globals.Color.Button.disabled
+        chooseItemsButton.isEnabled = false
+        
+        // Load wishlist
         collectionView.dataSource = wishlistViewController
         collectionView.delegate = wishlistViewController
     }
+    
 }

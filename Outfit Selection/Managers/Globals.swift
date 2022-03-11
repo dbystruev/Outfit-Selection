@@ -126,6 +126,11 @@ enum Globals {
         }
     }
     
+    enum Occasions {
+            /// Default title "Usual Life: Casual"
+            static let defaultTitle  = "Usual Life: Casual"
+    }
+    
     enum Image {
         /// Logo image
         static let logo = UIImage(named: WhiteLabel.logo)!

@@ -81,6 +81,34 @@ enum Alert {
         )
     }
     
+    /// Configure and return UI alert controller for add occasion to wishlist collection
+    /// - Parameters:
+    ///   - items: the items to will be added into wishlist
+    ///   - occasion: current selected occasion
+    ///   - navigationController : navigation controller for find like button
+    /// - Returns: the configured UI alert controller
+    static func occasionToCollection(
+        items: Items,
+        occasion: String,
+        navigationController: UINavigationController
+    ) -> UIAlertController {
+        configured(
+            "Save to wishlists ?"~,
+            message: "\(occasion) will be saved to wishlists"~,
+            actionTitles: ["Ok"~, "Cancel"~],
+            styles: [.cancel, .default],
+            handlers: [{ action in
+                Wishlist.add(items, occasion: occasion)
+                
+                // Select like button at outfit view controller
+                let tabBarController = navigationController.findViewController(ofType: UITabBarController.self)
+                let navigationController = tabBarController?.selectedViewController as? UINavigationController
+                let outfitController = navigationController?.viewControllers.first as? OutfitViewController
+                outfitController?.likeButton.isSelected = true
+            }]
+        )
+    }
+    
     // MARK: - Static Computed Properties
     static var noItems: UIAlertController {
         configured(
