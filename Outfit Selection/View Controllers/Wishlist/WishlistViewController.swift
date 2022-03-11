@@ -21,7 +21,7 @@ class WishlistViewController: LoggingViewController {
     @IBOutlet weak var wishlistCollectionView: UICollectionView!
     
     // CollectionSelectViewController outlet
-    weak var collectionNameLabel: UILabel?
+    weak var chooseItemsButton: UIButton?
     
     // MARK: - Computed Properties
     /// Get outfit view controller

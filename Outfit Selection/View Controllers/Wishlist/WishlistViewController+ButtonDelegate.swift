@@ -15,6 +15,7 @@ extension WishlistViewController: ButtonDelegate {
     func buttonTapped(_ sender: Any) {
         // Check if feed item was tapped
         if let feedItem = sender as? FeedItem {
+            debug()
             performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: feedItem)
             return
         }
@@ -41,17 +42,21 @@ extension WishlistViewController: ButtonDelegate {
             return
         }
         
-        // If collection name label is nil we haven't started to create a collection
-        guard let collectionNameLabel = collectionNameLabel else {
+        // If button is nil we haven't started to create a collection
+        guard let chooseItemsButton = chooseItemsButton else {
             createCollectionButtonTapped(createCollectionButton)
             return
         }
+        
+        debug(Collection.last?.itemCount)
         
         // Get the most current collection
         guard let lastCollection = Collection.last else {
             debug("WARNING: collections are empty")
             return
         }
+        
+        debug(lastCollection.itemCount)
         
         // Depending on whether collection item is already present, add or remove it
         if lastCollection.contains(collectionItem) {
@@ -64,7 +69,21 @@ extension WishlistViewController: ButtonDelegate {
         
         // Update collection name label
         let count = lastCollection.itemCount
-        let textCount = count == 0 ? "None"~ : "\(count)"
-        collectionNameLabel.text = "\(textCount) " + "selected for"~ + " \(lastCollection.name)"
+        debug(count)
+        let textCount = count == 0 ? ""~ : " \(count) "
+        
+        // Configre chooseItemsButton
+        let textLabel = count == 0 ? "Choose items"~ : "Add"~ + textCount + "items"~
+        let isEnabled = (count != 0)
+        chooseItemsButton.backgroundColor = isEnabled
+            ? Globals.Color.Button.enabled
+            : Globals.Color.Button.disabled
+        chooseItemsButton.isEnabled = isEnabled
+        
+        // Set textLabel for chooseItemsButton
+        //chooseItemsButton.titleLabel?.text
+        chooseItemsButton.setTitle(textLabel, for: .normal)
+    
+
     }
 }
