@@ -60,20 +60,30 @@ extension OutfitViewController {
             sender.isSelected = false
             Wishlist.remove(visibleItems)
         } else {
-            let controller = storyboard?.instantiateViewController(
-                withIdentifier: OccasionsPopupViewController.className
-            )
-            guard
-                let occasionsPopupViewController = controller as? OccasionsPopupViewController
-            else { return }
+            guard let navigationController = navigationController else { return }
             
-            // Update properties
-            occasionsPopupViewController.items = visibleItems
-            occasionsPopupViewController.occasionSelected = occasionSelected
-            
-            // Show occasions popup
-            present(occasionsPopupViewController, animated: true)
+            // Show alert
+            present(Alert.occasionToCollection(
+                items: visibleItems,
+                occasion: occasionSelected?.title ?? Globals.Occasions.defaultTitle,
+                navigationController: navigationController
+            ), animated: true)
         }
+        
+//                {
+//                    let controller = storyboard?.instantiateViewController(
+//                        withIdentifier: OccasionsPopupViewController.className
+//                    )
+//                    guard let occasionsPopupViewController = controller as? OccasionsPopupViewController
+//                    else { return }
+//
+//                    // Update properties
+//                    occasionsPopupViewController.items = visibleItems
+//                    occasionsPopupViewController.occasionSelected = occasionSelected
+//
+//                    // Show occasions popup
+//                    present(occasionsPopupViewController, animated: true)
+//                }
     }
     
     @IBAction func occasionButtonTapped(_ sender: OccasionButton) {
