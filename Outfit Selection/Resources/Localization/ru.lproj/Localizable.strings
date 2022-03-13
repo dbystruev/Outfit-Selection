@@ -12,6 +12,7 @@
 "Change" = "Изменить";
 "Change to" = "Изменить на";
 "Check out the next outfit" = "Следующий образ";
+"Choose items" = "Выберите вещи";
 "Clear all" = "Очистить все";
 "collection" = "коллекция";
 "Concept Group" = "Концепт Груп";
@@ -39,6 +40,7 @@
 "Please add some items or outfits to the wishlists by liking them before creating a collection" = "Пожалуйста, добавьте вещи или образы в избранное, поставив им отметку «Нравится», прежде, чем создавать коллекцию.";
 "Raskroi" = "Raskroi";
 "RUB" = "₽";
+"Save to wishlists?" = "Добавить в избранное?";
 "Sales" = "Скидки";
 "See all" = "Посмотреть все";
 "Select all" = "Выбрать все";
@@ -47,3 +49,4 @@
 "Will reload items and wishlists" = "Вещи и избранное перезагрузятся";
 "Yes" = "Да";
 "your personal styling platform" = "ваш сервис по подбору гардероба";
+" will be save to wishlists" = " будет сохранен в избранном";

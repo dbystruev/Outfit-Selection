@@ -16,7 +16,7 @@ extension WishlistViewController {
             present(Alert.noItems, animated: true)
             return
         }
-        
+
         // If not — jump to creating new collection
         performSegue(withIdentifier: CollectionNameViewController.segueIdentifier, sender: self)
     }

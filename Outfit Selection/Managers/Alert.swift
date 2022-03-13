@@ -93,9 +93,9 @@ enum Alert {
         navigationController: UINavigationController
     ) -> UIAlertController {
         configured(
-            "Save to wishlists ?"~,
-            message: "\(occasion) will be saved to wishlists"~,
-            actionTitles: ["Ok"~, "Cancel"~],
+            "Save to wishlists?"~,
+            message: occasion + " will be save to wishlists"~,
+            actionTitles: ["OK"~,"Cancel"~],
             styles: [.cancel, .default],
             handlers: [{ action in
                 Wishlist.add(items, occasion: occasion)

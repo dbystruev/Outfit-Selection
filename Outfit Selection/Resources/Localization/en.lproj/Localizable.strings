@@ -12,6 +12,7 @@
 "Change" = "Change";
 "Change to" = "Change to";
 "Check out the next outfit" = "Check out the next outfit";
+"Choose items" = "Choose items";
 "Clear all" = "Clear all";
 "collection" = "collection";
 "Concept Group" = "Concept Group";
@@ -39,6 +40,7 @@
 "Please add some items or outfits to the wishlists by liking them before creating a collection" = "Please add some items or outfits to the wishlists by liking them before creating a collection";
 "Raskroi" = "Raskroi";
 "RUB" = "RUB";
+"Save to wishlists?" = "Save to wishlists?";
 "Sales" = "Sales";
 "See all" = "See all";
 "Select all" = "Select all";
@@ -47,3 +49,4 @@
 "Will reload items and wishlists" = "Will reload items and wishlists";
 "Yes" = "Yes";
 "your personal styling platform" = "your personal styling platform";
+" will be save to wishlists" = " will be save to wishlists";
