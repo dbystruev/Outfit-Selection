@@ -69,7 +69,6 @@ extension OutfitViewController {
                 navigationController: navigationController
             ), animated: true)
         }
-        
 //                {
 //                    let controller = storyboard?.instantiateViewController(
 //                        withIdentifier: OccasionsPopupViewController.className

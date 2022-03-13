@@ -22,6 +22,9 @@ class CollectionSelectViewController: CollectionBaseViewController {
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
+        // Reset items count
+        wishlistViewController?.wishListItemsCount = 0
+        
     }
     
     override func viewDidLoad() {

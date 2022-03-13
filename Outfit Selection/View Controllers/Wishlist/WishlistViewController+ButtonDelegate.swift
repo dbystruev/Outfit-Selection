@@ -6,6 +6,8 @@
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
+import Foundation
+
 extension WishlistViewController: ButtonDelegate {
     /// Called when:
     ///     - item or outfit is selected in new collection creation, or
@@ -29,12 +31,13 @@ extension WishlistViewController: ButtonDelegate {
         // Try to get collection item from sender
         guard let collectionItem: CollectionItemCatalog = {
             // Check if sender is an item
-            if let item = wishlistCell.element as? Item {
+            if let item = wishlistCell.element as? Item  {
                 // Try to get collection item from an item
                 return CollectionItemCatalog(item)
-            // Or if sender is a wishlist
+                // Or if sender is a wishlist
             } else if let wishlist = wishlistCell.element as? WishlistItemCatalog {
                 // Try to get collection item from the list of wishlist items
+                
                 return CollectionItemCatalog(wishlist.items.values.map { $0 })
             } else { return nil }
         }() else {
@@ -57,33 +60,51 @@ extension WishlistViewController: ButtonDelegate {
         }
         
         debug(lastCollection.itemCount)
+    
+            self.waitLastConnection(
+                lastCollection: lastCollection,
+                collectionItem: collectionItem,
+                wishlistCell: wishlistCell) { count in
+
+                    // Update collection name label
+                    let count = count
+                    debug(count)
+                    let textCount = count == 0 ? "" : " \(count) "
+                    
+                    // Configre chooseItemsButton
+                    let textLabel = count == 0 ? "Choose items"~ : "Add"~ + textCount + "items"~
+                    let isEnabled = (count != 0)
+                    chooseItemsButton.backgroundColor = isEnabled
+                    ? Globals.Color.Button.enabled
+                    : Globals.Color.Button.disabled
+                    chooseItemsButton.isEnabled = isEnabled
+                    
+                    // Set textLabel for chooseItemsButton
+                    chooseItemsButton.setTitle(textLabel, for: .normal)
+                }
+        }
         
-        // Depending on whether collection item is already present, add or remove it
+    /// Call before configure a button
+    /// - Parameters:
+    ///   - lastCollection: feed item collection type (kind)
+    ///   - collectionItem: the collection items tapped occasion
+    ///   - wishlistCell: wishlistCell
+   private func waitLastConnection(
+        lastCollection: Collection,
+        collectionItem: CollectionItemCatalog,
+        wishlistCell: WishlistBaseCell, completion: (Int) -> Void )
+    {
         if lastCollection.contains(collectionItem) {
             lastCollection.remove(collectionItem)
             wishlistCell.isSelected = false
+            wishListItemsCount -= collectionItem.itemIDs.count
+            completion(wishListItemsCount)
+
         } else {
             lastCollection.append(collectionItem)
             wishlistCell.isSelected = true
+            wishListItemsCount += collectionItem.itemIDs.count
+            completion(wishListItemsCount)
         }
-        
-        // Update collection name label
-        let count = lastCollection.itemCount
-        debug(count)
-        let textCount = count == 0 ? ""~ : " \(count) "
-        
-        // Configre chooseItemsButton
-        let textLabel = count == 0 ? "Choose items"~ : "Add"~ + textCount + "items"~
-        let isEnabled = (count != 0)
-        chooseItemsButton.backgroundColor = isEnabled
-            ? Globals.Color.Button.enabled
-            : Globals.Color.Button.disabled
-        chooseItemsButton.isEnabled = isEnabled
-        
-        // Set textLabel for chooseItemsButton
-        //chooseItemsButton.titleLabel?.text
-        chooseItemsButton.setTitle(textLabel, for: .normal)
-    
-
     }
 }

@@ -61,6 +61,9 @@ class WishlistViewController: LoggingViewController {
     }
     
     // MARK: - Stored Properties
+    /// Items count  for CollectionSelectViewController
+    var wishListItemsCount = 0
+    
     /// Number of cells to show per row: 2 for vertical and 4 for horizontal orientations
     var cellsPerRow = 2
     
