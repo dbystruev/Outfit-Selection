@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Add %d items(s)</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@number_of_items@</string>
+		<key>number_of_items</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>zero</key>
+			<string>Выберите вещи</string>
+			<key>one</key>
+			<string>Добавить одну вещь</string>
+			<key>two</key>
+			<string>Добавить две вещи</string>
+			<key>few</key>
+			<string>Добавить %d вещи</string>
+			<key>many</key>
+			<string>Добавить %d вещей</string>
+		</dict>
+	</dict>
+</dict>
+</plist>

@@ -5,7 +5,6 @@
   Created by Denis Bystruev on 10.11.2021.
   Copyright © 2021 Denis Bystruev. All rights reserved.
 */
-"Add" = "Добавить";
 "Add something to collection" = "Добавить вещи в коллекцию";
 "Brands" = "Бренды";
 "Cancel" = "Отменить";
@@ -28,7 +27,6 @@
 "Instagram Post" = "Пост в Инстаграм";
 "Instagram Stories" = "Инстаграм сторис";
 "Items" = "Вещей";
-"items" = "вещей";
 "male" = "мужской";
 "New items for you" = "Новые вещи для вас";
 "Non-binary" = "Небинарный";
@@ -49,4 +47,4 @@
 "Will reload items and wishlists" = "Вещи и избранное перезагрузятся";
 "Yes" = "Да";
 "your personal styling platform" = "ваш сервис по подбору гардероба";
-" will be save to wishlists" = " будет сохранен в избранном";
+" is going to be saved to wishlist" = " будет сохранен в избранном";

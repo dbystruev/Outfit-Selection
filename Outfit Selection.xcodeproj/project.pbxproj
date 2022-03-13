@@ -140,6 +140,7 @@
 		697D628727BDE9E900EA0F40 /* ProfileViewController+version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697D628627BDE9E900EA0F40 /* ProfileViewController+version.swift */; };
 		697E1FDD25ECF0E8008C85C9 /* UITabBarController+findViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */; };
 		697E1FE125ED01A6008C85C9 /* IntermediaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */; };
+		6981670B27DDE46C00320245 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 6981670D27DDE46C00320245 /* Localizable.stringsdict */; };
 		69827B1E273BD02900C59D68 /* strings.numbers in Resources */ = {isa = PBXBuildFile; fileRef = 69827B19273BD02900C59D68 /* strings.numbers */; };
 		69827B21273BD02900C59D68 /* storyboards.sh in Resources */ = {isa = PBXBuildFile; fileRef = 69827B1D273BD02900C59D68 /* storyboards.sh */; };
 		69827B24273BED6F00C59D68 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 69827B26273BED6F00C59D68 /* Localizable.strings */; };
@@ -406,6 +407,8 @@
 		697D628627BDE9E900EA0F40 /* ProfileViewController+version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+version.swift"; sourceTree = "<group>"; };
 		697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+findViewController.swift"; sourceTree = "<group>"; };
 		697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediaryViewController.swift; sourceTree = "<group>"; };
+		6981670C27DDE46C00320245 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
+		6981670E27DDE46F00320245 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		69827B19273BD02900C59D68 /* strings.numbers */ = {isa = PBXFileReference; lastKnownFileType = file; path = strings.numbers; sourceTree = "<group>"; };
 		69827B1A273BD02900C59D68 /* strings.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = strings.sh; sourceTree = "<group>"; };
 		69827B1C273BD02900C59D68 /* storyboards.numbers */ = {isa = PBXFileReference; lastKnownFileType = file; path = storyboards.numbers; sourceTree = "<group>"; };
@@ -1001,6 +1004,7 @@
 				69827B26273BED6F00C59D68 /* Localizable.strings */,
 				69827B2C273BEFE300C59D68 /* Storyboard */,
 				69827B29273BEFE300C59D68 /* Strings */,
+				6981670D27DDE46C00320245 /* Localizable.stringsdict */,
 			);
 			path = Localization;
 			sourceTree = "<group>";
@@ -1593,6 +1597,7 @@
 				696E876F25647C0F0061802E /* README.md in Resources */,
 				690623AB270C633800813089 /* Screenshot13.png in Resources */,
 				69A6F6FB22BA26BA002A3B49 /* Assets.xcassets in Resources */,
+				6981670B27DDE46C00320245 /* Localizable.stringsdict in Resources */,
 				69297C5325EB852700A8684E /* BrandCollectionViewCell.xib in Resources */,
 				69DFE5A92735271600D46B5F /* Launch Screen.storyboard in Resources */,
 				690623A8270C633800813089 /* Screenshot04.png in Resources */,
@@ -1865,6 +1870,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		6981670D27DDE46C00320245 /* Localizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6981670C27DDE46C00320245 /* en */,
+				6981670E27DDE46F00320245 /* ru */,
+			);
+			name = Localizable.stringsdict;
+			sourceTree = "<group>";
+		};
 		69827B26273BED6F00C59D68 /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (

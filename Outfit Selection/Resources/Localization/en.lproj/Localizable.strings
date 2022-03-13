@@ -5,7 +5,6 @@
   Created by Denis Bystruev on 10.11.2021.
   Copyright © 2021 Denis Bystruev. All rights reserved.
 */
-"Add" = "Add";
 "Add something to collection" = "Add something to collection";
 "Brands" = "Brands";
 "Cancel" = "Cancel";
@@ -28,7 +27,6 @@
 "Instagram Post" = "Instagram Post";
 "Instagram Stories" = "Instagram Stories";
 "Items" = "Items";
-"items" = "items";
 "male" = "male";
 "New items for you" = "New items for you";
 "Non-binary" = "Non-binary";
@@ -49,4 +47,4 @@
 "Will reload items and wishlists" = "Will reload items and wishlists";
 "Yes" = "Yes";
 "your personal styling platform" = "your personal styling platform";
-" will be save to wishlists" = " will be save to wishlists";
+" is going to be saved to wishlist" = " is going to be saved to wishlist";

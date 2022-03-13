@@ -67,12 +67,10 @@ extension WishlistViewController: ButtonDelegate {
             wishlistCell: wishlistCell) { count in
                 
                 // Update collection name label
-                let count = count
                 debug(count)
-                let textCount = count == 0 ? "" : " \(count) "
                 
                 // Configre chooseItemsButton
-                let textLabel = count == 0 ? "Choose items"~ : "Add"~ + textCount + "items"~
+                let textLabel = String.localizedStringWithFormat("Add %d items(s)"~, count)
                 let isEnabled = count != 0
                 chooseItemsButton.backgroundColor = isEnabled
                 ? Globals.Color.Button.enabled
