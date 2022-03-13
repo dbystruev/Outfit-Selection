@@ -9,9 +9,12 @@
 import UIKit
 
 extension Onboarding {
-    // MARK: - Static Constants
+    // MARK: - Static Properties
     /// All onboarding screens
     static var all: [Onboarding] = []
+    
+    /// The number of onboarding screens
+    static var count: Int { all.count }
     
     /// Index of current onboarding screen in all array
     static var currentIndex = 0 {

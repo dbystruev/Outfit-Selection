@@ -134,12 +134,12 @@ extension AppDelegate: UIApplicationDelegate {
         // Wait for API requests to finish, but no more than 3 seconds
         _ = group.wait(timeout: .now() + 3)
         
-//        let next = UserDefaults.hasSeenAppIntroduction || Occasions.count < 1
-//        ? "GenderNavigationViewController"  // there are no classes to use .className
-//        : "OnboardingNavigationViewController"
+        // Don't show onboarding screens if the user has seen them or there are none
+        let next = UserDefaults.hasSeenAppIntroduction || Onboarding.count < 1
+        ? "GenderNavigationViewController"  // there are no classes to use .className
+        : "OnboardingNavigationViewController"
         
         // Transfer to the initial view controller
-        let next = "GenderNavigationViewController"
         window?.rootViewController = storyboard.instantiateViewController(withIdentifier: next)
         window?.makeKeyAndVisible()
         
