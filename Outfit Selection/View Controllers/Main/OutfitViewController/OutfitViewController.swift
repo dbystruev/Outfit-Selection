@@ -45,7 +45,7 @@ class OutfitViewController: LoggingViewController {
     var firstAppearance = true
     
     /// Hide back bar button item
-    var hideBackBarButtonItem = true
+    var shouldHideBackBarButtonItem = true
     
     /// Heper bubble next to hanger icon
     let hangerBubble = HangerBubble()

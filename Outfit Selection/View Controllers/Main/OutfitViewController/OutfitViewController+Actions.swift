@@ -10,6 +10,18 @@ import UIKit
 
 // MARK: - Actions
 extension OutfitViewController {
+    /// Called when the user taps back button
+    @objc func backBarButtonItemTapped () {
+        
+        // Hide bar back button
+        shouldHideBackBarButtonItem = true
+        configureBackBarButtonItem(isHidden: true)
+        
+        // Go to NavigationManager into outfit
+        NavigationManager.navigate(to: .wishlist)
+        
+    }
+    
     /// Called when hanger bar button in navigation brat is tapped
     /// - Parameter sender: the hanger bar button which was tapped
     @IBAction func hangerBarButtonItemTapped(_ sender: Any) {
@@ -20,18 +32,6 @@ extension OutfitViewController {
     /// Called when the user taps hanger bubble
     @objc func hangerBubbleTapped() {
         showHangerBubble = false
-    }
-    
-    /// Calles when the taps back Button
-    @objc func backBarButtonItemTapped () {
-        
-        // Hide bar back button
-        hideBackBarButtonItem = true
-        configureBackBarButtonItem(isHiden: true)
-        
-        // Go to NavigationManager into outfit
-        NavigationManager.navigate(to: .wishlist)
-        
     }
     
     /// Called when one of individual hanger buttons in a scroll view is tapped
@@ -91,8 +91,8 @@ extension OutfitViewController {
         self.shuffleButtonCheck(lock: true)
         
         // Hide bar back button
-        hideBackBarButtonItem = true
-        configureBackBarButtonItem(isHiden: true)
+        shouldHideBackBarButtonItem = true
+        configureBackBarButtonItem(isHidden: true)
         
         // Check hanger buttons is showing
         if showHangerButtons {
@@ -221,8 +221,8 @@ extension OutfitViewController {
     @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
         
         // Hide bar back button
-        hideBackBarButtonItem = true
-        configureBackBarButtonItem(isHiden: true)
+        shouldHideBackBarButtonItem = true
+        configureBackBarButtonItem(isHidden: true)
         
         // Get the images and check that all of them are not nil
         let imageViews = scrollViews.compactMap { $0.getImageView() }
@@ -248,8 +248,8 @@ extension OutfitViewController {
     @IBAction func shuffleButtonTapped(_ sender: Any) {
         
         // Hide bar back button
-        hideBackBarButtonItem = true
-        configureBackBarButtonItem(isHiden: true)
+        shouldHideBackBarButtonItem = true
+        configureBackBarButtonItem(isHidden: true)
         
         // Check itemsToShow
         guard itemsToShow.isEmpty else { return }

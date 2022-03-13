@@ -58,10 +58,10 @@ extension OutfitViewController {
         // Use self as scroll view delegate for each scroll view
         scrollViews.forEach { $0.delegate = self }
         
-        hideBackBarButtonItem = true
+        shouldHideBackBarButtonItem = true
         
         // Configure back icon in navigation bar
-        configureBackBarButtonItem(isHiden: hideBackBarButtonItem)
+        configureBackBarButtonItem(isHidden: shouldHideBackBarButtonItem)
         
     }
     
@@ -69,7 +69,7 @@ extension OutfitViewController {
         super.viewDidAppear(animated)
         
         // Configure back icon in navigation bar
-        configureBackBarButtonItem(isHiden: hideBackBarButtonItem)
+        configureBackBarButtonItem(isHidden: shouldHideBackBarButtonItem)
         
         // Check items to show
         checkItemsToShow()

@@ -58,7 +58,7 @@ extension WishlistViewController: UICollectionViewDelegate {
                 ItemManager.shared.loadImagesFromItems(items: sorteredItem) {
                     
                     // Go to NavigationManager into outfit and show back button
-                    NavigationManager.navigate(to: .outfit(items: sorteredItem, backButton: false))
+                    NavigationManager.navigate(to: .outfit(items: sorteredItem, hideBackButton: false))
                 }
                 
             case nil:
