@@ -95,12 +95,12 @@ class NavigationManager {
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
                 debug("INFO: Tab Bar Controller is not available")
                 
-                // If tab bar controller is not available go to
+                // If tab bar controller is not available presen outfit view controller
                 presentOutfitViewController(for: items, in: navigationController)
                 return
             }
             
-            // It will be start when items is not empty and tabBar is not found
+            // Presnt outfit view controller with/without the tab bar depending on items content
             if items.isEmpty {
                 presentOutfitViewController(in: navigationController)
             } else {
@@ -197,6 +197,9 @@ class NavigationManager {
         
         // Check items checkItemsToShow and download it if
         outfitViewController.checkItemsToShow()
+        
+        // Make sure outfit view controller is the top to show
+        navigationController.popToViewController(outfitViewController, animated: false)
         
         // Check state tab bar controller
         guard tabBarController.selectedIndex != indexTabBar else { return }

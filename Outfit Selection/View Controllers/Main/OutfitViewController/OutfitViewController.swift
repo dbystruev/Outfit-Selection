@@ -44,9 +44,6 @@ class OutfitViewController: LoggingViewController {
     /// First appearance for view will appear
     var firstAppearance = true
     
-    /// Hide back bar button item
-    var shouldHideBackBarButtonItem = true
-    
     /// Heper bubble next to hanger icon
     let hangerBubble = HangerBubble()
     
@@ -70,6 +67,9 @@ class OutfitViewController: LoggingViewController {
     
     /// True when both hanger and refresh bubbles should be hidden
     var shouldHideBubbles = false
+    
+    /// Hide back bar button item
+    var shouldHideBackBarButtonItem = true
     
     /// True if hanger bubble should be shown, false otherwise
     var showHangerBubble = false {

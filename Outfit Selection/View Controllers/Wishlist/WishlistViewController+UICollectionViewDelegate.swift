@@ -9,20 +9,6 @@
 import UIKit
 
 extension WishlistViewController: UICollectionViewDelegate {
-    private func toggleItemFor(_ collectionView: UICollectionView, at indexPath: IndexPath) {
-        // Return true for anything except collection select view contoller
-        guard collectionView == CollectionSelectViewController.collectionView else { return }
-        
-        // Get the cell which was tapped
-        guard let wishlistCell = collectionView.cellForItem(at: indexPath) as? WishlistBaseCell else {
-            debug("WARNING: item at \(indexPath) is not a \(WishlistBaseCell.self)")
-            return
-        }
-        
-        // Emulate button tap in the top right corner
-        wishlistCell.selectButtonTapped(UIButton())
-    }
-    
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
         toggleItemFor(collectionView, at: indexPath)
     }
@@ -67,5 +53,23 @@ extension WishlistViewController: UICollectionViewDelegate {
         default:
             debug("WARNING: unknown collection view")
         }
+    }
+    
+    /// Select / deselect item at index path if given collection view matches collection select view controller's collection view
+    /// - Parameters:
+    ///   - collectionView: collection select view controller's collection view to toggle the item for
+    ///   - indexPath: index path at which to toggle the item
+    private func toggleItemFor(_ collectionView: UICollectionView, at indexPath: IndexPath) {
+        // Return true for anything except collection select view contoller
+        guard collectionView == CollectionSelectViewController.collectionView else { return }
+        
+        // Get the cell which was tapped
+        guard let wishlistCell = collectionView.cellForItem(at: indexPath) as? WishlistBaseCell else {
+            debug("WARNING: item at \(indexPath) is not a \(WishlistBaseCell.self)")
+            return
+        }
+        
+        // Emulate button tap in the top right corner
+        wishlistCell.selectButtonTapped(UIButton())
     }
 }
