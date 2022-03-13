@@ -10,37 +10,51 @@ import UIKit
 
 extension WishlistViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        // Don't select anything in case we are not on wishlist screen
-        guard collectionView == wishlistCollectionView else { return }
-        
-        switch tabSelected {
-        
-        case .collection:
-            debug("ERROR: not implemented for .collections")
-        
-        case .item:
-            performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: self)
-            
-        case .outfit:
-            
-            // Get items from wishlist
-            let items = wishlist[indexPath.row].items.compactMap { $0.value }
-            let ids = wishlist[indexPath.row].itemIDs
-            
-            // Sortered items value
-            let sorteredItem = ids.compactMap { id in
-                items.first { $0.id == id }
+        switch collectionView {
+            // We are on collection selection screen
+        case CollectionSelectViewController.collectionView:
+            // Get the cell which was tapped
+            guard let wishlistCell = collectionView.cellForItem(at: indexPath) as? WishlistBaseCell else {
+                debug("WARNING: item at \(indexPath) is not a \(WishlistBaseCell.self)")
+                return
             }
             
-            // Download all images and add to viewModels
-            ItemManager.shared.loadImagesFromItems(items: sorteredItem) {
+            // Emulate button tap in the top right corner
+            wishlistCell.selectButtonTapped(wishlistCell.selectButton)
+            
+            // We are on wishlist screen
+        case wishlistCollectionView:
+            switch tabSelected {
                 
-                // Go to NavigationManager into outfit and show back button
-                NavigationManager.navigate(to: .outfit(items: sorteredItem, backButton: false))
+            case .collection:
+                debug("ERROR: not implemented for .collections")
+                
+            case .item:
+                performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: self)
+                
+            case .outfit:
+                
+                // Get items from wishlist
+                let items = wishlist[indexPath.row].items.compactMap { $0.value }
+                let ids = wishlist[indexPath.row].itemIDs
+                
+                // Sortered items value
+                let sorteredItem = ids.compactMap { id in
+                    items.first { $0.id == id }
+                }
+                
+                // Download all images and add to viewModels
+                ItemManager.shared.loadImagesFromItems(items: sorteredItem) {
+                    
+                    // Go to NavigationManager into outfit and show back button
+                    NavigationManager.navigate(to: .outfit(items: sorteredItem, backButton: false))
+                }
+                
+            case nil:
+                debug("ERROR: selected tab should not be nil")
             }
-            
-        case nil:
-            debug("ERROR: selected tab should not be nil")
+        default:
+            debug("WARNING: unknown collection view")
         }
     }
 }

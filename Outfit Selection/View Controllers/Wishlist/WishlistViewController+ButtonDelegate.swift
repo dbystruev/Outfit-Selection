@@ -60,36 +60,41 @@ extension WishlistViewController: ButtonDelegate {
         }
         
         debug(lastCollection.itemCount)
-    
-            self.waitLastConnection(
-                lastCollection: lastCollection,
-                collectionItem: collectionItem,
-                wishlistCell: wishlistCell) { count in
-
-                    // Update collection name label
-                    let count = count
-                    debug(count)
-                    let textCount = count == 0 ? "" : " \(count) "
-                    
-                    // Configre chooseItemsButton
-                    let textLabel = count == 0 ? "Choose items"~ : "Add"~ + textCount + "items"~
-                    let isEnabled = (count != 0)
-                    chooseItemsButton.backgroundColor = isEnabled
-                    ? Globals.Color.Button.enabled
-                    : Globals.Color.Button.disabled
-                    chooseItemsButton.isEnabled = isEnabled
-                    
-                    // Set textLabel for chooseItemsButton
-                    chooseItemsButton.setTitle(textLabel, for: .normal)
-                }
-        }
         
+        self.waitLastConnection(
+            lastCollection: lastCollection,
+            collectionItem: collectionItem,
+            wishlistCell: wishlistCell) { count in
+                
+                // Update collection name label
+                let count = count
+                debug(count)
+                let textCount = count == 0 ? "" : " \(count) "
+                
+                // Configre chooseItemsButton
+                let textLabel = count == 0 ? "Choose items"~ : "Add"~ + textCount + "items"~
+                let isEnabled = count != 0
+                chooseItemsButton.backgroundColor = isEnabled
+                ? Globals.Color.Button.enabled
+                : Globals.Color.Button.disabled
+                chooseItemsButton.isEnabled = isEnabled
+                
+                // Set textLabel for chooseItemsButton
+                chooseItemsButton.setTitle(textLabel, for: .normal)
+                
+                // Update state of top right corner button
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    wishlistCell.selectButton.isSelected = isEnabled
+                }
+            }
+    }
+    
     /// Call before configure a button
     /// - Parameters:
     ///   - lastCollection: feed item collection type (kind)
     ///   - collectionItem: the collection items tapped occasion
     ///   - wishlistCell: wishlistCell
-   private func waitLastConnection(
+    private func waitLastConnection(
         lastCollection: Collection,
         collectionItem: CollectionItemCatalog,
         wishlistCell: WishlistBaseCell, completion: (Int) -> Void )
@@ -99,7 +104,7 @@ extension WishlistViewController: ButtonDelegate {
             wishlistCell.isSelected = false
             wishListItemsCount -= collectionItem.itemIDs.count
             completion(wishListItemsCount)
-
+            
         } else {
             lastCollection.append(collectionItem)
             wishlistCell.isSelected = true

@@ -9,6 +9,9 @@
 import UIKit
 
 class CollectionSelectViewController: CollectionBaseViewController {
+    // MARK: - Static Properties
+    static weak var collectionView: UICollectionView?
+    
     // MARK: - Outlets
     @IBOutlet weak var chooseItemsButton: UIButton! {
         didSet {
@@ -16,7 +19,11 @@ class CollectionSelectViewController: CollectionBaseViewController {
         }
     }
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView: UICollectionView! {
+        didSet {
+            CollectionSelectViewController.collectionView = collectionView
+        }
+    }
     
     // MARK: - Inherited Methods
     override func viewDidDisappear(_ animated: Bool) {
