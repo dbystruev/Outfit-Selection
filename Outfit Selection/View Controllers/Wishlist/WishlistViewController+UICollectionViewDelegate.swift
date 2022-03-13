@@ -9,20 +9,31 @@
 import UIKit
 
 extension WishlistViewController: UICollectionViewDelegate {
+    private func toggleItemFor(_ collectionView: UICollectionView, at indexPath: IndexPath) {
+        // Return true for anything except collection select view contoller
+        guard collectionView == CollectionSelectViewController.collectionView else { return }
+        
+        // Get the cell which was tapped
+        guard let wishlistCell = collectionView.cellForItem(at: indexPath) as? WishlistBaseCell else {
+            debug("WARNING: item at \(indexPath) is not a \(WishlistBaseCell.self)")
+            return
+        }
+        
+        // Emulate button tap in the top right corner
+        wishlistCell.selectButtonTapped(UIButton())
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        toggleItemFor(collectionView, at: indexPath)
+    }
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch collectionView {
-            // We are on collection selection screen
+            
         case CollectionSelectViewController.collectionView:
-            // Get the cell which was tapped
-            guard let wishlistCell = collectionView.cellForItem(at: indexPath) as? WishlistBaseCell else {
-                debug("WARNING: item at \(indexPath) is not a \(WishlistBaseCell.self)")
-                return
-            }
+            toggleItemFor(collectionView, at: indexPath)
             
-            // Emulate button tap in the top right corner
-            wishlistCell.selectButtonTapped(wishlistCell.selectButton)
-            
-            // We are on wishlist screen
+        // We are on wishlist screen
         case wishlistCollectionView:
             switch tabSelected {
                 

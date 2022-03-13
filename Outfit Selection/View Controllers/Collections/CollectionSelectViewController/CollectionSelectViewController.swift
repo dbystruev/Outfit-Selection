@@ -41,7 +41,8 @@ class CollectionSelectViewController: CollectionBaseViewController {
         chooseItemsButton.backgroundColor = Globals.Color.Button.disabled
         chooseItemsButton.isEnabled = false
         
-        // Load wishlist
+        // Setup collection view
+        collectionView.allowsMultipleSelection = true
         collectionView.dataSource = wishlistViewController
         collectionView.delegate = wishlistViewController
     }

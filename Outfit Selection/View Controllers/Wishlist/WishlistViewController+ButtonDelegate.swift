@@ -51,63 +51,68 @@ extension WishlistViewController: ButtonDelegate {
             return
         }
         
-        debug(Collection.last?.itemCount)
-        
         // Get the most current collection
         guard let lastCollection = Collection.last else {
             debug("WARNING: collections are empty")
             return
         }
         
-        debug(lastCollection.itemCount)
+        // Update last collection by removing / adding collection item tapped
+        let itemCount = update(lastCollection, with: collectionItem, wishlistCell: wishlistCell)
         
-        self.waitLastConnection(
-            lastCollection: lastCollection,
-            collectionItem: collectionItem,
-            wishlistCell: wishlistCell) { count in
-                
-                // Update collection name label
-                debug(count)
-                
-                // Configre chooseItemsButton
-                let textLabel = String.localizedStringWithFormat("Add %d items(s)"~, count)
-                let isEnabled = count != 0
-                chooseItemsButton.backgroundColor = isEnabled
-                ? Globals.Color.Button.enabled
-                : Globals.Color.Button.disabled
-                chooseItemsButton.isEnabled = isEnabled
-                
-                // Set textLabel for chooseItemsButton
-                chooseItemsButton.setTitle(textLabel, for: .normal)
-                
-                // Update state of top right corner button
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-                    wishlistCell.selectButton.isSelected = isEnabled
-                }
-            }
+        // Configure chooseItemsButton
+        let isEnabled = itemCount != 0
+        chooseItemsButton.backgroundColor = isEnabled
+        ? Globals.Color.Button.enabled
+        : Globals.Color.Button.disabled
+        chooseItemsButton.isEnabled = isEnabled
+        
+        // Set textLabel for chooseItemsButton
+        let textLabel = String.localizedStringWithFormat("Add %d items(s)"~, itemCount)
+        chooseItemsButton.setTitle(textLabel, for: .normal)
+        
+        // Make sure current cell is selected / deselected
+        guard let collectionView = CollectionSelectViewController.collectionView else {
+            debug("WARNING: \(CollectionSelectViewController.self) collection view is nil")
+            return
+        }
+        
+        // Find out index path for wishlist cell
+        guard let indexPath = collectionView.indexPath(for: wishlistCell) else {
+            debug("WARNING: index path for wishlist cell is nil")
+            return
+        }
+        
+        // Make sure wishlist cell selection status corresponds to item selection in collection view
+        if wishlistCell.isSelected {
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        } else {
+            collectionView.deselectItem(at: indexPath, animated: false)
+        }
     }
     
-    /// Call before configure a button
+    /// Update last collection and add/remove collection item before configuring a button
     /// - Parameters:
-    ///   - lastCollection: feed item collection type (kind)
-    ///   - collectionItem: the collection items tapped occasion
-    ///   - wishlistCell: wishlistCell
-    private func waitLastConnection(
-        lastCollection: Collection,
-        collectionItem: CollectionItemCatalog,
-        wishlistCell: WishlistBaseCell, completion: (Int) -> Void )
-    {
+    ///   - lastCollection: collection of collection items to update
+    ///   - collectionItem: collection item which was tapped
+    ///   - wishlistCell: wishlist cell which should be selected / unselected
+    /// - Returns: the number of items in wishlist
+    private func update(
+        _ lastCollection: Collection,
+        with collectionItem: CollectionItemCatalog,
+        wishlistCell: WishlistBaseCell
+    ) -> Int {
         if lastCollection.contains(collectionItem) {
             lastCollection.remove(collectionItem)
             wishlistCell.isSelected = false
             wishListItemsCount -= collectionItem.itemIDs.count
-            completion(wishListItemsCount)
+            return wishListItemsCount
             
         } else {
             lastCollection.append(collectionItem)
             wishlistCell.isSelected = true
             wishListItemsCount += collectionItem.itemIDs.count
-            completion(wishListItemsCount)
+            return wishListItemsCount
         }
     }
 }
