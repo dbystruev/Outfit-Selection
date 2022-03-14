@@ -72,6 +72,13 @@ class TabBarController: UITabBarController {
             guard let navigationController = selectedViewController as? UINavigationController else { return }
             guard let firstViewController = navigationController.viewControllers.first else { return }
             guard !(firstViewController is ProfileViewController) else { return }
+            guard let brandsViewController = findViewController(ofType: BrandsViewController.self) else {
+                debug("WARNING: Can't find \(BrandsViewController.self)")
+                return
+            }
+            
+            // Reload brands and data from brandsCollectionView
+            brandsViewController.reloadBrands()
         }
         
         // Pop to progress view controller

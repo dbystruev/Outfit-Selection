@@ -43,11 +43,25 @@ extension Brands {
     /// All unselected brands
     var unselected: Brands { filter { !$0.value.isSelected } }
     
-    /// All branded images sorted by selected first
-    //var prioritizeSelected: Brands { selected + unselected }
-    
-    /// All brands with logo image
-    var withImage: Brands { filter { $0.value.image != nil } }
+    /// All brands with logo image and filtered if nedded
+    var withImage: Brands {
+        let filterString = Brands.filterString.lowercased()
+        
+        // Filtered brands with image logo
+        var withImage = filter { $0.value.image != nil }
+        
+        if filterString.isEmpty {
+            
+            // Return a dictionary with the combined keys and values
+            return withImage.merging(selected) { (_, current) in current }
+        }
+        
+        withImage = withImage.filter { $0.value.name.lowercased().contains(filterString)}
+        let withoutImage = withoutImage.filter { $0.value.name.lowercased().contains(filterString)}
+        
+        // Return a dictionary with the combined keys and values
+        return withImage.merging(withoutImage) { (_, current) in current }
+    }
     
     /// All brands with logo image
     var withoutImage: Brands { filter { $0.value.image == nil } }

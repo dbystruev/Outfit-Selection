@@ -17,16 +17,18 @@ extension BrandsViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         searchBar.endEditing(true)
         
-        guard let brandCell = collectionView.cellForItem(at: indexPath) as? BrandCollectionViewCell else {
-            debug("WARNING: Can't cast cell at \(indexPath) to \(BrandCollectionViewCell.self)")
-            return
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+            guard let brandCell = collectionView.cellForItem(at: indexPath) as? BrandCollectionViewCell else {
+                debug("WARNING: Can't cast cell at \(indexPath) to \(BrandCollectionViewCell.self)")
+                return
+            }
+            
+            let brand = self.brands[indexPath.row]
+            
+            // Toggle alpha between 0.25 and 1
+            brand.toggleSelection()
+            brandCell.configureBackground(isSelected: brand.isSelected)
         }
-        
-        let brand = brands[indexPath.row]
-        
-        // Toggle alpha between 0.25 and 1
-        brand.toggleSelection()
-        brandCell.configureBackground(isSelected: brand.isSelected)
         
         // Configure the buttons
         configureAllButton()

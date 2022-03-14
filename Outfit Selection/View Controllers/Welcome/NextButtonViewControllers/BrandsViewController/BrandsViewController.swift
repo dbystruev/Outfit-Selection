@@ -26,13 +26,13 @@ class BrandsViewController: NextButtonViewController {
     
     // MARK: - Stored Properties
     /// The collection of brand images
-    private(set) var brands: [Brand] = Brands.filtered.values.sorted()
+    private(set) var brands: [Brand] = Brands.withImage.values.sorted()
     
     /// The string to filter brand search results
     var filterString = "" {
         didSet {
             Brands.filterString = filterString
-            brands = Brands.filtered.values.sorted()
+            reloadBrands()
         }
     }
     
@@ -108,5 +108,13 @@ class BrandsViewController: NextButtonViewController {
             BrandCollectionViewCell.nib,
             forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId
         )
+    }
+    
+    /// Reload  the collection of brand
+    func reloadBrands() {
+        brands = Brands.withImage.values.sorted()
+        
+        // Reload data
+        brandsCollectionView.reloadData()
     }
 }
