@@ -25,13 +25,6 @@ extension AppDelegate {
             brandedImages.forEach { $0.isSelected = true }
         }
         
-        // Select all brands if app didn't start anytime
-//        let brands = Brands.byName
-//        debug(brands.selected.count)
-//        if brands.selected.count < 1 {
-//            brands.forEach { $0.value.isSelected = true }
-//        }
-        
         // Load all occasions
         let occasions = Occasions.currentGender
         if occasions.selected.count < 1 {
