@@ -28,7 +28,7 @@ let limitCellApi = Globals.Feed.limitCellApi
 
 extension FeedItemViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        Int.max
+        tabBarController?.selectedIndex == Globals.TabBar.index.wishlist ? items.count : Int.max
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

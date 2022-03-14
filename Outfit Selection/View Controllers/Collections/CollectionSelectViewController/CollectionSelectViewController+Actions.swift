@@ -12,8 +12,11 @@ import UIKit
 extension CollectionSelectViewController {
     
     @IBAction func chooseItemsButtonTapped(_ sender: UIButton) {
-        debug()
         wishlistViewController?.finishedSelectingCollectionItems()
+        
+        // Go to collection tab
+        wishlistViewController?.tabSelected = .collection
         dismiss(animated: true)
+
     }
 }
