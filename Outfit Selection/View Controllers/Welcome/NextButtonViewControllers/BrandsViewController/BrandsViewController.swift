@@ -52,6 +52,7 @@ class BrandsViewController: NextButtonViewController {
         
         // Clear brands search string when leaving brands selection screen
         filterString = ""
+        searchBar.text = ""
     }
     
     override func viewDidLoad() {
