@@ -44,7 +44,8 @@ extension OutfitViewController {
         scrollViews[selectedIndex].togglePinned()
         
         // Disable refresh button if all scroll views are pinned
-        shuffleButton.isEnabled = !scrollViews.allPinned
+        shuffleButton.isEnabled = !scrollViews.allPinned &&
+        itemsByCorner.count < items.count
         
         // Update hanger buttons opacity
         configureHangerButtons()

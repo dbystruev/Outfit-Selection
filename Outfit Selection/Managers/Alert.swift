@@ -94,7 +94,7 @@ enum Alert {
     ) -> UIAlertController {
         configured(
             "Save to wishlists?"~,
-            message: occasion + " is going to be saved to wishlist"~,
+            message: occasion + " " + "is going to be saved to wishlist"~,
             actionTitles: ["OK"~, "Cancel"~],
             styles: [.cancel, .default],
             handlers: [{ action in
