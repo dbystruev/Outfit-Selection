@@ -630,7 +630,17 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28d-Ke-sOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48" y="915"/>
+            <point key="canvasLocation" x="56" y="970"/>
+        </scene>
+        <!--Messages-->
+        <scene sceneID="01A-3B-8ZQ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Messages" id="qQ6-Qv-jau" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="sbg-Gg-PDX"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VWw-0g-OmR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-40" y="1111"/>
         </scene>
         <!--Wishlist-->
         <scene sceneID="8eC-3q-Cjv">
@@ -651,7 +661,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nSx-Lp-Jlq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-574" y="915"/>
+            <point key="canvasLocation" x="-593" y="970"/>
         </scene>
         <!--Occasions Popup View Controller-->
         <scene sceneID="L4D-s5-Wfa">
@@ -735,6 +745,7 @@
                         <segue destination="GxA-0B-2jL" kind="relationship" relationship="viewControllers" id="jBC-ny-lRj"/>
                         <segue destination="r2t-gd-yBl" kind="relationship" relationship="viewControllers" id="A92-YS-5rJ"/>
                         <segue destination="4eQ-fr-Ggy" kind="relationship" relationship="viewControllers" id="Chb-F1-jQm"/>
+                        <segue destination="qQ6-Qv-jau" kind="relationship" relationship="viewControllers" id="oeP-5y-alF"/>
                         <segue destination="1XR-vS-WEc" kind="relationship" relationship="viewControllers" id="VuB-4F-jcE"/>
                     </connections>
                 </tabBarController>

@@ -58,5 +58,6 @@ Icons by [Freepik](https://www.freepik.com) from [Flaticon](https://www.flaticon
 * [Like](https://www.flaticon.com/premium-icon/like_2031035)
 * [Like Filled](https://www.flaticon.com/premium-icon/like_2030957)
 * [Shuffle](https://www.flaticon.com/free-icon/shuffle_359936)
+* [Speech Bubble](https://www.flaticon.com/free-icon/speech-bubble_2462719)
 
 Noto Sans [font](https://fonts.google.com/specimen/Noto+Sans) designed by Google.
