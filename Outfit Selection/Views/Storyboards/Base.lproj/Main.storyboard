@@ -630,7 +630,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="28d-Ke-sOE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="56" y="970"/>
+            <point key="canvasLocation" x="71" y="970"/>
         </scene>
         <!--Messages-->
         <scene sceneID="01A-3B-8ZQ">
@@ -640,7 +640,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VWw-0g-OmR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-40" y="1111"/>
+            <point key="canvasLocation" x="-166" y="970"/>
         </scene>
         <!--Wishlist-->
         <scene sceneID="8eC-3q-Cjv">
@@ -651,7 +651,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NgN-W8-xRc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-287" y="1019"/>
+            <point key="canvasLocation" x="-389" y="970"/>
         </scene>
         <!--Profile-->
         <scene sceneID="jAE-oc-Hvc">

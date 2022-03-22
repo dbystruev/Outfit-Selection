@@ -7,8 +7,13 @@
 //
 
 import MessageKit
+import UIKit
 
 struct Sender: SenderType {
+    /// Sender avatar
+    weak var avatar: UIImage?
+    
+    // MARK: - Sendery Type
     /// The unique String identifier for the sender
     var senderId: String
     
