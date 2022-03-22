@@ -205,6 +205,8 @@
 		69BEC0EB2729591C0034F454 /* Occasions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EA2729591C0034F454 /* Occasions.swift */; };
 		69BEC0ED272970510034F454 /* Array+commaJoined.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EC272970510034F454 /* Array+commaJoined.swift */; };
 		69BEC0F027298C250034F454 /* StandardErrorOutputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EF27298C250034F454 /* StandardErrorOutputStream.swift */; };
+		69C16F6D27E9C21B009658D1 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C16F6C27E9C21B009658D1 /* Sender.swift */; };
+		69C16F6F27E9C480009658D1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C16F6E27E9C480009658D1 /* Message.swift */; };
 		69C18F1B271F0762006D7B47 /* UserDefault+propertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */; };
 		69C18F1D271F0845006D7B47 /* UserDefaults+static.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C18F1C271F0845006D7B47 /* UserDefaults+static.swift */; };
 		69C3695525E77549000A8E5E /* OccasionsPopupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C3695425E77549000A8E5E /* OccasionsPopupViewController.swift */; };
@@ -481,6 +483,8 @@
 		69BEC0EA2729591C0034F454 /* Occasions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occasions.swift; sourceTree = "<group>"; };
 		69BEC0EC272970510034F454 /* Array+commaJoined.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+commaJoined.swift"; sourceTree = "<group>"; };
 		69BEC0EF27298C250034F454 /* StandardErrorOutputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardErrorOutputStream.swift; sourceTree = "<group>"; };
+		69C16F6C27E9C21B009658D1 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		69C16F6E27E9C480009658D1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+propertyWrapper.swift"; sourceTree = "<group>"; };
 		69C18F1C271F0845006D7B47 /* UserDefaults+static.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefaults+static.swift"; sourceTree = "<group>"; };
 		69C3695425E77549000A8E5E /* OccasionsPopupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionsPopupViewController.swift; sourceTree = "<group>"; };
@@ -695,6 +699,7 @@
 				69C3A4B325EBCF3100F8F968 /* Gender */,
 				69642076270B238D00FCDF5A /* ItemCatalog */,
 				69560ECE2587E7D300337F35 /* Items */,
+				69C16F6B27E9C203009658D1 /* Messages */,
 				69007CED26EA6396001170D0 /* Occasions */,
 				6957565C27158A99007ADE02 /* Onboarding */,
 				69D3FEAC26F8D73200D31A5F /* Server.swift */,
@@ -1342,6 +1347,15 @@
 			path = Array;
 			sourceTree = "<group>";
 		};
+		69C16F6B27E9C203009658D1 /* Messages */ = {
+			isa = PBXGroup;
+			children = (
+				69C16F6E27E9C480009658D1 /* Message.swift */,
+				69C16F6C27E9C21B009658D1 /* Sender.swift */,
+			);
+			path = Messages;
+			sourceTree = "<group>";
+		};
 		69C18F19271F071A006D7B47 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
@@ -1689,6 +1703,7 @@
 				69DA85E226D60CCF00D16B25 /* FeedBrandCell+UICollectionViewDataSource.swift in Sources */,
 				69C18F1D271F0845006D7B47 /* UserDefaults+static.swift in Sources */,
 				69D0FDA525EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift in Sources */,
+				69C16F6F27E9C480009658D1 /* Message.swift in Sources */,
 				694E7BF225DC1D9D006607CD /* BrandsViewController+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				69E0641F26FA57B900C68A6A /* ItemImage.swift in Sources */,
 				69BEC0F027298C250034F454 /* StandardErrorOutputStream.swift in Sources */,
@@ -1853,6 +1868,7 @@
 				694BA8B52744053A00E60C07 /* PinnableScrollView+removeImageViews.swift in Sources */,
 				69AEC9E825BF014100183E15 /* GenderButton.swift in Sources */,
 				699632AD26FCB0DE00841B6F /* Character+isUppercased.swift in Sources */,
+				69C16F6D27E9C21B009658D1 /* Sender.swift in Sources */,
 				691C5F3C26E764F200DF0758 /* CGSize+CustomStringConvertible.swift in Sources */,
 				69B3E2372743F6C700A9426D /* PinnableScrollView+Computed.swift in Sources */,
 				69642071270AE6BC00FCDF5A /* Collection+UserDefaults.swift in Sources */,
