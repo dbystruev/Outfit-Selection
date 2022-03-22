@@ -1,43 +1,59 @@
 {
-  "object": {
-    "pins": [
-      {
-        "package": "AppsFlyerLib",
-        "repositoryURL": "https://github.com/AppsFlyerSDK/AppsFlyerFramework",
-        "state": {
-          "branch": null,
-          "revision": "8a7af41b39e30d25e3aa0267bef5d5792b5456b4",
-          "version": "6.4.0"
-        }
-      },
-      {
-        "package": "IBPCollectionViewCompositionalLayout",
-        "repositoryURL": "https://github.com/kishikawakatsumi/IBPCollectionViewCompositionalLayout",
-        "state": {
-          "branch": null,
-          "revision": "bb5b8a20892eba40906f45b2b5e4266358b9501b",
-          "version": "0.6.9"
-        }
-      },
-      {
-        "package": "swift-algorithms",
-        "repositoryURL": "https://github.com/apple/swift-algorithms.git",
-        "state": {
-          "branch": null,
-          "revision": "b14b7f4c528c942f121c8b860b9410b2bf57825e",
-          "version": "1.0.0"
-        }
-      },
-      {
-        "package": "swift-numerics",
-        "repositoryURL": "https://github.com/apple/swift-numerics",
-        "state": {
-          "branch": null,
-          "revision": "0a5bc04095a675662cf24757cc0640aa2204253b",
-          "version": "1.0.2"
-        }
+  "pins" : [
+    {
+      "identity" : "appsflyerframework",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/AppsFlyerSDK/AppsFlyerFramework",
+      "state" : {
+        "revision" : "8a7af41b39e30d25e3aa0267bef5d5792b5456b4",
+        "version" : "6.4.0"
       }
-    ]
-  },
-  "version": 1
+    },
+    {
+      "identity" : "ibpcollectionviewcompositionallayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/kishikawakatsumi/IBPCollectionViewCompositionalLayout",
+      "state" : {
+        "revision" : "bb5b8a20892eba40906f45b2b5e4266358b9501b",
+        "version" : "0.6.9"
+      }
+    },
+    {
+      "identity" : "inputbaraccessoryview",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/nathantannar4/InputBarAccessoryView",
+      "state" : {
+        "revision" : "6d3d205f29b80f8fa9a9616ad801c488293242bf",
+        "version" : "5.4.0"
+      }
+    },
+    {
+      "identity" : "messagekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MessageKit/MessageKit",
+      "state" : {
+        "revision" : "771ffe946acc495a79a122ded921f3460686ee04",
+        "version" : "3.7.0"
+      }
+    },
+    {
+      "identity" : "swift-algorithms",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-algorithms.git",
+      "state" : {
+        "revision" : "b14b7f4c528c942f121c8b860b9410b2bf57825e",
+        "version" : "1.0.0"
+      }
+    },
+    {
+      "identity" : "swift-numerics",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/apple/swift-numerics",
+      "state" : {
+        "revision" : "0a5bc04095a675662cf24757cc0640aa2204253b",
+        "version" : "1.0.2"
+      }
+    }
+  ],
+  "version" : 2
 }

@@ -95,6 +95,7 @@
 		694BFA2B25ECA6F100FBC27C /* String+letters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694BFA2A25ECA6F100FBC27C /* String+letters.swift */; };
 		694E7BEE25DBFFFB006607CD /* UIView+findSuperview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E7BED25DBFFFB006607CD /* UIView+findSuperview.swift */; };
 		694E7BF225DC1D9D006607CD /* BrandsViewController+UICollectionViewDelegateFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 694E7BF125DC1D9D006607CD /* BrandsViewController+UICollectionViewDelegateFlowLayout.swift */; };
+		695295BA27E9B6D600D34C3A /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 695295B927E9B6D600D34C3A /* MessageKit */; };
 		695367EE25F7AA520024EC8B /* AppDelegate+AppsFlyerLibDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695367ED25F7AA520024EC8B /* AppDelegate+AppsFlyerLibDelegate.swift */; };
 		695367F125F7ABF90024EC8B /* String+digits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695367F025F7ABF90024EC8B /* String+digits.swift */; };
 		695367F425F7AC430024EC8B /* Character+isDigit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695367F325F7AC430024EC8B /* Character+isDigit.swift */; };
@@ -567,6 +568,7 @@
 				6933089A2750FCDA0096C13E /* Algorithms in Frameworks */,
 				696209A026FB927E00B46FE8 /* AppsFlyerLib in Frameworks */,
 				6998124027037590007B7024 /* IBPCollectionViewCompositionalLayout in Frameworks */,
+				695295BA27E9B6D600D34C3A /* MessageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1542,6 +1544,7 @@
 				6962099F26FB927E00B46FE8 /* AppsFlyerLib */,
 				6998123F27037590007B7024 /* IBPCollectionViewCompositionalLayout */,
 				693308992750FCDA0096C13E /* Algorithms */,
+				695295B927E9B6D600D34C3A /* MessageKit */,
 			);
 			productName = "Outfit Selection";
 			productReference = 69A6F6F022BA26B7002A3B49 /* Get Outfit.app */;
@@ -1576,6 +1579,7 @@
 				6962099E26FB927E00B46FE8 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
 				6998123E27037590007B7024 /* XCRemoteSwiftPackageReference "IBPCollectionViewCompositionalLayout" */,
 				693308982750FCDA0096C13E /* XCRemoteSwiftPackageReference "swift-algorithms" */,
+				695295B827E9B6D600D34C3A /* XCRemoteSwiftPackageReference "MessageKit" */,
 			);
 			productRefGroup = 69A6F6F122BA26B7002A3B49 /* Products */;
 			projectDirPath = "";
@@ -2047,7 +2051,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.19;
+				CURRENT_PROJECT_VERSION = 2022.03.22;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2062,7 +2066,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.4;
+				MARKETING_VERSION = 0.8.5;
 				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.concept;
 				PRODUCT_NAME = "Concept Group";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2146,7 +2150,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.19;
+				CURRENT_PROJECT_VERSION = 2022.03.22;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2161,7 +2165,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.4;
+				MARKETING_VERSION = 0.8.5;
 				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.raskroi;
 				PRODUCT_NAME = Raskroi;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2306,7 +2310,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.19;
+				CURRENT_PROJECT_VERSION = 2022.03.22;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2321,7 +2325,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.4;
+				MARKETING_VERSION = 0.8.5;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "Get Outfit";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2338,7 +2342,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.19;
+				CURRENT_PROJECT_VERSION = 2022.03.22;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2352,7 +2356,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.8.4;
+				MARKETING_VERSION = 0.8.5;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "Get Outfit";
@@ -2398,6 +2402,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		695295B827E9B6D600D34C3A /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
 		6962099E26FB927E00B46FE8 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework";
@@ -2421,6 +2433,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 693308982750FCDA0096C13E /* XCRemoteSwiftPackageReference "swift-algorithms" */;
 			productName = Algorithms;
+		};
+		695295B927E9B6D600D34C3A /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 695295B827E9B6D600D34C3A /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
 		};
 		6962099F26FB927E00B46FE8 /* AppsFlyerLib */ = {
 			isa = XCSwiftPackageProductDependency;
