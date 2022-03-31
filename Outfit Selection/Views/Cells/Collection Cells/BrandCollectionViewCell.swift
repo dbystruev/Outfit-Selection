@@ -56,8 +56,7 @@ class BrandCollectionViewCell: UICollectionViewCell {
     /// - Parameter size: size of a view to determine landscape or portrait orientation
     /// - Returns: the number of cells to fit in one row
     static func cellsPerRow(for size: CGSize) -> Int {
-        // Fit 6 cells horizontally or 3 cells vertically
-        size.height < size.width ? 6 : 3
+        Int(size.width / 120)
     }
     
     // MARK: - Outlets
