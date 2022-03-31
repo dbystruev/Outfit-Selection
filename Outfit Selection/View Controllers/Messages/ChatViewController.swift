@@ -23,18 +23,30 @@ class ChatViewController: MessagesViewController {
         super.viewDidLoad()
         
         // Set up messages
-        messages.append(
-            Message(
-                sender: currentUser,
-                messageId: "1",
-                sentDate: Date().addingTimeInterval(-86400),
-                kind: .text("What occasions do you have?")
-            )
-        )
+        // User question
+        messages.append(Message(
+            sender: currentUser,
+            messageId: "0",
+            sentDate: Date().addingTimeInterval(-86400),
+            kind: .text("What occasions do you have?")
+        ))
         
-        messages.append(contentsOf: Occasions.titles.sorted().map {
-            Message(sender: otherUser, messageId: $0, sentDate: Date(), kind: .text($0))
-        })
+        // Response: image, link, and text
+        let otherUserMessages: [MessageKind] = [
+            .photo(Image(named: "barbecue")!),
+//            .linkPreview(Link(
+//                "https://www.getoutfit.app/items/?id=in.(1392785176,1613430577,170020175348,17037618636363633263,14569985554653)",
+//                text: ""
+//            )!),
+            .text("Barbecue outfit"),
+        ]
+        
+        messages.append(contentsOf: otherUserMessages.enumerated().map { Message(
+            sender: otherUser,
+            messageId: "\(messages.count + $0)",
+            sentDate: Date(),
+            kind: $1
+        )})
         
         // Set up delegates
         messagesCollectionView.messagesDataSource = self

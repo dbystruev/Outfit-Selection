@@ -201,6 +201,8 @@
 		69B86BB926D8B68700E1C868 /* FeedItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B86BB826D8B68700E1C868 /* FeedItemCollectionCell.swift */; };
 		69B86BBB26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */; };
 		69BA5DC627F5747700426D26 /* ChatViewController+MessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA5DC527F5747700426D26 /* ChatViewController+MessagesDataSource.swift */; };
+		69BA5DC827F5888300426D26 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA5DC727F5888300426D26 /* Image.swift */; };
+		69BA5DCB27F58E5700426D26 /* Link.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA5DCA27F58E5700426D26 /* Link.swift */; };
 		69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640325E66EDE00C805B6 /* ProgressViewController.swift */; };
 		69BA640B25E6BB2000C805B6 /* SelectableButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */; };
 		69BEC0EB2729591C0034F454 /* Occasions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EA2729591C0034F454 /* Occasions.swift */; };
@@ -482,6 +484,8 @@
 		69B86BB826D8B68700E1C868 /* FeedItemCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemCollectionCell.swift; sourceTree = "<group>"; };
 		69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedItemViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
 		69BA5DC527F5747700426D26 /* ChatViewController+MessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewController+MessagesDataSource.swift"; sourceTree = "<group>"; };
+		69BA5DC727F5888300426D26 /* Image.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
+		69BA5DCA27F58E5700426D26 /* Link.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Link.swift; sourceTree = "<group>"; };
 		69BA640325E66EDE00C805B6 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButtonItem.swift; sourceTree = "<group>"; };
 		69BEC0EA2729591C0034F454 /* Occasions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occasions.swift; sourceTree = "<group>"; };
@@ -1359,6 +1363,8 @@
 		69C16F6B27E9C203009658D1 /* Messages */ = {
 			isa = PBXGroup;
 			children = (
+				69BA5DC727F5888300426D26 /* Image.swift */,
+				69BA5DCA27F58E5700426D26 /* Link.swift */,
 				69C16F6E27E9C480009658D1 /* Message.swift */,
 				69C16F6C27E9C21B009658D1 /* Sender.swift */,
 			);
@@ -1809,6 +1815,7 @@
 				69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */,
 				6906A9AB26E6853700386267 /* CollectionNameViewController+UITextFieldDelegate.swift in Sources */,
 				69007CFB26EA7323001170D0 /* UIView+reuseId.swift in Sources */,
+				69BA5DC827F5888300426D26 /* Image.swift in Sources */,
 				699812432703764E007B7024 /* IBPCollectionViewCompositionalLayoutInteroperability.swift in Sources */,
 				69F046F926FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift in Sources */,
 				69BEC0ED272970510034F454 /* Array+commaJoined.swift in Sources */,
@@ -1898,6 +1905,7 @@
 				6986613325706B6B008F94CA /* BrandsViewController+UICollectionViewDelegate.swift in Sources */,
 				6944D0012755173F00C98A11 /* AppDelegate+testing.swift in Sources */,
 				699632A726FCA42100841B6F /* AppDelegate+update.swift in Sources */,
+				69BA5DCB27F58E5700426D26 /* Link.swift in Sources */,
 				6978202F2587BCAA007D4CCB /* ImageCollectionViewModel.swift in Sources */,
 				692C940A2546FB8D0075BD92 /* Gender.swift in Sources */,
 				69C3696725E79ED3000A8E5E /* WishlistViewController.swift in Sources */,
@@ -2095,7 +2103,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.22;
+				CURRENT_PROJECT_VERSION = 2022.03.31;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2194,7 +2202,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.22;
+				CURRENT_PROJECT_VERSION = 2022.03.31;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2354,7 +2362,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.22;
+				CURRENT_PROJECT_VERSION = 2022.03.31;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2386,7 +2394,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.03.22;
+				CURRENT_PROJECT_VERSION = 2022.03.31;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
