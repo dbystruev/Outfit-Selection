@@ -200,6 +200,7 @@
 		69B539FA257FBC3C00116F98 /* UIViewController+tabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B539F9257FBC3C00116F98 /* UIViewController+tabBar.swift */; };
 		69B86BB926D8B68700E1C868 /* FeedItemCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B86BB826D8B68700E1C868 /* FeedItemCollectionCell.swift */; };
 		69B86BBB26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */; };
+		69BA5DC627F5747700426D26 /* ChatViewController+MessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA5DC527F5747700426D26 /* ChatViewController+MessagesDataSource.swift */; };
 		69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640325E66EDE00C805B6 /* ProgressViewController.swift */; };
 		69BA640B25E6BB2000C805B6 /* SelectableButtonItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */; };
 		69BEC0EB2729591C0034F454 /* Occasions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EA2729591C0034F454 /* Occasions.swift */; };
@@ -207,7 +208,6 @@
 		69BEC0F027298C250034F454 /* StandardErrorOutputStream.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69BEC0EF27298C250034F454 /* StandardErrorOutputStream.swift */; };
 		69C16F6D27E9C21B009658D1 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C16F6C27E9C21B009658D1 /* Sender.swift */; };
 		69C16F6F27E9C480009658D1 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C16F6E27E9C480009658D1 /* Message.swift */; };
-		69C16F7127E9C647009658D1 /* ChatViewController+MessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C16F7027E9C647009658D1 /* ChatViewController+MessagesDataSource.swift */; };
 		69C16F7327E9C724009658D1 /* ChatViewController+MessagesLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C16F7227E9C724009658D1 /* ChatViewController+MessagesLayoutDelegate.swift */; };
 		69C16F7527E9C74C009658D1 /* ChatViewController+MessagesDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C16F7427E9C74C009658D1 /* ChatViewController+MessagesDisplayDelegate.swift */; };
 		69C18F1B271F0762006D7B47 /* UserDefault+propertyWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */; };
@@ -481,6 +481,7 @@
 		69B539F9257FBC3C00116F98 /* UIViewController+tabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+tabBar.swift"; sourceTree = "<group>"; };
 		69B86BB826D8B68700E1C868 /* FeedItemCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemCollectionCell.swift; sourceTree = "<group>"; };
 		69B86BBA26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedItemViewController+UICollectionViewDataSource.swift"; sourceTree = "<group>"; };
+		69BA5DC527F5747700426D26 /* ChatViewController+MessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewController+MessagesDataSource.swift"; sourceTree = "<group>"; };
 		69BA640325E66EDE00C805B6 /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
 		69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectableButtonItem.swift; sourceTree = "<group>"; };
 		69BEC0EA2729591C0034F454 /* Occasions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occasions.swift; sourceTree = "<group>"; };
@@ -488,7 +489,6 @@
 		69BEC0EF27298C250034F454 /* StandardErrorOutputStream.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StandardErrorOutputStream.swift; sourceTree = "<group>"; };
 		69C16F6C27E9C21B009658D1 /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
 		69C16F6E27E9C480009658D1 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		69C16F7027E9C647009658D1 /* ChatViewController+MessagesDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewController+MessagesDataSource.swift"; sourceTree = "<group>"; };
 		69C16F7227E9C724009658D1 /* ChatViewController+MessagesLayoutDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewController+MessagesLayoutDelegate.swift"; sourceTree = "<group>"; };
 		69C16F7427E9C74C009658D1 /* ChatViewController+MessagesDisplayDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatViewController+MessagesDisplayDelegate.swift"; sourceTree = "<group>"; };
 		69C18F1A271F0762006D7B47 /* UserDefault+propertyWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDefault+propertyWrapper.swift"; sourceTree = "<group>"; };
@@ -780,7 +780,7 @@
 			isa = PBXGroup;
 			children = (
 				695295BD27E9BD6800D34C3A /* ChatViewController.swift */,
-				69C16F7027E9C647009658D1 /* ChatViewController+MessagesDataSource.swift */,
+				69BA5DC527F5747700426D26 /* ChatViewController+MessagesDataSource.swift */,
 				69C16F7427E9C74C009658D1 /* ChatViewController+MessagesDisplayDelegate.swift */,
 				69C16F7227E9C724009658D1 /* ChatViewController+MessagesLayoutDelegate.swift */,
 			);
@@ -1768,7 +1768,7 @@
 				69672AE922F1D06A0053FB85 /* OutfitViewController+present.swift in Sources */,
 				69C16F7527E9C74C009658D1 /* ChatViewController+MessagesDisplayDelegate.swift in Sources */,
 				6906A99726E60C8D00386267 /* Collection.swift in Sources */,
-				69C16F7127E9C647009658D1 /* ChatViewController+MessagesDataSource.swift in Sources */,
+				69BA5DC627F5747700426D26 /* ChatViewController+MessagesDataSource.swift in Sources */,
 				693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */,
 				69007CEA26EA2F95001170D0 /* Globals.swift in Sources */,
 				69007CF326EA6A4B001170D0 /* OccasionsViewController.swift in Sources */,
