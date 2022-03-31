@@ -8,20 +8,19 @@
 
 import Foundation
 import MessageKit
-import SwiftUI
 
-struct Message: MessageType {
+public struct Message: MessageType {
     /// The sender of the message
-    let sender: SenderType
+    public let sender: SenderType
     
     /// The unique identifier for the message
-    let messageId: String
+    public let messageId: String
     
     /// The date the message was sent
-    let sentDate: Date
+    public let sentDate: Date
     
     /// The kind of the message
-    let kind: MessageKind
+    public let kind: MessageKind
     
 //    init(sender: SenderType, messageId: String, sentDate: Date, kind: MessageKind) {
 //        self.sender = sender
