@@ -6,6 +6,7 @@
 //  Copyright © 2019–2020 Denis Bystruev. All rights reserved.
 //
 
+import FirebaseAuth
 import UIKit
 
 class GenderViewController: NextButtonViewController {
@@ -46,6 +47,9 @@ class GenderViewController: NextButtonViewController {
     }
     
     // MARK: - Stored Properties
+    /// The handler for the auth state listener, to allow cancelling later.
+    var handle: AuthStateDidChangeListenerHandle?
+    
     /// Flag which indicates if this is the first appearance of this view controller (true) or we came back from navigation stack (false)
     var firstAppearance = true
     
@@ -79,11 +83,19 @@ class GenderViewController: NextButtonViewController {
         
         // Hide navigation bar on top
         navigationController?.isNavigationBarHidden = true
+        
+        // Start auth listener
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
+            debug("INFO: current user:", user)
+        }
+
     }
     
     /// Return navigation controller bar style back to normal
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        // Remove auth listener
+        Auth.auth().removeStateDidChangeListener(handle!)
         navigationController?.navigationBar.barStyle = .default
     }
     

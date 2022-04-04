@@ -5,7 +5,7 @@
 //  Created by Denis Bystruev on 09.03.2021.
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
-
+import GoogleSignIn
 import UIKit
 
 // MARK: - UIApplicationDelegate
@@ -24,7 +24,6 @@ extension AppDelegate: UIApplicationDelegate {
         
         // Check universal link
         checkUniversalLink(continue: userActivity)
-        
         return true
     }
     
@@ -103,6 +102,9 @@ extension AppDelegate: UIApplicationDelegate {
         // Load all brands 
         AppDelegate.updateBrands()
         
+        // Firebase configure
+        AppDelegate.firebaseConfigure()
+    
         // Change global tint color
         UIView.appearance().tintColor = #colorLiteral(red: 0.4693212509, green: 0.5382487178, blue: 0.5183649659, alpha: 1)
         
@@ -169,6 +171,9 @@ extension AppDelegate: UIApplicationDelegate {
     func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
         // Handle deep linking with AppsFlyer
         appsFlyer(handleOpen: url, options: options)
+        
+        // Handle deep linking with GoogleSignIn
+        gIDSignIn(handleOpen: url, options: options)
         return true
     }
     
