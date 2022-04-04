@@ -20,6 +20,7 @@
 		69007CFD26EA7462001170D0 /* OccasionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CFC26EA7462001170D0 /* OccasionCell.swift */; };
 		69007D0026EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CFF26EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift */; };
 		69007D0226EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007D0126EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift */; };
+		6903D60227FAC9AD00FCA499 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6903D60127FAC9AD00FCA499 /* GoogleService-Info.plist */; };
 		690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */; };
 		690491F6260C732A0098F1FD /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */; };
 		6905DC8E272B0BE80088A34E /* Occasions+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6905DC8D272B0BE80088A34E /* Occasions+UserDefaults.swift */; };
@@ -299,6 +300,7 @@
 		69007CFC26EA7462001170D0 /* OccasionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionCell.swift; sourceTree = "<group>"; };
 		69007CFF26EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OccasionsViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		69007D0126EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OccasionsViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
+		6903D60127FAC9AD00FCA499 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+configureFont.swift"; sourceTree = "<group>"; };
 		690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.ttf"; sourceTree = "<group>"; };
 		6905DC8D272B0BE80088A34E /* Occasions+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occasions+UserDefaults.swift"; sourceTree = "<group>"; };
@@ -1220,9 +1222,10 @@
 			isa = PBXGroup;
 			children = (
 				6953680125F7B5590024EC8B /* .gitignore */,
-				696E876E25647C0F0061802E /* README.md */,
+				6903D60127FAC9AD00FCA499 /* GoogleService-Info.plist */,
 				69A6F6F222BA26B7002A3B49 /* Outfit Selection */,
 				69A6F6F122BA26B7002A3B49 /* Products */,
+				696E876E25647C0F0061802E /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1667,6 +1670,7 @@
 				697CCE6A26D0039800B69763 /* FeedItem.xib in Resources */,
 				69DFE5BA2735295E00D46B5F /* Welcome.storyboard in Resources */,
 				69827B24273BED6F00C59D68 /* Localizable.strings in Resources */,
+				6903D60227FAC9AD00FCA499 /* GoogleService-Info.plist in Resources */,
 				69827B1E273BD02900C59D68 /* strings.numbers in Resources */,
 				69DFE5C627365CFC00D46B5F /* Wishlist.storyboard in Resources */,
 				690623AD270C633800813089 /* Screenshot07.png in Resources */,
