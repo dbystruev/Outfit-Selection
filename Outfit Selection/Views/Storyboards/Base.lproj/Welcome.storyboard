@@ -89,15 +89,8 @@
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4oX-l6-ATa" customClass="GIDSignInButton">
-                                <rect key="frame" x="16" y="96" width="343" height="62"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="62" id="LxA-MJ-YAc"/>
-                                </constraints>
-                            </view>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="NNo-je-X5J">
-                                <rect key="frame" x="16" y="544" width="343" height="218"/>
+                                <rect key="frame" x="16" y="495" width="343" height="218"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DlK-nQ-O3M" customClass="GenderButton" customModule="Concept_Group" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="343" height="62"/>
@@ -138,6 +131,17 @@
                                     <constraint firstAttribute="height" constant="218" id="uXG-zo-0nP"/>
                                 </constraints>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ty1-PB-wVj" customClass="GIDSignInButton">
+                                <rect key="frame" x="324.66666666666669" y="104" width="34.333333333333314" height="62"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="62" id="kxJ-7m-2aP"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="G"/>
+                                <connections>
+                                    <action selector="signInButtonTap:" destination="hGb-j2-DhN" eventType="touchUpInside" id="t7B-IL-kwW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="9Nm-dL-xaP"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -148,15 +152,15 @@
                             <constraint firstItem="NNo-je-X5J" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fXx-uJ-geP" secondAttribute="bottom" priority="750" constant="8" id="7kz-xl-jIK"/>
                             <constraint firstItem="TuD-oz-zdU" firstAttribute="centerX" secondItem="JzR-RJ-jCH" secondAttribute="centerX" id="8M8-ZF-xxx"/>
                             <constraint firstItem="fXx-uJ-geP" firstAttribute="centerX" secondItem="ewR-xP-7pl" secondAttribute="centerX" id="BcM-iy-Dlo"/>
-                            <constraint firstItem="9Nm-dL-xaP" firstAttribute="trailing" secondItem="4oX-l6-ATa" secondAttribute="trailing" constant="16" id="C6V-u2-xFe"/>
                             <constraint firstItem="JzR-RJ-jCH" firstAttribute="centerY" secondItem="ewR-xP-7pl" secondAttribute="centerY" multiplier="386 / 406" priority="750" id="MtT-vF-ca5"/>
-                            <constraint firstItem="4oX-l6-ATa" firstAttribute="leading" secondItem="9Nm-dL-xaP" secondAttribute="leading" constant="16" id="N8A-De-Xin"/>
-                            <constraint firstItem="4oX-l6-ATa" firstAttribute="top" secondItem="9Nm-dL-xaP" secondAttribute="top" constant="8" id="NBa-2p-das"/>
                             <constraint firstItem="TuD-oz-zdU" firstAttribute="top" secondItem="JzR-RJ-jCH" secondAttribute="bottom" constant="8" symbolic="YES" id="Nom-mr-mn0"/>
+                            <constraint firstItem="9Nm-dL-xaP" firstAttribute="trailing" secondItem="Ty1-PB-wVj" secondAttribute="trailing" constant="16" id="YZ4-pf-0p8"/>
                             <constraint firstItem="TuD-oz-zdU" firstAttribute="width" secondItem="ewR-xP-7pl" secondAttribute="width" multiplier="241:375" id="ZDN-dl-E5B"/>
+                            <constraint firstItem="Ty1-PB-wVj" firstAttribute="top" secondItem="9Nm-dL-xaP" secondAttribute="top" constant="16" id="nUt-4R-uwu"/>
                             <constraint firstItem="NNo-je-X5J" firstAttribute="leading" secondItem="ewR-xP-7pl" secondAttribute="leading" priority="750" constant="16" id="ncb-10-4aX"/>
                             <constraint firstItem="fXx-uJ-geP" firstAttribute="top" secondItem="9Nm-dL-xaP" secondAttribute="top" priority="250" constant="16" id="rZD-WO-K9v"/>
                             <constraint firstItem="NNo-je-X5J" firstAttribute="centerX" secondItem="ewR-xP-7pl" secondAttribute="centerX" id="t7P-S2-8FM"/>
+                            <constraint firstItem="Ty1-PB-wVj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="9Nm-dL-xaP" secondAttribute="leading" symbolic="YES" id="tvS-Jr-Poh"/>
                             <constraint firstItem="9Nm-dL-xaP" firstAttribute="bottom" secondItem="NNo-je-X5J" secondAttribute="bottom" constant="16" id="wJ4-76-4zC"/>
                             <constraint firstItem="fXx-uJ-geP" firstAttribute="centerY" secondItem="ewR-xP-7pl" secondAttribute="centerY" multiplier="322 / 406" priority="750" id="ymX-p7-CMc"/>
                         </constraints>
@@ -173,6 +177,7 @@
                         <outlet property="buttonStackView" destination="NNo-je-X5J" id="Pag-Dd-XCn"/>
                         <outlet property="descriptionLabel" destination="TuD-oz-zdU" id="p9h-k8-viF"/>
                         <outlet property="logoImageView" destination="fXx-uJ-geP" id="DjQ-nH-dN1"/>
+                        <outlet property="signInButton" destination="Ty1-PB-wVj" id="2Qi-8O-TCB"/>
                         <outlet property="startingLogoImageView" destination="JzR-RJ-jCH" id="8P4-2X-Rq7"/>
                         <outletCollection property="genderButtons" destination="DlK-nQ-O3M" collectionClass="NSMutableArray" id="635-Bq-Tvd"/>
                         <outletCollection property="genderButtons" destination="6S1-yY-6qz" collectionClass="NSMutableArray" id="cfK-Z6-WNg"/>
@@ -182,7 +187,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-JP-tfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2007" y="137"/>
+            <point key="canvasLocation" x="-2007.2" y="136.69950738916256"/>
         </scene>
         <!--Progress View Controller-->
         <scene sceneID="8ts-hO-orG">
@@ -257,7 +262,7 @@
                                 </connections>
                             </searchBar>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Juc-Ac-YEM">
-                                <rect key="frame" x="4" y="195.66666666666666" width="367" height="494.33333333333337"/>
+                                <rect key="frame" x="4" y="195.66666666666666" width="367" height="445.33333333333337"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <inset key="scrollIndicatorInsets" minX="0.0" minY="0.0" maxX="-16" maxY="0.0"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="gWM-CS-4u0">
@@ -269,10 +274,9 @@
                                 <cells/>
                             </collectionView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUX-05-YHx">
-                                <rect key="frame" x="24" y="698" width="327" height="56"/>
+                                <rect key="frame" x="24" y="649" width="327" height="56"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="343" id="LqQ-al-BoT"/>
                                     <constraint firstAttribute="height" constant="56" id="iJm-er-KXO"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="17"/>
@@ -423,7 +427,6 @@
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="56" id="dCy-hF-vjQ"/>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="343" id="ssG-9P-kBu"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="17"/>
                                         <state key="normal" title="Next">
@@ -497,7 +500,6 @@
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="56" id="dT4-30-u50"/>
-                                    <constraint firstAttribute="width" relation="lessThanOrEqual" constant="343" id="qzT-24-NWU"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="17"/>
                                 <state key="normal" title="Next">
@@ -598,8 +600,8 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jyn-7A-y6N"/>
-        <segue reference="QOJ-7D-lul"/>
+        <segue reference="Y3I-SD-N7s"/>
+        <segue reference="pRR-NZ-3hy"/>
     </inferredMetricsTieBreakers>
     <resources>
         <image name="checked" width="18" height="18"/>

@@ -11,7 +11,6 @@ import Firebase
 import UIKit
 
 extension AppDelegate {
-    
     /// Firebase configure
     static func firebaseConfigure() {
         FirebaseApp.configure()

@@ -6,7 +6,8 @@
 //  Copyright © 2019–2020 Denis Bystruev. All rights reserved.
 //
 
-import FirebaseAuth
+import GoogleSignIn
+import Firebase
 import UIKit
 
 class GenderViewController: NextButtonViewController {
@@ -46,6 +47,9 @@ class GenderViewController: NextButtonViewController {
         }
     }
     
+    /// Google button outlet
+    @IBOutlet weak var signInButton: GIDSignInButton!
+    
     // MARK: - Stored Properties
     /// The handler for the auth state listener, to allow cancelling later.
     var handle: AuthStateDidChangeListenerHandle?
@@ -73,7 +77,7 @@ class GenderViewController: NextButtonViewController {
         super.viewDidLoad()
         view.backgroundColor = WhiteLabel.Color.Background.light
     }
-
+    
     /// Hides toolbar and navigation bar before the view is added to a view hierarchy
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -88,7 +92,10 @@ class GenderViewController: NextButtonViewController {
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             debug("INFO: current user:", user)
         }
-
+        
+        // Configure signInButton
+        signInButton.style = .iconOnly
+        signInButton.layer.cornerRadius = 10.0
     }
     
     /// Return navigation controller bar style back to normal
@@ -145,4 +152,49 @@ class GenderViewController: NextButtonViewController {
     @IBAction func otherSelected(_ sender: GenderButton) {
         performSegueToBrandsViewController(gender: .other)
     }
+    
+    /// Called when the google button is tapped
+    /// - Parameter sender: the gesture recognizer which was tapped
+    @IBAction func signInButtonTap(_ sender: Any) {
+        // Get clientID from Firebase
+        guard let clientID = FirebaseApp.app()?.options.clientID else {
+            debug("ERROR: can't get clientID from FirebaseApp")
+            return
+        }
+        debug(clientID)
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
+            if let error = error {
+                debug("ERROR:", error.localizedDescription)
+                return
+            }
+            
+            // Check authentication and idToken
+            guard let authentication = user?.authentication, let idToken = authentication.idToken else {
+                debug("ERROR: can't get idToken"  )
+                return
+            }
+            
+            // Create credential for auth call into firebase
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
+            
+            // Firebase authentication call
+            Auth.auth().signIn(with: credential) { authResult, error in
+                if let error = error {
+                    debug("ERROR:", error.localizedDescription)
+                }
+                // Get authResult
+                guard let authResult = authResult else { return }
+                debug("INFO: Welcome", authResult.user.displayName)
+                debug("INFO: Email:", authResult.user.email)
+                debug("INFO: Phone:", authResult.user.phoneNumber)
+                debug("INFO: PhotoURL", authResult.user.photoURL)
+                debug("INFO: Uid", authResult.user.uid)
+            }
+        }
+    }
+    
 }
