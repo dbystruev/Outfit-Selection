@@ -11,7 +11,7 @@ import UIKit
 // MARK: - UICollectionViewDataSource
 extension ProfileViewController: UICollectionViewDataSource {
     // MARK: - Static Properties
-    static let sectionHeaders = ["Gender"~, "Brands"~]
+    static let sectionHeaders = ["Account"~, "Gender"~, "Brands"~]
     
     // MARK: - UICollectionViewDataSource Methods
     /// Get cell for the given index path in profile collection view
@@ -23,10 +23,15 @@ extension ProfileViewController: UICollectionViewDataSource {
         switch indexPath.section {
         case 0:
             // Section 0 is gender - configure gender cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)
+            (cell as? AccountCollectionViewCell)?.configure(titleLabel: "Name", label: self.user.displayName ?? "", cursor: true)
+            return cell
+        case 1:
+            // Section 0 is gender - configure gender cell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenderCollectionViewCell.reuseId, for: indexPath)
             (cell as? GenderCollectionViewCell)?.configure(gender: Gender.allCases[indexPath.row], selected: shownGender)
             return cell
-        case 1:
+        case 2:
             // Section 1 is brands - use brands view controller section 0 to answer
             return brandsViewController?.collectionView(collectionView, cellForItemAt: indexPath) ?? BrandCollectionViewCell()
         default:
@@ -61,9 +66,11 @@ extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
+            return 3
+        case 1:
             // Section 0 is gender — 3 items
             return Gender.allCases.count
-        case 1:
+        case 2:
             // Section 1 is brands — use brands view controller section 0 to answer.
             return brandsViewController?.collectionView(collectionView, numberOfItemsInSection: 0) ?? 0
         default:

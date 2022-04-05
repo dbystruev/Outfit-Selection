@@ -37,6 +37,8 @@ class ProfileViewController: LoggingViewController {
             }
         }
     }
+    /// Current user
+    let user = User.current
     
     // MARK: - Inhertited Methods
     override func viewDidLayoutSubviews() {
@@ -61,8 +63,8 @@ class ProfileViewController: LoggingViewController {
         profileCollectionView.delegate = self
         profileCollectionView.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
         profileCollectionView.register(GenderCollectionViewCell.nib, forCellWithReuseIdentifier: GenderCollectionViewCell.reuseId)
-        profileCollectionView.register(ProfileSectionHeaderView.nib,
-                                       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+        profileCollectionView.register(AccountCollectionViewCell.nib, forCellWithReuseIdentifier: AccountCollectionViewCell.reuseId)
+        profileCollectionView.register(ProfileSectionHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                        withReuseIdentifier: ProfileSectionHeaderView.reuseId)
     }
     

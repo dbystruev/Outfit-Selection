@@ -17,6 +17,9 @@ extension ProfileViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
+            // TODO: Add action
+            debug("INFO: Tapped", indexPath.row )
+        case 1:
             // Section 0 is gender — check if the user wants to change it
             let newGender = Gender.allCases[indexPath.row]
             guard let currentGender = Gender.current, newGender != shownGender else { return }
@@ -28,7 +31,7 @@ extension ProfileViewController: UICollectionViewDelegate {
                     collectionView.reloadSections([0])
                 }
             }
-        case 1:
+        case 2:
             // Section 1 is brands — reuse brands view controller to action
             brandsViewController?.collectionView(collectionView, didSelectItemAt: indexPath)
         default:

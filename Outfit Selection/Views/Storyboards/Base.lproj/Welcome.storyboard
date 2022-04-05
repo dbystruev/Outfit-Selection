@@ -136,7 +136,6 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="62" id="kxJ-7m-2aP"/>
                                 </constraints>
-                                <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="G"/>
                                 <connections>
                                     <action selector="signInButtonTap:" destination="hGb-j2-DhN" eventType="touchUpInside" id="t7B-IL-kwW"/>

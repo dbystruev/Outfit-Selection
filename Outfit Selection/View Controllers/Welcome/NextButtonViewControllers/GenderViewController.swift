@@ -57,6 +57,9 @@ class GenderViewController: NextButtonViewController {
     /// Flag which indicates if this is the first appearance of this view controller (true) or we came back from navigation stack (false)
     var firstAppearance = true
     
+    /// Current user
+    let user = User.current
+    
     // MARK: - Inherited Properties
     /// Make status bar text light
     override var preferredStatusBarStyle: UIStatusBarStyle { .lightContent }
@@ -174,7 +177,7 @@ class GenderViewController: NextButtonViewController {
             
             // Check authentication and idToken
             guard let authentication = user?.authentication, let idToken = authentication.idToken else {
-                debug("ERROR: can't get idToken"  )
+                debug("ERROR: can't get idToken")
                 return
             }
             
@@ -186,13 +189,21 @@ class GenderViewController: NextButtonViewController {
                 if let error = error {
                     debug("ERROR:", error.localizedDescription)
                 }
-                // Get authResult
-                guard let authResult = authResult else { return }
+                // Check authResult
+                guard let authResult = authResult else {
+                    debug("ERROR: can't get authResult")
+                    return
+                }
+                // Update date for current user
+                self.user.displayName = authResult.user.displayName
+                self.user.email = authResult.user.email
+                self.user.isLoggedIn = true
+                self.user.phone = authResult.user.phoneNumber
+                self.user.photoURL = authResult.user.photoURL
+                self.user.uid = authResult.user.uid
+
                 debug("INFO: Welcome", authResult.user.displayName)
-                debug("INFO: Email:", authResult.user.email)
-                debug("INFO: Phone:", authResult.user.phoneNumber)
-                debug("INFO: PhotoURL", authResult.user.photoURL)
-                debug("INFO: Uid", authResult.user.uid)
+
             }
         }
     }
