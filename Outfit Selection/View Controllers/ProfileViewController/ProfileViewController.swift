@@ -17,6 +17,11 @@ class ProfileViewController: LoggingViewController {
     /// Brands view controller to use as profile collection view data source
     var brandsViewController: BrandsViewController?
     
+    /// Height for cell
+    let heightCell = 47
+    
+    var isLoggedIn = User.current.isLoggedIn
+    
     /// Gender to show in the collection view
     var shownGender: Gender?
     
@@ -37,8 +42,6 @@ class ProfileViewController: LoggingViewController {
             }
         }
     }
-    /// Current user
-    let user = User.current
     
     // MARK: - Inhertited Methods
     override func viewDidLayoutSubviews() {
@@ -48,7 +51,6 @@ class ProfileViewController: LoggingViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Find and configure brands view controller
         brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self)
         
@@ -82,5 +84,6 @@ class ProfileViewController: LoggingViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         profileCollectionView.reloadData()
+        debug(User.current.userCredentials)
     }
 }

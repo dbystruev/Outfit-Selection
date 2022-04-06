@@ -6,8 +6,8 @@
 //  Copyright © 2019–2020 Denis Bystruev. All rights reserved.
 //
 
-import GoogleSignIn
 import Firebase
+import GoogleSignIn
 import UIKit
 
 class GenderViewController: NextButtonViewController {
@@ -47,18 +47,12 @@ class GenderViewController: NextButtonViewController {
         }
     }
     
-    /// Google button outlet
-    @IBOutlet weak var signInButton: GIDSignInButton!
-    
     // MARK: - Stored Properties
     /// The handler for the auth state listener, to allow cancelling later.
     var handle: AuthStateDidChangeListenerHandle?
     
     /// Flag which indicates if this is the first appearance of this view controller (true) or we came back from navigation stack (false)
     var firstAppearance = true
-    
-    /// Current user
-    let user = User.current
     
     // MARK: - Inherited Properties
     /// Make status bar text light
@@ -90,23 +84,11 @@ class GenderViewController: NextButtonViewController {
         
         // Hide navigation bar on top
         navigationController?.isNavigationBarHidden = true
-        
-        // Start auth listener
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-            debug("INFO: current user:", user)
-        }
-        
-        // Configure signInButton
-        signInButton.style = .iconOnly
-        signInButton.layer.cornerRadius = 10.0
     }
     
     /// Return navigation controller bar style back to normal
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // Remove auth listener
-        Auth.auth().removeStateDidChangeListener(handle!)
-        navigationController?.navigationBar.barStyle = .default
     }
     
     /// Animate logo to the new position, hide description and unhide button stack view
@@ -154,58 +136,6 @@ class GenderViewController: NextButtonViewController {
     
     @IBAction func otherSelected(_ sender: GenderButton) {
         performSegueToBrandsViewController(gender: .other)
-    }
-    
-    /// Called when the google button is tapped
-    /// - Parameter sender: the gesture recognizer which was tapped
-    @IBAction func signInButtonTap(_ sender: Any) {
-        // Get clientID from Firebase
-        guard let clientID = FirebaseApp.app()?.options.clientID else {
-            debug("ERROR: can't get clientID from FirebaseApp")
-            return
-        }
-        debug(clientID)
-        // Create Google Sign In configuration object.
-        let config = GIDConfiguration(clientID: clientID)
-        
-        // Start the sign in flow!
-        GIDSignIn.sharedInstance.signIn(with: config, presenting: self) { user, error in
-            if let error = error {
-                debug("ERROR:", error.localizedDescription)
-                return
-            }
-            
-            // Check authentication and idToken
-            guard let authentication = user?.authentication, let idToken = authentication.idToken else {
-                debug("ERROR: can't get idToken")
-                return
-            }
-            
-            // Create credential for auth call into firebase
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
-            
-            // Firebase authentication call
-            Auth.auth().signIn(with: credential) { authResult, error in
-                if let error = error {
-                    debug("ERROR:", error.localizedDescription)
-                }
-                // Check authResult
-                guard let authResult = authResult else {
-                    debug("ERROR: can't get authResult")
-                    return
-                }
-                // Update date for current user
-                self.user.displayName = authResult.user.displayName
-                self.user.email = authResult.user.email
-                self.user.isLoggedIn = true
-                self.user.phone = authResult.user.phoneNumber
-                self.user.photoURL = authResult.user.photoURL
-                self.user.uid = authResult.user.uid
-
-                debug("INFO: Welcome", authResult.user.displayName)
-
-            }
-        }
     }
     
 }

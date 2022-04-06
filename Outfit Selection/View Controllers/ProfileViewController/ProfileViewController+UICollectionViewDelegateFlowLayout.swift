@@ -31,12 +31,13 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            return CGSize(width: collectionView.bounds.width, height: 47)
+            // Section 0 is account - 1 item per row
+            return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
         case 1:
-            // Section 0 is gender - 1 item per row
-            return CGSize(width: collectionView.bounds.width, height: 47)
+            // Section 1 is gender - 1 item per row
+            return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
         case 2:
-            // Section 1 is brands — reuse brands view controller to answer
+            // Section 2 is brands — reuse brands view controller to answer
             return brandsViewController?.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath) ?? CGSize.zero
         default:
             debug("WARNING: Unknown section \(indexPath.section)")

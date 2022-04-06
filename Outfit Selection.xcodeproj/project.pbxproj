@@ -276,6 +276,10 @@
 		7A2039D327FB412A00CD4B93 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 7A2039D227FB412A00CD4B93 /* GoogleSignIn */; };
 		7A2039D927FC255C00CD4B93 /* AccountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2039D827FC255C00CD4B93 /* AccountCollectionViewCell.xib */; };
 		7A2039DB27FC440C00CD4B93 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039DA27FC440C00CD4B93 /* AccountCollectionViewCell.swift */; };
+		7A2039DE27FD305300CD4B93 /* Dictionary+index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039DD27FD305300CD4B93 /* Dictionary+index.swift */; };
+		7A2039E027FD5D3A00CD4B93 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2039DF27FD5D3A00CD4B93 /* Signup.storyboard */; };
+		7A2039E327FD749700CD4B93 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039E227FD749700CD4B93 /* SignupViewController.swift */; };
+		7A2039E527FD877100CD4B93 /* SignupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039E427FD877000CD4B93 /* SignupButton.swift */; };
 		7AC21E7227FB110D006E1ED5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC21E7127FB110D006E1ED5 /* FirebaseAnalytics */; };
 		7AC21E7527FB199F006E1ED5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC21E7427FB199F006E1ED5 /* User.swift */; };
 		7AC21E7927FB26E7006E1ED5 /* AppDelegate+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC21E7827FB26E7006E1ED5 /* AppDelegate+Firebase.swift */; };
@@ -577,6 +581,10 @@
 		7A1C8A4627AA85490038DF28 /* URL+getParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+getParameters.swift"; sourceTree = "<group>"; };
 		7A2039D827FC255C00CD4B93 /* AccountCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCollectionViewCell.xib; sourceTree = "<group>"; };
 		7A2039DA27FC440C00CD4B93 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
+		7A2039DD27FD305300CD4B93 /* Dictionary+index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+index.swift"; sourceTree = "<group>"; };
+		7A2039DF27FD5D3A00CD4B93 /* Signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
+		7A2039E227FD749700CD4B93 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		7A2039E427FD877000CD4B93 /* SignupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupButton.swift; sourceTree = "<group>"; };
 		7AC21E7427FB199F006E1ED5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7AC21E7827FB26E7006E1ED5 /* AppDelegate+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Firebase.swift"; sourceTree = "<group>"; };
 		7ACA9C6727ABB027004B7D63 /* AppDelegate+universalLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+universalLinks.swift"; sourceTree = "<group>"; };
@@ -759,6 +767,7 @@
 		692C9415254708670075BD92 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7A2039DC27FD300500CD4B93 /* Dictionary */,
 				69BEC0EE272971410034F454 /* Array */,
 				691C5F3B26E764F200DF0758 /* CGSize+CustomStringConvertible.swift */,
 				699632AE26FCB0EA00841B6F /* Character */,
@@ -1121,6 +1130,7 @@
 				69BA640A25E6BB2000C805B6 /* SelectableButtonItem.swift */,
 				69AE95552563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift */,
 				690B42B126DD7601000C683B /* WishlistButton.swift */,
+				7A2039E427FD877000CD4B93 /* SignupButton.swift */,
 			);
 			path = Buttons;
 			sourceTree = "<group>";
@@ -1306,6 +1316,7 @@
 				6979DF7A2717426F001EC168 /* Main */,
 				695295BF27E9BD7100D34C3A /* Messages */,
 				69D0FDA225EB64C600FC15F6 /* ProfileViewController */,
+				7A2039E127FD740F00CD4B93 /* SignupViewController */,
 				6979DF79271741E1001EC168 /* Welcome */,
 				69DB6A5425E81AF700EC4CDE /* Wishlist */,
 			);
@@ -1318,6 +1329,7 @@
 				69DFE596273524B600D46B5F /* Collections.storyboard */,
 				69DFE5A6273526E300D46B5F /* Feed.storyboard */,
 				69A0C9F12705CBC300C49977 /* Launch Screen */,
+				7A2039DF27FD5D3A00CD4B93 /* Signup.storyboard */,
 				69DFE59F2735266200D46B5F /* Main.storyboard */,
 				695295BB27E9BA7F00D34C3A /* Messages.storyboard */,
 				69DFE5C327365CE500D46B5F /* Profile.storyboard */,
@@ -1459,6 +1471,7 @@
 		69D0FDA825EB697F00FC15F6 /* XIBs */ = {
 			isa = PBXGroup;
 			children = (
+				7A2039D827FC255C00CD4B93 /* AccountCollectionViewCell.xib */,
 				69297C5125EB852700A8684E /* BrandCollectionViewCell.xib */,
 				69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */,
 				697CCE6926D0039800B69763 /* FeedItem.xib */,
@@ -1466,7 +1479,6 @@
 				69297C5E25EBC9FE00A8684E /* GenderCollectionViewCell.xib */,
 				69C3A4BD25EC07E800F8F968 /* ProfileSectionHeaderView.xib */,
 				692AF3CD260113DB00D37269 /* ShareView.xib */,
-				7A2039D827FC255C00CD4B93 /* AccountCollectionViewCell.xib */,
 			);
 			path = XIBs;
 			sourceTree = "<group>";
@@ -1568,6 +1580,22 @@
 				7A1C8A4627AA85490038DF28 /* URL+getParameters.swift */,
 			);
 			path = URL;
+			sourceTree = "<group>";
+		};
+		7A2039DC27FD300500CD4B93 /* Dictionary */ = {
+			isa = PBXGroup;
+			children = (
+				7A2039DD27FD305300CD4B93 /* Dictionary+index.swift */,
+			);
+			path = Dictionary;
+			sourceTree = "<group>";
+		};
+		7A2039E127FD740F00CD4B93 /* SignupViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7A2039E227FD749700CD4B93 /* SignupViewController.swift */,
+			);
+			path = SignupViewController;
 			sourceTree = "<group>";
 		};
 		7AC21E7327FB1956006E1ED5 /* User */ = {
@@ -1706,6 +1734,7 @@
 				697CCE6A26D0039800B69763 /* FeedItem.xib in Resources */,
 				69DFE5BA2735295E00D46B5F /* Welcome.storyboard in Resources */,
 				69827B24273BED6F00C59D68 /* Localizable.strings in Resources */,
+				7A2039E027FD5D3A00CD4B93 /* Signup.storyboard in Resources */,
 				6903D60227FAC9AD00FCA499 /* GoogleService-Info.plist in Resources */,
 				7A2039D927FC255C00CD4B93 /* AccountCollectionViewCell.xib in Resources */,
 				69827B1E273BD02900C59D68 /* strings.numbers in Resources */,
@@ -1798,6 +1827,7 @@
 				697CCE6626CFF22900B69763 /* DelegatedButton.swift in Sources */,
 				69C18F1B271F0762006D7B47 /* UserDefault+propertyWrapper.swift in Sources */,
 				6906A9A826E6725800386267 /* Collection+all.swift in Sources */,
+				7A2039E327FD749700CD4B93 /* SignupViewController.swift in Sources */,
 				69A6F70A22BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift in Sources */,
 				69AE95562563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift in Sources */,
 				690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */,
@@ -1917,6 +1947,7 @@
 				695295BE27E9BD6800D34C3A /* ChatViewController.swift in Sources */,
 				6957565B27158987007ADE02 /* Onboarding.swift in Sources */,
 				69A0C9DC27044E6600C49977 /* FeedSectionHeaderView.swift in Sources */,
+				7A2039DE27FD305300CD4B93 /* Dictionary+index.swift in Sources */,
 				69FB0EA327148AAE006C20E9 /* OccasionsViewController+Actions.swift in Sources */,
 				698A7F9626E8E8DB006C36FD /* WishlistItemCatalog.swift in Sources */,
 				69C5CBE0260A12D900DE22E6 /* ShareViewController+UITableViewDataSource.swift in Sources */,
@@ -1960,6 +1991,7 @@
 				69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */,
 				7A01FBAC27BBA765007131E7 /* AppDelegate+setup.swift in Sources */,
 				692C94132547025D0075BD92 /* Category.swift in Sources */,
+				7A2039E527FD877100CD4B93 /* SignupButton.swift in Sources */,
 				69DA85DB26D60AE900D16B25 /* FeedBrandCell+UICollectionViewDelegateFlowLayout.swift in Sources */,
 				69560ECC2587E7C700337F35 /* Item+Branded.swift in Sources */,
 				69D3FEAD26F8D73200D31A5F /* Server.swift in Sources */,
