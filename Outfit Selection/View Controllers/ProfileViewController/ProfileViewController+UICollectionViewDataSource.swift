@@ -26,7 +26,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             // Check isLoggedIn
             guard User.current.isLoggedIn != nil else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)
-                (cell as? AccountCollectionViewCell)?.configure(titleLabel: "Tap to login please", label: "", cursor: false)
+                (cell as? AccountCollectionViewCell)?.configure(titleLabel: "Login:"~, label: "Tap to login please"~, cursor: false)
                 return cell
             }
             
@@ -37,7 +37,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)
             let key = User.current.sequenceCredentials[indexPath.row]
             (cell as? AccountCollectionViewCell)?.configure(titleLabel: key,
-                                                            label: User.current.userCredentials.first(where: { $0.key == key })?.value ?? "", cursor: true)
+                                                            label: User.current.userCredentials.first(where: { $0.key == key })?.value ?? "", cursor: false)
             
             return cell
         case 1:
@@ -81,7 +81,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         switch section {
         case 0:
             // Section 0 is user info with avaliable properties
-            return User.current.isLoggedIn != nil ? User.current.userCredentials.count : 1
+            return User.current.isLoggedIn != nil ? User.current.sequenceCredentials.count : 1
         case 1:
             // Section 1 is gender — 3 items
             return Gender.allCases.count

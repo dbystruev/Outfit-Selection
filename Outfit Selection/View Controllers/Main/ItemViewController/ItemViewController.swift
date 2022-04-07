@@ -37,6 +37,13 @@ class ItemViewController: LoggingViewController {
         }
     }
     
+    @IBOutlet weak var shareButton: UIButton! {
+        didSet {
+            shareButton.imageView?.contentMode = .scaleAspectFill
+            addShadow(for: shareButton, cornerRadius: 20)
+        }
+    }
+    
     @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet var orderButtonHorizontalConstraints: [NSLayoutConstraint]!
     @IBOutlet weak var imageStackView: UIStackView!
@@ -162,9 +169,19 @@ class ItemViewController: LoggingViewController {
         intermediaryViewController?.url = url
     }
     
+    // MARK: - Inherited Methods
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        
+        // Set new title for Button
+        orderButton.setTitle( isEditing ? "Save"~ : "Shop now"~, for: .normal)
+        shareButton.isEnabled = !isEditing
+        addToWishlistButton.isEnabled = !isEditing
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        navigationItem.rightBarButtonItem = editButtonItem
         loadImages()
     }
     

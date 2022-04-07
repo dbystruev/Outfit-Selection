@@ -80,9 +80,9 @@ class SignupViewController: LoggingViewController {
                 }
                 
                 // Update date for current user
-                User.current.userCredentials.updateValue(authResult.user.displayName ?? "", forKey: "Name:")
-                User.current.userCredentials.updateValue(authResult.user.email ?? "", forKey: "Email:")
-                User.current.userCredentials.updateValue(authResult.user.phoneNumber ?? "", forKey: "Phone:")
+                User.current.userCredentials.updateValue(authResult.user.displayName ?? "", forKey: "Name:"~)
+                User.current.userCredentials.updateValue(authResult.user.email ?? "", forKey: "Email:"~)
+                User.current.userCredentials.updateValue(authResult.user.phoneNumber ?? "", forKey: "Phone:"~)
                 User.current.isLoggedIn = true
                 User.current.photoURL = authResult.user.photoURL
                 User.current.uid = authResult.user.uid

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CJ9-RQ-HGM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="CJ9-RQ-HGM">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -458,10 +458,10 @@
                                                 <rect key="frame" x="0.0" y="70" width="382" height="69"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" alignment="center" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="YYO-z0-tKJ" userLabel="Buttons Stack View">
-                                                        <rect key="frame" x="171" y="14.5" width="40" height="40"/>
+                                                        <rect key="frame" x="145" y="14.5" width="92" height="40"/>
                                                         <subviews>
                                                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jvm-ZV-PB7">
-                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                <rect key="frame" x="-40" y="0.0" width="40" height="40"/>
                                                                 <subviews>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="trailing" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CmW-tW-0Rp" userLabel="Dislike Button" customClass="WishlistButton" customModule="Concept_Group" customModuleProvider="target">
                                                                         <rect key="frame" x="-6" y="-6" width="52" height="52"/>
@@ -504,8 +504,25 @@
                                                                     <action selector="addToWishlistButtonTapped:" destination="893-Rv-iVe" eventType="touchUpInside" id="n7N-gD-PMD"/>
                                                                 </connections>
                                                             </button>
+                                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IC4-zB-2S3">
+                                                                <rect key="frame" x="52" y="0.0" width="40" height="40"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="2aY-yf-gdh"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="14"/>
+                                                                <inset key="contentEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
+                                                                <inset key="titleEdgeInsets" minX="4" minY="7" maxX="-4" maxY="0.0"/>
+                                                                <state key="normal" image="share">
+                                                                    <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                                </state>
+                                                                <state key="selected" image="wishlist_filled"/>
+                                                                <connections>
+                                                                    <action selector="shareButtonTapped:" destination="893-Rv-iVe" eventType="touchUpInside" id="k6C-bJ-btA"/>
+                                                                </connections>
+                                                            </button>
                                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uHM-YP-a8l">
-                                                                <rect key="frame" x="0.0" y="0.0" width="0.0" height="40"/>
+                                                                <rect key="frame" x="92" y="0.0" width="0.0" height="40"/>
                                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="height" constant="40" id="rvY-aK-1DV"/>
@@ -522,6 +539,9 @@
                                                                 </connections>
                                                             </button>
                                                         </subviews>
+                                                        <constraints>
+                                                            <constraint firstItem="IC4-zB-2S3" firstAttribute="width" secondItem="IC4-zB-2S3" secondAttribute="height" id="YV5-2j-4fC"/>
+                                                        </constraints>
                                                     </stackView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -593,6 +613,7 @@
                         <outlet property="imageView" destination="8e5-lJ-Xm5" id="rd8-wY-um8"/>
                         <outlet property="orderButton" destination="bhy-eM-JDA" id="QgH-lz-Ro0"/>
                         <outlet property="rightLabelsStackView" destination="uqL-aG-vXq" id="N4x-3j-kUq"/>
+                        <outlet property="shareButton" destination="IC4-zB-2S3" id="Ofk-Fd-5eK"/>
                         <outlet property="topLabelsStackView" destination="Zyi-Sk-1UV" id="T7s-Oe-Guh"/>
                         <outlet property="topStackView" destination="iv6-cp-IiR" id="cLl-kt-Yc2"/>
                         <outlet property="trailingStackView" destination="4Fq-h8-zMT" id="1eF-8W-QDE"/>

@@ -26,11 +26,11 @@ final class User {
     /// Url profile photo
     var photoURL: URL?
     /// Dictionary with user data
-    var sequenceCredentials = ["Name:", "Email:", "Phone:"]
+    var sequenceCredentials = ["Name:"~, "Email:"~, "Phone:"~, "Logout:"~]
     /// The user's ID, unique to the Firebase project
     var uid: String?
     /// The array with user data ["Email":"example@apple.com"].
-    var userCredentials = ["Name:": "", "Email:": "", "Phone:": ""] {
+    var userCredentials = ["Name:"~: "", "Email:"~: "", "Phone:"~: "", "Logout:"~: "Tap to logout please"~ ] {
         didSet{
             debug(userCredentials)
         }
