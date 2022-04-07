@@ -15,29 +15,36 @@ final class User {
     static let current = User()
     
     // MARK: - Stored Properties
-    var dictionary: [String: String] = [:]
     /// Display name
-    var displayName: String?
+    var displayName: String
     /// User email
-    var email: String?
+    var email: String
     /// The status is login
     var isLoggedIn: Bool?
     /// The number phone user
-    var phone: String?
+    var phone: String
     /// Url profile photo
     var photoURL: URL?
+    /// Dictionary with user data
+    var sequenceCredentials = ["Name:", "Email:", "Phone:"]
     /// The user's ID, unique to the Firebase project
     var uid: String?
+    /// The array with user data ["Email":"example@apple.com"].
+    var userCredentials = ["Name:": "", "Email:": "", "Phone:": ""] {
+        didSet{
+            debug(userCredentials)
+        }
+    }
     
     // MARK: - Init
     /// Constructor for User
     /// - Parameters:
     ///   - isLoggedIn: The status is login
-    private init(
-        displayName: String?  = nil,
-        email: String?  = nil,
+    init(
+        displayName: String  = "",
+        email: String  = "",
         isLoggedIn: Bool?  = nil,
-        phone: String?  = nil,
+        phone: String  = "",
         photoURL: URL?  = nil,
         uid: String? = nil
     ) {
@@ -47,17 +54,6 @@ final class User {
         self.phone = phone
         self.photoURL = photoURL
         self.uid = uid
-    }
-    
-    // MARK: - Helper Methods
-    func userInfo() {
-        if User.current.displayName != nil {
-            dictionary["Name"] = User.current.displayName
-        } else if User.current.email != nil  {
-            dictionary["Email"] = User.current.email
-        } else if User.current.phone != nil {
-            dictionary["Phone"] = User.current.email
-        }
     }
 }
 

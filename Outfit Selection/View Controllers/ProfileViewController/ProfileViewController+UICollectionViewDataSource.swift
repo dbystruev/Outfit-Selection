@@ -22,17 +22,31 @@ extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            // Section 0 is gender - configure gender cell
+            
+            // Check isLoggedIn
+            guard User.current.isLoggedIn != nil else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)
+                (cell as? AccountCollectionViewCell)?.configure(titleLabel: "Tap to login please", label: "", cursor: false)
+                return cell
+            }
+            
+            // Check the userCredentials for nil
+            guard !User.current.userCredentials.isEmpty else { return UICollectionViewCell() }
+            
+            // Section 0 is account - configure user info cell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)
-            (cell as? AccountCollectionViewCell)?.configure(titleLabel: "Name", label: self.user.displayName ?? "", cursor: true)
+            let key = User.current.sequenceCredentials[indexPath.row]
+            (cell as? AccountCollectionViewCell)?.configure(titleLabel: key,
+                                                            label: User.current.userCredentials.first(where: { $0.key == key })?.value ?? "", cursor: true)
+            
             return cell
         case 1:
-            // Section 0 is gender - configure gender cell
+            // Section 1 is gender - configure gender cell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenderCollectionViewCell.reuseId, for: indexPath)
             (cell as? GenderCollectionViewCell)?.configure(gender: Gender.allCases[indexPath.row], selected: shownGender)
             return cell
         case 2:
-            // Section 1 is brands - use brands view controller section 0 to answer
+            // Section 2 is brands - use brands view controller section 0 to answer
             return brandsViewController?.collectionView(collectionView, cellForItemAt: indexPath) ?? BrandCollectionViewCell()
         default:
             debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")
@@ -66,12 +80,13 @@ extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
         case 0:
-            return 3
+            // Section 0 is user info with avaliable properties
+            return User.current.isLoggedIn != nil ? User.current.userCredentials.count : 1
         case 1:
-            // Section 0 is gender — 3 items
+            // Section 1 is gender — 3 items
             return Gender.allCases.count
         case 2:
-            // Section 1 is brands — use brands view controller section 0 to answer.
+            // Section 2 is brands — use brands view controller section 0 to answer.
             return brandsViewController?.collectionView(collectionView, numberOfItemsInSection: 0) ?? 0
         default:
             debug("WARNING: Unknown section \(section)")

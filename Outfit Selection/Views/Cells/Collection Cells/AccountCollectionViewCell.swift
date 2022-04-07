@@ -9,9 +9,9 @@
 import UIKit
 
 class AccountCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var label: UILabel!
     @IBOutlet weak var cursorImage: UIImageView!
+    @IBOutlet weak var label: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
     
     // MARK: - Methods
     /// Configure gender cell with given gender
