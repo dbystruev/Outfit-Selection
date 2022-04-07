@@ -16,9 +16,6 @@ class SignupViewController: LoggingViewController {
     /// The handler for the auth state listener, to allow cancelling later.
     private var handle: AuthStateDidChangeListenerHandle?
     
-    /// Found ViewController
-    var profileViewController = ProfileViewController()
-    
     // MARK: - Inherited Methods
     /// Return navigation controller bar style back to normal
     override func viewWillDisappear(_ animated: Bool) {
@@ -36,23 +33,6 @@ class SignupViewController: LoggingViewController {
         handle = Auth.auth().addStateDidChangeListener { auth, user in
             debug("INFO: current user:", user?.displayName)
         }
-        
-        findViewController()
-    }
-    
-    // MARK: - Private Methods
-    /// Fund presented ViewController
-    private func findViewController() {
-        guard let navigationController = presentingViewController as? UINavigationController else {
-            debug("ERROR: Can't find navigationController from the presentingViewController")
-            return
-        }
-        
-        guard let profileViewController = navigationController.findViewController(ofType: ProfileViewController.self) else {
-            debug("ERROR: Can't find \(ProfileViewController.className) from the", ProfileViewController.className)
-            return
-        }
-        self.profileViewController = profileViewController
     }
     
     // MARK: - Actions
@@ -103,14 +83,41 @@ class SignupViewController: LoggingViewController {
                 User.current.userCredentials.updateValue(authResult.user.displayName ?? "", forKey: "Name:")
                 User.current.userCredentials.updateValue(authResult.user.email ?? "", forKey: "Email:")
                 User.current.userCredentials.updateValue(authResult.user.phoneNumber ?? "", forKey: "Phone:")
-            
                 User.current.isLoggedIn = true
                 User.current.photoURL = authResult.user.photoURL
                 User.current.uid = authResult.user.uid
+
                 debug("INFO: Welcome", User.current.displayName)
                 
+                // Find UINavigationViewController into presentingViewController
+                guard let navigationController = self.presentingViewController as? UINavigationController else {
+                    debug("ERROR: Can't find navigationController from the presentingViewController")
+                    return
+                }
+                
+                // Find TabBarController into navigationViewController
+                guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
+                    debug("ERROR: Can't find \(TabBarController.className) into the UINavigationViewController")
+                    return
+                }
+                
+                // Find navigationViewController into TabBarController
+                guard let navigationController = tabBarController.viewControllers?[Globals.TabBar.index.profile] as? UINavigationController else {
+                    debug("ERROR: Can't find UINavigationViewController into the", TabBarController.className)
+                    return
+                }
+                
+                // Find TabBarController into navigationViewController
+                guard let profileViewController = navigationController.findViewController(ofType: ProfileViewController.self) else {
+                    debug("ERROR: Can't find \(ProfileViewController.className) into the", ProfileViewController.className)
+                    return
+                }
+                
+                // Reload data from into profileCollectionView
+                profileViewController.profileCollectionView.reloadSections(IndexSet([0]))
+                self.dismiss(animated: true)
             }
-            self.dismiss(animated: false)
         }
     }
+    
 }

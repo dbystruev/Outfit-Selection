@@ -96,7 +96,8 @@ enum Globals {
             static let outfit = 0
             static let feed = 1
             static let wishlist = 2
-            static let profile = 3
+            static let chat = 3
+            static let profile = 4
         }
         enum status {
             static var found = false
