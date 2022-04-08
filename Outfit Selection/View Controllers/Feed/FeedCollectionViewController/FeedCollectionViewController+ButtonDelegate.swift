@@ -38,11 +38,12 @@ extension FeedCollectionViewController: ButtonDelegate {
                 // Make parameters for get
                 let parametrs = NetworkManager.shared.parameters(
                     for: Gender.current,
-                       in: [],
-                       subcategoryIDs: subcategoryIDs,
-                       limited: 1,
-                       sale: sale,
-                       filteredBy: brandNames
+                    in: [],
+                    subcategoryIDs: subcategoryIDs,
+                    named: "",
+                    limited: 1,
+                    sale: sale,
+                    filteredBy: brandNames
                 )
                 
                 // Request head to get Content-Range from the API

@@ -208,12 +208,12 @@ class NetworkManager {
             }
             
             // Get value from name header
-             guard let itemHeader = httpResponse.allHeaderFields[header] as? String else {
+            guard let itemHeader = httpResponse.allHeaderFields[header] as? String else {
                 debug("ERROR: httpResponse is not contain \(header)")
                 completion(nil)
                 return
             }
-//            debug(request.absoluteString)
+            //            debug(request.absoluteString)
             completion(itemHeader as? T)
         }
         task.resume()
@@ -289,17 +289,19 @@ class NetworkManager {
         subcategoryIDs: [Int] = [],
         filteredBy vendorNames: [String] = [],
         limited limit: Int? = nil,
+        named name: String? = nil,
         sale: Bool = false,
         completion: @escaping (Items?) -> Void)
     {
         // Prepare parameters
         let parameters = parameters(
             for: gender,
-               in: categoryIDs,
-               subcategoryIDs: subcategoryIDs,
-               limited: limit,
-               sale: sale,
-               filteredBy: vendorNames
+            in: categoryIDs,
+            subcategoryIDs: subcategoryIDs,
+            named: name,
+            limited: limit,
+            sale: sale,
+            filteredBy: vendorNames
         )
         
         // Request the items from the API
@@ -314,7 +316,7 @@ class NetworkManager {
         // Sort by modified time from newest to oldest
         var parameters = parameters
         parameters["order"] = "modified_time.desc"
-
+        
         if offset != 0 {
             parameters["offset"] = "\(offset)"
         }
@@ -390,6 +392,7 @@ class NetworkManager {
         for gender: Gender?,
         in categories: [Int],
         subcategoryIDs: [Int],
+        named name: String?,
         limited limit: Int?,
         sale: Bool,
         filteredBy fullVendorNames: [String]

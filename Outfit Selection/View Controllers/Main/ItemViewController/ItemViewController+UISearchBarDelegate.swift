@@ -21,7 +21,7 @@ extension ItemViewController: UISearchBarDelegate {
     
     // MARK: - UISearchBarDelegate
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        finishEditing(searchBar)
+        tableStackView.isHidden = searchText.count > 3 ? false : true
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {

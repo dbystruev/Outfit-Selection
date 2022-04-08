@@ -56,12 +56,17 @@ class ItemViewController: LoggingViewController {
             orderButton.setTitleColor(Globals.Color.Button.titleColor, for: .normal)
         }
     }
+    /// The  table view with items list
+    @IBOutlet weak var itemTableView: UITableView!
     
     @IBOutlet  var priceLabels: [UILabel]!
     
     @IBOutlet weak var rightLabelsStackView: UIStackView!
+    
     /// Search bar for the item
     @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var tableStackView: UIStackView!
+    
     @IBOutlet weak var topLabelsStackView: UIStackView!
     @IBOutlet weak var topStackView: UIStackView!
     @IBOutlet weak var trailingStackView: UIStackView!
