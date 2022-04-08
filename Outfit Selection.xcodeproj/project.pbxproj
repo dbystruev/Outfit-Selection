@@ -281,6 +281,7 @@
 		7A2039E527FD877100CD4B93 /* SignupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039E427FD877000CD4B93 /* SignupButton.swift */; };
 		7A2039E727FEC23900CD4B93 /* ProfileViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039E627FEC23900CD4B93 /* ProfileViewController+Actions.swift */; };
 		7A2039EA27FF190B00CD4B93 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2039EC27FF190B00CD4B93 /* Signup.storyboard */; };
+		7A2039F027FFE2D700CD4B93 /* ItemViewController+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039EF27FFE2D700CD4B93 /* ItemViewController+UISearchBarDelegate.swift */; };
 		7AC21E7227FB110D006E1ED5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC21E7127FB110D006E1ED5 /* FirebaseAnalytics */; };
 		7AC21E7527FB199F006E1ED5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC21E7427FB199F006E1ED5 /* User.swift */; };
 		7AC21E7927FB26E7006E1ED5 /* AppDelegate+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC21E7827FB26E7006E1ED5 /* AppDelegate+Firebase.swift */; };
@@ -588,6 +589,7 @@
 		7A2039E627FEC23900CD4B93 /* ProfileViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Actions.swift"; sourceTree = "<group>"; };
 		7A2039EB27FF190B00CD4B93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
 		7A2039EE27FF191700CD4B93 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Signup.strings; sourceTree = "<group>"; };
+		7A2039EF27FFE2D700CD4B93 /* ItemViewController+UISearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemViewController+UISearchBarDelegate.swift"; sourceTree = "<group>"; };
 		7AC21E7427FB199F006E1ED5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7AC21E7827FB26E7006E1ED5 /* AppDelegate+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Firebase.swift"; sourceTree = "<group>"; };
 		7ACA9C6727ABB027004B7D63 /* AppDelegate+universalLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+universalLinks.swift"; sourceTree = "<group>"; };
@@ -797,6 +799,7 @@
 			children = (
 				69AE95582563D43700850210 /* ItemViewController.swift */,
 				69322E2A26008CDD00CAFBFA /* ItemViewController+Actions.swift */,
+				7A2039EF27FFE2D700CD4B93 /* ItemViewController+UISearchBarDelegate.swift */,
 			);
 			path = ItemViewController;
 			sourceTree = "<group>";
@@ -1332,10 +1335,10 @@
 				69DFE596273524B600D46B5F /* Collections.storyboard */,
 				69DFE5A6273526E300D46B5F /* Feed.storyboard */,
 				69A0C9F12705CBC300C49977 /* Launch Screen */,
-				7A2039EC27FF190B00CD4B93 /* Signup.storyboard */,
 				69DFE59F2735266200D46B5F /* Main.storyboard */,
 				695295BB27E9BA7F00D34C3A /* Messages.storyboard */,
 				69DFE5C327365CE500D46B5F /* Profile.storyboard */,
+				7A2039EC27FF190B00CD4B93 /* Signup.storyboard */,
 				69DFE5BC2735295E00D46B5F /* Welcome.storyboard */,
 				69DFE5C827365CFC00D46B5F /* Wishlist.storyboard */,
 			);
@@ -1938,6 +1941,7 @@
 				6976232526D76E6700504F31 /* FeedItemViewController.swift in Sources */,
 				69C3695B25E780F8000A8E5E /* OccasionsPopupViewController+UIPickerViewDataSource.swift in Sources */,
 				69C5CC03260A224200DE22E6 /* ShareViewController+Actions.swift in Sources */,
+				7A2039F027FFE2D700CD4B93 /* ItemViewController+UISearchBarDelegate.swift in Sources */,
 				69B3E2352743F21200A9426D /* PinnableScrollView+scrollTo.swift in Sources */,
 				69A6F70E22BA438A002A3B49 /* OutfitViewController+UIViewController.swift in Sources */,
 				698990D22323808B002DCA29 /* PinnableScrollViews+Extension.swift in Sources */,

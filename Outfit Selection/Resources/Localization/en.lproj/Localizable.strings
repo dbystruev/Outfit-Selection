@@ -20,6 +20,7 @@
 "Dislike" = "Dislike";
 "Do you really want to dislike the item?" = "Do you really want to dislike the item?";
 "Don't" = "Don't";
+"Edit" = "Edit";
 "Email:" = "Email:";
 "Favorite brands" = "Favorite brands";
 "Feed" = "Feed";
@@ -29,8 +30,8 @@
 "Instagram Post" = "Instagram Post";
 "Instagram Stories" = "Instagram Stories";
 "Items" = "Items";
-"Login:" = "Login:";
-"Logout:" = "Logout:";
+"Log in" = "Log in";
+"Log out" = "Log out";
 "male" = "male";
 "more" = "more";
 "Name:" = "Name:";
@@ -45,11 +46,13 @@
 "Please add some items or outfits to the wishlists by liking them before creating a collection" = "Please add some items or outfits to the wishlists by liking them before creating a collection";
 "Raskroi" = "Raskroi";
 "RUB" = "RUB";
+"Save" = "Save";
 "Save to wishlists?" = "Save to wishlists?";
 "Sales" = "Sales";
 "See all" = "See all";
 "Select all" = "Select all";
 "selected for" = "selected for";
+"Shop now" = "Shop now";
 "Taking you back to GET OUTFIT..." = "Taking you back to GET OUTFIT...";
 "Tap to login please" = "Tap to login please";
 "Tap to logout please" = "Tap to logout please";

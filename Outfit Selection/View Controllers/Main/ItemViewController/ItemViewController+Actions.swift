@@ -28,9 +28,13 @@ extension ItemViewController {
     }
     
     @IBAction func orderButtonTapped(_ sender: UIButton) {
-        guard let url = item?.url else { return }
-        self.url = url
-        performSegue(withIdentifier: "intermediaryViewControllerSegue", sender: sender)
+        if isEditing {
+            debug("Button Save tapped")
+        } else {
+            guard let url = item?.url else { return }
+            self.url = url
+            performSegue(withIdentifier: "intermediaryViewControllerSegue", sender: sender)
+        }
     }
     
     @IBAction func shareButtonTapped(_ sender: Any) {

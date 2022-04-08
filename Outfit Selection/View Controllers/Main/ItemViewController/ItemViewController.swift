@@ -57,7 +57,11 @@ class ItemViewController: LoggingViewController {
         }
     }
     
+    @IBOutlet  var priceLabels: [UILabel]!
+    
     @IBOutlet weak var rightLabelsStackView: UIStackView!
+    /// Search bar for the item
+    @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var topLabelsStackView: UIStackView!
     @IBOutlet weak var topStackView: UIStackView!
     @IBOutlet weak var trailingStackView: UIStackView!
@@ -72,7 +76,7 @@ class ItemViewController: LoggingViewController {
     
     /// Item url to present at Intermediary view controller
     var url: URL?
-
+    
     // MARK: - Custom Methods
     /// Add shadow to the layer with given corner radius
     /// - Parameters:
@@ -102,7 +106,7 @@ class ItemViewController: LoggingViewController {
     /// Load item pictures to image view and image stack view
     func loadImages() {
         // Load the first image
-        imageView.image = image
+        imageView?.image = image
         
         // Get the URLs for the second and all other images
         guard let imageURLs = item?.pictures, 1 < imageURLs.count else { return }
@@ -158,6 +162,10 @@ class ItemViewController: LoggingViewController {
         let nameWithoutVendor = item.nameWithoutVendor
         nameLabels.forEach { $0.text = nameWithoutVendor }
         title = item.price.asPrice
+        
+        // Set price to label
+        priceLabels.forEach  { $0.text = item.price.asPrice }
+        
         let vendorUppercased = item.vendorName.uppercased()
         vendorLabels.forEach { $0.text = vendorUppercased }
     }
@@ -174,15 +182,20 @@ class ItemViewController: LoggingViewController {
         super.setEditing(editing, animated: animated)
         
         // Set new title for Button
-        orderButton.setTitle( isEditing ? "Save"~ : "Shop now"~, for: .normal)
-        shareButton.isEnabled = !isEditing
         addToWishlistButton.isEnabled = !isEditing
+        orderButton.setTitle( isEditing ? "Save"~ : "Shop now"~, for: .normal)
+        searchBar.isHidden = !isEditing
+        shareButton.isEnabled = !isEditing
+        title = isEditing ? "Edit"~ : item?.price.asPrice
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.rightBarButtonItem = editButtonItem
         loadImages()
+        navigationItem.rightBarButtonItem = editButtonItem
+        // Hide Search bar
+        searchBar.isHidden = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
