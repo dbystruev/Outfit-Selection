@@ -277,9 +277,10 @@
 		7A2039D927FC255C00CD4B93 /* AccountCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A2039D827FC255C00CD4B93 /* AccountCollectionViewCell.xib */; };
 		7A2039DB27FC440C00CD4B93 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039DA27FC440C00CD4B93 /* AccountCollectionViewCell.swift */; };
 		7A2039DE27FD305300CD4B93 /* Dictionary+index.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039DD27FD305300CD4B93 /* Dictionary+index.swift */; };
-		7A2039E027FD5D3A00CD4B93 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2039DF27FD5D3A00CD4B93 /* Signup.storyboard */; };
 		7A2039E327FD749700CD4B93 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039E227FD749700CD4B93 /* SignupViewController.swift */; };
 		7A2039E527FD877100CD4B93 /* SignupButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039E427FD877000CD4B93 /* SignupButton.swift */; };
+		7A2039E727FEC23900CD4B93 /* ProfileViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039E627FEC23900CD4B93 /* ProfileViewController+Actions.swift */; };
+		7A2039EA27FF190B00CD4B93 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2039EC27FF190B00CD4B93 /* Signup.storyboard */; };
 		7AC21E7227FB110D006E1ED5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC21E7127FB110D006E1ED5 /* FirebaseAnalytics */; };
 		7AC21E7527FB199F006E1ED5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC21E7427FB199F006E1ED5 /* User.swift */; };
 		7AC21E7927FB26E7006E1ED5 /* AppDelegate+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC21E7827FB26E7006E1ED5 /* AppDelegate+Firebase.swift */; };
@@ -582,9 +583,11 @@
 		7A2039D827FC255C00CD4B93 /* AccountCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AccountCollectionViewCell.xib; sourceTree = "<group>"; };
 		7A2039DA27FC440C00CD4B93 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		7A2039DD27FD305300CD4B93 /* Dictionary+index.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Dictionary+index.swift"; sourceTree = "<group>"; };
-		7A2039DF27FD5D3A00CD4B93 /* Signup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Signup.storyboard; sourceTree = "<group>"; };
 		7A2039E227FD749700CD4B93 /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		7A2039E427FD877000CD4B93 /* SignupButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupButton.swift; sourceTree = "<group>"; };
+		7A2039E627FEC23900CD4B93 /* ProfileViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+Actions.swift"; sourceTree = "<group>"; };
+		7A2039EB27FF190B00CD4B93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
+		7A2039EE27FF191700CD4B93 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Signup.strings; sourceTree = "<group>"; };
 		7AC21E7427FB199F006E1ED5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7AC21E7827FB26E7006E1ED5 /* AppDelegate+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Firebase.swift"; sourceTree = "<group>"; };
 		7ACA9C6727ABB027004B7D63 /* AppDelegate+universalLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+universalLinks.swift"; sourceTree = "<group>"; };
@@ -1329,7 +1332,7 @@
 				69DFE596273524B600D46B5F /* Collections.storyboard */,
 				69DFE5A6273526E300D46B5F /* Feed.storyboard */,
 				69A0C9F12705CBC300C49977 /* Launch Screen */,
-				7A2039DF27FD5D3A00CD4B93 /* Signup.storyboard */,
+				7A2039EC27FF190B00CD4B93 /* Signup.storyboard */,
 				69DFE59F2735266200D46B5F /* Main.storyboard */,
 				695295BB27E9BA7F00D34C3A /* Messages.storyboard */,
 				69DFE5C327365CE500D46B5F /* Profile.storyboard */,
@@ -1460,6 +1463,7 @@
 			isa = PBXGroup;
 			children = (
 				69D0FD9E25EB621800FC15F6 /* ProfileViewController.swift */,
+				7A2039E627FEC23900CD4B93 /* ProfileViewController+Actions.swift */,
 				69D0FDA425EB64DE00FC15F6 /* ProfileViewController+UICollectionViewDataSource.swift */,
 				69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */,
 				69297C5925EB8CCE00A8684E /* ProfileViewController+UICollectionViewDelegateFlowLayout.swift */,
@@ -1734,7 +1738,7 @@
 				697CCE6A26D0039800B69763 /* FeedItem.xib in Resources */,
 				69DFE5BA2735295E00D46B5F /* Welcome.storyboard in Resources */,
 				69827B24273BED6F00C59D68 /* Localizable.strings in Resources */,
-				7A2039E027FD5D3A00CD4B93 /* Signup.storyboard in Resources */,
+				7A2039EA27FF190B00CD4B93 /* Signup.storyboard in Resources */,
 				6903D60227FAC9AD00FCA499 /* GoogleService-Info.plist in Resources */,
 				7A2039D927FC255C00CD4B93 /* AccountCollectionViewCell.xib in Resources */,
 				69827B1E273BD02900C59D68 /* strings.numbers in Resources */,
@@ -1910,6 +1914,7 @@
 				69007CFD26EA7462001170D0 /* OccasionCell.swift in Sources */,
 				694935AE270D9DFB00168EB6 /* Item+CustomStringConvertible.swift in Sources */,
 				691277382707766B00FB6107 /* Collections.swift in Sources */,
+				7A2039E727FEC23900CD4B93 /* ProfileViewController+Actions.swift in Sources */,
 				69F60BCE272BC676004C4EA3 /* Corners.swift in Sources */,
 				69007CEF26EA63AA001170D0 /* Occasions+all.swift in Sources */,
 				69149DAD272B46A30083DA27 /* ItemCatalog.swift in Sources */,
@@ -2099,6 +2104,15 @@
 				69DFE5CA27365D0500D46B5F /* ru */,
 			);
 			name = Wishlist.storyboard;
+			sourceTree = "<group>";
+		};
+		7A2039EC27FF190B00CD4B93 /* Signup.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7A2039EB27FF190B00CD4B93 /* Base */,
+				7A2039EE27FF191700CD4B93 /* ru */,
+			);
+			name = Signup.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

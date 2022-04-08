@@ -21,14 +21,14 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="H4w-F9-Uck">
                                 <rect key="frame" x="16" y="594" width="382" height="218"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLs-Yx-utZ" customClass="SignupButton" customModule="Concept_Group" customModuleProvider="target">
+                                    <button opaque="NO" alpha="0.25" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nLs-Yx-utZ" customClass="SignupButton" customModule="Concept_Group" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="62"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title=" Sign up with Apple" image="apple">
                                             <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pb8-4y-Gr5" customClass="SignupButton" customModule="Concept_Group" customModuleProvider="target">
+                                    <button opaque="NO" alpha="0.25" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pb8-4y-Gr5" customClass="SignupButton" customModule="Concept_Group" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="78" width="382" height="62"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <state key="normal" title=" Sign up with Facebook" image="facebook">

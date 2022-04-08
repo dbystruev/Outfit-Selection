@@ -17,8 +17,16 @@ extension ProfileViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
+            
+            //debug(indexPath.row, User.current.isLoggedIn, User.current.sequenceCredentials[indexPath.row])
+            // logout current user
             if User.current.isLoggedIn != nil {
-                debug("INFO: Tapped", indexPath.row )
+                if User.current.sequenceCredentials[indexPath.row] == "Logout:"~ {
+                    debug("Tap to login out please")
+                    // Logout into current account
+                    logout()
+                }
+                
             } else {
                 // Instantiate the tab bar controller
                 let mainStoryboard = UIStoryboard(name: "Signup", bundle: nil)

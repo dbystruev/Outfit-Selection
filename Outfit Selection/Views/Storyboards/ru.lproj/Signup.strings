@@ -1,0 +1,9 @@
+
+/* Class = "UIButton"; normalTitle = " Sign up with Google"; ObjectID = "mUv-Gz-qQU"; */
+"mUv-Gz-qQU.normalTitle" = " Вход с помощью Google";
+
+/* Class = "UIButton"; normalTitle = " Sign up with Apple"; ObjectID = "nLs-Yx-utZ"; */
+"nLs-Yx-utZ.normalTitle" = " Вход с помощью Apple";
+
+/* Class = "UIButton"; normalTitle = " Sign up with Facebook"; ObjectID = "pb8-4y-Gr5"; */
+"pb8-4y-Gr5.normalTitle" = " Вход с помощью Facebook";

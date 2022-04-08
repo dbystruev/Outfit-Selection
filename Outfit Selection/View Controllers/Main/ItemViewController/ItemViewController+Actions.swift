@@ -33,13 +33,13 @@ extension ItemViewController {
         performSegue(withIdentifier: "intermediaryViewControllerSegue", sender: sender)
     }
     
-    @IBAction func shareButtonTapped(_ sender: UIBarButtonItem) {
+    @IBAction func shareButtonTapped(_ sender: Any) {
         // Make sure item url is not nil
         guard let itemURL = item?.url else { return }
         
         // Share item url
         let activityController = UIActivityViewController(activityItems: [itemURL], applicationActivities: nil)
-        activityController.popoverPresentationController?.sourceView = sender.customView
+        activityController.popoverPresentationController?.sourceView = (sender as AnyObject).customView
         present(activityController, animated: true)
     }
 }

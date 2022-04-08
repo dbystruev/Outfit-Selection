@@ -5,6 +5,7 @@
   Created by Denis Bystruev on 10.11.2021.
   Copyright © 2021 Denis Bystruev. All rights reserved.
 */
+"Account" = "Пользователь";
 "Add something to collection" = "Добавить вещи в коллекцию";
 "Brands" = "Бренды";
 "Cancel" = "Отменить";
@@ -19,6 +20,7 @@
 "Dislike" = "Не нравится";
 "Do you really want to dislike the item?" = "Вы действительно не хотите учитывать эту вещь при создании образа?";
 "Don't" = "Нет";
+"Email:" = "Почта:";
 "Favorite brands" = "Любимые бренды";
 "Feed" = "Лента";
 "female" = "женский";
@@ -27,8 +29,11 @@
 "Instagram Post" = "Пост в Инстаграм";
 "Instagram Stories" = "Инстаграм сторис";
 "Items" = "Вещей";
+"Login:" = "Войти:";
+"Logout:" = "Выход:";
 "male" = "мужской";
 "more" = "еще";
+"Name:" = "Имя:";
 "New items for you" = "Новые вещи для вас";
 "Non-binary" = "Небинарный";
 "None" = "Ничего не";
@@ -37,6 +42,7 @@
 "Outfit price" = "Цена образа";
 "Pin an item you like!" = "Закрепить вещи";
 "Please add some items or outfits to the wishlists by liking them before creating a collection" = "Пожалуйста, добавьте вещи или образы в избранное, поставив им отметку «Нравится», прежде, чем создавать коллекцию.";
+"Phone:" = "Телефон:";
 "Raskroi" = "Raskroi";
 "RUB" = "₽";
 "Save to wishlists?" = "Добавить в избранное?";
@@ -45,6 +51,8 @@
 "Select all" = "Выбрать все";
 "selected for" = "выбрано для";
 "Taking you back to GET OUTFIT..." = "Возвращаемся обратно в GET OUTFIT…";
+"Tap to login please" = "Авторизоваться";
+"Tap to logout please" = "Нажмите для выхода";
 "unisex" = "небинарный";
 "Will reload items and wishlists" = "Вещи и избранное перезагрузятся";
 "Yes" = "Да";

@@ -5,6 +5,7 @@
   Created by Denis Bystruev on 10.11.2021.
   Copyright © 2021 Denis Bystruev. All rights reserved.
 */
+"Account" = "Account";
 "Add something to collection" = "Add something to collection";
 "Brands" = "Brands";
 "Cancel" = "Cancel";
@@ -19,6 +20,7 @@
 "Dislike" = "Dislike";
 "Do you really want to dislike the item?" = "Do you really want to dislike the item?";
 "Don't" = "Don't";
+"Email:" = "Email:";
 "Favorite brands" = "Favorite brands";
 "Feed" = "Feed";
 "female" = "female";
@@ -27,14 +29,18 @@
 "Instagram Post" = "Instagram Post";
 "Instagram Stories" = "Instagram Stories";
 "Items" = "Items";
+"Login:" = "Login:";
+"Logout:" = "Logout:";
 "male" = "male";
 "more" = "more";
+"Name:" = "Name:";
 "New items for you" = "New items for you";
 "Non-binary" = "Non-binary";
 "None" = "None";
 "Now taking you to FARFETCH..." = "Now taking you to FARFETCH...";
 "OK" = "OK";
 "Outfit price" = "Outfit price";
+"Phone:" = "Phone:";
 "Pin an item you like!" = "Pin an item you like!";
 "Please add some items or outfits to the wishlists by liking them before creating a collection" = "Please add some items or outfits to the wishlists by liking them before creating a collection";
 "Raskroi" = "Raskroi";
@@ -45,8 +51,11 @@
 "Select all" = "Select all";
 "selected for" = "selected for";
 "Taking you back to GET OUTFIT..." = "Taking you back to GET OUTFIT...";
+"Tap to login please" = "Tap to login please";
+"Tap to logout please" = "Tap to logout please";
 "unisex" = "unisex";
 "Will reload items and wishlists" = "Will reload items and wishlists";
 "Yes" = "Yes";
 "your personal styling platform" = "your personal styling platform";
 "is going to be saved to wishlist" = "is going to be saved to wishlist";
+
