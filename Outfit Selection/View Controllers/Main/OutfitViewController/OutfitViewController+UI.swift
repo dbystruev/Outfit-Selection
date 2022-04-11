@@ -14,7 +14,6 @@ extension OutfitViewController {
     /// Check items to show
     func checkItemsToShow(){
         if itemsToShow.isEmpty {
-            
             // Show the wishlistItems
             scrollwishlistItems()
             firstAppearance = false

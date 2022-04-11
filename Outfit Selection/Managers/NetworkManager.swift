@@ -438,7 +438,7 @@ class NetworkManager {
         
         // Add "name" parameter
         if let name = name {
-            parameters[Keys.name.rawValue] = "like.*\(name)*"
+            parameters[Keys.name.rawValue] = "ilike.*\(name)*"
         }
         return parameters
     }

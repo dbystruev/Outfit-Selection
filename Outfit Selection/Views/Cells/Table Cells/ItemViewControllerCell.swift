@@ -21,9 +21,9 @@ class ItemViewControllerCell: UITableViewCell {
     func configureContent(with item: Item) {
         /// Set image to itemImage
         itemImage.configure(with: item.pictures.first)
-        /// Set image to priceLabel
+        /// Set  price to priceLabel
         priceLabel.text = item.price.asPrice
-        /// Set image to titleLabel
+        /// Set brand with name to titleLabel
         titleLabel.text = "\(item.brand ?? "") \(item.name)"
     }
 }

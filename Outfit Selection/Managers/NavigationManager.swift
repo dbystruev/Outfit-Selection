@@ -117,12 +117,6 @@ class NavigationManager {
                 return
             }
             
-//            // Find outfitViewController
-//            guard let outfitViewController = tabBarController.findViewController(ofType: OutfitViewController.self) else {
-//                debug("INFO: OutfitViewController is not available")
-//                return
-//            }
-//
             // Find wishlistViewController
             guard let wishlistViewController = tabBarController.findViewController(ofType: WishlistViewController.self) else {
                 debug("INFO: WishlistViewController not available")
@@ -133,20 +127,6 @@ class NavigationManager {
 
             // Change tabbar selected index
             tabBarController.selectedIndex = Globals.TabBar.index.wishlist
-            
-//            tabBarController.transition(
-//                from: outfitViewController,
-//                to: wishlistViewController,
-//                duration: 0.3,
-//                options: [.transitionCrossDissolve]
-//            ) {} completion: { bool in
-//                // Is waiting when bool will be become true
-//                guard bool else { return }
-//
-//                // Change tabbar selected index
-//                tabBarController.selectedIndex = Globals.TabBar.index.wishlist
-//            }
-
             
         case .profile:
             debug("profile")

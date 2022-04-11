@@ -9,10 +9,6 @@
 import UIKit
 
 class ItemViewController: LoggingViewController {
-    // MARK: - Constants
-    /// Maximum width of order button: design screen width (375) - left (16) and right (16) margins
-    let orderButtonMaxWidth: CGFloat = 343
-    
     // MARK: - Outlets
     @IBOutlet weak var addToCollectionButton: UIButton! {
         didSet {
@@ -72,12 +68,34 @@ class ItemViewController: LoggingViewController {
     @IBOutlet weak var trailingStackView: UIStackView!
     @IBOutlet var vendorLabels: [UILabel]!
     
+    // MARK: - Properties
+    /// Time of last click in search bar
+    var lastClick: Date?
+    
+    /// The limit of count items after request
+    let limited = 10
+    
+    /// Maximum width of order button: design screen width (375) - left (16) and right (16) margins
+    let orderButtonMaxWidth: CGFloat = 343
+    
+    /// Time delay before closing search keybaord
+    static let searchKeystrokeDelay: TimeInterval = 0.25
+    
     // MARK: - Stored Properties
     /// First item image
     private weak var image: UIImage?
     
     /// Item  to show
     private(set) weak var item: Item?
+    
+    /// The firts Item when controller  start
+    var firstItem: Item?
+    
+    /// Items for searchBar
+    var items: Items?
+    
+    // Start time reguest
+    var lastStartTime = Date()
     
     /// Item url to present at Intermediary view controller
     var url: URL?
@@ -97,6 +115,15 @@ class ItemViewController: LoggingViewController {
         layer.shadowOpacity = 1
         layer.shadowPath = UIBezierPath(roundedRect: view.bounds.insetBy(dx: inset, dy: inset), cornerRadius: cornerRadius).cgPath
         layer.shadowRadius = 10
+    }
+    
+    
+    /// Configure item view controller with given item and first image
+    /// - Parameters:
+    ///   - item: an item to configure the view controller with
+    func configure(with item: Item?) {
+        self.imageView.configure(with: item?.pictures.first)
+        self.item = item
     }
     
     /// Configure item view controller with given item and its image
@@ -186,21 +213,38 @@ class ItemViewController: LoggingViewController {
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
-        // Set new title for Button
         addToWishlistButton.isEnabled = !isEditing
+
+        // Set custom title for Edit button
+        navigationItem.rightBarButtonItem?.title = isEditing ? "Save"~ : "Edit"~
+        
+        // Set new title for Button
         orderButton.setTitle( isEditing ? "Save"~ : "Shop now"~, for: .normal)
         searchBar.isHidden = !isEditing
         shareButton.isEnabled = !isEditing
+        
+        // Set title
         title = isEditing ? "Edit"~ : item?.price.asPrice
         
+        // Tap save from the rightBarButtonItem
+        if !isEditing {
+            orderButtonTapped(navigationItem)
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Configure the items table view
+        itemTableView.dataSource = self
+        itemTableView.delegate = self
+        
         loadImages()
+        // Set Edit Button to right barButtonItem
         navigationItem.rightBarButtonItem = editButtonItem
         // Hide Search bar
         searchBar.isHidden = true
+        firstItem = item
     }
     
     override func viewWillAppear(_ animated: Bool) {
