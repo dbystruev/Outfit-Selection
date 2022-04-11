@@ -154,7 +154,7 @@ class NetworkManager {
             // Store the message in logger cache
             let message = String(data: data, encoding: .utf8)
             Logger.log(key: request.absoluteString, message)
-            //debug(request.absoluteString)
+            debug(request.absoluteURL)
             completion(decodedData)
         }
         
@@ -436,6 +436,10 @@ class NetworkManager {
             parameters[Keys.gender.rawValue] = "in.(\(genders.commaJoined))"
         }
         
+        // Add "name" parameter
+        if let name = name {
+            parameters[Keys.name.rawValue] = "like.*\(name)*"
+        }
         return parameters
     }
     
