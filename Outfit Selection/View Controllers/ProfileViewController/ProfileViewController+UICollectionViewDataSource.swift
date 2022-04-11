@@ -26,7 +26,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             // Check isLoggedIn
             guard User.current.isLoggedIn != nil else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)
-                (cell as? AccountCollectionViewCell)?.configure(titleLabel: "Login:"~, label: "Tap to login please"~, cursor: false)
+                (cell as? AccountCollectionViewCell)?.configure(titleLabel: "Log in"~, label: ""~, cursor: false)
                 return cell
             }
             

@@ -84,6 +84,5 @@ class ProfileViewController: LoggingViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         profileCollectionView.reloadData()
-        debug(User.current.userCredentials)
     }
 }

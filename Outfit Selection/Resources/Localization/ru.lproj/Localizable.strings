@@ -20,6 +20,7 @@
 "Dislike" = "Не нравится";
 "Do you really want to dislike the item?" = "Вы действительно не хотите учитывать эту вещь при создании образа?";
 "Don't" = "Нет";
+"Edit" = "Править";
 "Email:" = "Почта:";
 "Favorite brands" = "Любимые бренды";
 "Feed" = "Лента";
@@ -29,8 +30,8 @@
 "Instagram Post" = "Пост в Инстаграм";
 "Instagram Stories" = "Инстаграм сторис";
 "Items" = "Вещей";
-"Login:" = "Войти:";
-"Logout:" = "Выход:";
+"Log in" = "Авторизоваться";
+"Log out" = "Выйти";
 "male" = "мужской";
 "more" = "еще";
 "Name:" = "Имя:";
@@ -45,11 +46,13 @@
 "Phone:" = "Телефон:";
 "Raskroi" = "Raskroi";
 "RUB" = "₽";
+"Save" = "Сохранить";
 "Save to wishlists?" = "Добавить в избранное?";
 "Sales" = "Скидки";
 "See all" = "Посмотреть все";
 "Select all" = "Выбрать все";
 "selected for" = "выбрано для";
+"Shop now" = "Купить сейчас";
 "Taking you back to GET OUTFIT..." = "Возвращаемся обратно в GET OUTFIT…";
 "Tap to login please" = "Авторизоваться";
 "Tap to logout please" = "Нажмите для выхода";
