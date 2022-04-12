@@ -12,8 +12,6 @@ extension ItemViewController {
     // MARK: - Helper Methods
     /// Call when leftBarButtonItem tapped
     @objc func cancelButtonTap() {
-        // Set new backButton into leftBarButtonItem
-        self.navigationItem.backBarButtonItem = nil
         // Hide backButton
         navigationItem.hidesBackButton = true
         isEditing.toggle()

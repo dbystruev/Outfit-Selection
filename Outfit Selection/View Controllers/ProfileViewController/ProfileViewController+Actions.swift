@@ -11,7 +11,6 @@ import Firebase
 extension ProfileViewController {
     // MARK: - Helper Methods
     func logout() {
-        debug("Tap to login out please")
         let firebaseAuth = Auth.auth()
         do {
             try firebaseAuth.signOut()

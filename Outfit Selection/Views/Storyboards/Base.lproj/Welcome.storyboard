@@ -239,7 +239,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="nGZ-jY-H6z">
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" text="" placeholder="Select from over 3000 brands" translatesAutoresizingMaskIntoConstraints="NO" id="nGZ-jY-H6z" propertyAccessControl="all">
                                 <rect key="frame" x="8" y="136.66666666666666" width="359" height="51"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
