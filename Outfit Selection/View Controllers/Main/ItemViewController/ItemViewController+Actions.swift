@@ -27,9 +27,39 @@ extension ItemViewController {
         }), animated: true)
     }
     
-    @IBAction func orderButtonTapped(_ sender: UIButton) {
-        if isEditing {
+    @IBAction func orderButtonTapped(_ sender: Any) {
+        if isEditing || ((sender as? UINavigationItem) != nil) {
             debug("Button Save tapped")
+            // Get OutfitViewController
+            guard let outfitViewController = navigationController?.findViewController(ofType: OutfitViewController.self) else {
+                debug("ERROR: Can't find outfitViewController")
+                return
+            }
+            // Get is showing items from OutfitViewController
+            var items = outfitViewController.visibleItems
+            debug(items.IDs)
+            // Get index current item into occasion items array
+            guard let index = items.firstIndex(where: {$0.id == firstItem?.id}) else {
+               debug("ERROR: Can't find itemID into items", items)
+                return
+            }
+            
+            // Get current chosen item
+            guard let item = item else {
+                debug("ERROR: Can't find item into items")
+                return
+            }
+            
+            // Set a new item into ocassion array
+            items[index] = item
+            
+            // Download all images and add to viewModels
+            ItemManager.shared.loadImagesFromItems(items: items) {
+                
+                // Go to NavigationManager into outfit and show back button
+                NavigationManager.navigate(to: .outfit(items: items, hideBackButton: false))
+            }
+            
         } else {
             guard let url = item?.url else { return }
             self.url = url

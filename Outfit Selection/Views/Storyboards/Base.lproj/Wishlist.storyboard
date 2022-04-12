@@ -391,7 +391,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <searchBar hidden="YES" contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="Cqq-oB-cgL">
+                            <searchBar hidden="YES" contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="Cqq-oB-cgL">
                                 <rect key="frame" x="16" y="92" width="382" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="9Lf-PI-LVN"/>
@@ -610,56 +610,57 @@
                                 </subviews>
                             </stackView>
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f2B-hY-wJu">
-                                <rect key="frame" x="16" y="152" width="382" height="653"/>
+                                <rect key="frame" x="16" y="152" width="382" height="661"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" id="fgT-eR-THU">
-                                        <rect key="frame" x="0.0" y="0.0" width="382" height="657"/>
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="itemViewControllerCellReuseId" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" id="fgT-eR-THU">
+                                        <rect key="frame" x="0.0" y="0.0" width="382" height="661"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <prototypes>
-                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ItemViewControllerCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ItemViewControllerCell" id="fIy-Ez-LM6" customClass="ItemViewControllerCell" customModule="Concept_Group" customModuleProvider="target">
-                                                <rect key="frame" x="0.0" y="44.5" width="382" height="85"/>
+                                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="ItemViewControllerCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="20" reuseIdentifier="ItemViewControllerCell" id="fIy-Ez-LM6" customClass="ItemViewControllerCell" customModule="Concept_Group" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="44.5" width="382" height="116.5"/>
                                                 <autoresizingMask key="autoresizingMask"/>
                                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="fIy-Ez-LM6" id="d7c-mH-4SG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="85"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="382" height="116.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <subviews>
-                                                        <stackView opaque="NO" contentMode="scaleToFill" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="BTb-81-Dtx">
-                                                            <rect key="frame" x="16" y="0.0" width="350" height="85"/>
+                                                        <stackView opaque="NO" contentMode="scaleToFill" distribution="equalCentering" translatesAutoresizingMaskIntoConstraints="NO" id="BTb-81-Dtx">
+                                                            <rect key="frame" x="0.0" y="8" width="374" height="100.5"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tshirt" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="SLE-qB-5fI">
-                                                                    <rect key="frame" x="0.0" y="-0.5" width="85" height="85.5"/>
+                                                                    <rect key="frame" x="0.0" y="-0.5" width="100.5" height="101"/>
                                                                     <constraints>
-                                                                        <constraint firstAttribute="height" constant="85" id="P3c-h1-In7"/>
+                                                                        <constraint firstAttribute="height" constant="100" id="P3c-h1-In7"/>
                                                                         <constraint firstAttribute="width" secondItem="SLE-qB-5fI" secondAttribute="height" multiplier="1:1" id="s9z-dz-a21"/>
                                                                     </constraints>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="LV white shirt" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwO-3p-qVC">
-                                                                    <rect key="frame" x="93" y="0.0" width="169" height="85"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="LV white shirt" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwO-3p-qVC">
+                                                                    <rect key="frame" x="108.5" y="0.0" width="177.5" height="100.5"/>
                                                                     <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                                                     <color key="textColor" red="0.25882357360000002" green="0.25882357360000002" blue="0.25882357360000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 RUB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hM0-LL-cyI">
-                                                                    <rect key="frame" x="270" y="0.0" width="80" height="85"/>
+                                                                    <rect key="frame" x="294" y="0.0" width="80" height="100.5"/>
                                                                     <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
                                                                     <color key="textColor" red="0.25882357360000002" green="0.25882357360000002" blue="0.25882357360000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                             </subviews>
                                                             <constraints>
-                                                                <constraint firstItem="SLE-qB-5fI" firstAttribute="top" secondItem="BTb-81-Dtx" secondAttribute="top" id="3K9-WQ-d8X"/>
+                                                                <constraint firstItem="hM0-LL-cyI" firstAttribute="leading" secondItem="FwO-3p-qVC" secondAttribute="trailing" constant="8" id="1r0-CI-X36"/>
                                                                 <constraint firstItem="FwO-3p-qVC" firstAttribute="centerY" secondItem="SLE-qB-5fI" secondAttribute="centerY" id="B5o-kB-0yQ"/>
                                                                 <constraint firstItem="hM0-LL-cyI" firstAttribute="centerY" secondItem="SLE-qB-5fI" secondAttribute="centerY" id="Qiy-5g-ILg"/>
-                                                                <constraint firstAttribute="bottom" secondItem="SLE-qB-5fI" secondAttribute="bottom" id="fFX-qn-7du"/>
+                                                                <constraint firstItem="FwO-3p-qVC" firstAttribute="leading" secondItem="SLE-qB-5fI" secondAttribute="trailing" constant="8" id="VTP-ea-i0U"/>
                                                                 <constraint firstAttribute="trailing" secondItem="hM0-LL-cyI" secondAttribute="trailing" id="tsR-lf-nWh"/>
                                                             </constraints>
                                                         </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="BTb-81-Dtx" secondAttribute="trailing" constant="16" id="18i-po-6VX"/>
-                                                        <constraint firstItem="BTb-81-Dtx" firstAttribute="top" secondItem="d7c-mH-4SG" secondAttribute="top" id="RG8-Ib-0Zd"/>
-                                                        <constraint firstItem="BTb-81-Dtx" firstAttribute="leading" secondItem="d7c-mH-4SG" secondAttribute="leading" constant="16" id="YCE-hb-MIS"/>
-                                                        <constraint firstAttribute="bottom" secondItem="BTb-81-Dtx" secondAttribute="bottom" id="jCT-9R-O1a"/>
+                                                        <constraint firstAttribute="trailing" secondItem="BTb-81-Dtx" secondAttribute="trailing" constant="8" id="18i-po-6VX"/>
+                                                        <constraint firstItem="BTb-81-Dtx" firstAttribute="top" secondItem="d7c-mH-4SG" secondAttribute="top" constant="8" id="RG8-Ib-0Zd"/>
+                                                        <constraint firstItem="BTb-81-Dtx" firstAttribute="leading" secondItem="d7c-mH-4SG" secondAttribute="leading" id="YCE-hb-MIS"/>
+                                                        <constraint firstAttribute="bottom" secondItem="BTb-81-Dtx" secondAttribute="bottom" constant="8" id="jCT-9R-O1a"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -681,7 +682,7 @@
                             <constraint firstItem="iv6-cp-IiR" firstAttribute="leading" secondItem="m9X-8b-cdO" secondAttribute="leading" constant="16" id="LpB-mA-1S8"/>
                             <constraint firstAttribute="trailing" secondItem="f2B-hY-wJu" secondAttribute="trailing" constant="16" id="NWj-L4-F5W"/>
                             <constraint firstItem="f2B-hY-wJu" firstAttribute="top" secondItem="Cqq-oB-cgL" secondAttribute="bottom" id="W53-Wb-4Gd"/>
-                            <constraint firstItem="m9X-8b-cdO" firstAttribute="bottom" secondItem="f2B-hY-wJu" secondAttribute="bottom" constant="8" id="WuB-nE-drm"/>
+                            <constraint firstItem="m9X-8b-cdO" firstAttribute="bottom" secondItem="f2B-hY-wJu" secondAttribute="bottom" id="WuB-nE-drm"/>
                             <constraint firstItem="Cqq-oB-cgL" firstAttribute="top" secondItem="m9X-8b-cdO" secondAttribute="top" constant="4" id="YKz-YE-hkC"/>
                             <constraint firstItem="m9X-8b-cdO" firstAttribute="bottom" secondItem="4Fq-h8-zMT" secondAttribute="bottom" constant="16" id="afT-RP-e2t"/>
                             <constraint firstItem="Cqq-oB-cgL" firstAttribute="leading" secondItem="m9X-8b-cdO" secondAttribute="leading" constant="16" id="eRr-Gk-8l4"/>
@@ -692,7 +693,7 @@
                             <constraint firstItem="f2B-hY-wJu" firstAttribute="leading" secondItem="m9X-8b-cdO" secondAttribute="leading" constant="16" id="uqv-zc-kfA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="OPH-ye-Ie6">
+                    <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="OPH-ye-Ie6">
                         <barButtonItem key="rightBarButtonItem" image="share" id="qvY-RK-8Hr">
                             <connections>
                                 <action selector="shareButtonTapped:" destination="893-Rv-iVe" id="mA5-ca-RQk"/>

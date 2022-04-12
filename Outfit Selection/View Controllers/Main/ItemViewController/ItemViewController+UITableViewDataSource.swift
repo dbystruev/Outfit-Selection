@@ -6,4 +6,26 @@
 //  Copyright © 2022 Denis Bystruev. All rights reserved.
 //
 
-import Foundation
+import UIKit
+
+extension ItemViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: ItemViewControllerCell.className, for: indexPath)
+        // Cast viewControllet to cell
+        guard let itemCell = cell as? ItemViewControllerCell else {
+            debug("ERROR: Can't cast \(cell) to \(ItemViewControllerCell.self)")
+            return cell
+        }
+        // Check current items
+        guard let items = self.items else { return cell }
+    
+        // Configure item cell
+        itemCell.configureContent(with: items[indexPath.row])
+        return itemCell
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        items?.count ?? 0
+    }
+}

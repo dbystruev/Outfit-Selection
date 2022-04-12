@@ -86,7 +86,7 @@ final class ItemManager {
         // Go through all items and load images one by one
         
         DispatchQueue.global(qos: .background).async {
-
+            
             // var itemsSkipped = 0
             for (item, viewModel) in zip(items, self.viewModels ) {
                 
@@ -107,7 +107,7 @@ final class ItemManager {
                     
                     // Append image to the view model
                     viewModel.append(image.halved, item: item)
-//                    debug("Added item ID:", viewModel.items.IDs, "into viewModel" )
+                    //                    debug("Added item ID:", viewModel.items.IDs, "into viewModel" )
                     group.leave()
                 }
             }
@@ -448,9 +448,9 @@ final class ItemManager {
             DispatchManager.shared.itemManagerGroup.enter()
             NetworkManager.shared.getItems(
                 for: gender,
-                   in: categoryIDs,
-                   subcategoryIDs: subcategoryIDs,
-                   filteredBy: brandNames
+                in: categoryIDs,
+                subcategoryIDs: subcategoryIDs,
+                filteredBy: brandNames
             ) { [weak self] items in
                 // Check for self availability
                 guard let self = self else {
