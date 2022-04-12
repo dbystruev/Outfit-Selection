@@ -30,11 +30,7 @@ final class User {
     /// The user's ID, unique to the Firebase project
     var uid: String?
     /// The array with user data ["Email":"example@apple.com"].
-    var userCredentials = ["Name:"~: "", "Email:"~: "", "Phone:"~: "", "Log out"~: ""~ ] {
-        didSet{
-            debug(userCredentials)
-        }
-    }
+    var userCredentials = ["Name:"~: "", "Email:"~: "", "Phone:"~: "", "Log out"~: ""~ ] 
     
     // MARK: - Init
     /// Constructor for User

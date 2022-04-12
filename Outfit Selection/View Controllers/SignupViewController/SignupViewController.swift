@@ -31,7 +31,7 @@ class SignupViewController: LoggingViewController {
         self.view.backgroundColor = Globals.Color.Onboarding.background
         // Start auth listener
         handle = Auth.auth().addStateDidChangeListener { auth, user in
-            debug("INFO: current user:", user?.displayName)
+            //debug("INFO: current user:", user?.displayName)
         }
     }
     
@@ -87,8 +87,6 @@ class SignupViewController: LoggingViewController {
                 User.current.photoURL = authResult.user.photoURL
                 User.current.uid = authResult.user.uid
 
-                debug("INFO: Welcome", User.current.displayName)
-                
                 // Find UINavigationViewController into presentingViewController
                 guard let navigationController = self.presentingViewController as? UINavigationController else {
                     debug("ERROR: Can't find navigationController from the presentingViewController")

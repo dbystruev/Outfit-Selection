@@ -93,7 +93,7 @@ class NavigationManager {
         case .outfit(let items, let hideBackButton):
             // Find tab bar controller
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
-                debug("INFO: Tab Bar Controller is not available")
+                //debug("INFO: Tab Bar Controller is not available")
                 
                 // If tab bar controller is not available presen outfit view controller
                 presentOutfitViewController(for: items, in: navigationController)

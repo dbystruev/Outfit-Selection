@@ -53,7 +53,6 @@ class TabBarController: UITabBarController {
         
         // Reload section with brand from FeedCollectionViewController
         if self.selectedIndex == Globals.TabBar.index.feed {
-            debug("INFO: reload section with brands")
             guard let feedCollectionViewController = findViewController(ofType: FeedCollectionViewController.self) else { return }
             feedCollectionViewController.feedCollectionView?.reloadSections(IndexSet([0]))
         }
