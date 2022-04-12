@@ -55,6 +55,8 @@ class ItemViewController: LoggingViewController {
     /// The  table view with items list
     @IBOutlet weak var itemTableView: UITableView!
     
+    @IBOutlet weak var parentStackView: UIStackView!
+    
     @IBOutlet  var priceLabels: [UILabel]!
     
     @IBOutlet weak var rightLabelsStackView: UIStackView!
@@ -73,7 +75,7 @@ class ItemViewController: LoggingViewController {
     var lastClick: Date?
     
     /// The limit of count items after request
-    let limited = 10
+    let limited = 25
     
     /// Maximum width of order button: design screen width (375) - left (16) and right (16) margins
     let orderButtonMaxWidth: CGFloat = 343
@@ -93,9 +95,6 @@ class ItemViewController: LoggingViewController {
     
     /// Items for searchBar
     var items: Items?
-    
-    // Start time reguest
-    var lastStartTime = Date()
     
     /// Item url to present at Intermediary view controller
     var url: URL?
@@ -166,10 +165,15 @@ class ItemViewController: LoggingViewController {
     /// - Parameter isHorizontal: true in landscape mode, false in portrait
     func updateLayout(isHorizontal: Bool) {
         // Update stack views axis and items' visibility
+        
+        parentStackView.axis = isHorizontal ? .horizontal : .vertical
+        //        parentStackView.distribution = isHorizontal ? .fillEqually : .fill
+        
         rightLabelsStackView.isHidden = !isHorizontal
         topLabelsStackView.isHidden = isHorizontal
-        topStackView.axis = isHorizontal ? .horizontal : .vertical
-        topStackView.distribution = isHorizontal ? .fillEqually : .fill
+        //        topStackView.axis = isHorizontal ? .horizontal : .vertical
+        //        topStackView.distribution = isHorizontal ? .fillEqually : .fill
+        
         
         // Update order button constraints
         updateOrderButtonConstraints()
@@ -214,7 +218,7 @@ class ItemViewController: LoggingViewController {
         super.setEditing(editing, animated: animated)
         
         addToWishlistButton.isEnabled = !isEditing
-
+        
         // Set custom title for Edit button
         navigationItem.rightBarButtonItem?.title = isEditing ? "Save"~ : "Edit"~
         
@@ -226,9 +230,15 @@ class ItemViewController: LoggingViewController {
         // Set title
         title = isEditing ? "Edit"~ : item?.price.asPrice
         
-        // Tap save from the rightBarButtonItem
-        if !isEditing {
-            orderButtonTapped(navigationItem)
+        // Hide or show backButton
+        navigationItem.hidesBackButton = isEditing
+        
+        if isEditing {
+            // Set new backButton into leftBarButtonItem
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
+        } else {
+            // Set empty barButtonItem
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         }
     }
     
@@ -240,8 +250,11 @@ class ItemViewController: LoggingViewController {
         itemTableView.delegate = self
         
         loadImages()
-        // Set Edit Button to right barButtonItem
+        
+        // Add editButtonItem and add selector
         navigationItem.rightBarButtonItem = editButtonItem
+        navigationItem.rightBarButtonItem?.action = #selector(editButtonItemTap)
+        
         // Hide Search bar
         searchBar.isHidden = true
         firstItem = item
