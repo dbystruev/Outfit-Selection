@@ -8,8 +8,25 @@
 
 import UIKit
 
-// MARK: - Actions
 extension ItemViewController {
+    // MARK: - Helper Methods
+    /// Call when leftBarButtonItem tapped
+    @objc func cancelButtonTap() {
+        // Set new backButton into leftBarButtonItem
+        self.navigationItem.backBarButtonItem = nil
+        // Hide backButton
+        navigationItem.hidesBackButton = true
+        isEditing.toggle()
+    }
+    /// Call when rightBarButtonItem tapped
+    @objc func editButtonItemTap() {
+        setEditing(!isEditing, animated: true)
+        if !isEditing {
+            orderButtonTapped(navigationItem)
+        }
+    }
+    
+    // MARK: - Actions
     @IBAction func addToCollectionButton(_ sender: UIButton) {
         debug(item, sender)
     }
@@ -29,7 +46,8 @@ extension ItemViewController {
     
     @IBAction func orderButtonTapped(_ sender: Any) {
         if isEditing || ((sender as? UINavigationItem) != nil) {
-            debug("Button Save tapped")
+            
+            navigationItem.rightBarButtonItem?.isEnabled = false
             // Get OutfitViewController
             guard let outfitViewController = navigationController?.findViewController(ofType: OutfitViewController.self) else {
                 debug("ERROR: Can't find outfitViewController")
@@ -37,10 +55,9 @@ extension ItemViewController {
             }
             // Get is showing items from OutfitViewController
             var items = outfitViewController.visibleItems
-            debug(items.IDs)
             // Get index current item into occasion items array
             guard let index = items.firstIndex(where: {$0.id == firstItem?.id}) else {
-               debug("ERROR: Can't find itemID into items", items)
+                debug("ERROR: Can't find itemID into items", items)
                 return
             }
             
@@ -57,7 +74,7 @@ extension ItemViewController {
             ItemManager.shared.loadImagesFromItems(items: items) {
                 
                 // Go to NavigationManager into outfit and show back button
-                NavigationManager.navigate(to: .outfit(items: items, hideBackButton: false))
+                NavigationManager.navigate(to: .outfit(items: items, hideBackButton: true))
             }
             
         } else {

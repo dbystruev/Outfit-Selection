@@ -24,6 +24,6 @@ class ItemViewControllerCell: UITableViewCell {
         /// Set  price to priceLabel
         priceLabel.text = item.price.asPrice
         /// Set brand with name to titleLabel
-        titleLabel.text = "\(item.brand ?? "") \(item.name)"
+        titleLabel.text = item.name
     }
 }

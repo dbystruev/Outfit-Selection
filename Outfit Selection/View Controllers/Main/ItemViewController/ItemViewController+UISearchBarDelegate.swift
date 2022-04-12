@@ -9,18 +9,15 @@
 import UIKit
 
 extension ItemViewController: UISearchBarDelegate {
-    
     // MARK: - Helper Methods
     /// Defer tablev view reload until enough time has passed
     /// - Parameters:
     ///   - searchBar: the search bar that is being edited
     ///   - interval: the time to postpone the reload fior
-    func deferredReload(_ searchBar: UISearchBar, in interval: TimeInterval = ItemViewController.searchKeystrokeDelay, searchText: String) {
+    func deferredDownloadItems(_ searchBar: UISearchBar, in interval: TimeInterval = ItemViewController.searchKeystrokeDelay, searchText: String) {
         if let lastClick = lastClick, interval < Date().timeIntervalSince(lastClick) {
-            
             self.lastClick = nil
-            NetworkManager.shared.getItems(for: Gender.current, in: item?.subcategoryIDs ?? [],  limited: limited, named: searchText) { items in
-                
+            NetworkManager.shared.getItems(for: Gender.current, in: firstItem?.subcategoryIDs ?? [],  limited: limited, named: searchText) { items in
                 guard let items = items else { return }
                 self.items = items
                 
@@ -35,11 +32,10 @@ extension ItemViewController: UISearchBarDelegate {
                     self.itemTableView.reloadData()
                 }
             }
-            itemTableView.reloadData()
         } else {
             if searchBar.isFirstResponder {
                 DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
-                    self.deferredReload(searchBar, in: interval, searchText: searchText)
+                    self.deferredDownloadItems(searchBar, in: interval, searchText: searchText)
                 }
             }
         }
@@ -51,7 +47,6 @@ extension ItemViewController: UISearchBarDelegate {
     ///   - filter: the text to use for filter
     private func finishEditing(_ searchBar: UISearchBar, filter: String? = nil) {
         searchBar.endEditing(true)
-        itemTableView.reloadData()
     }
     
     // MARK: - UISearchBarDelegate
@@ -60,15 +55,16 @@ extension ItemViewController: UISearchBarDelegate {
             self.tableStackView.isHidden = true
             return
         }
-        
         if lastClick == nil {
-            deferredReload(searchBar, searchText: searchText)
+            deferredDownloadItems(searchBar, searchText: searchText)
         }
-        
         // Start time
         lastClick = Date()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        searchBar.endEditing(true)
+    }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         finishEditing(searchBar)
