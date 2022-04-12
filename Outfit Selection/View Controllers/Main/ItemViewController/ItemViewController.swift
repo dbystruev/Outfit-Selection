@@ -164,16 +164,10 @@ class ItemViewController: LoggingViewController {
     /// Update UI properties when screen rotates
     /// - Parameter isHorizontal: true in landscape mode, false in portrait
     func updateLayout(isHorizontal: Bool) {
-        // Update stack views axis and items' visibility
-        
-        parentStackView.axis = isHorizontal ? .horizontal : .vertical
-        //        parentStackView.distribution = isHorizontal ? .fillEqually : .fill
-        
         rightLabelsStackView.isHidden = !isHorizontal
         topLabelsStackView.isHidden = isHorizontal
-        //        topStackView.axis = isHorizontal ? .horizontal : .vertical
-        //        topStackView.distribution = isHorizontal ? .fillEqually : .fill
-        
+        parentStackView.axis = isHorizontal ? .horizontal : .vertical
+        parentStackView.distribution = isHorizontal ? .fillEqually : .fill
         
         // Update order button constraints
         updateOrderButtonConstraints()
