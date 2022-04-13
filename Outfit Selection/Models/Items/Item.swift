@@ -20,7 +20,7 @@ final class Item: Codable {
     let categoryID: Int
     
     /// Full description for item
-//    var desc: String?
+    var desc: String?
     
     /// Whether an item has been disliked
     var disliked = false
@@ -61,7 +61,7 @@ final class Item: Codable {
     enum CodingKeys: String, CodingKey {
         case categoryID = "category_id"
         case color
-//        case desc = "description"
+        case desc = "description"
         case gender
         case id
         case modifiedTime = "modified_time"
@@ -102,7 +102,7 @@ final class Item: Codable {
         // Decode each of the properties
         categoryID = try values.decode(Int.self, forKey: .categoryID)
         color = try values.decode(String.self, forKey: .color)
-//        desc = try values.decode(String.self, forKey: .desc)
+        desc = try? values.decode(String.self, forKey: .desc)
         gender = try values.decode(Gender.self, forKey: .gender)
         id = try values.decode(String.self, forKey: .id)
         let modifiedTimestamp = try values.decode(String.self, forKey: .modifiedTime)
