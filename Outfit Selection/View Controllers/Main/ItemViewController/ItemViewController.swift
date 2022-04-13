@@ -188,7 +188,7 @@ class ItemViewController: LoggingViewController {
     /// Fill labels with item data
     func updateUI() {
         guard let item = item else { return }
-        addToWishlistButton.configure(for: item)
+        addToWishlistButton?.configure(for: item)
         let nameWithoutVendor = item.nameWithoutVendor
         nameLabels.forEach { $0.text = nameWithoutVendor }
         title = item.price.asPrice
