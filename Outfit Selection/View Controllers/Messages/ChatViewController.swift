@@ -28,17 +28,17 @@ class ChatViewController: MessagesViewController {
             sender: currentUser,
             messageId: "0",
             sentDate: Date().addingTimeInterval(-86400),
-            kind: .text("What occasions do you have?")
+            kind: .text("Can you create a custom occasion for me?")
         ))
         
         // Response: image, link, and text
         let otherUserMessages: [MessageKind] = [
-            .photo(Image(named: "barbecue")!),
+            .text("Sure"),
+            .photo(Image(named: Gender.current == .male ? "male" : "female")!),
 //            .linkPreview(Link(
 //                "https://www.getoutfit.app/items/?id=in.(1392785176,1613430577,170020175348,17037618636363633263,14569985554653)",
 //                text: ""
 //            )!),
-            .text("Barbecue outfit"),
         ]
         
         messages.append(contentsOf: otherUserMessages.enumerated().map { Message(
