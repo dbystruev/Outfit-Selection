@@ -59,7 +59,7 @@ extension OutfitViewController {
         if Wishlist.contains(visibleItems) == true {
             
             sender.isSelected = false
-            Wishlist.remove(visibleItems)
+            Wishlist.remove(visibleItems, with: false)
         } else {
             guard let navigationController = navigationController else { return }
             

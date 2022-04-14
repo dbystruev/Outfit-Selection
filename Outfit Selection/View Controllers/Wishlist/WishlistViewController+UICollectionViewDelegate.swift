@@ -34,6 +34,7 @@ extension WishlistViewController: UICollectionViewDelegate {
                 // Get items from wishlist
                 let items = wishlist[indexPath.row].items.compactMap { $0.value }
                 let ids = wishlist[indexPath.row].itemIDs
+                //let name = wishlist[indexPath.row]
                 
                 // Sortered items value
                 let sorteredItem = ids.compactMap { id in

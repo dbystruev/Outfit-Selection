@@ -556,7 +556,7 @@
                                                         <color key="textColor" red="0.22820454840000001" green="0.22824296359999999" blue="0.2281961143" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Next" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTY-H1-Lz0">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTY-H1-Lz0">
                                                         <rect key="frame" x="0.0" y="20.5" width="168" height="22"/>
                                                         <constraints>
                                                             <constraint firstAttribute="height" constant="22" id="Dp1-d9-zSB"/>

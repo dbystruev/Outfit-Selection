@@ -210,6 +210,34 @@ struct Wishlist: Codable {
     
     /// Remove items from the outfit wishlist if they are present there
     /// - Parameter items: the items in outfit to remove
+    static func remove(_ items: Items, with name: Bool = true) {
+        if name {
+            remove(items)
+        } else {
+            debug()
+            // Check all occasions and remove similar items from them
+            for outfit in outfits {
+                if contains(items) == true {
+                    Wishlist.removeAll { $0 == outfit }
+                    
+                    // Clear wishlisted status
+                    items.forEach {
+                        // Check that the item is not in the item wishlist
+                        guard contains($0) != true else { return }
+                        
+                        // Confirm that the item is not in the outfit wishlist
+                        guard contains(itemInOutfits: $0) != true else { return }
+                        
+                        // Clear wishlisted status
+                        $0.setWishlisted(to: false)
+                    }
+                }
+            }
+        }
+    }
+    
+    /// Remove items from the outfit wishlist if they are present there
+    /// - Parameter items: the items in outfit to remove
     static func remove(_ items: Items) {
         // Check all occasions and remove similar items from them
         for outfit in outfits {
