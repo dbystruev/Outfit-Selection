@@ -59,7 +59,7 @@ extension OutfitViewController {
         if Wishlist.contains(visibleItems) == true {
             
             sender.isSelected = false
-            Wishlist.remove(visibleItems)
+            Wishlist.remove(visibleItems, with: false)
         } else {
             guard let navigationController = navigationController else { return }
             
@@ -233,7 +233,7 @@ extension OutfitViewController {
         
         // Create a view for screenshot
         shareView = ShareView.instanceFromNib()
-        shareView?.configureContent(with: images, items: items)
+        shareView?.configureContent(with: images, items: items, name: occasionSelected?.title)
         
         // Segue to share view controller
         performSegue(withIdentifier: "shareViewControllerSegue", sender: self)

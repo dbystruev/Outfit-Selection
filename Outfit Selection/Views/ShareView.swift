@@ -41,17 +41,23 @@ class ShareView: UIView {
     
     // MARK: - Stored Properties
     var items: Items = []
+    var name: String?
     
     // MARK: - Custom Functions
     /// Configure share view with the list of images
     /// - Parameters:
     ///   - images: the list of images — from top to bottom, from left to right
     ///   - items: items corresponding to the images
-    func configureContent(with images: [UIImage?], items: Items) {
+    ///   - name: wishlist item name
+    func configureContent(with images: [UIImage?], items: Items, name: String? = nil) {
         for (image, pictureImageView) in zip(images, pictureImageViews) {
             pictureImageView.image = image
         }
         self.items = items
+        
+        // Gent name current selected occasion
+        guard let name = name else { return }
+        self.name = name
     }
     
     /// Configure logo visibility, size and margins depending on type of share

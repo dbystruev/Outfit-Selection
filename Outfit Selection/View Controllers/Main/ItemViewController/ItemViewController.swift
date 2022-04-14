@@ -93,6 +93,9 @@ class ItemViewController: LoggingViewController {
     /// The firts Item when controller  start
     var firstItem: Item?
     
+    /// The marker for edit mode
+    var isEditingEnabled = false
+    
     /// Items for searchBar
     var items: Items?
     
@@ -129,9 +132,11 @@ class ItemViewController: LoggingViewController {
     /// - Parameters:
     ///   - item: an item to configure the view controller with
     ///   - image: an image to configure the view controller with
-    func configure(with item: Item?, image: UIImage?) {
-        self.image = image
+    ///   - isEditingEnabled: the marker for edit mode
+    func configure(with item: Item?, image: UIImage?, isEditingEnabled: Bool = false) {
         self.item = item
+        self.image = image
+        self.isEditingEnabled = isEditingEnabled
     }
     
     /// Load item pictures to image view and image stack view
@@ -245,9 +250,13 @@ class ItemViewController: LoggingViewController {
         
         loadImages()
         
-        // Add editButtonItem and add selector
-        navigationItem.rightBarButtonItem = editButtonItem
-        navigationItem.rightBarButtonItem?.action = #selector(editButtonItemTap)
+        // Configyre editButtonItem
+        if isEditingEnabled {
+            navigationItem.rightBarButtonItem = editButtonItem
+            navigationItem.rightBarButtonItem?.action = #selector(editButtonItemTap)
+        } else {
+            shareButton.isHidden = true
+        }
         
         // Hide Search bar
         searchBar.isHidden = true
