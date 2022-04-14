@@ -51,7 +51,12 @@ class ShareViewController: LoggingViewController {
         navigationController?.configureFont()
         
         // Configure occasion label text (could be nil)
-        let text = Wishlist.occasion(outfitView.items)
+        var text = Wishlist.occasion(outfitView.items)
+        
+        if text == nil {
+            text = outfitView.name
+        }
+
         occasionLabel.isHidden = text == nil
         occasionLabel.text = text
     }

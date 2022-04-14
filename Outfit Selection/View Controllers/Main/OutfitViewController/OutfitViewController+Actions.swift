@@ -233,7 +233,7 @@ extension OutfitViewController {
         
         // Create a view for screenshot
         shareView = ShareView.instanceFromNib()
-        shareView?.configureContent(with: images, items: items)
+        shareView?.configureContent(with: images, items: items, name: occasionSelected?.title)
         
         // Segue to share view controller
         performSegue(withIdentifier: "shareViewControllerSegue", sender: self)
