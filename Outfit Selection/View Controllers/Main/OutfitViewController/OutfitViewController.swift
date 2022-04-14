@@ -100,6 +100,9 @@ class OutfitViewController: LoggingViewController {
         }
     }
     
+    /// Time after that the Subcategory Labels will be close
+    let timeCloseSubcategoryLabels = 60
+    
     /// Wishlist items to scroll to
     var wishlistItems: Items = []
     
