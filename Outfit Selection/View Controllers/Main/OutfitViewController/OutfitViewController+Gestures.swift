@@ -33,6 +33,13 @@ extension OutfitViewController {
         }
     }
     
+    /// Hide showSubcategoryLabels
+    func closeSubcategoryLabels() {
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(timeCloseSubcategoryLabels)) {
+            self.showSubcategoryLabels = false
+        }
+    }
+    
     /// Called when double tap or long press gesture is recognized
     /// - Parameter sender: the object which recognized the gesture
     @objc func pinImage(_ sender: UIGestureRecognizer) {
@@ -71,6 +78,9 @@ extension OutfitViewController {
             
         case 3:
             toggleSubcategoryLabels()
+            
+            /// Close SubcategoryLabels after some time
+            closeSubcategoryLabels()
             
         default:
             debug("WARNING: Unknown number of taps: \(numberOfTaps)")
