@@ -13,7 +13,7 @@ struct Wishlist: Codable {
     // MARK: - Stored Static Properties
     /// Suggests what to select next time when opening wishlist
     static var tabSuggested: WishlistItemCatalog.Kind?
-        
+    
     // MARK: - Computed Static Properties
     /// All items in collections, item wishlist, and outfit wishlist
     static var allItems: Items {
@@ -131,6 +131,24 @@ struct Wishlist: Codable {
         return newOutfitSet == outfit.itemsIdSet
     }
     
+    /// Clear wishlisted status
+    /// - Parameters
+    /// - items: the items in outfit to remove
+    /// - outfit where find items
+    private static func clearWishlisted(items: Items, outfit: WishlistItemCatalog ) {
+        Wishlist.removeAll { $0 == outfit }
+        items.forEach {
+            // Check that the item is not in the item wishlist
+            guard contains($0) != true else { return }
+            
+            // Confirm that the item is not in the outfit wishlist
+            guard contains(itemInOutfits: $0) != true else { return }
+            
+            // Clear wishlisted status
+            $0.setWishlisted(to: false)
+        }
+    }
+    
     /// Returns true if item is contained in the items wishlist already, false otherwise
     /// - Parameters:
     ///   - item: item to check for inclusion into the collection
@@ -209,53 +227,25 @@ struct Wishlist: Codable {
     }
     
     /// Remove items from the outfit wishlist if they are present there
-    /// - Parameter items: the items in outfit to remove
+    /// - Parameters
+    /// - items: the items in outfit to remove
+    /// - name: find items use name
     static func remove(_ items: Items, with name: Bool = true) {
         if name {
-            remove(items)
-        } else {
-            debug()
             // Check all occasions and remove similar items from them
             for outfit in outfits {
-                if contains(items) == true {
-                    Wishlist.removeAll { $0 == outfit }
-                    
-                    // Clear wishlisted status
-                    items.forEach {
-                        // Check that the item is not in the item wishlist
-                        guard contains($0) != true else { return }
-                        
-                        // Confirm that the item is not in the outfit wishlist
-                        guard contains(itemInOutfits: $0) != true else { return }
-                        
-                        // Clear wishlisted status
-                        $0.setWishlisted(to: false)
-                    }
+                if contains(items, occasion: outfit.name) == true {
+                    clearWishlisted(items: items, outfit: outfit)
+                }
+            }
+        } else {
+            // Check all occasions and remove similar items from them
+            for outfit in outfits {
+                if contains(items, occasion: outfit) == true {
+                    clearWishlisted(items: items, outfit: outfit)
                 }
             }
         }
     }
     
-    /// Remove items from the outfit wishlist if they are present there
-    /// - Parameter items: the items in outfit to remove
-    static func remove(_ items: Items) {
-        // Check all occasions and remove similar items from them
-        for outfit in outfits {
-            if contains(items, occasion: outfit.name) == true {
-                Wishlist.removeAll { $0 == outfit }
-                
-                // Clear wishlisted status
-                items.forEach {
-                    // Check that the item is not in the item wishlist
-                    guard contains($0) != true else { return }
-                    
-                    // Confirm that the item is not in the outfit wishlist
-                    guard contains(itemInOutfits: $0) != true else { return }
-                    
-                    // Clear wishlisted status
-                    $0.setWishlisted(to: false)
-                }
-            }
-        }
-    }
 }
