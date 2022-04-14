@@ -53,5 +53,5 @@
 /* Class = "UIBarButtonItem"; title = "Select all"; ObjectID = "oR3-nD-fqp"; */
 "oR3-nD-fqp.title" = "Выбрать все";
 
-/* Class = "UISearchBar"; placeholder = "Select from over 3000 brands"; ObjectID = "nGZ-jY-H6z"; */
-"nGZ-jY-H6z.placeholder" = "Cвыше 3000 известных брендов";
+/* Class = "UISearchBar"; placeholder = "Discover thousands of brands"; ObjectID = "nGZ-jY-H6z"; */
+"nGZ-jY-H6z.placeholder" = "Выбирайте из тысяч брендов";

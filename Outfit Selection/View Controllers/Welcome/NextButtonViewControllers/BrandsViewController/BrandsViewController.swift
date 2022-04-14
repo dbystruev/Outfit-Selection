@@ -18,7 +18,11 @@ class BrandsViewController: NextButtonViewController {
     @IBOutlet weak var brandsCollectionView: UICollectionView!
     
     /// Search bar for the brands
-    @IBOutlet weak var searchBar: UISearchBar!
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.placeholder = "Discover thousands of brands"~
+        }
+    }
     
     // MARK: - Static Constants
     /// Time delay before closing search keybaord
