@@ -35,8 +35,8 @@ extension OutfitViewController {
     
     /// Hide SubcategoryLabels
     func closeSubcategoryLabels() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(timeCloseSubcategoryLabels)) {
-            self.showSubcategoryLabels = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + .seconds(timeCloseSubcategoryLabels)) { [weak self] in
+            self?.showSubcategoryLabels = false
         }
     }
     

@@ -95,8 +95,8 @@ enum Alert {
         configured(
             "Save to wishlists?"~,
             message: occasion + " " + "is going to be saved to wishlist"~,
-            actionTitles: ["OK"~, "Cancel"~],
-            styles: [.cancel, .default],
+            actionTitles: ["Cancel"~, "Yes"~],
+            styles: [.cancel, .destructive],
             handlers: [{ action in
                 Wishlist.add(items, occasion: occasion)
                 

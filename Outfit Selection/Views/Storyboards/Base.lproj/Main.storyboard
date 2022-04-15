@@ -548,7 +548,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="80" height="169"/>
                                             </view>
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5C7-Yp-u9k">
-                                                <rect key="frame" x="104" y="63.5" width="168" height="42.5"/>
+                                                <rect key="frame" x="104" y="68" width="168" height="33"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summer" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jnN-97-yUU">
                                                         <rect key="frame" x="0.0" y="0.0" width="168" height="20.5"/>
@@ -556,11 +556,8 @@
                                                         <color key="textColor" red="0.22820454840000001" green="0.22824296359999999" blue="0.2281961143" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTY-H1-Lz0">
-                                                        <rect key="frame" x="0.0" y="20.5" width="168" height="22"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="22" id="Dp1-d9-zSB"/>
-                                                        </constraints>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Get outfit" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uTY-H1-Lz0">
+                                                        <rect key="frame" x="0.0" y="20.5" width="168" height="12.5"/>
                                                         <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="9"/>
                                                         <color key="textColor" red="0.22820454840000001" green="0.22824296359999999" blue="0.2281961143" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -603,6 +600,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Share" id="JPe-Xv-A0p"/>
                     <connections>
+                        <outlet property="infoLabel" destination="uTY-H1-Lz0" id="tpa-XS-pbc"/>
                         <outlet property="occasionLabel" destination="jnN-97-yUU" id="O0L-pj-6Dv"/>
                         <outlet property="shareTableView" destination="EsX-MK-pE2" id="Te3-jW-1kG"/>
                         <outlet property="topStackView" destination="FJ6-Sy-aAv" id="bMA-qe-usk"/>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19455" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19454"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -29,14 +29,14 @@
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New items for you" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pxZ-Qe-vcs">
                         <rect key="frame" x="24" y="24" width="143" height="22"/>
                         <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="16"/>
-                        <nil key="textColor"/>
+                        <color key="textColor" red="0.25882357360000002" green="0.25882357360000002" blue="0.25882357360000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pLn-2e-ZI2" customClass="DelegatedButton" customModule="Concept_Group" customModuleProvider="target">
                         <rect key="frame" x="314" y="24" width="37" height="29"/>
                         <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
                         <state key="normal" title="See all">
-                            <color key="titleColor" systemColor="labelColor"/>
+                            <color key="titleColor" red="0.25882357360000002" green="0.25882357360000002" blue="0.25882357360000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </state>
                         <connections>
                             <action selector="seeAllButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="y86-s0-dcW"/>
@@ -91,9 +91,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <systemColor name="labelColor">
-            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

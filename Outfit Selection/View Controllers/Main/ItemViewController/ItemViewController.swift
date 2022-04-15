@@ -54,11 +54,8 @@ class ItemViewController: LoggingViewController {
     }
     /// The  table view with items list
     @IBOutlet weak var itemTableView: UITableView!
-    
     @IBOutlet weak var parentStackView: UIStackView!
-    
     @IBOutlet  var priceLabels: [UILabel]!
-    
     @IBOutlet weak var rightLabelsStackView: UIStackView!
     
     /// Search bar for the item

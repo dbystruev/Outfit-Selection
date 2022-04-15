@@ -10,6 +10,17 @@
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="NotoSans-Bold.ttf">
+            <string>NotoSans-Bold</string>
+        </array>
+        <array key="NotoSans-Regular.ttf">
+            <string>NotoSans-Regular</string>
+        </array>
+        <array key="NotoSans-SemiBold.ttf">
+            <string>NotoSans-SemiBold</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--CollectionSelectViewController-->
         <scene sceneID="LUm-fY-zv3">
@@ -53,7 +64,7 @@
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hXU-ae-I4h">
                                                 <rect key="frame" x="0.0" y="0.0" width="138" height="44"/>
-                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="16"/>
                                                 <state key="normal" title="Items">
                                                     <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -63,7 +74,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jae-n2-Kh4">
                                                 <rect key="frame" x="138" y="0.0" width="138" height="44"/>
-                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="16"/>
                                                 <state key="normal" title="Outfits">
                                                     <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -73,7 +84,7 @@
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bml-DR-8nI">
                                                 <rect key="frame" x="276" y="0.0" width="138" height="44"/>
-                                                <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="16"/>
                                                 <state key="normal" title="Collections">
                                                     <color key="titleColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -155,7 +166,7 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="Lya-cI-xqk">
-                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="224"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="209"/>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tnP-aa-imh">
                                                     <rect key="frame" x="164" y="0.0" width="20" height="20"/>
@@ -170,27 +181,38 @@
                                                     </connections>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="n0e-UL-OyY">
-                                                    <rect key="frame" x="0.0" y="228" width="184" height="48"/>
+                                                    <rect key="frame" x="0.0" y="213" width="184" height="63"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Louis Vuitton" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d2A-HP-2lw">
-                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="18"/>
-                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="13"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="22"/>
+                                                            <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="16"/>
                                                             <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cotton shirt" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="akK-pw-Dlp">
-                                                            <rect key="frame" x="0.0" y="18" width="184" height="15"/>
-                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="11"/>
+                                                            <rect key="frame" x="0.0" y="22" width="184" height="16.5"/>
+                                                            <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
                                                             <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nd2-5y-7Ds" userLabel="Empty View">
+                                                            <rect key="frame" x="0.0" y="38.5" width="184" height="8"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="8" id="0Ey-aq-fqL"/>
+                                                            </constraints>
+                                                        </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199 500 ₽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y8O-59-tFQ">
-                                                            <rect key="frame" x="0.0" y="33" width="184" height="15"/>
-                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="11"/>
+                                                            <rect key="frame" x="0.0" y="46.5" width="184" height="16.5"/>
+                                                            <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
                                                             <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="Nd2-5y-7Ds" firstAttribute="leading" secondItem="n0e-UL-OyY" secondAttribute="leading" id="Mq5-8Z-bi8"/>
+                                                        <constraint firstAttribute="trailing" secondItem="Nd2-5y-7Ds" secondAttribute="trailing" id="SWc-2a-RdM"/>
+                                                    </constraints>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
@@ -221,16 +243,16 @@
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="2VU-Ws-6jP" userLabel="Images Stack View">
-                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="236"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="184" height="224"/>
                                                     <subviews>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="o5s-5w-ze9">
-                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="236"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="224"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="y8y-yI-XYn">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="78.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="74.5"/>
                                                                 </imageView>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hcb-Rl-A6i">
-                                                                    <rect key="frame" x="0.0" y="78.5" width="92" height="157.5"/>
+                                                                    <rect key="frame" x="0.0" y="74.5" width="92" height="149.5"/>
                                                                 </imageView>
                                                             </subviews>
                                                             <constraints>
@@ -238,19 +260,19 @@
                                                             </constraints>
                                                         </stackView>
                                                         <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5S3-ml-VD0">
-                                                            <rect key="frame" x="92" y="0.0" width="92" height="236"/>
+                                                            <rect key="frame" x="92" y="0.0" width="92" height="224"/>
                                                             <subviews>
                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="QkK-mR-XRd">
-                                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="78.5"/>
+                                                                    <rect key="frame" x="0.0" y="0.0" width="92" height="74.5"/>
                                                                 </imageView>
                                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="i4J-YU-DjY">
-                                                                    <rect key="frame" x="0.0" y="78.5" width="92" height="157.5"/>
+                                                                    <rect key="frame" x="0.0" y="74.5" width="92" height="149.5"/>
                                                                     <subviews>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XGT-3e-e3s">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="79"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="92" height="75"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="EUH-QK-4UB">
-                                                                                    <rect key="frame" x="8" y="16" width="76" height="63"/>
+                                                                                    <rect key="frame" x="8" y="16" width="76" height="59"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -262,10 +284,10 @@
                                                                             </constraints>
                                                                         </view>
                                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oM6-9L-vyh">
-                                                                            <rect key="frame" x="0.0" y="79" width="92" height="78.5"/>
+                                                                            <rect key="frame" x="0.0" y="75" width="92" height="74.5"/>
                                                                             <subviews>
                                                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yqW-UW-xxW">
-                                                                                    <rect key="frame" x="8" y="0.0" width="76" height="62.5"/>
+                                                                                    <rect key="frame" x="8" y="0.0" width="76" height="58.5"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -298,17 +320,24 @@
                                                     </connections>
                                                 </button>
                                                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="26l-yP-xUM" userLabel="Labels Stack View">
-                                                    <rect key="frame" x="0.0" y="235" width="184" height="33"/>
+                                                    <rect key="frame" x="0.0" y="221.5" width="184" height="46.5"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Summer" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OYF-b3-BkJ">
-                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="18"/>
-                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="13"/>
-                                                            <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="184" height="22"/>
+                                                            <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="16"/>
+                                                            <color key="textColor" red="0.25098040700000002" green="0.25098040700000002" blue="0.25098040700000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="n25-CZ-rBv" userLabel="Empty View">
+                                                            <rect key="frame" x="0.0" y="22" width="184" height="8"/>
+                                                            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="8" id="KF5-3i-ANZ"/>
+                                                            </constraints>
+                                                        </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="199 500 ₽" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p7A-GE-xy4">
-                                                            <rect key="frame" x="0.0" y="18" width="184" height="15"/>
-                                                            <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="11"/>
+                                                            <rect key="frame" x="0.0" y="30" width="184" height="16.5"/>
+                                                            <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="12"/>
                                                             <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -317,7 +346,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="26l-yP-xUM" secondAttribute="trailing" id="38J-Go-vNg"/>
-                                                <constraint firstItem="26l-yP-xUM" firstAttribute="bottom" secondItem="2VU-Ws-6jP" secondAttribute="bottom" constant="32" id="42c-8Z-Aes"/>
+                                                <constraint firstItem="26l-yP-xUM" firstAttribute="bottom" secondItem="2VU-Ws-6jP" secondAttribute="bottom" constant="44" id="42c-8Z-Aes"/>
                                                 <constraint firstItem="26l-yP-xUM" firstAttribute="leading" secondItem="5cU-Zr-chq" secondAttribute="leading" id="B6Z-or-I4e"/>
                                                 <constraint firstItem="2VU-Ws-6jP" firstAttribute="top" secondItem="5cU-Zr-chq" secondAttribute="top" id="BAq-6K-Ai6"/>
                                                 <constraint firstAttribute="trailing" secondItem="2VU-Ws-6jP" secondAttribute="trailing" id="Xz2-HK-h3t"/>
@@ -382,7 +411,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wYW-gk-QCk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1309" y="-175"/>
+            <point key="canvasLocation" x="1308.6956521739132" y="-175.44642857142856"/>
         </scene>
         <!--Item View Controller-->
         <scene sceneID="DKu-iH-gqv">
@@ -431,24 +460,24 @@
                                                 <viewLayoutGuide key="contentLayoutGuide" id="6XE-SV-PPF"/>
                                                 <viewLayoutGuide key="frameLayoutGuide" id="Ios-Ge-3VR"/>
                                             </scrollView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Zyi-Sk-1UV" userLabel="Labels Stack View">
+                                            <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zyi-Sk-1UV" userLabel="Labels Stack View">
                                                 <rect key="frame" x="0.0" y="307" width="382" height="164"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="LOUIS VUITTON" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHh-JS-zDH">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="27"/>
-                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="20"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="27.5"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="20"/>
                                                         <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text=" Cotton Shirt" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1Z-23-l1J">
-                                                        <rect key="frame" x="0.0" y="27" width="382" height="110"/>
-                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="20"/>
+                                                        <rect key="frame" x="0.0" y="35.5" width="382" height="98.5"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="16"/>
                                                         <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="753" text="1000 RUB" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eoV-k4-sa5">
-                                                        <rect key="frame" x="0.0" y="137" width="382" height="27"/>
-                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="20"/>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="753" text="1000 RUB" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vum-Xb-k8g">
+                                                        <rect key="frame" x="0.0" y="142" width="382" height="22"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="16"/>
                                                         <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -467,19 +496,19 @@
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="LOUIS VUITTON" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LUw-qT-H7L">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="20.5"/>
-                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="20"/>
                                                         <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text=" Cotton Shirt" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K5c-mB-Tvd">
                                                         <rect key="frame" x="0.0" y="20.5" width="382" height="20"/>
-                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="16"/>
                                                         <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="1000 RUB" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0sQ-P2-cts">
                                                         <rect key="frame" x="0.0" y="40.5" width="382" height="20.5"/>
-                                                        <fontDescription key="fontDescription" name="NotoSansKannada-Bold" family="Noto Sans Kannada" pointSize="16"/>
+                                                        <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="16"/>
                                                         <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
@@ -643,14 +672,14 @@
                                                                     </constraints>
                                                                 </imageView>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="LV white shirt" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FwO-3p-qVC">
-                                                                    <rect key="frame" x="104" y="0.0" width="186" height="100"/>
-                                                                    <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                                    <rect key="frame" x="104" y="0.0" width="193" height="100"/>
+                                                                    <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="16"/>
                                                                     <color key="textColor" red="0.25882357360000002" green="0.25882357360000002" blue="0.25882357360000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
                                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1000 RUB" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hM0-LL-cyI">
-                                                                    <rect key="frame" x="294" y="0.0" width="80" height="100"/>
-                                                                    <fontDescription key="fontDescription" name="NotoSansKannada-Regular" family="Noto Sans Kannada" pointSize="17"/>
+                                                                    <rect key="frame" x="301" y="0.0" width="73" height="100"/>
+                                                                    <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="16"/>
                                                                     <color key="textColor" red="0.25882357360000002" green="0.25882357360000002" blue="0.25882357360000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
@@ -724,12 +753,12 @@
                         <outlet property="trailingStackView" destination="4Fq-h8-zMT" id="1eF-8W-QDE"/>
                         <outletCollection property="nameLabels" destination="a1Z-23-l1J" collectionClass="NSMutableArray" id="c8w-Go-HeT"/>
                         <outletCollection property="vendorLabels" destination="WHh-JS-zDH" collectionClass="NSMutableArray" id="8ZF-2Z-lOH"/>
-                        <outletCollection property="priceLabels" destination="eoV-k4-sa5" collectionClass="NSMutableArray" id="NVl-SO-90u"/>
                         <outletCollection property="nameLabels" destination="K5c-mB-Tvd" collectionClass="NSMutableArray" id="Rbs-yk-d5N"/>
                         <outletCollection property="orderButtonHorizontalConstraints" destination="nrF-BB-7gh" collectionClass="NSMutableArray" id="kwy-xV-wSM"/>
                         <outletCollection property="vendorLabels" destination="LUw-qT-H7L" collectionClass="NSMutableArray" id="tzC-gi-WBX"/>
                         <outletCollection property="priceLabels" destination="0sQ-P2-cts" collectionClass="NSMutableArray" id="DTz-Tr-U8k"/>
                         <outletCollection property="orderButtonHorizontalConstraints" destination="UOc-bk-rdK" collectionClass="NSMutableArray" id="pVL-TM-BLX"/>
+                        <outletCollection property="priceLabels" destination="Vum-Xb-k8g" collectionClass="NSMutableArray" id="nuo-xZ-CWK"/>
                         <segue destination="C0E-kp-KJb" kind="show" identifier="intermediaryViewControllerSegue" id="cI0-oM-XQO"/>
                     </connections>
                 </viewController>
