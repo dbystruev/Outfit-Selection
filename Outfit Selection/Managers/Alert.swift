@@ -95,9 +95,10 @@ enum Alert {
         configured(
             "Save to wishlists?"~,
             message: occasion + " " + "is going to be saved to wishlist"~,
-            actionTitles: ["Cancel"~, "Yes"~],
+            actionTitles: ["Cancel"~, "OK"~],
             styles: [.cancel, .destructive],
-            handlers: [{ action in
+            handlers: [{ _ in
+            },{ _ in
                 Wishlist.add(items, occasion: occasion)
                 
                 // Select like button at outfit view controller
