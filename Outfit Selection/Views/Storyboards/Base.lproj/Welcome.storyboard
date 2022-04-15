@@ -165,6 +165,7 @@
                         <outletCollection property="genderButtons" destination="6S1-yY-6qz" collectionClass="NSMutableArray" id="cfK-Z6-WNg"/>
                         <outletCollection property="genderButtons" destination="gGx-FZ-Ytv" collectionClass="NSMutableArray" id="UOL-1J-zRU"/>
                         <segue destination="K50-Fg-dgI" kind="show" identifier="brandsViewControllerSegue" id="dF4-wM-JWl"/>
+                        <segue destination="Y68-Zi-Cgh" kind="show" identifier="progressViewControllerSegue" id="NVX-QI-AKE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-JP-tfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -220,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4H-oc-phH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="548"/>
+            <point key="canvasLocation" x="-260" y="880"/>
         </scene>
         <!--Tell us your favourites-->
         <scene sceneID="Jxn-eD-PxF">
@@ -578,7 +579,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rl7-1r-IRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="-217"/>
+            <point key="canvasLocation" x="-260" y="137"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>

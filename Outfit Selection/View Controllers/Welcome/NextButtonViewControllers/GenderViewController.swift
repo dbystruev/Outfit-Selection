@@ -73,6 +73,23 @@ class GenderViewController: NextButtonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = WhiteLabel.Color.Background.light
+        
+        if UserDefaults.hasAnswerQuestions {
+            guard let navigationController = navigationController else { return }
+            
+            // Start loading items
+            NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+            
+            NavigationManager.shared.pushViewControllers(
+                name: "Welcome",
+                identities: ["BrandsViewController", "OccasionsViewController"],
+                navigationController: navigationController,
+                animated: false)
+            
+            // Transition to progress
+            performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: nil)
+            self.buttonStackView.isHidden = true
+        } 
     }
     
     /// Hides toolbar and navigation bar before the view is added to a view hierarchy
@@ -126,16 +143,19 @@ class GenderViewController: NextButtonViewController {
     /// - Parameter sender: the gesture recognizer which was tapped
     @IBAction func femaleSelected(_ sender: GenderButton) {
         performSegueToBrandsViewController(gender: .female)
+        //UserDefaults.currentGender = .female
     }
     
     /// Called when the male button is tapped
     /// - Parameter sender: the gesture recognizer which was tapped
     @IBAction func maleSelected(_ sender: GenderButton) {
         performSegueToBrandsViewController(gender: .male)
+        //UserDefaults.currentGender = .male
     }
     
     @IBAction func otherSelected(_ sender: GenderButton) {
         performSegueToBrandsViewController(gender: .other)
+        //UserDefaults.currentGender = .other
     }
     
 }
