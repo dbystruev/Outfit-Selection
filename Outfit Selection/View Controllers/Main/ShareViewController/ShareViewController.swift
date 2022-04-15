@@ -58,6 +58,7 @@ class ShareViewController: LoggingViewController {
             text = outfitView.name
         }
         
+        // Set info label under occasionLabel
         infoLabel.text = WhiteLabel.Text.Gender.description
 
         occasionLabel.isHidden = text == nil
