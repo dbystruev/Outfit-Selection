@@ -75,6 +75,10 @@ class GenderViewController: NextButtonViewController {
         view.backgroundColor = WhiteLabel.Color.Background.light
         
         if UserDefaults.hasAnswerQuestions {
+            
+            // Restore gender fron userDefualts
+            Gender.restore()
+            
             guard let navigationController = navigationController else { return }
             
             // Start loading items
@@ -143,19 +147,16 @@ class GenderViewController: NextButtonViewController {
     /// - Parameter sender: the gesture recognizer which was tapped
     @IBAction func femaleSelected(_ sender: GenderButton) {
         performSegueToBrandsViewController(gender: .female)
-        //UserDefaults.currentGender = .female
     }
     
     /// Called when the male button is tapped
     /// - Parameter sender: the gesture recognizer which was tapped
     @IBAction func maleSelected(_ sender: GenderButton) {
         performSegueToBrandsViewController(gender: .male)
-        //UserDefaults.currentGender = .male
     }
     
     @IBAction func otherSelected(_ sender: GenderButton) {
         performSegueToBrandsViewController(gender: .other)
-        //UserDefaults.currentGender = .other
     }
     
 }
