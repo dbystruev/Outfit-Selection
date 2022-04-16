@@ -15,6 +15,10 @@ extension UserDefaults {
     @UserDefault(key: "GetOutfitCollectionKey", defaultValue: nil)
     static var collections: Data?
     
+    /// True if user has answer for questions
+    @UserDefault(key: "GetOutfitHasAnswerQuestions", defaultValue: false)
+    static var hasAnswerQuestions: Bool
+    
     /// True if user has seen onboarding
     @UserDefault(key: "GetOutfitHasSeenAppIntroduction", defaultValue: false)
     static var hasSeenAppIntroduction: Bool

@@ -12,6 +12,7 @@ class ShareViewController: LoggingViewController {
     
     // MARK: - Outlets
     @IBOutlet weak var occasionLabel: UILabel!
+    @IBOutlet weak var infoLabel: UILabel!
     
     @IBOutlet weak var shareTableView: UITableView! {
         didSet {
@@ -56,6 +57,9 @@ class ShareViewController: LoggingViewController {
         if text == nil {
             text = outfitView.name
         }
+        
+        // Set info label under occasionLabel
+        infoLabel.text = WhiteLabel.Text.Gender.description
 
         occasionLabel.isHidden = text == nil
         occasionLabel.text = text

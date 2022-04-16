@@ -19,6 +19,9 @@ enum Gender: String, Codable {
             if current != oldValue && oldValue != nil {
                 AppDelegate.updateOccasions()
             }
+            
+        // TODO: Save User Default Gender
+        
         }
     }
     

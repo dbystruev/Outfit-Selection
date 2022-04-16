@@ -23,13 +23,13 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Non-binary" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6eo-rQ-qO6">
-                        <rect key="frame" x="12" y="0.0" width="90" height="23.5"/>
-                        <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="17"/>
+                        <rect key="frame" x="12" y="0.0" width="74" height="19.5"/>
+                        <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="14"/>
                         <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="radio" translatesAutoresizingMaskIntoConstraints="NO" id="Jh8-A0-0Q1">
-                        <rect key="frame" x="339" y="4" width="16" height="16"/>
+                        <rect key="frame" x="339" y="2" width="16" height="16"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="16" id="DQH-53-zOm"/>
                             <constraint firstAttribute="height" constant="16" id="QTy-Fc-etE"/>

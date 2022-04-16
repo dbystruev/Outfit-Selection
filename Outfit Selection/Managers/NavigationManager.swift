@@ -30,6 +30,7 @@ class NavigationManager {
     /// - Parameters:
     ///   - navigationController: navigation controller to push view controller into
     ///   - viewController: view controller to push into navigation controller, for example tabBarViewController
+    ///   - animated: true if should be animated
     private func pushViewController (
         navigationController: UINavigationController,
         viewController: UIViewController,
@@ -45,10 +46,10 @@ class NavigationManager {
     /// Push view controllers with given identities from given storyboard into given navigation controller
     /// - Parameters:
     ///   - name: storyboard name
-    ///   - identity: array with identities of view controllers
+    ///   - identities: array with identities of view controllers
     ///   - navigationController: navigation controller to push view controller into
     ///   - animated: true if should be animated
-    private func pushViewController(
+    func pushViewControllers(
         name: String,
         identities: [String],
         navigationController: UINavigationController,
@@ -234,9 +235,8 @@ class NavigationManager {
             let identityIDs = [
                 "BrandsViewController",
                 "OccasionsViewController",
-                "ProgressViewController"
-            ]
-            NavigationManager.shared.pushViewController(
+                "ProgressViewController"]
+            NavigationManager.shared.pushViewControllers(
                 name: "Welcome",
                 identities: identityIDs,
                 navigationController: navigationController,
@@ -249,7 +249,6 @@ class NavigationManager {
                 viewController: tabBarController,
                 animated: false
             )
-            
             return
         }
         

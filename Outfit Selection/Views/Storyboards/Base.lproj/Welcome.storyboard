@@ -12,9 +12,6 @@
         <array key="NotoSans-Bold.ttf">
             <string>NotoSans-Bold</string>
         </array>
-        <array key="NotoSans-Medium.ttf">
-            <string>NotoSans-Medium</string>
-        </array>
         <array key="NotoSans-Regular.ttf">
             <string>NotoSans-Regular</string>
         </array>
@@ -168,6 +165,7 @@
                         <outletCollection property="genderButtons" destination="6S1-yY-6qz" collectionClass="NSMutableArray" id="cfK-Z6-WNg"/>
                         <outletCollection property="genderButtons" destination="gGx-FZ-Ytv" collectionClass="NSMutableArray" id="UOL-1J-zRU"/>
                         <segue destination="K50-Fg-dgI" kind="show" identifier="brandsViewControllerSegue" id="dF4-wM-JWl"/>
+                        <segue destination="Y68-Zi-Cgh" kind="show" identifier="progressViewControllerSegue" id="NVX-QI-AKE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KPe-JP-tfJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -223,7 +221,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J4H-oc-phH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="548"/>
+            <point key="canvasLocation" x="-260" y="880"/>
         </scene>
         <!--Tell us your favourites-->
         <scene sceneID="Jxn-eD-PxF">
@@ -235,7 +233,7 @@
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose one or more brands you like " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MB4-2h-AF5">
                                 <rect key="frame" x="16" y="104" width="343" height="24.666666666666657"/>
-                                <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -498,7 +496,7 @@
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose your favourite occasions " textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O7I-pz-nl1">
                                 <rect key="frame" x="16" y="104" width="343" height="24.666666666666657"/>
-                                <fontDescription key="fontDescription" name="NotoSans-Medium" family="Noto Sans" pointSize="18"/>
+                                <fontDescription key="fontDescription" name="NotoSans-SemiBold" family="Noto Sans" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -524,8 +522,8 @@
                                                             </constraints>
                                                         </imageView>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="B-day" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-NA-IVE">
-                                                            <rect key="frame" x="32" y="2" width="311" height="20.333333333333332"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <rect key="frame" x="32" y="0.66666666666666607" width="311" height="23.333333333333336"/>
+                                                            <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -581,11 +579,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Rl7-1r-IRk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-260" y="-217"/>
+            <point key="canvasLocation" x="-260" y="137"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="jyn-7A-y6N"/>
+        <segue reference="Y3I-SD-N7s"/>
         <segue reference="pRR-NZ-3hy"/>
     </inferredMetricsTieBreakers>
     <resources>

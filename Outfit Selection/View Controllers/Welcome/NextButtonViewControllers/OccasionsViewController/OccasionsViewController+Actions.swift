@@ -14,6 +14,9 @@ extension OccasionsViewController {
         // Start loading items
         NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
         
+        // The user has given answer for questions
+        UserDefaults.hasAnswerQuestions = true
+        
         // Transition to progress
         performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
     }

@@ -11,17 +11,10 @@ import GoogleSignIn
 import UIKit
 
 class SignupViewController: LoggingViewController {
-    
-    // MARK: - Stored Properties
-    /// The handler for the auth state listener, to allow cancelling later.
-    private var handle: AuthStateDidChangeListenerHandle?
-    
     // MARK: - Inherited Methods
     /// Return navigation controller bar style back to normal
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // Remove auth listener
-        Auth.auth().removeStateDidChangeListener(handle!)
         navigationController?.navigationBar.barStyle = .default
     }
     
@@ -29,10 +22,6 @@ class SignupViewController: LoggingViewController {
         super.viewDidLoad()
         // Configue the views
         self.view.backgroundColor = Globals.Color.Onboarding.background
-        // Start auth listener
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-            //debug("INFO: current user:", user?.displayName)
-        }
     }
     
     // MARK: - Actions
