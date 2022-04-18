@@ -38,6 +38,9 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
         case 2:
             // Section 2 is brands — reuse brands view controller to answer
+            return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
+        case 3:
+            // Section 2 is brands — reuse brands view controller to answer
             return brandsViewController?.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath) ?? CGSize.zero
         default:
             debug("WARNING: Unknown section \(indexPath.section)")

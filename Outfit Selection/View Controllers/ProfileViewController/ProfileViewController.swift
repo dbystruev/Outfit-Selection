@@ -22,6 +22,12 @@ class ProfileViewController: LoggingViewController {
     
     var isLoggedIn = User.current.isLoggedIn
     
+    /// Dictionary of occasion labels with occasion names as keys
+    var occasionLabels: [String: [String]] = [:]
+    
+    /// Array of occasion names
+    var occasionNames: [String] = []
+    
     /// Gender to show in the collection view
     var shownGender: Gender?
     
@@ -59,13 +65,14 @@ class ProfileViewController: LoggingViewController {
         
         // Configure navigation controller's bar font
         navigationController?.configureFont()
-        
+    
         // Setup profile collection view
         profileCollectionView.dataSource = self
         profileCollectionView.delegate = self
         profileCollectionView.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
         profileCollectionView.register(GenderCollectionViewCell.nib, forCellWithReuseIdentifier: GenderCollectionViewCell.reuseId)
         profileCollectionView.register(AccountCollectionViewCell.nib, forCellWithReuseIdentifier: AccountCollectionViewCell.reuseId)
+        profileCollectionView.register(OccasionCollectionViewCell.nib, forCellWithReuseIdentifier: OccasionCollectionViewCell.reuseId)
         profileCollectionView.register(ProfileSectionHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                        withReuseIdentifier: ProfileSectionHeaderView.reuseId)
     }

@@ -120,6 +120,6 @@ class BrandsViewController: NextButtonViewController {
         brands = Brands.withImage.values.sorted()
         
         // Reload data
-        brandsCollectionView.reloadData()
+        brandsCollectionView?.reloadData()
     }
 }

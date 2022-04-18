@@ -75,10 +75,6 @@ class GenderViewController: NextButtonViewController {
         view.backgroundColor = WhiteLabel.Color.Background.light
         
         if UserDefaults.hasAnswerQuestions {
-            
-            // Restore gender fron userDefualts
-            Gender.restore()
-            
             guard let navigationController = navigationController else { return }
             
             // Start loading items

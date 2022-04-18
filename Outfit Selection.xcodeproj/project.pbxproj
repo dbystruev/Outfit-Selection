@@ -293,6 +293,8 @@
 		7ACA9C6827ABB027004B7D63 /* AppDelegate+universalLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACA9C6727ABB027004B7D63 /* AppDelegate+universalLinks.swift */; };
 		7ACB354327AD093B00DC0EDC /* NavigationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ACB354227AD093B00DC0EDC /* NavigationManager.swift */; };
 		7AD6F1B8280A90D20056CDA4 /* Gender+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6F1B7280A90D20056CDA4 /* Gender+UserDefaults.swift */; };
+		7AD6F1BA280D498C0056CDA4 /* OccasionCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AD6F1B9280D498C0056CDA4 /* OccasionCollectionViewCell.xib */; };
+		7AD6F1BC280D4B6E0056CDA4 /* OccasionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6F1BB280D4B6E0056CDA4 /* OccasionCollectionViewCell.swift */; };
 		7AD80C1A27D0C36D005A36DC /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80C1927D0C36C005A36DC /* Brand.swift */; };
 		7AD80C1C27D0D1A3005A36DC /* Brands.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80C1B27D0D1A3005A36DC /* Brands.swift */; };
 		7AD80C1E27D0D5CF005A36DC /* Brands+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80C1D27D0D5CF005A36DC /* Brands+all.swift */; };
@@ -602,6 +604,8 @@
 		7ACA9C6727ABB027004B7D63 /* AppDelegate+universalLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+universalLinks.swift"; sourceTree = "<group>"; };
 		7ACB354227AD093B00DC0EDC /* NavigationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationManager.swift; sourceTree = "<group>"; };
 		7AD6F1B7280A90D20056CDA4 /* Gender+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Gender+UserDefaults.swift"; sourceTree = "<group>"; };
+		7AD6F1B9280D498C0056CDA4 /* OccasionCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OccasionCollectionViewCell.xib; sourceTree = "<group>"; };
+		7AD6F1BB280D4B6E0056CDA4 /* OccasionCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionCollectionViewCell.swift; sourceTree = "<group>"; };
 		7AD80C1927D0C36C005A36DC /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		7AD80C1B27D0D1A3005A36DC /* Brands.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brands.swift; sourceTree = "<group>"; };
 		7AD80C1D27D0D5CF005A36DC /* Brands+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brands+all.swift"; sourceTree = "<group>"; };
@@ -1202,6 +1206,7 @@
 				69297C5025EB852700A8684E /* BrandCollectionViewCell.swift */,
 				69A0C9DD27044E7000C49977 /* Feed */,
 				69297C5D25EBC9FE00A8684E /* GenderCollectionViewCell.swift */,
+				7AD6F1BB280D4B6E0056CDA4 /* OccasionCollectionViewCell.swift */,
 				69C3A4BC25EC07E800F8F968 /* ProfileSectionHeaderView.swift */,
 				691C5F4026E792E100DF0758 /* Wishlist */,
 			);
@@ -1496,6 +1501,7 @@
 				697CCE6926D0039800B69763 /* FeedItem.xib */,
 				697CCE5B26CFA47E00B69763 /* FeedItemCell.xib */,
 				69297C5E25EBC9FE00A8684E /* GenderCollectionViewCell.xib */,
+				7AD6F1B9280D498C0056CDA4 /* OccasionCollectionViewCell.xib */,
 				69C3A4BD25EC07E800F8F968 /* ProfileSectionHeaderView.xib */,
 				692AF3CD260113DB00D37269 /* ShareView.xib */,
 			);
@@ -1735,6 +1741,7 @@
 				695295BC27E9BA7F00D34C3A /* Messages.storyboard in Resources */,
 				69DFE5A92735271600D46B5F /* Launch Screen.storyboard in Resources */,
 				690623A8270C633800813089 /* Screenshot04.png in Resources */,
+				7AD6F1BA280D498C0056CDA4 /* OccasionCollectionViewCell.xib in Resources */,
 				690623AF270C633800813089 /* Screenshot08.png in Resources */,
 				69297C6025EBC9FE00A8684E /* GenderCollectionViewCell.xib in Resources */,
 				692AF3CE260113DB00D37269 /* ShareView.xib in Resources */,
@@ -1819,6 +1826,7 @@
 				698990D623238895002DCA29 /* OutfitViewController+UINavigationControllerDelegate.swift in Sources */,
 				691C5F4626E7B1DF00DF0758 /* WishlistViewController+UIViewController.swift in Sources */,
 				69A2E20726FA8EEE002B4046 /* WishlistItemCatalog+Equatable.swift in Sources */,
+				7AD6F1BC280D4B6E0056CDA4 /* OccasionCollectionViewCell.swift in Sources */,
 				69EB8BB525EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift in Sources */,
 				69B86BBB26D8BB3800E1C868 /* FeedItemViewController+UICollectionViewDataSource.swift in Sources */,
 				69739EB022BA5DF80077E45D /* PinnableScrollView+Methods.swift in Sources */,

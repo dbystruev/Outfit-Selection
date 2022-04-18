@@ -92,18 +92,16 @@ extension AppDelegate: UIApplicationDelegate {
             
             // Update the list of categories from the server
             AppDelegate.updateCategories()
-            
-            // Update the list of occasions from the server
-            //            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            AppDelegate.updateOccasions()
-            //            }
         }
-        
-        // Load all brands 
-        AppDelegate.updateBrands()
         
         // Firebase configure
         AppDelegate.firebaseConfigure()
+        
+        // Update the list of occasions from the server
+        AppDelegate.updateOccasions()
+        
+        // Load all brands 
+        AppDelegate.updateBrands()
     
         // Change global tint color
         UIView.appearance().tintColor = #colorLiteral(red: 0.4693212509, green: 0.5382487178, blue: 0.5183649659, alpha: 1)
@@ -128,10 +126,9 @@ extension AppDelegate: UIApplicationDelegate {
         
         // Configure current notification center
         userNotificationCenter(configureFor: application)
-        
-        // Restore user wishlists and collections from user defaults
-        Wishlist.restore()
-        Collection.restore()
+
+        // Restore settings from user defaults
+        restoreSettings()
         
         // Wait for API requests to finish, but no more than 3 seconds
         _ = group.wait(timeout: .now() + 3)

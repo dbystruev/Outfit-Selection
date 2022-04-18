@@ -11,7 +11,7 @@ import UIKit
 // MARK: - UICollectionViewDataSource
 extension ProfileViewController: UICollectionViewDataSource {
     // MARK: - Static Properties
-    static let sectionHeaders = ["Account"~, "Gender"~, "Brands"~]
+    static let sectionHeaders = ["Account"~, "Gender"~, "Occasions"~, "Brands"~]
     
     // MARK: - UICollectionViewDataSource Methods
     /// Get cell for the given index path in profile collection view
@@ -45,7 +45,13 @@ extension ProfileViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenderCollectionViewCell.reuseId, for: indexPath)
             (cell as? GenderCollectionViewCell)?.configure(gender: Gender.allCases[indexPath.row], selected: shownGender)
             return cell
+            
         case 2:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
+            (cell as? OccasionCollectionViewCell)?.configure(with: Occasions.selectedUniqueTitle.sorted()[indexPath.row])
+            return cell
+            
+        case 3:
             // Section 2 is brands - use brands view controller section 0 to answer
             return brandsViewController?.collectionView(collectionView, cellForItemAt: indexPath) ?? BrandCollectionViewCell()
         default:
@@ -86,6 +92,9 @@ extension ProfileViewController: UICollectionViewDataSource {
             // Section 1 is gender — 3 items
             return Gender.allCases.count
         case 2:
+            // Section 2 is brands — use brands view controller section 0 to answer.
+            return Occasions.selectedUniqueTitle.count
+        case 3:
             // Section 2 is brands — use brands view controller section 0 to answer.
             return brandsViewController?.collectionView(collectionView, numberOfItemsInSection: 0) ?? 0
         default:

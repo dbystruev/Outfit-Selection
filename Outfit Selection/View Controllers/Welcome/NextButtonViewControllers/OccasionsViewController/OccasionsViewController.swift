@@ -52,6 +52,11 @@ class OccasionsViewController: NextButtonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // if viewControllew called from profile
+        if isEditing {
+            nextButton?.setTitle("Save"~, for: .normal)
+        }
+        
         // Setup data source
         let currentGenderOccasions = Occasions.currentGender
         occasionNames = currentGenderOccasions.names.sorted()
