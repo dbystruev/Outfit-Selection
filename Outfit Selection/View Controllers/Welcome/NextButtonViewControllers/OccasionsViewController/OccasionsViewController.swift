@@ -52,7 +52,7 @@ class OccasionsViewController: NextButtonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // if viewControllew called from profile
+        // If viewControllew called from profile
         if isEditing {
             nextButton?.setTitle("Save"~, for: .normal)
         }

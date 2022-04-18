@@ -20,13 +20,8 @@ class ProfileViewController: LoggingViewController {
     /// Height for cell
     let heightCell = 47
     
+    /// Get current user is isLoggedIn
     var isLoggedIn = User.current.isLoggedIn
-    
-    /// Dictionary of occasion labels with occasion names as keys
-    var occasionLabels: [String: [String]] = [:]
-    
-    /// Array of occasion names
-    var occasionNames: [String] = []
     
     /// Gender to show in the collection view
     var shownGender: Gender?

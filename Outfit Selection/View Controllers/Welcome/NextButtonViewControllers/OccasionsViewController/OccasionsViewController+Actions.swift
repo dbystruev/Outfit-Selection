@@ -17,7 +17,7 @@ extension OccasionsViewController {
             // isEditing set to false
             setEditing(false, animated: false)
             
-            // Relod Items
+            // Reload Items
             NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
             
             // Back to profile viewController

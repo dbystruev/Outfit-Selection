@@ -10,15 +10,13 @@ import UIKit
 
 class OccasionCollectionViewCell: UICollectionViewCell {
     // MARK: - Outlets
-    
     @IBOutlet weak var checkBoxImageView: UIImageView!
     @IBOutlet weak var occasionNameLabel: UILabel!
     
     // MARK: - Methods
-    /// Configure gender cell with given gender
+    /// Configure occasion
     /// - Parameters:
-    ///   - gender: the gender to confiture cell with
-    ///   - selected: gender which is currently selected
+    ///   - occasion: the occasion to confiture cell with
     func configure(with occasion: Occasion) {
         checkBoxImageView.isHighlighted = occasion.isSelected
         occasionNameLabel.text = occasion.title
