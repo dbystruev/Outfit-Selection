@@ -48,7 +48,20 @@ extension ProfileViewController: UICollectionViewDelegate {
             
         case 2:
             // Section 1 is brands — reuse brands view controller to action
+            let mainStoryboard = UIStoryboard(name: "Welcome", bundle: nil)
+            let occasionsViewController = mainStoryboard.instantiateViewController(withIdentifier: "OccasionsViewController")
+            occasionsViewController.setEditing(true, animated: false)
+            self.navigationController?.show(occasionsViewController, sender: true)
+
+//            let occasion = Occasions.selectedUniqueTitle[indexPath.row]
+//            Occasions.select(title: occasion.title, shouldSelect: false)
+//            collectionView.reloadSections(IndexSet([indexPath.section]))
+
+            
+        case 3:
+            // Section 1 is brands — reuse brands view controller to action
             brandsViewController?.collectionView(collectionView, didSelectItemAt: indexPath)
+            
         default:
             debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")
         }

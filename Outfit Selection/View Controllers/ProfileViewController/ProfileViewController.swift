@@ -20,6 +20,7 @@ class ProfileViewController: LoggingViewController {
     /// Height for cell
     let heightCell = 47
     
+    /// Get current user is isLoggedIn
     var isLoggedIn = User.current.isLoggedIn
     
     /// Gender to show in the collection view
@@ -59,13 +60,14 @@ class ProfileViewController: LoggingViewController {
         
         // Configure navigation controller's bar font
         navigationController?.configureFont()
-        
+    
         // Setup profile collection view
         profileCollectionView.dataSource = self
         profileCollectionView.delegate = self
         profileCollectionView.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
         profileCollectionView.register(GenderCollectionViewCell.nib, forCellWithReuseIdentifier: GenderCollectionViewCell.reuseId)
         profileCollectionView.register(AccountCollectionViewCell.nib, forCellWithReuseIdentifier: AccountCollectionViewCell.reuseId)
+        profileCollectionView.register(OccasionCollectionViewCell.nib, forCellWithReuseIdentifier: OccasionCollectionViewCell.reuseId)
         profileCollectionView.register(ProfileSectionHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                        withReuseIdentifier: ProfileSectionHeaderView.reuseId)
     }

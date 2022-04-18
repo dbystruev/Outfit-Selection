@@ -19,6 +19,9 @@ extension ProfileViewController {
         }
         User.current.isLoggedIn = nil
         
+        // Set default settiings UserDefaults
+        UserDefaults.hasAnswerQuestions = false
+        
         // Reload data from into profileCollectionView
         profileCollectionView.reloadSections(IndexSet([0]))
     }

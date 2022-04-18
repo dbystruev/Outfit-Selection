@@ -34,5 +34,6 @@ extension Occasions {
     static func saveSelectedOccasions() {
         // Save occasion IDs for all genders
         UserDefaults.selectedOccasionTitles = [String](selected.titles)
+        debug(UserDefaults.selectedOccasionTitles.count)
     }
 }

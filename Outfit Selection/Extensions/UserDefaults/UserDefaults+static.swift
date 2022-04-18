@@ -15,6 +15,10 @@ extension UserDefaults {
     @UserDefault(key: "GetOutfitCollectionKey", defaultValue: nil)
     static var collections: Data?
     
+    /// Current selected gender  by the user
+    @UserDefault(key: "GetOutfitCurrentGender", defaultValue: nil )
+    static var currentGender: Data?
+    
     /// True if user has answer for questions
     @UserDefault(key: "GetOutfitHasAnswerQuestions", defaultValue: false)
     static var hasAnswerQuestions: Bool

@@ -454,8 +454,6 @@ class NetworkManager {
         completion: @escaping (Bool?) -> Void
     ) {
         
-        debug(gender, occasion)
-        
         // Get occasions with the same title and given gender
         lazy var selectedOccasions = Occasions
             .selectedUniqueTitle

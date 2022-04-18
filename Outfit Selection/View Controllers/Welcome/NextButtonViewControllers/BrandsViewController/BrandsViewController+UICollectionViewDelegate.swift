@@ -15,7 +15,7 @@ extension BrandsViewController: UICollectionViewDelegate {
     ///   - collectionView: the brands collection view
     ///   - indexPath: item index path the user has tapped on
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        searchBar.endEditing(true)
+        searchBar?.endEditing(true)
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
             guard let brandCell = collectionView.cellForItem(at: indexPath) as? BrandCollectionViewCell else {

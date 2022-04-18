@@ -15,7 +15,7 @@ struct PList {
         return plistDecoder
     }()
     
-    /// Global JSON encoder
+    /// Global PList encoder
     static let encoder = { () -> PropertyListEncoder in
         let plistEncoder = PropertyListEncoder()
         return plistEncoder

@@ -11,14 +11,28 @@ import UIKit
 extension OccasionsViewController {
     // MARK: - Actions
     override func nextButtonTapped(_ sender: UIButton) {
-        // Start loading items
-        NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
         
-        // The user has given answer for questions
-        UserDefaults.hasAnswerQuestions = true
-        
-        // Transition to progress
-        performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
+        if isEditing {
+            
+            // isEditing set to false
+            setEditing(false, animated: false)
+            
+            // Reload Items
+            NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+            
+            // Back to profile viewController
+            navigationController?.popViewController(animated: true)
+            
+        } else {
+            // Start loading items
+            NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+            
+            // The user has given answer for questions
+            UserDefaults.hasAnswerQuestions = true
+            
+            // Transition to progress
+            performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
+        }
     }
     
     @IBAction func selectAllButtonTapped(_ sender: SelectableButtonItem) {
