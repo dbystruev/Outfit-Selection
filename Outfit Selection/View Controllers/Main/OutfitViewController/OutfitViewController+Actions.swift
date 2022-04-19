@@ -88,8 +88,11 @@ extension OutfitViewController {
     
     @IBAction func occasionButtonTapped(_ sender: OccasionButton) {
         
+        // Start Anmation
+        shuffleButtonAnimate(setAnimation: true)
+        
         // Lock / Unlock button suffle
-        self.shuffleButtonCheck(lock: true)
+        shuffleButtonCheck(lock: true)
         
         // Hide bar back button
         shouldHideBackBarButtonItem = true
@@ -176,6 +179,9 @@ extension OutfitViewController {
             // Scroll to newly selected occasion
             DispatchQueue.main.async {
                 self.scrollTo(occasion: tappedOccasion)
+                
+                // Stop animation
+                self.shuffleButtonAnimate(setAnimation: false)
                 
                 // Lock / Unlock button suffle
                 self.shuffleButtonCheck(lock: false)

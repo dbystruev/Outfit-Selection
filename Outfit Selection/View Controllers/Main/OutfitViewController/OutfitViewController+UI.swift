@@ -138,13 +138,10 @@ extension OutfitViewController {
             $0.arrangedSubviews.first as? OccasionButton
         }
         
-        guard
-            let firstButton = buttons.first,
-            buttons.count == buttonUnderlineStackViews.count else
-            {
-                debug("WARNING: no buttons in occasions stack view")
-                return
-            }
+        guard let firstButton = buttons.first, buttons.count == buttonUnderlineStackViews.count else {
+            debug("WARNING: no buttons in occasions stack view")
+            return
+        }
         
         // Fill existing arranged subviews with selected occasions
         for (button, occasion) in zip(buttons, selectedOccasions) {
@@ -372,9 +369,24 @@ extension OutfitViewController {
         }
     }
     
+    /// Show or hide animate shaffle button
+    func shuffleButtonAnimate(setAnimation: Bool) {
+        if setAnimation {
+            savedTransform = shuffleButton.transform
+            shuffleButton.setImage(UIImage(named: "refresh"), for: .disabled)
+            UIView.animate(withDuration: 1, delay: 0, options: .repeat) {
+                self.shuffleButton.transform = self.shuffleButton.transform.rotated(by: CGFloat.pi)
+            }
+        } else {
+            shuffleButton.transform = savedTransform ?? shuffleButton.transform
+            shuffleButton.setImage(UIImage(named: "shuffle"), for: .normal)
+            shuffleButton.layer.removeAllAnimations()
+        }
+    }
+    
     /// Show / hide shuffleButton
     func shuffleButtonCheck(lock: Bool) {
-        shuffleButton.alpha = lock ? 0.75 : 1
+        shuffleButton.alpha = lock ? 1 : 1
         shuffleButton.isEnabled = lock ? false : true
     }
     

@@ -81,6 +81,9 @@ class ProfileViewController: LoggingViewController {
         
         // Reload brand and gender data
         profileCollectionView.reloadData()
+        
+        // Show tabbar 
+        showTabBar()
     }
     
     override func viewWillLayoutSubviews() {

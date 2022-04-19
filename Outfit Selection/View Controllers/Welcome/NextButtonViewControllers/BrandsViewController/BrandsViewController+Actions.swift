@@ -10,20 +10,46 @@ import UIKit
 
 // MARK: - Actions
 extension BrandsViewController {
+    /// Call when leftBarButtonItem tapped
+    @objc func cancelButtonTap() {
+        
+        // Reload brands
+        reloadBrands()
+        
+        // Set isEditing false
+        setEditing(false, animated: false)
+    
+        // Return to called viewController
+        navigationController?.popViewController(animated: true)
+    }
+    
     /// Called when next button is tapped
     /// - Parameter sender: the get outfit button which was tapped
     override func nextButtonTapped(_ sender: UIButton) {
-        // Transition to occasions if they are not empty
-        guard Occasions.areEmpty else {
-            performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)
-            return
+        if isEditing {
+            
+            // isEditing set to false
+            setEditing(false, animated: false)
+            
+            // Reload Items
+            NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+            
+            // Back to profile viewController
+            navigationController?.popViewController(animated: true)
+            
+        } else {
+            // Transition to occasions if they are not empty
+            guard Occasions.areEmpty else {
+                performSegue(withIdentifier: OccasionsViewController.segueIdentifier, sender: sender)
+                return
+            }
+            
+            // Start loading items
+            NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+            
+            // Transition to progress
+            performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
         }
-        
-        // Start loading items
-        NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
-        
-        // Transition to progress
-        performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)
     }
     
     @IBAction func selectAllButtonTapped(_ sender: SelectableButtonItem) {

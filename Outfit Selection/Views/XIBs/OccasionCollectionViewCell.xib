@@ -38,6 +38,9 @@
                         </label>
                     </subviews>
                     <viewLayoutGuide key="safeArea" id="LiU-lb-Wfd"/>
+                    <constraints>
+                        <constraint firstItem="JwB-Bl-ib2" firstAttribute="centerY" secondItem="wKH-6b-ncG" secondAttribute="centerY" id="Owz-HV-oKM"/>
+                    </constraints>
                 </stackView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="so9-kZ-8uZ"/>

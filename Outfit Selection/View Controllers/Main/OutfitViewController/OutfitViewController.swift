@@ -62,6 +62,9 @@ class OutfitViewController: LoggingViewController {
     /// True if occasion elements are being loaded
     var occasionItemsAreLoading = false
     
+    /// Save transform the shuffleButton
+    var savedTransform: CGAffineTransform?
+    
     /// Share view with current outfit
     var shareView: ShareView?
     

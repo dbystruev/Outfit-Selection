@@ -21,15 +21,16 @@ extension OccasionsViewController {
         for occasion in occasions {
             occasion.isSelected = selectedOccasionTitles.contains(occasion.title)
         }
+        
         // Set isEditing false
-        setEditing(false, animated: true)
+        setEditing(false, animated: false)
         
         // Return to called viewController
         navigationController?.popViewController(animated: true)
     }
+    
     /// Call when Next Button tapped
     override func nextButtonTapped(_ sender: UIButton) {
-        
         if isEditing {
             
             // isEditing set to false
