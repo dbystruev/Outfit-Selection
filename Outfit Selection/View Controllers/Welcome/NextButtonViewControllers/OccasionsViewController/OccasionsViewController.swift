@@ -54,7 +54,16 @@ class OccasionsViewController: NextButtonViewController {
         
         // If viewControllew called from profile
         if isEditing {
+            // Hide back button
+            navigationItem.hidesBackButton = isEditing
+            // Set new backButton into leftBarButtonItem
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
+            
+            // Change title nexButton
             nextButton?.setTitle("Save"~, for: .normal)
+            
+            // Hide tabBar
+            tabBarController?.tabBar.isHidden = true
         }
         
         // Setup data source

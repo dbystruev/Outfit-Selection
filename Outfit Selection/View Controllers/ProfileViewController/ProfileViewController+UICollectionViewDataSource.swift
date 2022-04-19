@@ -22,7 +22,6 @@ extension ProfileViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch indexPath.section {
         case 0:
-            
             // Check isLoggedIn
             guard User.current.isLoggedIn != nil else {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)

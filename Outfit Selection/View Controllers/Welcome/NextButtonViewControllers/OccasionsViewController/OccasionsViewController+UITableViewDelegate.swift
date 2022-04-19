@@ -20,12 +20,21 @@ extension OccasionsViewController: UITableViewDelegate {
             debug("ERROR: There are no occasions with name \(name)")
             return
         }
+        
         guard let occasion = Occasions.currentGender.with(name: name).with(label: label).first else {
             debug("ERROR: There are no occasions with name \(name) and label \(label)")
             return
         }
-        Occasions.select(title: occasion.title, shouldSelect: !occasion.isSelected)
-        tableView.reloadRows(at: [indexPath], with: .automatic)
+        
+        if isEditing {
+            /// Select occasion without save it
+            Occasions.select(title: occasion.title, shouldSelect: !occasion.isSelected, permanent: false)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        } else {
+            /// Select occasion with save it at once
+            Occasions.select(title: occasion.title, shouldSelect: !occasion.isSelected)
+            tableView.reloadRows(at: [indexPath], with: .automatic)
+        }
         
         // Configure the buttons
         configureAllButton()

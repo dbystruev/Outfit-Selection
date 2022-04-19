@@ -28,10 +28,10 @@ extension BrandsViewController: UICollectionViewDelegate {
             // Toggle alpha between 0.25 and 1
             brand.toggleSelection()
             brandCell.configureBackground(isSelected: brand.isSelected)
+            
+            // Configure the buttons
+            self.configureAllButton()
+            self.configureNextButton()
         }
-        
-        // Configure the buttons
-        configureAllButton()
-        configureNextButton()
     }
 }

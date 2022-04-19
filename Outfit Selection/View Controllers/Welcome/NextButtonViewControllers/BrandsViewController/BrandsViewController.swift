@@ -62,6 +62,23 @@ class BrandsViewController: NextButtonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // If viewControllew called from profile
+        if isEditing {
+            // Hide back button
+            navigationItem.hidesBackButton = isEditing
+            // Set new backButton into leftBarButtonItem
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
+            
+            // Change next button title
+            nextButton?.setTitle("Save"~, for: .normal)
+            
+            // Set a new title
+            self.title = "Brands"~
+            
+            // Hide tabBar
+            hideTabBar()
+        }
+        
         // Configure brands collection view layout
         configureLayout()
         

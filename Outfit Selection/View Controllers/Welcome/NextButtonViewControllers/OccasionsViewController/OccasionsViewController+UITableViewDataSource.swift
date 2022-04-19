@@ -36,10 +36,12 @@ extension OccasionsViewController: UITableViewDataSource {
             debug("ERROR: There are no occasions with name \(name)")
             return occasionCell
         }
+        
         guard let occasion = Occasions.currentGender.with(name: name).with(label: label).first else {
             debug("ERROR: There are no occasions with name \(name) and label \(label)")
             return occasionCell
         }
+        
         occasionCell.configureContent(with: occasion)
         return occasionCell
     }
