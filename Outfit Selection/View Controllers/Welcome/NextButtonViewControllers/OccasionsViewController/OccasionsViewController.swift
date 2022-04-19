@@ -52,20 +52,6 @@ class OccasionsViewController: NextButtonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // If viewControllew called from profile
-        if isEditing {
-            // Hide back button
-            navigationItem.hidesBackButton = isEditing
-            // Set new backButton into leftBarButtonItem
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
-            
-            // Change title nexButton
-            nextButton?.setTitle("Save"~, for: .normal)
-            
-            // Hide tabBar
-            tabBarController?.tabBar.isHidden = true
-        }
-        
         // Setup data source
         let currentGenderOccasions = Occasions.currentGender
         occasionNames = currentGenderOccasions.names.sorted()
@@ -81,6 +67,22 @@ class OccasionsViewController: NextButtonViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // If viewControllew called from profile
+        if isEditing {
+            
+            // Hide back button
+            navigationItem.hidesBackButton = isEditing
+            
+            // Set new backButton into leftBarButtonItem
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
+            
+            // Change title nexButton
+            nextButton?.setTitle("Save"~, for: .normal)
+            
+            // Hide tabBar
+            tabBarController?.tabBar.isHidden = true
+        }
         
         // Unhide top navigation bar
         navigationController?.isNavigationBarHidden = false

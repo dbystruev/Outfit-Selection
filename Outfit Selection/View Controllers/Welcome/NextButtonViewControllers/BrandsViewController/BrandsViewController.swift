@@ -64,25 +64,6 @@ class BrandsViewController: NextButtonViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // If viewControllew called from profile
-        if isEditing {
-            
-            // Hide back button
-            navigationItem.hidesBackButton = isEditing
-            
-            // Set a new backButton into leftBarButtonItem
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
-            
-            // Change next button title
-            nextButton?.setTitle("Save"~, for: .normal)
-            
-            // Save selected brand into array
-            savedBrands = Brands.selected.names
-            
-            // Set a new title for viewController
-            self.title = "Brands"~
-        }
-        
         // Configure brands collection view layout
         configureLayout()
         
@@ -102,9 +83,25 @@ class BrandsViewController: NextButtonViewController {
         // Reload data when coming from another tab
         brandsCollectionView.reloadData()
         
+        // If viewControllew called from profile
         if isEditing {
             // Hide tabBar
             hideTabBar()
+            
+            // Hide back button
+            navigationItem.hidesBackButton = isEditing
+            
+            // Set a new backButton into leftBarButtonItem
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
+            
+            // Change next button title
+            nextButton?.setTitle("Save"~, for: .normal)
+            
+            // Set a new title for viewController
+            self.title = "Brands"~
+            
+            // Save selected brand into array
+            savedBrands = UserDefaults.selectedBrands
         }
     }
     
