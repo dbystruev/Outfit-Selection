@@ -10,6 +10,24 @@ import UIKit
 
 extension OccasionsViewController {
     // MARK: - Actions
+    /// Call when leftBarButtonItem tapped
+    @objc func cancelButtonTap() {
+        // Hide backButton
+        navigationItem.hidesBackButton = true
+        
+        // Load selected occasions
+        let occasions = Occasions.currentGender
+        let selectedOccasionTitles  = UserDefaults.selectedOccasionTitles
+        for occasion in occasions {
+            occasion.isSelected = selectedOccasionTitles.contains(occasion.title)
+        }
+        // Set isEditing false
+        setEditing(false, animated: true)
+        
+        // Return to called viewController
+        navigationController?.popViewController(animated: true)
+    }
+    /// Call when Next Button tapped
     override func nextButtonTapped(_ sender: UIButton) {
         
         if isEditing {
@@ -19,6 +37,9 @@ extension OccasionsViewController {
             
             // Reload Items
             NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+            
+            // Save selected occasions
+            Occasions.saveSelectedOccasions()
             
             // Back to profile viewController
             navigationController?.popViewController(animated: true)
@@ -44,7 +65,13 @@ extension OccasionsViewController {
         Occasions.byTitle.keys.forEach {
             Occasions.selectWithoutSaving(title: $0, shouldSelect: isSelected)
         }
-        Occasions.saveSelectedOccasions()
+        
+        if isEditing {
+            // If isEditing == true, will nothing happened
+        } else {
+            // Save selected occasions
+            Occasions.saveSelectedOccasions()
+        }
         
         // Reload occasions and enable / disable go button
         occasionsTableView.reloadData()
