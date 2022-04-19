@@ -21,6 +21,9 @@ extension BrandsViewController {
     
         // Return to called viewController
         navigationController?.popViewController(animated: true)
+        
+        // Restore saved brands
+        Brands.update(selectedBrands: savedBrands)
     }
     
     /// Called when next button is tapped

@@ -32,6 +32,8 @@ class BrandsViewController: NextButtonViewController {
     /// The collection of brand images
     private(set) var brands: [Brand] = Brands.withImage.values.sorted()
     
+    private(set) var savedBrands: [String] = []
+    
     /// The string to filter brand search results
     var filterString = "" {
         didSet {
@@ -64,19 +66,21 @@ class BrandsViewController: NextButtonViewController {
         
         // If viewControllew called from profile
         if isEditing {
+            
             // Hide back button
             navigationItem.hidesBackButton = isEditing
-            // Set new backButton into leftBarButtonItem
+            
+            // Set a new backButton into leftBarButtonItem
             navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
             
             // Change next button title
             nextButton?.setTitle("Save"~, for: .normal)
             
-            // Set a new title
-            self.title = "Brands"~
+            // Save selected brand into array
+            savedBrands = Brands.selected.names
             
-            // Hide tabBar
-            hideTabBar()
+            // Set a new title for viewController
+            self.title = "Brands"~
         }
         
         // Configure brands collection view layout
@@ -97,6 +101,11 @@ class BrandsViewController: NextButtonViewController {
         
         // Reload data when coming from another tab
         brandsCollectionView.reloadData()
+        
+        if isEditing {
+            // Hide tabBar
+            hideTabBar()
+        }
     }
     
     override func viewWillLayoutSubviews() {
