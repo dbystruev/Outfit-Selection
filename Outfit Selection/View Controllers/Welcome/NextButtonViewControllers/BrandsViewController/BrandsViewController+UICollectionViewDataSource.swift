@@ -10,7 +10,7 @@ import UIKit
 
 extension BrandsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        brands.count
+        isEditing ? brands.count : Brands.selected.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -20,8 +20,9 @@ extension BrandsViewController: UICollectionViewDataSource {
         }
         
         let brandCell = cell as? BrandCollectionViewCell ?? BrandCollectionViewCell(frame: cell.frame)
-        brandCell.configure(brand: brands[indexPath.row], cellSize: cellSize(for: collectionView))
-        
+
+        isEditing ? brandCell.configure(brand: brands[indexPath.row], cellSize: cellSize(for: collectionView))
+        : brandCell.configure(brand: Brands.selected.sorted[indexPath.row], cellSize: cellSize(for: collectionView))
         return brandCell
     }
 }

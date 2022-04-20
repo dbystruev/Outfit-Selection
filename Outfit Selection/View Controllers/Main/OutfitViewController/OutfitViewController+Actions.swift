@@ -88,7 +88,7 @@ extension OutfitViewController {
     
     @IBAction func occasionButtonTapped(_ sender: OccasionButton) {
         
-        // Start Anmation
+        // Start animation
         shuffleButtonAnimate(setAnimation: true)
         
         // Lock / Unlock button suffle

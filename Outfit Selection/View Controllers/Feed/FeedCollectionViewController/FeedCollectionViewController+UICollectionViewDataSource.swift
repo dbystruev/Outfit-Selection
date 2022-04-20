@@ -40,6 +40,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
                 return cell
             }
             
+            // Configure content for cell in section
             let kind = sections[indexPath.section]
             if let item = items[kind]?[indexPath.item] {
                 itemCell.configureContent(

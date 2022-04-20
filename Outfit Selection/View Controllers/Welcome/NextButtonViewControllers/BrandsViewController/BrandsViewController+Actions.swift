@@ -31,6 +31,8 @@ extension BrandsViewController {
     override func nextButtonTapped(_ sender: UIButton) {
         if isEditing {
             
+            finishEditing(searchBar)
+            
             // isEditing set to false
             setEditing(false, animated: false)
             

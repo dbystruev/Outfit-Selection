@@ -149,42 +149,46 @@ class FeedCollectionViewController: LoggingViewController {
             }
         }()
         
-        // If feed type is sale get items with old prices set
-        let sale = kind == .sale
-        
-        NetworkManager.shared.getItems(
-            subcategoryIDs: subcategoryIDs,
-            filteredBy: ignoreBrands ? [] : brandNames,
-            limited: maxItemsInSection * 2,
-            sale: sale
-        ) { [weak self] items in
-            // Check for self availability
-            guard let self = self else {
-                debug("ERROR: self is not available")
-                return
-            }
+        DispatchQueue.global(qos: .default).async {
             
-            guard var items = items?.shuffled(), !items.isEmpty else {
-                // If no items were returned try again ignoring brands
-                if !ignoreBrands {
-                    self.getItems(for: kind, ignoreBrands: true)
+            // If feed type is sale get items with old prices set
+            let sale = kind == .sale
+            NetworkManager.shared.getItems(
+                subcategoryIDs: subcategoryIDs,
+                filteredBy: ignoreBrands ? [] : brandNames,
+                limited: self.maxItemsInSection * 2,
+                sale: sale
+            ) { [weak self] items in
+                // Check for self availability
+                guard let self = self else {
+                    debug("ERROR: self is not available")
+                    return
                 }
-                return
-            }
-            
-            // Put the last selected brand name first
-            if let lastSelectedBrandName = brandManager.lastSelected?.brandName {
-                let lastSelectedBrandNames = [lastSelectedBrandName]
-                items.sort { $0.branded(lastSelectedBrandNames) || !$1.branded(lastSelectedBrandNames)}
-            }
-            
-            self.items[kind] = items
-            
-            let updatedSections = self.sections.enumerated().compactMap { index, section in
-                section == kind ? index : nil
-            }
-            DispatchQueue.main.async {
-                self.feedCollectionView?.reloadSections(IndexSet(updatedSections))
+                
+                // Check items
+                guard var items = items, !items.isEmpty else {
+                    // If no items were returned try again ignoring brands
+                    if !ignoreBrands {
+                        debug("INFO: No items")
+                    }
+                    return
+                }
+                
+                // Put the last selected brand name first
+                if let lastSelectedBrandName = brandManager.lastSelected?.brandName {
+                    let lastSelectedBrandNames = [lastSelectedBrandName]
+                    items.sort { $0.branded(lastSelectedBrandNames) || !$1.branded(lastSelectedBrandNames)}
+                }
+                
+                self.items[kind] = items
+                
+                let updatedSections = self.sections.enumerated().compactMap { index, section in
+                    section == kind ? index : nil
+                }
+                
+                DispatchQueue.main.async {
+                    self.feedCollectionView?.reloadSections(IndexSet(updatedSections))
+                }
             }
         }
     }
@@ -193,8 +197,14 @@ class FeedCollectionViewController: LoggingViewController {
     /// - Parameter brandName: brand name, nil be default
     func reloadDataOnBrandChange() {
         items = [:]
-        for section in sections {
-            getItems(for: section)
+        
+        if Brands.selected.count > 0 {
+            for section in sections {
+                getItems(for: section)
+            }
+        } else {
+            debug("INFO: Nothing selected from brands")
+            feedCollectionView.reloadData()
         }
     }
     
@@ -219,47 +229,12 @@ class FeedCollectionViewController: LoggingViewController {
         items = [:]
     }
     
-    // MARK: - UIViewController Inherited Methods
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        switch segue.identifier {
-            
-        case FeedItemViewController.segueIdentifier:
-            guard let feedHeader = sender as? FeedSectionHeaderView else {
-                debug("Can't cast \(String(describing: sender)) to \(FeedSectionHeaderView.self)")
-                return
-            }
-            
-            guard let feedItemViewController = segue.destination as? FeedItemViewController else {
-                debug("Can't cast \(segue.destination) to \(FeedItemViewController.self)")
-                return
-            }
-            
-            let kind = feedHeader.kind
-            feedItemViewController.configure(kind, with: items[kind], named: feedHeader.title)
-            
-        case ItemViewController.segueIdentifier:
-            // Make sure feed item was clicked
-            guard let feedItem = sender as? FeedItem else {
-                debug("Can't cast \(String(describing: sender)) to \(FeedItem.self)")
-                return
-            }
-            
-            // Make sure we segue to item view controller
-            guard let itemViewController = segue.destination as? ItemViewController else {
-                debug("Can't cast \(segue.destination) to \(ItemViewController.self)")
-                return
-            }
-            
-            // Configure item view controller with feed item and its image
-            itemViewController.configure(with: feedItem.item, image: feedItem.itemImageView.image)
-
-        default:
-            debug("WARNING: unknown segue id \(String(describing: segue.identifier))")
-        }
-    }
-    
+    // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Configure navigation controller's bar font
+        navigationController?.configureFont()
         
         // Initial sections for feed collection view
         let sections = [
@@ -276,9 +251,6 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Set navigation item title
         title = "Feed"~
-        
-        // Configure navigation controller's bar font
-        navigationController?.configureFont()
     }
     
     override func viewWillAppear(_ animated: Bool) {

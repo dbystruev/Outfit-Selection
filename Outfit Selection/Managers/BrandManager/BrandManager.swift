@@ -27,12 +27,10 @@ class BrandManager {
     var brandedImages: BrandedImages {
         get {
             guard let brandedImages = _brandedImages else {
-                let selectedBrands = Brands.loadSelectedBrands().map { $0.lowercased() }
                 _brandedImages = BrandedImages(fullNames.compactMap {
                     let brandedImage = BrandedImage(contentsOfFile: $0)
                     let brandName = $0.lastComponent.dropExtension
                     brandedImage?.brandName = brandName
-                    brandedImage?.isSelected = selectedBrands.contains(brandName.lowercased())
                     return brandedImage
                 })
                 return _brandedImages ?? BrandedImages()

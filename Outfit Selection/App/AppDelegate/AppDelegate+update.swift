@@ -14,13 +14,14 @@ extension AppDelegate {
     /// Update the list of barnds from the file and images
     static func updateBrands() {
         
-        // Load branded images from bundle and from file and append to the list of brands
+        // Load images of brands from bundle
         Brands.append(BrandManager.shared.brandedImages)
+        
+        // Load and from file and append to the list of brands
         Brands.append(BrandManager.shared.brandNamesFromFile)
         
         debug(
-            "INFO brands loaded: \(Brands.selected.count) selected of \(Brands.count) total | With image:",
-            Brands.withImage.count
+            "INFO: Loaded: \(Brands.count) brands, with image", Brands.withImage.count
         )
     }
     
@@ -60,7 +61,7 @@ extension AppDelegate {
             
             // Show elapsed time
             let elapsedTime = Date().timeIntervalSince(startTime)
-
+            
             debug(
                 "INFO: Loaded \(Occasions.titles.count) / \(Occasions.count) occasions in \(elapsedTime.asTime) s,",
                 "subcategories: \(Occasions.flatSubcategoryIDs.count),",
