@@ -81,7 +81,6 @@ extension OutfitViewController {
             name: Notification.Name(nameNotification),
             object: nil
         )
-        
     }
     
     override func viewDidLayoutSubviews() {
@@ -110,6 +109,9 @@ extension OutfitViewController {
         
         // Remove observer updatedOccasions
         Globals.Notification.notificationCenter.removeObserver(self)
+        
+        // Stop animation
+        shuffleButtonAnimate(setAnimation: false)
     }
     
     override func viewWillLayoutSubviews() {

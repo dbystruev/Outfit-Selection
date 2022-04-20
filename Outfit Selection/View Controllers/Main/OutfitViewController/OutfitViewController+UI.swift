@@ -305,7 +305,7 @@ extension OutfitViewController {
             Globals.TabBar.status.found = false
             
             // Set lock button shuffle
-            shuffleButtonCheck(lock: true)
+            shuffleButtonCheck(lock: true, alpha: 0.25)
             
             // Update occasions
             updateOccasionsUI(selectedTitle: occasionSelected?.title)
@@ -379,14 +379,14 @@ extension OutfitViewController {
             }
         } else {
             shuffleButton.transform = savedTransform ?? shuffleButton.transform
-            shuffleButton.setImage(UIImage(named: "shuffle"), for: .normal)
+            shuffleButton.setImage(UIImage(named: "shuffle"), for: .disabled)
             shuffleButton.layer.removeAllAnimations()
         }
     }
     
     /// Show / hide shuffleButton
-    func shuffleButtonCheck(lock: Bool) {
-        shuffleButton.alpha = lock ? 1 : 1
+    func shuffleButtonCheck(lock: Bool, alpha: Double = 1) {
+        shuffleButton.alpha = lock ? alpha : 1
         shuffleButton.isEnabled = lock ? false : true
     }
     
