@@ -35,6 +35,9 @@ extension AppDelegate {
     /// Configure setting, load gender selected brands and occasion
     func restoreSettings() {
         
+        // Load selected brands from UserDefault
+        _ = Brands.loadSelectedBrands()
+        
         // Restore collections from user defaults
         Collection.restore()
         
@@ -46,13 +49,6 @@ extension AppDelegate {
         let selectedOccasionTitles  = UserDefaults.selectedOccasionTitles
         for occasion in occasions {
             occasion.isSelected = selectedOccasionTitles.contains(occasion.title)
-        }
-        
-        // Load selectred collection of brand
-        let selectedBrands = UserDefaults.selectedBrands
-        let brandedImages = BrandManager.shared.brandedImages
-        for brand in brandedImages.images {
-            brand.isSelected = selectedBrands.contains(brand.brandName ?? "")
         }
         
         // Restore wishlist from user defaults

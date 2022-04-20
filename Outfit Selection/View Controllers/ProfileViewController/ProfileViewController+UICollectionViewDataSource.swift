@@ -95,7 +95,8 @@ extension ProfileViewController: UICollectionViewDataSource {
             return Occasions.selectedUniqueTitle.count
         case 3:
             // Section 2 is brands — use brands view controller section 0 to answer.
-            return brandsViewController?.collectionView(collectionView, numberOfItemsInSection: 0) ?? 0
+            return Brands.selected.count
+            
         default:
             debug("WARNING: Unknown section \(section)")
             return 0

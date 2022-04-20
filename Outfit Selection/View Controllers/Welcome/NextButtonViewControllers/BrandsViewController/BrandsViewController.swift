@@ -32,6 +32,7 @@ class BrandsViewController: NextButtonViewController {
     /// The collection of brand images
     private(set) var brands: [Brand] = Brands.withImage.values.sorted()
     
+    /// The saved collection of selected brands
     private(set) var savedBrands: [String] = []
     
     /// The string to filter brand search results
@@ -101,13 +102,12 @@ class BrandsViewController: NextButtonViewController {
             self.title = "Brands"~
             
             // Save selected brand into array
-            savedBrands = UserDefaults.selectedBrands
+            savedBrands = Brands.selected.names
         }
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         // Reload data after rotation
         brandsCollectionView.reloadData()
     }
@@ -142,6 +142,12 @@ class BrandsViewController: NextButtonViewController {
     func reloadBrands() {
         brands = Brands.withImage.values.sorted()
         
+        // Reload data
+        brandsCollectionView?.reloadData()
+    }
+    
+    /// Reload  the collection of brand
+    func reloadData() {
         // Reload data
         brandsCollectionView?.reloadData()
     }

@@ -36,9 +36,8 @@ extension Brands {
     /// Append array brands to all brands
     /// - Parameter brandNames: array of brand names
     static func append(_ brandNames: [String]) {
-        let selectedBrands = Brands.loadSelectedBrands().map { $0.lowercased() }
         for brandName in brandNames {
-            let newBrand = Brand(name: brandName, isSelected: selectedBrands.contains(brandName.lowercased()))
+            let newBrand = Brand(name: brandName)
             append(newBrand)
         }
     }
@@ -53,7 +52,6 @@ extension Brands {
                 image: brandedImage,
                 isSelected: brandedImage.isSelected
             )
-            
             append(newBrand)
         }
     }

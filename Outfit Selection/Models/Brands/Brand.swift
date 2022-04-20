@@ -43,7 +43,7 @@ final class Brand {
         name: String,
         image: UIImage? = nil,
         imageURL: URL? = nil,
-        isSelected: Bool,
+        isSelected: Bool = false,
         isLastSelected: Bool? = nil
     ) {
         self.id = id

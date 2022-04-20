@@ -84,6 +84,8 @@ class ProfileViewController: LoggingViewController {
         
         // Show tabbar 
         showTabBar()
+        
+        brandsViewController?.reloadData()
     }
     
     override func viewWillLayoutSubviews() {
