@@ -13,17 +13,18 @@ extension BrandsViewController {
     /// Call when leftBarButtonItem tapped
     @objc func cancelButtonTap() {
         
-        // Reload brands
-        reloadBrands()
+        // Clear searchBar text
+        searchBar.text = ""
+        finishEditing(searchBar)
         
         // Set isEditing false
         setEditing(false, animated: false)
-    
-        // Return to called viewController
-        navigationController?.popViewController(animated: true)
         
         // Restore saved brands
         Brands.update(selectedBrands: savedBrands)
+    
+        // Return to called viewController
+        navigationController?.popViewController(animated: true)
     }
     
     /// Called when next button is tapped
@@ -31,6 +32,8 @@ extension BrandsViewController {
     override func nextButtonTapped(_ sender: UIButton) {
         if isEditing {
             
+            // Clear searchBar text
+            searchBar.text = ""
             finishEditing(searchBar)
             
             // isEditing set to false
