@@ -11,15 +11,22 @@ import UIKit
 class OccasionCollectionViewCell: UICollectionViewCell {
     // MARK: - Outlets
     @IBOutlet weak var checkBoxImageView: UIImageView!
+    @IBOutlet weak var chevronImageView: UIImageView!
     @IBOutlet weak var occasionNameLabel: UILabel!
     
     // MARK: - Methods
-    /// Configure occasion
+    /// Configure occasioncheckBox
     /// - Parameters:
     ///   - occasion: the occasion to confiture cell with
-    func configure(with occasion: Occasion) {
-        checkBoxImageView.isHighlighted = occasion.isSelected
-        occasionNameLabel.text = occasion.title
-    }
+    func configure(
+        with occasion: Occasion,
+        hideCheckBox: Bool = false,
+        hideChevron: Bool = true,
+        custtomLabel: String = "") {
+            checkBoxImageView.isHighlighted = occasion.isSelected
+            checkBoxImageView.isHidden = hideCheckBox
+            chevronImageView.isHidden = hideChevron
+            occasionNameLabel.text = custtomLabel.isEmpty ? occasion.title : custtomLabel
+        }
 }
 
