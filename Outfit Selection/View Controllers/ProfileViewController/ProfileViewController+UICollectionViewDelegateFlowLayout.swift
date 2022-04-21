@@ -19,7 +19,7 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: collectionView.bounds.width, height: 36)
+        CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
     }
     
     /// Provides the size for item in given profile collection view
@@ -37,11 +37,13 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
             // Section 1 is gender - 1 item per row
             return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
         case 2:
-            // Section 2 is brands — reuse brands view controller to answer
+            // Section 2 is occasions — reuse occasion view controller to answer
             return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
         case 3:
             // Section 2 is brands — reuse brands view controller to answer
-            return brandsViewController?.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath) ?? CGSize.zero
+            return  Brands.selected.count > itemsLimit
+            ? CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
+            : brandsViewController?.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath) ?? CGSize.zero
         default:
             debug("WARNING: Unknown section \(indexPath.section)")
             return CGSize.zero

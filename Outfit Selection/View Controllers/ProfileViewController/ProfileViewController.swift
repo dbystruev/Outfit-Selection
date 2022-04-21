@@ -16,12 +16,15 @@ class ProfileViewController: LoggingViewController {
     // MARK: - Stored Properties
     /// Brands view controller to use as profile collection view data source
     var brandsViewController: BrandsViewController?
-    
+
     /// Height for cell
-    let heightCell = 47
+    let heightCell = 36
     
     /// Get current user is isLoggedIn
     var isLoggedIn = User.current.isLoggedIn
+    
+    /// Limit to showing items in section for brands and occasion
+    let itemsLimit = 10
     
     /// Gender to show in the collection view
     var shownGender: Gender?
