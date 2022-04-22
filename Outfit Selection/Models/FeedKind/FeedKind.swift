@@ -17,6 +17,7 @@ enum FeedKind {
     case brands
     case collections(String)
     case newItems
+    case emptyBrands
     case occasions(Int)
     case sale
     
@@ -30,6 +31,8 @@ enum FeedKind {
             return name
         case .newItems:
             return "New items for you"~
+        case .emptyBrands:
+            return "Select favorite brands please"~
         case .occasions(let id):
             guard let occasion = Occasions.byID[id] else { return nil }
             return occasion.title

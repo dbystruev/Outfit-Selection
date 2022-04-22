@@ -9,11 +9,8 @@
 import UIKit
 
 extension FeedCollectionViewController: UICollectionViewDataSource {
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath
-    ) -> UICollectionViewCell {
-        switch sections[indexPath.section] {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath ) -> UICollectionViewCell {
+        switch nonEmptySections[indexPath.section] {
         
         case .brands:
             let cell = collectionView.dequeueReusableCell(
@@ -29,6 +26,9 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             brandCell.configure(brand: Brands.prioritizeSelected[indexPath.item], cellSize: BrandCollectionViewCell.size)
             return brandCell
             
+        case .emptyBrands:
+            return UICollectionViewCell()
+            
         default:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: FeedItemCollectionCell.reuseId,
@@ -41,7 +41,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             }
             
             // Configure content for cell in section
-            let kind = sections[indexPath.section]
+            let kind = nonEmptySections[indexPath.section]
             if let item = items[kind]?[indexPath.item] {
                 itemCell.configureContent(
                     kind: kind,
@@ -56,13 +56,14 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let kind = sections[section]
+        let kind = nonEmptySections[section]
         let count = kind == .brands ? Brands.sorted.count : items[kind]?.count ?? 0
         return count
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        let count = sections.count
+        let count = nonEmptySections.count
+        debug(count, nonEmptySections)
         return count
     }
     
@@ -72,6 +73,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionHeader else { return UICollectionReusableView() }
+        
         
         let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
@@ -84,8 +86,9 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             return header
         }
         
-        feedHeader.configureContent(kind: sections[indexPath.section % sections.count])
+        feedHeader.configureContent(kind: nonEmptySections[indexPath.section % nonEmptySections.count])
         feedHeader.delegate = self
         return feedHeader
     }
+    
 }

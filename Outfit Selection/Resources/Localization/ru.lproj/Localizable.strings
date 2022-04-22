@@ -8,6 +8,7 @@
 "Account" = "Пользователь";
 "Add something to collection" = "Добавить вещи в коллекцию";
 "Brands" = "Бренды";
+"brands out of" = "брендов из";
 "Cancel" = "Отменить";
 "Change" = "Изменить";
 "Change to" = "Изменить на";
@@ -41,6 +42,7 @@
 "None" = "Ничего не";
 "Now taking you to FARFETCH..." = "Переходим на сайт FARFETCH…";
 "Occasions" = "Образы";
+"occasions out of" = "брендов из";
 "OK" = "ОК";
 "Outfit price" = "Цена образа";
 "Pin an item you like!" = "Закрепить вещи";
@@ -53,6 +55,8 @@
 "Sales" = "Скидки";
 "See all" = "Посмотреть все";
 "Select all" = "Выбрать все";
+"Select favorite brands please" = "Выберите другие бренды";
+"Selected" = "Выбрано";
 "selected for" = "выбрано для";
 "Shop now" = "Купить сейчас";
 "Taking you back to GET OUTFIT..." = "Возвращаемся обратно в GET OUTFIT…";
@@ -63,3 +67,4 @@
 "Yes" = "Да";
 "your personal styling platform" = "ваш сервис по подбору гардероба";
 "is going to be saved to wishlist" = "будет сохранен в избранном";
+

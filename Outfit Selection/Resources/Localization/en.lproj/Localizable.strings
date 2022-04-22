@@ -8,6 +8,7 @@
 "Account" = "Account";
 "Add something to collection" = "Add something to collection";
 "Brands" = "Brands";
+"brands out of" = "brands out of";
 "Cancel" = "Cancel";
 "Change" = "Change";
 "Change to" = "Change to";
@@ -41,6 +42,7 @@
 "None" = "None";
 "Now taking you to FARFETCH..." = "Now taking you to FARFETCH...";
 "Occasions" = "Occasions";
+"occasions out of" = "occasions out of";
 "OK" = "OK";
 "Outfit price" = "Outfit price";
 "Phone:" = "Phone:";
@@ -53,6 +55,8 @@
 "Sales" = "Sales";
 "See all" = "See all";
 "Select all" = "Select all";
+"Select favorite brands please" = "Select favorite brands please";
+"Selected" = "Selected";
 "selected for" = "selected for";
 "Shop now" = "Shop now";
 "Taking you back to GET OUTFIT..." = "Taking you back to GET OUTFIT...";
