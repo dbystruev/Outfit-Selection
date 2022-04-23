@@ -20,6 +20,8 @@ extension FeedKind: CustomStringConvertible {
             return ".occasions(\(occasionID))"
         case .sale:
             return ".sale"
+        case .emptyBrands:
+            return ".noBrands"
         }
     }
 }

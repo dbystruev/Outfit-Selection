@@ -301,6 +301,7 @@
 		7AD80C1E27D0D5CF005A36DC /* Brands+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80C1D27D0D5CF005A36DC /* Brands+all.swift */; };
 		7AD80C2027D0E0E2005A36DC /* brands.csv in Resources */ = {isa = PBXBuildFile; fileRef = 7AD80C1F27D0E0E2005A36DC /* brands.csv */; };
 		7AD80C2227D33567005A36DC /* Brand+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AD80C2127D33567005A36DC /* Brand+Comparable.swift */; };
+		7ADB64852812594E00809AC0 /* FeedCollectionViewController+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB64842812594E00809AC0 /* FeedCollectionViewController+Configure.swift */; };
 		7AEB482527CE246A003360CF /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB482427CE246A003360CF /* ItemImageView.swift */; };
 		7AEB482E27CE5311003360CF /* ItemImageView+configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB482D27CE5311003360CF /* ItemImageView+configure.swift */; };
 		7AF42A9527D9D00300D5CF53 /* occasions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7AF42A9427D9D00300D5CF53 /* occasions.txt */; };
@@ -613,6 +614,7 @@
 		7AD80C1D27D0D5CF005A36DC /* Brands+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brands+all.swift"; sourceTree = "<group>"; };
 		7AD80C1F27D0E0E2005A36DC /* brands.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = brands.csv; sourceTree = "<group>"; };
 		7AD80C2127D33567005A36DC /* Brand+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brand+Comparable.swift"; sourceTree = "<group>"; };
+		7ADB64842812594E00809AC0 /* FeedCollectionViewController+Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedCollectionViewController+Configure.swift"; sourceTree = "<group>"; };
 		7AEB482427CE246A003360CF /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
 		7AEB482D27CE5311003360CF /* ItemImageView+configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemImageView+configure.swift"; sourceTree = "<group>"; };
 		7AF42A9427D9D00300D5CF53 /* occasions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = occasions.txt; sourceTree = "<group>"; };
@@ -1578,6 +1580,7 @@
 			children = (
 				69F6465A270227360059A46C /* FeedCollectionViewController.swift */,
 				69A0C9E22704635700C49977 /* FeedCollectionViewController+ButtonDelegate.swift */,
+				7ADB64842812594E00809AC0 /* FeedCollectionViewController+Configure.swift */,
 				7AD6F1BD280F96B90056CDA4 /* FeedCollectionViewController+Navigation.swift */,
 				691E5D74270391BD00C6CBD3 /* FeedCollectionViewController+UICollectionViewDataSource.swift */,
 				69A0C9E7270486A100C49977 /* FeedCollectionViewController+UICollectionViewDelegate.swift */,
@@ -1893,6 +1896,7 @@
 				69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */,
 				69575660271590CB007ADE02 /* OnboardingViewController.swift in Sources */,
 				6963C6442718929000F03541 /* Categories.swift in Sources */,
+				7ADB64852812594E00809AC0 /* FeedCollectionViewController+Configure.swift in Sources */,
 				69D984E8272FC62E003E1BAC /* UIView+nib.swift in Sources */,
 				69A0C9E6270467DC00C49977 /* FeedKind+CustomStringConvertible.swift in Sources */,
 				69007CF126EA6619001170D0 /* Occasion+Comparable.swift in Sources */,

@@ -55,13 +55,13 @@ extension ProfileViewController: UICollectionViewDataSource {
                 with: Occasions.selectedUniqueTitle.sorted()[indexPath.row],
                 hideCheckBox: true,
                 hideChevron: false,
-                custtomLabel: "Selected \(Occasions.selectedUniqueTitle.count) occasions out of \(Occasions.titles.count)" ) :
+                custtomLabel: "Selected \(Occasions.selectedUniqueTitle.count) occasions out of \(Occasions.titles.count)"~ ) :
             (cell as? OccasionCollectionViewCell)?.configure(with: Occasions.selectedUniqueTitle.sorted()[indexPath.row])
             return cell
             
         case 3:
             // Section 2 is brands - use brands view controller section 0 to answer
-            if Brands.selected.count > itemsLimit {
+            if Brands.selected.count > itemsLimit || Brands.selected.count == 0  {
                 
                 // Configure one cell with simple text
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
@@ -69,7 +69,7 @@ extension ProfileViewController: UICollectionViewDataSource {
                     with: Occasions.selectedUniqueTitle.sorted()[indexPath.row],
                     hideCheckBox: true,
                     hideChevron: false,
-                    custtomLabel: "Selected \(Brands.selected.count) brands out of \(Brands.count)" )
+                    custtomLabel: "Selected \(Brands.selected.count) brands out of \(Brands.count)"~ )
                 return cell
                 
             } else {
@@ -119,7 +119,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             
         case 3:
             // Section 2 is brands — use brands view controller section 0 to answer.
-            return Brands.selected.count > itemsLimit ? 1 : Brands.selected.count
+            return Brands.selected.count > itemsLimit || Brands.selected.count == 0 ? 1 : Brands.selected.count
             
         default:
             debug("WARNING: Unknown section \(section)")

@@ -81,7 +81,7 @@ class FeedSectionHeaderView: UICollectionReusableView {
     func configureContent(kind: FeedKind) {
         self.kind = kind
         seeAllButton.setTitle("See all"~, for: .normal)
-        seeAllButton.isHidden = kind == .brands
+        seeAllButton.isHidden = kind == .brands || kind == .emptyBrands
         titleLabel.text = kind.title
     }
     
