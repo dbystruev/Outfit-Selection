@@ -85,9 +85,10 @@ class ProfileViewController: LoggingViewController {
         // Reload brand and gender data
         profileCollectionView.reloadData()
         
-        // Show tabbar 
+        // Show Tabbar 
         showTabBar()
         
+        // Reload Data
         brandsViewController?.reloadData()
     }
     

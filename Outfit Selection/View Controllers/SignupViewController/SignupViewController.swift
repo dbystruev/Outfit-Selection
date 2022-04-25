@@ -11,6 +11,10 @@ import GoogleSignIn
 import UIKit
 
 class SignupViewController: LoggingViewController {
+    // MARK: - Stored Properties
+    // The emails array for debug mode
+    private let debugModeEmails = Globals.TabBar.debugModeEmails
+    
     // MARK: - Inherited Methods
     /// Return navigation controller bar style back to normal
     override func viewWillDisappear(_ animated: Bool) {
@@ -75,36 +79,60 @@ class SignupViewController: LoggingViewController {
                 User.current.isLoggedIn = true
                 User.current.photoURL = authResult.user.photoURL
                 User.current.uid = authResult.user.uid
-
-                // Find UINavigationViewController into presentingViewController
-                guard let navigationController = self.presentingViewController as? UINavigationController else {
-                    debug("ERROR: Can't find navigationController from the presentingViewController")
-                    return
-                }
                 
-                // Find TabBarController into navigationViewController
-                guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
-                    debug("ERROR: Can't find \(TabBarController.className) into the UINavigationViewController")
-                    return
+                // Check current email for Debug Mode
+                if self.debugModeEmails.contains(authResult.user.email ?? "") {
+                    
+                    // Save debug mode for current user
+                    User.current.debugmode = true
+                    
+                    debug("INFO: Debug mode for \(authResult.user.email ?? "") ON")
+                    // Go to ProgressViewController for reload tabbarController
+                    self.navigate(reload: true)
+                } else {
+                    self.navigate()
                 }
-                
-                // Find navigationViewController into TabBarController
-                guard let navigationController = tabBarController.viewControllers?[Globals.TabBar.index.profile] as? UINavigationController else {
-                    debug("ERROR: Can't find UINavigationViewController into the", TabBarController.className)
-                    return
-                }
-                
-                // Find TabBarController into navigationViewController
-                guard let profileViewController = navigationController.findViewController(ofType: ProfileViewController.self) else {
-                    debug("ERROR: Can't find \(ProfileViewController.className) into the", ProfileViewController.className)
-                    return
-                }
-                
-                // Reload data from into profileCollectionView
-                profileViewController.profileCollectionView.reloadSections(IndexSet([0]))
-                self.dismiss(animated: true)
             }
         }
     }
     
+    // MARK: - Helper Methods
+    private func navigate(reload reloadTabBar: Bool = false ) {
+        
+        // Find UINavigationViewController into presentingViewController
+        guard let navigationController = self.presentingViewController as? UINavigationController else {
+            debug("ERROR: Can't find navigationController from the presentingViewController")
+            return
+        }
+        
+        // Find TabBarController into navigationViewController
+        guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
+            debug("ERROR: Can't find \(TabBarController.className) into the UINavigationViewController")
+            return
+        }
+        
+        // Check tabBarController
+        if reloadTabBar {
+            self.dismiss(animated: true)
+            
+            tabBarController.popToProgress()
+            
+        }
+        
+        // Find navigationViewController into TabBarController
+        guard let navigationController = tabBarController.viewControllers?.last as? UINavigationController else {
+            debug("ERROR: Can't find UINavigationViewController into the", TabBarController.className)
+            return
+        }
+        
+        // Find TabBarController into navigationViewController
+        guard let profileViewController = navigationController.findViewController(ofType: ProfileViewController.self) else {
+            debug("ERROR: Can't find \(ProfileViewController.className) into the", ProfileViewController.className)
+            return
+        }
+        
+        // Reload data from into profileCollectionView
+        profileViewController.profileCollectionView.reloadSections(IndexSet([0]))
+        self.dismiss(animated: true)
+    }
 }

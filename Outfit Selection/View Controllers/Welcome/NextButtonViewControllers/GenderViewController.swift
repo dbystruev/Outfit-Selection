@@ -48,11 +48,14 @@ class GenderViewController: NextButtonViewController {
     }
     
     // MARK: - Stored Properties
-    /// The handler for the auth state listener, to allow cancelling later.
-    var handle: AuthStateDidChangeListenerHandle?
+    // The emails array for debug mode
+    private let debugModeEmails = Globals.TabBar.debugModeEmails
     
     /// Flag which indicates if this is the first appearance of this view controller (true) or we came back from navigation stack (false)
     var firstAppearance = true
+    
+    // The handler for the auth state listener, to allow cancelling later.
+    private var handle: AuthStateDidChangeListenerHandle?
     
     // MARK: - Inherited Properties
     /// Make status bar text light
@@ -74,6 +77,32 @@ class GenderViewController: NextButtonViewController {
         super.viewDidLoad()
         view.backgroundColor = WhiteLabel.Color.Background.light
         
+        // Start auth listener
+        handle = Auth.auth().addStateDidChangeListener { auth, user in
+            // Check current user for nil
+            guard let user = user else { return }
+            
+            // Update date for current user
+            User.current.userCredentials.updateValue(user.displayName ?? "", forKey: "Name:"~)
+            User.current.userCredentials.updateValue(user.email ?? "", forKey: "Email:"~)
+            User.current.userCredentials.updateValue(user.phoneNumber ?? "", forKey: "Phone:"~)
+            User.current.isLoggedIn = true
+            User.current.photoURL = user.photoURL
+            User.current.uid = user.uid
+            debug("INFO: Welcome back dear", user.displayName)
+            
+            // Get user email
+            guard let email = user.email else { return }
+            
+            // Check current email for Debug Mode
+            if self.debugModeEmails.contains(email) {
+                
+                // Save debug mode for current user
+                User.current.debugmode = true
+                debug("INFO: Debug mode for \(email) ON")
+            }
+        }
+        
         if UserDefaults.hasAnswerQuestions {
             guard let navigationController = navigationController else { return }
             
@@ -92,6 +121,7 @@ class GenderViewController: NextButtonViewController {
         } 
     }
     
+    // MARK: - Inherited Methods
     /// Hides toolbar and navigation bar before the view is added to a view hierarchy
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -106,6 +136,9 @@ class GenderViewController: NextButtonViewController {
     /// Return navigation controller bar style back to normal
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        
+        // Remove auth listener
+        Auth.auth().removeStateDidChangeListener(handle!)
     }
     
     /// Animate logo to the new position, hide description and unhide button stack view

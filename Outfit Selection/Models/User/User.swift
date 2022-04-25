@@ -15,6 +15,8 @@ final class User {
     static let current = User()
     
     // MARK: - Stored Properties
+    /// Debug mode for current user
+    var debugmode: Bool
     /// Display name
     var displayName: String
     /// User email
@@ -37,6 +39,7 @@ final class User {
     /// - Parameters:
     ///   - isLoggedIn: The status is login
     init(
+        debugmode: Bool = false,
         displayName: String  = "",
         email: String  = "",
         isLoggedIn: Bool?  = nil,
@@ -44,6 +47,7 @@ final class User {
         photoURL: URL?  = nil,
         uid: String? = nil
     ) {
+        self.debugmode = debugmode
         self.displayName = displayName
         self.email = email
         self.isLoggedIn = isLoggedIn
