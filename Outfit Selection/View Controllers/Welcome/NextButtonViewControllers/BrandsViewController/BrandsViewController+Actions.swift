@@ -29,7 +29,7 @@ extension BrandsViewController {
     
     /// Called when next button is tapped
     /// - Parameter sender: the get outfit button which was tapped
-    override func nextButtonTapped(_ sender: UIButton) {
+    override func nextButtonTapped(_ sender: UIButton) { 
         if isEditing {
             
             // Clear searchBar text

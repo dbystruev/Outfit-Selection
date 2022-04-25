@@ -91,6 +91,12 @@ class TabBarController: UITabBarController {
         // Set tab bar icon colors
         UITabBar.appearance().tintColor = #colorLiteral(red: 66 / 255, green: 66 / 255, blue: 66 / 255, alpha: 1)
         UITabBar.appearance().unselectedItemTintColor = #colorLiteral(red: 66 / 255, green: 66 / 255, blue: 66 / 255, alpha: 0.5)
+        
+        if !User.current.debugmode {
+            
+            // Remove chat from viewControllers
+            self.viewControllers?.remove(at:Globals.TabBar.index.chat)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {

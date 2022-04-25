@@ -60,6 +60,6 @@
     <resources>
         <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="chevron.right" width="19" height="34"/>
-        <image name="unchecked" width="24" height="24"/>
+        <image name="unchecked" width="128" height="128"/>
     </resources>
 </document>

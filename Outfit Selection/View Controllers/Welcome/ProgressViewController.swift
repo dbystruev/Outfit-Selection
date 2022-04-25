@@ -39,9 +39,6 @@ class ProgressViewController: LoggingViewController {
     static weak var `default`: ProgressViewController?
     
     // MARK: - Stored Properties
-    // The handler for the auth state listener, to allow cancelling later.
-    private var handle: AuthStateDidChangeListenerHandle?
-    
     /// Switch to tab bar index after the move to tab bar view controller
     var selectedTabBarIndex = 0
     
@@ -69,20 +66,6 @@ class ProgressViewController: LoggingViewController {
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Start auth listener
-        handle = Auth.auth().addStateDidChangeListener { auth, user in
-            // Check current user for nil
-            guard let user = user else { return }
-            
-            // Update date for current user
-            User.current.userCredentials.updateValue(user.displayName ?? "", forKey: "Name:"~)
-            User.current.userCredentials.updateValue(user.email ?? "", forKey: "Email:"~)
-            User.current.userCredentials.updateValue(user.phoneNumber ?? "", forKey: "Phone:"~)
-            User.current.isLoggedIn = true
-            User.current.photoURL = user.photoURL
-            User.current.uid = user.uid
-            debug("INFO: Welcome back dear", user.displayName)
-        }
         
         // Make sure others can find ourselves
         ProgressViewController.default = self
@@ -97,8 +80,4 @@ class ProgressViewController: LoggingViewController {
         NavigationManager.navigate(to: .outfit())
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        // Remove auth listener
-        Auth.auth().removeStateDidChangeListener(handle!)
-    }
 }

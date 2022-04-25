@@ -63,7 +63,6 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         let count = nonEmptySections.count
-        debug(count, nonEmptySections)
         return count
     }
     

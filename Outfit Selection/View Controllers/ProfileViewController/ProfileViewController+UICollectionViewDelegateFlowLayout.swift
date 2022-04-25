@@ -41,7 +41,7 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
             return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
         case 3:
             // Section 2 is brands — reuse brands view controller to answer
-            return  Brands.selected.count > itemsLimit
+            return  Brands.selected.count > itemsLimit || Brands.selected.count == 0
             ? CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
             : brandsViewController?.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath) ?? CGSize.zero
         default:

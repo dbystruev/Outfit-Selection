@@ -24,5 +24,18 @@ extension ProfileViewController {
         
         // Reload data from into profileCollectionView
         profileCollectionView.reloadSections(IndexSet([0]))
+        
+        // Check current user for debugmode
+        if User.current.debugmode {
+            
+            // Set current user debug mode to false
+            User.current.debugmode = false
+            
+            // Go to ProgressViewController for reload tabbarController
+            guard let tabBarController = tabBarController as? TabBarController else { return }
+            
+            // Go to ProgressViewController for reload tabbarController
+            tabBarController.popToProgress()
+        }
     }
 }
