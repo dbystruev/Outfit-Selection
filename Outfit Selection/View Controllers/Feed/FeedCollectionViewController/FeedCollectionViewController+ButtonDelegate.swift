@@ -52,6 +52,10 @@ extension FeedCollectionViewController: ButtonDelegate {
                     Globals.Feed.contentRange = T ?? 0
                 }
                 
+                // Check current items for nil
+                guard self.items[feedHeader.kind] != nil else { return }
+                
+                // Show all items into tapped section
                 performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: feedHeader)
                 return
             }

@@ -187,6 +187,7 @@ class FeedCollectionViewController: LoggingViewController {
             
             // Dispatch group to wait for all requests to finish
             let group = DispatchGroup()
+            
             for section in sections {
                 group.enter()
                 
@@ -233,6 +234,7 @@ class FeedCollectionViewController: LoggingViewController {
                 
                 // Reload data into UICollectionView
                 feedCollectionView.reloadData()
+                
             }
         }
     }
