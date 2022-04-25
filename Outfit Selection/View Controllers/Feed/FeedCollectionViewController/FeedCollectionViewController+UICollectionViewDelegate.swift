@@ -21,8 +21,19 @@ extension FeedCollectionViewController: UICollectionViewDelegate {
         // Toggle alpha between 0.25 and 1
         brandedImage.toggleSelection()
         brandCell.configureBackground(isSelected: brandedImage.isSelected)
+      
+        // Clear initial items
+        items = [:]
         
         // Make feed item cells reload
-        reloadDataOnBrandChange()
+        setSection()
+        
+        // Reload data
+        self.feedCollectionView.reloadData()
+        
+        // Make sure like buttons are updated when we come back from see all screen
+        feedCollectionView.visibleCells.forEach {
+            ($0 as? FeedItemCollectionCell)?.configureLikeButton()
+        }
     }
 }

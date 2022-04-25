@@ -60,7 +60,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             return cell
             
         case 3:
-            // Section 2 is brands - use brands view controller section 0 to answer
+            // Section 3 is brands - use brands view controller section 0 to answer
             if Brands.selected.count > itemsLimit || Brands.selected.count == 0  {
                 
                 // Configure one cell with simple text
