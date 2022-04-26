@@ -300,8 +300,7 @@ extension OutfitViewController {
         // Scrol to downloaded imagesitemsToShow
         scrollTo(items: itemsToShow, ordered: false) { [self] completion in
             guard completion else { return }
-            
-            //ItemManager.shared.clearViewModels()
+            // TabBar status
             Globals.TabBar.status.found = false
             
             // Set lock button shuffle

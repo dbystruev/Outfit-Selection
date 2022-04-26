@@ -41,6 +41,7 @@ extension FeedCollectionViewController: ButtonDelegate {
                     in: [],
                     subcategoryIDs: subcategoryIDs,
                     named: "",
+                    feed: "",
                     limited: 1,
                     sale: sale,
                     filteredBy: brandNames

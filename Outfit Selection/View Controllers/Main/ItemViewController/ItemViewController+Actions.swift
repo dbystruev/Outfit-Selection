@@ -83,11 +83,25 @@ extension ItemViewController {
     }
     
     @IBAction func shareButtonTapped(_ sender: Any) {
-        // Make sure item url is not nil
-        guard let itemURL = item?.url else { return }
         
+        // Make sure item is not nil
+        guard let item = item else { return }
+
+        // Identificator for universal share link
+        let id: String = "eq."
+        // Get current item ID
+        let itemID: String = item.id
+
+        // Parts of the universal link
+        let scheme = Globals.UniversalLinks.scheme.https
+        let domain = Globals.UniversalLinks.domain.getoutfit
+        let patch = Globals.UniversalLinks.path.items
+        
+        // Build share link
+        let itemURLShare = URL(string: scheme + domain + patch + id + itemID)
+    
         // Share item url
-        let activityController = UIActivityViewController(activityItems: [itemURL], applicationActivities: nil)
+        let activityController = UIActivityViewController(activityItems: [itemURLShare as Any], applicationActivities: nil)
         activityController.popoverPresentationController?.sourceView = (sender as AnyObject).customView
         present(activityController, animated: true)
     }

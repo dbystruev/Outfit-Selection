@@ -35,16 +35,21 @@ extension AppDelegate {
             switch id {
             case "eq":
                 debug("INFO: id", id, "items", items.IDs)
-                
-            case "in":
-                debug(items.IDs)
-                
                 // Download all images and add to viewModels
                 ItemManager.shared.loadImagesFromItems(items: items) {
-                    
                     // Load settings
                     self.configureSettings()
-            
+                    // Go to NavigationManager into outfit
+                    debug(items.first)
+                    
+                    NavigationManager.navigate(to: .wishlist(item: items.first))
+                }
+                
+            case "in":
+                // Download all images and add to viewModels
+                ItemManager.shared.loadImagesFromItems(items: items) {
+                    // Load settings
+                    self.configureSettings()
                     // Go to NavigationManager into outfit
                     NavigationManager.navigate(to: .outfit(items: items))
                     
@@ -54,7 +59,6 @@ extension AppDelegate {
                 debug("ERROR: id not found in this switch")
             }
         }
-        
     }
     
     /// Parser, drop and separeted IDs

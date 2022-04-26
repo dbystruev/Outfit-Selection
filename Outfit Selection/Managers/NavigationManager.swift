@@ -16,7 +16,7 @@ class NavigationManager {
     public enum Screen {
         case outfit(items: Items = [], hideBackButton: Bool = true)
         case feed
-        case wishlist
+        case wishlist(item: Item? = nil)
         case profile
     }
     
@@ -111,7 +111,7 @@ class NavigationManager {
         case .feed:
             debug("feed")
             
-        case .wishlist:
+        case .wishlist(let item):
             // Find tab bar controller
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
                 debug("INFO: Tab Bar Controller is not available")
@@ -124,10 +124,12 @@ class NavigationManager {
                 return
             }
             
-            debug(wishlistViewController)
-
             // Change tabbar selected index
             tabBarController.selectedIndex = Globals.TabBar.index.wishlist
+            
+            // Set selected item from wishlist
+            wishlistViewController.tabSelected = .item
+            wishlistViewController.performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: item)
             
         case .profile:
             debug("profile")

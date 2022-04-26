@@ -290,6 +290,7 @@ class NetworkManager {
         filteredBy vendorNames: [String] = [],
         limited limit: Int? = nil,
         named name: String? = nil,
+        feed: String? = nil,
         sale: Bool = false,
         completion: @escaping (Items?) -> Void)
     {
@@ -299,6 +300,7 @@ class NetworkManager {
             in: categoryIDs,
             subcategoryIDs: subcategoryIDs,
             named: name,
+            feed: feed,
             limited: limit,
             sale: sale,
             filteredBy: vendorNames
@@ -393,6 +395,7 @@ class NetworkManager {
         in categories: [Int],
         subcategoryIDs: [Int],
         named name: String?,
+        feed: String?,
         limited limit: Int?,
         sale: Bool,
         filteredBy fullVendorNames: [String]
@@ -440,6 +443,12 @@ class NetworkManager {
         if let name = name {
             parameters[Keys.name.rawValue] = "ilike.*\(name)*"
         }
+        
+        // Add "feed" parameter
+        if let feed = feed {
+            parameters[Keys.feed.rawValue] = "eq.\(feed)"
+        }
+        
         return parameters
     }
     

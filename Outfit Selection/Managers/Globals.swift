@@ -92,7 +92,7 @@ enum Globals {
     
     /// Index outfit view controller from tabBarController
     enum TabBar {
-        /// Email for bubug mode
+        /// Email for debug mode
         static let debugModeEmails = ["dbystruev@gmail.com", "miketoropov150@gmail.com", "bildedroid@gmail.com", "Kimsanjiev@gmail.com"]
         /// Index for controllers
         enum index {
@@ -102,6 +102,7 @@ enum Globals {
             static let chat = 3
             static let profile = 4
         }
+        /// TabBar status found or not
         enum status {
             static var found = false
         }

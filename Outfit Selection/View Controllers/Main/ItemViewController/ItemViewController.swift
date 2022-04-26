@@ -85,7 +85,11 @@ class ItemViewController: LoggingViewController {
     private weak var image: UIImage?
     
     /// Item  to show
-    private(set) weak var item: Item?
+    private(set) weak var item: Item? {
+        didSet {
+            debug(item)
+        }
+    }
     
     /// The firts Item when controller  start
     var firstItem: Item?
@@ -121,8 +125,8 @@ class ItemViewController: LoggingViewController {
     /// - Parameters:
     ///   - item: an item to configure the view controller with
     func configure(with item: Item?) {
-        self.imageView.configure(with: item?.pictures.first)
         self.item = item
+        self.imageView?.configure(with: item?.pictures.first)
     }
     
     /// Configure item view controller with given item and its image
@@ -142,7 +146,7 @@ class ItemViewController: LoggingViewController {
         imageView?.image = image
         
         // Get the URLs for the second and all other images
-        guard let imageURLs = item?.pictures, 1 < imageURLs.count else { return }
+        guard let imageURLs = item?.pictures, 1 <= imageURLs.count else { return }
         
         // Load images into stack view
         for imageURL in imageURLs.dropFirst() {
