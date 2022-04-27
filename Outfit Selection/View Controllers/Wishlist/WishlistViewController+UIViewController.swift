@@ -26,6 +26,14 @@ extension WishlistViewController {
                 return
             }
             
+            // if sender as Item 
+            if let item = sender as? Item {
+                imageView?.configure(with: item.pictures.first)
+                destination.configure(with: item, image: imageView?.image)
+                debug("INFO: prepare for segue with item:", item)
+                return
+            }
+            
             // Check if any cell is selected
             guard let selectedIndexPath = wishlistCollectionView.indexPathsForSelectedItems?.first else {
                 debug("WARNING: No index path is selected in", wishlistCollectionView)
@@ -40,6 +48,7 @@ extension WishlistViewController {
             
             // Configure item view controller with given item and image
             destination.configure(with: wishlist[selectedIndexPath.row].item, image: itemCell.pictureImageView.image)
+            debug(wishlist[selectedIndexPath.row].item)
             
         case CollectionNameViewController.segueIdentifier:
             guard let destination = segue.destination as? CollectionNameViewController else {

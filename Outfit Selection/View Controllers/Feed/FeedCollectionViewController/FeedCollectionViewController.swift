@@ -42,7 +42,6 @@ class FeedCollectionViewController: LoggingViewController {
     ///Non empty sections after filter
     var nonEmptySections: [FeedKind] = [] {
         didSet {
-            debug("INFO: New count sections", nonEmptySections.count)
             if nonEmptySections == [FeedKind.brands, FeedKind.emptyBrands] {
                 self.feedCollectionView.reloadData()
             }
@@ -78,12 +77,12 @@ class FeedCollectionViewController: LoggingViewController {
     ///   - completion: closure without parameters
     func getItems(for kind: FeedKind, ignoreBrands: Bool = false,  completion: @escaping () -> Void) {
         
-        // Stop loading if section with brands
-        guard kind != .brands || kind != .emptyBrands  else {
-            // Reload data
-            completion()
-            return
-        }
+//        // Stop loading if section with brands
+//        guard kind != .brands || kind != .emptyBrands  else {
+//            // Reload data
+//            completion()
+//            return
+//        }
         
         // All sections will need to be filtered by brands
         let brandManager = BrandManager.shared
@@ -194,8 +193,6 @@ class FeedCollectionViewController: LoggingViewController {
                 // Get items for section
                 self.getItems(for: section, completion: {
                     
-                    debug("INFO: Get items", section.title, self.items[section]?.count)
-                    
                     if self.items[section] == nil || section == .brands  {
                         group.leave()
                         
@@ -219,7 +216,7 @@ class FeedCollectionViewController: LoggingViewController {
             
             // Notification from DispatchQueue group when all section got answer
             group.notify(queue: .main) { [self] in
-                debug("INFO: Get items FINISH")
+                //debug("INFO: Get items FINISH")
                 
                 //Get sections with empty items and ignore brands
                 let emptySection = sections.filter { items[$0] == nil && $0 != .brands }
@@ -233,7 +230,7 @@ class FeedCollectionViewController: LoggingViewController {
                 }
                 
                 // Reload data into UICollectionView
-                feedCollectionView.reloadData()
+                feedCollectionView?.reloadData()
                 
             }
         }

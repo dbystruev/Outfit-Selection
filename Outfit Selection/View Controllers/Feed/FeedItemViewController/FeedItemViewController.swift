@@ -15,6 +15,9 @@ class FeedItemViewController: LoggingViewController {
     @IBOutlet weak var titleLabel: UILabel!
     
     // MARK: - Stored Properties
+    /// Feed of the feed
+    var feed: String?
+    
     /// Collection view layout for the item collection view
     let itemCollectionViewLayout = FeedItemCollectionViewLayout()
     

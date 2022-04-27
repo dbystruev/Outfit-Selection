@@ -67,10 +67,7 @@ final class ItemManager {
     /// Load images filtered by categories into view models
     /// - Parameters:
     ///   - items: items to for download images
-    func loadImagesFromItems(
-        items: Items,
-        completion: @escaping () -> Void
-    ) {
+    func loadImagesFromItems(items: Items, completion: @escaping () -> Void) {
         
         // Remove all items before loading new items
         Items.removeAll()
@@ -107,7 +104,6 @@ final class ItemManager {
                     
                     // Append image to the view model
                     viewModel.append(image.halved, item: item)
-                    //                    debug("Added item ID:", viewModel.items.IDs, "into viewModel" )
                     group.leave()
                 }
             }

@@ -23,6 +23,9 @@ class WishlistViewController: LoggingViewController {
     // CollectionSelectViewController outlet
     weak var chooseItemsButton: UIButton?
     
+    // UIImageView outlet
+    weak var imageView: UIImageView?
+    
     // MARK: - Computed Properties
     /// Get outfit view controller
     var outfitViewController: OutfitViewController? {

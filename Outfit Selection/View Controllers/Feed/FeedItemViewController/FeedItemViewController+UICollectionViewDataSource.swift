@@ -112,6 +112,7 @@ extension FeedItemViewController: UICollectionViewDataSource {
             in: [],
             subcategoryIDs: subcategoryIDs,
             named: name,
+            feed: feed,
             limited: limit,
             sale: sale,
             filteredBy: brandNames
