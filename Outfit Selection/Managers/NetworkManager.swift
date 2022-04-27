@@ -273,26 +273,7 @@ class NetworkManager {
             completion(orderedItems)
         }
     }
-    
-    /// Get  items with given feed
-    /// - Parameters:
-    ///   - feed: query parameters to add to request
-    ///   - completion: closure called when request is finished, with items if successfull, or with nil if not
-    func getItems(_ feed: String, completion: @escaping (Items?) -> Void) {
-        
-        // Include feed=eq... parameter
-        let parameters = ["feed": "eq.\(feed)"]
-        
-        // Request the items from the API
-        getItems(with: parameters) { items in
-            guard let items = items else {
-                completion(nil)
-                return
-            }
-            completion(items)
-        }
-    }
-    
+
     /// Add /items?category_id=in.(..., ...)&vendor=in.(..., ...)&limit=... to server URL and call the API
     /// - Parameters:
     ///   - gender: load female. male, or other (all) items, Gender.current by default

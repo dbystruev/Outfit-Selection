@@ -177,7 +177,6 @@ class FeedCollectionViewController: LoggingViewController {
     ///   - sections: sections for set and download items
     func updateItems(sections: [FeedKind]) {
         if !Brands.selected.isEmpty {
-            
             // If current sections only with brands and emptySection
             guard sections != [FeedKind.brands, FeedKind.emptyBrands] else {
                 self.feedCollectionView.reloadData()
@@ -192,7 +191,6 @@ class FeedCollectionViewController: LoggingViewController {
                 
                 // Get items for section
                 self.getItems(for: section, completion: {
-                    
                     if self.items[section] == nil || section == .brands  {
                         group.leave()
                         
@@ -216,7 +214,7 @@ class FeedCollectionViewController: LoggingViewController {
             
             // Notification from DispatchQueue group when all section got answer
             group.notify(queue: .main) { [self] in
-                //debug("INFO: Get items FINISH")
+                debug("INFO: Get items FINISH", sections)
                 
                 //Get sections with empty items and ignore brands
                 let emptySection = sections.filter { items[$0] == nil && $0 != .brands }

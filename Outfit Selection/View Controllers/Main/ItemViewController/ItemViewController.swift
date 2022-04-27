@@ -82,14 +82,10 @@ class ItemViewController: LoggingViewController {
     
     // MARK: - Stored Properties
     /// First item image
-    private weak var image: UIImage?
+    private var image: UIImage?
     
     /// Item  to show
-    private(set) weak var item: Item? {
-        didSet {
-            debug(item)
-        }
-    }
+    private(set) var item: Item? 
     
     /// The firts Item when controller  start
     var firstItem: Item?
@@ -138,15 +134,29 @@ class ItemViewController: LoggingViewController {
         self.item = item
         self.image = image
         self.isEditingEnabled = isEditingEnabled
+        
+        if image == nil {
+            guard let imageURL = item?.pictures.first else {
+                debug("ERROR: Item", item, "has no pictures")
+                return
+            }
+            // Get images from
+            NetworkManager.shared.getImage(imageURL) { image in
+                self.image = image
+                DispatchQueue.main.async {
+                    self.loadImages()
+                }
+            }
+        }
     }
     
     /// Load item pictures to image view and image stack view
     func loadImages() {
         // Load the first image
         imageView?.image = image
-        
+        debug(imageView?.image)
         // Get the URLs for the second and all other images
-        guard let imageURLs = item?.pictures, 1 <= imageURLs.count else { return }
+        guard let imageURLs = item?.pictures, 1 < imageURLs.count else { return }
         
         // Load images into stack view
         for imageURL in imageURLs.dropFirst() {
@@ -244,7 +254,6 @@ class ItemViewController: LoggingViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         // Configure the items table view
         itemTableView.dataSource = self
         itemTableView.delegate = self

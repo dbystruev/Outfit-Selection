@@ -75,7 +75,6 @@ class ProgressViewController: LoggingViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
         // Start navigation manager and load OutfitViewController
         NavigationManager.navigate(to: .outfit())
     }

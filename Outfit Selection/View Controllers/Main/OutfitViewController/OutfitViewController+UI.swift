@@ -377,9 +377,9 @@ extension OutfitViewController {
                 self.shuffleButton.transform = self.shuffleButton.transform.rotated(by: CGFloat.pi)
             }
         } else {
-            shuffleButton.transform = savedTransform ?? shuffleButton.transform
-            shuffleButton.setImage(UIImage(named: "shuffle"), for: .disabled)
-            shuffleButton.layer.removeAllAnimations()
+            shuffleButton?.transform = savedTransform ?? shuffleButton.transform
+            shuffleButton?.setImage(UIImage(named: "shuffle"), for: .disabled)
+            shuffleButton?.layer.removeAllAnimations()
         }
     }
     

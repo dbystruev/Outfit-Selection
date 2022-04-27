@@ -13,7 +13,7 @@ extension AppDelegate {
     // MARK: - Methods
     /// - Parameters:
     ///   - userActivity: the activity object containing the data associated with the task the user was performing
-    func checkUniversalLink(continue userActivity: NSUserActivity){
+    func checkUniversalLink(continue userActivity: NSUserActivity) {
         
         guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
               let url = userActivity.webpageURL else { return }
@@ -28,35 +28,34 @@ extension AppDelegate {
             debug("ERROR: array is empty")
             return }
 
-        ItemManager.shared.checkItemsByID(items) { item in
-            guard let items = item else { return }
+        ItemManager.shared.checkItemsByID(items) { items in
+            guard let items = items else { return }
             
             // Check id and go to NavigationManager
             switch id {
             case "eq":
-                debug("INFO: id", id, "items", items.IDs)
+                Globals.UniversalLinks.opened = true
                 // Download all images and add to viewModels
                 ItemManager.shared.loadImagesFromItems(items: items) {
-                    // Load settings
-                    self.configureSettings()
-                    // Go to NavigationManager into outfit
-                    debug(items.first)
-                    
+                    // Go to NavigationManager into wishlist
                     NavigationManager.navigate(to: .wishlist(item: items.first))
                 }
                 
             case "in":
                 // Download all images and add to viewModels
                 ItemManager.shared.loadImagesFromItems(items: items) {
-                    // Load settings
-                    self.configureSettings()
                     // Go to NavigationManager into outfit
                     NavigationManager.navigate(to: .outfit(items: items))
-                    
                 }
                 
             default:
                 debug("ERROR: id not found in this switch")
+            }
+            
+            // Set deafult setting
+            if !UserDefaults.hasSeenAppIntroduction || !UserDefaults.hasAnswerQuestions {
+                self.configureSettings()
+                debug("Configure Settings")
             }
         }
     }
