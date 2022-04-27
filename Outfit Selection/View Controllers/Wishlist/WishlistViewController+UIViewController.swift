@@ -27,8 +27,7 @@ extension WishlistViewController {
             }
             
             // if sender as Item 
-            if let item = sender as? Item
-            {
+            if let item = sender as? Item {
                 imageView?.configure(with: item.pictures.first)
                 destination.configure(with: item, image: imageView?.image)
                 debug("INFO: prepare for segue with item:", item)
