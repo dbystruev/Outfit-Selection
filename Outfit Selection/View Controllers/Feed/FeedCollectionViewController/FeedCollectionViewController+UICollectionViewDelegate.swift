@@ -23,7 +23,8 @@ extension FeedCollectionViewController: UICollectionViewDelegate {
         brandCell.configureBackground(isSelected: brandedImage.isSelected)
       
         // Clear initial items
-        items = [:]
+        //items = [:]
+        // TODO: remove items with deselected brand
         
         // Make feed item cells reload
         setSection()

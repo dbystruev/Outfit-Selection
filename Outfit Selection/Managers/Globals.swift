@@ -94,6 +94,10 @@ enum Globals {
     enum TabBar {
         /// Email for debug mode
         static let debugModeEmails = ["dbystruev@gmail.com", "miketoropov150@gmail.com", "bildedroid@gmail.com", "Kimsanjiev@gmail.com"]
+        
+        // The default ViewController when app start
+        static var navigate = "outfit"
+        
         /// Index for controllers
         enum index {
             static let outfit = 0
@@ -132,8 +136,8 @@ enum Globals {
     }
     
     enum Occasions {
-            /// Default title "Usual Life: Casual"
-            static let defaultTitle  = "Usual Life: Casual"
+        /// Default title "Usual Life: Casual"
+        static let defaultTitle  = "Usual Life: Casual"
     }
     
     enum Image {
@@ -143,6 +147,20 @@ enum Globals {
     
     /// Universal links
     enum UniversalLinks {
+        
+        // Marker when app was open from universal links
+        static var opened = false
+        
+        enum domain {
+            /// Domain "getoutfit.app"
+            static let getoutfit = "getoutfit.app"
+        }
+        
+        enum path {
+            /// Parametr "/items?="
+            static let items = "/items?id="
+        }
+        
         enum scheme {
             /// Web protocol "http://"
             static let http = "http://"
@@ -157,16 +175,6 @@ enum Globals {
             
             /// Subdomain "oracle."
             static let oracle = "oracle."
-        }
-        
-        enum domain {
-            /// Domain "getoutfit.app"
-            static let getoutfit = "getoutfit.app"
-        }
-        
-        enum path {
-            /// Parametr "/items?="
-            static let items = "/items?id="
         }
         
     }

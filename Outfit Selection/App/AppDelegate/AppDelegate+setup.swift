@@ -12,7 +12,6 @@ extension AppDelegate {
     
     /// Configure default settings
     func configureSettings(){
-        
         // Check gender
         if (Gender.current == nil) {
             // Set netral gender
@@ -34,12 +33,6 @@ extension AppDelegate {
     
     /// Configure setting, load gender selected brands and occasion
     func restoreSettings() {
-        
-        // TODO: Delete me
-        NetworkManager.shared.getItems(feed: "farfetch.ru.2022.02.24", limited: 1) { items in
-            guard let items = items else { return }
-            debug("INFO: Test func getItems(feed: \"farfetch.ru.2022.02.24\", limited: 1)", items )
-        }
         
         // Load selected brands from UserDefault
         _ = Brands.loadSelectedBrands()
