@@ -63,6 +63,8 @@ extension OutfitViewController {
         // Configure back icon in navigation bar
         configureBackBarButtonItem(isHidden: shouldHideBackBarButtonItem)
         
+        // Mark of AppDelegate about must be start check universal link
+        UIApplication.appDelegate?.loaded = true
     }
     
     override func viewDidAppear(_ animated: Bool) {

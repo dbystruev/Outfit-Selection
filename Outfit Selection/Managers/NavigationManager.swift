@@ -119,7 +119,6 @@ class NavigationManager {
             debug("feed")
             
         case .wishlist(let item):
-            
             // Find tab bar controller
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
                 // Make shure item isn't nil
@@ -127,13 +126,12 @@ class NavigationManager {
                     debug("ERROR: The current item is nil ")
                     return
                 }
-                
+
                 if !UserDefaults.hasSeenAppIntroduction {
                     guard let onboardingViewController = navigationController.findViewController(ofType: OnboardingViewController.self) else {
                         debug("INFO: OnboardingViewController not available")
                         return
                     }
-                    //
                     onboardingViewController.performSegue(withIdentifier: GenderViewController.segueIdentifier, sender: nil)
                 }
                 
@@ -144,16 +142,26 @@ class NavigationManager {
             
             // Find wishlist view controller
             guard let wishlistViewController = tabBarController.findViewController(ofType: WishlistViewController.self) else {
-                debug("INFO: WishlistViewController not available")
+                debug("ERROR: WishlistViewController not found in this tabBarController")
                 return
             }
             
             // Change tabbar selected index
             tabBarController.selectedIndex = Globals.TabBar.index.wishlist
+        
+            // If ItemViewControlle was presented
+            guard let itemViewController = tabBarController.findViewController(ofType: ItemViewController.self) else {
+                // Set selected item from wishlist
+                wishlistViewController.tabSelected = .item
+                // Perform segue ItemViewController
+                wishlistViewController.performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: item)
+                return
+            }
             
-            // Set selected item from wishlist
-            wishlistViewController.tabSelected = .item
-            wishlistViewController.performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: item)
+            // Configure current ItemViewControlle
+            itemViewController.configure(with: item, image: nil)
+            // Update UI ItemViewControlle
+            itemViewController.updateUI()
             
         case .profile:
             debug("profile")

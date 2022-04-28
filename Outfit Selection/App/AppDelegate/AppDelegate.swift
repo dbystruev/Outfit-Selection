@@ -16,4 +16,15 @@ class AppDelegate: UIResponder {
     
     /// Main application window
     var window: UIWindow?
+    ///  Mark for universal link check statr
+    var loaded = false {
+        didSet {
+            if loaded && !oldValue {
+                if let userActivity = userActivity {
+                    checkUniversalLink(continue: userActivity)
+                }
+            }
+        }
+    }
+    
 }

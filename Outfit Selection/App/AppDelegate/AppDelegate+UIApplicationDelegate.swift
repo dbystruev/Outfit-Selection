@@ -19,11 +19,17 @@ extension AppDelegate: UIApplicationDelegate {
     func application(_ application: UIApplication,
                      continue userActivity: NSUserActivity,
                      restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
+        
+        self.userActivity = userActivity
+        
         // Log deep links with OneLink
         appsFlyer(continue: userActivity)
+
+        // Calling when app loaded and check universal link
+        if loaded {
+            checkUniversalLink(continue: userActivity)
+        }
         
-        // Check universal link
-        checkUniversalLink(continue: userActivity)
         return true
     }
     
@@ -131,7 +137,7 @@ extension AppDelegate: UIApplicationDelegate {
         restoreSettings()
         
         // Wait for API requests to finish, but no more than 3 seconds
-        _ = group.wait(timeout: .now() + 3)
+        _ = group.wait(timeout: .now() + 5)
         
         // Don't show onboarding screens if the user has seen them or there are none
         let next = UserDefaults.hasSeenAppIntroduction || Onboarding.count < 1

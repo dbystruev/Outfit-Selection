@@ -67,6 +67,7 @@ final class ItemManager {
     /// Load images filtered by categories into view models
     /// - Parameters:
     ///   - items: items to for download images
+    ///   - completion: () closure called when func finish
     func loadImagesFromItems(items: Items, completion: @escaping () -> Void) {
         
         // Remove all items before loading new items

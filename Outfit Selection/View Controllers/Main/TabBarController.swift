@@ -35,14 +35,6 @@ class TabBarController: UITabBarController {
             
             // Check for brands / gender change and reload
             reloadItems()
-            
-            // If app open from universal links and not showed
-            if Globals.UniversalLinks.opened && !UserDefaults.hasSeenAppIntroduction || !UserDefaults.hasAnswerQuestions{
-                Globals.UniversalLinks.opened = false
-                
-                // Pop to progress view controller
-                navigationController?.popToRootViewController(animated: true)
-            }
         }
     }
     
