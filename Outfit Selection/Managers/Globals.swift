@@ -95,9 +95,6 @@ enum Globals {
         /// Email for debug mode
         static let debugModeEmails = ["dbystruev@gmail.com", "miketoropov150@gmail.com", "bildedroid@gmail.com", "Kimsanjiev@gmail.com"]
         
-        // The default ViewController when app start
-        static var navigate = "outfit"
-        
         /// Index for controllers
         enum index {
             static let outfit = 0
@@ -147,10 +144,6 @@ enum Globals {
     
     /// Universal links
     enum UniversalLinks {
-        
-        // Marker when app was open from universal links
-        static var opened = false
-        
         enum domain {
             /// Domain "getoutfit.app"
             static let getoutfit = "getoutfit.app"
@@ -176,7 +169,6 @@ enum Globals {
             /// Subdomain "oracle."
             static let oracle = "oracle."
         }
-        
     }
     
 }

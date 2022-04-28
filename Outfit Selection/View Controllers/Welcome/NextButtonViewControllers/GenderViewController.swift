@@ -118,7 +118,7 @@ class GenderViewController: NextButtonViewController {
             // Transition to progress
             performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: nil)
             self.buttonStackView.isHidden = true
-        } 
+        }
     }
     
     // MARK: - Inherited Methods

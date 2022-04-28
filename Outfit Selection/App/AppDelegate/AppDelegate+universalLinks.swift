@@ -14,34 +14,35 @@ extension AppDelegate {
     /// - Parameters:
     ///   - userActivity: the activity object containing the data associated with the task the user was performing
     func checkUniversalLink(continue userActivity: NSUserActivity) {
-        
-        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-              let url = userActivity.webpageURL else { return }
+        debug(userActivity)
+        guard userActivity.activityType == NSUserActivityTypeBrowsingWeb, let url = userActivity.webpageURL else {
+            debug("INFO: webpageURL not found")
+            return
+        }
         
         // Try to get parametr from URL
         guard let id = url.getParameters["id"]?.dropExtension else {
             debug("ERROR: url without id")
-            return }
-
+            return
+        }
+        
         // Parser items from url, remove dot and replace "(",")"
         guard let items = parserItemIDs(url: url) as? [String] else {
             debug("ERROR: array is empty")
-            return }
-
-        ItemManager.shared.checkItemsByID(items) { items in
+            return
+        }
+        
+        ItemManager.shared.checkItemsByID(items) { [self] items in
             guard let items = items else { return }
-            
+            //TODO: Add func
             // Check id and go to NavigationManager
             switch id {
             case "eq":
-                Globals.UniversalLinks.opened = true
-                // Download all images and add to viewModels
-                ItemManager.shared.loadImagesFromItems(items: items) {
-                    // Go to NavigationManager into wishlist
-                    NavigationManager.navigate(to: .wishlist(item: items.first))
-                }
+                self.userActivity = nil
+                NavigationManager.navigate(to: .wishlist(item: items.first))
                 
             case "in":
+                self.userActivity = nil
                 // Download all images and add to viewModels
                 ItemManager.shared.loadImagesFromItems(items: items) {
                     // Go to NavigationManager into outfit
@@ -49,7 +50,7 @@ extension AppDelegate {
                 }
                 
             default:
-                debug("ERROR: id not found in this switch")
+                debug("ERROR: id", id, "not found in this switch")
             }
             
             // Set deafult setting
