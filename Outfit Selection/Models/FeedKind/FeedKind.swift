@@ -26,13 +26,13 @@ enum FeedKind {
     var title: String? {
         switch self {
         case .brands:
-            return "Favorite brands"~
+            return "Favourite brands"~
         case .collections(let name):
             return name
         case .newItems:
             return "New items for you"~
         case .emptyBrands:
-            return "Select favorite brands please"~
+            return "Select favourite brands please"~
         case .occasions(let id):
             guard let occasion = Occasions.byID[id] else { return nil }
             return occasion.title

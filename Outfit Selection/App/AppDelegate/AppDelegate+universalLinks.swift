@@ -34,7 +34,6 @@ extension AppDelegate {
         
         ItemManager.shared.checkItemsByID(items) { [self] items in
             guard let items = items else { return }
-            //TODO: Add func
             // Check id and go to NavigationManager
             switch id {
             case "eq":
