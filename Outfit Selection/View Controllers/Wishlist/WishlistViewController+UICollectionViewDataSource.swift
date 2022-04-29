@@ -31,6 +31,7 @@ extension WishlistViewController: UICollectionViewDataSource {
         } else {
             debug("WARNING: Can't convert wishlist item to an item or outfit cell")
         }
+        debug(cell, indexPath)
         return cell
     }
 }
