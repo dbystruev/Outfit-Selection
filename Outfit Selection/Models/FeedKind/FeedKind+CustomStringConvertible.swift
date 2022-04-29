@@ -13,7 +13,7 @@ extension FeedKind: CustomStringConvertible {
         case .brands:
             return ".brands"
         case .collections(let collectionName):
-            return ".collections(\(collectionName)"
+            return ".collections(\(collectionName))"
         case .newItems:
             return ".newItems"
         case .occasions(let occasionID):

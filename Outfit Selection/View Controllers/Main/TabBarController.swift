@@ -58,7 +58,7 @@ class TabBarController: UITabBarController {
         }
         
         // Don't do anything if there are no changes in brands or gender
-        guard haveBrandsChanged || hasGenderChanged else { return }
+        guard hasGenderChanged else { return }
         
         // Start reloading the items
         NetworkManager.shared.reloadItems(for: Gender.current) { _ in }

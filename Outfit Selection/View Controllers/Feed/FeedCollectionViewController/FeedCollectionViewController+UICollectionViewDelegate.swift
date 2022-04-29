@@ -21,28 +21,32 @@ extension FeedCollectionViewController: UICollectionViewDelegate {
         // Toggle alpha between 0.25 and 1
         brandedImage.toggleSelection()
         brandCell.configureBackground(isSelected: brandedImage.isSelected)
-      
+        
+        guard brandedImages.filter({ $0.isSelected }).count > 0 else {
+            // Set empty section
+            sections = feedSectionEmpty
+            
+            // Reload data into UICollectionView
+            self.feedCollectionView.reloadData()
+            return
+        }
+        
         // Remove items with deselected brand
         if !brandedImage.isSelected {
-            for (index ,feedKind) in self.items.enumerated() {
-                let filteredItems: Items = feedKind.value.filter { $0.brand != brandedImage.name }
-                self.items[feedKind.key] = filteredItems
+            for feedKind in self.items {
                 
-                debug("\n", "INFO: Found ", feedKind.value.count - filteredItems.count, "of brand",
-                      brandedImage.name, "into", sections[index].title, "\n",
-                      "INFO: New items count for", sections[index].title, self.items[feedKind.key]?.count )
+                // Filtered items without deselected brand
+                let filteredItems: Items = feedKind.value.filter { !$0.branded([brandedImage.name]) }
+                
+                // Set new items for FeedKind
+                self.items[feedKind.key] = filteredItems
             }
+            
+        } else {
+            // Make feed item cells reload
+            setSection()
         }
-
-        // Make feed item cells reload
-        setSection()
-        
-        // Reload data
+        // Reload data into UICollectionView
         self.feedCollectionView.reloadData()
-        
-//        // Make sure like buttons are updated when we come back from see all screen
-//        feedCollectionView.visibleCells.forEach {
-//            ($0 as? FeedItemCollectionCell)?.configureLikeButton()
-//        }
     }
 }
