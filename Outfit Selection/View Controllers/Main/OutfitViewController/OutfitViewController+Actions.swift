@@ -18,7 +18,7 @@ extension OutfitViewController {
         configureBackBarButtonItem(isHidden: true)
         
         // Go to NavigationManager into outfit
-        NavigationManager.navigate(to: .wishlist())
+        navigationController?.tabBarController?.selectedIndex = Globals.TabBar.index.wishlist
         
     }
     
