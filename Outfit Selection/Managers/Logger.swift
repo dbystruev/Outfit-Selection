@@ -140,8 +140,8 @@ class Logger {
     /// Variable which stores different log messages to avoid doubling
     private static var logs: [String: String] = [:]
     
-    /// Whether the logger should log (cache) network requests — set by `update server`
-    public static var shouldLog = false
+    /// Whether the logger should log (cache) network requests
+    public static var shouldLog = true
     
     // MARK: - Methods
     /// Decode file content into the key and the value

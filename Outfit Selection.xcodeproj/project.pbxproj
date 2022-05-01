@@ -187,6 +187,7 @@
 		69A6F70C22BA42F1002A3B49 /* OutfitViewController+UI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F70B22BA42F1002A3B49 /* OutfitViewController+UI.swift */; };
 		69A6F70E22BA438A002A3B49 /* OutfitViewController+UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69A6F70D22BA438A002A3B49 /* OutfitViewController+UIViewController.swift */; };
 		69AB228C22BA4BE400C7FA8D /* OutfitViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AB228B22BA4BE400C7FA8D /* OutfitViewController+Actions.swift */; };
+		69AD31D9281E90B60094C3F9 /* Servers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AD31D8281E90B60094C3F9 /* Servers.swift */; };
 		69AE765E260B9971009CF863 /* HangerBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE765D260B9971009CF863 /* HangerBubble.swift */; };
 		69AE7662260BCE2C009CF863 /* UIView+addGestureOnce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE7661260BCE2C009CF863 /* UIView+addGestureOnce.swift */; };
 		69AE954D2563B87000850210 /* String+lastComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE954C2563B87000850210 /* String+lastComponent.swift */; };
@@ -495,6 +496,7 @@
 		69A6F70B22BA42F1002A3B49 /* OutfitViewController+UI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+UI.swift"; sourceTree = "<group>"; };
 		69A6F70D22BA438A002A3B49 /* OutfitViewController+UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+UIViewController.swift"; sourceTree = "<group>"; };
 		69AB228B22BA4BE400C7FA8D /* OutfitViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OutfitViewController+Actions.swift"; sourceTree = "<group>"; };
+		69AD31D8281E90B60094C3F9 /* Servers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Servers.swift; sourceTree = "<group>"; };
 		69AE765D260B9971009CF863 /* HangerBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HangerBubble.swift; sourceTree = "<group>"; };
 		69AE7661260BCE2C009CF863 /* UIView+addGestureOnce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+addGestureOnce.swift"; sourceTree = "<group>"; };
 		69AE954C2563B87000850210 /* String+lastComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+lastComponent.swift"; sourceTree = "<group>"; };
@@ -751,7 +753,6 @@
 		692C94082546FB7A0075BD92 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				7AC21E7327FB1956006E1ED5 /* User */,
 				7AD80C1827D0C343005A36DC /* Brands */,
 				6963C6422718927600F03541 /* Categories */,
 				698A7F9026E8E49B006C36FD /* Coders */,
@@ -764,7 +765,8 @@
 				69C16F6B27E9C203009658D1 /* Messages */,
 				69007CED26EA6396001170D0 /* Occasions */,
 				6957565C27158A99007ADE02 /* Onboarding */,
-				69D3FEAC26F8D73200D31A5F /* Server.swift */,
+				69AD31D7281E909E0094C3F9 /* Servers */,
+				7AC21E7327FB1956006E1ED5 /* User */,
 				698A7F8D26E8E26B006C36FD /* Wishlists */,
 			);
 			path = Models;
@@ -1394,6 +1396,15 @@
 			path = Screenshots;
 			sourceTree = "<group>";
 		};
+		69AD31D7281E909E0094C3F9 /* Servers */ = {
+			isa = PBXGroup;
+			children = (
+				69D3FEAC26F8D73200D31A5F /* Server.swift */,
+				69AD31D8281E90B60094C3F9 /* Servers.swift */,
+			);
+			path = Servers;
+			sourceTree = "<group>";
+		};
 		69B3E2332743DF7600A9426D /* UINavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1912,6 +1923,7 @@
 				69575660271590CB007ADE02 /* OnboardingViewController.swift in Sources */,
 				6963C6442718929000F03541 /* Categories.swift in Sources */,
 				7ADB64852812594E00809AC0 /* FeedCollectionViewController+Configure.swift in Sources */,
+				69AD31D9281E90B60094C3F9 /* Servers.swift in Sources */,
 				69D984E8272FC62E003E1BAC /* UIView+nib.swift in Sources */,
 				69A0C9E6270467DC00C49977 /* FeedKind+CustomStringConvertible.swift in Sources */,
 				69007CF126EA6619001170D0 /* Occasion+Comparable.swift in Sources */,

@@ -42,6 +42,66 @@ extension AppDelegate: UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
+        // Dispatch group to delay launch until initial API calls are finished
+        let group = DispatchGroup()
+        group.enter()
+        
+        // Make sure we use the most recent URL
+        NetworkManager.shared.updateURL() { _ in
+            // Load onboarding screens if the user has not seen them yet
+            if !UserDefaults.hasSeenAppIntroduction {
+                AppDelegate.updateOnboarding { _ in group.leave() }
+            } else {
+                group.leave()
+            }
+            
+            // Update the list of categories from the server
+            AppDelegate.updateCategories()
+        }
+        
+        // Initialize the window
+        window = UIWindow(frame: UIScreen.main.bounds)
+        let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
+        
+        // Firebase configure
+        AppDelegate.firebaseConfigure()
+        
+        // Load all brands 
+        AppDelegate.updateBrands()
+    
+        // Change global tint color
+        UIView.appearance().tintColor = #colorLiteral(red: 0.4693212509, green: 0.5382487178, blue: 0.5183649659, alpha: 1)
+        
+        // Ignore dark mode
+        if #available(iOS 13.0, *) {
+            window?.overrideUserInterfaceStyle = .light
+        }
+        
+        // Temporary directory for a cache
+        let temporaryDirectory = NSTemporaryDirectory()
+        
+        // Create a cache using 25 megabytes of memory and 50 megabytes of disk
+        URLCache.shared = URLCache(
+            memoryCapacity: 25_000_000,
+            diskCapacity: 50_000_000,
+            diskPath: temporaryDirectory
+        )
+        
+        // Configure AppsFlyer
+        appsFlyer(configureFor: application)
+        
+        // Configure current notification center
+        userNotificationCenter(configureFor: application)
+
+        // Restore settings from user defaults
+        restoreSettings()
+        
+        // Wait for API requests to finish, but no more than 5 seconds
+        _ = group.wait(timeout: .now() + 5)
+        
+        // Update the list of occasions from the server
+        AppDelegate.updateOccasions()
+        
         // Test occasion items if `should test` is true
         if shouldTest {
             // testAllOccasionItems()
@@ -76,68 +136,6 @@ extension AppDelegate: UIApplicationDelegate {
                 }
             }
         }
-        
-        // Initialize the window
-        window = UIWindow(frame: UIScreen.main.bounds)
-        let storyboard = UIStoryboard(name: "Welcome", bundle: nil)
-        
-        // Dispatch group to delay launch until initial API calls are finished
-        let group = DispatchGroup()
-        group.enter()
-        
-        // Make sure we use the most recent URL
-        NetworkManager.shared.updateURL() { _ in
-            // Load onboarding screens if the user has not seen them yet
-            if !UserDefaults.hasSeenAppIntroduction {
-                AppDelegate.updateOnboarding { _ in
-                    group.leave()
-                }
-            } else {
-                group.leave()
-            }
-            
-            // Update the list of categories from the server
-            AppDelegate.updateCategories()
-        }
-        
-        // Firebase configure
-        AppDelegate.firebaseConfigure()
-        
-        // Update the list of occasions from the server
-        AppDelegate.updateOccasions()
-        
-        // Load all brands 
-        AppDelegate.updateBrands()
-    
-        // Change global tint color
-        UIView.appearance().tintColor = #colorLiteral(red: 0.4693212509, green: 0.5382487178, blue: 0.5183649659, alpha: 1)
-        
-        // Ignore dark mode
-        if #available(iOS 13.0, *) {
-            window?.overrideUserInterfaceStyle = .light
-        }
-        
-        // Temporary directory for a cache
-        let temporaryDirectory = NSTemporaryDirectory()
-        
-        // Create a cache using 25 megabytes of memory and 50 megabytes of disk
-        URLCache.shared = URLCache(
-            memoryCapacity: 25_000_000,
-            diskCapacity: 50_000_000,
-            diskPath: temporaryDirectory
-        )
-        
-        // Configure AppsFlyer
-        appsFlyer(configureFor: application)
-        
-        // Configure current notification center
-        userNotificationCenter(configureFor: application)
-
-        // Restore settings from user defaults
-        restoreSettings()
-        
-        // Wait for API requests to finish, but no more than 3 seconds
-        _ = group.wait(timeout: .now() + 5)
         
         // Don't show onboarding screens if the user has seen them or there are none
         let next = UserDefaults.hasSeenAppIntroduction || Onboarding.count < 1

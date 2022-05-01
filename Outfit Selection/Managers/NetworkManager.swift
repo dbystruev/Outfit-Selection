@@ -100,11 +100,17 @@ class NetworkManager {
     /// - Parameters:
     ///   - path: path to add to server URL
     ///   - parameters: query parameters to add to request
+    ///   - serverURL: use serverURL for request if not nil, otherwise use self.url
     ///   - completion: closure called after request is finished, with data if successfull, or with nil if not
-    func get<T: Codable>(_ path: String, parameters: [String: Any] = [:], completion: @escaping (T?) -> Void) {
+    func get<T: Codable>(
+        _ path: String,
+        parameters: [String: Any] = [:],
+        from serverURL: URL? = nil,
+        completion: @escaping (T?) -> Void
+    ) {
         
         // Compose the request URL
-        let requestPath = url.appendingPathComponent(path)
+        let requestPath = (serverURL ?? url).appendingPathComponent(path)
         let request = parameters.isEmpty ? requestPath : requestPath.withQueries(parameters)
         
         // Check if we already may have the needed request in the cache
@@ -497,29 +503,33 @@ class NetworkManager {
         completion(items)
     }
     
-    /// Update the main url we have to use in the future
+    /// Update the main url depending on which server responds the first to the user
     /// - Parameter completion: closure called when request is finished, with true if request is succesfull, and false if not
     func updateURL(completion: @escaping (_ success: Bool) -> Void) {
-        get("server") { [weak self] (server: Server?) in
-            // Check for self availability
-            guard let self = self else {
-                debug("ERROR: self is not available")
-                completion(false)
-                return
+        // Flag when the server is found to drop the rest
+        var updated = false
+        
+        // Go through all available servers and try to get data from them
+        for server in Servers.all {
+            get("servers", from: server.url) { [weak self] (servers: Servers?) in
+                // Check that we got any response
+                guard servers != nil else {
+                    debug("WARNING: Can't connect to server \(server.name)")
+                    // Don't call completion — let other servers to finish
+                    return
+                }
+                
+                // Check that server was not updated yet
+                // Don't call completion — if guard fails it was already called ealier
+                guard !updated else { return }
+                updated = true
+                
+                // Update server URL and logger's should log
+                self?.url = server.url
+                debug("INFO: Updated server to \(server.url)")
+                
+                completion(true)
             }
-            
-            guard let server = server else {
-                debug("ERROR: Can't find server in \(String(describing: server))")
-                completion(false)
-                return
-            }
-            
-            // Update server URL and logger's should log
-            self.url = server.url
-            Logger.shouldLog = server.shouldLog ?? false
-            debug("INFO: Updated server to \(server.url) and `should log` to \(Logger.shouldLog)")
-            
-            completion(true)
         }
     }
 }
