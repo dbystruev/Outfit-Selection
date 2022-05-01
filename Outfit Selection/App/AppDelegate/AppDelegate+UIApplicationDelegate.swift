@@ -7,6 +7,7 @@
 //
 import GoogleSignIn
 import UIKit
+import MapKit
 
 // MARK: - UIApplicationDelegate
 extension AppDelegate: UIApplicationDelegate {
@@ -44,19 +45,27 @@ extension AppDelegate: UIApplicationDelegate {
     ) -> Bool {
         // Dispatch group to delay launch until initial API calls are finished
         let group = DispatchGroup()
-        group.enter()
+        
+        group.enter() // for categories update
+        group.enter() // for occasions update
+        group.enter() // for onboarding update
         
         // Make sure we use the most recent URL
         NetworkManager.shared.updateURL() { _ in
+            // Update the list of categories from the server
+            AppDelegate.updateCategories() { _ in group.leave() }
+            
+            // Update the list of occasions from the server
+            AppDelegate.updateOccasions() { _ in group.leave() }
+            
             // Load onboarding screens if the user has not seen them yet
             if !UserDefaults.hasSeenAppIntroduction {
-                AppDelegate.updateOnboarding { _ in group.leave() }
+                AppDelegate.updateOnboarding { _ in
+                    group.leave() // for onboarding
+                }
             } else {
-                group.leave()
+                group.leave() // for onboarding
             }
-            
-            // Update the list of categories from the server
-            AppDelegate.updateCategories()
         }
         
         // Initialize the window
@@ -98,9 +107,6 @@ extension AppDelegate: UIApplicationDelegate {
         
         // Wait for API requests to finish, but no more than 5 seconds
         _ = group.wait(timeout: .now() + 5)
-        
-        // Update the list of occasions from the server
-        AppDelegate.updateOccasions()
         
         // Test occasion items if `should test` is true
         if shouldTest {

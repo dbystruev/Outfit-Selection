@@ -26,29 +26,38 @@ extension AppDelegate {
     }
     
     /// Update the list of categories from the server
-    static func updateCategories() {
+    /// - Parameter completion: closure called when request is finished, with true if request is succesfull, and false if not
+    static func updateCategories(completion: @escaping (_ success: Bool) -> Void) {
         let startTime = Date()
         
         NetworkManager.shared.getCategories { categories in
             // Make sure we don't update to the empty list of categories
-            guard let categories = categories, !categories.isEmpty else { return }
+            guard let categories = categories, !categories.isEmpty else {
+                completion(false)
+                return
+            }
             
             // Update the categories
             Categories.all = categories
             let elapsedTime = Date().timeIntervalSince(startTime)
             debug("INFO: Loaded \(categories.count) categories in \(elapsedTime.asTime) s")
+            completion(true)
         }
     }
     
     /// Update the list of occasions from the server
-    static func updateOccasions() {
+    /// - Parameter completion: optional closure called when request is finished, with true if request is succesfull, and false if not
+    static func updateOccasions(completion: ((_ success: Bool) -> Void)? = nil) {
         let startTime = Date()
         
         let nameNotification = Globals.Notification.name.updatedOccasions
         
         NetworkManager.shared.getOccasions { occasions in
             // Make sure we don't update to the empty list of occasions
-            guard let occasions = occasions, !occasions.isEmpty else { return }
+            guard let occasions = occasions, !occasions.isEmpty else {
+                completion?(false)
+                return
+            }
             
             // Fill occasions with the new list of occasions
             Occasions.removeAll()
@@ -73,6 +82,8 @@ extension AppDelegate {
                 name: Notification.Name(nameNotification),
                 object: nil
             )
+            
+            completion?(true)
         }
     }
     

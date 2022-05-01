@@ -16,6 +16,7 @@ class AppDelegate: UIResponder {
     
     /// Main application window
     var window: UIWindow?
+    
     ///  Mark for universal link check statr
     var loaded = false {
         didSet {
