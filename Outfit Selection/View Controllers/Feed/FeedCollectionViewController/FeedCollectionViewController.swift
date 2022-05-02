@@ -189,6 +189,7 @@ class FeedCollectionViewController: LoggingViewController {
                 if !ignoreBrands {
                     self.getItems(for: kind, ignoreBrands: true)
                 }
+                completion()
                 return
             }
             
