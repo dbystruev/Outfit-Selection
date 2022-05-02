@@ -29,7 +29,7 @@ class WishlistItemCell: WishlistBaseCell {
         // Configure labels
         nameLabel.text = item.nameWithoutVendor
         priceLabel.text = item.price.asPrice
-        vendorLabel.text = item.vendorName
+        vendorLabel.text = item.vendorName.capitalizingFirstLetter
         
         // Load the picture
         pictureImageView.configure(with: item.pictures.first)

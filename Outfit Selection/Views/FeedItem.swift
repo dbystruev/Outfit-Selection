@@ -48,7 +48,7 @@ class FeedItem: UIView {
         itemImageView.configure(with: item)
         
         // Configure labels
-        brandLabel.text = item.brand
+        brandLabel.text = item.brand?.capitalizingFirstLetter
         nameLabel.text = item.nameWithoutVendor
         oldPriceLabel.isHidden = !showSale
         priceLabel.text = item.price.asPrice
