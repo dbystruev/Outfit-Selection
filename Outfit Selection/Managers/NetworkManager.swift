@@ -229,6 +229,12 @@ class NetworkManager {
         get("categories", completion: completion)
     }
     
+    /// Call /feeds API
+    /// - Parameter completion: closure called after the request is finished, with list of feeds if successfull, or with nil if not
+    func getFeeds(completion: @escaping (_ feeds: Feeds?) -> Void) {
+        get("feeds", completion: completion)
+    }
+    
     /// Download image from the given URL
     /// - Parameters:
     ///   - url: url to download image from

@@ -260,6 +260,7 @@
 		69E0641D26FA4E2B00C68A6A /* Item+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E0641C26FA4E2B00C68A6A /* Item+Equatable.swift */; };
 		69E0641F26FA57B900C68A6A /* ItemImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E0641E26FA57B900C68A6A /* ItemImage.swift */; };
 		69E8ACE626FDF074000CC96A /* UIViewController+touchesBegan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69E8ACE526FDF074000CC96A /* UIViewController+touchesBegan.swift */; };
+		69EB6B7A282126B50022338F /* Feeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EB6B79282126B50022338F /* Feeds.swift */; };
 		69EB8BB525EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */; };
 		69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */; };
 		69F046F926FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F046F826FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift */; };
@@ -580,6 +581,7 @@
 		69E0641C26FA4E2B00C68A6A /* Item+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Equatable.swift"; sourceTree = "<group>"; };
 		69E0641E26FA57B900C68A6A /* ItemImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImage.swift; sourceTree = "<group>"; };
 		69E8ACE526FDF074000CC96A /* UIViewController+touchesBegan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+touchesBegan.swift"; sourceTree = "<group>"; };
+		69EB6B79282126B50022338F /* Feeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeds.swift; sourceTree = "<group>"; };
 		69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnableScrollView.swift; sourceTree = "<group>"; };
 		69F046F826FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+UISearchBarDelegate.swift"; sourceTree = "<group>"; };
@@ -1287,6 +1289,7 @@
 			isa = PBXGroup;
 			children = (
 				69A4A11328211B2000755F82 /* Feed.swift */,
+				69EB6B79282126B50022338F /* Feeds.swift */,
 			);
 			path = Feeds;
 			sourceTree = "<group>";
@@ -2045,6 +2048,7 @@
 				691C5F3C26E764F200DF0758 /* CGSize+CustomStringConvertible.swift in Sources */,
 				69B3E2372743F6C700A9426D /* PinnableScrollView+Computed.swift in Sources */,
 				69642071270AE6BC00FCDF5A /* Collection+UserDefaults.swift in Sources */,
+				69EB6B7A282126B50022338F /* Feeds.swift in Sources */,
 				69FB0E9F271460BB006C20E9 /* OccasionButton.swift in Sources */,
 				69FBB20722F1ABE000187562 /* GenderViewController.swift in Sources */,
 				69A0C9EA2705B3F200C49977 /* WhiteLabel.swift in Sources */,

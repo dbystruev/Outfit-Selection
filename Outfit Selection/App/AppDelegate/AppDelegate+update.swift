@@ -45,6 +45,27 @@ extension AppDelegate {
         }
     }
     
+    /// Update the list of feeds from the server
+    /// - Parameter completion: closure called when request is finished, with true if request is succesfull, and false if not
+    static func updateFeeds(completion: @escaping (_ success: Bool) -> Void) {
+        let startTime = Date()
+        
+        NetworkManager.shared.getFeeds { feeds in
+            // Make sure we don't update to the empty list of feeds
+            guard let feeds = feeds, !feeds.isEmpty else {
+                completion(false)
+                return
+            }
+            
+            // Update the feeds
+            Feeds.all = feeds
+            let elapsedTime = Date().timeIntervalSince(startTime)
+            debug("INFO: Loaded \(feeds.count) feeds in \(elapsedTime.asTime) s")
+            debug(feeds)
+            completion(true)
+        }
+    }
+    
     /// Update the list of occasions from the server
     /// - Parameter completion: optional closure called when request is finished, with true if request is succesfull, and false if not
     static func updateOccasions(completion: ((_ success: Bool) -> Void)? = nil) {

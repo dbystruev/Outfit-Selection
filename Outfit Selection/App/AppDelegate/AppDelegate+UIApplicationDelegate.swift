@@ -47,6 +47,7 @@ extension AppDelegate: UIApplicationDelegate {
         let group = DispatchGroup()
         
         group.enter() // for categories update
+        group.enter() // for feeds update
         group.enter() // for occasions update
         group.enter() // for onboarding update
         
@@ -54,6 +55,9 @@ extension AppDelegate: UIApplicationDelegate {
         NetworkManager.shared.updateURL() { _ in
             // Update the list of categories from the server
             AppDelegate.updateCategories() { _ in group.leave() }
+            
+            // Update the list of feeds from the server
+            AppDelegate.updateFeeds { _ in group.leave() }
             
             // Update the list of occasions from the server
             AppDelegate.updateOccasions() { _ in group.leave() }
@@ -105,8 +109,8 @@ extension AppDelegate: UIApplicationDelegate {
         // Restore settings from user defaults
         restoreSettings()
         
-        // Wait for API requests to finish, but no more than 5 seconds
-        _ = group.wait(timeout: .now() + 5)
+        // Wait for API requests to finish, but no more than 7 seconds
+        _ = group.wait(timeout: .now() + 7)
         
         // Test occasion items if `should test` is true
         if shouldTest {

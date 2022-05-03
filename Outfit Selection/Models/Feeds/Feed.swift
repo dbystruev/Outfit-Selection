@@ -22,7 +22,7 @@ public struct Feed: Codable {
     /// Public name of the feed, e.g. "TSUM"
     let name: String
     
-    /// Public feed picture URL, e.g. "https://www.farfetch.com/static/images/logo.png"
+    /// Public feed picture URL or data, e.g. "https://www.farfetch.com/static/images/logo.png" or "data:image/png;base64,iVBO..."
     let picture: URL?
     
     enum CodingKeys: String, CodingKey {
@@ -31,5 +31,19 @@ public struct Feed: Codable {
         case createdAt = "created_at"
         case name
         case picture
+    }
+    
+    // MARK: - Decodable
+    public init(from decoder: Decoder) throws {
+        // Get values from the container
+        let values = try decoder.container(keyedBy: CodingKeys.self)
+        
+        // Decode each of the properties
+        id = try values.decode(String.self, forKey: .id)
+        shouldUse = try values.decode(Bool.self, forKey: .shouldUse)
+        let createdAtTimestamp = try values.decode(String.self, forKey: .createdAt)
+        createdAt = Timestamp.formatter.date(from: createdAtTimestamp) ?? Date()
+        name = try values.decode(String.self, forKey: .name)
+        picture = try? values.decode(URL.self, forKey: .picture)
     }
 }
