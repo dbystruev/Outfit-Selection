@@ -46,21 +46,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             return cell
             
         case 2:
-            // Section 2 is Occasion - configure occasion cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
-            
-            // Configure one cell with simple text
-            Occasions.selectedUniqueTitle.count > itemsLimit ?
-            (cell as? OccasionCollectionViewCell)?.configure(
-                with: Occasions.selectedUniqueTitle.sorted()[indexPath.row],
-                hideCheckBox: true,
-                hideChevron: false,
-                custtomLabel: "Selected \(Occasions.selectedUniqueTitle.count) occasions out of \(Occasions.titles.count)"~ ) :
-            (cell as? OccasionCollectionViewCell)?.configure(with: Occasions.selectedUniqueTitle.sorted()[indexPath.row])
-            return cell
-            
-        case 3:
-            // Section 3 is brands - use brands view controller section 0 to answer
+            // Section 2 is brands - use brands view controller section 0 to answer
             if Brands.selected.count > itemsLimit || Brands.selected.count == 0  {
                 
                 // Configure one cell with simple text
@@ -76,6 +62,21 @@ extension ProfileViewController: UICollectionViewDataSource {
                 // Return collectionViewCell with selected brands
                 return brandsViewController?.collectionView(collectionView, cellForItemAt: indexPath) ?? BrandCollectionViewCell()
             }
+            
+        case 3:
+            // Section 3 is Occasion - configure occasion cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
+            
+            // Configure one cell with simple text
+            Occasions.selectedUniqueTitle.count > itemsLimit ?
+            (cell as? OccasionCollectionViewCell)?.configure(
+                with: Occasions.selectedUniqueTitle.sorted()[indexPath.row],
+                hideCheckBox: true,
+                hideChevron: false,
+                custtomLabel: "Selected \(Occasions.selectedUniqueTitle.count) occasions out of \(Occasions.titles.count)"~ ) :
+            (cell as? OccasionCollectionViewCell)?.configure(with: Occasions.selectedUniqueTitle.sorted()[indexPath.row])
+            return cell
+            
         default:
             debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")
             return UICollectionViewCell()
@@ -110,16 +111,18 @@ extension ProfileViewController: UICollectionViewDataSource {
         case 0:
             // Section 0 is user info with avaliable properties
             return User.current.isLoggedIn != nil ? User.current.sequenceCredentials.count : 1
+            
         case 1:
             // Section 1 is gender — 3 items
             return Gender.allCases.count
-        case 2:
-            // Section 2 is occasion — use occasion view controller section 0 to answer.
-            return  Occasions.selectedUniqueTitle.count > itemsLimit ? 1 : Occasions.selectedUniqueTitle.count
             
-        case 3:
+        case 2:
             // Section 2 is brands — use brands view controller section 0 to answer.
             return Brands.selected.count > itemsLimit || Brands.selected.count == 0 ? 1 : Brands.selected.count
+            
+        case 3:
+            // Section 3 is occasion — use occasion view controller section 0 to answer.
+            return  Occasions.selectedUniqueTitle.count > itemsLimit ? 1 : Occasions.selectedUniqueTitle.count
             
         default:
             debug("WARNING: Unknown section \(section)")

@@ -37,13 +37,13 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
             // Section 1 is gender - 1 item per row
             return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
         case 2:
-            // Section 2 is occasions — reuse occasion view controller to answer
-            return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
-        case 3:
             // Section 2 is brands — reuse brands view controller to answer
             return  Brands.selected.count > itemsLimit || Brands.selected.count == 0
             ? CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
             : brandsViewController?.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath) ?? CGSize.zero
+        case 3:
+            // Section 3 is occasions — reuse occasion view controller to answer
+            return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
         default:
             debug("WARNING: Unknown section \(indexPath.section)")
             return CGSize.zero

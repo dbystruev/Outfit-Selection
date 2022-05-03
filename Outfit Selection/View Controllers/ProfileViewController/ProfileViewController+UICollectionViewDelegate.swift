@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import CoreAudio
 
 // MARK: - UICollectionViewDelegate
 extension ProfileViewController: UICollectionViewDelegate {
@@ -48,7 +47,15 @@ extension ProfileViewController: UICollectionViewDelegate {
             }
             
         case 2:
-            // Select occasion and go to OccasionsViewController for edit list occasions
+            // Section 2 is brand — select brand and go to BrandsViewController for edit the brands list
+            guard let brandsViewController = brandsViewController else { return }
+            // Set isEditing true
+            brandsViewController.setEditing(true, animated: true)
+            // Load BrandsViewController
+            self.navigationController?.show(brandsViewController, sender: nil)
+            
+        case 3:
+            // Section 3 is occasions — select occasion and go to OccasionsViewController for edit the occasions list
             let mainStoryboard = UIStoryboard(name: "Welcome", bundle: nil)
             let occasionsViewController = mainStoryboard.instantiateViewController(withIdentifier: "OccasionsViewController")
             // Set isEditing true
@@ -56,17 +63,9 @@ extension ProfileViewController: UICollectionViewDelegate {
             // Load OccasionsViewController
             self.navigationController?.show(occasionsViewController, sender: nil)
             
-        case 3:
-            // Select brnd and go to BrandsViewController for edit list barnds
-            guard let brandsViewController = brandsViewController else { return }
-            // Set isEditing true
-            brandsViewController.setEditing(true, animated: true)
-            // Load barndsViewController
-            self.navigationController?.show(brandsViewController, sender: nil)
-            
         default:
             debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")
         }
     }
-
+    
 }

@@ -7,7 +7,6 @@
 //
 import GoogleSignIn
 import UIKit
-import MapKit
 
 // MARK: - UIApplicationDelegate
 extension AppDelegate: UIApplicationDelegate {
