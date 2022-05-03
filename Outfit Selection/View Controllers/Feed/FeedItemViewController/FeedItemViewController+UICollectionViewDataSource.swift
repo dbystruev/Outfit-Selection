@@ -71,7 +71,11 @@ extension FeedItemViewController: UICollectionViewDataSource {
         }()
         
         // Configure the cell with matching item and return
-        itemItem.configureContent(kind: kind, item: items[indexPath.row % items.count], isInteractive: true)
+        if 0 < items.count {
+            itemItem.configureContent(kind: kind, item: items[indexPath.row % items.count], isInteractive: true)
+        } else {
+            debug("WARNING: items.count is \(items.count)")
+        }
         
         // Set feed view controller as delegate for item button tapped
         let controllers = navigationController?.viewControllers
