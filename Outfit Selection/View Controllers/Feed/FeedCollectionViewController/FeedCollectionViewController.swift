@@ -295,7 +295,7 @@ class FeedCollectionViewController: LoggingViewController {
                 let emptySection = sections.filter { items[$0] == nil && $0 != .brands }
                 
                 // Remove all emptySection
-                nonEmptySections.removeAll(where: { emptySection.contains($0) } )
+//                nonEmptySections.removeAll(where: { emptySection.contains($0) } )
                 
                 // Show choose brands section, if after clear you'll get only brands section
                 if nonEmptySections.count == 1 {
