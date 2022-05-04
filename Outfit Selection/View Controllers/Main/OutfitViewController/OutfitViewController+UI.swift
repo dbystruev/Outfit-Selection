@@ -251,6 +251,8 @@ extension OutfitViewController {
     func scrollTo(items scrollItems: Items, ordered: Bool, completion: ((Bool) -> Void)? = nil) {
         // Scroll to the given item IDs
         scrollViews?.scrollToElements(with: scrollItems.IDs, ordered: ordered, completion: completion)
+        // TODO: Check this method, when all items download and shuffle buton tap
+        debug(scrollItems)
     }
     
     /// Scroll outfit's scroll views to the given occasion
@@ -520,35 +522,75 @@ extension OutfitViewController {
     
     /// Reload ocassions
     @objc func updatedOccasions() {
-        
+        debug("UPDATETED OCCASION")
         // Return to main
         DispatchQueue.main.async {
-            guard let tabBarController = self.tabBarController as? TabBarController else {
-                debug("ERROR: can't cast", self.tabBarController, "to TabBarConroller")
-                return
-            }
-            
-            // Get the list of view controllers from tab bar
-            guard let viewControllers = tabBarController.viewControllers else {
-                debug("ERROR: There are no view controllers in tab bar")
-                return
-            }
-            
-            // Get navigation controller from tab bar with index
-            guard let navigationController = viewControllers[0] as? UINavigationController else {
-                debug("ERROR: Navigation controller is not available")
-                return
-            }
-            
-            // Get outfit view controller
-            guard let outfitViewController = navigationController.findViewController(ofType: OutfitViewController.self) else {
-                debug("ERROR: OutfitViewController controller is not available")
-                return
-            }
+            //            guard let tabBarController = self.tabBarController as? TabBarController else {
+            //                debug("ERROR: can't cast", self.tabBarController, "to TabBarConroller")
+            //                return
+            //            }
+            //
+            //            // Get the list of view controllers from tab bar
+            //            guard let viewControllers = tabBarController.viewControllers else {
+            //                debug("ERROR: There are no view controllers in tab bar")
+            //                return
+            //            }
+            //
+            //            // Get navigation controller from tab bar with index
+            //            guard let navigationController = viewControllers[0] as? UINavigationController else {
+            //                debug("ERROR: Navigation controller is not available")
+            //                return
+            //            }
+            //
+            //            // Get outfit view controller
+            //            guard let outfitViewController = navigationController.findViewController(ofType: OutfitViewController.self) else {
+            //                debug("ERROR: OutfitViewController controller is not available")
+            //                return
+            //            }
             
             // Configure occasions
-            outfitViewController.configureOccasions()
+            self.configureOccasions()
+        }
+        
+        // Reload items from the server for changed occasion
+        NetworkManager.shared.reloadItems(from: self.occasionSelected) { [weak self] success in
+            if success == true {} else {
+                debug("ERROR reloading items for", Gender.current)
+                
+                // Set status occasions elements
+                self?.occasionItemsAreLoading = false
+                
+                // Load items occasion selected before
+                ItemManager.shared.loadItems(for: Occasion.selected) { success in
+                    guard success == true else {
+                        debug("ERROR loading items for", Gender.current)
+                        return
+                    }
+                }
+            }
+        }
+        
+        // Load images for items
+        ItemManager.shared.loadImages(filteredBy: Gender.current, cornerLimit: 1) { [weak self] current, total in
+            // Wait until all images are loaded
+            guard current == total else { return }
             
+            // Make sure we clear occasion items loading flag in any case
+            defer {
+                self?.occasionItemsAreLoading = false
+            }
+            
+            // Check for self availability
+            guard let self = self else {
+                debug("ERROR: self is not available")
+                return
+            }
+            
+            // Scroll to newly selected occasion
+            DispatchQueue.main.async {
+                self.scrollTo(occasion: self.occasionSelected!)
+            }
         }
     }
+    
 }

@@ -17,6 +17,9 @@ class FeedCollectionViewController: LoggingViewController {
     /// The collection of branded images
     let brandedImages = Brands.prioritizeSelected
     
+    /// The name for Notification name
+    let brandsChanged = Globals.Notification.name.brandsChanged
+    
     /// Default feed sections
     let feedSectionsDefault = [
         FeedKind.brands,
@@ -351,7 +354,7 @@ class FeedCollectionViewController: LoggingViewController {
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(self.haveBrandsChanged),
-            name: Notification.Name("BrandsChanged"),
+            name: Notification.Name(brandsChanged),
             object: nil)
     }
     

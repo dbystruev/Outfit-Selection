@@ -110,7 +110,7 @@ extension OutfitViewController {
         hideBubbles()
         
         // Remove observer updatedOccasions
-        Globals.Notification.notificationCenter.removeObserver(self)
+        //Globals.Notification.notificationCenter.removeObserver(self)
         
         // Stop animation
         shuffleButtonAnimate(setAnimation: false)

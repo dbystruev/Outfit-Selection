@@ -42,11 +42,11 @@ extension BrandsViewController {
             // Reload Items
             NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
             
+            // Post notification
+            NotificationCenter.default.post(name: Notification.Name(Globals.Notification.name.brandsChanged), object: nil)
+            
             // Back to profile viewController
             navigationController?.popViewController(animated: true)
-            
-            // Post notification
-            NotificationCenter.default.post(name: Notification.Name("BrandsChanged"), object: nil)
             
         } else {
             // Transition to occasions if they are not empty
