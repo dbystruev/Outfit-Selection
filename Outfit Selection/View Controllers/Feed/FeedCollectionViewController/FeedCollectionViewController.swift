@@ -15,7 +15,7 @@ class FeedCollectionViewController: LoggingViewController {
     
     // MARK: - Stored Properties
     /// The collection of branded images
-    let brandedImages = Brands.prioritizeSelected 
+    let brandedImages = Brands.prioritizeSelected
     
     /// Default feed sections
     let feedSectionsDefault = [
@@ -59,12 +59,6 @@ class FeedCollectionViewController: LoggingViewController {
                 feedCollectionView.reloadData()
             }
         }
-    }
-
-    // MARK: - Computed Properties
-    /// True if brand selection has changed
-    var haveBrandsChanged: Bool {
-        BrandManager.shared.selectedBrands != selectedBrands
     }
     
     // MARK: - Custom Methods
@@ -249,7 +243,7 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Stop update if sections is not feed sections default
         guard !feedSectionsDefault.filter(sections.contains).isEmpty
-        || sections != [FeedKind.brands, FeedKind.emptyBrands] else {
+                || sections != [FeedKind.brands, FeedKind.emptyBrands] else {
             debug("INFO: Unknown sections", sections)
             return
         }
@@ -311,6 +305,15 @@ class FeedCollectionViewController: LoggingViewController {
         }
     }
     
+    /// Called when selected brands was changed
+    @objc func haveBrandsChanged() {
+        debug("INFO: Brands will changed")
+        // Make feed item cells reload
+        setSection()
+        // Reload data
+        feedCollectionView.reloadData()
+    }
+    
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -343,24 +346,17 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Set self as data source and register collection view cells and header
         setup(feedCollectionView, withBrandsOnTop: true)
+        
+        // Observer for brands, it called when brands selected was changed
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.haveBrandsChanged),
+            name: Notification.Name("BrandsChanged"),
+            object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if haveBrandsChanged {
-            debug("INFO: Brands will changed")
-            
-            // Set selected brands
-            selectedBrands = BrandManager.shared.selectedBrands
-            
-            // Make feed item cells reload
-            setSection()
-            
-            // Reload data
-            feedCollectionView.reloadData()
-        }
-        
         // Set margins and paddings for brand cell
         savedBrandCellConstants = (
             BrandCollectionViewCell.horizontalMargin,

@@ -45,6 +45,9 @@ extension BrandsViewController {
             // Back to profile viewController
             navigationController?.popViewController(animated: true)
             
+            // Post notification
+            NotificationCenter.default.post(name: Notification.Name("BrandsChanged"), object: nil)
+            
         } else {
             // Transition to occasions if they are not empty
             guard Occasions.areEmpty else {
