@@ -44,6 +44,9 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         case 3:
             // Section 3 is occasions — reuse occasion view controller to answer
             return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
+        case 4:
+            // Section 4 is feed with selected feeds
+            return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
         default:
             debug("WARNING: Unknown section \(indexPath.section)")
             return CGSize.zero

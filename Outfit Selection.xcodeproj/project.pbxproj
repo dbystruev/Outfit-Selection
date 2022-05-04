@@ -289,6 +289,10 @@
 		7A9AC7562800357D002014D9 /* ItemViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC7552800357C002014D9 /* ItemViewController+UITableViewDataSource.swift */; };
 		7A9AC7582800359D002014D9 /* ItemViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC7572800359D002014D9 /* ItemViewController+UITableViewDelegate.swift */; };
 		7A9AC75A280060FF002014D9 /* ItemViewControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC759280060FF002014D9 /* ItemViewControllerCell.swift */; };
+		7AC0412D2822998500CA7E5E /* FeedsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0412C2822998500CA7E5E /* FeedsCollectionViewCell.swift */; };
+		7AC0412F28229FD600CA7E5E /* FeedsCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AC0412E28229FD600CA7E5E /* FeedsCollectionViewCell.xib */; };
+		7AC041312822BE6C00CA7E5E /* FeedsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC041302822BE6C00CA7E5E /* FeedsCell.swift */; };
+		7AC041342822C84000CA7E5E /* FeedsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC041332822C84000CA7E5E /* FeedsViewController.swift */; };
 		7AC21E7227FB110D006E1ED5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC21E7127FB110D006E1ED5 /* FirebaseAnalytics */; };
 		7AC21E7527FB199F006E1ED5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC21E7427FB199F006E1ED5 /* User.swift */; };
 		7AC21E7927FB26E7006E1ED5 /* AppDelegate+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC21E7827FB26E7006E1ED5 /* AppDelegate+Firebase.swift */; };
@@ -610,6 +614,10 @@
 		7A9AC7552800357C002014D9 /* ItemViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		7A9AC7572800359D002014D9 /* ItemViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		7A9AC759280060FF002014D9 /* ItemViewControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewControllerCell.swift; sourceTree = "<group>"; };
+		7AC0412C2822998500CA7E5E /* FeedsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsCollectionViewCell.swift; sourceTree = "<group>"; };
+		7AC0412E28229FD600CA7E5E /* FeedsCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedsCollectionViewCell.xib; sourceTree = "<group>"; };
+		7AC041302822BE6C00CA7E5E /* FeedsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsCell.swift; sourceTree = "<group>"; };
+		7AC041332822C84000CA7E5E /* FeedsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedsViewController.swift; sourceTree = "<group>"; };
 		7AC21E7427FB199F006E1ED5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7AC21E7827FB26E7006E1ED5 /* AppDelegate+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Firebase.swift"; sourceTree = "<group>"; };
 		7AC9F6BD281A7A2F00167899 /* UIApplication+appDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+appDelegate.swift"; sourceTree = "<group>"; };
@@ -1031,6 +1039,7 @@
 		6979DF7A2717426F001EC168 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				7AC041322822C81700CA7E5E /* FeedsViewController */,
 				697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */,
 				69322E2D26008EEF00CAFBFA /* ItemViewController */,
 				69C3695825E780E2000A8E5E /* OccasionsPopupViewController */,
@@ -1221,6 +1230,7 @@
 				7A2039DA27FC440C00CD4B93 /* AccountCollectionViewCell.swift */,
 				69297C5025EB852700A8684E /* BrandCollectionViewCell.swift */,
 				69A0C9DD27044E7000C49977 /* Feed */,
+				7AC0412C2822998500CA7E5E /* FeedsCollectionViewCell.swift */,
 				69297C5D25EBC9FE00A8684E /* GenderCollectionViewCell.swift */,
 				7AD6F1BB280D4B6E0056CDA4 /* OccasionCollectionViewCell.swift */,
 				69C3A4BC25EC07E800F8F968 /* ProfileSectionHeaderView.swift */,
@@ -1235,6 +1245,7 @@
 				7A9AC759280060FF002014D9 /* ItemViewControllerCell.swift */,
 				69DA85D126D5FA2800D16B25 /* Feed */,
 				69007CFC26EA7462001170D0 /* OccasionCell.swift */,
+				7AC041302822BE6C00CA7E5E /* FeedsCell.swift */,
 			);
 			path = "Table Cells";
 			sourceTree = "<group>";
@@ -1535,6 +1546,7 @@
 				69DA85D626D5FD2F00D16B25 /* FeedBrandCell.xib */,
 				697CCE6926D0039800B69763 /* FeedItem.xib */,
 				697CCE5B26CFA47E00B69763 /* FeedItemCell.xib */,
+				7AC0412E28229FD600CA7E5E /* FeedsCollectionViewCell.xib */,
 				69297C5E25EBC9FE00A8684E /* GenderCollectionViewCell.xib */,
 				7AD6F1B9280D498C0056CDA4 /* OccasionCollectionViewCell.xib */,
 				69C3A4BD25EC07E800F8F968 /* ProfileSectionHeaderView.xib */,
@@ -1658,6 +1670,14 @@
 				7A2039E227FD749700CD4B93 /* SignupViewController.swift */,
 			);
 			path = SignupViewController;
+			sourceTree = "<group>";
+		};
+		7AC041322822C81700CA7E5E /* FeedsViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7AC041332822C84000CA7E5E /* FeedsViewController.swift */,
+			);
+			path = FeedsViewController;
 			sourceTree = "<group>";
 		};
 		7AC21E7327FB1956006E1ED5 /* User */ = {
@@ -1817,6 +1837,7 @@
 				69C5CBFF260A1F2200DE22E6 /* NotoSans-Regular.ttf in Resources */,
 				690623A4270C633800813089 /* Screenshot15.png in Resources */,
 				69DFE5AE2735275500D46B5F /* Launch Screen Concept.storyboard in Resources */,
+				7AC0412F28229FD600CA7E5E /* FeedsCollectionViewCell.xib in Resources */,
 				690623A2270C633800813089 /* Screenshot14.png in Resources */,
 				69C5CBF5260A1ED800DE22E6 /* NotoSans-SemiBold.ttf in Resources */,
 				690623A9270C633800813089 /* Screenshot02.png in Resources */,
@@ -1848,6 +1869,7 @@
 				69007D0226EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift in Sources */,
 				69E8ACE626FDF074000CC96A /* UIViewController+touchesBegan.swift in Sources */,
 				690A212C27D8766C00BFDF45 /* Brands+UserDefaults.swift in Sources */,
+				7AC041312822BE6C00CA7E5E /* FeedsCell.swift in Sources */,
 				69AE95592563D43700850210 /* ItemViewController.swift in Sources */,
 				69007CEC26EA6324001170D0 /* Occasion.swift in Sources */,
 				69C5CBDA260A045A00DE22E6 /* Swift.Collection+safeIndex.swift in Sources */,
@@ -1889,6 +1911,7 @@
 				69A6F6F622BA26B7002A3B49 /* OutfitViewController.swift in Sources */,
 				7A6D65B52813FD3D00EC3087 /* Array+replace.swift in Sources */,
 				692C9417254708830075BD92 /* URL+withQueries.swift in Sources */,
+				7AC041342822C84000CA7E5E /* FeedsViewController.swift in Sources */,
 				693D728E256BF4CA00540C10 /* BrandManager.swift in Sources */,
 				692AF3D22601209700D37269 /* UIView+asImage.swift in Sources */,
 				6906A9AE26E68C7C00386267 /* CollectionSelectViewController.swift in Sources */,
@@ -1966,6 +1989,7 @@
 				6906A9AB26E6853700386267 /* CollectionNameViewController+UITextFieldDelegate.swift in Sources */,
 				69007CFB26EA7323001170D0 /* UIView+reuseId.swift in Sources */,
 				69BA5DC827F5888300426D26 /* Image.swift in Sources */,
+				7AC0412D2822998500CA7E5E /* FeedsCollectionViewCell.swift in Sources */,
 				699812432703764E007B7024 /* IBPCollectionViewCompositionalLayoutInteroperability.swift in Sources */,
 				69F046F926FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift in Sources */,
 				69BEC0ED272970510034F454 /* Array+commaJoined.swift in Sources */,
