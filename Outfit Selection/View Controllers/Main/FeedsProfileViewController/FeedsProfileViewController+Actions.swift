@@ -1,5 +1,5 @@
 //
-//  FeedsSourceViewController+Actions.swift
+//  FeedsProfileViewController+Actions.swift
 //  Outfit Selection
 //
 //  Created by Evgeniy Goncharov on 05.05.2022.
@@ -8,41 +8,44 @@
 
 import UIKit
 
-extension FeedsSourceViewController {
+extension FeedsProfileViewController {
     // MARK: - Actions
     /// Call when leftBarButtonItem tapped
     @objc func cancelButtonTap() {
         // Hide backButton
         navigationItem.hidesBackButton = true
-        debug("TODO: Restore selected feeds")
-
+        
+        // Restore selected feedsSource
+        FeedsProfile.restore()
+        
         // Return to called viewController
         navigationController?.popViewController(animated: true)
     }
     
-    // MARK: - Actions
+    /// Call when save button  tapped
     @IBAction func saveButtonTap() {
-        debug("TODO: saveButtonTap ")
+        // Save selected feeds to user default
+        FeedsProfile.save()
+        
         // Back to profile viewController
         navigationController?.popViewController(animated: true)
     }
     
+    /// Call when selected all tapped
     @IBAction func selectAllButtonTapped(_ sender: SelectableButtonItem) {
         // Switch the selection
         sender.isButtonSelected.toggle()
         let isSelected = sender.isButtonSelected
         
         // Select / deselect all occasions save the selection to permanent storage
-        for name in FeedsSource.all.names {
-            guard let feed = FeedsSource.all.first(where: { $0.name == name }) else { return }
-            FeedsSource.selectWithoutSaving(feed: feed, shouldUse: isSelected )
+        for name in FeedsProfile.all.names {
+            guard let feed = FeedsProfile.all.first(where: { $0.name == name }) else { return }
+            FeedsProfile.selectWithoutSaving(feed: feed, shouldUse: isSelected )
         }
-        
-        // Save selected occasions
-        FeedsSource.saveSelectedFeeds()
         
         // Reload feeds and enable / disable go button
         feedsTableView.reloadData()
+        configureAllButton()
         configureSaveButton()
     }
 }

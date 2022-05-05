@@ -230,7 +230,7 @@ class NetworkManager {
     
     /// Call /feeds API
     /// - Parameter completion: closure called after the request is finished, with list of feeds if successfull, or with nil if not
-    func getFeeds(completion: @escaping (_ feeds: FeedsSource?) -> Void) {
+    func getFeeds(completion: @escaping (_ feeds: FeedsProfile?) -> Void) {
         get("feeds", completion: completion)
     }
     

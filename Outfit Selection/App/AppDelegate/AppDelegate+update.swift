@@ -58,7 +58,7 @@ extension AppDelegate {
             }
             
             // Update the feeds
-            FeedsSource.all = feeds
+            FeedsProfile.all = feeds
             let elapsedTime = Date().timeIntervalSince(startTime)
             debug("INFO: Loaded \(feeds.count) feeds in \(elapsedTime.asTime) s")
             debug(feeds)

@@ -1,5 +1,5 @@
 //
-//  FeedsSourceViewController.swift
+//  FeedsProfileViewController.swift
 //  Outfit Selection
 //
 //  Created by Evgeniy Goncharov on 04.05.2022.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedsSourceViewController: UIViewController {
+class FeedsProfileViewController: UIViewController {
     
     // MARK: - Outlets
     /// Top right button to clear or select all brands
@@ -24,12 +24,15 @@ class FeedsSourceViewController: UIViewController {
     /// Array of feedsSource names
     var feedsSourceNames: [String] = []
     
-    
-
     // MARK: - Custom Methods
+    /// Set top right button to clear or select all
+    func configureAllButton() {
+        let feedsSource = FeedsProfile.all
+        allButton.isButtonSelected = feedsSource.unselected.count < feedsSource.selected.count
+    }
     /// Set go button background color and enable / disable it depending on number of feeds selected
     func configureSaveButton() {
-        let shouldUse = FeedsSource.all.selected.count
+        let shouldUse = FeedsProfile.all.selected.count
         let isEnabled = 0 < shouldUse
         saveButton?.backgroundColor = isEnabled
         ? Globals.Color.Button.enabled
@@ -59,7 +62,7 @@ class FeedsSourceViewController: UIViewController {
         tabBarController?.tabBar.isHidden = true
         
         // Setup data source
-        let currentFeedsSource = FeedsSource.all
+        let currentFeedsSource = FeedsProfile.all
         feedsSourceNames = currentFeedsSource.names.sorted()
         
         // Setup occasions table view
@@ -71,6 +74,8 @@ class FeedsSourceViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         // Configure UI
+        configureAllButton()
         configureSaveButton()
     }
+    
 }

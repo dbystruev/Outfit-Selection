@@ -1,5 +1,5 @@
 //
-//  FeedSource.swift
+//  FeedsProfile.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 03.05.2022.
@@ -9,7 +9,7 @@
 import Foundation
 
 // Matches http://oracle.getoutfit.net:3000/feeds
-public class FeedSource: Codable {
+public class FeedProfile: Codable {
     /// Unique feed ID, e.g. "tsum.2022-05-02", matches feed in Item
     let id: String
     
