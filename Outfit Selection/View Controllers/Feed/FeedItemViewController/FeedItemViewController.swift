@@ -16,7 +16,7 @@ class FeedItemViewController: LoggingViewController {
     
     // MARK: - Stored Properties
     /// Feed of the feed
-    var feed: String?
+    var feed: [String]?
     
     /// Collection view layout for the item collection view
     let itemCollectionViewLayout = FeedItemCollectionViewLayout()
