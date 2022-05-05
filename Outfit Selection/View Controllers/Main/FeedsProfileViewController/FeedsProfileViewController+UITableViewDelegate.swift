@@ -1,5 +1,5 @@
 //
-//  FeedsSourceViewController+UITableViewDelegate.swift
+//  FeedsProfileViewController+UITableViewDelegate.swift
 //  Outfit Selection
 //
 //  Created by Evgeniy Goncharov on 05.05.2022.
@@ -8,18 +8,20 @@
 
 import UIKit
 
-extension FeedsSourceViewController: UITableViewDelegate {
+extension FeedsProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         // Toggle all feeds with the same title and reload the table
-        let feed = FeedsSource.all[indexPath.row]
+        let feed = FeedsProfile.all[indexPath.row]
         
-        /// Select feeds
-        FeedsSource.select(feed: feed, shouldUse: !feed.shouldUse)
+        // Select feeds
+        FeedsProfile.select(feed: feed, shouldUse: !feed.shouldUse)
         
+        // Reload changed row
         tableView.reloadRows(at: [indexPath], with: .none)
 
-        // Configure the button
+        // Configure the buttons
+        configureAllButton()
         configureSaveButton()
     }
 }

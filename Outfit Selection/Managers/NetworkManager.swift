@@ -216,7 +216,6 @@ class NetworkManager {
                 completion(nil)
                 return
             }
-            //            debug(request.absoluteString)
             completion(itemHeader as? T)
         }
         task.resume()
@@ -230,7 +229,7 @@ class NetworkManager {
     
     /// Call /feeds API
     /// - Parameter completion: closure called after the request is finished, with list of feeds if successfull, or with nil if not
-    func getFeeds(completion: @escaping (_ feeds: FeedsSource?) -> Void) {
+    func getFeeds(completion: @escaping (_ feeds: FeedsProfile?) -> Void) {
         get("feeds", completion: completion)
     }
     
@@ -289,6 +288,7 @@ class NetworkManager {
     ///   - categoryIDs: the list of category IDs to filter items by, empty (all categories) by default
     ///   - subcategoryIDs: the list of subcategory IDs to filter items by, empty (all subcategories) by default
     ///   - vendorNames: the list of vendors to filter items by
+    ///   - feeds: the feeds profile all IDs by default
     ///   - limit: limit the number of items by given number, nil by default
     ///   - sale: old price should not be null, false by default
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
@@ -297,7 +297,7 @@ class NetworkManager {
         in categoryIDs: [Int] = [],
         subcategoryIDs: [Int] = [],
         filteredBy vendorNames: [String] = [],
-        feed: String? = nil,
+        feeds: [String]? = [String](FeedsProfile.all.feedsIDs),
         limited limit: Int? = nil,
         named name: String? = nil,
         sale: Bool = false,
@@ -309,7 +309,7 @@ class NetworkManager {
             in: categoryIDs,
             subcategoryIDs: subcategoryIDs,
             named: name,
-            feed: feed,
+            feed: feeds,
             limited: limit,
             sale: sale,
             filteredBy: vendorNames
@@ -404,7 +404,7 @@ class NetworkManager {
         in categories: [Int],
         subcategoryIDs: [Int],
         named name: String?,
-        feed: String?,
+        feed: [String]?,
         limited limit: Int?,
         sale: Bool,
         filteredBy fullVendorNames: [String]
@@ -455,9 +455,8 @@ class NetworkManager {
         
         // Add "feed" parameter
         if let feed = feed {
-            parameters[Keys.feed.rawValue] = "eq.\(feed)"
+            parameters[Keys.feed.rawValue] = FeedsProfile.all.isEmpty ? nil : "in.(\(feed.commaJoined))"
         }
-        
         return parameters
     }
     

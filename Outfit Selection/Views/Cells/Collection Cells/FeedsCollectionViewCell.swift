@@ -20,7 +20,7 @@ class FeedsCollectionViewCell: UICollectionViewCell {
 /// - Parameters:
 ///   - feed: the feed to confiture cell with
 func configure(
-    with feed: FeedSource,
+    with feed: FeedProfile,
     hideChevron: Bool = true,
     custtomLabel: String = "") {
         logoImageView.configure(with: feed.picture)

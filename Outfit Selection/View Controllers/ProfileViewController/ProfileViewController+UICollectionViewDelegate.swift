@@ -63,8 +63,8 @@ extension ProfileViewController: UICollectionViewDelegate {
             // Load OccasionsViewController
             self.navigationController?.show(occasionsViewController, sender: nil)
         case 4:
-            // Section 4 is feeds — select feed and go to FeedsSourceViewController for edit the feeds list
-            self.performSegue(withIdentifier: FeedsSourceViewController.segueIdentifier, sender: nil)
+            // Section 4 is feeds — select feed and go to FeedsProfileViewController for edit the feeds list
+            self.performSegue(withIdentifier: FeedsProfileViewController.segueIdentifier, sender: nil)
             
         default:
             debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")

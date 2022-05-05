@@ -35,6 +35,10 @@ extension UserDefaults {
     @UserDefault(key: "GetOutfitSelectedOccasionsKey", defaultValue: [])
     static var selectedOccasionTitles: [String]
     
+    /// The list of selectedFeedsIDs selected by the user
+    @UserDefault(key: "GetOutfitselectedFeedsIDsKey", defaultValue: [])
+    static var selectedFeedsIDs: [String]
+    
     /// Wishlist items data saved by the user
     @UserDefault(key: "GetOutfitWishlistKey", defaultValue: nil)
     static var wishlists: Data?
