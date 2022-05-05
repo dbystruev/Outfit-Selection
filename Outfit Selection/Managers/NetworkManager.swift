@@ -6,7 +6,6 @@
 //  Copyright © 2020 Denis Bystruev. All rights reserved.
 //
 
-import AVFAudio
 import UIKit
 
 class NetworkManager {
@@ -231,7 +230,7 @@ class NetworkManager {
     
     /// Call /feeds API
     /// - Parameter completion: closure called after the request is finished, with list of feeds if successfull, or with nil if not
-    func getFeeds(completion: @escaping (_ feeds: Feeds?) -> Void) {
+    func getFeeds(completion: @escaping (_ feeds: FeedsSource?) -> Void) {
         get("feeds", completion: completion)
     }
     

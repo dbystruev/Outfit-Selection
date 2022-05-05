@@ -1,5 +1,5 @@
 //
-//  Feed.swift
+//  FeedSource.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 03.05.2022.
@@ -9,12 +9,12 @@
 import Foundation
 
 // Matches http://oracle.getoutfit.net:3000/feeds
-public struct Feed: Codable {
+public class FeedSource: Codable {
     /// Unique feed ID, e.g. "tsum.2022-05-02", matches feed in Item
     let id: String
     
     /// True if the feed should be used, false otherwise
-    let shouldUse: Bool
+    var shouldUse: Bool
     
     /// Date when the feed was created
     let createdAt: Date
@@ -34,7 +34,7 @@ public struct Feed: Codable {
     }
     
     // MARK: - Decodable
-    public init(from decoder: Decoder) throws {
+    required public init(from decoder: Decoder) throws {
         // Get values from the container
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
@@ -45,5 +45,12 @@ public struct Feed: Codable {
         createdAt = Timestamp.formatter.date(from: createdAtTimestamp) ?? Date()
         name = try values.decode(String.self, forKey: .name)
         picture = try? values.decode(URL.self, forKey: .picture)
+    }
+    
+    // MARK: - Methods
+    /// Select / deselect this occasion without updating user defaults
+    /// - Parameter shouldUse: true if should select, false if should unselect
+    func selectWithoutSaving(_ shouldUse: Bool) {
+        self.shouldUse = shouldUse
     }
 }
