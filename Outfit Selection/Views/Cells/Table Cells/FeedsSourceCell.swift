@@ -1,5 +1,5 @@
 //
-//  FeedsCell.swift
+//  FeedsSourceCell.swift
 //  Outfit Selection
 //
 //  Created by Evgeniy Goncharov on 04.05.2022.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedsCell: UITableViewCell {
+class FeedsSourceCell: UITableViewCell {
 
     // MARK: - Outlets
     @IBOutlet weak var checkBoxImageView: UIImageView!
@@ -27,7 +27,7 @@ class FeedsCell: UITableViewCell {
     // MARK: - Custom Methods
     /// Configures this cell with a given feed
     /// - Parameter feed: the feed to configure this cell with
-    func configureContent(with feed: Feed) {
+    func configureContent(with feed: FeedSource) {
         checkBoxImageView.isHighlighted = feed.shouldUse
         logoImageView.configure(with: feed.picture)
         feedsNameLabel.text = feed.name

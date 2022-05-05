@@ -82,6 +82,9 @@ class OccasionsViewController: NextButtonViewController {
             
             // Hide tabBar
             tabBarController?.tabBar.isHidden = true
+            
+            // Set title
+            self.title = "Occasions"~
         }
         
         // Unhide top navigation bar

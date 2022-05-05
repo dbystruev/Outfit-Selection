@@ -82,12 +82,12 @@ extension ProfileViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedsCollectionViewCell.reuseId, for: indexPath)
             
             // Configure one cell with simple text
-            Feeds.shouldUse.count > itemsLimit ?
+            FeedsSource.all.selected.count > itemsLimit ?
             (cell as? FeedsCollectionViewCell)?.configure(
-                with: Feeds.all.shouldUse[indexPath.row],
+                with: FeedsSource.all.selected[indexPath.row],
                 hideChevron: false,
-                custtomLabel: "Selected \(Feeds.all.shouldUse.count) feed out of \(Feeds.all.count)"~ )
-            : (cell as? FeedsCollectionViewCell)?.configure(with: Feeds.all.shouldUse[indexPath.row])
+                custtomLabel: "Selected \(FeedsSource.all.selected.count) feed out of \(FeedsSource.all.selected.count)"~ )
+            : (cell as? FeedsCollectionViewCell)?.configure(with: FeedsSource.all.selected[indexPath.row])
             return cell
         default:
             debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")
@@ -137,7 +137,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             return Occasions.selectedUniqueTitle.count > itemsLimit ? 1 : Occasions.selectedUniqueTitle.count
         case 4:
             // Section 4 is feeds — use feeds view controller section 0 to answer.
-            return Feeds.all.count > itemsLimit ? 1 : Feeds.all.shouldUse.count
+            return FeedsSource.all.count > itemsLimit ? 1 : FeedsSource.all.selected.count
             
         default:
             debug("WARNING: Unknown section \(section)")

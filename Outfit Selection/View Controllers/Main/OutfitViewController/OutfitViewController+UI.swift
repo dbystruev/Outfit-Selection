@@ -252,7 +252,7 @@ extension OutfitViewController {
         // Scroll to the given item IDs
         scrollViews?.scrollToElements(with: scrollItems.IDs, ordered: ordered, completion: completion)
         // TODO: Check this method, when all items download and shuffle buton tap
-        debug(scrollItems)
+        //debug(scrollItems)
     }
     
     /// Scroll outfit's scroll views to the given occasion
