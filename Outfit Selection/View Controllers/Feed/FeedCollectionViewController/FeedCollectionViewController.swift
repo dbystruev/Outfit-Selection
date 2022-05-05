@@ -15,7 +15,10 @@ class FeedCollectionViewController: LoggingViewController {
     
     // MARK: - Stored Properties
     /// The collection of branded images
-    let brandedImages = Brands.prioritizeSelected 
+    let brandedImages = Brands.prioritizeSelected
+    
+    /// The name for Notification name
+    let brandsChanged = Globals.Notification.name.brandsChanged
     
     /// Default feed sections
     let feedSectionsDefault = [
@@ -29,6 +32,9 @@ class FeedCollectionViewController: LoggingViewController {
     
     /// Items for each of the kinds
     var items: [FeedKind: Items] = [:]
+    
+    /// Brands is locking now
+    var lockBrands = false
     
     /// The maximum number of items in each section
     let maxItemsInSection = Globals.Feed.maxItemsInSection
@@ -56,12 +62,6 @@ class FeedCollectionViewController: LoggingViewController {
                 feedCollectionView.reloadData()
             }
         }
-    }
-
-    // MARK: - Computed Properties
-    /// True if brand selection has changed
-    var haveBrandsChanged: Bool {
-        BrandManager.shared.selectedBrands != selectedBrands
     }
     
     // MARK: - Custom Methods
@@ -183,12 +183,8 @@ class FeedCollectionViewController: LoggingViewController {
                 return
             }
             
-            // Check items
+            // Check items is empty
             guard var items = items?.shuffled(), !items.isEmpty else {
-                // If no items were returned try again ignoring brands
-                if !ignoreBrands {
-                    self.getItems(for: kind, ignoreBrands: true)
-                }
                 completion()
                 return
             }
@@ -250,12 +246,15 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Stop update if sections is not feed sections default
         guard !feedSectionsDefault.filter(sections.contains).isEmpty
-        || sections != [FeedKind.brands, FeedKind.emptyBrands] else {
+                || sections != [FeedKind.brands, FeedKind.emptyBrands] else {
             debug("INFO: Unknown sections", sections)
             return
         }
         
         if !Brands.selected.isEmpty {
+            // Lock all brands when items is updating
+            lockBrands = true
+            
             // Dispatch group to wait for all requests to finish
             let group = DispatchGroup()
             
@@ -265,8 +264,6 @@ class FeedCollectionViewController: LoggingViewController {
                 // Get items for section
                 self.getItems(for: section, completion: {
                     if self.items[section] == nil || section == .brands  {
-                        group.leave()
-                        
                     } else {
                         DispatchQueue.main.async { [self] in
                             // Replace element current section
@@ -281,9 +278,9 @@ class FeedCollectionViewController: LoggingViewController {
                             
                             // Reload sections where was updated items
                             feedCollectionView?.reloadSections(IndexSet(updatedSections))
-                            group.leave()
                         }
                     }
+                    group.leave()
                 })
             }
             
@@ -291,21 +288,33 @@ class FeedCollectionViewController: LoggingViewController {
             group.notify(queue: .main) { [self] in
                 debug("INFO: Get items FINISH")
                 
-                //Get sections with empty items and ignore brands
-                let emptySection = sections.filter { items[$0] == nil && $0 != .brands }
+                // Get sections with empty items and ignore brands
+                let emptySections = sections.filter { items[$0]?.isEmpty ?? true && $0 != .brands }
                 
                 // Remove all emptySection
-//                nonEmptySections.removeAll(where: { emptySection.contains($0) } )
-                
+                nonEmptySections.removeAll(where: { emptySections.contains($0) } )
+
                 // Show choose brands section, if after clear you'll get only brands section
-                if nonEmptySections.count == 1 {
-                    self.nonEmptySections = (feedSectionEmpty)
+                if nonEmptySections.count <= 1 {
+                    self.nonEmptySections = feedSectionEmpty
                 }
-                
+
                 // Reload data into UICollectionView
                 feedCollectionView.reloadData()
+                
+                // Unlock brands
+                lockBrands = false
             }
         }
+    }
+    
+    /// Called when selected brands was changed
+    @objc func haveBrandsChanged() {
+        debug("INFO: Brands will changed")
+        // Make feed item cells reload
+        setSection()
+        // Reload data
+        feedCollectionView.reloadData()
     }
     
     // MARK: - Inherited Methods
@@ -325,7 +334,7 @@ class FeedCollectionViewController: LoggingViewController {
         setSection()
         
         // Reload data into UICollectionView
-        feedCollectionView.reloadData()
+        //feedCollectionView.reloadData()
         
         // Update items in sections
         //updateItems(sections: sections)
@@ -340,24 +349,17 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Set self as data source and register collection view cells and header
         setup(feedCollectionView, withBrandsOnTop: true)
+        
+        // Observer for brands, it called when brands selected was changed
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(self.haveBrandsChanged),
+            name: Notification.Name(brandsChanged),
+            object: nil)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        if haveBrandsChanged {
-            debug("INFO: Brands will changed")
-            
-            // Set selected brands
-            selectedBrands = BrandManager.shared.selectedBrands
-            
-            // Make feed item cells reload
-            setSection()
-            
-            // Reload data
-            feedCollectionView.reloadData()
-        }
-        
         // Set margins and paddings for brand cell
         savedBrandCellConstants = (
             BrandCollectionViewCell.horizontalMargin,

@@ -71,6 +71,7 @@ class ProfileViewController: LoggingViewController {
         profileCollectionView.register(GenderCollectionViewCell.nib, forCellWithReuseIdentifier: GenderCollectionViewCell.reuseId)
         profileCollectionView.register(AccountCollectionViewCell.nib, forCellWithReuseIdentifier: AccountCollectionViewCell.reuseId)
         profileCollectionView.register(OccasionCollectionViewCell.nib, forCellWithReuseIdentifier: OccasionCollectionViewCell.reuseId)
+        profileCollectionView.register(FeedsCollectionViewCell.nib, forCellWithReuseIdentifier: FeedsCollectionViewCell.reuseId)
         profileCollectionView.register(ProfileSectionHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                        withReuseIdentifier: ProfileSectionHeaderView.reuseId)
     }

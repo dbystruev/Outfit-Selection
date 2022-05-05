@@ -73,10 +73,22 @@ extension ProfileViewController: UICollectionViewDataSource {
                 with: Occasions.selectedUniqueTitle.sorted()[indexPath.row],
                 hideCheckBox: true,
                 hideChevron: false,
-                custtomLabel: "Selected \(Occasions.selectedUniqueTitle.count) occasions out of \(Occasions.titles.count)"~ ) :
-            (cell as? OccasionCollectionViewCell)?.configure(with: Occasions.selectedUniqueTitle.sorted()[indexPath.row])
+                custtomLabel: "Selected \(Occasions.selectedUniqueTitle.count) occasions out of \(Occasions.titles.count)"~ )
+            : (cell as? OccasionCollectionViewCell)?.configure(with: Occasions.selectedUniqueTitle.sorted()[indexPath.row])
             return cell
             
+        case 4:
+            // Section 3 is Occasion - configure occasion cell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedsCollectionViewCell.reuseId, for: indexPath)
+            
+            // Configure one cell with simple text
+            Feeds.shouldUse.count > itemsLimit ?
+            (cell as? FeedsCollectionViewCell)?.configure(
+                with: Feeds.all.shouldUse[indexPath.row],
+                hideChevron: false,
+                custtomLabel: "Selected \(Feeds.all.shouldUse.count) feed out of \(Feeds.all.count)"~ )
+            : (cell as? FeedsCollectionViewCell)?.configure(with: Feeds.all.shouldUse[indexPath.row])
+            return cell
         default:
             debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")
             return UICollectionViewCell()
@@ -122,7 +134,10 @@ extension ProfileViewController: UICollectionViewDataSource {
             
         case 3:
             // Section 3 is occasion — use occasion view controller section 0 to answer.
-            return  Occasions.selectedUniqueTitle.count > itemsLimit ? 1 : Occasions.selectedUniqueTitle.count
+            return Occasions.selectedUniqueTitle.count > itemsLimit ? 1 : Occasions.selectedUniqueTitle.count
+        case 4:
+            // Section 4 is feeds — use feeds view controller section 0 to answer.
+            return Feeds.all.count > itemsLimit ? 1 : Feeds.all.shouldUse.count
             
         default:
             debug("WARNING: Unknown section \(section)")

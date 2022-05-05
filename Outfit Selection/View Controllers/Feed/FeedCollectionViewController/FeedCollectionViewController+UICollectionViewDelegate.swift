@@ -18,6 +18,9 @@ extension FeedCollectionViewController: UICollectionViewDelegate {
         
         let brandedImage = Brands.prioritizeSelected[indexPath.row]
         
+        // Check status brand
+        guard !lockBrands else { return }
+        
         // Toggle alpha between 0.25 and 1
         brandedImage.toggleSelection()
         brandCell.configureBackground(isSelected: brandedImage.isSelected)
@@ -40,12 +43,23 @@ extension FeedCollectionViewController: UICollectionViewDelegate {
                 
                 // Set new items for FeedKind
                 self.items[feedKind.key] = filteredItems
+                
+                // Get index with updated element
+                let updatedSections = self.nonEmptySections.enumerated().compactMap { index, kind in
+                    feedKind.key == kind ? index : nil
+                }
+                
+                // Reload sections where was updated items
+                feedCollectionView?.reloadSections(IndexSet(updatedSections))
+                
+                updateItems(sections: [feedKind.key])
             }
             
         } else {
             // Make feed item cells reload
             setSection()
         }
+        
         // Reload data into UICollectionView
         self.feedCollectionView.reloadData()
     }
