@@ -207,7 +207,7 @@ class ItemViewController: LoggingViewController {
         addToWishlistButton?.configure(for: item)
         let nameWithoutVendor = item.nameWithoutVendor
         nameLabels.forEach { $0.text = nameWithoutVendor }
-        title = item.price.asPrice
+        //title = item.price.asPrice
         
         // Set price to label
         priceLabels.forEach  { $0.text = item.price.asPrice }
@@ -238,7 +238,7 @@ class ItemViewController: LoggingViewController {
         shareButton.isEnabled = !isEditing
         
         // Set title
-        title = isEditing ? "Edit"~ : item?.price.asPrice
+        title = isEditing ? "Edit"~ : "" //item?.price.asPrice
         
         // Hide or show backButton
         navigationItem.hidesBackButton = isEditing
@@ -265,7 +265,9 @@ class ItemViewController: LoggingViewController {
             navigationItem.rightBarButtonItem = editButtonItem
             navigationItem.rightBarButtonItem?.action = #selector(editButtonItemTap)
         } else {
-            shareButton.isHidden = true
+            // Clear rightBarButtonItem
+            navigationItem.rightBarButtonItem = nil
+            //shareButton.isHidden = true
         }
         
         // Hide Search bar

@@ -78,17 +78,22 @@ extension ProfileViewController: UICollectionViewDataSource {
             return cell
             
         case 4:
-            // Section 3 is Occasion - configure occasion cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedsCollectionViewCell.reuseId, for: indexPath)
             
-            // Configure one cell with simple text
-            FeedsProfile.all.selected.count > itemsLimit ?
-            (cell as? FeedsCollectionViewCell)?.configure(
-                with: FeedsProfile.all.selected[indexPath.row],
+            // Section 3 is Occasion - configure occasion cell
+            if FeedsProfile.all.selected.count > itemsLimit || FeedsProfile.all.selected.count == 0 {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
+            (cell as? OccasionCollectionViewCell)?.configure(
+                with: Occasions.selectedUniqueTitle.sorted()[indexPath.row],
+                hideCheckBox: true,
                 hideChevron: false,
-                custtomLabel: "Selected \(FeedsProfile.all.selected.count) feed out of \(FeedsProfile.all.selected.count)"~ )
-            : (cell as? FeedsCollectionViewCell)?.configure(with: FeedsProfile.all.selected[indexPath.row])
-            return cell
+                custtomLabel: "Selected \(FeedsProfile.all.selected.count) feed out of \(FeedsProfile.all.count)"~ )
+                return cell
+            } else {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedsCollectionViewCell.reuseId, for: indexPath)
+                (cell as? FeedsCollectionViewCell)?.configure(with: FeedsProfile.all.selected[indexPath.row])
+                return cell
+            }
+            
         default:
             debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")
             return UICollectionViewCell()
@@ -137,7 +142,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             return Occasions.selectedUniqueTitle.count > itemsLimit ? 1 : Occasions.selectedUniqueTitle.count
         case 4:
             // Section 4 is feeds — use feeds view controller section 0 to answer.
-            return FeedsProfile.all.count > itemsLimit ? 1 : FeedsProfile.all.selected.count
+            return FeedsProfile.all.count > itemsLimit || FeedsProfile.all.selected.count == 0 ? 1 : FeedsProfile.all.selected.count
             
         default:
             debug("WARNING: Unknown section \(section)")
