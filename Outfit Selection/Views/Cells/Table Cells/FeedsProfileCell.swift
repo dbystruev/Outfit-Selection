@@ -33,6 +33,8 @@ class FeedsProfileCell: UITableViewCell {
         feedsNameLabel.text = feed.name
     }
     
+    // TODO: add func configure checkBoxImageView
+    
     /// Configure the cell's look and feel once at the beginning
     func configureLayout() {
         selectionStyle = .none

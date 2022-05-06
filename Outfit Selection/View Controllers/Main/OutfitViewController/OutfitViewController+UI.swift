@@ -522,7 +522,6 @@ extension OutfitViewController {
     
     /// Reload ocassions
     @objc func updatedOccasions() {
-        debug("UPDATETED OCCASION")
         // Return to main
         DispatchQueue.main.async {
             //            guard let tabBarController = self.tabBarController as? TabBarController else {

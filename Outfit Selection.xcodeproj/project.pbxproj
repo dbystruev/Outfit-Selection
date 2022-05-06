@@ -297,6 +297,11 @@
 		7AC04138282358C500CA7E5E /* FeedsProfileViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC04137282358C500CA7E5E /* FeedsProfileViewController+UITableViewDelegate.swift */; };
 		7AC0413A28236C4E00CA7E5E /* FeedsProfileViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0413928236C4E00CA7E5E /* FeedsProfileViewController+Actions.swift */; };
 		7AC0413C282374CE00CA7E5E /* FeedsProfile+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0413B282374CE00CA7E5E /* FeedsProfile+UserDefaults.swift */; };
+		7AC0413E2824DB7C00CA7E5E /* occasions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7AC0413D2824DB7C00CA7E5E /* occasions.txt */; };
+		7AC041412824EEB400CA7E5E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC041402824EEB300CA7E5E /* ImageViewController.swift */; };
+		7AC041432824F0EB00CA7E5E /* ItemViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC041422824F0EB00CA7E5E /* ItemViewController+Navigation.swift */; };
+		7AC0414928250E1900CA7E5E /* ImageViewController+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0414828250E1900CA7E5E /* ImageViewController+UIScrollViewDelegate.swift */; };
+		7AC0414B28251E2300CA7E5E /* ImageViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0414A28251E2300CA7E5E /* ImageViewController+Actions.swift */; };
 		7AC21E7227FB110D006E1ED5 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 7AC21E7127FB110D006E1ED5 /* FirebaseAnalytics */; };
 		7AC21E7527FB199F006E1ED5 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC21E7427FB199F006E1ED5 /* User.swift */; };
 		7AC21E7927FB26E7006E1ED5 /* AppDelegate+Firebase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC21E7827FB26E7006E1ED5 /* AppDelegate+Firebase.swift */; };
@@ -317,7 +322,6 @@
 		7ADB64852812594E00809AC0 /* FeedCollectionViewController+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB64842812594E00809AC0 /* FeedCollectionViewController+Configure.swift */; };
 		7AEB482527CE246A003360CF /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB482427CE246A003360CF /* ItemImageView.swift */; };
 		7AEB482E27CE5311003360CF /* ItemImageView+configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB482D27CE5311003360CF /* ItemImageView+configure.swift */; };
-		7AF42A9527D9D00300D5CF53 /* occasions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7AF42A9427D9D00300D5CF53 /* occasions.txt */; };
 		7AF42A9727DA460400D5CF53 /* CollectionSelectViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF42A9627DA460400D5CF53 /* CollectionSelectViewController+Actions.swift */; };
 /* End PBXBuildFile section */
 
@@ -626,6 +630,11 @@
 		7AC04137282358C500CA7E5E /* FeedsProfileViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsProfileViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		7AC0413928236C4E00CA7E5E /* FeedsProfileViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsProfileViewController+Actions.swift"; sourceTree = "<group>"; };
 		7AC0413B282374CE00CA7E5E /* FeedsProfile+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsProfile+UserDefaults.swift"; sourceTree = "<group>"; };
+		7AC0413D2824DB7C00CA7E5E /* occasions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = occasions.txt; sourceTree = "<group>"; };
+		7AC041402824EEB300CA7E5E /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
+		7AC041422824F0EB00CA7E5E /* ItemViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemViewController+Navigation.swift"; sourceTree = "<group>"; };
+		7AC0414828250E1900CA7E5E /* ImageViewController+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageViewController+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
+		7AC0414A28251E2300CA7E5E /* ImageViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageViewController+Actions.swift"; sourceTree = "<group>"; };
 		7AC21E7427FB199F006E1ED5 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		7AC21E7827FB26E7006E1ED5 /* AppDelegate+Firebase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Firebase.swift"; sourceTree = "<group>"; };
 		7AC9F6BD281A7A2F00167899 /* UIApplication+appDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIApplication+appDelegate.swift"; sourceTree = "<group>"; };
@@ -643,7 +652,6 @@
 		7ADB64842812594E00809AC0 /* FeedCollectionViewController+Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedCollectionViewController+Configure.swift"; sourceTree = "<group>"; };
 		7AEB482427CE246A003360CF /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
 		7AEB482D27CE5311003360CF /* ItemImageView+configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemImageView+configure.swift"; sourceTree = "<group>"; };
-		7AF42A9427D9D00300D5CF53 /* occasions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = occasions.txt; sourceTree = "<group>"; };
 		7AF42A9627DA460400D5CF53 /* CollectionSelectViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionSelectViewController+Actions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -843,6 +851,7 @@
 			children = (
 				69AE95582563D43700850210 /* ItemViewController.swift */,
 				69322E2A26008CDD00CAFBFA /* ItemViewController+Actions.swift */,
+				7AC041422824F0EB00CA7E5E /* ItemViewController+Navigation.swift */,
 				7A2039EF27FFE2D700CD4B93 /* ItemViewController+UISearchBarDelegate.swift */,
 				7A9AC7552800357C002014D9 /* ItemViewController+UITableViewDataSource.swift */,
 				7A9AC7572800359D002014D9 /* ItemViewController+UITableViewDelegate.swift */,
@@ -1048,6 +1057,7 @@
 			isa = PBXGroup;
 			children = (
 				7AC041322822C81700CA7E5E /* FeedsProfileViewController */,
+				7AC0413F2824EE9600CA7E5E /* ImageViewController */,
 				697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */,
 				69322E2D26008EEF00CAFBFA /* ItemViewController */,
 				69C3695825E780E2000A8E5E /* OccasionsPopupViewController */,
@@ -1692,6 +1702,16 @@
 			path = FeedsProfileViewController;
 			sourceTree = "<group>";
 		};
+		7AC0413F2824EE9600CA7E5E /* ImageViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7AC041402824EEB300CA7E5E /* ImageViewController.swift */,
+				7AC0414A28251E2300CA7E5E /* ImageViewController+Actions.swift */,
+				7AC0414828250E1900CA7E5E /* ImageViewController+UIScrollViewDelegate.swift */,
+			);
+			path = ImageViewController;
+			sourceTree = "<group>";
+		};
 		7AC21E7327FB1956006E1ED5 /* User */ = {
 			isa = PBXGroup;
 			children = (
@@ -1723,7 +1743,7 @@
 		7AF42A9327D9CFE600D5CF53 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				7AF42A9427D9D00300D5CF53 /* occasions.txt */,
+				7AC0413D2824DB7C00CA7E5E /* occasions.txt */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -1823,7 +1843,6 @@
 				69297C6025EBC9FE00A8684E /* GenderCollectionViewCell.xib in Resources */,
 				692AF3CE260113DB00D37269 /* ShareView.xib in Resources */,
 				690623AE270C633800813089 /* Screenshot10.png in Resources */,
-				7AF42A9527D9D00300D5CF53 /* occasions.txt in Resources */,
 				69827B30273BEFE300C59D68 /* strings.sh in Resources */,
 				690623A6270C633800813089 /* Screenshot12.png in Resources */,
 				69DFE594273524B600D46B5F /* Collections.storyboard in Resources */,
@@ -1854,6 +1873,7 @@
 				69C5CBF5260A1ED800DE22E6 /* NotoSans-SemiBold.ttf in Resources */,
 				690623A9270C633800813089 /* Screenshot02.png in Resources */,
 				693D7286256BF1EA00540C10 /* Brands.bundle in Resources */,
+				7AC0413E2824DB7C00CA7E5E /* occasions.txt in Resources */,
 				690623B6270C6FA000813089 /* get_outfit_app.png in Resources */,
 				7AD80C2027D0E0E2005A36DC /* brands.csv in Resources */,
 				690623A3270C633800813089 /* Screenshot11.png in Resources */,
@@ -1912,6 +1932,7 @@
 				69A0C9E8270486A100C49977 /* FeedCollectionViewController+UICollectionViewDelegate.swift in Sources */,
 				699ABB5F25E6D54A00E388FC /* TabBarController.swift in Sources */,
 				6906A9A226E6414C00386267 /* CollectionNameViewController.swift in Sources */,
+				7AC0414B28251E2300CA7E5E /* ImageViewController+Actions.swift in Sources */,
 				7A2039DB27FC440C00CD4B93 /* AccountCollectionViewCell.swift in Sources */,
 				694E7BEE25DBFFFB006607CD /* UIView+findSuperview.swift in Sources */,
 				696E875B256463160061802E /* Double+asPrice.swift in Sources */,
@@ -1929,6 +1950,7 @@
 				6906A9AE26E68C7C00386267 /* CollectionSelectViewController.swift in Sources */,
 				695EE0042586449E00E2BB57 /* BrandsViewController+Actions.swift in Sources */,
 				7A9AC7582800359D002014D9 /* ItemViewController+UITableViewDelegate.swift in Sources */,
+				7AC0414928250E1900CA7E5E /* ImageViewController+UIScrollViewDelegate.swift in Sources */,
 				699632AB26FCB04000841B6F /* Sequence+splitBefore.swift in Sources */,
 				69AE95502563B8FB00850210 /* String+dropExtension.swift in Sources */,
 				6906A9A426E6535700386267 /* WishlistViewController+Actions.swift in Sources */,
@@ -2048,12 +2070,14 @@
 				69A0C9E32704635700C49977 /* FeedCollectionViewController+ButtonDelegate.swift in Sources */,
 				69C5CBF1260A1D5E00DE22E6 /* ShareViewController+UITableViewDelegate.swift in Sources */,
 				7AC9F6BE281A7A2F00167899 /* UIApplication+appDelegate.swift in Sources */,
+				7AC041432824F0EB00CA7E5E /* ItemViewController+Navigation.swift in Sources */,
 				697CCE6826D0035C00B69763 /* FeedItem.swift in Sources */,
 				6976232526D76E6700504F31 /* FeedItemViewController.swift in Sources */,
 				69C3695B25E780F8000A8E5E /* OccasionsPopupViewController+UIPickerViewDataSource.swift in Sources */,
 				69C5CC03260A224200DE22E6 /* ShareViewController+Actions.swift in Sources */,
 				7A2039F027FFE2D700CD4B93 /* ItemViewController+UISearchBarDelegate.swift in Sources */,
 				7A9AC7562800357D002014D9 /* ItemViewController+UITableViewDataSource.swift in Sources */,
+				7AC041412824EEB400CA7E5E /* ImageViewController.swift in Sources */,
 				69B3E2352743F21200A9426D /* PinnableScrollView+scrollTo.swift in Sources */,
 				69A6F70E22BA438A002A3B49 /* OutfitViewController+UIViewController.swift in Sources */,
 				698990D22323808B002DCA29 /* PinnableScrollViews+Extension.swift in Sources */,

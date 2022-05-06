@@ -19,6 +19,9 @@ extension FeedsProfileViewController: UITableViewDelegate {
         
         // Reload changed row
         tableView.reloadRows(at: [indexPath], with: .none)
+        
+        // TODO: Add guard and configure checkBox
+        //tableView.cellForRow(at: indexPath) as? FeedsProfileCell
 
         // Configure the buttons
         configureAllButton()

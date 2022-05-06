@@ -297,7 +297,7 @@ class NetworkManager {
         in categoryIDs: [Int] = [],
         subcategoryIDs: [Int] = [],
         filteredBy vendorNames: [String] = [],
-        feeds: [String]? = [String](FeedsProfile.all.feedsIDs),
+        feeds: [String] = [String](FeedsProfile.all.selected.feedsIDs),
         limited limit: Int? = nil,
         named name: String? = nil,
         sale: Bool = false,
@@ -404,7 +404,7 @@ class NetworkManager {
         in categories: [Int],
         subcategoryIDs: [Int],
         named name: String?,
-        feed: [String]?,
+        feed: [String],
         limited limit: Int?,
         sale: Bool,
         filteredBy fullVendorNames: [String]
@@ -454,9 +454,9 @@ class NetworkManager {
         }
         
         // Add "feed" parameter
-        if let feed = feed {
+        //if let feed = feed {
             parameters[Keys.feed.rawValue] = FeedsProfile.all.isEmpty ? nil : "in.(\(feed.commaJoined))"
-        }
+        //}
         return parameters
     }
     

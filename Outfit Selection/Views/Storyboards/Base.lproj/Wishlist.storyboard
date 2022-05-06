@@ -413,6 +413,52 @@
             </objects>
             <point key="canvasLocation" x="1308.6956521739132" y="-175.44642857142856"/>
         </scene>
+        <!--Image View Controller-->
+        <scene sceneID="fsq-u0-4Yr">
+            <objects>
+                <viewController id="bPg-zA-c8d" customClass="ImageViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="yCD-wP-FV6">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="QBQ-z7-tCU">
+                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8pk-P8-xVH">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                        <gestureRecognizers/>
+                                    </imageView>
+                                </subviews>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="8pk-P8-xVH" secondAttribute="bottom" id="1G2-F6-eVM"/>
+                                    <constraint firstItem="8pk-P8-xVH" firstAttribute="top" secondItem="QBQ-z7-tCU" secondAttribute="top" id="5qg-Ms-P96"/>
+                                    <constraint firstAttribute="trailing" secondItem="8pk-P8-xVH" secondAttribute="trailing" id="9db-oo-cXO"/>
+                                    <constraint firstItem="8pk-P8-xVH" firstAttribute="centerX" secondItem="QBQ-z7-tCU" secondAttribute="centerX" id="CDz-Be-Lf8"/>
+                                    <constraint firstItem="8pk-P8-xVH" firstAttribute="centerY" secondItem="QBQ-z7-tCU" secondAttribute="centerY" id="HcM-ut-GGV"/>
+                                    <constraint firstItem="8pk-P8-xVH" firstAttribute="leading" secondItem="QBQ-z7-tCU" secondAttribute="leading" id="v3i-TM-n4O"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Egm-Su-kFH"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="QBQ-z7-tCU" secondAttribute="trailing" id="1zb-OG-d4I"/>
+                            <constraint firstItem="QBQ-z7-tCU" firstAttribute="leading" secondItem="yCD-wP-FV6" secondAttribute="leading" id="9UB-h7-waS"/>
+                            <constraint firstAttribute="bottom" secondItem="QBQ-z7-tCU" secondAttribute="bottom" id="MyR-49-CNS"/>
+                            <constraint firstItem="QBQ-z7-tCU" firstAttribute="top" secondItem="Egm-Su-kFH" secondAttribute="top" id="l2R-Hj-wv2"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="hHq-Yh-Psb"/>
+                    <connections>
+                        <outlet property="imageScrollView" destination="QBQ-z7-tCU" id="BWN-W2-gXr"/>
+                        <outlet property="imageView" destination="8pk-P8-xVH" id="3kT-vb-93f"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bSv-tE-AHj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2973.913043478261" y="-177.45535714285714"/>
+        </scene>
         <!--Item View Controller-->
         <scene sceneID="DKu-iH-gqv">
             <objects>
@@ -760,6 +806,7 @@
                         <outletCollection property="orderButtonHorizontalConstraints" destination="UOc-bk-rdK" collectionClass="NSMutableArray" id="pVL-TM-BLX"/>
                         <outletCollection property="priceLabels" destination="Vum-Xb-k8g" collectionClass="NSMutableArray" id="nuo-xZ-CWK"/>
                         <segue destination="C0E-kp-KJb" kind="show" identifier="intermediaryViewControllerSegue" id="cI0-oM-XQO"/>
+                        <segue destination="bPg-zA-c8d" kind="show" identifier="imageViewControllerSegue" id="CE8-AE-z7v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfc-rV-XgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -796,7 +843,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmo-wa-bPh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3026" y="-175"/>
+            <point key="canvasLocation" x="3030" y="552"/>
         </scene>
         <!--Wish list-->
         <scene sceneID="QYj-Ix-HHn">

@@ -217,13 +217,6 @@ class ItemViewController: LoggingViewController {
     }
     
     // MARK: - Inherited Methods
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "intermediaryViewControllerSegue" else { return }
-        let intermediaryViewController = segue.destination as? IntermediaryViewController
-        intermediaryViewController?.url = url
-    }
-    
-    // MARK: - Inherited Methods
     override func setEditing(_ editing: Bool, animated: Bool) {
         super.setEditing(editing, animated: animated)
         
@@ -273,10 +266,19 @@ class ItemViewController: LoggingViewController {
         // Hide Search bar
         searchBar.isHidden = true
         firstItem = item
+        
+        // Tap gesture recognizer for UIImageView
+        let imageViewTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        imageView.addGestureRecognizer(imageViewTap)
+        imageView.isUserInteractionEnabled = true
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Show Tabbar
+        showTabBar()
         updateUI()
     }
     
