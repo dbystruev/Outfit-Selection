@@ -14,11 +14,16 @@ extension FeedsProfileViewController: UITableViewDelegate {
         // Toggle all feeds with the same title and reload the table
         let feed = FeedsProfile.all[indexPath.row]
         
-        // Select feeds
+        // Select feedProfile
         FeedsProfile.select(feed: feed, shouldUse: !feed.shouldUse)
         
-        // Reload changed row
-        tableView.reloadRows(at: [indexPath], with: .none)
+        guard let feedsProfileCell = tableView.cellForRow(at: indexPath) as? FeedsProfileCell else {
+            debug("ERROR: Can't cast tableView cell as", FeedsProfileCell.className)
+            return
+        }
+        
+        // Configure CheckBox and set isHighlighted
+        feedsProfileCell.configureCheckBox(isHighlighted: feed.shouldUse)
 
         // Configure the buttons
         configureAllButton()

@@ -31,7 +31,15 @@ class FeedsProfileCell: UITableViewCell {
         checkBoxImageView.isHighlighted = feed.shouldUse
         logoImageView.configure(with: feed.picture)
         feedsNameLabel.text = feed.name
+        configureCheckBox(isHighlighted: feed.shouldUse)
     }
+    
+    /// Set isHighlighted true or false
+    /// - Parameter isHighlighted: the bool stutus
+    func configureCheckBox(isHighlighted: Bool) {
+        checkBoxImageView.isHighlighted = isHighlighted
+    }
+
     
     /// Configure the cell's look and feel once at the beginning
     func configureLayout() {

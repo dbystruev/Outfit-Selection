@@ -199,6 +199,9 @@ final class ItemManager {
                 let itemIDsToLoadImmediately = itemsToLoadImmediately.IDs
                 let itemIDsToLoadInBackground = items.IDs.filter { !itemIDsToLoadImmediately.contains($0) }
                 
+                // For test downloaded images in background
+                //itemIDsToLoadInBackground = [String](itemIDsToLoadInBackground[0..<60])
+                
                 // The maximum number of network image loads in one corner
                 var remainingLoads = limit
                 
@@ -302,6 +305,7 @@ final class ItemManager {
     ///   - itemIDs: IDs for items to load images for
     ///   - viewModel: view model to load the images into
     func loadImagesInBackground(for itemIDs: [String], into viewModel: ImageCollectionViewModel) {
+        
         // Count elapsed time
         let startTime = Date()
         
@@ -335,7 +339,7 @@ final class ItemManager {
                 }
                 
                 group.wait()
-                // debug("Loaded", itemsLoaded, "of", itemIDs.count)
+                //debug("Loaded", itemsLoaded, "of", itemIDs.count)
             }
             
             // Show stats when all loads are finished

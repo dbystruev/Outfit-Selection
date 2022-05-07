@@ -23,6 +23,12 @@ extension ItemViewController {
             orderButtonTapped(navigationItem)
         }
     }
+    /// Call when UIimageView was tapped
+    @objc func imageTapped(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            performSegue(withIdentifier: ImageViewController.segueIdentifier, sender: item)
+        }
+    }
     
     // MARK: - Actions
     @IBAction func addToCollectionButton(_ sender: UIButton) {

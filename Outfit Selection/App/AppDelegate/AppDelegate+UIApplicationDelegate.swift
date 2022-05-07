@@ -104,12 +104,12 @@ extension AppDelegate: UIApplicationDelegate {
         
         // Configure current notification center
         userNotificationCenter(configureFor: application)
-
-        // Restore settings from user defaults
-        restoreSettings()
         
         // Wait for API requests to finish, but no more than 7 seconds
         _ = group.wait(timeout: .now() + 7)
+        
+        // Restore settings from user defaults
+        restoreSettings()
         
         // Test occasion items if `should test` is true
         if shouldTest {

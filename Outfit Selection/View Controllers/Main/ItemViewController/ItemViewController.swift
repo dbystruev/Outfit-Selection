@@ -207,20 +207,13 @@ class ItemViewController: LoggingViewController {
         addToWishlistButton?.configure(for: item)
         let nameWithoutVendor = item.nameWithoutVendor
         nameLabels.forEach { $0.text = nameWithoutVendor }
-        title = item.price.asPrice
+        //title = item.price.asPrice
         
         // Set price to label
         priceLabels.forEach  { $0.text = item.price.asPrice }
         
         let vendorUppercased = item.vendorName.uppercased()
         vendorLabels.forEach { $0.text = vendorUppercased }
-    }
-    
-    // MARK: - Inherited Methods
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        guard segue.identifier == "intermediaryViewControllerSegue" else { return }
-        let intermediaryViewController = segue.destination as? IntermediaryViewController
-        intermediaryViewController?.url = url
     }
     
     // MARK: - Inherited Methods
@@ -238,7 +231,7 @@ class ItemViewController: LoggingViewController {
         shareButton.isEnabled = !isEditing
         
         // Set title
-        title = isEditing ? "Edit"~ : item?.price.asPrice
+        title = isEditing ? "Edit"~ : "" //item?.price.asPrice
         
         // Hide or show backButton
         navigationItem.hidesBackButton = isEditing
@@ -265,16 +258,27 @@ class ItemViewController: LoggingViewController {
             navigationItem.rightBarButtonItem = editButtonItem
             navigationItem.rightBarButtonItem?.action = #selector(editButtonItemTap)
         } else {
-            shareButton.isHidden = true
+            // Clear rightBarButtonItem
+            navigationItem.rightBarButtonItem = nil
+            //shareButton.isHidden = true
         }
         
         // Hide Search bar
         searchBar.isHidden = true
         firstItem = item
+        
+        // Tap gesture recognizer for UIImageView
+        let imageViewTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
+        imageView.addGestureRecognizer(imageViewTap)
+        imageView.isUserInteractionEnabled = true
+    
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Show Tabbar
+        showTabBar()
         updateUI()
     }
     
