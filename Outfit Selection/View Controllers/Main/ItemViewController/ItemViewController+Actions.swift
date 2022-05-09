@@ -84,7 +84,7 @@ extension ItemViewController {
         } else {
             guard let url = item?.url else { return }
             self.url = url
-            performSegue(withIdentifier: "intermediaryViewControllerSegue", sender: sender)
+            performSegue(withIdentifier: "intermediaryViewControllerSegue", sender: item)
         }
     }
     

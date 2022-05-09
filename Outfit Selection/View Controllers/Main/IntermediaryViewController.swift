@@ -16,6 +16,9 @@ class IntermediaryViewController: LoggingViewController {
     /// Item url to take user to
     var url: URL?
     
+    // FeedProfile
+    var feedProfileName: String?
+    
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,7 +32,7 @@ class IntermediaryViewController: LoggingViewController {
         super.viewWillAppear(animated)
         takingYouLabel.text = url == nil
         ? "Taking you back to GET OUTFIT..."~
-        : "Now taking you to FARFETCH..."~
+        : "Now taking you to"~ + " \(feedProfileName ?? "")..."
     }
     
     override func viewDidAppear(_ animated: Bool) {

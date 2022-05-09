@@ -86,9 +86,6 @@ extension AppDelegate {
                 Occasions.append(occasion)
             }
             
-            // Restore selected occasions from user defaults
-            Occasions.restoreSelectedOccasions()
-            
             // Show elapsed time
             let elapsedTime = Date().timeIntervalSince(startTime)
             
@@ -104,6 +101,10 @@ extension AppDelegate {
                 object: nil
             )
             
+            // Restore selected occasions from user defaults
+            Occasions.restoreSelectedOccasions()
+            
+            // Complition
             completion?(true)
         }
     }

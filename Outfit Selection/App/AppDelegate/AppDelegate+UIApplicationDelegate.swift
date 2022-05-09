@@ -111,41 +111,6 @@ extension AppDelegate: UIApplicationDelegate {
         // Restore settings from user defaults
         restoreSettings()
         
-        // Test occasion items if `should test` is true
-        if shouldTest {
-            // testAllOccasionItems()
-            NetworkManager.shared.getOccasions { [weak self] occasions in
-                // Check for self availability
-                guard let self = self else {
-                    debug("ERROR: self is not available")
-                    return
-                }
-                
-                guard let occasions = occasions else {
-                    debug("ERROR: Can't get occasions")
-                    return
-                }
-                
-                let group = DispatchGroup()
-                var result = true
-
-                for occasion in occasions {
-                    group.enter()
-                    self.testOccasion(occasion.id) { testResult in
-                        if !testResult {
-                            debug("DEBUG: Occasion \(occasion) has not passed")
-                        }
-                        result = result && testResult
-                        group.leave()
-                    }
-                }
-                
-                group.notify(queue: .global(qos: .background)) {
-                    debug("DEBUG: \(occasions.count) occasions \(result ? "": "NOT ")passed")
-                }
-            }
-        }
-        
         // Don't show onboarding screens if the user has seen them or there are none
         let next = UserDefaults.hasSeenAppIntroduction || Onboarding.count < 1
         ? "GenderNavigationViewController"  // there are no classes to use .className

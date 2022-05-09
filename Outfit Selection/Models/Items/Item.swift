@@ -22,6 +22,7 @@ final class Item: Codable {
     /// Full description for item
     var desc: String?
     
+    /// FeedProfile for current item
     var feed: String?
     
     /// Whether an item has been disliked

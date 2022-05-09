@@ -10,7 +10,7 @@ import UIKit
 
 extension FeedsProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return feedsSourceNames.count
+        return feedsProfileNames.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -23,7 +23,7 @@ extension FeedsProfileViewController: UITableViewDataSource {
         }()
         
         // Get feed for configure cell
-        let name = feedsSourceNames[indexPath.row]
+        let name = feedsProfileNames[indexPath.row]
         guard let feed = FeedsProfile.all.first(where: { $0.name == name }) else {
             debug("WARNING: Can't fiind a \(name) into \(FeedsProfile.self)")
             return feedsCell

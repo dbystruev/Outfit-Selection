@@ -13,7 +13,14 @@ public typealias FeedsProfile = [FeedProfile]
 extension FeedsProfile {
     // MARK: - Stored Static Properties
     /// The full  list of feeds
-    public static var all: FeedsProfile = []
+    public static var all: FeedsProfile = [] {
+        didSet {
+            zip(all.feedsIDs, all).forEach { ((byID[$0]) = $1) }
+        }
+    }
+        
+    /// FeedProfile by ID
+    private(set) static var byID: [String: FeedProfile] = [:]
     
     // MARK: - Stored Properties
     /// All uniqued IDs
