@@ -24,8 +24,11 @@ extension FeedsProfileViewController {
     
     /// Call when save button  tapped
     @IBAction func saveButtonTap() {
-        // Save selected feeds to user default
-        FeedsProfile.save()
+        
+        if feedProfileSelectedFeedsIDs != [String](FeedsProfile.all.selected.feedsIDs) {
+            // Save selected feeds to user default
+            FeedsProfile.save()
+        }
         
         // Back to profile viewController
         navigationController?.popViewController(animated: true)

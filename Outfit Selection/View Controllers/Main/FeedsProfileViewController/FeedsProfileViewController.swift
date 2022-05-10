@@ -22,7 +22,10 @@ class FeedsProfileViewController: UIViewController {
     
     // MARK: - Stored Properties
     /// Array of feedsSource names
-    var feedsSourceNames: [String] = []
+    var feedsProfileNames: [String] = []
+    
+    /// Save selected feedProfile when start viewController
+    var feedProfileSelectedFeedsIDs: [String] = []
     
     // MARK: - Custom Methods
     /// Set top right button to clear or select all
@@ -63,12 +66,15 @@ class FeedsProfileViewController: UIViewController {
         
         // Setup data source
         let currentFeedsSource = FeedsProfile.all
-        feedsSourceNames = currentFeedsSource.names.sorted()
+        feedsProfileNames = currentFeedsSource.names.sorted()
         
         // Setup occasions table view
         feedsTableView.dataSource = self
         feedsTableView.delegate = self
         feedsTableView.separatorStyle = .none
+        
+        // Save selected feedProfile
+        feedProfileSelectedFeedsIDs = [String](currentFeedsSource.selected.feedsIDs)
     }
     
     override func viewWillAppear(_ animated: Bool) {

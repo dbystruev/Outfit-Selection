@@ -40,7 +40,7 @@ extension AppDelegate {
         // Restore collections from user defaults
         Collection.restore()
         
-        // Restore selected feedsSource
+        // Restore selected feedsProfile
         FeedsProfile.restore()
         
         // Restore gender from user defaults

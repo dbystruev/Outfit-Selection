@@ -267,6 +267,12 @@ class NetworkManager {
         // Include id=in.(..., ...) parameter
         let parameters = ["id": "in.(\(IDs.commaJoined))"]
         
+//        let feed = [String](FeedsProfile.all.selected.feedsIDs)
+//        let feedParametr = FeedsProfile.all.isEmpty ? nil : ["feed": "in.(\(feed.commaJoined))"]
+//        let newPapametrs = parameters.merging(feedParametr ?? [:]) { (_, new) in new }
+//
+//        debug(parameters.merging(feedParametr ?? [:]) { (_, new) in new })
+        
         // Request the items from the API
         getItems(with: parameters) { items in
             guard let items = items else {
@@ -278,6 +284,7 @@ class NetworkManager {
                 items.first { $0.id == id }
             }
             
+            
             completion(orderedItems)
         }
     }
@@ -288,7 +295,7 @@ class NetworkManager {
     ///   - categoryIDs: the list of category IDs to filter items by, empty (all categories) by default
     ///   - subcategoryIDs: the list of subcategory IDs to filter items by, empty (all subcategories) by default
     ///   - vendorNames: the list of vendors to filter items by
-    ///   - feeds: the feeds profile all IDs by default
+    ///   - feeds: the feeds profile selected IDs by default
     ///   - limit: limit the number of items by given number, nil by default
     ///   - sale: old price should not be null, false by default
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
@@ -454,9 +461,7 @@ class NetworkManager {
         }
         
         // Add "feed" parameter
-        //if let feed = feed {
-            parameters[Keys.feed.rawValue] = FeedsProfile.all.isEmpty ? nil : "in.(\(feed.commaJoined))"
-        //}
+        parameters[Keys.feed.rawValue] = FeedsProfile.all.isEmpty ? nil : "in.(\(feed.commaJoined))"
         return parameters
     }
     
