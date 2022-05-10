@@ -10,26 +10,29 @@ import UIKit
 
 class ProfileViewController: LoggingViewController {
     // MARK: - Outlets
+    /// Consist of all sections and items shown on the profile screen
     @IBOutlet weak var profileCollectionView: UICollectionView!
+    
+    /// Version label with e.g. `v0.9.3 build 2022.05.01 spb` in the bottom right corner which appears 3 seconds after the load
     @IBOutlet weak var versionLabel: UILabel!
     
     // MARK: - Stored Properties
-    /// Brands view controller to use as profile collection view data source
+    /// Brands view controller for one of the `profile collection view` sections
     var brandsViewController: BrandsViewController?
-
-    /// Height for cell
-    let heightCell = 36
     
-    /// Get current user is isLoggedIn
+    /// True if current user is logged in, false or nil othewise
     var isLoggedIn = User.current.isLoggedIn
     
-    /// Limit to showing items in section for brands and occasion
-    let itemsLimit = 10
+    /// Maximum number of brands or occasions to show inline, more than that will have `selected ... brands / occasions out of ...`
+    let maxItemCount = 10
+    
+    /// The height of typical cell and header in `profile collection view`
+    let profileCellHeight = 36
     
     /// Gender to show in the collection view
     var shownGender: Gender?
     
-    /// Version and build number
+    /// Version and build number, when set `version label` is updated
     var version: String? {
         didSet {
             versionLabel?.text = version
@@ -45,56 +48,5 @@ class ProfileViewController: LoggingViewController {
                 self.versionLabel.alpha = 0.5
             }
         }
-    }
-    
-    // MARK: - Inhertited Methods
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        profileCollectionView.collectionViewLayout.invalidateLayout()
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Find and configure brands view controller
-        brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self)
-        
-        // Configure version label with version and build
-        configureVersionLabel()
-        
-        // Configure navigation controller's bar font
-        navigationController?.configureFont()
-    
-        // Setup profile collection view
-        profileCollectionView.dataSource = self
-        profileCollectionView.delegate = self
-        profileCollectionView.register(BrandCollectionViewCell.nib, forCellWithReuseIdentifier: BrandCollectionViewCell.reuseId)
-        profileCollectionView.register(GenderCollectionViewCell.nib, forCellWithReuseIdentifier: GenderCollectionViewCell.reuseId)
-        profileCollectionView.register(AccountCollectionViewCell.nib, forCellWithReuseIdentifier: AccountCollectionViewCell.reuseId)
-        profileCollectionView.register(OccasionCollectionViewCell.nib, forCellWithReuseIdentifier: OccasionCollectionViewCell.reuseId)
-        profileCollectionView.register(FeedsCollectionViewCell.nib, forCellWithReuseIdentifier: FeedsCollectionViewCell.reuseId)
-        profileCollectionView.register(ProfileSectionHeaderView.nib, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-                                       withReuseIdentifier: ProfileSectionHeaderView.reuseId)
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        // Make sure shown brands and gender match current brands and gender
-        (tabBarController as? TabBarController)?.selectedBrands = BrandManager.shared.selectedBrands
-        shownGender = Gender.current
-        
-        // Reload brand and gender data
-        profileCollectionView.reloadData()
-        
-        // Show Tabbar 
-        showTabBar()
-        
-        // Reload Data
-        brandsViewController?.reloadData()
-    }
-    
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        profileCollectionView.reloadData()
     }
 }

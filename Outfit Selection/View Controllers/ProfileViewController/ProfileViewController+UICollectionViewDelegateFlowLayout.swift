@@ -19,7 +19,7 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         referenceSizeForHeaderInSection section: Int) -> CGSize {
-        CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
+        CGSize(width: collectionView.bounds.width, height: CGFloat(profileCellHeight))
     }
     
     /// Provides the size for item in given profile collection view
@@ -32,21 +32,21 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
         switch indexPath.section {
         case 0:
             // Section 0 is account - 1 item per row
-            return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
+            return CGSize(width: collectionView.bounds.width, height: CGFloat(profileCellHeight))
         case 1:
             // Section 1 is gender - 1 item per row
-            return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
+            return CGSize(width: collectionView.bounds.width, height: CGFloat(profileCellHeight))
         case 2:
             // Section 2 is brands — reuse brands view controller to answer
-            return  Brands.selected.count > itemsLimit || Brands.selected.count == 0
-            ? CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
+            return  Brands.selected.count > maxItemCount || Brands.selected.count == 0
+            ? CGSize(width: collectionView.bounds.width, height: CGFloat(profileCellHeight))
             : brandsViewController?.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath) ?? CGSize.zero
         case 3:
             // Section 3 is occasions — reuse occasion view controller to answer
-            return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
+            return CGSize(width: collectionView.bounds.width, height: CGFloat(profileCellHeight))
         case 4:
             // Section 4 is feed with selected feeds
-            return CGSize(width: collectionView.bounds.width, height: CGFloat(heightCell))
+            return CGSize(width: collectionView.bounds.width, height: CGFloat(profileCellHeight))
         default:
             debug("WARNING: Unknown section \(indexPath.section)")
             return CGSize.zero

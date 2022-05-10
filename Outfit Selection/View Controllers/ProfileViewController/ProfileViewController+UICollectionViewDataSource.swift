@@ -47,7 +47,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             
         case 2:
             // Section 2 is brands - use brands view controller section 0 to answer
-            if Brands.selected.count > itemsLimit || Brands.selected.count == 0  {
+            if Brands.selected.count > maxItemCount || Brands.selected.count == 0  {
                 
                 // Configure one cell with simple text
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
@@ -68,7 +68,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
             
             // Configure one cell with simple text
-            Occasions.selectedUniqueTitle.count > itemsLimit ?
+            Occasions.selectedUniqueTitle.count > maxItemCount ?
             (cell as? OccasionCollectionViewCell)?.configure(
                 with: Occasions.selectedUniqueTitle.sorted()[indexPath.row],
                 hideCheckBox: true,
@@ -80,7 +80,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         case 4:
             
             // Section 3 is Occasion - configure occasion cell
-            if FeedsProfile.all.selected.count > itemsLimit || FeedsProfile.all.selected.count == 0 {
+            if FeedsProfile.all.selected.count > maxItemCount || FeedsProfile.all.selected.count == 0 {
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
             (cell as? OccasionCollectionViewCell)?.configure(
                 with: Occasions.selectedUniqueTitle.sorted()[indexPath.row],
@@ -135,14 +135,14 @@ extension ProfileViewController: UICollectionViewDataSource {
             
         case 2:
             // Section 2 is brands — use brands view controller section 0 to answer.
-            return Brands.selected.count > itemsLimit || Brands.selected.count == 0 ? 1 : Brands.selected.count
+            return Brands.selected.count > maxItemCount || Brands.selected.count == 0 ? 1 : Brands.selected.count
             
         case 3:
             // Section 3 is occasion — use occasion view controller section 0 to answer.
-            return Occasions.selectedUniqueTitle.count > itemsLimit ? 1 : Occasions.selectedUniqueTitle.count
+            return Occasions.selectedUniqueTitle.count > maxItemCount ? 1 : Occasions.selectedUniqueTitle.count
         case 4:
             // Section 4 is feeds — use feeds view controller section 0 to answer.
-            return FeedsProfile.all.count > itemsLimit || FeedsProfile.all.selected.count == 0 ? 1 : FeedsProfile.all.selected.count
+            return FeedsProfile.all.count > maxItemCount || FeedsProfile.all.selected.count == 0 ? 1 : FeedsProfile.all.selected.count
             
         default:
             debug("WARNING: Unknown section \(section)")
