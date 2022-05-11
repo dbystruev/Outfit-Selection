@@ -244,7 +244,7 @@ class ItemViewController: LoggingViewController {
         shareButton.isEnabled = !isEditing
         
         // Set title
-        title = isEditing ? "Edit"~ : "" //item?.price.asPrice
+        //title = isEditing ? "Edit"~ : "" //item?.price.asPrice
         
         // Hide or show backButton
         navigationItem.hidesBackButton = isEditing
