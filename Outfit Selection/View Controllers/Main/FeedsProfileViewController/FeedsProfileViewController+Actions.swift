@@ -28,6 +28,11 @@ extension FeedsProfileViewController {
         if feedProfileSelectedFeedsIDs != [String](FeedsProfile.all.selected.feedsIDs) {
             // Save selected feeds to user default
             FeedsProfile.save()
+            // Post notification with name
+            Globals.Notification.notificationCenter.post(
+                name: Notification.Name(nameNotification),
+                object: nil
+            )
         }
         
         // Back to profile viewController

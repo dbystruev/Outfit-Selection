@@ -27,6 +27,9 @@ class FeedsProfileViewController: UIViewController {
     /// Save selected feedProfile when start viewController
     var feedProfileSelectedFeedsIDs: [String] = []
     
+    /// Notification name feedProfileChanged
+    let nameNotification = Globals.Notification.name.feedProfileChanged
+    
     // MARK: - Custom Methods
     /// Set top right button to clear or select all
     func configureAllButton() {

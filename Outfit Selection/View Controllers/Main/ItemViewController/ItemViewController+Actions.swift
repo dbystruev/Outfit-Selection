@@ -11,7 +11,41 @@ import UIKit
 extension ItemViewController {
     // MARK: - Helper Methods
     /// Call when leftBarButtonItem tapped
+    @objc func backButtonTap() {
+        
+        // Restore saved items
+        searchItems = searchItemsSave
+        
+        guard let searchItems = searchItems, !searchItems.isEmpty else {
+            // Hide searchBar
+            self.tableStackView.isHidden = true
+            return
+        }
+        
+        // Set seved text into search bar
+        searchBar.text = searchText
+        
+        // Show tableView
+        tableStackView.isHidden = false
+        
+        // Show back bar button
+        backBarButtonItem.isEnabled = false
+    }
+    
+    /// Call when leftBarButtonItem tapped
     @objc func cancelButtonTap() {
+        // Show tableView
+        tableStackView.isHidden = true
+        
+        // Hide back bar button
+        backBarButtonItem.isEnabled = false
+        
+        // Set empty text into search bar
+        searchBar.text = ""
+        
+        // Restore saved item
+        configure(with: firstItem)
+        
         // Hide backButton
         navigationItem.hidesBackButton = true
         isEditing.toggle()

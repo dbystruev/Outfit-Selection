@@ -10,6 +10,8 @@ import UIKit
 
 class TabBarController: UITabBarController {
     // MARK: - Stored Properties
+/// Notification name feedProfileChanged
+    let nameNotification = Globals.Notification.name.feedProfileChanged
     /// The set of brand tags previously selected by the user
     var selectedBrands = BrandManager.shared.selectedBrands
     
@@ -84,6 +86,12 @@ class TabBarController: UITabBarController {
         popToProgress()
     }
     
+    @objc func popToProgressReloadItems() {
+        // Start reloading the items
+        NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
+        popToProgress()
+    }
+    
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,5 +112,15 @@ class TabBarController: UITabBarController {
         
         // Hide navigation bar
         navigationController?.isNavigationBarHidden = true
+        
+        // Start observer changed feedProfile
+//        if User.current.debugmode {
+            Globals.Notification.notificationCenter.addObserver(
+                self,
+                selector: #selector(popToProgressReloadItems),
+                name: Notification.Name(nameNotification),
+                object: nil
+            )
+//        }
     }
 }

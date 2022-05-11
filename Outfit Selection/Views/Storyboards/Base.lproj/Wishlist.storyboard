@@ -481,13 +481,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="471"/>
                                         <subviews>
                                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uJ7-P9-8sb">
-                                                <rect key="frame" x="0.0" y="0.0" width="382" height="291"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="382" height="210.5"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="akp-i8-v2R">
-                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="291"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="382" height="210.5"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="8e5-lJ-Xm5">
-                                                                <rect key="frame" x="0.0" y="0.0" width="382" height="291"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="382" height="210.5"/>
                                                             </imageView>
                                                         </subviews>
                                                         <constraints>
@@ -507,7 +507,7 @@
                                                 <viewLayoutGuide key="frameLayoutGuide" id="Ios-Ge-3VR"/>
                                             </scrollView>
                                             <stackView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zyi-Sk-1UV" userLabel="Labels Stack View">
-                                                <rect key="frame" x="0.0" y="307" width="382" height="164"/>
+                                                <rect key="frame" x="0.0" y="226.5" width="382" height="244.5"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="752" text="LOUIS VUITTON" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WHh-JS-zDH">
                                                         <rect key="frame" x="0.0" y="0.0" width="382" height="27.5"/>
@@ -516,13 +516,13 @@
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text=" Cotton Shirt" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="a1Z-23-l1J">
-                                                        <rect key="frame" x="0.0" y="35.5" width="382" height="98.5"/>
+                                                        <rect key="frame" x="0.0" y="35.5" width="382" height="179"/>
                                                         <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="16"/>
                                                         <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="753" text="1000 RUB" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Vum-Xb-k8g">
-                                                        <rect key="frame" x="0.0" y="142" width="382" height="22"/>
+                                                        <rect key="frame" x="0.0" y="222.5" width="382" height="22"/>
                                                         <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="16"/>
                                                         <color key="textColor" red="0.25959017870000001" green="0.25962576269999998" blue="0.25957807900000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         <nil key="highlightedColor"/>
@@ -695,7 +695,7 @@
                             <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="f2B-hY-wJu">
                                 <rect key="frame" x="16" y="143" width="382" height="670"/>
                                 <subviews>
-                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="itemViewControllerCellReuseId" bounces="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" id="fgT-eR-THU">
+                                    <tableView clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="itemViewControllerCellReuseId" bounces="NO" showsHorizontalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" estimatedSectionHeaderHeight="-1" sectionFooterHeight="28" estimatedSectionFooterHeight="-1" id="fgT-eR-THU">
                                         <rect key="frame" x="0.0" y="0.0" width="382" height="670"/>
                                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -787,11 +787,11 @@
                         <outlet property="dislikeButton" destination="CmW-tW-0Rp" id="sfo-6F-5zG"/>
                         <outlet property="imageStackView" destination="akp-i8-v2R" id="IKX-ns-jbp"/>
                         <outlet property="imageView" destination="8e5-lJ-Xm5" id="rd8-wY-um8"/>
-                        <outlet property="itemTableView" destination="fgT-eR-THU" id="Zek-zW-H5T"/>
                         <outlet property="orderButton" destination="bhy-eM-JDA" id="QgH-lz-Ro0"/>
                         <outlet property="parentStackView" destination="fI5-kd-82Q" id="vg1-gk-tqN"/>
                         <outlet property="rightLabelsStackView" destination="uqL-aG-vXq" id="N4x-3j-kUq"/>
                         <outlet property="searchBar" destination="Cqq-oB-cgL" id="alf-aQ-wwF"/>
+                        <outlet property="searchTableView" destination="fgT-eR-THU" id="Zek-zW-H5T"/>
                         <outlet property="shareButton" destination="IC4-zB-2S3" id="Ofk-Fd-5eK"/>
                         <outlet property="tableStackView" destination="f2B-hY-wJu" id="e8y-7S-n2J"/>
                         <outlet property="topLabelsStackView" destination="Zyi-Sk-1UV" id="T7s-Oe-Guh"/>

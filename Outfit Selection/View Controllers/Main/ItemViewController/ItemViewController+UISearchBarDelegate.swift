@@ -19,7 +19,7 @@ extension ItemViewController: UISearchBarDelegate {
             self.lastClick = nil
             NetworkManager.shared.getItems(for: Gender.current, in: firstItem?.subcategoryIDs ?? [],  limited: limited, named: searchText) { items in
                 guard let items = items else { return }
-                self.items = items
+                self.searchItems = items
                 
                 DispatchQueue.main.async {
                     guard !items.isEmpty else {
@@ -29,7 +29,7 @@ extension ItemViewController: UISearchBarDelegate {
                     }
                     /// Show searchBar
                     self.tableStackView.isHidden = false
-                    self.itemTableView.reloadData()
+                    self.searchTableView.reloadData()
                 }
             }
         } else {
@@ -55,6 +55,7 @@ extension ItemViewController: UISearchBarDelegate {
             self.tableStackView.isHidden = true
             return
         }
+        
         if lastClick == nil {
             deferredDownloadItems(searchBar, searchText: searchText)
         }

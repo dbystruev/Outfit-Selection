@@ -17,8 +17,12 @@ extension ItemViewController: UITableViewDataSource {
             debug("ERROR: Can't cast \(cell) to \(ItemViewControllerCell.self)")
             return cell
         }
-        // Check current items
-        guard let items = self.items else { return cell }
+        
+        // Show back bar button
+        backBarButtonItem.isEnabled = false
+        
+        // Check current searchItems
+        guard let items = self.searchItems else { return cell }
     
         // Configure item cell
         itemCell.configureContent(with: items[indexPath.row])
@@ -26,6 +30,6 @@ extension ItemViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        items?.count ?? 0
+        searchItems?.count ?? 0
     }
 }

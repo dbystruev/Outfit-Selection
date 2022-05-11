@@ -87,6 +87,7 @@ enum Globals {
         /// Names
         enum name {
             static let brandsChanged = "brandsChanged"
+            static let feedProfileChanged = "feedProfileChanged"
             static let updatedOccasions = "updatedOccasions"
         }
     }
