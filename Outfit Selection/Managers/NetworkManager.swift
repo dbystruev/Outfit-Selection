@@ -263,15 +263,18 @@ class NetworkManager {
     ///   - IDs: items IDs
     ///   - completion: closure called when request is finished, with items if successfull, or with nil if not
     func getItems(_ IDs: [String], completion: @escaping (Items?) -> Void) {
+        // Current selected feedsProfile
+        let feed = [String](FeedsProfile.all.selected.feedsIDs)
         
+        let feedParameter = FeedsProfile.all.isEmpty ? nil : ["feed": "in.(\(feed.commaJoined))"]
+
         // Include id=in.(..., ...) parameter
-        let parameters = ["id": "in.(\(IDs.commaJoined))"]
+        var parameters = ["id": "in.(\(IDs.commaJoined))"]
         
-//        let feed = [String](FeedsProfile.all.selected.feedsIDs)
-//        let feedParametr = FeedsProfile.all.isEmpty ? nil : ["feed": "in.(\(feed.commaJoined))"]
-//        let newPapametrs = parameters.merging(feedParametr ?? [:]) { (_, new) in new }
-//
-//        debug(parameters.merging(feedParametr ?? [:]) { (_, new) in new })
+        // Include feed=in.(..., ...) parameter
+        parameters.merge(feedParameter ?? [:]) { (_, new) in new }
+        
+        debug(parameters)
         
         // Request the items from the API
         getItems(with: parameters) { items in
@@ -284,7 +287,11 @@ class NetworkManager {
                 items.first { $0.id == id }
             }
             
-            
+//            // For DEBUG
+//            for orderedItem in orderedItems {
+//                debug(orderedItem.feed)
+//            }
+
             completion(orderedItems)
         }
     }
