@@ -266,6 +266,7 @@ class NetworkManager {
         // Current selected feedsProfile
         let feed = [String](FeedsProfile.all.selected.feedsIDs)
         
+        // FeedProfile parameter
         let feedParameter = FeedsProfile.all.isEmpty ? nil : ["feed": "in.(\(feed.commaJoined))"]
 
         // Include id=in.(..., ...) parameter
@@ -273,8 +274,6 @@ class NetworkManager {
         
         // Include feed=in.(..., ...) parameter
         parameters.merge(feedParameter ?? [:]) { (_, new) in new }
-        
-        debug(parameters)
         
         // Request the items from the API
         getItems(with: parameters) { items in

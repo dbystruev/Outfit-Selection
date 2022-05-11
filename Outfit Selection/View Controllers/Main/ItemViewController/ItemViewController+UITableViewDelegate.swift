@@ -14,16 +14,29 @@ extension ItemViewController: UITableViewDelegate {
     ///   - tableView: the tableView with items
     ///   - indexPath: item index path the user has tapped on
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        // Save DataSource
+        saveDatasource()
+        
         // Configure new item with image
-        configure(with: items?[indexPath.row])
+        configure(with: searchItems?[indexPath.row])
+
         // Hide table with items
         tableStackView.isHidden = true
+        
         // Clear teext from searchBar
         searchBar.text = ""
-        // Update UI
-        updateUI()
+        
         // Hide keyboard
         view.endEditing(true)
+        
+        // Deselect row after tap
+        tableView.deselectRow(at: indexPath, animated: true)
+        
+        // Show back bar button
+        backBarButtonItem.isEnabled = true
+        
+        // Update UI
+        updateUI()
     }
     
     /// An action when a user scroll items into tableView
@@ -32,5 +45,11 @@ extension ItemViewController: UITableViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         // Hide keyboard
         view.endEditing(true)
+    }
+    
+    /// Save text from searchBar and items from tableView
+    func saveDatasource() {
+        searchText = searchBar.text
+        searchItemsSave = searchItems
     }
 }

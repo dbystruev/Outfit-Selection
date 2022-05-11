@@ -53,7 +53,7 @@ class ItemViewController: LoggingViewController {
         }
     }
     /// The  table view with items list
-    @IBOutlet weak var itemTableView: UITableView!
+    @IBOutlet weak var searchTableView: UITableView!
     @IBOutlet weak var parentStackView: UIStackView!
     @IBOutlet  var priceLabels: [UILabel]!
     @IBOutlet weak var rightLabelsStackView: UIStackView!
@@ -81,6 +81,13 @@ class ItemViewController: LoggingViewController {
     static let searchKeystrokeDelay: TimeInterval = 0.25
     
     // MARK: - Stored Properties
+    
+    // Set new backButton into leftBarButtonItem
+    let backBarButtonItem = UIBarButtonItem()
+    
+    // Set new cancel into leftBarButtonItem
+    let cancelButton = UIBarButtonItem()
+    
     /// First item image
     private var image: UIImage?
     
@@ -94,7 +101,13 @@ class ItemViewController: LoggingViewController {
     var isEditingEnabled = false
     
     /// Items for searchBar
-    var items: Items?
+    var searchItems: Items?
+    
+    // Save entered search text
+    var searchText: String?
+    
+    /// Save searchItems
+    var searchItemsSave: Items?
     
     /// Item url to present at Intermediary view controller
     var url: URL?
@@ -237,19 +250,32 @@ class ItemViewController: LoggingViewController {
         navigationItem.hidesBackButton = isEditing
         
         if isEditing {
-            // Set new backButton into leftBarButtonItem
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
+            // Configure Back button leftBarButtonItem
+            backBarButtonItem.title = "Back"~
+            backBarButtonItem.target = self
+            backBarButtonItem.action = #selector(backButtonTap)
+            backBarButtonItem.isEnabled = false
+            
+            // Configure cancel button leftBarButtonItem
+            cancelButton.title = "Cancel"~
+            cancelButton.target = self
+            cancelButton.action = #selector(cancelButtonTap)
+            
+            // Set bar button items into left bar
+            navigationItem.leftBarButtonItems = [backBarButtonItem, cancelButton]
+            
         } else {
             // Set empty barButtonItem
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+            navigationItem.leftBarButtonItems = []
+            
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Configure the items table view
-        itemTableView.dataSource = self
-        itemTableView.delegate = self
+        searchTableView.dataSource = self
+        searchTableView.delegate = self
         
         loadImages()
         
