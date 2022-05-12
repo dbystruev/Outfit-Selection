@@ -32,7 +32,7 @@ extension AppDelegate {
     }
     
     /// Configure setting, load gender selected brands and occasion
-    func restoreSettings() {
+    static func restoreSettings() {
         
         // Load selected brands from UserDefault
         _ = Brands.loadSelectedBrands()
@@ -47,13 +47,19 @@ extension AppDelegate {
         Gender.restore()
         
         // Load selected occasions
+        restoreOccasions()
+        
+        // Restore wishlist from user defaults
+        Wishlist.restore()
+    }
+    
+    /// Restore Occasions
+    static func restoreOccasions() {
+        // Load selected occasions
         let occasions = Occasions.currentGender
         let selectedOccasionTitles  = UserDefaults.selectedOccasionTitles
         for occasion in occasions {
             occasion.isSelected = selectedOccasionTitles.contains(occasion.title)
         }
-        
-        // Restore wishlist from user defaults
-        Wishlist.restore()
     }
 }

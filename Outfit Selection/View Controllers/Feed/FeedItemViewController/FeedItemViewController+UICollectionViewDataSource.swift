@@ -112,14 +112,14 @@ extension FeedItemViewController: UICollectionViewDataSource {
         
         // Configure parameters for get
         let parametrs = NetworkManager.shared.parameters(
-            for: Gender.current,
             in: [],
-            subcategoryIDs: subcategoryIDs,
-            named: name,
             feed: feed,
+            filteredBy: brandNames,
+            for: Gender.current,
             limited: limit,
+            named: name,
             sale: sale,
-            filteredBy: brandNames
+            subcategoryIDs: subcategoryIDs
         )
         
         DispatchQueue.global(qos: .default).async {

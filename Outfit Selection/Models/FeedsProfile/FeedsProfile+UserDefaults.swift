@@ -19,11 +19,14 @@ extension FeedsProfile {
     /// Load selected feeds from user defaults
     static func restore() {
         for feed in FeedsProfile.all {
+            guard !UserDefaults.selectedFeedsIDs.isEmpty else { return }
+            
             // Check saved id into current FeedsSource
             guard let feedIDs = UserDefaults.selectedFeedsIDs.first(where: { $0 == feed.id }) else {
                 feed.shouldUse = false
                 continue
             }
+            
             guard let feed = FeedsProfile.all.first(where: { $0.id == feedIDs }) else {
                 debug("WARNING: Can't find \(feedIDs) into \(FeedsProfile.all)")
                 return

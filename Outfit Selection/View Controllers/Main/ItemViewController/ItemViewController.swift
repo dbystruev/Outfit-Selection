@@ -276,6 +276,7 @@ class ItemViewController: LoggingViewController {
         // Configure the items table view
         searchTableView.dataSource = self
         searchTableView.delegate = self
+        searchBar.placeholder = "Enter name please"~
         
         loadImages()
         
