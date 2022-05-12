@@ -398,35 +398,6 @@ final class ItemManager {
         /// Count the number of (sub)categories for loaded items
         var categoriesCount = 0
         
-        // TODO: REMOVE IT
-//        let subcategoryIDs = occasion.corneredSubcategoryIDs
-//
-//        // Dispatch group to wait for all requests to finish
-//        let group = DispatchGroup()
-//
-//        //let corneredItemIDs:[[Int]] = [[]]
-//
-//        for subcategoryID in subcategoryIDs {
-//
-//            group.enter()
-//            NetworkManager.shared.getItems(
-//                for: Gender.current,
-//                subcategoryIDs: subcategoryID,
-//                feeds: [String](FeedsProfile.all.selected.feedsIDs),
-//                limited: occasion.corneredItemIDs[0].count) { items in
-//                    // Be sure, the answer was getting
-//                    guard let items = items else { return }
-//
-//                    debug(items.first?.feed, items.count)
-//                    group.leave()
-//
-//                }
-//        }
-//
-//        group.notify(queue: DispatchQueue.global(qos: .background)) {
-//            debug()
-//        }
-        
         // Occasion item IDs from top left clockwise matching cornered subcategory IDs
         let corneredItemIDs = occasion.corneredItemIDs
         
@@ -477,10 +448,10 @@ final class ItemManager {
         for brandNames in brandNamesSlice {
             DispatchManager.shared.itemManagerGroup.enter()
             NetworkManager.shared.getItems(
-                for: gender,
                 in: categoryIDs,
-                subcategoryIDs: subcategoryIDs,
-                filteredBy: brandNames
+                filteredBy: brandNames,
+                for: gender,
+                subcategoryIDs: subcategoryIDs
             ) { [weak self] items in
                 // Check for self availability
                 guard let self = self else {

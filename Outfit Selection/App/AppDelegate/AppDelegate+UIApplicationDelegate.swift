@@ -109,7 +109,7 @@ extension AppDelegate: UIApplicationDelegate {
         _ = group.wait(timeout: .now() + 7)
         
         // Restore settings from user defaults
-        restoreSettings()
+        AppDelegate.restoreSettings()
         
         // Don't show onboarding screens if the user has seen them or there are none
         let next = UserDefaults.hasSeenAppIntroduction || Onboarding.count < 1

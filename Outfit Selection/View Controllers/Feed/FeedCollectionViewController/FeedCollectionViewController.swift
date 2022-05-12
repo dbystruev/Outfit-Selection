@@ -103,10 +103,10 @@ class FeedCollectionViewController: LoggingViewController {
         let sale = kind == .sale
         
         NetworkManager.shared.getItems(
-            subcategoryIDs: subcategoryIDs,
             filteredBy: ignoreBrands ? [] : brandNames,
             limited: maxItemsInSection * 2,
-            sale: sale
+            sale: sale,
+            subcategoryIDs: subcategoryIDs
         ) { [weak self] items in
             // Check for self availability
             guard let self = self else {
@@ -171,10 +171,10 @@ class FeedCollectionViewController: LoggingViewController {
         // If feed type is sale get items with old prices set
         let sale = kind == .sale
         NetworkManager.shared.getItems(
-            subcategoryIDs: subcategoryIDs,
             filteredBy: ignoreBrands ? [] : brandNames,
             limited: self.maxItemsInSection * 2,
-            sale: sale
+            sale: sale,
+            subcategoryIDs: subcategoryIDs
         ) { [weak self] items in
             // Check for self availability
             guard let self = self else {

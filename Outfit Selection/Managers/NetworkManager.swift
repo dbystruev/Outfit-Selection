@@ -260,20 +260,20 @@ class NetworkManager {
     
     /// Get  items with given IDs
     /// - Parameters:
+    ///   - feeds: the feeds profile selected IDs by default
     ///   - IDs: items IDs
     ///   - completion: closure called when request is finished, with items if successfull, or with nil if not
-    func getItems(_ IDs: [String], completion: @escaping (Items?) -> Void) {
-        // Current selected feedsProfile
-        let feed = [String](FeedsProfile.all.selected.feedsIDs)
+    func getItems(
+        _ IDs: [String],
+        feeds: [String] = [String](FeedsProfile.all.selected.feedsIDs),
+        completion: @escaping (Items?) -> Void
+    ) {
         
-        // FeedProfile parameter
-        let feedParameter = FeedsProfile.all.isEmpty ? nil : ["feed": "in.(\(feed.commaJoined))"]
-
-        // Include id=in.(..., ...) parameter
-        var parameters = ["id": "in.(\(IDs.commaJoined))"]
-        
-        // Include feed=in.(..., ...) parameter
-        parameters.merge(feedParameter ?? [:]) { (_, new) in new }
+        // Prepare parameters
+        let parameters = parameters(
+            feed: feeds,
+            IDs: IDs
+        )
         
         // Request the items from the API
         getItems(with: parameters) { items in
@@ -282,50 +282,46 @@ class NetworkManager {
                 return
             }
             
+            // Keep unique items
             let orderedItems = IDs.compactMap { id in
                 items.first { $0.id == id }
             }
-            
-//            // For DEBUG
-//            for orderedItem in orderedItems {
-//                debug(orderedItem.feed)
-//            }
-
             completion(orderedItems)
         }
     }
-
+    
     /// Add /items?category_id=in.(..., ...)&vendor=in.(..., ...)&limit=... to server URL and call the API
     /// - Parameters:
-    ///   - gender: load female. male, or other (all) items, Gender.current by default
     ///   - categoryIDs: the list of category IDs to filter items by, empty (all categories) by default
-    ///   - subcategoryIDs: the list of subcategory IDs to filter items by, empty (all subcategories) by default
-    ///   - vendorNames: the list of vendors to filter items by
     ///   - feeds: the feeds profile selected IDs by default
+    ///   - vendorNames: the list of vendors to filter items by
+    ///   - gender: load female. male, or other (all) items, Gender.current by default
     ///   - limit: limit the number of items by given number, nil by default
+    ///   - name: Item's name
     ///   - sale: old price should not be null, false by default
+    ///   - subcategoryIDs: the list of subcategory IDs to filter items by, empty (all subcategories) by default
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
     func getItems(
-        for gender: Gender? = Gender.current,
         in categoryIDs: [Int] = [],
-        subcategoryIDs: [Int] = [],
-        filteredBy vendorNames: [String] = [],
         feeds: [String] = [String](FeedsProfile.all.selected.feedsIDs),
+        filteredBy vendorNames: [String] = [],
+        for gender: Gender? = Gender.current,
         limited limit: Int? = nil,
         named name: String? = nil,
         sale: Bool = false,
+        subcategoryIDs: [Int] = [],
         completion: @escaping (Items?) -> Void)
     {
         // Prepare parameters
         let parameters = parameters(
-            for: gender,
             in: categoryIDs,
-            subcategoryIDs: subcategoryIDs,
-            named: name,
             feed: feeds,
+            filteredBy: vendorNames,
+            for: gender,
             limited: limit,
+            named: name,
             sale: sale,
-            filteredBy: vendorNames
+            subcategoryIDs: subcategoryIDs
         )
         
         // Request the items from the API
@@ -403,24 +399,29 @@ class NetworkManager {
         get("onboarding", completion: completion)
     }
     
+    // TODO
     /// Prepare parameters dictionary for given categories, gender, and vendors
     /// - Parameters:
-    ///   - gender: load female, male, or other items
     ///   - categories: the list of category IDs to filter items by, empty (all categories) by default
-    ///   - subcategories: the list of subcategory IDs to filter items by, empty (all subcategories) by default
-    ///   - limit: limit the number of items by given number, nil by default
-    ///   - sale: old price should not be null
+    ///   - feed: feed IDs to filter items
     ///   - fullVendorNames: the list of vendors to filter items by
+    ///   - gender: load female, male, or other items
+    ///   - IDs: items IDs
+    ///   - limit: limit the number of items by given number, nil by default
+    ///   - name: Item's name
+    ///   - sale: old price should not be null
+    ///   - subcategoryIDs: Item's subcategory IDs for occasion
     /// - Returns: dictionary with parameters suitable to call get()
     func parameters(
-        for gender: Gender?,
-        in categories: [Int],
-        subcategoryIDs: [Int],
-        named name: String?,
-        feed: [String],
-        limited limit: Int?,
-        sale: Bool,
-        filteredBy fullVendorNames: [String]
+        in categories: [Int] = [],
+        feed: [String] = [],
+        filteredBy fullVendorNames: [String] = [],
+        for gender: Gender? = nil,
+        IDs: [String] = [],
+        limited limit: Int? = nil,
+        named name: String? = nil,
+        sale: Bool = false,
+        subcategoryIDs: [Int] = []
     ) -> [String: Any] {
         // Alias Item.CodingKeys for shorter code
         typealias Keys = Item.CodingKeys
@@ -435,13 +436,10 @@ class NetworkManager {
         ? nil
         : "in.(\([Int](categories.uniqued()).commaJoined))"
         
-        // Add "categories=ov.{1,2,3}" parameter (ov for overlap)
-        parameters[Keys.subcategoryIDs.rawValue] = subcategoryIDs.isEmpty
+        // Add "feed" parameter
+        parameters[Keys.feed.rawValue] = FeedsProfile.all.isEmpty
         ? nil
-        : "ov.{\([Int](subcategoryIDs.uniqued()).commaJoined)}"
-        
-        // Add "old_price" not null parameter
-        parameters[Keys.oldPrice.rawValue] = sale ? "not.is.null" : nil
+        : "in.(\(feed.commaJoined))"
         
         // Make vendors alphanumeric and lowercased
         let shortVendorNames: [String] = fullVendorNames.map { fullVendorName in
@@ -461,13 +459,24 @@ class NetworkManager {
             parameters[Keys.gender.rawValue] = "in.(\(genders.commaJoined))"
         }
         
+        // Add "id=in.(..., ...)" parameter
+        parameters[Keys.id.rawValue] = IDs.isEmpty
+        ? nil
+        : "in.(\(IDs.commaJoined))"
+        
         // Add "name" parameter
         if let name = name {
             parameters[Keys.name.rawValue] = "ilike.*\(name)*"
         }
         
-        // Add "feed" parameter
-        parameters[Keys.feed.rawValue] = FeedsProfile.all.isEmpty ? nil : "in.(\(feed.commaJoined))"
+        // Add "old_price" not null parameter
+        parameters[Keys.oldPrice.rawValue] = sale ? "not.is.null" : nil
+        
+        // Add "categories=ov.{1,2,3}" parameter (ov for overlap)
+        parameters[Keys.subcategoryIDs.rawValue] = subcategoryIDs.isEmpty
+        ? nil
+        : "ov.{\([Int](subcategoryIDs.uniqued()).commaJoined)}"
+        
         return parameters
     }
     

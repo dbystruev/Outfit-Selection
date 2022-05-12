@@ -36,19 +36,19 @@ extension FeedCollectionViewController: ButtonDelegate {
                 let sale = kind == .sale
                 
                 // Make parameters for get
-                let parametrs = NetworkManager.shared.parameters(
-                    for: Gender.current,
+                let parameters = NetworkManager.shared.parameters(
                     in: [],
-                    subcategoryIDs: subcategoryIDs,
-                    named: "",
                     feed: [],
+                    filteredBy: brandNames,
+                    for: Gender.current,
                     limited: 1,
+                    named: "",
                     sale: sale,
-                    filteredBy: brandNames
+                    subcategoryIDs: subcategoryIDs
                 )
                 
                 // Request head to get Content-Range from the API
-                NetworkManager.shared.exactCount(with: parametrs, header: "Content-Range") { T in
+                NetworkManager.shared.exactCount(with: parameters, header: "Content-Range") { T in
                     debug("Content-Range:", T)
                     Globals.Feed.contentRange = T ?? 0
                 }
