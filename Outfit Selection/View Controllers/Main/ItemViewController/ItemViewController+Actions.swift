@@ -74,6 +74,10 @@ extension ItemViewController {
         sender.addToWishlistButtonTapped(for: item)
     }
     
+    @IBAction func backButtonTapped(_ sender: Any) {
+        backButtonTap()
+    }
+    
     @IBAction func dislikeButtonTapped(_ sender: WishlistButton) {
         guard let item = item else { return }
         present(Alert.dislike(item, handler: { _ in
