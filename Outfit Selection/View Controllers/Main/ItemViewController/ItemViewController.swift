@@ -67,6 +67,15 @@ class ItemViewController: LoggingViewController {
     @IBOutlet weak var trailingStackView: UIStackView!
     @IBOutlet var vendorLabels: [UILabel]!
     
+    // Set new backButton into leftBarButtonItem
+    let backBarButtonItem = UIBarButtonItem()
+    
+    // Set new cancel into leftBarButtonItem
+    let cancelButton = UIBarButtonItem()
+    
+    // Set new save into leftBarButtonItem
+    let saveButton  = UIBarButtonItem()
+    
     // MARK: - Properties
     /// Time of last click in search bar
     var lastClick: Date?
@@ -81,13 +90,6 @@ class ItemViewController: LoggingViewController {
     static let searchKeystrokeDelay: TimeInterval = 0.25
     
     // MARK: - Stored Properties
-    
-    // Set new backButton into leftBarButtonItem
-    let backBarButtonItem = UIBarButtonItem()
-    
-    // Set new cancel into leftBarButtonItem
-    let cancelButton = UIBarButtonItem()
-    
     /// First item image
     private var image: UIImage?
     
@@ -250,9 +252,12 @@ class ItemViewController: LoggingViewController {
         navigationItem.hidesBackButton = isEditing
         
         if isEditing {
+            
+            
             // Configure Back button leftBarButtonItem
             backBarButtonItem.title = "Back"~
-            backBarButtonItem.target = self
+            //backBarButtonItem.image = UIImage(named: "back")
+            //backBarButtonItem.imageInsets = UIEdgeInsets(top: 1, left: -8, bottom: 0, right: 0)
             backBarButtonItem.action = #selector(backButtonTap)
             backBarButtonItem.isEnabled = false
             
@@ -262,11 +267,13 @@ class ItemViewController: LoggingViewController {
             cancelButton.action = #selector(cancelButtonTap)
             
             // Set bar button items into left bar
-            navigationItem.leftBarButtonItems = [backBarButtonItem, cancelButton]
+            navigationItem.leftBarButtonItems = [backBarButtonItem]
+            navigationItem.rightBarButtonItems?.append(cancelButton)
             
         } else {
             // Set empty barButtonItem
             navigationItem.leftBarButtonItems = []
+            navigationItem.rightBarButtonItems?.remove(at: 1)
             
         }
     }

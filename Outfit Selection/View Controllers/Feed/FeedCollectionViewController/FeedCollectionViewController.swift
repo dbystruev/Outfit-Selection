@@ -103,6 +103,7 @@ class FeedCollectionViewController: LoggingViewController {
         let sale = kind == .sale
         
         NetworkManager.shared.getItems(
+            feeds: [String](FeedsProfile.all.feedsIDs),
             filteredBy: ignoreBrands ? [] : brandNames,
             limited: maxItemsInSection * 2,
             sale: sale,

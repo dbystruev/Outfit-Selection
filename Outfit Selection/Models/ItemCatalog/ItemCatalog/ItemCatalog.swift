@@ -101,7 +101,7 @@ class ItemCatalog: Codable {
         // Load new collection items not present in the global items
         let newItemIDs = itemIDs.filter { items[$0] == nil }
         
-        NetworkManager.shared.getItems(newItemIDs) { newItems in
+        NetworkManager.shared.getItems(newItemIDs, feeds: [String](FeedsProfile.all.feedsIDs)) { newItems in
             // Append new items loaded from the server
             let newItems = newItems ?? []
             Items.append(contentsOf: newItems)
