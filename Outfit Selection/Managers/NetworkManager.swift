@@ -270,10 +270,7 @@ class NetworkManager {
     ) {
         
         // Prepare parameters
-        let parameters = parameters(
-            feed: feeds,
-            IDs: IDs
-        )
+        let parameters = parameters(feeds: feeds, IDs: IDs)
         
         // Request the items from the API
         getItems(with: parameters) { items in
@@ -286,7 +283,13 @@ class NetworkManager {
             let orderedItems = IDs.compactMap { id in
                 items.first { $0.id == id }
             }
-            completion(orderedItems)
+            
+            // Give second change if no items were returned by looking among all feeds
+            if orderedItems.isEmpty && !feeds.isEmpty {
+                self.getItems(IDs, feeds: [], completion: completion)
+            } else {
+                completion(orderedItems)
+            }
         }
     }
     
@@ -315,7 +318,7 @@ class NetworkManager {
         // Prepare parameters
         let parameters = parameters(
             in: categoryIDs,
-            feed: feeds,
+            feeds: feeds,
             filteredBy: vendorNames,
             for: gender,
             limited: limit,
@@ -403,7 +406,7 @@ class NetworkManager {
     /// Prepare parameters dictionary for given categories, gender, and vendors
     /// - Parameters:
     ///   - categories: the list of category IDs to filter items by, empty (all categories) by default
-    ///   - feed: feed IDs to filter items
+    ///   - feeds: feed IDs to filter items
     ///   - fullVendorNames: the list of vendors to filter items by
     ///   - gender: load female, male, or other items
     ///   - IDs: items IDs
@@ -414,7 +417,7 @@ class NetworkManager {
     /// - Returns: dictionary with parameters suitable to call get()
     func parameters(
         in categories: [Int] = [],
-        feed: [String] = [],
+        feeds: [String] = [],
         filteredBy fullVendorNames: [String] = [],
         for gender: Gender? = nil,
         IDs: [String] = [],
@@ -437,9 +440,9 @@ class NetworkManager {
         : "in.(\([Int](categories.uniqued()).commaJoined))"
         
         // Add "feed" parameter
-        parameters[Keys.feed.rawValue] = FeedsProfile.all.isEmpty
+        parameters[Keys.feed.rawValue] = feeds.isEmpty
         ? nil
-        : "in.(\(feed.commaJoined))"
+        : "in.(\(feeds.commaJoined))"
         
         // Make vendors alphanumeric and lowercased
         let shortVendorNames: [String] = fullVendorNames.map { fullVendorName in

@@ -38,7 +38,7 @@ extension FeedCollectionViewController: ButtonDelegate {
                 // Make parameters for get
                 let parameters = NetworkManager.shared.parameters(
                     in: [],
-                    feed: [],
+                    feeds: [],
                     filteredBy: brandNames,
                     for: Gender.current,
                     limited: 1,

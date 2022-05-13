@@ -113,7 +113,7 @@ extension FeedItemViewController: UICollectionViewDataSource {
         // Configure parameters for get
         let parametrs = NetworkManager.shared.parameters(
             in: [],
-            feed: feed,
+            feeds: feed,
             filteredBy: brandNames,
             for: Gender.current,
             limited: limit,
