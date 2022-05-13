@@ -303,7 +303,6 @@ class ItemViewController: LoggingViewController {
         let imageViewTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         imageView.addGestureRecognizer(imageViewTap)
         imageView.isUserInteractionEnabled = true
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {

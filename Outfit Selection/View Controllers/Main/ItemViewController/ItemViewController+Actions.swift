@@ -59,9 +59,7 @@ extension ItemViewController {
     }
     /// Call when UIimageView was tapped
     @objc func imageTapped(sender: UITapGestureRecognizer) {
-        if sender.state == .ended {
-            performSegue(withIdentifier: ImageViewController.segueIdentifier, sender: item)
-        }
+        performSegue(withIdentifier: ImageViewController.segueIdentifier, sender: item)
     }
     
     // MARK: - Actions

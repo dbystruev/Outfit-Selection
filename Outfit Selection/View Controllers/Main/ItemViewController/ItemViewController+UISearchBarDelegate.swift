@@ -17,7 +17,7 @@ extension ItemViewController: UISearchBarDelegate {
     func deferredDownloadItems(_ searchBar: UISearchBar, in interval: TimeInterval = ItemViewController.searchKeystrokeDelay, searchText: String) {
         if let lastClick = lastClick, interval < Date().timeIntervalSince(lastClick) {
             self.lastClick = nil
-            NetworkManager.shared.getItems(for: Gender.current,  limited: limited, named: searchText) { items in
+            NetworkManager.shared.getItems(for: Gender.current, limited: limited, named: searchText) { items in
                 guard let items = items else { return }
                 self.searchItems = items
                 

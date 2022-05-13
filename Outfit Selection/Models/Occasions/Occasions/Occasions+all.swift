@@ -55,8 +55,12 @@ extension Occasions {
     static var selected: Occasions { byID.values.filter { $0.isSelected }}
     
     /// The list of selected occasions with unique title
-    static var selectedUniqueTitle: Occasions { selected.titles.compactMap { byTitle[$0]?.first }}
-    
+    static var selectedUniqueTitle: Occasions {
+        //TODO: Bug with lost occasion after change gender
+        //debug(Occasions.selected)
+        return selected.titles.compactMap { byTitle[$0]?.first }
+    }
+
     /// The IDs of selected occasions
     static var selectedIDs: [Int] { selected.map { $0.id }}
     
