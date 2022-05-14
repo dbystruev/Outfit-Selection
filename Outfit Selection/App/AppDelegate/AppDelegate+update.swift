@@ -82,6 +82,7 @@ extension AppDelegate {
             
             // Fill occasions with the new list of occasions
             Occasions.removeAll()
+            
             occasions.forEach { occasion in
                 Occasions.append(occasion)
             }
@@ -95,14 +96,14 @@ extension AppDelegate {
                 "items: \(Occasions.flatItemIDs.count)"
             )
             
+            // Restore selected occasions from user defaults
+            Occasions.restoreSelectedOccasions()
+            
             // Post notification with name
             Globals.Notification.notificationCenter.post(
                 name: Notification.Name(nameNotification),
                 object: nil
             )
-            
-            // Restore selected occasions from user defaults
-            Occasions.restoreSelectedOccasions()
             
             // Complition
             completion?(true)
@@ -131,5 +132,26 @@ extension AppDelegate {
             
             completion(true)
         }
+    }
+    
+    /// Load debugMode users
+    /// - Parameter completion: a closure with bool parameter called in case of success (true) or failure (false)
+    static func updateUsers(completion: @escaping (_ success: Bool) -> Void?) {
+        let startTime = Date()
+        
+        let emails = Globals.TabBar.debugModeEmails
+        for email in emails {
+            let user = User(debugmode: true, email: email)
+            Users.all.append(user)
+        }
+        
+        // Show elapsed time
+        let elapsedTime = Date().timeIntervalSince(startTime)
+        debug("INFO: Loaded \(Users.all.count) users with debugMode ON in \(elapsedTime.asTime) s")
+        
+        // Print hash all users with debugMode ON
+//        for user in Users.all {
+//            debug("User Email:", user.email, user.hash(user.email))
+//        }
     }
 }

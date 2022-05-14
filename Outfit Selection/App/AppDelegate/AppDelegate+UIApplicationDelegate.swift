@@ -56,7 +56,7 @@ extension AppDelegate: UIApplicationDelegate {
             AppDelegate.updateCategories() { _ in group.leave() }
             
             // Update the list of feeds from the server
-            AppDelegate.updateFeeds { _ in group.leave() }
+            AppDelegate.updateFeeds() { _ in group.leave() }
             
             // Update the list of occasions from the server
             AppDelegate.updateOccasions() { _ in group.leave() }
@@ -80,6 +80,9 @@ extension AppDelegate: UIApplicationDelegate {
         
         // Load all brands 
         AppDelegate.updateBrands()
+        
+        // Load all users with debugMode true
+        AppDelegate.updateUsers() { _ in }
     
         // Change global tint color
         UIView.appearance().tintColor = #colorLiteral(red: 0.4693212509, green: 0.5382487178, blue: 0.5183649659, alpha: 1)

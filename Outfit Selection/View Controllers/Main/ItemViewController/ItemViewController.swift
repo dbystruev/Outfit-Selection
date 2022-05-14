@@ -41,6 +41,10 @@ class ItemViewController: LoggingViewController {
     }
     
     @IBOutlet weak var buttonsStackView: UIStackView!
+    // Back bar button item and button
+    @IBOutlet weak var backBarButon: UIButton!
+    @IBOutlet weak var backBarButtonItem: UIBarButtonItem!
+    
     @IBOutlet var orderButtonHorizontalConstraints: [NSLayoutConstraint]!
     @IBOutlet weak var imageStackView: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
@@ -67,11 +71,8 @@ class ItemViewController: LoggingViewController {
     @IBOutlet weak var trailingStackView: UIStackView!
     @IBOutlet var vendorLabels: [UILabel]!
     
-    // Set new backButton into leftBarButtonItem
-    let backBarButtonItem = UIBarButtonItem()
-    
     // Set new cancel into leftBarButtonItem
-    let cancelButton = UIBarButtonItem()
+    let cancelBarButton = UIBarButtonItem()
     
     // Set new save into leftBarButtonItem
     let saveButton  = UIBarButtonItem()
@@ -245,36 +246,34 @@ class ItemViewController: LoggingViewController {
         searchBar.isHidden = !isEditing
         shareButton.isEnabled = !isEditing
         
-        // Set title
-        //title = isEditing ? "Edit"~ : "" //item?.price.asPrice
-        
         // Hide or show backButton
         navigationItem.hidesBackButton = isEditing
         
         if isEditing {
+            // Configure custom backBatton for leftBarButtonItems
+            backBarButon.setTitle("Back"~, for: .normal)
+            backBarButon.titleLabel?.font = Globals.Font.Onboarding.barButton
+            backBarButon.contentEdgeInsets = UIEdgeInsets(top: -1, left: -6, bottom: 0, right: 0)
+            backBarButon.contentHorizontalAlignment = .left
+            backBarButon.contentVerticalAlignment = .center
+            backBarButon.sizeToFit()
             
+            // Set visible and lock button
+            backBarButon.isHidden = false
+            backBarButon.isEnabled = false
             
-            // Configure Back button leftBarButtonItem
-            backBarButtonItem.title = "Back"~
-            //backBarButtonItem.image = UIImage(named: "back")
-            //backBarButtonItem.imageInsets = UIEdgeInsets(top: 1, left: -8, bottom: 0, right: 0)
-            backBarButtonItem.action = #selector(backButtonTap)
-            backBarButtonItem.isEnabled = false
+            // Configure cancel button for rightBarButtonItems
+            cancelBarButton.title = "Cancel"~
+            cancelBarButton.target = self
+            cancelBarButton.action = #selector(cancelButtonTap)
             
-            // Configure cancel button leftBarButtonItem
-            cancelButton.title = "Cancel"~
-            cancelButton.target = self
-            cancelButton.action = #selector(cancelButtonTap)
-            
-            // Set bar button items into left bar
-            navigationItem.leftBarButtonItems = [backBarButtonItem]
-            navigationItem.rightBarButtonItems?.append(cancelButton)
+            // Add cancel button into rightBarButtonItems
+            navigationItem.rightBarButtonItems?.append(cancelBarButton)
             
         } else {
-            // Set empty barButtonItem
-            navigationItem.leftBarButtonItems = []
+            // Remove cancel button from rightBarButtonItems
             navigationItem.rightBarButtonItems?.remove(at: 1)
-            
+            backBarButon.isHidden = true
         }
     }
     
@@ -284,7 +283,6 @@ class ItemViewController: LoggingViewController {
         searchTableView.dataSource = self
         searchTableView.delegate = self
         searchBar.placeholder = "Enter name please"~
-        
         loadImages()
         
         // Configyre editButtonItem
@@ -305,7 +303,6 @@ class ItemViewController: LoggingViewController {
         let imageViewTap = UITapGestureRecognizer(target: self, action: #selector(imageTapped))
         imageView.addGestureRecognizer(imageViewTap)
         imageView.isUserInteractionEnabled = true
-    
     }
     
     override func viewWillAppear(_ animated: Bool) {

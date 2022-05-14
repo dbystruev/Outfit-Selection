@@ -69,6 +69,7 @@ extension OutfitViewController {
         
         // Configure the back bar button
         backBarButton.titleLabel?.font = Globals.Font.Onboarding.barButton
+        backBarButton.contentEdgeInsets = UIEdgeInsets(top: -1, left: -6, bottom: 0, right: 0)
         backBarButton.contentHorizontalAlignment = .left
         backBarButton.contentVerticalAlignment = .center
         backBarButton.sizeToFit()
@@ -112,6 +113,7 @@ extension OutfitViewController {
             .selectedUniqueTitle
             .gender(Gender.current)
             .sorted(by: { $0.label < $1.label })
+        
         lazy var randomSelectedOccasion = selectedOccasions.randomElement()
         
         // Return if occasions isEmpty
@@ -522,35 +524,13 @@ extension OutfitViewController {
     
     /// Reload ocassions
     @objc func updatedOccasions() {
+        
         // Return to main
         DispatchQueue.main.async {
-            //            guard let tabBarController = self.tabBarController as? TabBarController else {
-            //                debug("ERROR: can't cast", self.tabBarController, "to TabBarConroller")
-            //                return
-            //            }
-            //
-            //            // Get the list of view controllers from tab bar
-            //            guard let viewControllers = tabBarController.viewControllers else {
-            //                debug("ERROR: There are no view controllers in tab bar")
-            //                return
-            //            }
-            //
-            //            // Get navigation controller from tab bar with index
-            //            guard let navigationController = viewControllers[0] as? UINavigationController else {
-            //                debug("ERROR: Navigation controller is not available")
-            //                return
-            //            }
-            //
-            //            // Get outfit view controller
-            //            guard let outfitViewController = navigationController.findViewController(ofType: OutfitViewController.self) else {
-            //                debug("ERROR: OutfitViewController controller is not available")
-            //                return
-            //            }
-            
             // Configure occasions
             self.configureOccasions()
         }
-        
+
         // Reload items from the server for changed occasion
         NetworkManager.shared.reloadItems(from: self.occasionSelected) { [weak self] success in
             if success == true {} else {

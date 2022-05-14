@@ -286,6 +286,7 @@
 		7A2039E727FEC23900CD4B93 /* ProfileViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039E627FEC23900CD4B93 /* ProfileViewController+Actions.swift */; };
 		7A2039EA27FF190B00CD4B93 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A2039EC27FF190B00CD4B93 /* Signup.storyboard */; };
 		7A2039F027FFE2D700CD4B93 /* ItemViewController+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A2039EF27FFE2D700CD4B93 /* ItemViewController+UISearchBarDelegate.swift */; };
+		7A3DF0FA282E8CA000B2BCB4 /* Users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A3DF0F9282E8CA000B2BCB4 /* Users.swift */; };
 		7A6D65B52813FD3D00EC3087 /* Array+replace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A6D65B42813FD3C00EC3087 /* Array+replace.swift */; };
 		7A9AC7562800357D002014D9 /* ItemViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC7552800357C002014D9 /* ItemViewController+UITableViewDataSource.swift */; };
 		7A9AC7582800359D002014D9 /* ItemViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7A9AC7572800359D002014D9 /* ItemViewController+UITableViewDelegate.swift */; };
@@ -298,7 +299,6 @@
 		7AC04138282358C500CA7E5E /* FeedsProfileViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC04137282358C500CA7E5E /* FeedsProfileViewController+UITableViewDelegate.swift */; };
 		7AC0413A28236C4E00CA7E5E /* FeedsProfileViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0413928236C4E00CA7E5E /* FeedsProfileViewController+Actions.swift */; };
 		7AC0413C282374CE00CA7E5E /* FeedsProfile+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0413B282374CE00CA7E5E /* FeedsProfile+UserDefaults.swift */; };
-		7AC0413E2824DB7C00CA7E5E /* occasions.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7AC0413D2824DB7C00CA7E5E /* occasions.txt */; };
 		7AC041412824EEB400CA7E5E /* ImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC041402824EEB300CA7E5E /* ImageViewController.swift */; };
 		7AC041432824F0EB00CA7E5E /* ItemViewController+Navigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC041422824F0EB00CA7E5E /* ItemViewController+Navigation.swift */; };
 		7AC0414928250E1900CA7E5E /* ImageViewController+UIScrollViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AC0414828250E1900CA7E5E /* ImageViewController+UIScrollViewDelegate.swift */; };
@@ -620,6 +620,7 @@
 		7A2039EB27FF190B00CD4B93 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
 		7A2039EE27FF191700CD4B93 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Signup.strings; sourceTree = "<group>"; };
 		7A2039EF27FFE2D700CD4B93 /* ItemViewController+UISearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemViewController+UISearchBarDelegate.swift"; sourceTree = "<group>"; };
+		7A3DF0F9282E8CA000B2BCB4 /* Users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Users.swift; sourceTree = "<group>"; };
 		7A6D65B42813FD3C00EC3087 /* Array+replace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+replace.swift"; sourceTree = "<group>"; };
 		7A9AC7552800357C002014D9 /* ItemViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		7A9AC7572800359D002014D9 /* ItemViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
@@ -632,7 +633,6 @@
 		7AC04137282358C500CA7E5E /* FeedsProfileViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsProfileViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
 		7AC0413928236C4E00CA7E5E /* FeedsProfileViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsProfileViewController+Actions.swift"; sourceTree = "<group>"; };
 		7AC0413B282374CE00CA7E5E /* FeedsProfile+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedsProfile+UserDefaults.swift"; sourceTree = "<group>"; };
-		7AC0413D2824DB7C00CA7E5E /* occasions.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = occasions.txt; sourceTree = "<group>"; };
 		7AC041402824EEB300CA7E5E /* ImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewController.swift; sourceTree = "<group>"; };
 		7AC041422824F0EB00CA7E5E /* ItemViewController+Navigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemViewController+Navigation.swift"; sourceTree = "<group>"; };
 		7AC0414828250E1900CA7E5E /* ImageViewController+UIScrollViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ImageViewController+UIScrollViewDelegate.swift"; sourceTree = "<group>"; };
@@ -1719,6 +1719,7 @@
 			isa = PBXGroup;
 			children = (
 				7AC21E7427FB199F006E1ED5 /* User.swift */,
+				7A3DF0F9282E8CA000B2BCB4 /* Users.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -1746,7 +1747,6 @@
 		7AF42A9327D9CFE600D5CF53 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				7AC0413D2824DB7C00CA7E5E /* occasions.txt */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -1876,7 +1876,6 @@
 				69C5CBF5260A1ED800DE22E6 /* NotoSans-SemiBold.ttf in Resources */,
 				690623A9270C633800813089 /* Screenshot02.png in Resources */,
 				693D7286256BF1EA00540C10 /* Brands.bundle in Resources */,
-				7AC0413E2824DB7C00CA7E5E /* occasions.txt in Resources */,
 				690623B6270C6FA000813089 /* get_outfit_app.png in Resources */,
 				7AD80C2027D0E0E2005A36DC /* brands.csv in Resources */,
 				690623A3270C633800813089 /* Screenshot11.png in Resources */,
@@ -2142,6 +2141,7 @@
 				69A4A11428211B2000755F82 /* FeedProfile.swift in Sources */,
 				69A6F6F422BA26B7002A3B49 /* AppDelegate.swift in Sources */,
 				7A01FBAC27BBA765007131E7 /* AppDelegate+setup.swift in Sources */,
+				7A3DF0FA282E8CA000B2BCB4 /* Users.swift in Sources */,
 				692C94132547025D0075BD92 /* Category.swift in Sources */,
 				7AC0413A28236C4E00CA7E5E /* FeedsProfileViewController+Actions.swift in Sources */,
 				7A2039E527FD877100CD4B93 /* SignupButton.swift in Sources */,

@@ -95,7 +95,7 @@ enum Globals {
     /// Index outfit view controller from tabBarController
     enum TabBar {
         /// Email for debug mode
-        static let debugModeEmails = ["dbystruev@gmail.com", "miketoropov150@gmail.com", "bildedroid@gmail.com", "Kimsanjiev@gmail.com"]
+        static let debugModeEmails = ["dbystruev@gmail.com", "miketoropov150@gmail.com", "bildedroid@gmail.com", "kimsanjiev@gmail.com"]
         
         /// Index for controllers
         enum index {

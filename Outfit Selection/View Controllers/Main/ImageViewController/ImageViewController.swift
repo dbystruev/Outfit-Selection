@@ -34,6 +34,8 @@ class ImageViewController: UIViewController {
         }
         // Get images from item
         NetworkManager.shared.getImage(imageURL) { image in
+            // Wait for image downloaded
+            guard let image = image else { return }
             self.image = image
             DispatchQueue.main.async {
                 self.imageView?.image = image
