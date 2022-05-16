@@ -100,8 +100,7 @@ class TabBarController: UITabBarController {
         UITabBar.appearance().tintColor = #colorLiteral(red: 66 / 255, green: 66 / 255, blue: 66 / 255, alpha: 1)
         UITabBar.appearance().unselectedItemTintColor = #colorLiteral(red: 66 / 255, green: 66 / 255, blue: 66 / 255, alpha: 0.5)
         
-        if !User.current.debugmode {
-            
+        if !(User.current.debugmode ?? false) {
             // Remove chat from viewControllers
             self.viewControllers?.remove(at:Globals.TabBar.index.chat)
         }

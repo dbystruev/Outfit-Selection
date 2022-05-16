@@ -66,32 +66,39 @@ class SignupViewController: LoggingViewController {
                 if let error = error {
                     debug("ERROR:", error.localizedDescription)
                 }
-                // Check authResult
-                guard let authResult = authResult else {
+                
+                // Make shure the current auth user in not nil
+                guard let user = authResult?.user else {
                     debug("ERROR: can't get authResult")
                     return
                 }
                 
-                // Update date for current user
-                User.current.userCredentials.updateValue(authResult.user.displayName ?? "", forKey: "Name:"~)
-                User.current.userCredentials.updateValue(authResult.user.email ?? "", forKey: "Email:"~)
-                User.current.userCredentials.updateValue(authResult.user.phoneNumber ?? "", forKey: "Phone:"~)
-                User.current.isLoggedIn = true
-                User.current.photoURL = authResult.user.photoURL
-                User.current.uid = authResult.user.uid
+                // Update current user
+                User.update(
+                    debugmode: false,
+                    displayName: user.displayName,
+                    email: user.email ?? "",
+                    isLoggedIn: true,
+                    phone: user.phoneNumber,
+                    photoURL: user.photoURL?.absoluteString,
+                    uid: Int(user.uid)
+                )
                 
-                // Check current email for Debug Mode
-                if self.debugModeEmails.contains(authResult.user.email ?? "") {
-                    
-                    // Save debug mode for current user
-                    User.current.debugmode = true
-                    
-                    debug("INFO: Debug mode for \(authResult.user.email ?? "") ON")
-                    // Go to ProgressViewController for reload tabbarController
-                    self.navigate(reload: true)
-                } else {
-                    self.navigate()
-                }
+                // Check the current user for Debug Mode
+                //let hash = User.hash(user.email ?? "")
+                
+//                // If currunt user hash contains
+//                if Users.hashs.contains(hash ?? "") {
+//                    guard let hash = hash, !hash.isEmpty else { return }
+//
+//
+//                    User.current.debugmode = true
+//                    debug("INFO: Debug mode for \(User.current.email) ON")
+//                    // Go to ProgressViewController for reload tabbarController
+//                    self.navigate(reload: true)
+//                } else {
+//                    self.navigate()
+//                }
             }
         }
     }

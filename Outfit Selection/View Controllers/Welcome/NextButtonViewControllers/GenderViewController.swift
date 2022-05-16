@@ -79,28 +79,29 @@ class GenderViewController: NextButtonViewController {
         
         // Start auth listener
         handle = Auth.auth().addStateDidChangeListener { auth, user in
-            // Check current user for nil
+            // Make shure the current auth user in not nil
             guard let user = user else { return }
             
-            // Update date for current user
-            User.current.userCredentials.updateValue(user.displayName ?? "", forKey: "Name:"~)
-            User.current.userCredentials.updateValue(user.email ?? "", forKey: "Email:"~)
-            User.current.userCredentials.updateValue(user.phoneNumber ?? "", forKey: "Phone:"~)
-            User.current.isLoggedIn = true
-            User.current.photoURL = user.photoURL
-            User.current.uid = user.uid
-            debug("INFO: Welcome back dear", user.displayName)
-            
-            // Get user email
-            guard let email = user.email else { return }
-            
-            // Check current email for Debug Mode
-            if self.debugModeEmails.contains(email) {
-                
-                // Save debug mode for current user
-                User.current.debugmode = true
-                debug("INFO: Debug mode for \(email) ON")
-            }
+            // Update current user
+            User.update(
+                debugmode: false,
+                displayName: user.displayName,
+                email: user.email ?? "",
+                isLoggedIn: true,
+                phone: user.phoneNumber,
+                photoURL: user.photoURL?.absoluteString,
+                uid: Int(user.uid)
+            )
+
+//            // Check the current user for Debug Mode
+//            let hash = User.hash(user.email ?? "")
+//            if Users.hashs.contains(hash ?? "") {
+//                guard let hash = hash, !hash.isEmpty else { return }
+//                User.current.debugmode = true
+//                debug("INFO: Debug mode for \(User.current.email) ON")
+//            }
+//    
+//            debug("INFO: Welcome back dear", user.displayName)
         }
         
         if UserDefaults.hasAnswerQuestions {

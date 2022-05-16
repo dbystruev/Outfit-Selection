@@ -21,7 +21,7 @@ extension ProfileViewController: UICollectionViewDelegate {
             //debug(indexPath.row, User.current.isLoggedIn, User.current.sequenceCredentials[indexPath.row])
             // logout current user
             if User.current.isLoggedIn != nil {
-                if User.current.sequenceCredentials[indexPath.row] == "Log out"~ {
+                if sequenceCredentials[indexPath.row] == "Log out"~ {
                     // Logout into current account
                     logout()
                 }

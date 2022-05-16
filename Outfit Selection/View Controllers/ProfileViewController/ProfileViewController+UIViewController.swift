@@ -21,6 +21,11 @@ extension ProfileViewController {
         // Find and configure brands view controller
         brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self)
         
+        // Configure user profile section
+        userCredentials.updateValue(User.current.displayName ?? "", forKey: "Name:"~)
+        userCredentials.updateValue(User.current.email ?? "", forKey: "Email:"~)
+        userCredentials.updateValue(User.current.phone ?? "", forKey: "Phone:"~)
+        
         // Configure navigation controller's bar font
         navigationController?.configureFont()
     

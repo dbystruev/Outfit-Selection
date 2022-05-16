@@ -82,8 +82,12 @@ extension AppDelegate: UIApplicationDelegate {
         AppDelegate.updateBrands()
         
         // Load all users with debugMode true
-        AppDelegate.updateUsers() { _ in }
-    
+        AppDelegate.updateUsers() { _ in
+            //let users = Users.all
+            debug()
+
+        }
+            
         // Change global tint color
         UIView.appearance().tintColor = #colorLiteral(red: 0.4693212509, green: 0.5382487178, blue: 0.5183649659, alpha: 1)
         

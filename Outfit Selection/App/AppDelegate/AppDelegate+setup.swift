@@ -57,6 +57,8 @@ extension AppDelegate {
     static func restoreOccasions() {
         // Load selected occasions
         let occasions = Occasions.currentGender
+        debug(occasions.count, UserDefaults.selectedOccasionTitles.count)
+        
         let selectedOccasionTitles  = UserDefaults.selectedOccasionTitles
         for occasion in occasions {
             occasion.isSelected = selectedOccasionTitles.contains(occasion.title)

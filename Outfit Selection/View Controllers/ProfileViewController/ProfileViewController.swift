@@ -29,6 +29,9 @@ class ProfileViewController: LoggingViewController {
     /// The height of typical cell and header in `profile collection view`
     let profileCellHeight = 36
     
+    /// Dictionary with user data, it need for make sequence for profile cells
+    var sequenceCredentials = ["Name:"~, "Email:"~, "Phone:"~, "Log out"~]
+    
     /// Gender to show in the collection view
     var shownGender: Gender?
     
@@ -49,4 +52,7 @@ class ProfileViewController: LoggingViewController {
             }
         }
     }
+    
+    /// The array with user data ["Email":"example@apple.com"].
+    var userCredentials = ["Name:"~: "", "Email:"~: "", "Phone:"~: "", "Log out"~: ""~ ] 
 }

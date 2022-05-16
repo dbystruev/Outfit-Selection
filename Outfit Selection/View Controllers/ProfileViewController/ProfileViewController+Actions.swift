@@ -26,7 +26,7 @@ extension ProfileViewController {
         profileCollectionView.reloadSections(IndexSet([0]))
         
         // Check current user for debugmode
-        if User.current.debugmode {
+        if User.current.debugmode ?? false {
             
             // Set current user debug mode to false
             User.current.debugmode = false

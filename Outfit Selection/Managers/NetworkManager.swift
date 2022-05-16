@@ -402,7 +402,12 @@ class NetworkManager {
         get("onboarding", completion: completion)
     }
     
-    // TODO
+    /// Call /categories API
+    /// - Parameter completion: closure called after the request is finished, with list of categories if successfull, or with nil if not
+    func getUsers(completion: @escaping (_ user: Users?) -> Void) {
+        get("users", completion: completion)
+    }
+    
     /// Prepare parameters dictionary for given categories, gender, and vendors
     /// - Parameters:
     ///   - categories: the list of category IDs to filter items by, empty (all categories) by default
