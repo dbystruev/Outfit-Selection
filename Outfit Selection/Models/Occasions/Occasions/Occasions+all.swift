@@ -57,8 +57,10 @@ extension Occasions {
     /// The list of selected occasions with unique title
     static var selectedUniqueTitle: Occasions {
         //TODO: Bug with lost occasion after change gender
-        //debug(Occasions.selected)
-        return selected.titles.compactMap { byTitle[$0]?.first }
+        
+        //debug(Occasions.selected.count, all.selected.count, Occasions.count, all.count, byTitle.count, all.selected.titles)
+        
+        return currentGender.selected.titles.compactMap { byTitle[$0]?.first }
     }
 
     /// The IDs of selected occasions

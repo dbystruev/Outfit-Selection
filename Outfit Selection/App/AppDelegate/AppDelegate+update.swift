@@ -136,22 +136,42 @@ extension AppDelegate {
     
     /// Load debugMode users
     /// - Parameter completion: a closure with bool parameter called in case of success (true) or failure (false)
-    static func updateUsers(completion: @escaping (_ success: Bool) -> Void?) {
+    static func updateUsers(completion: @escaping (_ success: Bool) -> Void) {
         let startTime = Date()
         
+        // Add emails from global file
         let emails = Globals.TabBar.debugModeEmails
         for email in emails {
-            let user = User(debugmode: true, email: email)
+            // Get hash
+            guard let hash = User.hash(email) else { return }
+            let user = User(debugmode: true, email: email, emailHash: hash)
             Users.all.append(user)
         }
         
-        // Show elapsed time
-        let elapsedTime = Date().timeIntervalSince(startTime)
-        debug("INFO: Loaded \(Users.all.count) users with debugMode ON in \(elapsedTime.asTime) s")
+        NetworkManager.shared.getUsers { users in
+            // Makr sure we don't update users with error values
+            guard let users = users else {
+                completion(false)
+                return
+            }
+            
+            // Add user into User all
+            for user in users {
+                Users.all.append(user)
+            }
+            
+            
+            // Add user into User all
+            for user in Users.all {
+                debug(user.displayName, user.emailHash)
+            }
+            
+            // Show elapsed time
+            let elapsedTime = Date().timeIntervalSince(startTime)
+            debug("INFO: Loaded \(Users.all.count) users with debugMode ON in \(elapsedTime.asTime) s")
+            
+            completion(true)
+        }
         
-        // Print hash all users with debugMode ON
-//        for user in Users.all {
-//            debug("User Email:", user.email, user.hash(user.email))
-//        }
     }
 }

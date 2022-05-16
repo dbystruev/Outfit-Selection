@@ -30,13 +30,13 @@ extension ProfileViewController: UICollectionViewDataSource {
             }
             
             // Check the userCredentials for nil
-            guard !User.current.userCredentials.isEmpty else { return UICollectionViewCell() }
+            guard !userCredentials.isEmpty else { return UICollectionViewCell() }
             
             // Section 0 is account - configure user info cell
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)
-            let key = User.current.sequenceCredentials[indexPath.row]
+            let key = sequenceCredentials[indexPath.row]
             (cell as? AccountCollectionViewCell)?.configure(titleLabel: key,
-                                                            label: User.current.userCredentials.first(where: { $0.key == key })?.value ?? "", cursor: false)
+                                                            label: userCredentials.first(where: { $0.key == key })?.value ?? "", cursor: false)
             
             return cell
         case 1:
@@ -127,7 +127,7 @@ extension ProfileViewController: UICollectionViewDataSource {
         switch section {
         case 0:
             // Section 0 is user info with avaliable properties
-            return User.current.isLoggedIn != nil ? User.current.sequenceCredentials.count : 1
+            return User.current.isLoggedIn != nil ? sequenceCredentials.count : 1
             
         case 1:
             // Section 1 is gender — 3 items

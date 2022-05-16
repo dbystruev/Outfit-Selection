@@ -110,7 +110,6 @@
 		69560ECC2587E7C700337F35 /* Item+Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560ECB2587E7C700337F35 /* Item+Branded.swift */; };
 		69560ED12587E7FC00337F35 /* BrandedImage+Branded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */; };
 		6957565B27158987007ADE02 /* Onboarding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957565A27158987007ADE02 /* Onboarding.swift */; };
-		6957565E27158B99007ADE02 /* Onboarding+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957565D27158B99007ADE02 /* Onboarding+all.swift */; };
 		69575660271590CB007ADE02 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6957565F271590CB007ADE02 /* OnboardingViewController.swift */; };
 		695756632715961B007ADE02 /* NextButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695756622715961B007ADE02 /* NextButtonViewController.swift */; };
 		695A1ACF27186F920028FB9D /* Array+chunked.swift in Sources */ = {isa = PBXBuildFile; fileRef = 695A1ACE27186F920028FB9D /* Array+chunked.swift */; };
@@ -323,6 +322,7 @@
 		7ADB64852812594E00809AC0 /* FeedCollectionViewController+Configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7ADB64842812594E00809AC0 /* FeedCollectionViewController+Configure.swift */; };
 		7AEB482527CE246A003360CF /* ItemImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB482427CE246A003360CF /* ItemImageView.swift */; };
 		7AEB482E27CE5311003360CF /* ItemImageView+configure.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB482D27CE5311003360CF /* ItemImageView+configure.swift */; };
+		7AEB7CEB283238C500BB6E3F /* Onboarding+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AEB7CEA283238C500BB6E3F /* Onboarding+all.swift */; };
 		7AF42A9727DA460400D5CF53 /* CollectionSelectViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AF42A9627DA460400D5CF53 /* CollectionSelectViewController+Actions.swift */; };
 /* End PBXBuildFile section */
 
@@ -428,7 +428,6 @@
 		69560ECB2587E7C700337F35 /* Item+Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Branded.swift"; sourceTree = "<group>"; };
 		69560ED02587E7FC00337F35 /* BrandedImage+Branded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandedImage+Branded.swift"; sourceTree = "<group>"; };
 		6957565A27158987007ADE02 /* Onboarding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Onboarding.swift; sourceTree = "<group>"; };
-		6957565D27158B99007ADE02 /* Onboarding+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding+all.swift"; sourceTree = "<group>"; };
 		6957565F271590CB007ADE02 /* OnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
 		695756622715961B007ADE02 /* NextButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NextButtonViewController.swift; sourceTree = "<group>"; };
 		695A1ACE27186F920028FB9D /* Array+chunked.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+chunked.swift"; sourceTree = "<group>"; };
@@ -654,6 +653,7 @@
 		7ADB64842812594E00809AC0 /* FeedCollectionViewController+Configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedCollectionViewController+Configure.swift"; sourceTree = "<group>"; };
 		7AEB482427CE246A003360CF /* ItemImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemImageView.swift; sourceTree = "<group>"; };
 		7AEB482D27CE5311003360CF /* ItemImageView+configure.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ItemImageView+configure.swift"; sourceTree = "<group>"; };
+		7AEB7CEA283238C500BB6E3F /* Onboarding+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Onboarding+all.swift"; sourceTree = "<group>"; };
 		7AF42A9627DA460400D5CF53 /* CollectionSelectViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CollectionSelectViewController+Actions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -934,7 +934,7 @@
 			isa = PBXGroup;
 			children = (
 				6957565A27158987007ADE02 /* Onboarding.swift */,
-				6957565D27158B99007ADE02 /* Onboarding+all.swift */,
+				7AEB7CEA283238C500BB6E3F /* Onboarding+all.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1964,7 +1964,6 @@
 				69A6F70A22BA3965002A3B49 /* OutfitViewController+UIScrollViewDelegate.swift in Sources */,
 				69AE95562563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift in Sources */,
 				690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */,
-				6957565E27158B99007ADE02 /* Onboarding+all.swift in Sources */,
 				69322E2B26008CDD00CAFBFA /* ItemViewController+Actions.swift in Sources */,
 				691E5D75270391BD00C6CBD3 /* FeedCollectionViewController+UICollectionViewDataSource.swift in Sources */,
 				6986613B25707A61008F94CA /* BrandedImage.swift in Sources */,
@@ -2108,6 +2107,7 @@
 				69BEC0EB2729591C0034F454 /* Occasions.swift in Sources */,
 				694BA8B52744053A00E60C07 /* PinnableScrollView+removeImageViews.swift in Sources */,
 				69AEC9E825BF014100183E15 /* GenderButton.swift in Sources */,
+				7AEB7CEB283238C500BB6E3F /* Onboarding+all.swift in Sources */,
 				699632AD26FCB0DE00841B6F /* Character+isUppercased.swift in Sources */,
 				7AC0413C282374CE00CA7E5E /* FeedsProfile+UserDefaults.swift in Sources */,
 				69C16F6D27E9C21B009658D1 /* Sender.swift in Sources */,

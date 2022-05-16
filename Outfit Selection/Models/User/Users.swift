@@ -14,12 +14,4 @@ extension Users {
     // MARK: - Static Stored Properties
     /// All users as received from the server
     static var all: [User] = []
-    
-    // MARK: - Static Methods
-    /// Append given user
-    /// - Parameter user: user to add
-    static func append(_ user: User) {
-        // Update server users
-        all.append(user)
-    }
 }
