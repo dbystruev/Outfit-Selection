@@ -177,6 +177,8 @@ extension Occasions {
         // Don't update if gender is not set or is set to unisex
         guard let gender = gender, gender != .other else { return }
         
+        // TODO: Replace remove with new filter from all
+        
         // Remove all occasions with different gender
         byID.values
             .filter { $0.gender != gender }

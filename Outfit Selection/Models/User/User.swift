@@ -32,7 +32,6 @@ final class User: Codable {
     var phone: String?
     /// Url profile photo
     var photoURL: String?
-    
     /// The user's ID, unique to the Firebase project
     var uid: Int?
     
@@ -48,23 +47,6 @@ final class User: Codable {
         case photoURL = "picture"
         case uid = "id"
     }
-    
-//    // MARK: - Decodable
-//    init(from decoder: Decoder) throws {
-//        // Get values from the container
-//        let values = try decoder.container(keyedBy: CodingKeys.self)
-//        
-//        // Decode each of the properties
-//        debugmode = try? values.decode(Bool.self, forKey: .debugmode)
-//        displayName = try? values.decode(String.self, forKey: .displayName)
-//        email = try? values.decode(String.self, forKey: .email)
-//        emailHash = try? values.decode(String.self, forKey: .emailHash)
-//        gender = try? values.decode(String.self, forKey: .gender)
-//        isLoggedIn = try? values.decode(Bool.self, forKey: .isLoggedIn)
-//        phone = try? values.decode(String.self, forKey: .phone)
-//        photoURL = try? values.decode(String.self, forKey: .photoURL)
-//        uid = try? values.decode(Int.self, forKey: .uid)
-//    }
     
     // MARK: - Init
     /// Constructor for User
@@ -122,6 +104,23 @@ final class User: Codable {
         }
     }
     
+    /// Add new properties for found user if it need
+    /// - Parameter user: user
+    private func merge(newUser: User) {
+        guard let userFound = Users.all.first(where: { $0.emailHash == emailHash  } ) else { return }
+        
+        if userFound.emailHash == nil {
+            userFound.emailHash = newUser.emailHash
+        } else if userFound.displayName == nil || userFound.gender != newUser.gender  {
+            userFound.displayName = newUser.displayName
+        } else if userFound.gender == nil || userFound.gender != newUser.gender {
+            userFound.gender = newUser.gender
+        } else if userFound.photoURL == nil || userFound.photoURL != newUser.photoURL {
+            userFound.photoURL = newUser.photoURL
+        } else if userFound.uid == nil || userFound.uid != newUser.uid {
+            userFound.uid = newUser.uid
+        }
+    }
     
     /// Update currrent user
     /// - Parameters:
@@ -136,6 +135,7 @@ final class User: Codable {
         debugmode: Bool?,
         displayName: String?,
         email: String,
+        gender: String,
         isLoggedIn: Bool?,
         phone: String?,
         photoURL: String?,
@@ -148,6 +148,30 @@ final class User: Codable {
         User.current.phone = phone
         User.current.photoURL = photoURL
         User.current.uid = uid
+        
+        // Get emailHash for current email
+        guard let emailHash = User.hash(email) else { return }
+        
+        // Create new user
+        let newUser = User(
+            debugmode: debugmode,
+            displayName: displayName,
+            email: email,
+            emailHash: emailHash,
+            gender: gender,
+            isLoggedIn: isLoggedIn,
+            phone: phone,
+            photoURL: photoURL,
+            uid: uid
+        )
+        
+        // Find current emailHash into Users.all
+        guard let user = Users.all.first(where: { $0.emailHash == emailHash  } ) else {
+            Users.all.append(newUser)
+            return
+        }
+        
+        // Update properties found user
+        user.merge(newUser: newUser)
     }
-    
 }

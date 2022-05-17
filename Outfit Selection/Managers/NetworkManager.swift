@@ -403,9 +403,13 @@ class NetworkManager {
     }
     
     /// Call /categories API
+    /// - Parameter hash: email hashs for find in server
     /// - Parameter completion: closure called after the request is finished, with list of categories if successfull, or with nil if not
-    func getUsers(completion: @escaping (_ user: Users?) -> Void) {
-        get("users", completion: completion)
+    func getUsers(_ hash: [Int]? = nil, completion: @escaping (_ user: Users?) -> Void) {
+        // Include hash=in.(..., ...) parameter
+        let parameters = hash == nil || hash?.count == 0 ? [:] : ["hash": "in.(\((hash ?? []).commaJoined))"]
+        
+        get("users", parameters: parameters, completion: completion)
     }
     
     /// Prepare parameters dictionary for given categories, gender, and vendors

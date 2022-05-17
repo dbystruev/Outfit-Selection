@@ -93,10 +93,7 @@ enum Globals {
     }
     
     /// Index outfit view controller from tabBarController
-    enum TabBar {
-        /// Email for debug mode
-        static let debugModeEmails = ["dbystruev@gmail.com", "miketoropov150@gmail.com", "bildedroid@gmail.com", "kimsanjiev@gmail.com"]
-        
+    enum TabBar {        
         /// Index for controllers
         enum index {
             static let outfit = 0

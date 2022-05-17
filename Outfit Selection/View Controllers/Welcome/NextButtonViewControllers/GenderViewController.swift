@@ -48,9 +48,6 @@ class GenderViewController: NextButtonViewController {
     }
     
     // MARK: - Stored Properties
-    // The emails array for debug mode
-    private let debugModeEmails = Globals.TabBar.debugModeEmails
-    
     /// Flag which indicates if this is the first appearance of this view controller (true) or we came back from navigation stack (false)
     var firstAppearance = true
     
@@ -87,21 +84,27 @@ class GenderViewController: NextButtonViewController {
                 debugmode: false,
                 displayName: user.displayName,
                 email: user.email ?? "",
+                gender: Gender.current?.description ?? "",
                 isLoggedIn: true,
                 phone: user.phoneNumber,
                 photoURL: user.photoURL?.absoluteString,
                 uid: Int(user.uid)
             )
+            
+            
+            // Get hash email curren user
+            let currentEmailHash = User.hash(user.email ?? "")
+            
+            // Filter user where emailHash equals currentEmailHash
+            let userContains = Users.all.first { $0.emailHash == currentEmailHash }
 
-//            // Check the current user for Debug Mode
-//            let hash = User.hash(user.email ?? "")
-//            if Users.hashs.contains(hash ?? "") {
-//                guard let hash = hash, !hash.isEmpty else { return }
-//                User.current.debugmode = true
-//                debug("INFO: Debug mode for \(User.current.email) ON")
-//            }
-//    
-//            debug("INFO: Welcome back dear", user.displayName)
+            // If current user is not nil
+            if (userContains != nil) {
+                User.current.debugmode = true
+                debug("INFO: Debug mode for \(String(describing: User.current.email)) ON")
+            }
+
+            debug("INFO: Welcome back dear", user.displayName)
         }
         
         if UserDefaults.hasAnswerQuestions {
