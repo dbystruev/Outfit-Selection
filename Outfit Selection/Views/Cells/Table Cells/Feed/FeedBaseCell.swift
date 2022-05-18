@@ -39,7 +39,7 @@ class FeedBaseCell: UITableViewCell {
     var delegate: ButtonDelegate?
 
     /// Kind of this cell
-    var kind: FeedKind = .sale
+    var kind: SectionType = .sale
     
     // MARK: - Computed Properties
     var title: String? { kind.title }

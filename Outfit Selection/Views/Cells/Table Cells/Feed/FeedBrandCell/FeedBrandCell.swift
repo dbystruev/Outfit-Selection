@@ -25,7 +25,7 @@ class FeedBrandCell: FeedBaseCell {
     // MARK: - Inherited Methods
     /// Called when we know for sure what items we want to display
     /// - Parameters:
-    ///   - kind: cell's type
+    ///   - section: cell's type
     ///   - items: the brands which needs to be displayed in the item stack view
     func configureContent() {
         // Configure variables

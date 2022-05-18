@@ -56,10 +56,6 @@ extension Occasions {
     
     /// The list of selected occasions with unique title
     static var selectedUniqueTitle: Occasions {
-        //TODO: Bug with lost occasion after change gender
-        
-        //debug(Occasions.selected.count, all.selected.count, Occasions.count, all.count, byTitle.count, all.selected.titles)
-        
         return currentGender.selected.titles.compactMap { byTitle[$0]?.first }
     }
 
@@ -176,9 +172,6 @@ extension Occasions {
     static func updateWith(gender: Gender?) {
         // Don't update if gender is not set or is set to unisex
         guard let gender = gender, gender != .other else { return }
-        
-        // TODO: Replace remove with new filter from all
-        
         // Remove all occasions with different gender
         byID.values
             .filter { $0.gender != gender }

@@ -62,25 +62,11 @@ class TabBarController: UITabBarController {
         // Don't do anything if there are no changes in brands or gender
         guard hasGenderChanged else { return }
         
+        // Update all occasions with given gender
+        Occasions.updateWith(gender: Gender.current)
+        
         // Start reloading the items
         NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
-        
-        // Make sure outfit view controller contains occasions with current gender
-        if hasGenderChanged {
-            findViewController(ofType: OutfitViewController.self)?.configureOccasions()
-        } else {
-            // Don't pop if we have changed to profile view controller
-            guard let navigationController = selectedViewController as? UINavigationController else { return }
-            guard let firstViewController = navigationController.viewControllers.first else { return }
-            guard !(firstViewController is ProfileViewController) else { return }
-            guard let brandsViewController = findViewController(ofType: BrandsViewController.self) else {
-                debug("WARNING: Can't find \(BrandsViewController.self)")
-                return
-            }
-            
-            // Reload brands and data from brandsCollectionView
-            brandsViewController.reloadBrands()
-        }
         
         // Pop to progress view controller
         popToProgress()

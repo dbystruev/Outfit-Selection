@@ -103,7 +103,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     /// Configure and provide section header for the profile collection view
     /// - Parameters:
     ///   - collectionView: profile collection view
-    ///   - kind: UICollectionView.elementKindSectionHeader
+    ///   - section: UICollectionView.elementKindSectionHeader
     ///   - indexPath: index path of given section
     /// - Returns: section header for the profile collection view
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {

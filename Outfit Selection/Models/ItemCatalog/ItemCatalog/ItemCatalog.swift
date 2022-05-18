@@ -14,7 +14,7 @@ class ItemCatalog: Codable {
         case kind
     }
     
-    /// Type (kind) of items
+    /// Type (section) of items
     enum Kind: Int, Codable, CustomStringConvertible {
         case collection
         case item

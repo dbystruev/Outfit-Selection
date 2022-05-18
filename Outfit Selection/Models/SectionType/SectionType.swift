@@ -1,5 +1,5 @@
 //
-//  FeedKind.swift
+//  SectionType.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 28.09.2021.
@@ -7,17 +7,22 @@
 //
 
 /// There are 3 kinds of feed cell so far
-enum FeedKind {
+enum SectionType {
     // MARK: - Computed Static Properties
-    static var primary: [FeedKind] {
+    static var primary: [SectionType] {
         [.brands, .newItems, .sale]
     }
     
+    
     // MARK: - Enum
+    case brand(String) // New arrivals for [brand]
     case brands
+    case categories(String) // Your personalized pick for [occasion]
+    case category(String) // [caregory] lover
     case collections(String)
-    case newItems
+    case daily(Int) // Daily 30
     case emptyBrands
+    case newItems
     case occasions(Int)
     case sale
     
@@ -25,14 +30,22 @@ enum FeedKind {
     /// Title in feed collection section
     var title: String? {
         switch self {
+        case .brand(let brand):
+            return "New arrivals for"~ + " \(brand)"
         case .brands:
             return "Favourite brands"~
+        case .categories(let occasion):
+            return "Your personalized pick for"~ + " \(occasion)"
+        case .category(let category):
+            return "\(category) " + "lover"~
         case .collections(let name):
             return name
-        case .newItems:
-            return "New items for you"~
+        case .daily(let number):
+            return "Daily"~ + " \(number)"
         case .emptyBrands:
             return "Please select your favourite brands"~
+        case .newItems:
+            return "New items for you"~
         case .occasions(let id):
             guard let occasion = Occasions.byID[id] else { return nil }
             return occasion.title
@@ -42,5 +55,5 @@ enum FeedKind {
     }
 }
 
-extension FeedKind: Equatable {}
-extension FeedKind: Hashable {}
+extension SectionType: Equatable {}
+extension SectionType: Hashable {}

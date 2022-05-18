@@ -34,7 +34,7 @@ class FeedSectionHeaderView: UICollectionReusableView {
     var delegate: ButtonDelegate?
 
     /// Kind of this section
-    var kind: FeedKind = .sale
+    var kind: SectionType = .sale
     
     // MARK: - Computed Properties
     var title: String? { kind.title }
@@ -78,7 +78,7 @@ class FeedSectionHeaderView: UICollectionReusableView {
         ])
     }
     
-    func configureContent(kind: FeedKind) {
+    func configureContent(kind: SectionType) {
         self.kind = kind
         seeAllButton.setTitle("See all"~, for: .normal)
         seeAllButton.isHidden = kind == .brands || kind == .emptyBrands

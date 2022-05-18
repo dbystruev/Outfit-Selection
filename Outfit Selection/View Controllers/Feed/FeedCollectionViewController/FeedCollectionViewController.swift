@@ -22,16 +22,16 @@ class FeedCollectionViewController: LoggingViewController {
     
     /// Default feed sections
     let feedSectionsDefault = [
-        FeedKind.brands,
-        FeedKind.newItems,
-        FeedKind.sale,
+        SectionType.brands,
+        SectionType.newItems,
+        SectionType.sale,
     ] + Occasions.selectedIDsUniqueTitle.map { .occasions($0) }
     
     /// Empty sections with information for user
-    let feedSectionEmpty = [FeedKind.brands, FeedKind.emptyBrands]
+    let feedSectionEmpty = [SectionType.brands, SectionType.emptyBrands]
     
     /// Items for each of the kinds
-    var items: [FeedKind: Items] = [:]
+    var items: [SectionType: Items] = [:]
     
     /// Brands is locking now
     var lockBrands = false
@@ -46,7 +46,7 @@ class FeedCollectionViewController: LoggingViewController {
     var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
     
     /// Types (kinds) for each of the section
-    var sections: [FeedKind] = [] {
+    var sections: [SectionType] = [] {
         didSet {
             nonEmptySections = sections
         }
@@ -56,7 +56,7 @@ class FeedCollectionViewController: LoggingViewController {
     var selectedBrands: Set<String> = []
     
     ///Non empty sections after filter
-    var nonEmptySections: [FeedKind] = [] {
+    var nonEmptySections: [SectionType] = [] {
         didSet {
             if nonEmptySections == feedSectionEmpty {
                 feedCollectionView.reloadData()
@@ -65,11 +65,11 @@ class FeedCollectionViewController: LoggingViewController {
     }
     
     // MARK: - Custom Methods
-    /// Append items to the section of given type (kind)
+    /// Append items to the section of given type (section)
     /// - Parameters:
     ///   - items: items to append to the section
-    ///   - section: the section type (kind) to append the items to
-    func addSection(items: Items, to section: FeedKind) {
+    ///   - section: the section type (section) to append the items to
+    func addSection(items: Items, to section: SectionType) {
         sections.append(section)
         guard !items.isEmpty else {
             getItems(for: section)
@@ -78,13 +78,13 @@ class FeedCollectionViewController: LoggingViewController {
         self.items[section] = items
     }
     
-    /// Gets items depending on feed type (kind)
+    /// Gets items depending on feed type (section)
     /// - Parameters:
-    ///   - kind: feed type (kind)
+    ///   - section: feed type (section)
     ///   - ignoreBrands: should we ignore brands (false by default)
-    func getItems(for kind: FeedKind, ignoreBrands: Bool = false) {
+    func getItems(for section: SectionType, ignoreBrands: Bool = false) {
         
-        debug("INFO: Update:", kind, "from wislist")
+        debug("INFO: Update:", section, "from wislist")
         
         // All sections will need to be filtered by brands
         let brandManager = BrandManager.shared
@@ -92,7 +92,7 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Categories should be limited for occasions
         let subcategoryIDs: [Int] = {
-            if case let .occasions(id) = kind {
+            if case let .occasions(id) = section {
                 return Occasions.byID[id]?.flatSubcategoryIDs.compactMap { $0 } ?? []
             } else {
                 return []
@@ -100,7 +100,7 @@ class FeedCollectionViewController: LoggingViewController {
         }()
         
         // If feed type is sale get items with old prices set
-        let sale = kind == .sale
+        let sale = section == .sale
         
         NetworkManager.shared.getItems(
             feeds: [String](FeedsProfile.all.feedsIDs),
@@ -118,7 +118,7 @@ class FeedCollectionViewController: LoggingViewController {
             guard var items = items?.shuffled(), !items.isEmpty else {
                 // If no items were returned try again ignoring brands
                 if !ignoreBrands {
-                    self.getItems(for: kind, ignoreBrands: true)
+                    self.getItems(for: section, ignoreBrands: true)
                 }
                 return
             }
@@ -129,10 +129,10 @@ class FeedCollectionViewController: LoggingViewController {
                 items.sort { $0.branded(lastSelectedBrandNames) || !$1.branded(lastSelectedBrandNames)}
             }
             
-            self.items[kind] = items
+            self.items[section] = items
             
             let updatedSections = self.sections.enumerated().compactMap { index, section in
-                section == kind ? index : nil
+                section == section ? index : nil
             }
             DispatchQueue.main.async {
                 self.feedCollectionView?.reloadSections(IndexSet(updatedSections))
@@ -140,12 +140,12 @@ class FeedCollectionViewController: LoggingViewController {
         }
     }
     
-    /// Gets items depending on feed type (kind)
+    /// Gets items depending on feed type (section)
     /// - Parameters:
-    ///   - kind: feed type (kind)
+    ///   - section: feed type (section)
     ///   - ignoreBrands: should we ignore brands (false by default)
     ///   - completion: closure without parameters
-    func getItems(for kind: FeedKind, ignoreBrands: Bool = false,  completion: @escaping () -> Void) {
+    func getItems(for kind: SectionType, ignoreBrands: Bool = false,  completion: @escaping () -> Void) {
         
         // Stop loading if section with brands
         guard kind != .brands || kind != .emptyBrands  else {
@@ -154,7 +154,7 @@ class FeedCollectionViewController: LoggingViewController {
             return
         }
         
-        debug("Start update:", kind, ignoreBrands)
+        //debug("Start update:", section, ignoreBrands)
         
         // All sections will need to be filtered by brands
         let brandManager = BrandManager.shared
@@ -197,7 +197,7 @@ class FeedCollectionViewController: LoggingViewController {
             }
             
             DispatchQueue.main.async {
-                // Set items into current kind
+                // Set items into current section
                 self.items[kind] = items
                 completion()
             }
@@ -243,11 +243,11 @@ class FeedCollectionViewController: LoggingViewController {
     /// Download items for section
     /// - Parameters:
     ///   - sections: sections for set and download items
-    func updateItems(sections: [FeedKind]) {
+    func updateItems(sections: [SectionType]) {
         
         // Stop update if sections is not feed sections default
         guard !feedSectionsDefault.filter(sections.contains).isEmpty
-                || sections != [FeedKind.brands, FeedKind.emptyBrands] else {
+                || sections != [SectionType.brands, SectionType.emptyBrands] else {
             debug("INFO: Unknown sections", sections)
             return
         }
@@ -274,9 +274,7 @@ class FeedCollectionViewController: LoggingViewController {
                             let updatedSections = self.nonEmptySections.enumerated().compactMap { index, kind in
                                 section == kind ? index : nil
                             }
-                            
-                            debug("INFO: Update:", section, "Items:", items[section]?.count ,"Sections:", sections.count)
-                            
+                            //debug("INFO: Update:", section, "Items:", items[section]?.count ,"Sections:", sections.count)
                             // Reload sections where was updated items
                             feedCollectionView?.reloadSections(IndexSet(updatedSections))
                         }

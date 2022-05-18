@@ -86,23 +86,26 @@ class SignupViewController: LoggingViewController {
                 
                 // Filter user where emailHash equals currentEmailHash
                 let userContains = Users.all.first { $0.emailHash == currentEmailHash }
-
-                // If current user is not nil
-                if (userContains != nil) {
-                    User.current.debugmode = true
-                    debug("INFO: Debug mode for \(String(describing: User.current.email)) ON")
-                    
+                
+                // Get debugmode and it not equal false
+                guard userContains?.debugmode == true else {
                     // Go to ProgressViewController for reload tabbarController
                     self.navigate(reload: true)
-                } else {
-                    self.navigate()
+                    return
                 }
+
+                // Set current user ebugmode = true
+                User.current.debugmode = true
+                debug("INFO: Debug mode for \(String(describing: User.current.email)) ON")
+                
+                // Go to ProgressViewController for reload tabbarController
+                self.navigate(reload: true)
             }
         }
     }
     
     // MARK: - Helper Methods
-    private func navigate(reload reloadTabBar: Bool = false ) {
+    private func navigate(reload progressViewController: Bool = false ) {
         
         // Find UINavigationViewController into presentingViewController
         guard let navigationController = self.presentingViewController as? UINavigationController else {
@@ -117,11 +120,11 @@ class SignupViewController: LoggingViewController {
         }
         
         // Check tabBarController
-        if reloadTabBar {
+        if progressViewController {
             self.dismiss(animated: true)
-            
+            // Update all occasions with given gender
+            Occasions.updateWith(gender: Gender.current)            
             tabBarController.popToProgress()
-            
         }
         
         // Find navigationViewController into TabBarController

@@ -36,11 +36,12 @@ final class User: Codable {
     var uid: Int?
     
     // MARK: - Types
+    /// CodingKeys for properties
     enum CodingKeys: String, CodingKey {
-        case debugmode
+        case debugmode = "debug_mode"
         case displayName = "name"
         case email
-        case emailHash
+        case emailHash = "email_hash"
         case gender
         case isLoggedIn
         case phone
@@ -108,18 +109,11 @@ final class User: Codable {
     /// - Parameter user: user
     private func merge(newUser: User) {
         guard let userFound = Users.all.first(where: { $0.emailHash == emailHash  } ) else { return }
-        
-        if userFound.emailHash == nil {
-            userFound.emailHash = newUser.emailHash
-        } else if userFound.displayName == nil || userFound.gender != newUser.gender  {
-            userFound.displayName = newUser.displayName
-        } else if userFound.gender == nil || userFound.gender != newUser.gender {
-            userFound.gender = newUser.gender
-        } else if userFound.photoURL == nil || userFound.photoURL != newUser.photoURL {
-            userFound.photoURL = newUser.photoURL
-        } else if userFound.uid == nil || userFound.uid != newUser.uid {
-            userFound.uid = newUser.uid
-        }
+        userFound.emailHash = newUser.emailHash ?? userFound.emailHash
+        userFound.displayName = newUser.displayName ?? userFound.displayName
+        userFound.gender = newUser.gender ?? userFound.gender
+        userFound.photoURL = newUser.photoURL ?? userFound.photoURL
+        userFound.uid = newUser.uid ?? userFound.uid
     }
     
     /// Update currrent user
@@ -166,12 +160,12 @@ final class User: Codable {
         )
         
         // Find current emailHash into Users.all
-        guard let user = Users.all.first(where: { $0.emailHash == emailHash  } ) else {
-            Users.all.append(newUser)
-            return
+        if Users.all.first(where: { $0.emailHash == emailHash } ) == nil {
+            Users.append(newUser)
         }
         
         // Update properties found user
-        user.merge(newUser: newUser)
+        User.current.merge(newUser: newUser)
     }
+    
 }
