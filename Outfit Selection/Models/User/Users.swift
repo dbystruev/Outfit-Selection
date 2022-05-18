@@ -55,7 +55,7 @@ extension Users {
         ),
         User(
             debugmode: true,
-            displayName: "Evgeny Goncharov",
+            displayName: "Evgeniy Goncharov",
             emailHash: "69a9740bb9aba104d130449f8f98b6b623099d98bcbfe249a1b2e9c02fc8185f10a220213675d67c7060cec618f51d55469d575cef90a86b4219780bbbe156fe",
             gender: "male",
             photoURL: "",

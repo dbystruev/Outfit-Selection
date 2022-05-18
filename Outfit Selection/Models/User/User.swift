@@ -40,7 +40,7 @@ final class User: Codable {
         case debugmode
         case displayName = "name"
         case email
-        case emailHash = "hash"
+        case emailHash = "email_hash"
         case gender
         case isLoggedIn
         case phone
