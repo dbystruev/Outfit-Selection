@@ -36,8 +36,9 @@ final class User: Codable {
     var uid: Int?
     
     // MARK: - Types
+    /// CodingKeys for properties
     enum CodingKeys: String, CodingKey {
-        case debugmode
+        case debugmode = "debug_mode"
         case displayName = "name"
         case email
         case emailHash = "email_hash"

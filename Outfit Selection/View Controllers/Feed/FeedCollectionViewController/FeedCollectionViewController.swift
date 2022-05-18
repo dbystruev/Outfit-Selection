@@ -274,9 +274,7 @@ class FeedCollectionViewController: LoggingViewController {
                             let updatedSections = self.nonEmptySections.enumerated().compactMap { index, kind in
                                 section == kind ? index : nil
                             }
-                            
-                            debug("INFO: Update:", section, "Items:", items[section]?.count ,"Sections:", sections.count)
-                            
+                            //debug("INFO: Update:", section, "Items:", items[section]?.count ,"Sections:", sections.count)
                             // Reload sections where was updated items
                             feedCollectionView?.reloadSections(IndexSet(updatedSections))
                         }

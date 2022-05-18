@@ -14,7 +14,8 @@ extension Users {
     // MARK: - Static Stored Properties
     /// All users as received from the server
     static var all: [User] = [
-        User(debugmode: true,
+        User(
+            debugmode: true,
              displayName: "Kim Sanzhiev",
              emailHash: "92889fd81e32986bf33400ece7df64d98a6e498950cb07bd48208ecd037d4c99709182c0ff8a8ddb6c13c5b0ee49f86ec99de50390de5155b3c70a0f079dc141",
              gender: "male",
