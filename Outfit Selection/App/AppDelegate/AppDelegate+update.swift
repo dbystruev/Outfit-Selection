@@ -61,7 +61,6 @@ extension AppDelegate {
             FeedsProfile.all = feeds
             let elapsedTime = Date().timeIntervalSince(startTime)
             debug("INFO: Loaded \(feeds.count) feeds in \(elapsedTime.asTime) s")
-            debug(feeds)
             completion(true)
         }
     }
@@ -138,38 +137,19 @@ extension AppDelegate {
     /// - Parameter completion: a closure with bool parameter called in case of success (true) or failure (false)
     static func updateUsers(completion: @escaping (_ success: Bool) -> Void) {
         let startTime = Date()
-        
-        // Add emails from global file
-        let emails = Globals.TabBar.debugModeEmails
-        for email in emails {
-            // Get hash
-            guard let hash = User.hash(email) else { return }
-            let user = User(debugmode: true, email: email, emailHash: hash)
-            Users.all.append(user)
-        }
-        
         NetworkManager.shared.getUsers { users in
             // Makr sure we don't update users with error values
-            guard let users = users else {
+            guard let users = users, !users.isEmpty else {
                 completion(false)
                 return
             }
             
-            // Add user into User all
-            for user in users {
-                Users.all.append(user)
-            }
-            
-            
-            // Add user into User all
-            for user in Users.all {
-                debug(user.displayName, user.emailHash)
-            }
+            // Set new users
+            Users.all = users
             
             // Show elapsed time
             let elapsedTime = Date().timeIntervalSince(startTime)
             debug("INFO: Loaded \(Users.all.count) users with debugMode ON in \(elapsedTime.asTime) s")
-            
             completion(true)
         }
         

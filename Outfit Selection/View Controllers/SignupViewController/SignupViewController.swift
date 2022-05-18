@@ -11,10 +11,6 @@ import GoogleSignIn
 import UIKit
 
 class SignupViewController: LoggingViewController {
-    // MARK: - Stored Properties
-    // The emails array for debug mode
-    private let debugModeEmails = Globals.TabBar.debugModeEmails
-    
     // MARK: - Inherited Methods
     /// Return navigation controller bar style back to normal
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,27 +74,29 @@ class SignupViewController: LoggingViewController {
                     debugmode: false,
                     displayName: user.displayName,
                     email: user.email ?? "",
+                    gender: Gender.current?.description ?? "",
                     isLoggedIn: true,
                     phone: user.phoneNumber,
                     photoURL: user.photoURL?.absoluteString,
                     uid: Int(user.uid)
                 )
                 
-                // Check the current user for Debug Mode
-                //let hash = User.hash(user.email ?? "")
+                // Get hash email curren user
+                let currentEmailHash = User.hash(user.email ?? "")
                 
-//                // If currunt user hash contains
-//                if Users.hashs.contains(hash ?? "") {
-//                    guard let hash = hash, !hash.isEmpty else { return }
-//
-//
-//                    User.current.debugmode = true
-//                    debug("INFO: Debug mode for \(User.current.email) ON")
-//                    // Go to ProgressViewController for reload tabbarController
-//                    self.navigate(reload: true)
-//                } else {
-//                    self.navigate()
-//                }
+                // Filter user where emailHash equals currentEmailHash
+                let userContains = Users.all.first { $0.emailHash == currentEmailHash }
+
+                // If current user is not nil
+                if (userContains != nil) {
+                    User.current.debugmode = true
+                    debug("INFO: Debug mode for \(String(describing: User.current.email)) ON")
+                    
+                    // Go to ProgressViewController for reload tabbarController
+                    self.navigate(reload: true)
+                } else {
+                    self.navigate()
+                }
             }
         }
     }

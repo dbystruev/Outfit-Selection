@@ -530,7 +530,6 @@ final class ItemManager {
     /// - Parameter brands: the names of the brands to filter view models by
     /// - Returns: image collection view model array
     func viewModels(branded brands: [String]) -> [ImageCollectionViewModel] {
-        // TODO: Filter view models by brands
         viewModels
     }
 }
