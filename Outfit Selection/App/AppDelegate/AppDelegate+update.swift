@@ -144,8 +144,11 @@ extension AppDelegate {
                 return
             }
             
-            // Set new users
-            Users.all = users
+            // Remove all users
+            Users.all.removeAll()
+            
+            // Append new users
+            for user in users { Users.append(user) }
             
             // Show elapsed time
             let elapsedTime = Date().timeIntervalSince(startTime)

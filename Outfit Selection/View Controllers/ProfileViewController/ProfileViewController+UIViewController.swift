@@ -10,6 +10,14 @@ import UIKit
 
 // MARK: - UIViewController
 extension ProfileViewController {
+    // MARK: - Helper Methods
+    /// Configure user profile section
+    private func configureUserCredentials() {
+        userCredentials.updateValue(User.current.displayName ?? "", forKey: "Name:"~)
+        userCredentials.updateValue(User.current.email ?? "", forKey: "Email:"~)
+        userCredentials.updateValue(User.current.phone ?? "", forKey: "Phone:"~)
+    }
+    
     // MARK: - Inhertited Methods
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -20,11 +28,6 @@ extension ProfileViewController {
         super.viewDidLoad()
         // Find and configure brands view controller
         brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self)
-        
-        // Configure user profile section
-        userCredentials.updateValue(User.current.displayName ?? "", forKey: "Name:"~)
-        userCredentials.updateValue(User.current.email ?? "", forKey: "Email:"~)
-        userCredentials.updateValue(User.current.phone ?? "", forKey: "Phone:"~)
         
         // Configure navigation controller's bar font
         navigationController?.configureFont()
@@ -43,6 +46,9 @@ extension ProfileViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        
+        // Configure user profile section
+        configureUserCredentials()
         
         // Make sure shown brands and gender match current brands and gender
         (tabBarController as? TabBarController)?.selectedBrands = BrandManager.shared.selectedBrands

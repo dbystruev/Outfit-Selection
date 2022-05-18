@@ -408,7 +408,6 @@ class NetworkManager {
     func getUsers(_ hash: [Int]? = nil, completion: @escaping (_ user: Users?) -> Void) {
         // Include hash=in.(..., ...) parameter
         let parameters = hash == nil || hash?.count == 0 ? [:] : ["hash": "in.(\((hash ?? []).commaJoined))"]
-        
         get("users", parameters: parameters, completion: completion)
     }
     

@@ -22,7 +22,7 @@ public struct Message: MessageType {
     /// The kind of the message
     public let kind: MessageKind
     
-//    init(sender: SenderType, messageId: String, sentDate: Date, kind: MessageKind) {
+//    init(sender: SenderType, messageId: String, sentDate: Date, section: MessageKind) {
 //        self.sender = sender
 //        self.messageId = messageId
 //        self.sentDate = sentDate

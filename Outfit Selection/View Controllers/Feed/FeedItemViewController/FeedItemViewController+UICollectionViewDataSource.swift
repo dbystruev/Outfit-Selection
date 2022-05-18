@@ -72,7 +72,7 @@ extension FeedItemViewController: UICollectionViewDataSource {
         
         // Configure the cell with matching item and return
         if 0 < items.count {
-            itemItem.configureContent(kind: kind, item: items[indexPath.row % items.count], isInteractive: true)
+            itemItem.configureContent(kind: section, item: items[indexPath.row % items.count], isInteractive: true)
         } else {
             debug("WARNING: items.count is \(items.count)")
         }
@@ -100,7 +100,7 @@ extension FeedItemViewController: UICollectionViewDataSource {
         
         // Categories should be limited for occasions
         let subcategoryIDs: [Int] = {
-            if case let .occasions(id) = kind {
+            if case let .occasions(id) = section {
                 return Occasions.byID[id]?.flatSubcategoryIDs.compactMap { $0 } ?? []
             } else {
                 return []
@@ -108,7 +108,7 @@ extension FeedItemViewController: UICollectionViewDataSource {
         }()
         
         // If feed type is sale get items with old prices set
-        let sale = kind == .sale
+        let sale = section == .sale
         
         // Configure parameters for get
         let parametrs = NetworkManager.shared.parameters(

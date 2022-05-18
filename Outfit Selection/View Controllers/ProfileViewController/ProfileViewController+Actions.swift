@@ -38,4 +38,17 @@ extension ProfileViewController {
             tabBarController.popToProgress()
         }
     }
+    
+//    func showAlert() {
+//        let alert = Alert.configured(
+//            "Are you sure?"~,
+//            message: "you will be logged out from account"~,
+//            actionTitles: <#T##[String]#>,
+//            styles: [.cancel, .destructive],
+//            handlers: [{ _ in
+//            },{ _ in
+//            }])
+//        present(alert, animated: true)
+//    }
 }
+

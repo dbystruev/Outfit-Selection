@@ -27,8 +27,8 @@ class FeedItemViewController: LoggingViewController {
     /// Items download
     var itemsDownloaded: Bool = false
     
-    /// Kind (type) of the items
-    var kind: FeedKind = .newItems
+    /// Section (type) of the items
+    var section: SectionType = .newItems
     
     /// Name of the feed
     var name: String?
@@ -36,11 +36,11 @@ class FeedItemViewController: LoggingViewController {
     // MARK: - Custom Methods
     /// Configure with feed collection view controller
     /// - Parameters:
-    ///   - kind: feed item collection type (kind)
+    ///   - section: feed item collection type (section)
     ///   - items: the list of included items
     ///   - name: name of the collection
-    func configure(_ kind: FeedKind, with items: Items?, named name: String?) {
-        self.kind = kind
+    func configure(_ section: SectionType, with items: Items?, named name: String?) {
+        self.section = section
         self.name = name
         self.items = items ?? []
     }

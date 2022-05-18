@@ -91,20 +91,20 @@ class GenderViewController: NextButtonViewController {
                 uid: Int(user.uid)
             )
             
-            
             // Get hash email curren user
             let currentEmailHash = User.hash(user.email ?? "")
             
             // Filter user where emailHash equals currentEmailHash
             let userContains = Users.all.first { $0.emailHash == currentEmailHash }
-
-            // If current user is not nil
-            if (userContains != nil) {
-                User.current.debugmode = true
-                debug("INFO: Debug mode for \(String(describing: User.current.email)) ON")
-            }
-
+            
             debug("INFO: Welcome back dear", user.displayName)
+            
+            // Get debugmode and it not equal false
+            guard userContains?.debugmode == true else { return }
+
+            // Set current user ebugmode = true
+            User.current.debugmode = true
+            debug("INFO: Debug mode for \(String(describing: User.current.email)) ON")
         }
         
         if UserDefaults.hasAnswerQuestions {
