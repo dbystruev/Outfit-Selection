@@ -157,7 +157,7 @@ class NetworkManager {
             // Store the message in logger cache
             let message = String(data: data, encoding: .utf8)
             Logger.log(key: request.absoluteString, message)
-            //debug(request.absoluteURL)
+            debug(request.absoluteURL)
             completion(decodedData)
         }
         
@@ -295,6 +295,7 @@ class NetworkManager {
     
     /// Add /items?category_id=in.(..., ...)&vendor=in.(..., ...)&limit=... to server URL and call the API
     /// - Parameters:
+    ///   - excludedCategoryIDs: the list of categoryIDs to exclud (takes priority over categoryIDs)
     ///   - categoryIDs: the list of category IDs to filter items by, empty (all categories) by default
     ///   - feeds: the feeds profile selected IDs by default
     ///   - vendorNames: the list of vendors to filter items by
@@ -305,6 +306,7 @@ class NetworkManager {
     ///   - subcategoryIDs: the list of subcategory IDs to filter items by, empty (all subcategories) by default
     ///   - completion: closure called when request is finished, with the list of items if successfull, or with nil if not
     func getItems(
+        excluded excludedCategoryIDs: [Int] = [],
         in categoryIDs: [Int] = [],
         feeds: [String] = [String](FeedsProfile.all.selected.feedsIDs),
         filteredBy vendorNames: [String] = [],
@@ -317,6 +319,7 @@ class NetworkManager {
     {
         // Prepare parameters
         let parameters = parameters(
+            excluded: excludedCategoryIDs,
             in: categoryIDs,
             feeds: feeds,
             filteredBy: vendorNames,
@@ -413,6 +416,7 @@ class NetworkManager {
     
     /// Prepare parameters dictionary for given categories, gender, and vendors
     /// - Parameters:
+    ///   - excluded: the list of categoryIDs to exclud (takes priority over categoryIDs)
     ///   - categories: the list of category IDs to filter items by, empty (all categories) by default
     ///   - feeds: feed IDs to filter items
     ///   - fullVendorNames: the list of vendors to filter items by
@@ -424,6 +428,7 @@ class NetworkManager {
     ///   - subcategoryIDs: Item's subcategory IDs for occasion
     /// - Returns: dictionary with parameters suitable to call get()
     func parameters(
+        excluded excludedCategoryIDs: [Int] = [],
         in categories: [Int] = [],
         feeds: [String] = [],
         filteredBy fullVendorNames: [String] = [],
@@ -446,6 +451,11 @@ class NetworkManager {
         parameters[Keys.categoryID.rawValue] = categories.isEmpty
         ? nil
         : "in.(\([Int](categories.uniqued()).commaJoined))"
+        
+        // Add "category_id=not.in.(1,2,3)" parameter
+        parameters[Keys.categoryID.rawValue] = excludedCategoryIDs.isEmpty
+        ? nil
+        : "not.in.(\([Int](excludedCategoryIDs.uniqued()).commaJoined))"
         
         // Add "feed" parameter
         parameters[Keys.feed.rawValue] = feeds.isEmpty

@@ -14,11 +14,15 @@ class FeedCollectionViewController: LoggingViewController {
     @IBOutlet weak var feedCollectionView: UICollectionView!
     
     // MARK: - Stored Properties
-    /// The collection of branded images
-    let brandedImages = Brands.prioritizeSelected
     
     /// The name for Notification name
     let brandsChanged = Globals.Notification.name.brandsChanged
+    
+    /// Brand manager
+    let brandManager = BrandManager.shared
+    
+    /// The collection of branded images
+    let brandedImages = Brands.prioritizeSelected
     
     /// Default feed sections
     let feedSectionsDefault = [
@@ -82,17 +86,15 @@ class FeedCollectionViewController: LoggingViewController {
     /// - Parameters:
     ///   - section: feed type (section)
     ///   - ignoreBrands: should we ignore brands (false by default)
-    func getItems(for section: SectionType, ignoreBrands: Bool = false) {
-        
-        debug("INFO: Update:", section, "from wislist")
-        
+    func getItems(for type: SectionType, ignoreBrands: Bool = false) {
+        debug("INFO: Update:", type, "from wislist")
         // All sections will need to be filtered by brands
         let brandManager = BrandManager.shared
         let brandNames = brandManager.selectedBrandNames
         
         // Categories should be limited for occasions
         let subcategoryIDs: [Int] = {
-            if case let .occasions(id) = section {
+            if case let .occasions(id) = type {
                 return Occasions.byID[id]?.flatSubcategoryIDs.compactMap { $0 } ?? []
             } else {
                 return []
@@ -100,7 +102,7 @@ class FeedCollectionViewController: LoggingViewController {
         }()
         
         // If feed type is sale get items with old prices set
-        let sale = section == .sale
+        let sale = type == .sale
         
         NetworkManager.shared.getItems(
             feeds: [String](FeedsProfile.all.feedsIDs),
@@ -118,7 +120,7 @@ class FeedCollectionViewController: LoggingViewController {
             guard var items = items?.shuffled(), !items.isEmpty else {
                 // If no items were returned try again ignoring brands
                 if !ignoreBrands {
-                    self.getItems(for: section, ignoreBrands: true)
+                    self.getItems(for: type, ignoreBrands: true)
                 }
                 return
             }
@@ -129,7 +131,7 @@ class FeedCollectionViewController: LoggingViewController {
                 items.sort { $0.branded(lastSelectedBrandNames) || !$1.branded(lastSelectedBrandNames)}
             }
             
-            self.items[section] = items
+            self.items[type] = items
             
             let updatedSections = self.sections.enumerated().compactMap { index, section in
                 section == section ? index : nil
@@ -139,22 +141,21 @@ class FeedCollectionViewController: LoggingViewController {
             }
         }
     }
+
     
     /// Gets items depending on feed type (section)
     /// - Parameters:
     ///   - section: feed type (section)
     ///   - ignoreBrands: should we ignore brands (false by default)
     ///   - completion: closure without parameters
-    func getItems(for kind: SectionType, ignoreBrands: Bool = false,  completion: @escaping () -> Void) {
+    func getItems(for type: SectionType, ignoreBrands: Bool = false,  completion: @escaping () -> Void) {
         
         // Stop loading if section with brands
-        guard kind != .brands || kind != .emptyBrands  else {
+        guard type != .brands || type != .emptyBrands  else {
             // Reload data
             completion()
             return
         }
-        
-        //debug("Start update:", section, ignoreBrands)
         
         // All sections will need to be filtered by brands
         let brandManager = BrandManager.shared
@@ -162,7 +163,7 @@ class FeedCollectionViewController: LoggingViewController {
         
         // Categories should be limited for occasions
         let subcategoryIDs: [Int] = {
-            if case let .occasions(id) = kind {
+            if case let .occasions(id) = type {
                 return Occasions.byID[id]?.flatSubcategoryIDs.compactMap { $0 } ?? []
             } else {
                 return []
@@ -170,7 +171,8 @@ class FeedCollectionViewController: LoggingViewController {
         }()
         
         // If feed type is sale get items with old prices set
-        let sale = kind == .sale
+        let sale = type == .sale
+        
         NetworkManager.shared.getItems(
             filteredBy: ignoreBrands ? [] : brandNames,
             limited: self.maxItemsInSection * 2,
@@ -198,7 +200,7 @@ class FeedCollectionViewController: LoggingViewController {
             
             DispatchQueue.main.async {
                 // Set items into current section
-                self.items[kind] = items
+                self.items[type] = items
                 completion()
             }
         }
@@ -292,12 +294,12 @@ class FeedCollectionViewController: LoggingViewController {
                 
                 // Remove all emptySection
                 nonEmptySections.removeAll(where: { emptySections.contains($0) } )
-
+                
                 // Show choose brands section, if after clear you'll get only brands section
                 if nonEmptySections.count <= 1 {
                     self.nonEmptySections = feedSectionEmpty
                 }
-
+                
                 // Reload data into UICollectionView
                 feedCollectionView.reloadData()
                 
@@ -307,18 +309,82 @@ class FeedCollectionViewController: LoggingViewController {
         }
     }
     
-    /// Called when selected brands was changed
-    @objc func haveBrandsChanged() {
-        debug("INFO: Brands will changed")
-        // Make feed item cells reload
-        setSection()
-        // Reload data
-        feedCollectionView.reloadData()
+    // MARK: - Private Methods
+    /// Get items for type
+    /// - Parameters:
+    ///   - type: SectionType
+    ///   - completion: closure without parameters
+    private func getNewItems(for type: SectionType, completion: @escaping () -> Void) {
+        
+        // Helper properties
+        var limited: Int? = nil
+        var subcategoryIDs: [Int] = []
+        var vendorNames: [String] = []
+        var excluded: [Int] = []
+        
+        // Switch for SectionType
+        switch type {
+        case .brand(let brand):
+            vendorNames = getParamsFor(brandName: brand)
+            
+        case .brands:
+            vendorNames = getParamsForBrandNames()
+            
+        case .categories(let occasionName):
+            let answer = getParamsForCategories(occasionName: occasionName)
+            subcategoryIDs = answer.1
+            vendorNames = answer.0
+            
+        case .category(let category , let limit):
+            let answer = getParamsFor(categoryName: category, limit: limit)
+            limited = answer.2
+            excluded = answer.1
+            vendorNames = answer.0
+            
+        default:
+            debug("default code")
+        }
+        
+        debug(limited, subcategoryIDs, vendorNames, excluded)
+        
+        NetworkManager.shared.getItems(
+            excluded: excluded.isEmpty ? [] : excluded,
+            filteredBy: vendorNames,
+            limited: limited ?? self.maxItemsInSection * 2,
+            subcategoryIDs: excluded.isEmpty ? subcategoryIDs : []
+        ) { [weak self] items in
+            // Check for self availability
+            guard let self = self else {
+                debug("ERROR: self is not available")
+                completion()
+                return
+            }
+            
+            // Check items is empty and shuffled it
+            guard let items = items?.shuffled(), !items.isEmpty else {
+                // If no items were returned try again ignoring brands
+                self.getItems(for: type, ignoreBrands: true) {
+                    completion()
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                // Set items into current section
+                self.items[type] = items
+                completion()
+            }
+        }
     }
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // TODO: Delete it after test
+        getNewItems(for: .category("Holidays: B-day", 30)) {
+            debug("FINISH")
+        }
         
         // Configure navigation controller's bar font
         navigationController?.configureFont()

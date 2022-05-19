@@ -18,7 +18,7 @@ extension SectionType: CustomStringConvertible {
             return ".collections(\(collectionName))"
         case .categories(let occasionName):
             return ".categories(\(occasionName))"
-        case .category(let categoryName):
+        case .category(let categoryName, _):
             return ".category(\(categoryName))"
         case .daily(let number):
             return ".daily(\(number))"
