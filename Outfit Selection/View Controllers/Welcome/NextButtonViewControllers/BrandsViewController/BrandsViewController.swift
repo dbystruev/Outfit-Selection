@@ -82,7 +82,9 @@ class BrandsViewController: NextButtonViewController {
         configureAllButton()
         
         // Reload data when coming from another tab
-        brandsCollectionView.reloadData()
+        if AppDelegate.canReload && brandsCollectionView?.hasUncommittedUpdates == false {
+            brandsCollectionView?.reloadData()
+        }
         
         // If viewControllew called from profile
         if isEditing {
@@ -109,7 +111,9 @@ class BrandsViewController: NextButtonViewController {
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         // Reload data after rotation
-        brandsCollectionView.reloadData()
+        if AppDelegate.canReload && brandsCollectionView?.hasUncommittedUpdates == false {
+            brandsCollectionView?.reloadData()
+        }
     }
     
     // MARK: - Methods
@@ -143,12 +147,16 @@ class BrandsViewController: NextButtonViewController {
         brands = Brands.withImage.values.sorted()
         
         // Reload data
-        brandsCollectionView?.reloadData()
+        if AppDelegate.canReload && brandsCollectionView?.hasUncommittedUpdates == false {
+            brandsCollectionView?.reloadData()
+        }
     }
     
     /// Reload  the collection of brand
     func reloadData() {
         // Reload data
-        brandsCollectionView?.reloadData()
+        if AppDelegate.canReload && brandsCollectionView?.hasUncommittedUpdates == false {
+            brandsCollectionView?.reloadData()
+        }
     }
 }

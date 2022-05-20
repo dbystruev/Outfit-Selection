@@ -30,7 +30,9 @@ extension FeedCollectionViewController: UICollectionViewDelegate {
             sections = feedSectionEmpty
             
             // Reload data into UICollectionView
-            self.feedCollectionView.reloadData()
+            if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+                feedCollectionView?.reloadData()
+            }
             return
         }
         
@@ -61,6 +63,8 @@ extension FeedCollectionViewController: UICollectionViewDelegate {
         }
         
         // Reload data into UICollectionView
-        self.feedCollectionView.reloadData()
+        if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+            feedCollectionView?.reloadData()
+        }
     }
 }

@@ -138,9 +138,13 @@ class WishlistViewController: LoggingViewController {
         collectionsCollectionView.isHidden = tabSelected != .collection
         wishlistCollectionView.isHidden = tabSelected == .collection
         if tabSelected == .collection {
-            collectionsCollectionView.reloadData()
+            if AppDelegate.canReload && collectionsCollectionView?.hasUncommittedUpdates == false {
+                collectionsCollectionView?.reloadData()
+            }
         } else {
-            wishlistCollectionView.reloadData()
+            if AppDelegate.canReload && wishlistCollectionView?.hasUncommittedUpdates == false {
+                wishlistCollectionView?.reloadData()
+            }
         }
     }
 }

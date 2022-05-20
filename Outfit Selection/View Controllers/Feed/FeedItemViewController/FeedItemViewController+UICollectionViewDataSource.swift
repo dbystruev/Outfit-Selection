@@ -182,7 +182,9 @@ extension FeedItemViewController: UICollectionViewDataSource {
                         DispatchQueue.main.async {
                             
                             // Reload data
-                            self.itemCollectionView.reloadData()
+                            if AppDelegate.canReload && self.itemCollectionView?.hasUncommittedUpdates == false {
+                                self.itemCollectionView?.reloadData()
+                            }
                             
                             // Switch to false
                             self.itemsDownloaded = false

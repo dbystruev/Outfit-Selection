@@ -52,7 +52,9 @@ extension FeedsProfileViewController {
         }
         
         // Reload feeds and enable / disable go button
-        feedsTableView.reloadData()
+        if AppDelegate.canReload && feedsTableView?.hasUncommittedUpdates == false {
+            feedsTableView?.reloadData()
+        }
         configureAllButton()
         configureSaveButton()
     }

@@ -72,7 +72,9 @@ extension BrandsViewController {
         Brands.filtered.forEach { $0.value.select(isSelected: isSelected, updateUserDefaults: false) }
         Brands.saveSelectedBrands()
         
-        brandsCollectionView.reloadData()
+        if AppDelegate.canReload && brandsCollectionView?.hasUncommittedUpdates == false {
+            brandsCollectionView?.reloadData()
+        }
         configureNextButton()
     }
 }

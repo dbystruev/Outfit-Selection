@@ -29,7 +29,9 @@ extension ItemViewController: UISearchBarDelegate {
                     }
                     /// Show searchBar
                     self.tableStackView.isHidden = false
-                    self.searchTableView.reloadData()
+                    if AppDelegate.canReload && self.searchTableView?.hasUncommittedUpdates == false {
+                        self.searchTableView?.reloadData()
+                    }
                 }
             }
         } else {

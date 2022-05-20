@@ -63,7 +63,9 @@ class FeedCollectionViewController: LoggingViewController {
     var nonEmptySections: [SectionType] = [] {
         didSet {
             if nonEmptySections == feedSectionEmpty {
-                feedCollectionView.reloadData()
+                if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+                    feedCollectionView?.reloadData()
+                }
             }
         }
     }
@@ -236,7 +238,9 @@ class FeedCollectionViewController: LoggingViewController {
                 }
                 
                 // Reload data into UICollectionView
-                feedCollectionView.reloadData()
+                if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+                    feedCollectionView?.reloadData()
+                }
                 
                 // Unlock brands
                 lockBrands = false
@@ -266,7 +270,9 @@ class FeedCollectionViewController: LoggingViewController {
         setSection()
         
         // Reload data into UICollectionView
-        //feedCollectionView.reloadData()
+//        if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+//            feedCollectionView?.reloadData()
+//        }
         
         // Update items in sections
         //updateItems(sections: sections)

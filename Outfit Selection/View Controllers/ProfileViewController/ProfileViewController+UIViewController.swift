@@ -55,7 +55,9 @@ extension ProfileViewController {
         shownGender = Gender.current
         
         // Reload brand and gender data
-        profileCollectionView.reloadData()
+        if AppDelegate.canReload && profileCollectionView?.hasUncommittedUpdates == false {
+            profileCollectionView?.reloadData()
+        }
         
         // Show Tabbar
         showTabBar()
@@ -69,6 +71,8 @@ extension ProfileViewController {
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        profileCollectionView.reloadData()
+        if AppDelegate.canReload && profileCollectionView?.hasUncommittedUpdates == false {
+            profileCollectionView?.reloadData()
+        }
     }
 }

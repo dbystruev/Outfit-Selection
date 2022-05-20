@@ -78,7 +78,9 @@ extension OccasionsViewController {
         }
         
         // Reload occasions and enable / disable go button
-        occasionsTableView.reloadData()
+        if AppDelegate.canReload && occasionsTableView?.hasUncommittedUpdates == false {
+            occasionsTableView?.reloadData()
+        }
         configureGoButton()
     }
 }

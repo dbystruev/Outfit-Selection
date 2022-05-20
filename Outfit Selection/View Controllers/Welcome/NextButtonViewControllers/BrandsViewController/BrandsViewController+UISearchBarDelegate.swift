@@ -17,7 +17,9 @@ extension BrandsViewController: UISearchBarDelegate {
     func deferredReload(_ searchBar: UISearchBar, in interval: TimeInterval = BrandsViewController.searchKeystrokeDelay) {
         if let lastClick = lastClick, interval < Date().timeIntervalSince(lastClick) {
             self.lastClick = nil
-            brandsCollectionView.reloadData()
+            if AppDelegate.canReload && brandsCollectionView?.hasUncommittedUpdates == false {
+                brandsCollectionView?.reloadData()
+            }
         } else {
             if searchBar.isFirstResponder {
                 DispatchQueue.main.asyncAfter(deadline: .now() + interval) {
@@ -33,7 +35,9 @@ extension BrandsViewController: UISearchBarDelegate {
     ///   - filter: the text to use for filter
     func finishEditing(_ searchBar: UISearchBar, filter: String? = nil) {
         filterString = filter ?? ""
-        brandsCollectionView.reloadData()
+        if AppDelegate.canReload && brandsCollectionView?.hasUncommittedUpdates == false {
+            brandsCollectionView?.reloadData()
+        }
         searchBar.endEditing(true)
     }
     

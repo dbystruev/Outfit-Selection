@@ -16,6 +16,8 @@ extension FeedCollectionViewController {
         // Make feed item cells reload
         setSection()
         // Reload data
-        feedCollectionView.reloadData()
+        if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+            feedCollectionView?.reloadData()
+        }
     }
 }
