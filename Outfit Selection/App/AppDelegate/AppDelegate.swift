@@ -10,7 +10,11 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder {
-    // MARK: - Stored Properties
+    // MARK: - Stored Static Properties
+    /// True when collection and table views can be reloaded, false when in background
+    public static var canReload = false
+    
+    // MARK: - Stored Instance Properties
     /// Call testOccasionItems()
     let shouldTest = false // true
     

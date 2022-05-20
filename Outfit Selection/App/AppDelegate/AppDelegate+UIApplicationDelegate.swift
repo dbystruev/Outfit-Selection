@@ -158,7 +158,15 @@ extension AppDelegate: UIApplicationDelegate {
     /// Called when the app has become active
     /// - Parameter application: the singleton app object
     func applicationDidBecomeActive(_ application: UIApplication) {
+        AppDelegate.canReload = true
+        
         // Initializes AppsFlyer
         initAppsFlyer()
+    }
+    
+    /// Called when the app is about to become inactive
+    /// - Parameter application: the singleton app object
+    func applicationWillResignActive(_ application: UIApplication) {
+        AppDelegate.canReload = false
     }
 }
