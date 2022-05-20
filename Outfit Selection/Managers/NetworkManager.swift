@@ -157,7 +157,7 @@ class NetworkManager {
             // Store the message in logger cache
             let message = String(data: data, encoding: .utf8)
             Logger.log(key: request.absoluteString, message)
-            debug(request.absoluteURL)
+            //debug(request.absoluteURL)
             completion(decodedData)
         }
         
