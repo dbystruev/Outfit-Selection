@@ -68,28 +68,14 @@ class FeedCollectionViewController: LoggingViewController {
         }
     }
     
-    // MARK: - Custom Methods
-    /// Append items to the section of given type (section)
-    /// - Parameters:
-    ///   - items: items to append to the section
-    ///   - section: the section type (section) to append the items to
-    func addSection(items: Items, to section: SectionType) {
-        sections.append(section)
-        guard !items.isEmpty else {
-            getItems(for: section)
-            return
-        }
-        self.items[section] = items
-    }
-    
-    /// Gets items depending on feed type (section)
+    // MARK: - Private Methods
+    /// Gets items depending on feed type (section) for  SectionType .collections
     /// - Parameters:
     ///   - section: feed type (section)
     ///   - ignoreBrands: should we ignore brands (false by default)
-    func getItems(for type: SectionType, ignoreBrands: Bool = false) {
+    private func getItems(for type: SectionType, ignoreBrands: Bool = false) {
         debug("INFO: Update:", type, "from wislist")
         // All sections will need to be filtered by brands
-        let brandManager = BrandManager.shared
         let brandNames = brandManager.selectedBrandNames
         
         // Categories should be limited for occasions
@@ -105,7 +91,6 @@ class FeedCollectionViewController: LoggingViewController {
         let sale = type == .sale
         
         NetworkManager.shared.getItems(
-            feeds: [String](FeedsProfile.all.feedsIDs),
             filteredBy: ignoreBrands ? [] : brandNames,
             limited: maxItemsInSection * 2,
             sale: sale,
@@ -126,7 +111,7 @@ class FeedCollectionViewController: LoggingViewController {
             }
             
             // Put the last selected brand name first
-            if let lastSelectedBrandName = brandManager.lastSelected?.brandName {
+            if let lastSelectedBrandName = self.brandManager.lastSelected?.brandName {
                 let lastSelectedBrandNames = [lastSelectedBrandName]
                 items.sort { $0.branded(lastSelectedBrandNames) || !$1.branded(lastSelectedBrandNames)}
             }
@@ -142,68 +127,18 @@ class FeedCollectionViewController: LoggingViewController {
         }
     }
 
-    
-    /// Gets items depending on feed type (section)
+    // MARK: - Custom Methods
+    /// Append items to the section of given type (section)
     /// - Parameters:
-    ///   - section: feed type (section)
-    ///   - ignoreBrands: should we ignore brands (false by default)
-    ///   - completion: closure without parameters
-    func getItems(for type: SectionType, ignoreBrands: Bool = false,  completion: @escaping () -> Void) {
-        
-        // Stop loading if section with brands
-        guard type != .brands || type != .emptyBrands  else {
-            // Reload data
-            completion()
+    ///   - items: items to append to the section
+    ///   - section: the section type (section) to append the items to
+    func addSection(items: Items, to section: SectionType) {
+        sections.append(section)
+        guard !items.isEmpty else {
+            getItems(for: section)
             return
         }
-        
-        // All sections will need to be filtered by brands
-        let brandManager = BrandManager.shared
-        let brandNames = brandManager.selectedBrandNames
-        
-        // Categories should be limited for occasions
-        let subcategoryIDs: [Int] = {
-            if case let .occasions(id) = type {
-                return Occasions.byID[id]?.flatSubcategoryIDs.compactMap { $0 } ?? []
-            } else {
-                return []
-            }
-        }()
-        
-        // If feed type is sale get items with old prices set
-        let sale = type == .sale
-        
-        NetworkManager.shared.getItems(
-            filteredBy: ignoreBrands ? [] : brandNames,
-            limited: self.maxItemsInSection * 2,
-            sale: sale,
-            subcategoryIDs: subcategoryIDs
-        ) { [weak self] items in
-            // Check for self availability
-            guard let self = self else {
-                debug("ERROR: self is not available")
-                completion()
-                return
-            }
-            
-            // Check items is empty
-            guard var items = items?.shuffled(), !items.isEmpty else {
-                completion()
-                return
-            }
-            
-            // Put the last selected brand name first
-            if let lastSelectedBrandName = brandManager.lastSelected?.brandName {
-                let lastSelectedBrandNames = [lastSelectedBrandName]
-                items.sort { $0.branded(lastSelectedBrandNames) || !$1.branded(lastSelectedBrandNames)}
-            }
-            
-            DispatchQueue.main.async {
-                // Set items into current section
-                self.items[type] = items
-                completion()
-            }
-        }
+        self.items[section] = items
     }
     
     /// Set section into UICollectionView
@@ -308,83 +243,15 @@ class FeedCollectionViewController: LoggingViewController {
             }
         }
     }
-    
-    // MARK: - Private Methods
-    /// Get items for type
-    /// - Parameters:
-    ///   - type: SectionType
-    ///   - completion: closure without parameters
-    private func getNewItems(for type: SectionType, completion: @escaping () -> Void) {
-        
-        // Helper properties
-        var limited: Int? = nil
-        var subcategoryIDs: [Int] = []
-        var vendorNames: [String] = []
-        var excluded: [Int] = []
-        
-        // Switch for SectionType
-        switch type {
-        case .brand(let brand):
-            vendorNames = getParamsFor(brandName: brand)
-            
-        case .brands:
-            vendorNames = getParamsForBrandNames()
-            
-        case .categories(let occasionName):
-            let answer = getParamsForCategories(occasionName: occasionName)
-            subcategoryIDs = answer.1
-            vendorNames = answer.0
-            
-        case .category(let category , let limit):
-            let answer = getParamsFor(categoryName: category, limit: limit)
-            limited = answer.2
-            excluded = answer.1
-            vendorNames = answer.0
-            
-        default:
-            debug("default code")
-        }
-        
-        debug(limited, subcategoryIDs, vendorNames, excluded)
-        
-        NetworkManager.shared.getItems(
-            excluded: excluded.isEmpty ? [] : excluded,
-            filteredBy: vendorNames,
-            limited: limited ?? self.maxItemsInSection * 2,
-            subcategoryIDs: excluded.isEmpty ? subcategoryIDs : []
-        ) { [weak self] items in
-            // Check for self availability
-            guard let self = self else {
-                debug("ERROR: self is not available")
-                completion()
-                return
-            }
-            
-            // Check items is empty and shuffled it
-            guard let items = items?.shuffled(), !items.isEmpty else {
-                // If no items were returned try again ignoring brands
-                self.getItems(for: type, ignoreBrands: true) {
-                    completion()
-                }
-                return
-            }
-            
-            DispatchQueue.main.async {
-                // Set items into current section
-                self.items[type] = items
-                completion()
-            }
-        }
-    }
-    
+
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: Delete it after test
-        getNewItems(for: .category("Holidays: B-day", 30)) {
-            debug("FINISH")
-        }
+//        // TODO: Delete it after test
+//        getItems(for: .category("Holidays: B-day", 30)) {
+//            debug("FINISH")
+//        }
         
         // Configure navigation controller's bar font
         navigationController?.configureFont()

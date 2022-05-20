@@ -20,8 +20,8 @@ extension SectionType: CustomStringConvertible {
             return ".categories(\(occasionName))"
         case .category(let categoryName, _):
             return ".category(\(categoryName))"
-        case .daily(let number):
-            return ".daily(\(number))"
+        case .daily(let limit):
+            return ".daily(\(limit))"
         case .emptyBrands:
             return ".noBrands"
         case .newItems:
