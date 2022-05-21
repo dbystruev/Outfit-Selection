@@ -23,6 +23,7 @@
 		6903D60227FAC9AD00FCA499 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6903D60127FAC9AD00FCA499 /* GoogleService-Info.plist */; };
 		690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */; };
 		690491F6260C732A0098F1FD /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */; };
+		690563A9283898D10082E655 /* AppDelegate+YandexMetrica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690563A8283898D10082E655 /* AppDelegate+YandexMetrica.swift */; };
 		6905DC8E272B0BE80088A34E /* Occasions+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6905DC8D272B0BE80088A34E /* Occasions+UserDefaults.swift */; };
 		6905DC92272B12760088A34E /* Item+Occasion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6905DC91272B12760088A34E /* Item+Occasion.swift */; };
 		690623A1270C633800813089 /* Screenshot09.png in Resources */ = {isa = PBXBuildFile; fileRef = 69062391270C633800813089 /* Screenshot09.png */; };
@@ -349,6 +350,7 @@
 		6903D60127FAC9AD00FCA499 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+configureFont.swift"; sourceTree = "<group>"; };
 		690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.ttf"; sourceTree = "<group>"; };
+		690563A8283898D10082E655 /* AppDelegate+YandexMetrica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+YandexMetrica.swift"; sourceTree = "<group>"; };
 		6905DC8D272B0BE80088A34E /* Occasions+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occasions+UserDefaults.swift"; sourceTree = "<group>"; };
 		6905DC91272B12760088A34E /* Item+Occasion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Item+Occasion.swift"; sourceTree = "<group>"; };
 		69062391270C633800813089 /* Screenshot09.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Screenshot09.png; sourceTree = "<group>"; };
@@ -907,6 +909,7 @@
 				7ACA9C6727ABB027004B7D63 /* AppDelegate+universalLinks.swift */,
 				695367FA25F7B0AA0024EC8B /* AppDelegate+UNUserNotificationCenterDelegate.swift */,
 				699632A626FCA42100841B6F /* AppDelegate+update.swift */,
+				690563A8283898D10082E655 /* AppDelegate+YandexMetrica.swift */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -1993,6 +1996,7 @@
 				69AE95562563BF6B00850210 /* UIBarButtonItem.SystemItem+CustomStringConvertible.swift in Sources */,
 				690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */,
 				69322E2B26008CDD00CAFBFA /* ItemViewController+Actions.swift in Sources */,
+				690563A9283898D10082E655 /* AppDelegate+YandexMetrica.swift in Sources */,
 				691E5D75270391BD00C6CBD3 /* FeedCollectionViewController+UICollectionViewDataSource.swift in Sources */,
 				6986613B25707A61008F94CA /* BrandedImage.swift in Sources */,
 				6900142326DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift in Sources */,

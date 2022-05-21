@@ -16,19 +16,18 @@ extension AppDelegate: UIApplicationDelegate {
     ///   - userActivity: the activity object containing the data associated with the task the user was performing
     ///   - restorationHandler: a block to execute if the app creates objects to perform the task
     /// - Returns: true to indicate that the app handled the activity
-    func application(_ application: UIApplication,
-                     continue userActivity: NSUserActivity,
-                     restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void) -> Bool {
-        
+    func application(
+        _ application: UIApplication,
+        continue userActivity: NSUserActivity,
+        restorationHandler: @escaping ([UIUserActivityRestoring]?) -> Void
+    ) -> Bool {
         self.userActivity = userActivity
         
         // Log deep links with OneLink
         appsFlyer(continue: userActivity)
 
         // Calling when app loaded and check universal link
-        if loaded {
-            checkUniversalLink(continue: userActivity)
-        }
+        if loaded { checkUniversalLink(continue: userActivity) }
         
         return true
     }
@@ -134,9 +133,11 @@ extension AppDelegate: UIApplicationDelegate {
     ///   - application: the singleton app object
     ///   - userInfo: a dictionary with a badge number for the app icon, an alert sound, an alert message , a notification identifier, etc.
     ///   - completionHandler: the block to execute when the download operation is complete
-    func application(_ application: UIApplication,
-                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
-                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func application(
+        _ application: UIApplication,
+        didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+        fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void
+    ) {
         if userInfo["af"] != nil {
             // Enables AppsFlyer to handle push notification
             appsFlyer(handlePushNotificationWith: userInfo)
@@ -149,7 +150,11 @@ extension AppDelegate: UIApplicationDelegate {
     ///   - url: the URL to open, including a network resource or a file
     ///   - options: a dictionary of URL handling options, empty by default
     /// - Returns: true to indicate the successful handling of the request
-    func application(_ app: UIApplication, open url: URL, options: [UIApplication.OpenURLOptionsKey : Any] = [:]) -> Bool {
+    func application(
+        _ app: UIApplication,
+        open url: URL,
+        options: [UIApplication.OpenURLOptionsKey : Any] = [:]
+    ) -> Bool {
         // Handle deep linking with AppsFlyer
         appsFlyer(handleOpen: url, options: options)
         
@@ -165,6 +170,9 @@ extension AppDelegate: UIApplicationDelegate {
         
         // Initializes AppsFlyer
         initAppsFlyer()
+        
+        // Init Yandex.AppMetrica
+        AppDelegate.setupYandexMetrica()
     }
     
     /// Called when the app is about to become inactive
