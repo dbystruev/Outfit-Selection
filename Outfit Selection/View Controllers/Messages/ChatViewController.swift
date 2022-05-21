@@ -14,7 +14,7 @@ class ChatViewController: MessagesViewController {
     let currentUser = Sender(senderId: "currentUser", displayName: "Me")
     
     /// The Get Outfit user
-    let otherUser = Sender(avatar: Globals.Image.logo, senderId: "otherUser", displayName: "Get Outfit")
+    let otherUser = Sender(avatar: Global.Image.logo, senderId: "otherUser", displayName: "Get Outfit")
     
     /// The list of messages to display
     var messages = [Message]()

@@ -12,8 +12,8 @@ extension ProfileViewController {
     /// Configure the version label at the bottom with the current version and build
     func configureVersionLabel() {
         // Configure the appearance
-        versionLabel.font = Globals.Font.Profile.version
-        versionLabel.textColor = Globals.Color.Profile.version
+        versionLabel.font = Global.Font.Profile.version
+        versionLabel.textColor = Global.Color.Profile.version
         
         // Obtain the version
         guard let infoDictionary = Bundle.main.infoDictionary else {

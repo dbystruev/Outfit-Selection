@@ -77,7 +77,7 @@ extension OutfitViewController {
         checkItemsToShow()
 
         // Start observer updatedOccasions
-        Globals.Notification.notificationCenter.addObserver(
+        Global.Notification.notificationCenter.addObserver(
             self,
             selector: #selector(updatedOccasions),
             name: Notification.Name(nameNotification),

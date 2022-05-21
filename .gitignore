@@ -1,4 +1,4 @@
-# git update-index --assume-unchanged Outfit\ Selection/App/AppDelegate/AppDelegate+AppsFlyerLibDelegate.swift
-AppDelegate+AppsFlyerLibDelegate.swift
+# git update-index --assume-unchanged APIKeys.swift
 .DS_Store
+APIKeys.swift
 GoogleService-Info.plist

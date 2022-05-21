@@ -63,8 +63,8 @@ extension WishlistViewController: ButtonDelegate {
         // Configure chooseItemsButton
         let isEnabled = itemCount != 0
         chooseItemsButton.backgroundColor = isEnabled
-        ? Globals.Color.Button.enabled
-        : Globals.Color.Button.disabled
+        ? Global.Color.Button.enabled
+        : Global.Color.Button.disabled
         chooseItemsButton.isEnabled = isEnabled
         
         // Set textLabel for chooseItemsButton

@@ -54,15 +54,15 @@ class FeedSectionHeaderView: UICollectionReusableView {
     func configureLayout() {
         // Configure button
         seeAllButton.addTarget(self, action: #selector(seeAllButtonTapped(_:)), for: .touchUpInside)
-        seeAllButton.setTitleColor(Globals.Color.Feed.button, for: .normal)
-        seeAllButton.titleLabel?.font = Globals.Font.Feed.button
+        seeAllButton.setTitleColor(Global.Color.Feed.button, for: .normal)
+        seeAllButton.titleLabel?.font = Global.Font.Feed.button
         seeAllButton.translatesAutoresizingMaskIntoConstraints = false
         addSubview(seeAllButton)
         
         // Configure title
         titleLabel.numberOfLines = 2
-        titleLabel.textColor = Globals.Color.Feed.header
-        titleLabel.font = Globals.Font.Feed.header
+        titleLabel.textColor = Global.Color.Feed.header
+        titleLabel.font = Global.Font.Feed.header
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
         

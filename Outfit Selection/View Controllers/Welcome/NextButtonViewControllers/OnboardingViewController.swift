@@ -63,8 +63,8 @@ class OnboardingViewController: NextButtonViewController {
             
             // Set button background color
             progressButtons[buttonIndex].backgroundColor = isDash
-                ? Globals.Color.Onboarding.dash
-                : Globals.Color.Onboarding.dot
+                ? Global.Color.Onboarding.dash
+                : Global.Color.Onboarding.dot
             
             // Set button width
             progressWidthConstraints[buttonIndex].constant = isDash ? 16 : 4
@@ -77,10 +77,10 @@ class OnboardingViewController: NextButtonViewController {
         navigationController?.isNavigationBarHidden = true
         
         // Configue the views
-        onboardingStackView.backgroundColor = Globals.Color.Onboarding.background
+        onboardingStackView.backgroundColor = Global.Color.Onboarding.background
         onboardingStackView.layer.cornerRadius = 16
-        onboardingTextLabel.textColor = Globals.Color.Onboarding.text
-        onboardingTitleLabel.textColor = Globals.Color.Onboarding.text
+        onboardingTextLabel.textColor = Global.Color.Onboarding.text
+        onboardingTitleLabel.textColor = Global.Color.Onboarding.text
         
         // Configure progress indicators
         progressButtons.forEach { $0.layer.cornerRadius = 2 }

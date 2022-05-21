@@ -50,7 +50,7 @@ extension FeedCollectionViewController: ButtonDelegate {
                 // Request head to get Content-Range from the API
                 NetworkManager.shared.exactCount(with: parameters, header: "Content-Range") { T in
                     debug("Content-Range:", T)
-                    Globals.Feed.contentRange = T ?? 0
+                    Global.Feed.contentRange = T ?? 0
                 }
                 
                 // Check current items for nil

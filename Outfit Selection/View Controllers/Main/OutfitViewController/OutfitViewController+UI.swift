@@ -68,7 +68,7 @@ extension OutfitViewController {
         }
         
         // Configure the back bar button
-        backBarButton.titleLabel?.font = Globals.Font.Onboarding.barButton
+        backBarButton.titleLabel?.font = Global.Font.Onboarding.barButton
         backBarButton.contentEdgeInsets = UIEdgeInsets(top: -1, left: -6, bottom: 0, right: 0)
         backBarButton.contentHorizontalAlignment = .left
         backBarButton.contentVerticalAlignment = .center
@@ -296,7 +296,7 @@ extension OutfitViewController {
         //Check items and scrollViews
         guard !itemsToShow.isEmpty && scrollViews?.itemCount != nil else { return }
         
-        if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count || Globals.TabBar.status.found
+        if let itemCount = scrollViews?.itemCount, itemCount < itemsToShow.count || Global.TabBar.status.found
         {
             loadImages()
         }
@@ -305,7 +305,7 @@ extension OutfitViewController {
         scrollTo(items: itemsToShow, ordered: false) { [self] completion in
             guard completion else { return }
             // TabBar status
-            Globals.TabBar.status.found = false
+            Global.TabBar.status.found = false
             
             // Set lock button shuffle
             shuffleButtonCheck(lock: true, alpha: 0.25)

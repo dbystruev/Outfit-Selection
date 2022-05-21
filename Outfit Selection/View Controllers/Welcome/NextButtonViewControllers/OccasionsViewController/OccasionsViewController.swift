@@ -43,8 +43,8 @@ class OccasionsViewController: NextButtonViewController {
         let occasionsSelected = Occasions.selected.currentGender.count
         let isEnabled = 0 < occasionsSelected
         nextButton?.backgroundColor = isEnabled
-        ? Globals.Color.Button.enabled
-        : Globals.Color.Button.disabled
+        ? Global.Color.Button.enabled
+        : Global.Color.Button.disabled
         nextButton?.isEnabled = isEnabled
     }
     

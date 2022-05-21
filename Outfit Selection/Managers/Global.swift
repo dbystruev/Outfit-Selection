@@ -8,7 +8,7 @@
 
 import UIKit
 
-enum Globals {
+enum Global {
     enum Color {
         /// Button Colors
         enum Button {

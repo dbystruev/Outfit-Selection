@@ -28,7 +28,7 @@ class GenderViewController: NextButtonViewController {
     @IBOutlet var genderButtons: [GenderButton]! {
         didSet {
             genderButtons.forEach {
-                $0.setTitleColor(Globals.Color.Button.Gender.titleColor, for: .normal)
+                $0.setTitleColor(Global.Color.Button.Gender.titleColor, for: .normal)
             }
         }
     }
@@ -36,14 +36,14 @@ class GenderViewController: NextButtonViewController {
     /// Final position of logo
     @IBOutlet weak var logoImageView: UIImageView! {
         didSet {
-            logoImageView.image = Globals.Image.logo
+            logoImageView.image = Global.Image.logo
         }
     }
     
     /// Initial position of logo
     @IBOutlet weak var startingLogoImageView: UIImageView! {
         didSet {
-            startingLogoImageView.image = Globals.Image.logo
+            startingLogoImageView.image = Global.Image.logo
         }
     }
     

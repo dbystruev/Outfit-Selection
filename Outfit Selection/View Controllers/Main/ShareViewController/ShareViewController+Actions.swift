@@ -44,10 +44,10 @@ extension ShareViewController {
         guard !itemIDs.isEmpty else { return }
         
         // Parts of the universal link
-        let scheme = Globals.UniversalLinks.scheme.https
-        let subdomain = Globals.UniversalLinks.subdomain.www
-        let domain = Globals.UniversalLinks.domain.getoutfit
-        let patch = Globals.UniversalLinks.path.items
+        let scheme = Global.UniversalLinks.scheme.https
+        let subdomain = Global.UniversalLinks.subdomain.www
+        let domain = Global.UniversalLinks.domain.getoutfit
+        let patch = Global.UniversalLinks.path.items
         
         // Convert array items to string
         var itemsCommaJoined = itemIDs.commaJoined

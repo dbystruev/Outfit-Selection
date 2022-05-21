@@ -52,8 +52,8 @@ class ItemViewController: LoggingViewController {
     
     @IBOutlet weak var orderButton: UIButton! {
         didSet {
-            orderButton.backgroundColor = Globals.Color.Button.enabled
-            orderButton.setTitleColor(Globals.Color.Button.titleColor, for: .normal)
+            orderButton.backgroundColor = Global.Color.Button.enabled
+            orderButton.setTitleColor(Global.Color.Button.titleColor, for: .normal)
         }
     }
     /// The  table view with items list
@@ -252,7 +252,7 @@ class ItemViewController: LoggingViewController {
         if isEditing {
             // Configure custom backBatton for leftBarButtonItems
             backBarButon.setTitle("Back"~, for: .normal)
-            backBarButon.titleLabel?.font = Globals.Font.Onboarding.barButton
+            backBarButon.titleLabel?.font = Global.Font.Onboarding.barButton
             backBarButon.contentEdgeInsets = UIEdgeInsets(top: -1, left: -6, bottom: 0, right: 0)
             backBarButon.contentHorizontalAlignment = .left
             backBarButon.contentVerticalAlignment = .center

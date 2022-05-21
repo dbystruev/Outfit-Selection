@@ -145,6 +145,15 @@
       }
     },
     {
+      "identity" : "metrica-sdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/yandexmobile/metrica-sdk-ios",
+      "state" : {
+        "branch" : "master",
+        "revision" : "3994299f8b07efd44a973aff407527ccfa0fa35d"
+      }
+    },
+    {
       "identity" : "nanopb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/nanopb.git",

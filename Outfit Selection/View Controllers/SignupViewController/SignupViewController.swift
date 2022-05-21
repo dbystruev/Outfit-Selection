@@ -21,7 +21,7 @@ class SignupViewController: LoggingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Configue the views
-        self.view.backgroundColor = Globals.Color.Onboarding.background
+        self.view.backgroundColor = Global.Color.Onboarding.background
     }
     
     // MARK: - Actions

@@ -28,7 +28,7 @@ class FeedsProfileViewController: UIViewController {
     var feedProfileSelectedFeedsIDs: [String] = []
     
     /// Notification name feedProfileChanged
-    let nameNotification = Globals.Notification.name.feedProfileChanged
+    let nameNotification = Global.Notification.name.feedProfileChanged
     
     // MARK: - Custom Methods
     /// Set top right button to clear or select all
@@ -41,8 +41,8 @@ class FeedsProfileViewController: UIViewController {
         let shouldUse = FeedsProfile.all.selected.count
         let isEnabled = 0 < shouldUse
         saveButton?.backgroundColor = isEnabled
-        ? Globals.Color.Button.enabled
-        : Globals.Color.Button.disabled
+        ? Global.Color.Button.enabled
+        : Global.Color.Button.disabled
         saveButton?.isEnabled = isEnabled
     }
     

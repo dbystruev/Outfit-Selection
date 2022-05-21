@@ -24,8 +24,8 @@ class NextButtonViewController: LoggingViewController {
     /// - Parameter isEnabled: true if button should be enabled (default), false otherwise
     func configureNextButton(_ isEnabled: Bool = true) {
         nextButton?.backgroundColor = isEnabled
-            ? Globals.Color.Button.enabled
-            : Globals.Color.Button.disabled
+            ? Global.Color.Button.enabled
+            : Global.Color.Button.disabled
         nextButton?.isEnabled = isEnabled
     }
     

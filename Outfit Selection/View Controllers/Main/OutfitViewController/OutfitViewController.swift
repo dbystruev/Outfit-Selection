@@ -51,7 +51,7 @@ class OutfitViewController: LoggingViewController {
     var hangerBubbleCenterYConstraint: NSLayoutConstraint!
     
     /// Notification name updatedOccasions
-    let nameNotification = Globals.Notification.name.updatedOccasions
+    let nameNotification = Global.Notification.name.updatedOccasions
     
     /// Confstraint for the trailing of hanger bubble
     var hangerBubbleTrailingConstraint: NSLayoutConstraint!

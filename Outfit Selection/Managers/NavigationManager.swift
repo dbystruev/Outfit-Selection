@@ -147,7 +147,7 @@ class NavigationManager {
             }
             
             // Change tabbar selected index
-            tabBarController.selectedIndex = Globals.TabBar.index.wishlist
+            tabBarController.selectedIndex = Global.TabBar.index.wishlist
         
             // If ItemViewControlle was presented
             guard let itemViewController = tabBarController.findViewController(ofType: ItemViewController.self) else {
@@ -180,7 +180,7 @@ class NavigationManager {
         _ tabBarController: UITabBarController,
         _ hideBackButton: Bool) {
             // Get tab bat index
-            let indexTabBar = Globals.TabBar.index.outfit
+            let indexTabBar = Global.TabBar.index.outfit
             
             // Get the list of view controllers from tab bar
             guard let viewControllers = tabBarController.viewControllers else {
@@ -248,7 +248,7 @@ class NavigationManager {
             }
             
             // Switch to tab saved in previous version of tab bar controller
-            tabBarController.selectedIndex = Globals.TabBar.index.outfit
+            tabBarController.selectedIndex = Global.TabBar.index.outfit
             
             // Find outfit view controller in tab bar hierarchy
             guard let outfitViewController = tabBarController.findViewController(ofType: OutfitViewController.self) else {
@@ -335,7 +335,7 @@ class NavigationManager {
             }
             
             // Switch to tab saved in previous version of tab bar controller
-            tabBarController.selectedIndex = Globals.TabBar.index.wishlist
+            tabBarController.selectedIndex = Global.TabBar.index.wishlist
             
             // Find wishlist view controller in tab bar hierarchy
             guard let wishlistViewController = tabBarController.findViewController(ofType: WishlistViewController.self) else {

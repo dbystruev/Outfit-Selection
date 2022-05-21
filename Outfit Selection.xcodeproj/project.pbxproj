@@ -10,7 +10,7 @@
 		6900142126DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900142026DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift */; };
 		6900142326DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900142226DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift */; };
 		6900142526DA4BDC007F1A44 /* FeedBrandCell+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6900142426DA4BDC007F1A44 /* FeedBrandCell+UICollectionViewDelegate.swift */; };
-		69007CEA26EA2F95001170D0 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CE926EA2F95001170D0 /* Globals.swift */; };
+		69007CEA26EA2F95001170D0 /* Global.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CE926EA2F95001170D0 /* Global.swift */; };
 		69007CEC26EA6324001170D0 /* Occasion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CEB26EA6324001170D0 /* Occasion.swift */; };
 		69007CEF26EA63AA001170D0 /* Occasions+all.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CEE26EA63AA001170D0 /* Occasions+all.swift */; };
 		69007CF126EA6619001170D0 /* Occasion+Comparable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CF026EA6619001170D0 /* Occasion+Comparable.swift */; };
@@ -197,6 +197,9 @@
 		69AE95592563D43700850210 /* ItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE95582563D43700850210 /* ItemViewController.swift */; };
 		69AE955F256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AE955E256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift */; };
 		69AEC9E825BF014100183E15 /* GenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AEC9E725BF014100183E15 /* GenderButton.swift */; };
+		69AF26DA28388035007005AB /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = 69AF26D928388035007005AB /* YandexMobileMetrica */; };
+		69AF26DC28388035007005AB /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 69AF26DB28388035007005AB /* YandexMobileMetricaCrashes */; };
+		69AF26DE28388210007005AB /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AF26DD28388210007005AB /* APIKeys.swift */; };
 		69B3E2352743F21200A9426D /* PinnableScrollView+scrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3E2342743F21200A9426D /* PinnableScrollView+scrollTo.swift */; };
 		69B3E2372743F6C700A9426D /* PinnableScrollView+Computed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3E2362743F6C700A9426D /* PinnableScrollView+Computed.swift */; };
 		69B539F2257F9C7A00116F98 /* UIViewController+dismissRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B539F1257F9C7A00116F98 /* UIViewController+dismissRoot.swift */; };
@@ -332,7 +335,7 @@
 		6900142026DA2A1E007F1A44 /* UIViewContentMode+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewContentMode+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		6900142226DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedItemCollectionViewLayout.swift; sourceTree = "<group>"; };
 		6900142426DA4BDC007F1A44 /* FeedBrandCell+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeedBrandCell+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
-		69007CE926EA2F95001170D0 /* Globals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		69007CE926EA2F95001170D0 /* Global.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Global.swift; sourceTree = "<group>"; };
 		69007CEB26EA6324001170D0 /* Occasion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Occasion.swift; sourceTree = "<group>"; };
 		69007CEE26EA63AA001170D0 /* Occasions+all.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occasions+all.swift"; sourceTree = "<group>"; };
 		69007CF026EA6619001170D0 /* Occasion+Comparable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Occasion+Comparable.swift"; sourceTree = "<group>"; };
@@ -523,6 +526,7 @@
 		69AE95582563D43700850210 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		69AE955E256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollView+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
 		69AEC9E725BF014100183E15 /* GenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderButton.swift; sourceTree = "<group>"; };
+		69AF26DD28388210007005AB /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
 		69B3E2342743F21200A9426D /* PinnableScrollView+scrollTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollView+scrollTo.swift"; sourceTree = "<group>"; };
 		69B3E2362743F6C700A9426D /* PinnableScrollView+Computed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollView+Computed.swift"; sourceTree = "<group>"; };
 		69B539F1257F9C7A00116F98 /* UIViewController+dismissRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+dismissRoot.swift"; sourceTree = "<group>"; };
@@ -671,7 +675,9 @@
 				6933089A2750FCDA0096C13E /* Algorithms in Frameworks */,
 				7AC21E7C27FB29D9006E1ED5 /* FirebaseAuth in Frameworks */,
 				696209A026FB927E00B46FE8 /* AppsFlyerLib in Frameworks */,
+				69AF26DC28388035007005AB /* YandexMobileMetricaCrashes in Frameworks */,
 				6998124027037590007B7024 /* IBPCollectionViewCompositionalLayout in Frameworks */,
+				69AF26DA28388035007005AB /* YandexMobileMetrica in Frameworks */,
 				7AC21E7227FB110D006E1ED5 /* FirebaseAnalytics in Frameworks */,
 				695295BA27E9B6D600D34C3A /* MessageKit in Frameworks */,
 			);
@@ -811,10 +817,11 @@
 			isa = PBXGroup;
 			children = (
 				699139E826E11188004B18AA /* Alert.swift */,
+				69AF26DF283884D9007005AB /* APIKeys */,
 				698A7F8A26E8C7F3006C36FD /* BrandManager */,
 				69A0C9E0270460A500C49977 /* ColorCompatibility.swift */,
 				6924900025504DFD00106681 /* DispatchManager.swift */,
-				69007CE926EA2F95001170D0 /* Globals.swift */,
+				69007CE926EA2F95001170D0 /* Global.swift */,
 				6998124127037632007B7024 /* IBPCollectionViewCompositionalLayout */,
 				693D7291256BFDD700540C10 /* ItemManager.swift */,
 				699AAB7F26CD72AE001F6522 /* Logger.swift */,
@@ -1455,6 +1462,14 @@
 			path = Servers;
 			sourceTree = "<group>";
 		};
+		69AF26DF283884D9007005AB /* APIKeys */ = {
+			isa = PBXGroup;
+			children = (
+				69AF26DD28388210007005AB /* APIKeys.swift */,
+			);
+			path = APIKeys;
+			sourceTree = "<group>";
+		};
 		69B3E2332743DF7600A9426D /* UINavigationController */ = {
 			isa = PBXGroup;
 			children = (
@@ -1782,6 +1797,8 @@
 				7AC21E7B27FB29D9006E1ED5 /* FirebaseAuth */,
 				7AC21E7E27FB2CF9006E1ED5 /* FirebaseAnalytics */,
 				7A2039D227FB412A00CD4B93 /* GoogleSignIn */,
+				69AF26D928388035007005AB /* YandexMobileMetrica */,
+				69AF26DB28388035007005AB /* YandexMobileMetricaCrashes */,
 			);
 			productName = "Outfit Selection";
 			productReference = 69A6F6F022BA26B7002A3B49 /* Get Outfit.app */;
@@ -1821,6 +1838,7 @@
 				7AC21E7A27FB29D9006E1ED5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7AC21E7D27FB2CF9006E1ED5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				7A2039D127FB412A00CD4B93 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				69AF26D828388035007005AB /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */,
 			);
 			productRefGroup = 69A6F6F122BA26B7002A3B49 /* Products */;
 			projectDirPath = "";
@@ -1987,7 +2005,7 @@
 				6906A99726E60C8D00386267 /* Collection.swift in Sources */,
 				69BA5DC627F5747700426D26 /* ChatViewController+MessagesDataSource.swift in Sources */,
 				693D728A256BF3FB00540C10 /* BrandsViewController.swift in Sources */,
-				69007CEA26EA2F95001170D0 /* Globals.swift in Sources */,
+				69007CEA26EA2F95001170D0 /* Global.swift in Sources */,
 				7AC041362823589000CA7E5E /* FeedsProfileViewController+UITableViewDataSource.swift in Sources */,
 				69007CF326EA6A4B001170D0 /* OccasionsViewController.swift in Sources */,
 				699632A926FCA48300841B6F /* debug.swift in Sources */,
@@ -2068,6 +2086,7 @@
 				69F6465B270227360059A46C /* FeedCollectionViewController.swift in Sources */,
 				697E1FDD25ECF0E8008C85C9 /* UITabBarController+findViewController.swift in Sources */,
 				698A7F9826E92106006C36FD /* Wishlist+all.swift in Sources */,
+				69AF26DE28388210007005AB /* APIKeys.swift in Sources */,
 				7AEB482527CE246A003360CF /* ItemImageView.swift in Sources */,
 				695A1ACF27186F920028FB9D /* Array+chunked.swift in Sources */,
 				69AE955F256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift in Sources */,
@@ -2724,6 +2743,14 @@
 				minimumVersion = 0.6.9;
 			};
 		};
+		69AF26D828388035007005AB /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yandexmobile/metrica-sdk-ios";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		7A2039D127FB412A00CD4B93 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -2778,6 +2805,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6998123E27037590007B7024 /* XCRemoteSwiftPackageReference "IBPCollectionViewCompositionalLayout" */;
 			productName = IBPCollectionViewCompositionalLayout;
+		};
+		69AF26D928388035007005AB /* YandexMobileMetrica */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69AF26D828388035007005AB /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */;
+			productName = YandexMobileMetrica;
+		};
+		69AF26DB28388035007005AB /* YandexMobileMetricaCrashes */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 69AF26D828388035007005AB /* XCRemoteSwiftPackageReference "metrica-sdk-ios" */;
+			productName = YandexMobileMetricaCrashes;
 		};
 		7A2039D227FB412A00CD4B93 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;

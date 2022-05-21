@@ -38,7 +38,7 @@ class CollectionSelectViewController: CollectionBaseViewController {
         super.viewDidLoad()
         
         // Disable a chooseItemsButton
-        chooseItemsButton.backgroundColor = Globals.Color.Button.disabled
+        chooseItemsButton.backgroundColor = Global.Color.Button.disabled
         chooseItemsButton.isEnabled = false
         
         // Setup collection view

@@ -18,7 +18,7 @@ extension OutfitViewController {
         configureBackBarButtonItem(isHidden: true)
         
         // Go to NavigationManager into outfit
-        navigationController?.tabBarController?.selectedIndex = Globals.TabBar.index.wishlist
+        navigationController?.tabBarController?.selectedIndex = Global.TabBar.index.wishlist
         
     }
     
@@ -66,7 +66,7 @@ extension OutfitViewController {
             // Show alert
             present(Alert.occasionToCollection(
                 items: visibleItems,
-                occasion: occasionSelected?.title ?? Globals.Occasions.defaultTitle,
+                occasion: occasionSelected?.title ?? Global.Occasions.defaultTitle,
                 navigationController: navigationController
             ), animated: true)
         }

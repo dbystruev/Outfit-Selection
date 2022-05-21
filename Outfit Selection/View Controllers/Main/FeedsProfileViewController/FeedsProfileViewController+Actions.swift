@@ -29,7 +29,7 @@ extension FeedsProfileViewController {
             // Save selected feeds to user default
             FeedsProfile.save()
             // Post notification with name
-            Globals.Notification.notificationCenter.post(
+            Global.Notification.notificationCenter.post(
                 name: Notification.Name(nameNotification),
                 object: nil
             )

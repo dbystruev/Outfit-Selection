@@ -135,9 +135,9 @@ extension ItemViewController {
         let itemID: String = item.id
 
         // Parts of the universal link
-        let scheme = Globals.UniversalLinks.scheme.https
-        let domain = Globals.UniversalLinks.domain.getoutfit
-        let patch = Globals.UniversalLinks.path.items
+        let scheme = Global.UniversalLinks.scheme.https
+        let domain = Global.UniversalLinks.domain.getoutfit
+        let patch = Global.UniversalLinks.path.items
         
         // Build share link
         let itemURLShare = URL(string: scheme + domain + patch + id + itemID)

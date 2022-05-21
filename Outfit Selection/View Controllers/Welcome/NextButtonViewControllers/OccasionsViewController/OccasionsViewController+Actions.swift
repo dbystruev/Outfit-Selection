@@ -43,7 +43,7 @@ extension OccasionsViewController {
             Occasions.saveSelectedOccasions()
             
             // Post notification
-            NotificationCenter.default.post(name: Notification.Name(Globals.Notification.name.updatedOccasions), object: nil)
+            NotificationCenter.default.post(name: Notification.Name(Global.Notification.name.updatedOccasions), object: nil)
             
             // Back to profile viewController
             navigationController?.popViewController(animated: true)

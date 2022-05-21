@@ -11,7 +11,7 @@ import UIKit
 class TabBarController: UITabBarController {
     // MARK: - Stored Properties
 /// Notification name feedProfileChanged
-    let nameNotification = Globals.Notification.name.feedProfileChanged
+    let nameNotification = Global.Notification.name.feedProfileChanged
     /// The set of brand tags previously selected by the user
     var selectedBrands = BrandManager.shared.selectedBrands
     
@@ -54,7 +54,7 @@ class TabBarController: UITabBarController {
     func reloadItems() {
         
         // Reload section with brand from FeedCollectionViewController
-        if self.selectedIndex == Globals.TabBar.index.feed {
+        if self.selectedIndex == Global.TabBar.index.feed {
             guard let feedCollectionViewController = findViewController(ofType: FeedCollectionViewController.self) else { return }
             feedCollectionViewController.feedCollectionView?.reloadSections(IndexSet([0]))
         }
@@ -88,7 +88,7 @@ class TabBarController: UITabBarController {
         
         if !(User.current.debugmode ?? false) {
             // Remove chat from viewControllers
-            self.viewControllers?.remove(at:Globals.TabBar.index.chat)
+            self.viewControllers?.remove(at:Global.TabBar.index.chat)
         }
     }
     
@@ -100,7 +100,7 @@ class TabBarController: UITabBarController {
         
         // Start observer changed feedProfile
 //        if User.current.debugmode {
-            Globals.Notification.notificationCenter.addObserver(
+            Global.Notification.notificationCenter.addObserver(
                 self,
                 selector: #selector(popToProgressReloadItems),
                 name: Notification.Name(nameNotification),

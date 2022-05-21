@@ -9,26 +9,26 @@
 import UIKit
 
 // Load Content-Range
-let contentRange = Globals.Feed.contentRange
+let contentRange = Global.Feed.contentRange
 
 // Count of tries to get an answer from the API server
 let countTry = 2
 
 // Load current offset index
-let currentOffset = Globals.Feed.currentOffset
+let currentOffset = Global.Feed.currentOffset
 
 // Local count of tries to get an answer from API
 var localCountTry = 0
 
 // Load limit section in CollectionView
-let limitSection = Globals.Feed.limitSection
+let limitSection = Global.Feed.limitSection
 
 // Limit for API call
-let limitCellApi = Globals.Feed.limitCellApi
+let limitCellApi = Global.Feed.limitCellApi
 
 extension FeedItemViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        tabBarController?.selectedIndex == Globals.TabBar.index.wishlist ? items.count : Int.max
+        tabBarController?.selectedIndex == Global.TabBar.index.wishlist ? items.count : Int.max
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

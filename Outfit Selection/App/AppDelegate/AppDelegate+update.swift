@@ -70,7 +70,7 @@ extension AppDelegate {
     static func updateOccasions(completion: ((_ success: Bool) -> Void)? = nil) {
         let startTime = Date()
         
-        let nameNotification = Globals.Notification.name.updatedOccasions
+        let nameNotification = Global.Notification.name.updatedOccasions
         
         NetworkManager.shared.getOccasions { occasions in
             // Make sure we don't update to the empty list of occasions
@@ -99,7 +99,7 @@ extension AppDelegate {
             Occasions.restoreSelectedOccasions()
             
             // Post notification with name
-            Globals.Notification.notificationCenter.post(
+            Global.Notification.notificationCenter.post(
                 name: Notification.Name(nameNotification),
                 object: nil
             )

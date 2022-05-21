@@ -16,7 +16,7 @@ class FeedCollectionViewController: LoggingViewController {
     // MARK: - Stored Properties
     
     /// The name for Notification name
-    let brandsChanged = Globals.Notification.name.brandsChanged
+    let brandsChanged = Global.Notification.name.brandsChanged
     
     /// Brand manager
     let brandManager = BrandManager.shared
@@ -41,7 +41,7 @@ class FeedCollectionViewController: LoggingViewController {
     var lockBrands = false
     
     /// The maximum number of items in each section
-    let maxItemsInSection = Globals.Feed.maxItemsInSection
+    let maxItemsInSection = Global.Feed.maxItemsInSection
     
     /// Parent navigation controller if called from another view controller
     var parentNavigationController: UINavigationController?
