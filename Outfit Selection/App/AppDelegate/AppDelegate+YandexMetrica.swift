@@ -24,8 +24,6 @@ extension AppDelegate {
         YMMYandexMetrica.reportEvent(event, parameters: params) { error in
             debug("ERROR: \(error.localizedDescription)")
         }
-        
-        debug("Logged \(event)", params)
     }
     
     /// Setup Yandex Metrica
