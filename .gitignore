@@ -1,4 +1,4 @@
-# git update-index --assume-unchanged APIKeys.swift
+# git update-index --assume-unchanged APIKeys.plist
 .DS_Store
-APIKeys.swift
+APIKeys.plist
 GoogleService-Info.plist

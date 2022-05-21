@@ -8,7 +8,11 @@
 
 import UIKit
 
+/// Global constants and variables
 enum Global {
+    /// Global dictionary with api keys
+    public static var apiKeys: [APIKey: String] = [:]
+    
     enum Color {
         /// Button Colors
         enum Button {

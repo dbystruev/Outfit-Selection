@@ -199,7 +199,8 @@
 		69AEC9E825BF014100183E15 /* GenderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AEC9E725BF014100183E15 /* GenderButton.swift */; };
 		69AF26DA28388035007005AB /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = 69AF26D928388035007005AB /* YandexMobileMetrica */; };
 		69AF26DC28388035007005AB /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 69AF26DB28388035007005AB /* YandexMobileMetricaCrashes */; };
-		69AF26DE28388210007005AB /* APIKeys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AF26DD28388210007005AB /* APIKeys.swift */; };
+		69AF26DE28388210007005AB /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AF26DD28388210007005AB /* APIKey.swift */; };
+		69AF26E3283889A5007005AB /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69AF26E2283889A5007005AB /* APIKeys.plist */; };
 		69B3E2352743F21200A9426D /* PinnableScrollView+scrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3E2342743F21200A9426D /* PinnableScrollView+scrollTo.swift */; };
 		69B3E2372743F6C700A9426D /* PinnableScrollView+Computed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3E2362743F6C700A9426D /* PinnableScrollView+Computed.swift */; };
 		69B539F2257F9C7A00116F98 /* UIViewController+dismissRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B539F1257F9C7A00116F98 /* UIViewController+dismissRoot.swift */; };
@@ -526,7 +527,8 @@
 		69AE95582563D43700850210 /* ItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemViewController.swift; sourceTree = "<group>"; };
 		69AE955E256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollView+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
 		69AEC9E725BF014100183E15 /* GenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderButton.swift; sourceTree = "<group>"; };
-		69AF26DD28388210007005AB /* APIKeys.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKeys.swift; sourceTree = "<group>"; };
+		69AF26DD28388210007005AB /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
+		69AF26E2283889A5007005AB /* APIKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		69B3E2342743F21200A9426D /* PinnableScrollView+scrollTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollView+scrollTo.swift"; sourceTree = "<group>"; };
 		69B3E2362743F6C700A9426D /* PinnableScrollView+Computed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollView+Computed.swift"; sourceTree = "<group>"; };
 		69B539F1257F9C7A00116F98 /* UIViewController+dismissRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+dismissRoot.swift"; sourceTree = "<group>"; };
@@ -817,7 +819,7 @@
 			isa = PBXGroup;
 			children = (
 				699139E826E11188004B18AA /* Alert.swift */,
-				69AF26DF283884D9007005AB /* APIKeys */,
+				69AF26DF283884D9007005AB /* APIKey */,
 				698A7F8A26E8C7F3006C36FD /* BrandManager */,
 				69A0C9E0270460A500C49977 /* ColorCompatibility.swift */,
 				6924900025504DFD00106681 /* DispatchManager.swift */,
@@ -1341,6 +1343,7 @@
 			isa = PBXGroup;
 			children = (
 				6953680125F7B5590024EC8B /* .gitignore */,
+				69AF26E2283889A5007005AB /* APIKeys.plist */,
 				6903D60127FAC9AD00FCA499 /* GoogleService-Info.plist */,
 				69A6F6F222BA26B7002A3B49 /* Outfit Selection */,
 				69A6F6F122BA26B7002A3B49 /* Products */,
@@ -1462,12 +1465,12 @@
 			path = Servers;
 			sourceTree = "<group>";
 		};
-		69AF26DF283884D9007005AB /* APIKeys */ = {
+		69AF26DF283884D9007005AB /* APIKey */ = {
 			isa = PBXGroup;
 			children = (
-				69AF26DD28388210007005AB /* APIKeys.swift */,
+				69AF26DD28388210007005AB /* APIKey.swift */,
 			);
-			path = APIKeys;
+			path = APIKey;
 			sourceTree = "<group>";
 		};
 		69B3E2332743DF7600A9426D /* UINavigationController */ = {
@@ -1900,6 +1903,7 @@
 				69C5CBF5260A1ED800DE22E6 /* NotoSans-SemiBold.ttf in Resources */,
 				690623A9270C633800813089 /* Screenshot02.png in Resources */,
 				693D7286256BF1EA00540C10 /* Brands.bundle in Resources */,
+				69AF26E3283889A5007005AB /* APIKeys.plist in Resources */,
 				690623B6270C6FA000813089 /* get_outfit_app.png in Resources */,
 				7AD80C2027D0E0E2005A36DC /* brands.csv in Resources */,
 				690623A3270C633800813089 /* Screenshot11.png in Resources */,
@@ -2086,7 +2090,7 @@
 				69F6465B270227360059A46C /* FeedCollectionViewController.swift in Sources */,
 				697E1FDD25ECF0E8008C85C9 /* UITabBarController+findViewController.swift in Sources */,
 				698A7F9826E92106006C36FD /* Wishlist+all.swift in Sources */,
-				69AF26DE28388210007005AB /* APIKeys.swift in Sources */,
+				69AF26DE28388210007005AB /* APIKey.swift in Sources */,
 				7AEB482527CE246A003360CF /* ItemImageView.swift in Sources */,
 				695A1ACF27186F920028FB9D /* Array+chunked.swift in Sources */,
 				69AE955F256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift in Sources */,

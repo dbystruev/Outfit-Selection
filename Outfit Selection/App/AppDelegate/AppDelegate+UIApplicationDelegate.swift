@@ -42,6 +42,9 @@ extension AppDelegate: UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil
     ) -> Bool {
+        // Load APIKeys.plist
+        APIKey.load()
+        
         // Dispatch group to delay launch until initial API calls are finished
         let group = DispatchGroup()
         
