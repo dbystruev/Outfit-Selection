@@ -64,7 +64,7 @@ extension AppDelegate: AppsFlyerLibDelegate {
     ///   - function: current function, #function by default
     /// - Returns: true if appsFlyerDevKey and appleAppID are set, false otherwise
     func checkAppsFlyer(line: Int = #line, file: String = #file, function: String = #function) -> Bool {
-        if AppDelegate.appleAppID.hasDigits || AppDelegate.appsFlyerDevKey.hasDigits { return true }
+        if AppDelegate.appleAppID.hasDigits && AppDelegate.appsFlyerDevKey.hasDigits { return true }
         guard
             let appleAppID = Global.apiKeys[.appleAppID],
             let appsFlyerDevKey = Global.apiKeys[.appsFlyerDevKey]
