@@ -12,6 +12,22 @@ extension AppDelegate {
     private static var yandexAppMetricaKey = "..."
     private(set) static var yandexMetricaActivated = false
     
+    /// Log Yandex.AppMetrica event
+    /// - Parameters:
+    ///   - event: string describing the event
+    ///   - params: optional dictionary describing the event
+    public static func logYandex(event: String, parameters params: [AnyHashable : Any]? = nil) {
+        if !AppDelegate.yandexMetricaActivated {
+            AppDelegate.setupYandexMetrica()
+        }
+        
+        YMMYandexMetrica.reportEvent(event, parameters: params) { error in
+            debug("ERROR: \(error.localizedDescription)")
+        }
+        
+        debug("Logged \(event)", params)
+    }
+    
     /// Setup Yandex Metrica
     /// Called from AppDelegate.application(_:didFinishLaunchingWithOptions:)
     /// https://appmetrica.yandex.ru/docs/mobile-sdk-dg/ios/ios-quickstart.html
@@ -19,7 +35,7 @@ extension AppDelegate {
         // Initializing the AppMetrica SDK.
         if AppDelegate.yandexMetricaActivated { return }
         if !yandexAppMetricaKey.hasDigits {
-
+            
             guard let yandexAppMetricaKey = Global.apiKeys[.yandexAppMetricaKey] else {
                 debug("WARNING: \(APIKey.yandexAppMetricaKey) is not found")
                 yandexMetricaActivated = true

@@ -22,16 +22,21 @@ class LoggingViewController: UIViewController {
     
     // MARK: - Custom Methods
     func log() {
-        let dictinary = [
-            "brands": BrandManager.shared.selectedBrandNames,
-            "collections": Wishlist.collections.count,
-            "items": Wishlist.items.count,
-            "outfits": Wishlist.outfits.count,
-            "uuid": LoggingViewController.uuid as Any
+        let selectedBrands = BrandManager.shared.selectedBrandNames
+        let brands = selectedBrands.count < 11 ? selectedBrands : nil
+        let optionalStats: [String: Any?] = [
+            "brands.count": selectedBrands.count,
+            "brands": brands,
+            "collections.count": Wishlist.collections.count,
+            "items.count": Wishlist.items.count,
+            "outfits.count": Wishlist.outfits.count,
+            "uuid": LoggingViewController.uuid
         ]
+        let stats = optionalStats.compactMapValues({ $0 })
         let names = className.drop(suffix: "ViewController").splitBefore { $0.isUppercased }
         let name = String(names.joined(separator: " "))
-        AppsFlyerLib.shared().logEvent(name, withValues: dictinary)
+        AppsFlyerLib.shared().logEvent(name, withValues: stats)
+        AppDelegate.logYandex(event: name, parameters: stats)
     }
     
     // MARK: - Inherited Methods
