@@ -1,4 +1,6 @@
+# git restore --staged APIKeys.plist
 # git update-index --assume-unchanged APIKeys.plist
+# git update-index --no-assume-unchanged 'Outfit Selection/App/AppDelegate/AppDelegate+AppsFlyerLibDelegate.swift'
 .DS_Store
 APIKeys.plist
 GoogleService-Info.plist

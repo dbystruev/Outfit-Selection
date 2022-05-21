@@ -11,10 +11,10 @@ import UIKit
 
 extension AppDelegate: AppsFlyerLibDelegate {
     /// AppsFlyer Dev Key found in AppsFlyer.com dashboard > App Settings > DevKey
-    static let appsFlyerDevKey = "..." // Replace with your AppsFlyer Dev Key
+    static var appsFlyerDevKey = "..." // Replace with your AppsFlyer Dev Key
     
     /// AppsFlyer App ID found in AppsFlyer.com Dashboard > id in top left corner (without "id")
-    static let appleAppID = "..." // Replace with your App ID
+    static var appleAppID = "..." // Replace with your App ID
     
     /// Configures AppsFlyer developer key, app ID, App Tracking Transparency (ATT) support, and other settings
     /// - Parameter application: the singleton app object
@@ -64,11 +64,16 @@ extension AppDelegate: AppsFlyerLibDelegate {
     ///   - function: current function, #function by default
     /// - Returns: true if appsFlyerDevKey and appleAppID are set, false otherwise
     func checkAppsFlyer(line: Int = #line, file: String = #file, function: String = #function) -> Bool {
-        guard AppDelegate.appsFlyerDevKey.hasDigits && AppDelegate.appleAppID.hasDigits else {
-//            debug(line: line, file: file, function: function, "WARNING: No appsFlyerDevKey and/or appleAppID is set")
+        if AppDelegate.appleAppID.hasDigits || AppDelegate.appsFlyerDevKey.hasDigits { return true }
+        guard
+            let appleAppID = Global.apiKeys[.appleAppID],
+            let appsFlyerDevKey = Global.apiKeys[.appsFlyerDevKey]
+        else {
+            debug(line: line, file: file, function: function, "WARNING: No appsFlyerDevKey and/or appleAppID is set")
             return false
         }
-        
+        AppDelegate.appleAppID = appleAppID
+        AppDelegate.appsFlyerDevKey = appsFlyerDevKey
         return true
     }
     
