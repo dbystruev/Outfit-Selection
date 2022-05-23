@@ -53,8 +53,8 @@ extension FeedCollectionViewController {
     /// - Parameter pick: pick with empty (.brand) PickType for expand
     /// - Returns: array with picks
     private func pickBrand(pick: Pick) -> Picks {
-        let selectrdBrands = Brands.selected
-        let picks = selectrdBrands.map { Pick(.brand($0.value.name), filters: pick.filters, title: pick.title + $0.value.name) }
+        let selectedBrands = Brands.selected
+        let picks = selectedBrands.map { Pick(.brand($0.value.name), filters: pick.filters, title: pick.title + $0.value.name) }
         return picks
     }
     
@@ -62,8 +62,8 @@ extension FeedCollectionViewController {
     /// - Parameter pick: pick with empty (.category) PickType for expand
     /// - Returns: array with picks
     func pickCategory(pick: Pick) -> Picks {
-        let selectrdOccasion = Occasions.selected
-        let categories = Categories.all.filtered(by: selectrdOccasion)
+        let selectedOccasion = Occasions.selected
+        let categories = Categories.all.filtered(by: selectedOccasion)
         let picks = categories.map { Pick(.category($0.name), filters: pick.filters, limit: pick.limit, title: $0.name + pick.title) }
         return picks
     }
@@ -72,8 +72,8 @@ extension FeedCollectionViewController {
     /// - Parameter pick: pick with empty (.occasion) PickType for expand
     /// - Returns: array with picks
     private func pickOccasion(pick: Pick) -> Picks {
-        let selectrdOccasion = Occasions.selectedUniqueTitle
-        let picks = selectrdOccasion.map { Pick(.occasion($0.title), filters: pick.filters, subtitles: pick.subtitles, title: pick.title + $0.title) }
+        let selectedOccasion = Occasions.selectedUniqueTitle
+        let picks = selectedOccasion.map { Pick(.occasion($0.title), filters: pick.filters, subtitles: pick.subtitles, title: pick.title + $0.title) }
         return picks
     }
     
