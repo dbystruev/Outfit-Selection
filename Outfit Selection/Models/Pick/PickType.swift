@@ -1,5 +1,5 @@
 //
-//  SectionType.swift
+//  PickType.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 28.09.2021.
@@ -7,21 +7,22 @@
 //
 
 /// There are 3 sectionType of feed cell so far
-enum SectionType {
+enum PickType: Codable {
     // MARK: - Computed Static Properties
-    static var primary: [SectionType] {
+    static var primary: [PickType] {
         [.brands, .newItems, .sale]
     }
     
     // MARK: - Enum
     case brand(String) // New arrivals for [brand]
     case brands
-    case categories(String) // Your personalized pick for [occasion]
-    case category(String, Int) // [caregory] lover 30
+    case category(String) // [caregory] lover 30
     case collections(String)
     case daily(Int) // Daily 30
     case emptyBrands
+    case hello // Hello, *user name*
     case newItems
+    case occasion(String) // Your personalized pick for [occasion]
     case occasions(Int)
     case sale
     
@@ -33,16 +34,19 @@ enum SectionType {
             return "New arrivals for"~ + " \(brand)"
         case .brands:
             return "Favourite brands"~
-        case .categories(let occasion): //
+        case .occasion(let occasion): //
             return "Your personalized pick for"~ + " \(occasion)"
-        case .category(let category, let limit):
-            return "\(category) " + "lover"~ + " \(limit)"
+        case .category(let category):
+            return "\(category) " + "lover"~
         case .collections(let name):
             return name
         case .daily(let limit):
             return "Daily"~ + " \(limit)"
         case .emptyBrands:
             return "Please select your favourite brands"~
+        case .hello:
+            guard let userName = User.current.displayName else { return nil }
+            return "Hello"~ + ", \(userName)"
         case .newItems:
             return "New items for you"~
         case .occasions(let id):
@@ -52,7 +56,34 @@ enum SectionType {
             return "Sales"~
         }
     }
+    /// Subtitle in feed collection section
+    var subtitle: [String]? {
+        switch self{
+        case .brand(_):
+            return nil
+        case .brands:
+            return nil
+        case .occasion(_):
+            return nil
+        case .category(_):
+            return nil
+        case .collections(_):
+            return nil
+        case .daily(_):
+            return nil
+        case .emptyBrands:
+            return nil
+        case .hello:
+            return ["We picked up items for you"~, "Based on your preferences and lifestyle"~]
+        case .newItems:
+            return ["Daily updated"~]
+        case .occasions(_):
+            return nil
+        case .sale:
+            return nil
+        }
+    }
 }
 
-extension SectionType: Equatable {}
-extension SectionType: Hashable {}
+extension PickType: Equatable {}
+extension PickType: Hashable {}

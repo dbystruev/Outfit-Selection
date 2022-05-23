@@ -43,7 +43,7 @@ extension FeedCollectionViewController: UICollectionViewDelegate {
                 // Filtered items without deselected brand
                 let filteredItems: Items = feedKind.value.filter { !$0.branded([brandedImage.name]) }
                 
-                // Set new items for SectionType
+                // Set new items for PickType
                 self.items[feedKind.key] = filteredItems
                 
                 // Get index with updated element
