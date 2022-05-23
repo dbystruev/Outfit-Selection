@@ -62,8 +62,9 @@ extension FeedCollectionViewController {
     /// - Parameter pick: pick with empty (.category) PickType for expand
     /// - Returns: array with picks
     func pickCategory(pick: Pick) -> Picks {
-        let selectedCategories = Categories.byID
-        let picks = selectedCategories.map { Pick(.category($0.value.name), filters: pick.filters, limit: pick.limit, title: $0.value.name + pick.title) }
+        let selectrdOccasion = Occasions.selected
+        let categories = Categories.all.filtered(by: selectrdOccasion)
+        let picks = categories.map { Pick(.category($0.name), filters: pick.filters, limit: pick.limit, title: $0.name + pick.title) }
         return picks
     }
 
