@@ -12,10 +12,10 @@ extension FeedCollectionViewController {
     
     /// Gets items depending on feed type (section)
     /// - Parameters:
-    ///   - type: SectionType
+    ///   - type: PickType
     ///   - ignoreBrands: should we ignore brands (false by default)
     ///   - completion: closure without parameters
-    func getItems(for type: SectionType, ignoreBrands: Bool = false, completion: @escaping () -> Void) {
+    func getItems(for type: PickType, ignoreBrands: Bool = false, completion: @escaping () -> Void) {
         
         // Helper properties
         var limited: Int = self.maxItemsInSection * 2
@@ -24,20 +24,19 @@ extension FeedCollectionViewController {
         var excluded: [Int] = []
         var sale: Bool = false
         
-        // Switch for SectionType
+        // Switch for PickType
         switch type {
             
         case .brand(let brand):
             vendorNames = getParamsFor(brandName: brand)
             
-        case .categories(let occasionName):
+        case .occasion(let occasionName):
             let answer = getParamsForCategories(occasionName: occasionName)
             subcategoryIDs = answer.1
             vendorNames = answer.0
             
-        case .category(let category , let limit):
-            let answer = getParamsFor(categoryName: category, limit: limit)
-            limited = answer.2
+        case .category(let category):
+            let answer = getParamsFor(categoryName: category, limit: 30)
             excluded = answer.1
             vendorNames = answer.0
             
@@ -157,7 +156,7 @@ extension FeedCollectionViewController {
         return daily // (subCategoryIDs, limit)
         //   ⁃ all items your *gender*
         //    ⁃ all items your *favorite brands*
-        //    ⁃ all items from categories your *chosen occasions*
+        //    ⁃ all items from occasion your *chosen occasions*
         //    ⁃ 30 random items (?)
     }
     

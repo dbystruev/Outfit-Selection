@@ -119,6 +119,9 @@ enum Global {
             
             /// UIFont(name: "NotoSans-SemiBold", size: 16)
             static let header = UIFont(name: "NotoSans-SemiBold", size: 16)!
+            
+            /// UIFont(name: "NotoSans-Regular", size: 14)
+            static let title = UIFont(name: "NotoSans-Regular", size: 14)!
         }
         
         enum Onboarding {

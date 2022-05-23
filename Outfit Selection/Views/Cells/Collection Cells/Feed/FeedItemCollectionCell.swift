@@ -59,7 +59,7 @@ class FeedItemCollectionCell: UICollectionViewCell {
     ///   - section: the type (section) of item to configure content for
     ///   - item: item to configure feed item for
     ///   - isInteractive: allow clicks if true, don't if false
-    func configureContent(kind: SectionType, item: Item, isInteractive: Bool) {
+    func configureContent(kind: PickType, item: Item, isInteractive: Bool) {
         feedItem?.configureContent(with: item, showSale: kind == .sale, isInteractive: isInteractive)
     }
     

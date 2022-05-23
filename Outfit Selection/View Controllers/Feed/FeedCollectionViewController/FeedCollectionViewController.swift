@@ -24,18 +24,22 @@ class FeedCollectionViewController: LoggingViewController {
     /// The collection of branded images
     let brandedImages = Brands.prioritizeSelected
     
+    /// The current User
+    let currentUser = User.current
+    
     /// Default feed sections
-    let feedSectionsDefault = [
-        SectionType.brands,
-        SectionType.newItems,
-        SectionType.sale,
+    var feedSectionsDefault = [
+        PickType.brands,
+        PickType.hello,
+        PickType.newItems,
+        PickType.sale,
     ] + Occasions.selectedIDsUniqueTitle.map { .occasions($0) }
     
     /// Empty sections with information for user
-    let feedSectionEmpty = [SectionType.brands, SectionType.emptyBrands]
+    let feedSectionEmpty = [PickType.brands, PickType.emptyBrands]
     
     /// Items for each of the kinds
-    var items: [SectionType: Items] = [:]
+    var items: [PickType: Items] = [:]
     
     /// Brands is locking now
     var lockBrands = false
@@ -46,11 +50,14 @@ class FeedCollectionViewController: LoggingViewController {
     /// Parent navigation controller if called from another view controller
     var parentNavigationController: UINavigationController?
     
+    /// Sections described by picks model
+    var picks: Picks = Picks.all
+    
     /// Saved brand cell margins and paddings
     var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
     
     /// Types (kinds) for each of the section
-    var sections: [SectionType] = [] {
+    var sections: [PickType] = [] {
         didSet {
             nonEmptySections = sections
         }
@@ -60,7 +67,7 @@ class FeedCollectionViewController: LoggingViewController {
     var selectedBrands: Set<String> = []
     
     ///Non empty sections after filter
-    var nonEmptySections: [SectionType] = [] {
+    var nonEmptySections: [PickType] = [] {
         didSet {
             if nonEmptySections == feedSectionEmpty {
                 if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
@@ -71,11 +78,11 @@ class FeedCollectionViewController: LoggingViewController {
     }
     
     // MARK: - Private Methods
-    /// Gets items depending on feed type (section) for  SectionType .collections
+    /// Gets items depending on feed type (section) for  PickType .collections
     /// - Parameters:
     ///   - section: feed type (section)
     ///   - ignoreBrands: should we ignore brands (false by default)
-    private func getItems(for type: SectionType, ignoreBrands: Bool = false) {
+    private func getItems(for type: PickType, ignoreBrands: Bool = false) {
         debug("INFO: Update:", type, "from wislist")
         // All sections will need to be filtered by brands
         let brandNames = brandManager.selectedBrandNames
@@ -134,7 +141,7 @@ class FeedCollectionViewController: LoggingViewController {
     /// - Parameters:
     ///   - items: items to append to the section
     ///   - section: the section type (section) to append the items to
-    func addSection(items: Items, to section: SectionType) {
+    func addSection(items: Items, to section: PickType) {
         sections.append(section)
         guard !items.isEmpty else {
             getItems(for: section)
@@ -182,11 +189,11 @@ class FeedCollectionViewController: LoggingViewController {
     /// Download items for section
     /// - Parameters:
     ///   - sections: sections for set and download items
-    func updateItems(sections: [SectionType]) {
+    func updateItems(sections: [PickType]) {
         
         // Stop update if sections is not feed sections default
         guard !feedSectionsDefault.filter(sections.contains).isEmpty
-                || sections != [SectionType.brands, SectionType.emptyBrands] else {
+                || sections != [PickType.brands, PickType.emptyBrands] else {
             debug("INFO: Unknown sections", sections)
             return
         }
@@ -203,7 +210,7 @@ class FeedCollectionViewController: LoggingViewController {
                 
                 // Get items for section
                 self.getItems(for: section, completion: {
-                    if self.items[section] == nil || section == .brands  {
+                    if self.items[section] == nil || section == .brands || section == .hello  {
                     } else {
                         DispatchQueue.main.async { [self] in
                             // Replace element current section
@@ -227,7 +234,7 @@ class FeedCollectionViewController: LoggingViewController {
                 debug("INFO: Get items FINISH")
                 
                 // Get sections with empty items and ignore brands
-                let emptySections = sections.filter { items[$0]?.isEmpty ?? true && $0 != .brands }
+                let emptySections = sections.filter { items[$0]?.isEmpty ?? true && $0 != .brands || $0 != .hello  }
                 
                 // Remove all emptySection
                 nonEmptySections.removeAll(where: { emptySections.contains($0) } )
@@ -252,10 +259,12 @@ class FeedCollectionViewController: LoggingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        // TODO: Delete it after test
-//        getItems(for: .category("Holidays: B-day", 30)) {
-//            debug("FINISH")
-//        }
+        // TODO: Delete it after test
+        let expandedPicks = expand(picks: picks)
+        
+        for (index, expandedPick) in expandedPicks.enumerated() {
+            debug(index, expandedPick.type, "|", expandedPick.title)
+        }
         
         // Configure navigation controller's bar font
         navigationController?.configureFont()

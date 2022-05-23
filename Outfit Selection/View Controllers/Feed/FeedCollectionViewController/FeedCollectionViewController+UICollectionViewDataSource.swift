@@ -29,6 +29,9 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
         case .emptyBrands:
             return UICollectionViewCell()
             
+        case .hello:
+            return UICollectionViewCell()
+            
         default:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: FeedItemCollectionCell.reuseId,
