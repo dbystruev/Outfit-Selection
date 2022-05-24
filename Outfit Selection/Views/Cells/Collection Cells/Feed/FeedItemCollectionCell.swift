@@ -56,11 +56,21 @@ class FeedItemCollectionCell: UICollectionViewCell {
     // MARK: - Custom Methods
     /// Configure feed item content based on the item given
     /// - Parameters:
-    ///   - section: the type (section) of item to configure content for
+    ///   - kind: the type (section) of item to configure content for
     ///   - item: item to configure feed item for
     ///   - isInteractive: allow clicks if true, don't if false
     func configureContent(kind: PickType, item: Item, isInteractive: Bool) {
         feedItem?.configureContent(with: item, showSale: kind == .sale, isInteractive: isInteractive)
+    }
+    
+    
+    /// Configure feed item content based on the item given
+    /// - Parameters:
+    ///   - pick: the type (pick) of item to configure content for
+    ///   - item: item to configure feed item for
+    ///   - isInteractive: allow clicks if true, don't if false
+    func configureContent(pick: Pick, item: Item, isInteractive: Bool) {
+        feedItem?.configureContent(with: item, showSale: pick.filters.contains(.sale), isInteractive: isInteractive)
     }
     
     /// Get feed item from xib and add it as subview of this cell
