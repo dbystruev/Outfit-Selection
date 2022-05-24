@@ -83,6 +83,35 @@ enum PickType: Codable {
             return nil
         }
     }
+    
+    /// The name 
+    var name: String? {
+        switch self {
+        case .brand(let brandName):
+            return brandName
+        case .brands:
+            return nil
+        case .category(let categoryName):
+            return categoryName
+        case .collections(_):
+            return nil
+        case .daily(_):
+            return nil
+        case .emptyBrands:
+            return nil
+        case .hello:
+            return nil
+        case .newItems:
+            return nil
+        case .occasion(let occasionName):
+            return occasionName
+        case .occasions(_):
+            return nil
+        case .sale:
+            return nil
+        }
+    }
+
 }
 
 extension PickType: Equatable {}
