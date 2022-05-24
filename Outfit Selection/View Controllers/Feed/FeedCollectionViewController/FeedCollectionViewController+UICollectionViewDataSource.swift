@@ -88,6 +88,10 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             return header
         }
         
+        // TODO: Delete it
+//        let expandedPicks = expand(picks: picks)
+//        feedHeader.configureContent(pick: expandedPicks[0])
+        
         feedHeader.configureContent(kind: nonEmptySections[indexPath.section % nonEmptySections.count])
         feedHeader.delegate = self
         return feedHeader

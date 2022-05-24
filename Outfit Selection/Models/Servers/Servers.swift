@@ -13,13 +13,13 @@ public typealias Servers = [Server]
 extension Servers {
     /// All available servers
     public static let all: Servers = [
-        Server(
-            about: "Concept Group / Raskroi Look server in St. Petersburg",
-            id: 1,
-            name: "spb.getoutfit.co",
-            shouldUse: true,
-            url: URL(string: "http://spb.getoutfit.co:3000")!
-        ),
+//        Server(
+//            about: "Concept Group / Raskroi Look server in St. Petersburg",
+//            id: 1,
+//            name: "spb.getoutfit.co",
+//            shouldUse: true,
+//            url: URL(string: "http://spb.getoutfit.co:3000")!
+//        ),
         Server(
             about: "Oracle Cloud Amsterdam ",
             id: 2,

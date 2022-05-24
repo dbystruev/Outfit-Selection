@@ -10,7 +10,7 @@ import Foundation
 
 extension Picks {
     static var all: Picks = [
-        Pick(.hello, subtitles: ["We picked up items for you", "Based on your preferences and lifestyle"], title: "Hello, "),
+        Pick(.hello, limit: 0, subtitles: ["We picked up items for you", "Based on your preferences and lifestyle"], title: "Hello, "),
         Pick(.newItems, filters: [.gender, .brands], subtitles: ["Daily updated"], title: "New items for you"),
         Pick(.newItems, filters: [.gender, .brands, .sale, .daily, .random], subtitles: ["Daily updated"], title: "Your favorite brands on sale"),
         Pick(.newItems, limit: 0, subtitles: ["Discover personalized recommendations", "Based on your favourite occasions and brands "] , title: "Made for you"),

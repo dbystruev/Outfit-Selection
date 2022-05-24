@@ -117,7 +117,7 @@ extension FeedCollectionViewController {
     ///   - categoryName: category name
     ///   - limit: the limit for result
     /// - Returns: (~vendorNames, subCategoryIDs, limit)
-    private func getParamsFor(categoryName: String, limit: Int) -> ([String], [Int], Int)  {
+    func getParamsFor(categoryName: String, limit: Int) -> ([String], [Int], Int)  {
         let answer = getParamsForCategories(occasionName: categoryName)
         return (answer.0, answer.1, limit)  // (~vendorNames, subCategoryIDs, limit)
     }
@@ -133,7 +133,7 @@ extension FeedCollectionViewController {
     /// Return vendorNames and subCategoryIDs
     /// - Parameter occasionName: occasion name for seacher into Occasio. byTitle
     /// - Returns: (vendorNames, subCategoryIDs)
-    private func getParamsForCategories(occasionName: String) -> ([String], [Int]) {
+    func getParamsForCategories(occasionName: String) -> ([String], [Int]) {
         // All sections brand names
         let vendorNames = brandManager.selectedBrandNames
         

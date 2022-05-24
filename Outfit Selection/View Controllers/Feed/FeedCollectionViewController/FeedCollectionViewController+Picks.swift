@@ -70,7 +70,6 @@ extension FeedCollectionViewController {
                 
             case .additionalBrands:
                 // TODO: Change to additionalBrands
-                debug("Add additionalBrands in to Network manager")
                 vendorNames = brandManager.selectedBrandNames
                 
             case .brand:
@@ -78,7 +77,7 @@ extension FeedCollectionViewController {
                 vendorNames = [name]
                 
             case .brands:
-                vendorNames = brandManager.selectedBrandNames
+                vendorNames = brandManager.unselectedBrandNames
                 
             case .category:
                 guard let name = pick.type.name else { return }
@@ -86,9 +85,11 @@ extension FeedCollectionViewController {
                 let answer = getParamsFor(categoryName: name, limit: limited )
                 subcategoryIDs = answer.1
                 
+            case .daily:
+                vendorNames = Brands.unselected.names
+                
             case .excludeBrands:
-                debug("Add excludeBrands in to Network manager")
-                // TODO: Add unselected barnds
+                vendorNames = Brands.unselected.names
                 
             case .gender:
                 gender = Gender.current
@@ -107,8 +108,8 @@ extension FeedCollectionViewController {
             case .sale:
                 sale = true
                 
-            default:
-                debug("ERROR: Unknown filter", filter.rawValue)
+//            default:
+//                debug("ERROR: Unknown filter", filter.rawValue)
             }
         }
         
