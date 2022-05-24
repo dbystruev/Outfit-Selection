@@ -20,12 +20,11 @@ extension FeedCollectionViewController {
         for pick in picks {
             switch pick.type {
             case .hello:
-                var pick = Pick(.hello, subtitles: pick.subtitles, title: pick.title)
+                var pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pick.title)
                 if currentUser.isLoggedIn == true {
                     let userName = User.current.displayName ?? ""
-                    pick = Pick(.hello, subtitles: pick.subtitles, title: pick.title + userName )
+                    pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pick.title + userName )
                 }
-                
                 expandedPiks.append(pick)
                 
             case .occasion(""):
@@ -48,13 +47,104 @@ extension FeedCollectionViewController {
         return expandedPiks
     }
     
+    /// Gets items depending on feed type (section)
+    /// - Parameters:
+    ///   - pick: pick for get items
+    ///   - completion: closure without parameters
+    func getItems(for pick: Pick, completion: @escaping (Items?) -> Void) {
+        
+        // Helper properties
+        let excluded: [Int] = []
+        var gender = Gender.current
+        var limited: Int = self.maxItemsInSection * 2
+        var random: Bool = false
+        var sale: Bool = false
+        var subcategoryIDs: [Int] = []
+        var vendorNames: [String] = []
+        
+        
+        for filter in pick.filters {
+            
+            // Switch for filters
+            switch filter {
+                
+            case .additionalBrands:
+                // TODO: Change to additionalBrands
+                vendorNames = brandManager.selectedBrandNames
+                
+            case .brand:
+                guard let name = pick.type.name else { return }
+                vendorNames = [name]
+                
+            case .brands:
+                vendorNames = brandManager.unselectedBrandNames
+                
+            case .category:
+                guard let name = pick.type.name else { return }
+                limited = pick.limit ?? self.maxItemsInSection * 2
+                let answer = getParamsFor(categoryName: name, limit: limited )
+                subcategoryIDs = answer.1
+                
+            case .daily:
+                vendorNames = Brands.unselected.names
+                
+            case .excludeBrands:
+                vendorNames = Brands.unselected.names
+                
+            case .gender:
+                gender = Gender.current
+                
+            case .occasion:
+                guard let name = pick.type.name else { return }
+                let answer = getParamsForCategories(occasionName: name)
+                subcategoryIDs = answer.1
+                
+            case .occasions:
+                subcategoryIDs = Occasions.selectedIDs
+                
+            case .random:
+                random = true
+                
+            case .sale:
+                sale = true
+                
+//            default:
+//                debug("ERROR: Unknown filter", filter.rawValue)
+            }
+        }
+        
+        NetworkManager.shared.getItems(
+            excluded: excluded.isEmpty ? [] : excluded,
+            filteredBy: vendorNames,
+            for: gender,
+            limited: limited,
+            sale: sale,
+            subcategoryIDs: excluded.isEmpty ? subcategoryIDs : []
+        ) { [weak self] items in
+            // Check for self availability
+            guard self != nil else {
+                debug("ERROR: self is not available")
+                return
+            }
+            
+            // Check items is empty
+            guard let items = items, !items.isEmpty else {
+                debug("ERROR: Items is empty")
+                return
+            }
+            
+            // Return Items and shuffling if it need
+            completion(random ? items.shuffled() : items)
+        }
+    }
+    
     // MARK: - Private Methods
     /// Private method for make expanded (.brand)
     /// - Parameter pick: pick with empty (.brand) PickType for expand
     /// - Returns: array with picks
     private func pickBrand(pick: Pick) -> Picks {
-        let selectrdBrands = Brands.selected
-        let picks = selectrdBrands.map { Pick(.brand($0.value.name), filters: pick.filters, title: pick.title + $0.value.name) }
+        let selectedBrands = Brands.selected
+        let picks = selectedBrands.map { Pick(.brand($0.value.name), filters: pick.filters, title: pick.title + $0.value.name) }
         return picks
     }
     

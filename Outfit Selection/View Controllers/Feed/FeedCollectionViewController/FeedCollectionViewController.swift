@@ -253,8 +253,8 @@ class FeedCollectionViewController: LoggingViewController {
                 lockBrands = false
             }
         }
-    }
-
+    }    
+    
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -262,9 +262,25 @@ class FeedCollectionViewController: LoggingViewController {
         // TODO: Delete it after test
         let expandedPicks = expand(picks: picks)
         
-        for (index, expandedPick) in expandedPicks.enumerated() {
-            debug(index, expandedPick.type, "|", expandedPick.title)
+        for (_, pick) in expandedPicks.enumerated() {
+            //debug(index, pick.type, "|", pick.title)
+            
+            if pick.limit == 0 {
+                // TODO: Add to displayed picks
+                debug("Skipped:", pick.type, "|",  pick.title)
+                continue
+            }
+            
+            getItems(for: pick) { items in
+                guard let items = items, !items.isEmpty else {
+                    debug("No items:", pick.type, "|",  pick.title)
+                    return
+                }
+                // TODO: Add to displayed picks
+                debug("Items count:", items.count, pick.type, "|",  pick.title)
+            }
         }
+        // TODO: END
         
         // Configure navigation controller's bar font
         navigationController?.configureFont()
