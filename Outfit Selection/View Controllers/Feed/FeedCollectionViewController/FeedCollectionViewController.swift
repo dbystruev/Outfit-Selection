@@ -14,7 +14,6 @@ class FeedCollectionViewController: LoggingViewController {
     @IBOutlet weak var feedCollectionView: UICollectionView!
     
     // MARK: - Stored Properties
-    
     /// The name for Notification name
     let brandsChanged = Global.Notification.name.brandsChanged
     
@@ -27,10 +26,12 @@ class FeedCollectionViewController: LoggingViewController {
     /// The current User
     let currentUser = User.current
     
+    /// Displayed Picks for data source
+    var displayedPicks: Picks = []
+    
     /// Default feed sections
     var feedSectionsDefault = [
         PickType.brands,
-        PickType.hello,
         PickType.newItems,
         PickType.sale,
     ] + Occasions.selectedIDsUniqueTitle.map { .occasions($0) }
@@ -51,7 +52,7 @@ class FeedCollectionViewController: LoggingViewController {
     var parentNavigationController: UINavigationController?
     
     /// Sections described by picks model
-    var picks: Picks = Picks.all
+    let picks: Picks = Picks.all
     
     /// Saved brand cell margins and paddings
     var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
@@ -160,7 +161,8 @@ class FeedCollectionViewController: LoggingViewController {
             // Initial sections for feed collection view
             sections = feedSectionsDefault
             // Update all items in sections
-            updateItems(sections: sections)
+            //updateItems(sections: sections)
+            updateItems(picks: picks)
             
         } else {
             // Initial sections for feed collection view
@@ -253,35 +255,11 @@ class FeedCollectionViewController: LoggingViewController {
                 lockBrands = false
             }
         }
-    }    
+    }
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // TODO: Delete it after test
-        let expandedPicks = expand(picks: picks)
-        
-        for (_, pick) in expandedPicks.enumerated() {
-            //debug(index, pick.type, "|", pick.title)
-            
-            if pick.limit == 0 {
-                // TODO: Add to displayed picks
-                debug("Skipped:", pick.type, "|",  pick.title)
-                continue
-            }
-            
-            getItems(for: pick) { items in
-                guard let items = items, !items.isEmpty else {
-                    debug("No items:", pick.type, "|",  pick.title)
-                    return
-                }
-                // TODO: Add to displayed picks
-                debug("Items count:", items.count, pick.type, "|",  pick.title)
-            }
-        }
-        // TODO: END
-        
         // Configure navigation controller's bar font
         navigationController?.configureFont()
         

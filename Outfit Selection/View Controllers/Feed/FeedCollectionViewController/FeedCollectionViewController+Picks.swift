@@ -62,7 +62,6 @@ extension FeedCollectionViewController {
         var subcategoryIDs: [Int] = []
         var vendorNames: [String] = []
         
-        
         for filter in pick.filters {
             
             // Switch for filters
@@ -77,7 +76,7 @@ extension FeedCollectionViewController {
                 vendorNames = [name]
                 
             case .brands:
-                vendorNames = brandManager.unselectedBrandNames
+                vendorNames = brandManager.selectedBrandNames
                 
             case .category:
                 guard let name = pick.type.name else { return }
@@ -86,10 +85,10 @@ extension FeedCollectionViewController {
                 subcategoryIDs = answer.1
                 
             case .daily:
-                vendorNames = Brands.unselected.names
+                vendorNames = brandManager.selectedBrandNames
                 
             case .excludeBrands:
-                vendorNames = Brands.unselected.names
+                vendorNames = brandManager.unselectedBrandNames
                 
             case .gender:
                 gender = Gender.current
@@ -107,9 +106,6 @@ extension FeedCollectionViewController {
                 
             case .sale:
                 sale = true
-                
-//            default:
-//                debug("ERROR: Unknown filter", filter.rawValue)
             }
         }
         
@@ -127,14 +123,56 @@ extension FeedCollectionViewController {
                 return
             }
             
-            // Check items is empty
-            guard let items = items, !items.isEmpty else {
-                debug("ERROR: Items is empty")
-                return
+            // Return items and shuffling if it need
+            completion(random ? items?.shuffled() : items)
+        }
+    }
+    
+    /// Get items and set it into picks for DataSource
+    /// - Parameter picks: picks for get items
+    func updateItems(picks: Picks) {
+        
+        // Make expand picks
+        let expandedPicks = expand(picks: picks)
+        
+        // Dispatch group to wait for all requests to finish
+        let group = DispatchGroup()
+        
+        // For pick in picks
+        for pick in expandedPicks {
+            
+            group.enter()
+            if pick.limit == 0 {
+                debug("Skipped:", pick.type, "|",  pick.title)
+                displayedPicks.append(pick)
+                group.leave()
+                continue
             }
             
-            // Return Items and shuffling if it need
-            completion(random ? items.shuffled() : items)
+            // Get items for pick
+            getItems(for: pick) { items in
+                guard let items = items, !items.isEmpty else {
+                    debug("No items:", pick.type, "|",  pick.title)
+                    group.leave()
+                    return
+                }
+                
+                debug("Items count:", items.count, pick.type, "|",  pick.title)
+                
+                // Add items in to picks for DataSource
+                self.displayedPicks.append(pick)
+                group.leave()
+            }
+        }
+        
+        // Notification from DispatchQueue group when all section got answer
+        group.notify(queue: .main) { [self] in
+            debug("INFO: Get items FINISH", "Picks:", displayedPicks.count )
+            
+            // Reload data into UICollectionView
+            if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+                feedCollectionView?.reloadData()
+            }
         }
     }
     
@@ -157,7 +195,7 @@ extension FeedCollectionViewController {
         let picks = categories.map { Pick(.category($0.name), filters: pick.filters, limit: pick.limit, title: $0.name + pick.title) }
         return picks
     }
-
+    
     /// Private method for make expanded (.occasion)
     /// - Parameter pick: pick with empty (.occasion) PickType for expand
     /// - Returns: array with picks
