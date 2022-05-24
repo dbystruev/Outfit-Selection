@@ -20,12 +20,11 @@ extension FeedCollectionViewController {
         for pick in picks {
             switch pick.type {
             case .hello:
-                var pick = Pick(.hello, subtitles: pick.subtitles, title: pick.title)
+                var pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pick.title)
                 if currentUser.isLoggedIn == true {
                     let userName = User.current.displayName ?? ""
-                    pick = Pick(.hello, subtitles: pick.subtitles, title: pick.title + userName )
+                    pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pick.title + userName )
                 }
-                
                 expandedPiks.append(pick)
                 
             case .occasion(""):
@@ -46,6 +45,96 @@ extension FeedCollectionViewController {
         }
         
         return expandedPiks
+    }
+    
+    /// Gets items depending on feed type (section)
+    /// - Parameters:
+    ///   - pick: pick for get items
+    ///   - completion: closure without parameters
+    func getItems(for pick: Pick, completion: @escaping (Items?) -> Void) {
+        
+        // Helper properties
+        let excluded: [Int] = []
+        var gender = Gender.current
+        var limited: Int = self.maxItemsInSection * 2
+        var random: Bool = false
+        var sale: Bool = false
+        var subcategoryIDs: [Int] = []
+        var vendorNames: [String] = []
+        
+        
+        for filter in pick.filters {
+            
+            // Switch for filters
+            switch filter {
+                
+            case .additionalBrands:
+                // TODO: Change to additionalBrands
+                debug("Add additionalBrands in to Network manager")
+                vendorNames = brandManager.selectedBrandNames
+                
+            case .brand:
+                guard let name = pick.type.name else { return }
+                vendorNames = [name]
+                
+            case .brands:
+                vendorNames = brandManager.selectedBrandNames
+                
+            case .category:
+                guard let name = pick.type.name else { return }
+                limited = pick.limit ?? self.maxItemsInSection * 2
+                let answer = getParamsFor(categoryName: name, limit: limited )
+                subcategoryIDs = answer.1
+                
+            case .excludeBrands:
+                debug("Add excludeBrands in to Network manager")
+                // TODO: Add unselected barnds
+                
+            case .gender:
+                gender = Gender.current
+                
+            case .occasion:
+                guard let name = pick.type.name else { return }
+                let answer = getParamsForCategories(occasionName: name)
+                subcategoryIDs = answer.1
+                
+            case .occasions:
+                subcategoryIDs = Occasions.selectedIDs
+                
+            case .random:
+                random = true
+                
+            case .sale:
+                sale = true
+                
+            default:
+                debug("ERROR: Unknown filter", filter.rawValue)
+            }
+        }
+        
+        NetworkManager.shared.getItems(
+            excluded: excluded.isEmpty ? [] : excluded,
+            filteredBy: vendorNames,
+            for: gender,
+            limited: limited,
+            sale: sale,
+            subcategoryIDs: excluded.isEmpty ? subcategoryIDs : []
+        ) { [weak self] items in
+            // Check for self availability
+            guard self != nil else {
+                debug("ERROR: self is not available")
+                return
+            }
+            
+            // Check items is empty
+            guard let items = items, !items.isEmpty else {
+                debug("ERROR: Items is empty")
+                return
+            }
+            
+            // Return Items and shuffling if it need
+            completion(random ? items.shuffled() : items)
+        }
     }
     
     // MARK: - Private Methods
