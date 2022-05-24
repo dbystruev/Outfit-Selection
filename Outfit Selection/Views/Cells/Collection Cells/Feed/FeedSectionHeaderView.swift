@@ -69,7 +69,7 @@ class FeedSectionHeaderView: UICollectionReusableView {
         addSubview(header)
         
         // Configure title
-        titleLabel.numberOfLines = 2
+        titleLabel.numberOfLines = 0
         titleLabel.textColor = Global.Color.Feed.header
         titleLabel.font = Global.Font.Feed.title
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -109,6 +109,18 @@ class FeedSectionHeaderView: UICollectionReusableView {
         subtitle.isHidden = kind != .hello
         subtitle.text = kind.subtitle?.last
         
+    }
+    
+    func configureContent(pick: Pick) {
+        self.kind = pick.type
+        
+        header.text = pick.type.title
+        
+        titleLabel.isHidden = pick.subtitles.isEmpty
+        titleLabel.text = pick.subtitles.joined(separator: "\n")
+        
+        seeAllButton.setTitle("See all"~, for: .normal)
+        seeAllButton.isHidden = pick.limit == 0
     }
     
     // MARK: - Actions
