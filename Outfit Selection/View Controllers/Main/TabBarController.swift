@@ -56,7 +56,9 @@ class TabBarController: UITabBarController {
         // Reload section with brand from FeedCollectionViewController
         if self.selectedIndex == Global.TabBar.index.feed {
             guard let feedCollectionViewController = findViewController(ofType: FeedCollectionViewController.self) else { return }
-            feedCollectionViewController.feedCollectionView?.reloadSections(IndexSet([0]))
+            if AppDelegate.canReload && feedCollectionViewController.feedCollectionView?.hasUncommittedUpdates == false {
+                feedCollectionViewController.feedCollectionView?.reloadSections(IndexSet([0]))
+            }
         }
         
         // Don't do anything if there are no changes in brands or gender

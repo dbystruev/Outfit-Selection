@@ -10,7 +10,7 @@ import UIKit
 
 class FeedSectionHeaderView: UICollectionReusableView {
     // MARK: - Static Constants
-    static let height: CGFloat = 80
+    static var height: CGFloat = 110
     
     // MARK: - Class Methods
     /// Registers the header view with the collection view
@@ -29,17 +29,16 @@ class FeedSectionHeaderView: UICollectionReusableView {
     let seeAllButton = DelegatedButton()
     let header = UILabel()
     let titleLabel = UILabel()
-    let subtitle = UILabel()
     
     // MARK: - Stored Properties
     /// Delegate to call when something inside is tapped (for use in child classes)
     var delegate: ButtonDelegate?
 
     /// Kind of this section
-    var kind: PickType = .sale
+    var pick: PickType = .sale
     
     // MARK: - Computed Properties
-    var title: String? { kind.title }
+    var title: String? { pick.title }
     
     // MARK: - Init
     override init(frame: CGRect) {
@@ -75,46 +74,24 @@ class FeedSectionHeaderView: UICollectionReusableView {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         addSubview(titleLabel)
         
-        // Configure subtitle
-        subtitle.numberOfLines = 2
-        subtitle.textColor = Global.Color.Feed.header
-        subtitle.font = Global.Font.Feed.button
-        subtitle.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(subtitle)
-        
-        
         // Setup constraints
         NSLayoutConstraint.activate([
             seeAllButton.leadingAnchor.constraint(
                 greaterThanOrEqualTo: header.trailingAnchor, constant: 16
             ),
-            seeAllButton.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 24),
-            seeAllButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -24),
+            header.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -8),
             header.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 24),
-            header.topAnchor.constraint(equalTo: layoutMarginsGuide.topAnchor, constant: 24),
-            titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 24),
-            titleLabel.bottomAnchor.constraint(equalTo: header.bottomAnchor, constant: 24),
-            subtitle.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 24),
-            subtitle.bottomAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 24)
+            seeAllButton.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -4),
+            seeAllButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -24),
+            titleLabel.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor, constant: -8),
+            titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 24)
         ])
     }
     
-    func configureContent(kind: PickType) {
-        self.kind = kind
-        seeAllButton.setTitle("See all"~, for: .normal)
-        seeAllButton.isHidden = kind == .brands || kind == .emptyBrands || kind == .hello
-        header.text = kind.title
-        titleLabel.isHidden = kind == .brands || kind == .emptyBrands
-        titleLabel.text = kind.subtitle?.first
-        subtitle.isHidden = kind != .hello
-        subtitle.text = kind.subtitle?.last
-        
-    }
-    
     func configureContent(pick: Pick) {
-        self.kind = pick.type
+        self.pick = pick.type
         
-        header.text = pick.type.title
+        header.text = pick.title
         
         titleLabel.isHidden = pick.subtitles.isEmpty
         titleLabel.text = pick.subtitles.joined(separator: "\n")

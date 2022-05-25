@@ -42,6 +42,9 @@ class FeedCollectionViewController: LoggingViewController {
     /// Items for each of the kinds
     var items: [PickType: Items] = [:]
     
+    /// Items for each of the kinds
+    var pickItems: [Pick: Items] = [:]
+    
     /// Brands is locking now
     var lockBrands = false
     
@@ -132,7 +135,9 @@ class FeedCollectionViewController: LoggingViewController {
                 section == section ? index : nil
             }
             DispatchQueue.main.async {
-                self.feedCollectionView?.reloadSections(IndexSet(updatedSections))
+                if AppDelegate.canReload && self.feedCollectionView?.hasUncommittedUpdates == false {
+                    self.feedCollectionView?.reloadSections(IndexSet(updatedSections))
+                }
             }
         }
     }
@@ -159,9 +164,10 @@ class FeedCollectionViewController: LoggingViewController {
         // Check selected count of brands
         if Brands.selected.count > 0 && !emptySection {
             // Initial sections for feed collection view
-            sections = feedSectionsDefault
-            // Update all items in sections
+            //sections = feedSectionsDefault
             //updateItems(sections: sections)
+            
+            // Update all items in sections
             updateItems(picks: picks)
             
         } else {
@@ -176,7 +182,7 @@ class FeedCollectionViewController: LoggingViewController {
     ///   - withBrandsOnTop: if true add brands row on top of collection view
     func setup(_ collectionView: UICollectionView, withBrandsOnTop: Bool) {
         // Register feed cell with feed table view
-        BrandCollectionViewCell.register(with: collectionView)
+        //BrandCollectionViewCell.register(with: collectionView)
         FeedItemCollectionCell.register(with: collectionView)
         FeedSectionHeaderView.register(with: collectionView)
         
@@ -224,7 +230,10 @@ class FeedCollectionViewController: LoggingViewController {
                             }
                             //debug("INFO: Update:", section, "Items:", items[section]?.count ,"Sections:", sections.count)
                             // Reload sections where was updated items
-                            feedCollectionView?.reloadSections(IndexSet(updatedSections))
+                            
+                            if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+                                feedCollectionView?.reloadSections(IndexSet(updatedSections))
+                            }
                         }
                     }
                     group.leave()
@@ -272,17 +281,6 @@ class FeedCollectionViewController: LoggingViewController {
         // Set section into UICollectionView
         setSection()
         
-        // Reload data into UICollectionView
-//        if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
-//            feedCollectionView?.reloadData()
-//        }
-        
-        // Update items in sections
-        //updateItems(sections: sections)
-        
-        // Add initial values for each section
-        //sections.forEach { addSection(items: items[$0] ?? [], to: $0) }
-        
         // Make sure like buttons are updated when we come back from see all screen
         feedCollectionView.visibleCells.forEach {
             ($0 as? FeedItemCollectionCell)?.configureLikeButton()
@@ -301,22 +299,7 @@ class FeedCollectionViewController: LoggingViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        // Set margins and paddings for brand cell
-        savedBrandCellConstants = (
-            BrandCollectionViewCell.horizontalMargin,
-            BrandCollectionViewCell.horizontalPadding,
-            BrandCollectionViewCell.verticalMargin,
-            BrandCollectionViewCell.verticalPadding
-        )
-        
-        BrandCollectionViewCell.horizontalMargin = 0
-        BrandCollectionViewCell.horizontalPadding = 20
-        BrandCollectionViewCell.verticalMargin = 0
-        BrandCollectionViewCell.verticalPadding = 20
-        
-        //  Reload section with brands
-        feedCollectionView.reloadSections(IndexSet([0]))
-        
+
         // Make sure like buttons are updated when we come back from see all screen
         feedCollectionView.visibleCells.forEach {
             ($0 as? FeedItemCollectionCell)?.configureLikeButton()
@@ -325,13 +308,5 @@ class FeedCollectionViewController: LoggingViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
-        // Restore margins and paddings for brand cell
-        (
-            BrandCollectionViewCell.horizontalMargin,
-            BrandCollectionViewCell.horizontalPadding,
-            BrandCollectionViewCell.verticalMargin,
-            BrandCollectionViewCell.verticalPadding
-        ) = savedBrandCellConstants
     }
 }

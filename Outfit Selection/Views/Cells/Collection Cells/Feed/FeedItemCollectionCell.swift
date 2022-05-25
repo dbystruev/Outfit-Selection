@@ -56,7 +56,7 @@ class FeedItemCollectionCell: UICollectionViewCell {
     // MARK: - Custom Methods
     /// Configure feed item content based on the item given
     /// - Parameters:
-    ///   - kind: the type (section) of item to configure content for
+    ///   - pick: the type (section) of item to configure content for
     ///   - item: item to configure feed item for
     ///   - isInteractive: allow clicks if true, don't if false
     func configureContent(kind: PickType, item: Item, isInteractive: Bool) {

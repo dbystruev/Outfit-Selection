@@ -26,6 +26,6 @@ public struct Message: MessageType {
 //        self.sender = sender
 //        self.messageId = messageId
 //        self.sentDate = sentDate
-//        self.kind = kind
+//        self.pick = kind
 //    }
 }

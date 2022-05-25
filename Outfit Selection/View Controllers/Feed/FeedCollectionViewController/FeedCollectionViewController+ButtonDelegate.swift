@@ -14,7 +14,7 @@ extension FeedCollectionViewController: ButtonDelegate {
         if let feedHeader = sender as? FeedSectionHeaderView {
             
             // Configure and push feed item view controller
-            let kind = feedHeader.kind
+            let kind = feedHeader.pick
             
             // Check if we came from wish list
             guard let wishlistNavigationController = parentNavigationController else {
@@ -54,7 +54,7 @@ extension FeedCollectionViewController: ButtonDelegate {
                 }
                 
                 // Check current items for nil
-                guard self.items[feedHeader.kind] != nil else { return }
+                guard self.items[feedHeader.pick] != nil else { return }
                 
                 // Show all items into tapped section
                 performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: feedHeader)

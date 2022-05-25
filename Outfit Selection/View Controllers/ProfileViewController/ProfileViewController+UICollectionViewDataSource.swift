@@ -113,7 +113,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             (headerView as? ProfileSectionHeaderView)?.configure(title: ProfileViewController.sectionHeaders[indexPath.section])
             return headerView
         default:
-            debug("WARNING: Unknown kind \(kind) in section \(indexPath.section), row \(indexPath.row)")
+            debug("WARNING: Unknown pick \(kind) in section \(indexPath.section), row \(indexPath.row)")
             return UICollectionReusableView()
         }
     }
