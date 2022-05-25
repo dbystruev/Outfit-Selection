@@ -68,7 +68,9 @@ enum Alert {
             handlers: [{ _ in
                 // Keep gender to current
                 sender.shownGender = Gender.current
-                sender.profileCollectionView.reloadSections([0])
+                if AppDelegate.canReload && sender.profileCollectionView?.hasUncommittedUpdates == false {
+                    sender.profileCollectionView.reloadSections([0])
+                }
             }, { _ in
                 // Reload gender section with new gender
                 Gender.current = newGender

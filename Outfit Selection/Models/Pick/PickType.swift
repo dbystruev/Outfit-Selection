@@ -56,33 +56,6 @@ enum PickType: Codable {
             return "Sales"~
         }
     }
-    /// Subtitle in feed collection section
-    var subtitle: [String]? {
-        switch self{
-        case .brand(_):
-            return nil
-        case .brands:
-            return nil
-        case .occasion(_):
-            return nil
-        case .category(_):
-            return nil
-        case .collections(_):
-            return nil
-        case .daily(_):
-            return nil
-        case .emptyBrands:
-            return nil
-        case .hello:
-            return ["We picked up items for you"~, "Based on your preferences and lifestyle"~]
-        case .newItems:
-            return ["Daily updated"~]
-        case .occasions(_):
-            return nil
-        case .sale:
-            return nil
-        }
-    }
     
     /// The name 
     var name: String? {

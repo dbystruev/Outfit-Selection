@@ -9,9 +9,15 @@
 import UIKit
 
 extension FeedCollectionViewController: UICollectionViewDataSource {
+    /// Get cell for the given index path in collection view
+    /// - Parameters:
+    ///   - collectionView: collection view
+    ///   - indexPath: index path to give the cell for
+    /// - Returns: the cell for the given index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath ) -> UICollectionViewCell {
-        switch nonEmptySections[indexPath.section] {
         
+        // Switch for displayedPick type
+        switch displayedPicks[indexPath.section].type {
         case .brands:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: BrandCollectionViewCell.reuseId,
@@ -44,13 +50,9 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             }
             
             // Configure content for cell in section
-            let kind = nonEmptySections[indexPath.section]
-            if let item = items[kind]?[indexPath.item] {
-                itemCell.configureContent(
-                    kind: kind,
-                    item: item,
-                    isInteractive: true
-                )
+            let pick = displayedPicks[indexPath.section]
+            if let item = pickItems[pick]?[indexPath.item] {
+                itemCell.configureContent(pick: pick, item: item, isInteractive: true)
             }
             
             itemCell.delegate = self
@@ -58,24 +60,36 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
         }
     }
     
+    /// Returns the number of items in each section of collection view
+    /// - Parameters:
+    ///   - collectionView: feed collection view
+    ///   - section: section number to return the number of items for
+    /// - Returns: the number of items in given section of  collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let kind = nonEmptySections[section]
-        let count = kind == .brands ? Brands.sorted.count : items[kind]?.count ?? 0
+        let pick = displayedPicks[section]
+        let count = pickItems[pick]?.count ?? 0
         return count
     }
     
+    /// Returns the number of sections in collection view
+    /// - Parameter collectionView: collection view
+    /// - Returns: the number of sections in  collection view
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        let count = nonEmptySections.count
-        return count
+        return displayedPicks.count
     }
     
+    /// Configure and provide section header for the collection view
+    /// - Parameters:
+    ///   - collectionView: profile collection view
+    ///   - kind: UICollectionView.elementKindSectionHeader
+    ///   - indexPath: index path of given section
+    /// - Returns: section header for the  collection view
     func collectionView(
         _ collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
         guard kind == UICollectionView.elementKindSectionHeader else { return UICollectionReusableView() }
-        
         
         let header = collectionView.dequeueReusableSupplementaryView(
             ofKind: kind,
@@ -88,11 +102,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             return header
         }
         
-        // TODO: Delete it
-//        let expandedPicks = expand(picks: picks)
-//        feedHeader.configureContent(pick: expandedPicks[0])
-        
-        feedHeader.configureContent(kind: nonEmptySections[indexPath.section % nonEmptySections.count])
+        feedHeader.configureContent(pick: displayedPicks[indexPath.section % displayedPicks.count])
         feedHeader.delegate = self
         return feedHeader
     }

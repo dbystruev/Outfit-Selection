@@ -140,7 +140,9 @@ class SignupViewController: LoggingViewController {
         }
         
         // Reload data from into profileCollectionView
-        profileViewController.profileCollectionView.reloadSections(IndexSet([0]))
+        if AppDelegate.canReload && profileViewController.profileCollectionView.hasUncommittedUpdates == false {
+            profileViewController.profileCollectionView.reloadSections(IndexSet([0]))
+        }
         self.dismiss(animated: true)
     }
 }

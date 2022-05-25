@@ -139,7 +139,7 @@ extension FeedCollectionViewController {
         let group = DispatchGroup()
         
         // For pick in picks
-        for pick in expandedPicks {
+        for (index, pick) in expandedPicks.enumerated() {
             
             group.enter()
             if pick.limit == 0 {
@@ -160,7 +160,24 @@ extension FeedCollectionViewController {
                 debug("Items count:", items.count, pick.type, "|",  pick.title)
                 
                 // Add items in to picks for DataSource
-                self.displayedPicks.append(pick)
+                if index < self.displayedPicks.count {
+                    self.displayedPicks.insert(pick, at: index)
+                } else {
+                    self.displayedPicks.append(pick)
+                }
+                
+                // Add piks
+                self.pickItems[pick] = items
+                self.items[pick.type] = items
+                
+                DispatchQueue.main.async {
+                    if AppDelegate.canReload && self.feedCollectionView?.hasUncommittedUpdates == false {
+                        self.feedCollectionView?.reloadData()
+                    }
+                }
+                
+                // TODO: Reload displayedPicks section and overload reloadData section
+                
                 group.leave()
             }
         }

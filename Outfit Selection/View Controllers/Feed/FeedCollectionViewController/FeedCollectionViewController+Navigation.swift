@@ -24,8 +24,8 @@ extension FeedCollectionViewController {
                 return
             }
             
-            let kind = feedHeader.kind
-            feedItemViewController.configure(kind, with: items[kind], named: feedHeader.title)
+            let pick = feedHeader.pick
+            feedItemViewController.configure(pick, with: items[pick], named: feedHeader.title)
             
         case ItemViewController.segueIdentifier:
             // Make sure feed item was clicked

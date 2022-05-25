@@ -42,7 +42,9 @@ extension ProfileViewController: UICollectionViewDelegate {
             } else {
                 if newGender != shownGender {
                     shownGender = newGender
-                    collectionView.reloadSections([0])
+                    if AppDelegate.canReload && collectionView.hasUncommittedUpdates == false {
+                        collectionView.reloadSections([0])
+                    }
                 }
             }
             

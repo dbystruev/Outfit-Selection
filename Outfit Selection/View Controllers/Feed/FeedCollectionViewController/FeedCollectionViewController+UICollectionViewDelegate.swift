@@ -52,8 +52,9 @@ extension FeedCollectionViewController: UICollectionViewDelegate {
                 }
                 
                 // Reload sections where was updated items
-                feedCollectionView?.reloadSections(IndexSet(updatedSections))
-                
+                if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+                    feedCollectionView?.reloadSections(IndexSet(updatedSections))
+                }
                 updateItems(sections: [feedKind.key])
             }
             

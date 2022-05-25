@@ -23,7 +23,9 @@ extension ProfileViewController {
         UserDefaults.hasAnswerQuestions = false
         
         // Reload data from into profileCollectionView
-        profileCollectionView.reloadSections(IndexSet([0]))
+        if AppDelegate.canReload && profileCollectionView?.hasUncommittedUpdates == false {
+            profileCollectionView.reloadSections(IndexSet([0]))
+        }
         
         // Check current user for debugmode
         if User.current.debugmode ?? false {

@@ -36,3 +36,5 @@ struct Pick: Codable {
         self.title = title
     }
 }
+
+extension Pick: Hashable {}

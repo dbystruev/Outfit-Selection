@@ -21,17 +21,26 @@ extension FeedCollectionViewController {
             widthDimension: .fractionalWidth(1),
             heightDimension: .absolute(FeedSectionHeaderView.height)
         )
+         
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
             elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .top
+            alignment: .topLeading
         )
+         
+        let emptyHeader = NSCollectionLayoutBoundarySupplementaryItem(
+             layoutSize: headerSize,
+             elementKind: UICollectionView.elementKindSectionHeader,
+             alignment: .bottom
+        )
+         
         
         // Define the item size
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
             heightDimension: .fractionalHeight(1)
         )
+         
         let item = NSCollectionLayoutItem(layoutSize: itemSize)
         item.contentInsets = NSDirectionalEdgeInsets(
             top: 0,
@@ -39,40 +48,35 @@ extension FeedCollectionViewController {
             bottom: 0,
             trailing: spacing
         )
-        
-        // Define the brand group size
-        let brandCount = brandedImages.count
-        let brandGroupSize = NSCollectionLayoutSize(
-            widthDimension: .absolute((BrandCollectionViewCell.width + 2 * spacing) * CGFloat(brandCount)),
-            heightDimension: .absolute(BrandCollectionViewCell.height + 2 * spacing)
+            
+        // Define the emptySection group size
+        let emptySectionSize = NSCollectionLayoutSize(
+            widthDimension: .absolute(0),
+            heightDimension: .absolute(0)
         )
-        let brandGroup = NSCollectionLayoutGroup.horizontal(
-            layoutSize: brandGroupSize,
-            subitem: item,
-            count: brandCount
+         
+        let emptySectionGroup = NSCollectionLayoutGroup.horizontal(
+            layoutSize: emptySectionSize,
+            subitems: [item]
         )
-        brandGroup.contentInsets = NSDirectionalEdgeInsets(
-            top: spacing,
-            leading: spacing,
-            bottom: spacing,
-            trailing: spacing
-        )
-        
+         
         // Define brand section size
-        let brandSection = NSCollectionLayoutSection(group: brandGroup)
-        brandSection.boundarySupplementaryItems = [header]
-        brandSection.interGroupSpacing = spacing
-        brandSection.orthogonalScrollingBehavior = .continuous
+        let emptySection = NSCollectionLayoutSection(group: emptySectionGroup)
+        emptySection.boundarySupplementaryItems = [emptyHeader]
+        emptySection.interGroupSpacing = spacing
+        emptySection.orthogonalScrollingBehavior = .continuous
         
         // Define the item group size
         let itemGroupSize = NSCollectionLayoutSize(
             widthDimension: .absolute(FeedItemCollectionCell.width),
             heightDimension: .absolute(FeedItemCollectionCell.height)
         )
+         
         let itemGroup = NSCollectionLayoutGroup.horizontal(
             layoutSize: itemGroupSize,
             subitems: [item]
         )
+         
         itemGroup.contentInsets = NSDirectionalEdgeInsets(
             top: 0,
             leading: 0,
@@ -88,7 +92,8 @@ extension FeedCollectionViewController {
         
         // Define the layout size
         let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
-            withBrandsOnTop && sectionIndex == 0 ? brandSection : itemSection
+            let section = self.displayedPicks[sectionIndex]
+            return section.limit == 0 ? emptySection : itemSection
         }
          
         return layout
