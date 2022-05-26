@@ -46,23 +46,24 @@ extension FeedsProfileViewController {
         let isSelected = sender.isButtonSelected
         
         // Select / deselect all occasions save the selection to permanent storage
-        for name in FeedsProfile.all.names {
+        for (index ,name) in FeedsProfile.all.names.enumerated() {
             guard let feed = FeedsProfile.all.first(where: { $0.name == name }) else { return }
+            
+            // Set isSelected for CheckBox but without save it
             FeedsProfile.selectWithoutSaving(feed: feed, shouldUse: isSelected )
             
-//            guard let feedsProfileCell = feed as? FeedsProfileCell else {
-//                debug("ERROR: Can't cast tableView cell as", FeedsProfileCell.className)
-//                return
-//            }
+            // Find cell and IndexPath for it
+            let cell = feedsTableView.visibleCells[index]
+            guard let indexPath = feedsTableView.indexPath(for: cell) else { return }
+            
+            // Will be sure that UITableView cell is FeedsProfileCell
+            guard let feedsProfileCell = feedsTableView.cellForRow(at: indexPath) as? FeedsProfileCell else {
+                debug("ERROR: Can't cast tableView cell as", FeedsProfileCell.className)
+                return
+            }
             
             // Configure CheckBox and set isHighlighted
-            //feedsProfileCell.configureCheckBox(isHighlighted: feed.shouldUse)
-            
-        }
-        
-        // Reload feeds and enable / disable go button
-        if AppDelegate.canReload && feedsTableView?.hasUncommittedUpdates == false {
-            feedsTableView?.reloadData()
+            feedsProfileCell.configureCheckBox(isHighlighted: feed.shouldUse)
         }
 
         configureAllButton()

@@ -63,11 +63,6 @@ class FeedItemCollectionCell: UICollectionViewCell {
         feedItem?.configureContent(with: item, showSale: kind == .sale, isInteractive: isInteractive)
     }
     
-//    override func prepareForReuse() {
-//        feedItem?.itemImageView.image = nil
-//        feedItem?.itemImageView.item = nil
-//    }
-    
     /// Configure feed item content based on the item given
     /// - Parameters:
     ///   - pick: the type (pick) of item to configure content for
@@ -102,5 +97,11 @@ class FeedItemCollectionCell: UICollectionViewCell {
     /// Configure the view of feed item's like button depending on item being in wish list
     func configureLikeButton() {
         feedItem?.configureLikeButton(isInteractive: true)
+    }
+    
+    // MARK: - Inherited Methods
+    override func prepareForReuse() {
+        feedItem?.itemImageView.image = nil
+        feedItem?.itemImageView.item = nil
     }
 }
