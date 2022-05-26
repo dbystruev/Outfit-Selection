@@ -88,10 +88,10 @@ class FeedSectionHeaderView: UICollectionReusableView {
     }
     
     func configureContent(kind: PickType) {
+        self.pick = Pick(kind, title: kind.title ?? "")
         seeAllButton.setTitle("See all"~, for: .normal)
         seeAllButton.isHidden = kind == .brands || kind == .emptyBrands || kind == .hello
         header.text = kind.title
-        titleLabel.isHidden = kind == .brands || kind == .emptyBrands
     }
     
     func configureContent(pick: Pick) {

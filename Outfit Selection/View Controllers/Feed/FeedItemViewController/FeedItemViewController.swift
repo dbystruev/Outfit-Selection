@@ -24,6 +24,9 @@ class FeedItemViewController: LoggingViewController {
     /// Items download
     var itemsDownloaded: Bool = false
     
+    /// Section (type) of the items
+    var section: PickType = .newItems
+    
     /// Pick of the items
     var pick: Pick = Pick(.hello, title: "")
     
@@ -38,6 +41,17 @@ class FeedItemViewController: LoggingViewController {
     ///   - name: name of the collection
     func configure(_ pick: Pick, with items: Items?, named name: String?) {
         self.pick = pick
+        self.name = name
+        self.items = items ?? []
+    }
+    
+    /// Configure with feed collection view controller
+    /// - Parameters:
+    ///   - kind: feed item collection type (kind)
+    ///   - items: the list of included items
+    ///   - name: name of the collection
+    func configure(_ section: PickType, with items: Items?, named name: String?) {
+        self.section = section
         self.name = name
         self.items = items ?? []
     }
