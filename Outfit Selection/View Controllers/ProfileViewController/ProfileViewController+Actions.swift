@@ -41,16 +41,18 @@ extension ProfileViewController {
         }
     }
     
-//    func showAlert() {
-//        let alert = Alert.configured(
-//            "Are you sure?"~,
-//            message: "you will be logged out from account"~,
-//            actionTitles: <#T##[String]#>,
-//            styles: [.cancel, .destructive],
-//            handlers: [{ _ in
-//            },{ _ in
-//            }])
-//        present(alert, animated: true)
-//    }
+    // Alert for logout
+    func showAlert() {
+        let alert = Alert.configured(
+            "Are you sure?"~,
+            message: "You will be logged out from account"~,
+            actionTitles: ["Cancel"~, "Yes"~],
+            styles: [.cancel, .destructive],
+            handlers: [{ _ in
+            },{ _ in
+                self.logout()
+            }])
+        present(alert, animated: true)
+    }
 }
 

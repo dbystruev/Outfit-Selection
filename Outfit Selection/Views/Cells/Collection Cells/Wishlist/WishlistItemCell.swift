@@ -34,4 +34,9 @@ class WishlistItemCell: WishlistBaseCell {
         // Load the picture
         pictureImageView.configure(with: item.pictures.first)
     }
+    
+    // MARK: - Inherited Methods
+    override func prepareForReuse() {
+        pictureImageView.image = nil
+    }
 }
