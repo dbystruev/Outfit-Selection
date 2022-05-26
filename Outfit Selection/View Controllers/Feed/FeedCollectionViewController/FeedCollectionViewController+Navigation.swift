@@ -25,7 +25,14 @@ extension FeedCollectionViewController {
             }
             
             let pick = feedHeader.pick
-            feedItemViewController.configure(pick, with: pickItems[pick], named: feedHeader.title)
+            
+            if displayedPicks.isEmpty {
+                debug(items[pick.type], pick.type)
+                feedItemViewController.configure(pick.type, with: items[pick.type], named: feedHeader.title)
+            } else {
+                debug(items[pick.type], pick.type)
+                feedItemViewController.configure(pick, with: pickItems[pick], named: feedHeader.title)
+            }
             
         case ItemViewController.segueIdentifier:
             // Make sure feed item was clicked

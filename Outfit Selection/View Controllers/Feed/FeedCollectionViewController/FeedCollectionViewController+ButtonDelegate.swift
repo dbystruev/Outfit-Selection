@@ -54,7 +54,7 @@ extension FeedCollectionViewController: ButtonDelegate {
                 
                 // Check current items for nil
                 guard self.pickItems[feedHeader.pick] != nil else { return }
-                
+
                 // Show all items into tapped section
                 performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: feedHeader)
                 return
@@ -70,8 +70,13 @@ extension FeedCollectionViewController: ButtonDelegate {
                 debug("WARNING: Can't cast \(viewController) to \(FeedItemViewController.self)")
                 return
             }
+             
+            if displayedPicks.isEmpty {
+                feedItemViewController.configure(kind.type, with: items[kind.type], named: feedHeader.title)
+            } else {
+                feedItemViewController.configure(kind, with: pickItems[kind], named: feedHeader.title)
+            }
             
-            feedItemViewController.configure(kind, with: pickItems[kind], named: feedHeader.title)
             wishlistNavigationController.pushViewController(feedItemViewController, animated: true)
             return
         }

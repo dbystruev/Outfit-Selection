@@ -23,7 +23,7 @@ extension ProfileViewController: UICollectionViewDelegate {
             if User.current.isLoggedIn != nil {
                 if sequenceCredentials[indexPath.row] == "Log out"~ {
                     // Logout into current account
-                    logout()
+                    showAlert()
                 }
                 
             } else {
