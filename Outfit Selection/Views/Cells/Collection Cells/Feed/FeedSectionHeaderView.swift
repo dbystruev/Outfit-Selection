@@ -34,8 +34,7 @@ class FeedSectionHeaderView: UICollectionReusableView {
     /// Delegate to call when something inside is tapped (for use in child classes)
     var delegate: ButtonDelegate?
 
-    /// Kind of this section
-    var pick: PickType = .sale
+    var pick: Pick = Pick(.hello, title: "")
     
     // MARK: - Computed Properties
     var title: String? { pick.title }
@@ -88,8 +87,15 @@ class FeedSectionHeaderView: UICollectionReusableView {
         ])
     }
     
+    func configureContent(kind: PickType) {
+        seeAllButton.setTitle("See all"~, for: .normal)
+        seeAllButton.isHidden = kind == .brands || kind == .emptyBrands || kind == .hello
+        header.text = kind.title
+        titleLabel.isHidden = kind == .brands || kind == .emptyBrands
+    }
+    
     func configureContent(pick: Pick) {
-        self.pick = pick.type
+        self.pick = pick
         
         header.text = pick.title
         

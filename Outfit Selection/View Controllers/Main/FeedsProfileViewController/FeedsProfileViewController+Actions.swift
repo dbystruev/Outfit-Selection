@@ -49,12 +49,22 @@ extension FeedsProfileViewController {
         for name in FeedsProfile.all.names {
             guard let feed = FeedsProfile.all.first(where: { $0.name == name }) else { return }
             FeedsProfile.selectWithoutSaving(feed: feed, shouldUse: isSelected )
+            
+//            guard let feedsProfileCell = feed as? FeedsProfileCell else {
+//                debug("ERROR: Can't cast tableView cell as", FeedsProfileCell.className)
+//                return
+//            }
+            
+            // Configure CheckBox and set isHighlighted
+            //feedsProfileCell.configureCheckBox(isHighlighted: feed.shouldUse)
+            
         }
         
         // Reload feeds and enable / disable go button
         if AppDelegate.canReload && feedsTableView?.hasUncommittedUpdates == false {
             feedsTableView?.reloadData()
         }
+
         configureAllButton()
         configureSaveButton()
     }

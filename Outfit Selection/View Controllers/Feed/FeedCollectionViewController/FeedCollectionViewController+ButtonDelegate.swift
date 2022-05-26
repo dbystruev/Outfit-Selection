@@ -25,7 +25,7 @@ extension FeedCollectionViewController: ButtonDelegate {
                 
                 // Categories should be limited for occasions
                 let subcategoryIDs: [Int] = {
-                    if case let .occasions(id) = kind {
+                    if case let .occasions(id) = kind.type {
                         return Occasions.byID[id]?.flatSubcategoryIDs.compactMap { $0 } ?? []
                     } else {
                         return []
@@ -33,16 +33,15 @@ extension FeedCollectionViewController: ButtonDelegate {
                 }()
                 
                 // If feed type is sale get items with old prices set
-                let sale = kind == .sale
+                let sale = kind.filters.contains(.sale)
+                
+                //debug(kind.type, kind.filters, kind.filters.contains(.sale) )
                 
                 // Make parameters for get
                 let parameters = NetworkManager.shared.parameters(
-                    in: [],
-                    feeds: [],
                     filteredBy: brandNames,
                     for: Gender.current,
                     limited: 1,
-                    named: "",
                     sale: sale,
                     subcategoryIDs: subcategoryIDs
                 )
@@ -54,7 +53,7 @@ extension FeedCollectionViewController: ButtonDelegate {
                 }
                 
                 // Check current items for nil
-                guard self.items[feedHeader.pick] != nil else { return }
+                guard self.pickItems[feedHeader.pick] != nil else { return }
                 
                 // Show all items into tapped section
                 performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: feedHeader)
@@ -72,7 +71,7 @@ extension FeedCollectionViewController: ButtonDelegate {
                 return
             }
             
-            feedItemViewController.configure(kind, with: items[kind], named: feedHeader.title)
+            feedItemViewController.configure(kind, with: pickItems[kind], named: feedHeader.title)
             wishlistNavigationController.pushViewController(feedItemViewController, animated: true)
             return
         }
