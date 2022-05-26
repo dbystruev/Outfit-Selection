@@ -69,7 +69,7 @@ class FeedsProfileViewController: UIViewController {
         
         // Setup data source
         let currentFeedsSource = FeedsProfile.all
-        feedsProfileNames = currentFeedsSource.names.sorted()
+        feedsProfileNames = [String](currentFeedsSource.names)
         
         // Setup occasions table view
         feedsTableView.dataSource = self

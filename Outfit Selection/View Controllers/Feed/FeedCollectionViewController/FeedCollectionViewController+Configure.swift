@@ -50,7 +50,7 @@ extension FeedCollectionViewController {
             
         // Define the emptySection group size
         let emptySectionSize = NSCollectionLayoutSize(
-            widthDimension: .absolute(0),
+            widthDimension: .fractionalWidth(1),
             heightDimension: .absolute(0)
         )
          
@@ -89,11 +89,16 @@ extension FeedCollectionViewController {
         itemSection.interGroupSpacing = spacing
         itemSection.orthogonalScrollingBehavior = .continuous
         
-        // Define the layout size
-        let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
-            let section = self.displayedPicks[sectionIndex]
-            return section.limit == 0 ? emptySection : itemSection
-        }
+         // Define the layout size
+         let layout = UICollectionViewCompositionalLayout { sectionIndex, _ in
+             if self.displayedPicks.isEmpty {
+                 return itemSection
+             } else {
+                 let section = self.displayedPicks[sectionIndex]
+                 return section.limit == 0 ? emptySection : itemSection
+             }
+             
+         }
          
         return layout
     }

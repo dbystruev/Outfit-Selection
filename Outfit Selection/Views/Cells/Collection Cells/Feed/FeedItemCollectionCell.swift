@@ -63,6 +63,10 @@ class FeedItemCollectionCell: UICollectionViewCell {
         feedItem?.configureContent(with: item, showSale: kind == .sale, isInteractive: isInteractive)
     }
     
+//    override func prepareForReuse() {
+//        feedItem?.itemImageView.image = nil
+//        feedItem?.itemImageView.item = nil
+//    }
     
     /// Configure feed item content based on the item given
     /// - Parameters:

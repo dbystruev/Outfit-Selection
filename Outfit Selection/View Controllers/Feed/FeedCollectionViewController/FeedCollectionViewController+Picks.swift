@@ -201,7 +201,7 @@ extension FeedCollectionViewController {
             
             // Reload data into UICollectionView
             if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
-                feedCollectionView?.reloadData()
+                //feedCollectionView?.reloadData()
             }
         }
     }

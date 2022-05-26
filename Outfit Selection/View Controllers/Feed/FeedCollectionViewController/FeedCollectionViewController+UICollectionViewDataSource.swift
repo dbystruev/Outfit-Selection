@@ -16,8 +16,18 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
     /// - Returns: the cell for the given index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath ) -> UICollectionViewCell {
         
+        var sectionType: PickType = .hello
+        
+        switch collectionView {
+            
+        case feedCollectionView:
+            sectionType = displayedPicks[indexPath.section].type
+        default:
+            sectionType = nonEmptySections[indexPath.section]
+        }
+        
         // Switch for displayedPick type
-        switch displayedPicks[indexPath.section].type {
+        switch sectionType {
         case .brands:
             let cell = collectionView.dequeueReusableCell(
                 withReuseIdentifier: BrandCollectionViewCell.reuseId,
@@ -31,9 +41,6 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             
             brandCell.configure(brand: Brands.prioritizeSelected[indexPath.item], cellSize: BrandCollectionViewCell.size)
             return brandCell
-            
-        case .emptyBrands:
-            return UICollectionViewCell()
             
         case .hello:
             return UICollectionViewCell()
@@ -49,10 +56,25 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
                 return cell
             }
             
-            // Configure content for cell in section
-            let pick = displayedPicks[indexPath.section]
-            if let item = pickItems[pick]?[indexPath.item] {
-                itemCell.configureContent(pick: pick, item: item, isInteractive: true)
+            switch collectionView {
+            case feedCollectionView:
+                
+                // Configure content for cell in section
+                let pick = displayedPicks[indexPath.section]
+                if let item = pickItems[pick]?[indexPath.item] {
+                    itemCell.configureContent(pick: pick, item: item, isInteractive: true)
+                }
+            default:
+                
+                // Configure content for cell in section
+                let kind = nonEmptySections[indexPath.section]
+                if let item = items[kind]?[indexPath.item] {
+                    itemCell.configureContent(
+                        kind: kind,
+                        item: item,
+                        isInteractive: true
+                    )
+                }
             }
             
             itemCell.delegate = self
@@ -60,22 +82,36 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
         }
     }
     
+    
     /// Returns the number of items in each section of collection view
     /// - Parameters:
     ///   - collectionView: feed collection view
     ///   - section: section number to return the number of items for
     /// - Returns: the number of items in given section of  collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        let pick = displayedPicks[section]
-        let count = pickItems[pick]?.count ?? 0
-        return count
+        switch collectionView {
+        case feedCollectionView:
+            let pick = displayedPicks[section]
+            let count = pickItems[pick]?.count ?? 0
+            return count
+        default:
+            let kind = nonEmptySections[section]
+            let count = kind == .brands ? Brands.sorted.count : items[kind]?.count ?? 0
+            return count
+        }
+        
     }
     
     /// Returns the number of sections in collection view
     /// - Parameter collectionView: collection view
     /// - Returns: the number of sections in  collection view
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return displayedPicks.count
+        switch collectionView {
+        case feedCollectionView:
+            return displayedPicks.count
+        default:
+            return items.count
+        }
     }
     
     /// Configure and provide section header for the collection view
@@ -102,7 +138,13 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             return header
         }
         
-        feedHeader.configureContent(pick: displayedPicks[indexPath.section % displayedPicks.count])
+        switch collectionView {
+        case feedCollectionView:
+            feedHeader.configureContent(pick: displayedPicks[indexPath.section % displayedPicks.count])
+        default:
+            feedHeader.configureContent(kind: nonEmptySections[indexPath.section % nonEmptySections.count])
+        }
+        
         feedHeader.delegate = self
         return feedHeader
     }
