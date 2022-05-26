@@ -180,9 +180,8 @@ extension FeedCollectionViewController {
                     self.displayedPicks.append(pick)
                 }
                 
-                // Add piks
+                // Add items into pickItems
                 self.pickItems[pick] = items
-                self.items[pick.type] = items
                 
                 DispatchQueue.main.async {
                     if AppDelegate.canReload && self.feedCollectionView?.hasUncommittedUpdates == false {

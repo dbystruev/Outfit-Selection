@@ -13,7 +13,7 @@ extension FeedCollectionViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         debug(section)
-        return CGSize(width: collectionView.frame.width, height: CGFloat(FeedSectionHeaderView.height - 20))
+        return CGSize(width: collectionView.frame.width, height: CGFloat(FeedSectionHeaderView.height))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

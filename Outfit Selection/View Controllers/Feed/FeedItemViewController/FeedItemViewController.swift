@@ -14,10 +14,7 @@ class FeedItemViewController: LoggingViewController {
     @IBOutlet weak var itemCollectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    // MARK: - Stored Properties
-    /// Feed of the feed
-    var feed: [String] = [String](FeedsProfile.all.selected.feedsIDs)
-    
+    // MARK: - Stored Properties    
     /// Collection view layout for the item collection view
     let itemCollectionViewLayout = FeedItemCollectionViewLayout()
     
@@ -27,8 +24,8 @@ class FeedItemViewController: LoggingViewController {
     /// Items download
     var itemsDownloaded: Bool = false
     
-    /// Section (type) of the items
-    var section: PickType = .newItems
+    /// Pick of the items
+    var pick: Pick = Pick(.hello, title: "")
     
     /// Name of the feed
     var name: String?
@@ -36,11 +33,11 @@ class FeedItemViewController: LoggingViewController {
     // MARK: - Custom Methods
     /// Configure with feed collection view controller
     /// - Parameters:
-    ///   - section: feed item collection type (section)
+    ///   - pick: feed item collection type (pick)
     ///   - items: the list of included items
     ///   - name: name of the collection
-    func configure(_ section: PickType, with items: Items?, named name: String?) {
-        self.section = section
+    func configure(_ pick: Pick, with items: Items?, named name: String?) {
+        self.pick = pick
         self.name = name
         self.items = items ?? []
     }
