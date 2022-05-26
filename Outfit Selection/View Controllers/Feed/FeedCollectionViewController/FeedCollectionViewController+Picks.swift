@@ -79,10 +79,18 @@ extension FeedCollectionViewController {
                 vendorNames = brandManager.selectedBrandNames
                 
             case .category:
+                // Get category name from pick type
                 guard let name = pick.type.name else { return }
+                
+                // Find id from categories
+                let byID = Categories.byID.filter { $0.value.name == name }
+                let id = byID.map { $0.key }
+                
+                // Set limit
                 limited = pick.limit ?? self.maxItemsInSection * 2
-                let answer = getParamsFor(categoryName: name, limit: limited )
-                subcategoryIDs = answer.1
+                
+                // Set subcategoryIDs
+                subcategoryIDs = id
                 
             case .daily:
                 vendorNames = brandManager.selectedBrandNames
@@ -94,9 +102,15 @@ extension FeedCollectionViewController {
                 gender = Gender.current
                 
             case .occasion:
+                // Get occasion name from pick type
                 guard let name = pick.type.name else { return }
-                let answer = getParamsForCategories(occasionName: name)
-                subcategoryIDs = answer.1
+                
+                // Find id from Occasions
+                let occasion = Occasions.with(name: name)
+                let id = occasion.map { $0.id }
+                
+                // Set subcategoryIDs
+                subcategoryIDs = id
                 
             case .occasions:
                 subcategoryIDs = Occasions.selectedIDs

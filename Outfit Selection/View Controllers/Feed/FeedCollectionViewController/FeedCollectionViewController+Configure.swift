@@ -25,7 +25,7 @@ extension FeedCollectionViewController {
         let header = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: headerSize,
             elementKind: UICollectionView.elementKindSectionHeader,
-            alignment: .topLeading
+            alignment: .top
         )
          
         let emptyHeader = NSCollectionLayoutBoundarySupplementaryItem(
@@ -34,7 +34,6 @@ extension FeedCollectionViewController {
              alignment: .bottom
         )
          
-        
         // Define the item size
         let itemSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1),
