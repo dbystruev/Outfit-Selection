@@ -418,14 +418,14 @@
             <objects>
                 <viewController id="bPg-zA-c8d" customClass="ImageViewController" customModule="Concept_Group" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yCD-wP-FV6">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" contentInsetAdjustmentBehavior="never" translatesAutoresizingMaskIntoConstraints="NO" id="QBQ-z7-tCU">
-                                <rect key="frame" x="0.0" y="88" width="414" height="808"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="798"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="8pk-P8-xVH">
-                                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="798"/>
                                         <gestureRecognizers/>
                                     </imageView>
                                 </subviews>
@@ -439,6 +439,18 @@
                                     <constraint firstItem="8pk-P8-xVH" firstAttribute="leading" secondItem="QBQ-z7-tCU" secondAttribute="leading" id="v3i-TM-n4O"/>
                                 </constraints>
                             </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5vi-AO-FJw" customClass="OccasionButton" customModule="Concept_Group" customModuleProvider="target">
+                                <rect key="frame" x="366" y="60" width="32" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="4yx-49-qYz"/>
+                                    <constraint firstAttribute="width" constant="32" id="HZq-La-1cd"/>
+                                </constraints>
+                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                <state key="normal" image="close"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="bPg-zA-c8d" eventType="touchUpInside" id="RXE-hR-z8u"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Egm-Su-kFH"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -446,6 +458,8 @@
                             <constraint firstAttribute="trailing" secondItem="QBQ-z7-tCU" secondAttribute="trailing" id="1zb-OG-d4I"/>
                             <constraint firstItem="QBQ-z7-tCU" firstAttribute="leading" secondItem="yCD-wP-FV6" secondAttribute="leading" id="9UB-h7-waS"/>
                             <constraint firstAttribute="bottom" secondItem="QBQ-z7-tCU" secondAttribute="bottom" id="MyR-49-CNS"/>
+                            <constraint firstItem="5vi-AO-FJw" firstAttribute="top" secondItem="Egm-Su-kFH" secondAttribute="top" constant="16" id="YJx-Jw-tX2"/>
+                            <constraint firstItem="Egm-Su-kFH" firstAttribute="trailing" secondItem="5vi-AO-FJw" secondAttribute="trailing" constant="16" id="kgS-vI-nOS"/>
                             <constraint firstItem="QBQ-z7-tCU" firstAttribute="top" secondItem="Egm-Su-kFH" secondAttribute="top" id="l2R-Hj-wv2"/>
                         </constraints>
                     </view>
@@ -776,7 +790,7 @@
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="OPH-ye-Ie6">
                         <barButtonItem key="leftBarButtonItem" id="kcR-Ph-fJt">
                             <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="e1W-qL-2EP">
-                                <rect key="frame" x="78.5" y="2.5" width="92" height="39"/>
+                                <rect key="frame" x="104.5" y="2.5" width="92" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
@@ -820,7 +834,7 @@
                         <outletCollection property="orderButtonHorizontalConstraints" destination="UOc-bk-rdK" collectionClass="NSMutableArray" id="pVL-TM-BLX"/>
                         <outletCollection property="priceLabels" destination="Vum-Xb-k8g" collectionClass="NSMutableArray" id="nuo-xZ-CWK"/>
                         <segue destination="C0E-kp-KJb" kind="show" identifier="intermediaryViewControllerSegue" id="cI0-oM-XQO"/>
-                        <segue destination="bPg-zA-c8d" kind="show" identifier="imageViewControllerSegue" id="CE8-AE-z7v"/>
+                        <segue destination="bPg-zA-c8d" kind="presentation" identifier="imageViewControllerSegue" id="CE8-AE-z7v"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pfc-rV-XgN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
