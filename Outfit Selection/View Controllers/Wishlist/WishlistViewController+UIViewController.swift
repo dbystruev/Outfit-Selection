@@ -93,7 +93,7 @@ extension WishlistViewController {
         navigationController?.configureFont()
         
         // Register cells, set data source and delegate for collections table view
-        feedController.setup(collectionsCollectionView, withBrandsOnTop: false)
+        feedController.setup(collectionsCollectionView)
         feedController.parentNavigationController = navigationController
         
         // Register feed item collection cell with wishlist collection view

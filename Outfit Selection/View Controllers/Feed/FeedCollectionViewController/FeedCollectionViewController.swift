@@ -179,8 +179,7 @@ class FeedCollectionViewController: LoggingViewController {
     /// Register cells, set data source and delegate for a given collection view
     /// - Parameters:
     ///   - collectionView: collection view to setup
-    ///   - withBrandsOnTop: if true add brands row on top of collection view
-    func setup(_ collectionView: UICollectionView, withBrandsOnTop: Bool) {
+    func setup(_ collectionView: UICollectionView) {
         // Register feed cell with feed table view
         //BrandCollectionViewCell.register(with: collectionView)
         FeedItemCollectionCell.register(with: collectionView)
@@ -191,7 +190,7 @@ class FeedCollectionViewController: LoggingViewController {
         collectionView.delegate = self
         
         // Generate collection view layout
-        collectionView.setCollectionViewLayout(configureLayout(withBrandsOnTop: withBrandsOnTop), animated: false)
+        collectionView.setCollectionViewLayout(configureLayout(), animated: false)
     }
     
     /// Download items for section
@@ -287,7 +286,7 @@ class FeedCollectionViewController: LoggingViewController {
         }
         
         // Set self as data source and register collection view cells and header
-        setup(feedCollectionView, withBrandsOnTop: true)
+        setup(feedCollectionView)
         
         // Observer for brands, it called when brands selected was changed
         NotificationCenter.default.addObserver(

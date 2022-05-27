@@ -20,11 +20,9 @@ extension FeedCollectionViewController {
         for pick in picks {
             switch pick.type {
             case .hello:
-                var pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pick.title)
-                if currentUser.isLoggedIn == true {
-                    let userName = User.current.displayName?.components(separatedBy: " ").first  ?? ""
-                    pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pick.title + userName)
-                }
+                let userName = User.current.displayName?.components(separatedBy: " ").first  ?? ""
+                let pickTitle = currentUser.isLoggedIn == true ? pick.title + userName : pick.title
+                let pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pickTitle)
                 expandedPiks.append(pick)
                 
             case .occasion(""):
@@ -172,24 +170,20 @@ extension FeedCollectionViewController {
                 }
                 
                 debug("Items count:", items.count, pick.type, "|",  pick.title)
-                
-                // Add items in to picks for DataSource
+                let collectionIndex: Int
                 if index < self.displayedPicks.count {
+                    collectionIndex = index
                     self.displayedPicks.insert(pick, at: index)
                 } else {
+                    collectionIndex = self.displayedPicks.count
                     self.displayedPicks.append(pick)
                 }
                 
                 // Add items into pickItems
                 self.pickItems[pick] = items
-                
                 DispatchQueue.main.async {
-                    if AppDelegate.canReload && self.feedCollectionView?.hasUncommittedUpdates == false {
-                        self.feedCollectionView?.reloadData()
-                    }
+                    self.feedCollectionView.insertSections([collectionIndex])
                 }
-                
-                // TODO: Reload displayedPicks section and overload reloadData section
                 
                 group.leave()
             }
@@ -201,7 +195,7 @@ extension FeedCollectionViewController {
             
             // Reload data into UICollectionView
             if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
-                //feedCollectionView?.reloadData()
+                feedCollectionView?.reloadData()
             }
         }
     }
