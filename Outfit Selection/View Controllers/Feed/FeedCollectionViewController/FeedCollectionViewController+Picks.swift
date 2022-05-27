@@ -22,8 +22,8 @@ extension FeedCollectionViewController {
             case .hello:
                 var pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pick.title)
                 if currentUser.isLoggedIn == true {
-                    let userName = User.current.displayName ?? ""
-                    pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pick.title + userName )
+                    let userName = User.current.displayName?.components(separatedBy: " ").first  ?? ""
+                    pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pick.title + userName)
                 }
                 expandedPiks.append(pick)
                 
