@@ -17,19 +17,23 @@ class WishlistItemCell: WishlistBaseCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var vendorLabel: UILabel!
     
+    var item: Item? = nil
+    
     // MARK: - Methods
     /// Configure item cell content with a given item
     /// - Parameters:
     ///   - item:  item to configure cell content with
     ///   - delegate: delegate to send message about select button tap, nil by default
     func configure(with item: Item, delegate: ButtonDelegate? = nil) {
+        self.item = item
+        
         // Save the delegate and the item
         super.configure(with: item, delegate: delegate)
         
         // Configure labels
-        nameLabel.text = item.nameWithoutVendor
-        priceLabel.text = item.price.asPrice
-        vendorLabel.text = item.vendorName.capitalizingFirstLetter
+        nameLabel.text = self.item?.nameWithoutVendor
+        priceLabel.text = self.item?.price.asPrice
+        vendorLabel.text = self.item?.vendorName.capitalizingFirstLetter
         
         // Load the picture
         pictureImageView.configure(with: item.pictures.first)
@@ -38,5 +42,6 @@ class WishlistItemCell: WishlistBaseCell {
     // MARK: - Inherited Methods
     override func prepareForReuse() {
         pictureImageView.image = nil
+        self.item = nil
     }
 }

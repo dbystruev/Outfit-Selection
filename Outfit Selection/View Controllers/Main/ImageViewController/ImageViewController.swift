@@ -55,10 +55,8 @@ class ImageViewController: UIViewController {
         
         // Configure UITapGestureRecognizer for double tap
         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        imageView.isUserInteractionEnabled = true
         tap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(tap)
-        
-        // Hide tabBar
-        hideTabBar()
+        imageView.addGestureRecognizer(tap)
     }
 }

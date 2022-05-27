@@ -10,9 +10,8 @@ import UIKit
 
 extension FeedCollectionViewController {
     /// Compose layout for feed collection view
-    /// - Parameter withBrandsOnTop: if true top row is brands row
     /// - Returns: collection view layout for feed collection view
-     func configureLayout(withBrandsOnTop: Bool) -> UICollectionViewLayout {
+     func configureLayout() -> UICollectionViewLayout {
         // Define cell spacing
         let spacing: CGFloat = 8
         
@@ -97,9 +96,7 @@ extension FeedCollectionViewController {
                  let section = self.displayedPicks[sectionIndex]
                  return section.limit == 0 ? emptySection : itemSection
              }
-             
          }
-         
         return layout
     }
     

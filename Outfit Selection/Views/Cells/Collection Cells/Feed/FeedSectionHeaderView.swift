@@ -80,10 +80,12 @@ class FeedSectionHeaderView: UICollectionReusableView {
             ),
             header.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -8),
             header.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 24),
+            header.trailingAnchor.constraint(lessThanOrEqualTo: seeAllButton.leadingAnchor),
             seeAllButton.bottomAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -4),
             seeAllButton.trailingAnchor.constraint(equalTo: layoutMarginsGuide.trailingAnchor, constant: -24),
             titleLabel.bottomAnchor.constraint(equalTo: layoutMarginsGuide.bottomAnchor, constant: -8),
-            titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 24)
+            titleLabel.leadingAnchor.constraint(equalTo: layoutMarginsGuide.leadingAnchor, constant: 24),
+            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: seeAllButton.leadingAnchor),
         ])
     }
     
@@ -102,8 +104,10 @@ class FeedSectionHeaderView: UICollectionReusableView {
         titleLabel.isHidden = pick.subtitles.isEmpty
         titleLabel.text = pick.subtitles.joined(separator: "\n")
         
+        let shouldHide = pick.limit == 0
+        seeAllButton.isHidden = shouldHide
+        seeAllButton.setContentCompressionResistancePriority(UILayoutPriority(shouldHide ? 0 : 1000), for: .horizontal)
         seeAllButton.setTitle("See all"~, for: .normal)
-        seeAllButton.isHidden = pick.limit == 0
     }
     
     // MARK: - Actions

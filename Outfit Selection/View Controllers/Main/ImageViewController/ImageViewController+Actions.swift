@@ -6,7 +6,7 @@
 //  Copyright © 2022 Denis Bystruev. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 extension ImageViewController {
     // MARK: - Methods
@@ -15,5 +15,10 @@ extension ImageViewController {
         ? imageScrollView.setZoomScale(imageScrollView.zoomScale + maximumZoomScale, animated: true)
         : imageScrollView.setZoomScale(minimumZoomScale, animated: true)
         tapped.toggle()
+    }
+    
+    // MARK: - IBActions
+    @IBAction func closeButtonTapped(_ sender: UIButton) {
+        dismiss(animated: true)
     }
 }
