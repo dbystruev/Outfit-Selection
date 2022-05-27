@@ -182,9 +182,10 @@ extension FeedCollectionViewController {
                 // Add items into pickItems
                 self.pickItems[pick] = items
                 DispatchQueue.main.async {
+                    
+                    // TODO: Lock See all button when items is downloading
                     self.feedCollectionView.insertSections([collectionIndex])
                 }
-                
                 group.leave()
             }
         }
@@ -195,6 +196,8 @@ extension FeedCollectionViewController {
             
             // Reload data into UICollectionView
             if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+                
+                // TODO: Unlock See all buttons
                 feedCollectionView?.reloadData()
             }
         }

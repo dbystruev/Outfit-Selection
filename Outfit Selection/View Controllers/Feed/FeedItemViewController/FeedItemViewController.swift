@@ -14,7 +14,10 @@ class FeedItemViewController: LoggingViewController {
     @IBOutlet weak var itemCollectionView: UICollectionView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    // MARK: - Stored Properties    
+    // MARK: - Stored Properties
+    /// Marker for activate editMode
+    var editMode: Bool = false
+    
     /// Collection view layout for the item collection view
     let itemCollectionViewLayout = FeedItemCollectionViewLayout()
     
@@ -47,18 +50,34 @@ class FeedItemViewController: LoggingViewController {
     
     /// Configure with feed collection view controller
     /// - Parameters:
-    ///   - kind: feed item collection type (kind)
+    ///   - section: feed item collection type (kind)
     ///   - items: the list of included items
     ///   - name: name of the collection
-    func configure(_ section: PickType, with items: Items?, named name: String?) {
+    ///   - mode: the marker for set button into barButton item
+    func configure(_ section: PickType, with items: Items?, named name: String?, edit mode: Bool = false) {
         self.section = section
         self.name = name
         self.items = items ?? []
+        self.editMode = mode
+    }
+    
+    /// Configure buttoms for barButtonItem
+    func configureBarButtonItems() {
+        // Share buttom
+        let share = UIBarButtonItem(
+            image: UIImage(named: "share")?.withRenderingMode(.alwaysTemplate),
+            style: .plain, target: self, action: #selector(shareButtonTapped))
+        
+        navigationItem.rightBarButtonItems = [share]
     }
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        if editMode {
+            configureBarButtonItems()
+        }
         
         // Register feed item collection view cell for dequeue
         itemCollectionView.register(
@@ -92,6 +111,5 @@ class FeedItemViewController: LoggingViewController {
         super.viewWillTransition(to: size, with: coordinator)
         itemCollectionViewLayout.sizeViewWillTransitionTo = size
     }
-    
-  
+
 }
