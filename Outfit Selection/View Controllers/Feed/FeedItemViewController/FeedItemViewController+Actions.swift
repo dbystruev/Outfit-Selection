@@ -12,14 +12,12 @@ extension FeedItemViewController {
     // MARK: - Methods
     /// Called when share button  was tapped
     @objc func shareButtonTapped(_ sender: Any) {
-        debug("INFO: Share Button Tapped")
-    
         // Identificator for universal share link
         let id: String = "in."
         let nameParam: String = "&name=eq."
         
         // Get current item IDs
-        let itemIDs = "(\(items.IDs.commaJoined))" // TODO: Create tooples
+        let itemIDs = "(\(items.IDs.commaJoined))"
 
         // Parts of the universal link
         let scheme = Global.UniversalLinks.scheme.https
@@ -29,6 +27,7 @@ extension FeedItemViewController {
         
         // Build share link
         let itemURLShare = URL(string: scheme + domain + itemsParam + id + itemIDs + nameParam + (nameUrlEncoded ?? ""))
+        debug("INFO:", itemURLShare)
     
         // Share item url
         let activityController = UIActivityViewController(activityItems: [itemURLShare as Any], applicationActivities: nil)

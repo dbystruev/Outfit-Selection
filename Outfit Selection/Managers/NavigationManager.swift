@@ -14,10 +14,11 @@ class NavigationManager {
     // MARK: - Public Type
     /// Enum with the  screens to navigate to
     public enum Screen {
-        case outfit(items: Items = [], hideBackButton: Bool = true)
         case feed
-        case wishlist(item: Item? = nil)
+        case outfit(items: Items = [], hideBackButton: Bool = true)
         case profile
+        case wishlist(item: Item? = nil)
+        case wishlistCollections(items: Items, name: String)
     }
     
     // MARK: - Static Properties
@@ -67,6 +68,17 @@ class NavigationManager {
         }
     }
     
+    /// Find the tabBarController and return it
+    /// - Parameter navigationController: current navigationController
+    /// - Returns: tabBarController or nil if not foun
+    func findTabBarController(in navigationController: UINavigationController) -> Any? {
+        // Find tab bar controller
+        guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
+            return nil
+        }
+        return tabBarController
+    }
+    
     // MARK: - Public Static Methods
     /// Navigate to a given screen
     /// - Parameter screen: a screen to navigate to
@@ -91,7 +103,11 @@ class NavigationManager {
         }
         
         switch screen {
+        case .feed:
+            debug("feed")
+            
         case .outfit(let items, let hideBackButton):
+            
             // Find tab bar controller
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
                 //debug("INFO: Tab Bar Controller is not available")
@@ -114,19 +130,18 @@ class NavigationManager {
                 }
             }
             
-            
-        case .feed:
-            debug("feed")
+        case .profile:
+            debug("profile")
             
         case .wishlist(let item):
             // Find tab bar controller
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
                 // Make shure item isn't nil
                 guard let item = item else {
-                    debug("ERROR: The current item is nil ")
+                    debug("INFO: Tab Bar Controller is not available")
                     return
                 }
-
+                
                 if !UserDefaults.hasSeenAppIntroduction {
                     guard let onboardingViewController = navigationController.findViewController(ofType: OnboardingViewController.self) else {
                         debug("INFO: OnboardingViewController not available")
@@ -148,7 +163,7 @@ class NavigationManager {
             
             // Change tabbar selected index
             tabBarController.selectedIndex = Global.TabBar.index.wishlist
-        
+            
             // If ItemViewControlle was presented
             guard let itemViewController = tabBarController.findViewController(ofType: ItemViewController.self) else {
                 // Set selected item from wishlist
@@ -163,8 +178,42 @@ class NavigationManager {
             // Update UI ItemViewControlle
             itemViewController.updateUI()
             
-        case .profile:
-            debug("profile")
+        case .wishlistCollections(items: let items, name: let name):
+            debug("wishlistCollections", items, name )
+            // Find tab bar controller
+            guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
+                if !UserDefaults.hasSeenAppIntroduction {
+                    guard let onboardingViewController = navigationController.findViewController(ofType: OnboardingViewController.self) else {
+                        debug("INFO: OnboardingViewController not available")
+                        return
+                    }
+                    onboardingViewController.performSegue(withIdentifier: GenderViewController.segueIdentifier, sender: nil)
+                }
+                // If tab bar controller is not available presen outfit view controller
+                presentWishlistViewController(for: items, with: name, in: navigationController)
+                return
+            }
+            
+            // Find wishlist view controller
+            guard let wishlistViewController = tabBarController.findViewController(ofType: WishlistViewController.self) else {
+                debug("ERROR: WishlistViewController not found in this tabBarController")
+                return
+            }
+            
+            // Find wishlist view controller
+            guard let feedItemViewController = tabBarController.findViewController(ofType: FeedItemViewController.self) else {
+                // Change tabbar selected index
+                tabBarController.selectedIndex = Global.TabBar.index.wishlist
+                wishlistViewController.tabSelected = .collection
+                
+                // Load FeedItemViewController with item
+                wishlistViewController.performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: [name: items])
+                return
+            }
+            // Configure current ViewvController with new items
+            feedItemViewController.configure(.hello, with: items, named: name, edit: true)
+            feedItemViewController.configureLikeButton()
+            
         }
     }
     
@@ -325,7 +374,6 @@ class NavigationManager {
             // Initiate progress with 0
             progressViewController?.progressView.progress = 0
             
-            
             // Instantiate the tab bar controller
             let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
             let controller = mainStoryboard.instantiateViewController(withIdentifier: "tabBarController")
@@ -351,11 +399,11 @@ class NavigationManager {
                 filteredBy: Gender.current,
                 cornerLimit: 1
             ) { [weak progressViewController] itemsLoaded, itemsTotal in
-
+                
                 // If not all items loaded — update progress view and continue
                 progressViewController?.updateProgressBar(current: itemsLoaded, total: itemsTotal, minValue: 0.5)
                 guard itemsLoaded == itemsTotal else { return }
-
+                
                 DispatchQueue.main.async {
                     // Push ViewControllers
                     let identityIDs = [
@@ -380,8 +428,84 @@ class NavigationManager {
                     wishlistViewController.tabSelected = .item
                     
                     // Load ItemViewController with item
-                    wishlistViewController.performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: item)
+                    wishlistViewController.performSegue(withIdentifier: FeedCollectionViewController.segueIdentifier, sender: item)
                 }
             }
         }
+    
+    /// Present  wishlist view controller with Instantiate tabBarController
+    /// - Parameters:
+    ///   - items: items for the present
+    ///   - navigationController: the navigation controllern
+    ///   - name: name for collection items
+    public static func presentWishlistViewController(
+        for items: Items,
+        with name: String,
+        in navigationController: UINavigationController
+    ) {
+        // Initiate progress view controller
+        let progressViewController = ProgressViewController.default
+        
+        // Hide navigation bar on top (needed when returning from profile view controller)
+        navigationController.isNavigationBarHidden = true
+        
+        // Initiate progress with 0
+        progressViewController?.progressView.progress = 0
+        
+        // Instantiate the tab bar controller
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let controller = mainStoryboard.instantiateViewController(withIdentifier: "tabBarController")
+        guard let tabBarController = controller as? UITabBarController else {
+            debug("ERROR: Can't get Tab Bar Controller from the storyboard", mainStoryboard)
+            return
+        }
+        
+        // Switch to tab saved in previous version of tab bar controller
+        tabBarController.selectedIndex = Global.TabBar.index.wishlist
+        
+        // Find wishlist view controller in tab bar hierarchy
+        guard let wishlistViewController = tabBarController.findViewController(ofType: WishlistViewController.self) else {
+            debug("ERROR: OutfitViewController not found")
+            return
+        }
+        
+        // Load view models with the new images
+        ItemManager.shared.loadImages(
+            filteredBy: Gender.current,
+            cornerLimit: 1
+        ) { [weak progressViewController] itemsLoaded, itemsTotal in
+            
+            // If not all items loaded — update progress view and continue
+            progressViewController?.updateProgressBar(current: itemsLoaded, total: itemsTotal, minValue: 0.5)
+            guard itemsLoaded == itemsTotal else { return }
+            
+            DispatchQueue.main.async {
+                // Push ViewControllers
+                let identityIDs = [
+                    "BrandsViewController",
+                    "OccasionsViewController",
+                    "ProgressViewController"]
+                NavigationManager.shared.pushViewControllers(
+                    name: "Welcome",
+                    identities: identityIDs,
+                    navigationController: navigationController,
+                    animated: false
+                )
+                
+                // Push NavigationController with tabBar
+                NavigationManager.shared.pushViewController (
+                    navigationController: navigationController,
+                    viewController: tabBarController,
+                    animated: false
+                )
+                
+                // Change tabbar selected index
+                tabBarController.selectedIndex = Global.TabBar.index.wishlist
+                wishlistViewController.tabSelected = .collection
+                
+                // Load ItemViewController with item
+                wishlistViewController.performSegue(withIdentifier: FeedItemViewController.segueIdentifier, sender: [name: items])
+            }
+        }
+    }
 }

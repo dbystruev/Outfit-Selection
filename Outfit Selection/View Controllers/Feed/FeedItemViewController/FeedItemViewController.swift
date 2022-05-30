@@ -71,6 +71,14 @@ class FeedItemViewController: LoggingViewController {
         navigationItem.rightBarButtonItems = [share]
     }
     
+    /// Configure Like Button
+    func configureLikeButton() {
+        // Make sure like buttons are updated when we come back from item screen
+        itemCollectionView.visibleCells.forEach {
+            ($0 as? FeedItemCollectionCell)?.configureLikeButton()
+        }
+    }
+    
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,9 +110,7 @@ class FeedItemViewController: LoggingViewController {
         super.viewWillAppear(animated)
         
         // Make sure like buttons are updated when we come back from item screen
-        itemCollectionView.visibleCells.forEach {
-            ($0 as? FeedItemCollectionCell)?.configureLikeButton()
-        }
+        configureLikeButton()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
