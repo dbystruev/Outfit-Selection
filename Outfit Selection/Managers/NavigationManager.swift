@@ -179,7 +179,6 @@ class NavigationManager {
             itemViewController.updateUI()
             
         case .wishlistCollections(items: let items, name: let name):
-            debug("wishlistCollections", items, name )
             // Find tab bar controller
             guard let tabBarController = navigationController.findViewController(ofType: TabBarController.self) else {
                 if !UserDefaults.hasSeenAppIntroduction {
@@ -211,7 +210,7 @@ class NavigationManager {
                 return
             }
             // Configure current ViewvController with new items
-            feedItemViewController.configure(.hello, with: items, named: name, edit: true)
+            feedItemViewController.configure(.hello, with: items, named: name, edit: false)
             feedItemViewController.configureLikeButton()
             
         }
