@@ -56,7 +56,7 @@
                     <connections>
                         <outlet property="itemCollectionView" destination="yQn-b3-YtV" id="z7b-t5-6yJ"/>
                         <outlet property="titleLabel" destination="MrC-1i-09K" id="ZK0-Of-05o"/>
-                        <segue destination="0yu-5o-UFY" kind="presentation" identifier="collectionNameViewControllerSegue" id="N4g-kG-Ofe"/>
+                        <segue destination="0yu-5o-UFY" kind="showDetail" identifier="collectionNameViewControllerSegue" id="N4g-kG-Ofe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wzf-jv-yyO" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
