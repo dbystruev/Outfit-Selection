@@ -33,6 +33,9 @@ class FeedSectionHeaderView: UICollectionReusableView {
     // MARK: - Stored Properties
     /// Delegate to call when something inside is tapped (for use in child classes)
     var delegate: ButtonDelegate?
+    
+    /// Index of collection view section
+    var indexSection: Int = 0
 
     var pick: Pick = Pick(.hello, title: "")
     
@@ -89,11 +92,12 @@ class FeedSectionHeaderView: UICollectionReusableView {
         ])
     }
     
-    func configureContent(kind: PickType) {
+    func configureContent(kind: PickType, indexSection: Int) {
         self.pick = Pick(kind, title: kind.title ?? "")
         seeAllButton.setTitle("See all"~, for: .normal)
         seeAllButton.isHidden = kind == .brands || kind == .emptyBrands || kind == .hello
         header.text = kind.title
+        self.indexSection = indexSection
     }
     
     func configureContent(pick: Pick) {

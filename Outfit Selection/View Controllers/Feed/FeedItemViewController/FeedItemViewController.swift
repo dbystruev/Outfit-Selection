@@ -18,6 +18,12 @@ class FeedItemViewController: LoggingViewController {
     /// Marker for activate editMode
     var editMode: Bool = false
     
+    /// Call dissmiss
+    var dissmiss: Bool = false
+    
+    /// Index section from colletion view
+    var indexSection: Int = 0
+
     /// Collection view layout for the item collection view
     let itemCollectionViewLayout = FeedItemCollectionViewLayout()
     
@@ -54,11 +60,12 @@ class FeedItemViewController: LoggingViewController {
     ///   - items: the list of included items
     ///   - name: name of the collection
     ///   - mode: the marker for set button into barButton item
-    func configure(_ section: PickType, with items: Items?, named name: String?, edit mode: Bool = false) {
+    func configure(_ section: PickType, with items: Items?, named name: String?, edit mode: Bool = false, indexSection: Int) {
         self.section = section
         self.name = name
         self.items = items ?? []
         self.editMode = mode
+        self.indexSection = indexSection
     }
     
     /// Configure buttoms for barButtonItem
@@ -66,44 +73,26 @@ class FeedItemViewController: LoggingViewController {
         // Share buttom
         let share = UIBarButtonItem(
             image: UIImage(named: "share")?.withRenderingMode(.alwaysTemplate),
-            style: .plain, target: self,
+            style: .plain,
+            target: self,
             action: #selector(shareButtonTapped)
         )
         
-        let edit = editButtonItem
-        navigationItem.rightBarButtonItems = [share, edit]
-    }
+        let add = UIBarButtonItem(
+            barButtonSystemItem: .add,
+            target: self,
+            action: #selector(addButtonTapped)
+        )
+
+        // Edit button
+        let edit = UIBarButtonItem(
+            title: "Edit"~,
+            style: .plain,
+            target: self,
+            action: #selector(editButtonTapped)
+        )
     
-    /// Configure buttoms for barButtonItem
-    func configureBarEditButtons() {
-        // Cancel buttom
-        let cancel = UIBarButtonItem(
-            title: "Cancel"~,
-            style: .plain,
-            target: self,
-            action: #selector(cancelButtonTapped)
-        )
-        
-        // Delete buttom
-        let delete = UIBarButtonItem(
-            title: "Delete"~,
-            style: .plain,
-            target: self,
-            action: #selector(showAlert)
-        )
-        // Set color for UIBarButtonItem
-        delete.tintColor = .red
-        
-        // Save buttom
-        let save = UIBarButtonItem(
-            title: "Save"~,
-            style: .plain,
-            target: self,
-            action: #selector(saveButtonTapped)
-        )
-        save.isEnabled = false
-        
-        navigationItem.rightBarButtonItems = [save ,delete, cancel]
+        navigationItem.rightBarButtonItems = [share, add, edit]
     }
     
     /// Configure Like Button
@@ -115,16 +104,6 @@ class FeedItemViewController: LoggingViewController {
     }
     
     // MARK: - Inherited Methods
-    override func setEditing(_ editing: Bool, animated: Bool) {
-        super.setEditing(editing, animated: animated)
-        if editing {
-            configureBarEditButtons()
-            editButtonTapped(self)
-        } else {
-            configureBarButtonItems()
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -156,8 +135,10 @@ class FeedItemViewController: LoggingViewController {
         
         // Make sure like buttons are updated when we come back from item screen
         configureLikeButton()
+        
+        dissmiss ? dismiss(animated: true) : nil
     }
-
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         itemCollectionViewLayout.sizeViewWillTransitionTo = size

@@ -142,7 +142,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
         case feedCollectionView:
             feedHeader.configureContent(pick: displayedPicks[indexPath.section % displayedPicks.count])
         default:
-            feedHeader.configureContent(kind: nonEmptySections[indexPath.section % nonEmptySections.count])
+            feedHeader.configureContent(kind: nonEmptySections[indexPath.section % nonEmptySections.count], indexSection: indexPath.section)
         }
         
         feedHeader.delegate = self
