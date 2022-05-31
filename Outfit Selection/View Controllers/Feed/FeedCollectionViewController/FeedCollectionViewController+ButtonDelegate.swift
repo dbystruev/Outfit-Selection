@@ -72,7 +72,7 @@ extension FeedCollectionViewController: ButtonDelegate {
             }
              
             if displayedPicks.isEmpty {
-                feedItemViewController.configure(kind.type, with: items[kind.type], named: feedHeader.title, edit: true)
+                feedItemViewController.configure(kind.type, with: items[kind.type], named: feedHeader.title, edit: true, indexSection: feedHeader.indexSection)
             } else {
                 feedItemViewController.configure(kind, with: pickItems[kind], named: feedHeader.title)
             }

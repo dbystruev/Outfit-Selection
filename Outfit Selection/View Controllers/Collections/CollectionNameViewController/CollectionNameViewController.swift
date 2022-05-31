@@ -13,6 +13,7 @@ class CollectionNameViewController: CollectionBaseViewController {
     // MARK: - Outlets
     @IBOutlet weak var addItemsButton: UIButton!
     @IBOutlet weak var addItemsButtonBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var buttonsStackView: UIStackView!
     @IBOutlet weak var labelBottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var labelTopConstraint: NSLayoutConstraint!
     
@@ -35,14 +36,18 @@ class CollectionNameViewController: CollectionBaseViewController {
         }
     }
     
-    // MARK: - Properties
-    /// Gitle for Button Title
-    var addItemsButtonTitle: String?
-    /// Status for this viewvController
-    var editMode = false
-    /// Text for nameTextField
-    var name: String?
+    @IBOutlet weak var saveButton: UIButton!
     
+    // MARK: - Private Properties
+    /// Gitle for Button Title
+    private var addItemsButtonTitle: String?
+    /// Status for this viewvController
+    private var editMode = false
+    /// Text for nameTextField
+    private var name: String?
+    // FeedItemViewController
+    var feedItemViewController: FeedItemViewController?
+ 
     // MARK: - Inherited Properties
     override var keyboardObject: Any? { addItemsButtonBottomConstraint }
     override var keyboardTextField: UITextField? { nameTextField }
@@ -57,6 +62,7 @@ class CollectionNameViewController: CollectionBaseViewController {
         super.viewWillAppear(animated)
         registerForKeyboardNotifications()
         updateUI()
+        saveButton.isEnabled = false
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -76,8 +82,17 @@ class CollectionNameViewController: CollectionBaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if editMode {
-            addItemsButton.setTitle(addItemsButtonTitle, for: .normal)
+            addItemsButton.isHidden = true
+            buttonsStackView.isHidden = false
             nameTextField.text = name
+            
+            // Short modal view Controller
+            if #available(iOS 15.0, *) {
+                if let presentationController = presentationController as? UISheetPresentationController {
+                    presentationController.detents = [.medium(),.large()]
+                    presentationController.prefersGrabberVisible = true
+                }
+            } 
         }
     }
     
@@ -85,46 +100,18 @@ class CollectionNameViewController: CollectionBaseViewController {
     /// Configure saveButton and textField
     /// - Parameters:
     ///   - name: string for textField text
-    ///   - buttonTitle: the title for button
-    func configure(textField name: String, buttonTitle: String){
+    func configure(textField name: String, sender: Any? ){
         editMode = true
-        addItemsButtonTitle = buttonTitle
         self.name = name
+        feedItemViewController = sender as? FeedItemViewController
     }
     
     /// Show `add items button` when `name text field` is not empty
     func updateUI() {
         let isEnabled = nameTextField.text?.isEmpty == false
-        addItemsButton.backgroundColor = isEnabled
-        ? Global.Color.Button.enabled
-        : Global.Color.Button.disabled
+        addItemsButton.backgroundColor = isEnabled ? Global.Color.Button.enabled : Global.Color.Button.disabled
         addItemsButton.isEnabled = isEnabled
+        saveButton.isEnabled = isEnabled
     }
     
-    // MARK: - Actions
-    @IBAction func addItemsButtonTapped(_ sender: UIButton) {
-        nameTextField.endEditing(true)
-        
-        // Check that we have non-empty name
-        guard let collectionName = nameTextField.text, !collectionName.isEmpty else {
-            debug("WARNING: Collection name is empty")
-            dismiss(animated: true)
-            return
-        }
-        
-        // Save collection name entered by the user
-        self.collectionName = collectionName
-        
-        // Present collection select view controller
-        dismiss(animated: true) {
-            self.wishlistViewController?.performSegue(
-                withIdentifier: CollectionSelectViewController.segueIdentifier,
-                sender: self
-            )
-        }
-    }
-    
-    @IBAction func collectionNameEditingChanged(_ sender: UITextField) {
-        updateUI()
-    }
 }

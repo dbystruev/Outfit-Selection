@@ -21,7 +21,7 @@ extension WishlistViewController {
             // Exctract data from sender
             let data = sender as? [String: Items]
             // Configure ItemViewController with exctracted data
-            destination.configure(.hello, with: data?.first?.value, named: data?.first?.key, edit: false)
+            destination.configure(.hello, with: data?.first?.value, named: data?.first?.key, edit: false, indexSection: 0)
             
         case ItemViewController.segueIdentifier:
             // Make sure destination is item view controller

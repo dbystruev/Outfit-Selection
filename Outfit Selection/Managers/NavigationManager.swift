@@ -210,7 +210,7 @@ class NavigationManager {
                 return
             }
             // Configure current ViewvController with new items
-            feedItemViewController.configure(.hello, with: items, named: name, edit: false)
+            feedItemViewController.configure(.hello, with: items, named: name, edit: false, indexSection: 0)
             feedItemViewController.configureLikeButton()
             
         }

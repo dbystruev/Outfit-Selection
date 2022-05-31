@@ -25,10 +25,9 @@ extension FeedCollectionViewController {
             }
             
             let pick = feedHeader.pick
-            
             if displayedPicks.isEmpty {
                 debug(items[pick.type], pick.type)
-                feedItemViewController.configure(pick.type, with: items[pick.type], named: feedHeader.title)
+                feedItemViewController.configure(pick.type, with: items[pick.type], named: feedHeader.title, indexSection: 0)
             } else {
                 debug(items[pick.type], pick.type)
                 feedItemViewController.configure(pick, with: pickItems[pick], named: feedHeader.title)

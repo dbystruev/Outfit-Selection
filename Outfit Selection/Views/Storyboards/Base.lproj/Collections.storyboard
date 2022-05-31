@@ -80,11 +80,48 @@
                                     <action selector="closeButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="dxF-tL-pLS"/>
                                 </connections>
                             </button>
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Bnv-KT-J6I">
+                                <rect key="frame" x="44" y="295.5" width="326" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1Mj-fv-9Ik">
+                                        <rect key="frame" x="0.0" y="0.0" width="115.5" height="30"/>
+                                        <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Cancel"/>
+                                        <connections>
+                                            <action selector="cancelButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="TlR-PZ-GoV"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QQ3-jQ-qbT">
+                                        <rect key="frame" x="119.5" y="0.0" width="113.5" height="30"/>
+                                        <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Delete"/>
+                                        <connections>
+                                            <action selector="deleteButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="w69-S2-abE"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVb-wX-dV3">
+                                        <rect key="frame" x="237" y="0.0" width="89" height="30"/>
+                                        <fontDescription key="fontDescription" name="NotoSans-Bold" family="Noto Sans" pointSize="17"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="Save"/>
+                                        <connections>
+                                            <action selector="saveButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cfi-1W-uV9"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="rLJ-8B-dUr"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="mfb-mU-t6l" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="44" id="1si-As-tvI"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="Bnv-KT-J6I" secondAttribute="trailing" constant="44" id="4LQ-Fb-sWu"/>
+                            <constraint firstItem="Bnv-KT-J6I" firstAttribute="top" secondItem="mfb-mU-t6l" secondAttribute="bottom" constant="20" id="4RA-KU-AEL"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="mfb-mU-t6l" secondAttribute="trailing" constant="44" id="CSQ-Qt-p28"/>
                             <constraint firstItem="FvE-el-sJT" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="16" id="Ceb-LZ-Dq1"/>
                             <constraint firstItem="wh4-Fk-apv" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mfb-mU-t6l" secondAttribute="bottom" constant="4" id="CqI-hH-kBs"/>
@@ -96,6 +133,7 @@
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="FvE-el-sJT" secondAttribute="trailing" constant="16" id="Vkm-83-mdR"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="wh4-Fk-apv" secondAttribute="trailing" constant="24" id="cTS-4g-JiR"/>
                             <constraint firstItem="wh4-Fk-apv" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="24" id="i8D-Hc-8hH"/>
+                            <constraint firstItem="Bnv-KT-J6I" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" constant="44" id="jcH-qR-oo8"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="aaK-U6-X4l" secondAttribute="trailing" id="qxP-am-trm"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="aaK-U6-X4l" secondAttribute="bottom" id="u4N-8a-Ntd"/>
                             <constraint firstItem="mfb-mU-t6l" firstAttribute="top" secondItem="TPe-fP-9Rk" secondAttribute="bottom" constant="72" id="ygO-El-4JQ"/>
@@ -104,9 +142,11 @@
                     <connections>
                         <outlet property="addItemsButton" destination="wh4-Fk-apv" id="o2c-u7-Tzo"/>
                         <outlet property="addItemsButtonBottomConstraint" destination="G2f-Kb-3Z7" id="Daz-fJ-DVy"/>
+                        <outlet property="buttonsStackView" destination="Bnv-KT-J6I" id="40c-w0-1c4"/>
                         <outlet property="labelBottomConstraint" destination="ygO-El-4JQ" id="JqZ-LD-oP0"/>
                         <outlet property="labelTopConstraint" destination="KMr-yQ-taz" id="azG-Jo-ZF3"/>
                         <outlet property="nameTextField" destination="mfb-mU-t6l" id="5gX-QR-H8s"/>
+                        <outlet property="saveButton" destination="rVb-wX-dV3" id="Qhc-oN-0d0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
