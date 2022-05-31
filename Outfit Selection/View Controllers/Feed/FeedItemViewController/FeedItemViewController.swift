@@ -66,12 +66,65 @@ class FeedItemViewController: LoggingViewController {
         // Share buttom
         let share = UIBarButtonItem(
             image: UIImage(named: "share")?.withRenderingMode(.alwaysTemplate),
-            style: .plain, target: self, action: #selector(shareButtonTapped))
+            style: .plain, target: self,
+            action: #selector(shareButtonTapped)
+        )
         
-        navigationItem.rightBarButtonItems = [share]
+        let edit = editButtonItem
+        navigationItem.rightBarButtonItems = [share, edit]
+    }
+    
+    /// Configure buttoms for barButtonItem
+    func configureBarEditButtons() {
+        // Cancel buttom
+        let cancel = UIBarButtonItem(
+            title: "Cancel"~,
+            style: .plain,
+            target: self,
+            action: #selector(cancelButtonTapped)
+        )
+        
+        // Delete buttom
+        let delete = UIBarButtonItem(
+            title: "Delete"~,
+            style: .plain,
+            target: self,
+            action: #selector(showAlert)
+        )
+        // Set color for UIBarButtonItem
+        delete.tintColor = .red
+        
+        // Save buttom
+        let save = UIBarButtonItem(
+            title: "Save"~,
+            style: .plain,
+            target: self,
+            action: #selector(saveButtonTapped)
+        )
+        save.isEnabled = false
+        
+        navigationItem.rightBarButtonItems = [save ,delete, cancel]
+    }
+    
+    /// Configure Like Button
+    func configureLikeButton() {
+        // Make sure like buttons are updated when we come back from item screen
+        itemCollectionView.visibleCells.forEach {
+            ($0 as? FeedItemCollectionCell)?.configureLikeButton()
+        }
     }
     
     // MARK: - Inherited Methods
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        super.setEditing(editing, animated: animated)
+        if editing {
+            configureBarEditButtons()
+            editButtonTapped(self)
+        } else {
+            configureBarButtonItems()
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -102,9 +155,7 @@ class FeedItemViewController: LoggingViewController {
         super.viewWillAppear(animated)
         
         // Make sure like buttons are updated when we come back from item screen
-        itemCollectionView.visibleCells.forEach {
-            ($0 as? FeedItemCollectionCell)?.configureLikeButton()
-        }
+        configureLikeButton()
     }
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

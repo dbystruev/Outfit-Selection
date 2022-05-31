@@ -52,6 +52,13 @@ extension Collection {
         genderCollections[gender]?.removeAll()
     }
     
+    /// Remove collection for current gender with name
+    static func remove(name: String) {
+        guard let gender = Gender.current else { return }
+        genderCollections[gender]?.removeAll(where: { $0.name == name })
+        save()
+    }
+    
     /// Remove last collection for current gender
     static func removeLast() {
         guard let gender = Gender.current else { return }

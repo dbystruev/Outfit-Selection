@@ -156,6 +156,14 @@ class FeedCollectionViewController: LoggingViewController {
         self.items[section] = items
     }
     
+    /// Remove items and  section of given type (section)
+    /// - Parameters:
+    ///   - section: the section type (section) to append the items to
+    func removeSection(section: PickType) {
+        sections.removeAll(where: { $0 == section })
+        self.items[section] = nil
+    }
+    
     /// Set section into UICollectionView
     /// - Parameters:
     ///   - emptySection: marker for set only brands and an enpty sectiion
@@ -193,77 +201,77 @@ class FeedCollectionViewController: LoggingViewController {
         collectionView.setCollectionViewLayout(configureLayout(), animated: false)
     }
     
-    /// Download items for section
-    /// - Parameters:
-    ///   - sections: sections for set and download items
-    func updateItems(sections: [PickType]) {
-        
-        // Stop update if sections is not feed sections default
-        guard !feedSectionsDefault.filter(sections.contains).isEmpty
-                || sections != [PickType.brands, PickType.emptyBrands] else {
-            debug("INFO: Unknown sections", sections)
-            return
-        }
-        
-        if !Brands.selected.isEmpty {
-            // Lock all brands when items is updating
-            lockBrands = true
-            
-            // Dispatch group to wait for all requests to finish
-            let group = DispatchGroup()
-            
-            for section in sections {
-                group.enter()
-                
-                // Get items for section
-                self.getItems(for: section, completion: {
-                    if self.items[section] == nil || section == .brands || section == .hello  {
-                    } else {
-                        DispatchQueue.main.async { [self] in
-                            // Replace element current section
-                            nonEmptySections.replaceElement(section, withElement: section)
-                            
-                            // Get index with updated element
-                            let updatedSections = self.nonEmptySections.enumerated().compactMap { index, kind in
-                                section == kind ? index : nil
-                            }
-                            //debug("INFO: Update:", section, "Items:", items[section]?.count ,"Sections:", sections.count)
-                            // Reload sections where was updated items
-                            
-                            if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
-                                feedCollectionView?.reloadSections(IndexSet(updatedSections))
-                            }
-                        }
-                    }
-                    group.leave()
-                })
-            }
-            
-            // Notification from DispatchQueue group when all section got answer
-            group.notify(queue: .main) { [self] in
-                debug("INFO: Get items FINISH")
-                
-                // Get sections with empty items and ignore brands
-                let emptySections = sections.filter { items[$0]?.isEmpty ?? true && $0 != .brands || $0 != .hello  }
-                
-                // Remove all emptySection
-                nonEmptySections.removeAll(where: { emptySections.contains($0) } )
-                
-                // Show choose brands section, if after clear you'll get only brands section
-                if nonEmptySections.count <= 1 {
-                    self.nonEmptySections = feedSectionEmpty
-                }
-                
-                // Reload data into UICollectionView
-                if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
-                    feedCollectionView?.reloadData()
-                }
-                
-                // Unlock brands
-                lockBrands = false
-            }
-        }
-    }
+//    /// Download items for section
+//    /// - Parameters:
+//    ///   - sections: sections for set and download items
+//    func updateItems(sections: [PickType]) {
+//
+//        // Stop update if sections is not feed sections default
+//        guard !feedSectionsDefault.filter(sections.contains).isEmpty
+//                || sections != [PickType.brands, PickType.emptyBrands] else {
+//            debug("INFO: Unknown sections", sections)
+//            return
+//        }
+//
+//        if !Brands.selected.isEmpty {
+//            // Lock all brands when items is updating
+//            lockBrands = true
+//
+//            // Dispatch group to wait for all requests to finish
+//            let group = DispatchGroup()
+//
+//            for section in sections {
+//                group.enter()
+//
+//                // Get items for section
+//                self.getItems(for: section, completion: {
+//                    if self.items[section] == nil || section == .brands || section == .hello  {
+//                    } else {
+//                        DispatchQueue.main.async { [self] in
+//                            // Replace element current section
+//                            nonEmptySections.replaceElement(section, withElement: section)
+//
+//                            // Get index with updated element
+//                            let updatedSections = self.nonEmptySections.enumerated().compactMap { index, kind in
+//                                section == kind ? index : nil
+//                            }
+//                            //debug("INFO: Update:", section, "Items:", items[section]?.count ,"Sections:", sections.count)
+//                            // Reload sections where was updated items
+//
+//                            if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+//                                feedCollectionView?.reloadSections(IndexSet(updatedSections))
+//                            }
+//                        }
+//                    }
+//                    group.leave()
+//                })
+//            }
+//
+//            // Notification from DispatchQueue group when all section got answer
+//            group.notify(queue: .main) { [self] in
+//                debug("INFO: Get items FINISH")
+//
+//                // Get sections with empty items and ignore brands
+//                let emptySections = sections.filter { items[$0]?.isEmpty ?? true && $0 != .brands || $0 != .hello  }
+//
+//                // Remove all emptySection
+//                nonEmptySections.removeAll(where: { emptySections.contains($0) } )
+//
+//                // Show choose brands section, if after clear you'll get only brands section
+//                if nonEmptySections.count <= 1 {
+//                    self.nonEmptySections = feedSectionEmpty
+//                }
+//
+//                // Reload data into UICollectionView
+//                if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+//                    feedCollectionView?.reloadData()
+//                }
+//
+//                // Unlock brands
+//                lockBrands = false
+//            }
+//        }
+//    }
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {

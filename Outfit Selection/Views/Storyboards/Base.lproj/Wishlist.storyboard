@@ -871,7 +871,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmo-wa-bPh" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3030" y="552"/>
+            <point key="canvasLocation" x="2149" y="666"/>
         </scene>
         <!--Wish list-->
         <scene sceneID="QYj-Ix-HHn">

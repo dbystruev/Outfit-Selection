@@ -53,7 +53,6 @@ extension FeedItemViewController: UICollectionViewDataSource {
                     getNewItems(offset: items.count, limit: limitCellApi)
                     
                 } else {
-                    
                     debug("INFO: Limit in section. Count items: \(items.count) Limit: \(limitSection)"   )
                 }
             }

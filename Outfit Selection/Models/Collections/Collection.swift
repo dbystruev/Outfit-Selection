@@ -17,7 +17,7 @@ final class Collection: Codable {
     var gender: Gender
     
     /// Collection name
-    let name: String
+    var name: String
     
     // MARK: - Computed Propeties
     var isEmpty: Bool { items.isEmpty }

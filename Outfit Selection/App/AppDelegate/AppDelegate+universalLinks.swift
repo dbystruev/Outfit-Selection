@@ -20,14 +20,20 @@ extension AppDelegate {
             return
         }
         
-        // Try to get parametr from URL
-        guard let id = url.getParameters["id"]?.dropExtension else {
+        // Get first parametеr "id" from URL
+        guard let id = url.getParameters["id"]?.components(separatedBy: ".").first else {
+            debug("ERROR: url without id")
+            return
+        }
+        
+        // Get last parametеr "id" from URL
+        guard let itemsString = url.getParameters["id"]?.components(separatedBy: ".").last else {
             debug("ERROR: url without id")
             return
         }
         
         // Parser items from url, remove dot and replace "(",")"
-        guard let items = parserItemIDs(url: url) as? [String] else {
+        guard let items = parserItemIDs(string: itemsString) as? [String] else {
             debug("ERROR: array is empty")
             return
         }
@@ -42,11 +48,12 @@ extension AppDelegate {
                 
             case "in":
                 self.userActivity = nil
-                // Download all images and add to viewModels
-                ItemManager.shared.loadImagesFromItems(items: items) {
-                    // Go to NavigationManager into outfit
-                    NavigationManager.navigate(to: .outfit(items: items))
+                // Try to get a name parametеr from URL
+                guard let name = url.getParameters["name"]?.components(separatedBy: ".").last else {
+                    navigate(items: items)
+                    return
                 }
+                navigate(items: items, with: name)
                 
             default:
                 debug("ERROR: id", id, "not found in this switch")
@@ -60,16 +67,33 @@ extension AppDelegate {
         }
     }
     
+    // MARK: - Private Methods
+    /// Navigate to NavigationManager with parameter name or not
+    /// - Parameters:
+    ///   - items: exctracted items from URL
+    ///   - name: name parameter from URL
+    private func navigate(items: Items, with name: String? = nil) {
+        // Download all images and add to viewModels
+        ItemManager.shared.loadImagesFromItems(items: items) {
+            if name != nil {
+                guard let name = name else { return }
+                // Go to NavigationManager into wishlistCollections
+                NavigationManager.navigate(to: .wishlistCollections(items: items, name: name))
+                
+            } else {
+                // Go to NavigationManager into outfit
+                NavigationManager.navigate(to: .outfit(items: items))
+            }
+        }
+    }
+    
     /// Parser, drop and separeted IDs
-    /// - Parameter URL: the url with IDs for convert to array
-    /// - Parameter String: for separat symbol, default = ","
+    /// - Parameters:
+    ///   - url: the url with IDs for convert to array
+    ///   - separator: for separat symbol, default = ","
     /// - Returns: [String]
-    func parserItemIDs(url: URL, separator: String = ",") -> Any {
-        let cutLink =  String(describing: url)
-            .replacingOccurrences(
-                of: "\(String(describing: url).dropExtension).",
-                with: ""
-            )
+    private func parserItemIDs(string: String, separator: String = ",") -> Any {
+        let cutLink = string
             .replacingOccurrences(
                 of: "(",
                 with: ""
@@ -79,12 +103,11 @@ extension AppDelegate {
                 with: ""
             )
             .replacingOccurrences(
-                of: "^[^0-9]*",
+                of: "^[^a-zA-Z0-9]*",
                 with: "",
                 options: [.caseInsensitive, .regularExpression]
             )
-            .components(separatedBy: ",")
-        
+            .components(separatedBy: separator)
         return cutLink.isEmpty ? "Empty" : cutLink
     }
     
