@@ -35,6 +35,14 @@ class CollectionNameViewController: CollectionBaseViewController {
         }
     }
     
+    // MARK: - Properties
+    /// Gitle for Button Title
+    var addItemsButtonTitle: String?
+    /// Status for this viewvController
+    var editMode = false
+    /// Text for nameTextField
+    var name: String?
+    
     // MARK: - Inherited Properties
     override var keyboardObject: Any? { addItemsButtonBottomConstraint }
     override var keyboardTextField: UITextField? { nameTextField }
@@ -65,13 +73,31 @@ class CollectionNameViewController: CollectionBaseViewController {
         labelTopConstraint.constant = isHorizontal ? 24 : 104
     }
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        if editMode {
+            addItemsButton.setTitle(addItemsButtonTitle, for: .normal)
+            nameTextField.text = name
+        }
+    }
+    
     // MARK: - Custom Methods
+    /// Configure saveButton and textField
+    /// - Parameters:
+    ///   - name: string for textField text
+    ///   - buttonTitle: the title for button
+    func configure(textField name: String, buttonTitle: String){
+        editMode = true
+        addItemsButtonTitle = buttonTitle
+        self.name = name
+    }
+    
     /// Show `add items button` when `name text field` is not empty
     func updateUI() {
         let isEnabled = nameTextField.text?.isEmpty == false
         addItemsButton.backgroundColor = isEnabled
-            ? Global.Color.Button.enabled
-            : Global.Color.Button.disabled
+        ? Global.Color.Button.enabled
+        : Global.Color.Button.disabled
         addItemsButton.isEnabled = isEnabled
     }
     
