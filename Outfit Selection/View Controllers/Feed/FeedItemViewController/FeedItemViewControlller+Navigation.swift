@@ -19,6 +19,14 @@ extension FeedItemViewController {
             }
             destination.configure(textField: name ?? "", sender: sender)
             
+        case SearchItemsViewController.segueIdentifier:
+            // Make sure destination is item view controller
+            guard let destination = segue.destination as? SearchItemsViewController else {
+                debug("WARNING: \(segue.destination) is not \(SearchItemsViewController.self)")
+                return
+            }
+            
+            
         default:
             debug("WARNING: Unknown segue identifier", segue.identifier)
         }
