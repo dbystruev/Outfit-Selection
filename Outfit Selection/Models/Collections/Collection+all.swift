@@ -69,4 +69,19 @@ extension Collection {
     static func save() {
         save(genderCollections)
     }
+    
+    /// Update collections
+    /// - Parameters:
+    ///   - oldName: old name collection
+    ///   - newName: new name collection
+    static func update(oldName: String, newName: String) {
+        guard let gender = Gender.current else { return }
+        guard let collection = genderCollections[gender]?.first(where: { $0.name == oldName }) else {
+            debug("ERROR: Can't get collection witn name", oldName )
+            return
+        }
+        remove(name: oldName)
+        collection.name = newName
+        append(collection)
+    }
 }
