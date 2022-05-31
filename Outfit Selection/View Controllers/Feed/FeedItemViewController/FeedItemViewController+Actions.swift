@@ -12,7 +12,7 @@ extension FeedItemViewController {
     // MARK: - Methods
     @objc func addButtonTapped(_ sender: Any) {
         // TODO: Save current collection into pickItems
-        debug("addButtonTapped tapped")
+        performSegue(withIdentifier: SearchItemsViewController.segueIdentifier, sender: self)
     }
     
     @objc func editButtonTapped(_ sender: Any) {

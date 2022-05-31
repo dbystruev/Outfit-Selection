@@ -23,7 +23,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
         case feedCollectionView:
             sectionType = displayedPicks[indexPath.section].type
         default:
-            sectionType = nonEmptySections[indexPath.section]
+            sectionType = items[indexPath.section].key
         }
         
         // Switch for displayedPick type
@@ -67,7 +67,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             default:
                 
                 // Configure content for cell in section
-                let kind = nonEmptySections[indexPath.section]
+                let kind = items[indexPath.section].key
                 if let item = items[kind]?[indexPath.item] {
                     itemCell.configureContent(
                         kind: kind,
@@ -95,7 +95,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             let count = pickItems[pick]?.count ?? 0
             return count
         default:
-            let kind = nonEmptySections[section]
+            let kind = items[section].key
             let count = kind == .brands ? Brands.sorted.count : items[kind]?.count ?? 0
             return count
         }
@@ -142,7 +142,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
         case feedCollectionView:
             feedHeader.configureContent(pick: displayedPicks[indexPath.section % displayedPicks.count])
         default:
-            feedHeader.configureContent(kind: nonEmptySections[indexPath.section % nonEmptySections.count], indexSection: indexPath.section)
+            feedHeader.configureContent(kind: items[indexPath.section % items.count].key, indexSection: indexPath.section)
         }
         
         feedHeader.delegate = self

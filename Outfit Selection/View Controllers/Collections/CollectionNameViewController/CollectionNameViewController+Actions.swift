@@ -46,34 +46,37 @@ extension CollectionNameViewController {
     
     @IBAction func saveButtonTapped(_ sender: Any) {
         guard let feedItemViewController = feedItemViewController else {
-            debug("ERROR:", FeedItemViewController.className, " not found in this navigation controller")
+            debug("ERROR:", FeedItemViewController.className, "not found in this navigation controller")
             return
         }
         
         guard let wishlistViewController = feedItemViewController.navigationController?.findViewController(ofType: WishlistViewController.self) else {
-            debug("ERROR:", WishlistViewController.className, " not found in this navigation controller")
+            debug("ERROR:", WishlistViewController.className, "not found in this navigation controller")
             return
         }
         
         // Set title for collection into presented view controller
         feedItemViewController.titleLabel.text = nameTextField.text
+        
         // Get index section
         let index = feedItemViewController.indexSection
+        
         // Make new PickType item
         let newPickType = PickType.collections(nameTextField.text ?? "")
-        // Remove section from collection
-        let section = wishlistViewController.feedController.sections.remove(at: index)
-        // Get items removed section
-        guard let items = wishlistViewController.feedController.items[section] else { return }
-        // Remove items
-        wishlistViewController.feedController.removeSection(section: section)
+        
+        // Remove items and section
+        let old = wishlistViewController.feedController.items[index]
+        wishlistViewController.feedController.items.removeValue(forKey: old.key)
+        
         // Append changed section with items
-        wishlistViewController.feedController.addSection(items: items, to: newPickType)
+        wishlistViewController.feedController.addSection(items: old.value, to: newPickType)
+        
         // Update collection from User Dafault
         Collection.update(oldName: feedItemViewController.name ?? "", newName: nameTextField.text ?? "" )
         dismiss(animated: true)
     }
     
+    // MARK: - Private Methods
     /// Delete collection from wishlist
     private func deleteCollection() {
         guard let feedItemViewController = feedItemViewController else {
@@ -93,7 +96,7 @@ extension CollectionNameViewController {
         
         // Remove collection from collections items
         wishlistViewController.feedController.removeSection(section: feedItemViewController.section)
-        
+        // Retern to wishlistViewController
         feedItemViewController.navigationController?.popToViewController(wishlistViewController, animated: true)
         dismiss(animated: true)
     }

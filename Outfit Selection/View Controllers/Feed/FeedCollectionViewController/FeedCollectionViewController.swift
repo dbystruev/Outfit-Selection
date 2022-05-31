@@ -29,16 +29,6 @@ class FeedCollectionViewController: LoggingViewController {
     /// Displayed Picks for data source
     var displayedPicks: Picks = []
     
-    /// Default feed sections
-    var feedSectionsDefault = [
-        PickType.brands,
-        PickType.newItems,
-        PickType.sale,
-    ] + Occasions.selectedIDsUniqueTitle.map { .occasions($0) }
-    
-    /// Empty sections with information for user
-    let feedSectionEmpty = [PickType.brands, PickType.emptyBrands]
-    
     /// Items for each of the kinds
     var items: [PickType: Items] = [:]
     
@@ -59,27 +49,9 @@ class FeedCollectionViewController: LoggingViewController {
     
     /// Saved brand cell margins and paddings
     var savedBrandCellConstants: (CGFloat, CGFloat, CGFloat, CGFloat) = (0, 0, 0, 0)
-    
-    /// Types (kinds) for each of the section
-    var sections: [PickType] = [] {
-        didSet {
-            nonEmptySections = sections
-        }
-    }
-    
+
     /// The set of brand tags previously selected by the user
     var selectedBrands: Set<String> = []
-    
-    ///Non empty sections after filter
-    var nonEmptySections: [PickType] = [] {
-        didSet {
-            if nonEmptySections == feedSectionEmpty {
-                if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
-                    feedCollectionView?.reloadData()
-                }
-            }
-        }
-    }
     
     // MARK: - Private Methods
     /// Gets items depending on feed type (section) for  PickType .collections
@@ -131,9 +103,10 @@ class FeedCollectionViewController: LoggingViewController {
             
             self.items[type] = items
             
-            let updatedSections = self.sections.enumerated().compactMap { index, section in
+            let updatedSections = items.enumerated().compactMap { index, section in
                 section == section ? index : nil
             }
+            
             DispatchQueue.main.async {
                 if AppDelegate.canReload && self.feedCollectionView?.hasUncommittedUpdates == false {
                     self.feedCollectionView?.reloadSections(IndexSet(updatedSections))
@@ -141,14 +114,13 @@ class FeedCollectionViewController: LoggingViewController {
             }
         }
     }
-
+    
     // MARK: - Custom Methods
     /// Append items to the section of given type (section)
     /// - Parameters:
     ///   - items: items to append to the section
     ///   - section: the section type (section) to append the items to
     func addSection(items: Items, to section: PickType) {
-        sections.append(section)
         guard !items.isEmpty else {
             getItems(for: section)
             return
@@ -160,7 +132,7 @@ class FeedCollectionViewController: LoggingViewController {
     /// - Parameters:
     ///   - section: the section type (section) to append the items to
     func removeSection(section: PickType) {
-        sections.removeAll(where: { $0 == section })
+        //sections.removeAll(where: { $0 == section })
         self.items[section] = nil
     }
     
@@ -168,20 +140,7 @@ class FeedCollectionViewController: LoggingViewController {
     /// - Parameters:
     ///   - emptySection: marker for set only brands and an enpty sectiion
     func setSection(with emptySection: Bool = false) {
-        
-        // Check selected count of brands
-        if Brands.selected.count > 0 && !emptySection {
-            // Initial sections for feed collection view
-            //sections = feedSectionsDefault
-            //updateItems(sections: sections)
-            
-            // Update all items in sections
             updateItems(picks: picks)
-            
-        } else {
-            // Initial sections for feed collection view
-            sections = feedSectionEmpty
-        }
     }
     
     /// Register cells, set data source and delegate for a given collection view
@@ -200,78 +159,6 @@ class FeedCollectionViewController: LoggingViewController {
         // Generate collection view layout
         collectionView.setCollectionViewLayout(configureLayout(), animated: false)
     }
-    
-//    /// Download items for section
-//    /// - Parameters:
-//    ///   - sections: sections for set and download items
-//    func updateItems(sections: [PickType]) {
-//
-//        // Stop update if sections is not feed sections default
-//        guard !feedSectionsDefault.filter(sections.contains).isEmpty
-//                || sections != [PickType.brands, PickType.emptyBrands] else {
-//            debug("INFO: Unknown sections", sections)
-//            return
-//        }
-//
-//        if !Brands.selected.isEmpty {
-//            // Lock all brands when items is updating
-//            lockBrands = true
-//
-//            // Dispatch group to wait for all requests to finish
-//            let group = DispatchGroup()
-//
-//            for section in sections {
-//                group.enter()
-//
-//                // Get items for section
-//                self.getItems(for: section, completion: {
-//                    if self.items[section] == nil || section == .brands || section == .hello  {
-//                    } else {
-//                        DispatchQueue.main.async { [self] in
-//                            // Replace element current section
-//                            nonEmptySections.replaceElement(section, withElement: section)
-//
-//                            // Get index with updated element
-//                            let updatedSections = self.nonEmptySections.enumerated().compactMap { index, kind in
-//                                section == kind ? index : nil
-//                            }
-//                            //debug("INFO: Update:", section, "Items:", items[section]?.count ,"Sections:", sections.count)
-//                            // Reload sections where was updated items
-//
-//                            if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
-//                                feedCollectionView?.reloadSections(IndexSet(updatedSections))
-//                            }
-//                        }
-//                    }
-//                    group.leave()
-//                })
-//            }
-//
-//            // Notification from DispatchQueue group when all section got answer
-//            group.notify(queue: .main) { [self] in
-//                debug("INFO: Get items FINISH")
-//
-//                // Get sections with empty items and ignore brands
-//                let emptySections = sections.filter { items[$0]?.isEmpty ?? true && $0 != .brands || $0 != .hello  }
-//
-//                // Remove all emptySection
-//                nonEmptySections.removeAll(where: { emptySections.contains($0) } )
-//
-//                // Show choose brands section, if after clear you'll get only brands section
-//                if nonEmptySections.count <= 1 {
-//                    self.nonEmptySections = feedSectionEmpty
-//                }
-//
-//                // Reload data into UICollectionView
-//                if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
-//                    feedCollectionView?.reloadData()
-//                }
-//
-//                // Unlock brands
-//                lockBrands = false
-//            }
-//        }
-//    }
     
     // MARK: - Inherited Methods
     override func viewDidLoad() {
@@ -306,7 +193,7 @@ class FeedCollectionViewController: LoggingViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-
+        
         // Make sure like buttons are updated when we come back from see all screen
         feedCollectionView.visibleCells.forEach {
             ($0 as? FeedItemCollectionCell)?.configureLikeButton()
