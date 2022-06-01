@@ -21,6 +21,9 @@ class SearchItemsViewController: UIViewController {
     /// The limit of count items after request
     let limited = 25
     
+    /// Parent navigation controller if called from another view controller
+    var parentNavigationController: UINavigationController?
+    
     /// Items for searchBar
     var searchItems: Items?
     
