@@ -11,8 +11,7 @@ import UIKit
 extension FeedItemViewController {
     // MARK: - Methods
     @objc func addButtonTapped(_ sender: Any) {
-        // TODO: Save current collection into pickItems
-        performSegue(withIdentifier: SearchItemsViewController.segueIdentifier, sender: self)
+        performSegue(withIdentifier: SearchItemsViewController.segueIdentifier, sender: navigationController)
     }
     
     @objc func editButtonTapped(_ sender: Any) {
