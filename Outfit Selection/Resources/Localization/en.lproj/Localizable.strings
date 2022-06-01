@@ -6,7 +6,9 @@
   Copyright © 2021 Denis Bystruev. All rights reserved.
 */
 "Account" = "Account";
+"Add thing to collection" = "Add thing to collection";
 "Add something to collection" = "Add something to collection";
+"Are you sure you want to delete the collection?" = "Are you sure you want to delete the collection?";
 "Back" = "Back";
 "Brands" = "Brands";
 "brands out of" = "brands out of";
@@ -19,6 +21,7 @@
 "collection" = "collection";
 "Concept Group" = "Concept Group";
 "Copy Link" = "Copy Link";
+"Delete the collection" = "Delete the collection";
 "Discover thousands of brands" = "Discover thousands of brands";
 "Dislike" = "Dislike";
 "Do you really want to dislike the item?" = "Do you really want to dislike the item?";

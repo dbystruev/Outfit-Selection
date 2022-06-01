@@ -1,5 +1,5 @@
 //
-//  FeedItemViewControlller+Navigation.swift
+//  FeedItemViewController+Navigation.swift
 //  Outfit Selection
 //
 //  Created by Evgeniy Goncharov on 31.05.2022.
@@ -17,15 +17,25 @@ extension FeedItemViewController {
                 debug("WARNING: \(segue.destination) is not \(CollectionNameViewController.self)")
                 return
             }
+            // Configure CollectionNameViewController
             destination.configure(textField: name ?? "", sender: sender)
             
         case SearchItemsViewController.segueIdentifier:
+            
             // Make sure destination is item view controller
             guard let destination = segue.destination as? SearchItemsViewController else {
                 debug("WARNING: \(segue.destination) is not \(SearchItemsViewController.self)")
                 return
             }
             
+            // Extract UINavigation controller from sender
+            guard let navigationController = sender as? UINavigationController else {
+                debug("WARNING: the sender is not UINavigationController")
+                return
+            }
+            
+            // Set parentNavigationController
+            destination.parentNavigationController = navigationController
             
         default:
             debug("WARNING: Unknown segue identifier", segue.identifier)

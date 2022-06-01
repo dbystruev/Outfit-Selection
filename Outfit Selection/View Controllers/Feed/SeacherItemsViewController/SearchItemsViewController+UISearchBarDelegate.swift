@@ -14,6 +14,7 @@ extension SearchItemsViewController: UISearchBarDelegate {
     /// - Parameters:
     ///   - searchBar: the search bar that is being edited
     ///   - interval: the time to postpone the reload fior
+    ///   - searchText: text for search
     func deferredDownloadItems(_ searchBar: UISearchBar, in interval: TimeInterval = ItemViewController.searchKeystrokeDelay, searchText: String) {
         if let lastClick = lastClick, interval < Date().timeIntervalSince(lastClick) {
             self.lastClick = nil
@@ -21,10 +22,10 @@ extension SearchItemsViewController: UISearchBarDelegate {
                 guard let items = items else { return }
                 self.searchItems = items
                 
-                debug(items)
-                
                 DispatchQueue.main.async {
                     guard !items.isEmpty else {
+                        self.searchItems?.removeAll()
+                        self.searchTableView?.reloadData()
                         return
                     }
 
