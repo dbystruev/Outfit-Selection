@@ -28,6 +28,7 @@ extension Collection {
         
         for collection in collections {
             Collection.append(collection)
+            debug(collection.name)
         }
     }
     
@@ -41,7 +42,7 @@ extension Collection {
                 "to \(Collections.self) gender collections"            )
             return
         }
-        
+        debug(collections)
         UserDefaults.collections = data
     }
 }

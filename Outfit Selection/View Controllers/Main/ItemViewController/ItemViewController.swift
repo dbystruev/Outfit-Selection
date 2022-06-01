@@ -103,6 +103,12 @@ class ItemViewController: LoggingViewController {
     /// The marker for edit mode
     var isEditingEnabled = false
     
+    /// The marker for item when item is showing from search
+    var isAddEnabled = false
+    
+    /// Parent navigation controller if called from another view controller
+    var parentNavigationController: UINavigationController?
+    
     /// Items for searchBar
     var searchItems: Items?
     
@@ -132,23 +138,15 @@ class ItemViewController: LoggingViewController {
         layer.shadowRadius = 10
     }
     
-    
-    /// Configure item view controller with given item and first image
-    /// - Parameters:
-    ///   - item: an item to configure the view controller with
-    func configure(with item: Item?) {
-        self.item = item
-        self.imageView?.configure(with: item?.pictures.first)
-    }
-    
     /// Configure item view controller with given item and its image
     /// - Parameters:
     ///   - item: an item to configure the view controller with
     ///   - image: an image to configure the view controller with
     ///   - isEditingEnabled: the marker for edit mode
-    func configure(with item: Item?, image: UIImage?, isEditingEnabled: Bool = false) {
+    func configure(with item: Item?, image: UIImage?, isEditingEnabled: Bool = false, isAddEnabled: Bool = false) {
         self.item = item
         self.image = image
+        self.isAddEnabled = isAddEnabled
         self.isEditingEnabled = isEditingEnabled
         
         if image == nil {
@@ -170,7 +168,6 @@ class ItemViewController: LoggingViewController {
     func loadImages() {
         // Load the first image
         imageView?.image = image
-        debug(imageView?.image)
         // Get the URLs for the second and all other images
         guard let imageURLs = item?.pictures, 1 < imageURLs.count else { return }
         
@@ -294,6 +291,9 @@ class ItemViewController: LoggingViewController {
             navigationItem.rightBarButtonItem = nil
             //shareButton.isHidden = true
         }
+        
+        // Set title for Button
+        orderButton.setTitle( isAddEnabled ? "Add thing to collection"~ : "Shop now"~, for: .normal)
         
         // Hide Search bar
         searchBar.isHidden = true

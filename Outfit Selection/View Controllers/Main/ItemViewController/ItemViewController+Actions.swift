@@ -44,7 +44,7 @@ extension ItemViewController {
         searchBar.text = ""
         
         // Restore saved item
-        configure(with: firstItem)
+        configure(with: firstItem, image: nil)
         
         // Hide backButton
         navigationItem.hidesBackButton = true
@@ -116,6 +116,46 @@ extension ItemViewController {
                 // Go to NavigationManager into outfit and show back button
                 NavigationManager.navigate(to: .outfit(items: items, hideBackButton: true))
             }
+            
+        } else if isAddEnabled && parentNavigationController != nil {
+            
+            // Find FeedItemViewController into hierarchy UINavigationController
+            guard let feedItemViewController = parentNavigationController?.findViewController(ofType: FeedItemViewController.self) else {
+                debug("WARNING: Can't find \(FeedItemViewController.self)")
+                return
+            }
+            
+            // Make shure the item is not nil
+            guard let item = item else { return }
+            
+            // Append new item into items from FeedItemViewController
+            feedItemViewController.items.append(item)
+            feedItemViewController.itemCollectionView.reloadData()
+            
+            // Extract index section
+            let indexSection = feedItemViewController.indexSection
+            
+            // Find wishlist view controller into navigation controller
+            guard let wishlistViewController = feedItemViewController.navigationController?.findViewController(ofType: WishlistViewController.self) else {
+                debug("ERROR:", WishlistViewController.className, " not found in this navigation controller")
+                return
+            }
+            
+            // Get pickType from items
+            let pickType = wishlistViewController.feedController.items[indexSection].key
+            
+            // Get items from items and add new item
+            var items = wishlistViewController.feedController.items[indexSection].value
+            items.append(item)
+            
+            // Remove collection from collections items
+            wishlistViewController.feedController.items.removeValue(forKey: pickType)
+            wishlistViewController.feedController.items = wishlistViewController.feedController.items.merging([pickType : items]) { $1 }
+            
+            // Add item to Collection
+            Collection.append(item, index: indexSection)
+            
+            dismiss(animated: true)
             
         } else {
             guard let url = item?.url else { return }

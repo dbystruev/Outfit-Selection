@@ -18,7 +18,7 @@ extension ItemViewController: UITableViewDelegate {
         saveDatasource()
         
         // Configure new item with image
-        configure(with: searchItems?[indexPath.row])
+        configure(with: searchItems?[indexPath.row], image: nil)
 
         // Hide table with items
         tableStackView.isHidden = true

@@ -46,6 +46,18 @@ extension Collection {
         genderCollections[gender] = collections
     }
     
+    static func append(_ item: Item, index: Int) {
+        debug(genderCollections)
+        
+        // Check gender are present already
+        guard let gender = Gender.current else { return }
+        guard let collection = genderCollections[gender]?.remove(at: index) else { return }
+        
+        //TODO: ADD item to Collection
+        //collection.append(item)
+        append(collection)
+    }
+    
     /// Remove all collections for current gender
     static func removeAll() {
         guard let gender = Gender.current else { return }
@@ -54,9 +66,13 @@ extension Collection {
     
     /// Remove collection for current gender with name
     static func remove(name: String) {
+        // Save collections for all genders to user defaults when finished
+        defer { save(genderCollections) }
+        
+        // Check gender are present already
         guard let gender = Gender.current else { return }
+        // Remove collection
         genderCollections[gender]?.removeAll(where: { $0.name == name })
-        save()
     }
     
     /// Remove last collection for current gender
