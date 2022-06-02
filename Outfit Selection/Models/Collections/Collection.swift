@@ -19,6 +19,9 @@ final class Collection: Codable {
     /// Collection name
     var name: String
     
+    /// ID for collection
+    let id: String
+    
     // MARK: - Computed Propeties
     var isEmpty: Bool { items.isEmpty }
     var itemCount: Int { items.count }
@@ -34,6 +37,7 @@ final class Collection: Codable {
     init(_ gender: Gender?, _ name: String) {
         self.gender = gender ?? .other
         self.name = name
+        self.id = UUID().uuidString
     }
     
     // MARK: - Methods
@@ -83,6 +87,6 @@ final class Collection: Codable {
 // MARK: - CustomStringConvertible
 extension Collection: CustomStringConvertible {
     var description: String {
-        "collectionItems: \(collectionItems), gender: \(gender), name: \(name)"
+        "collectionItems: \(collectionItems), id: \(id), gender: \(gender), name: \(name)"
     }
 }
