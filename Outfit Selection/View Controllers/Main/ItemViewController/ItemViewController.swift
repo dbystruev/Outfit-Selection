@@ -103,6 +103,13 @@ class ItemViewController: LoggingViewController {
     /// The marker for edit mode
     var isEditingEnabled = false
     
+    /// The marker for edit mode from collection
+    var isEditingCollection = false {
+        didSet {
+            isEditingEnabled = isEditingCollection
+        }
+    }
+    
     /// The marker for item when item is showing from search
     var isAddEnabled = false
     
