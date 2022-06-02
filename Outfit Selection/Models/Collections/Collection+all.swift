@@ -97,6 +97,47 @@ extension Collection {
         genderCollections[gender]?.removeAll(where: { $0.name == name })
     }
     
+    /// Remove item from collection
+    /// - Parameters:
+    ///   - item: item for remove
+    ///   - index: index collectionremove
+    static func remove(_ item: Item, index: Int) {
+        
+        // Save collections for all genders to user defaults when finished
+        defer { save(genderCollections) }
+        
+        // Check gender are present already
+        guard let gender = Gender.current else { return }
+        
+        // Remove collection into Collections
+        guard let collection = genderCollections[gender]?.remove(at: index) else {
+            debug("ERROR: Can't get collection for index", index )
+            return
+        }
+        
+        // Get items from gender collections at index
+        var items = collection.items
+        items.removeAll(where: { $0.id == item.id })
+        
+        // Clear collection
+        collection.removeAll()
+        
+        // Append new item into collection
+        collection.append(CollectionItemCatalog(items))
+        
+        guard var collections = genderCollections[gender] else {
+            // If not present — create new collection list for its gender
+            genderCollections[gender] = [collection]
+            return
+        }
+        
+        // Insert new collection into collections
+        collections.insert(collection, at: index)
+        
+        // Set new collections into genderCollections
+        genderCollections[gender] = collections
+    }
+    
     /// Remove last collection for current gender
     static func removeLast() {
         guard let gender = Gender.current else { return }
