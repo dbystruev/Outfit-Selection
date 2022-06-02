@@ -10,7 +10,12 @@ import UIKit
 
 extension SearchItemsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.cellForRow(at: indexPath)?.isSelected = false
+        
+        // Hide keyboard
+        view.endEditing(true)
+        
+        // Deselect row after tap
+        tableView.deselectRow(at: indexPath, animated: true)
         
         // Instantiate a view controller from wishlist storyboard
         let wishlistStoryboard = UIStoryboard(name: "Wishlist", bundle: nil)
@@ -33,5 +38,13 @@ extension SearchItemsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         debug(indexPath.row)
+    }
+    
+    /// An action when a user scroll items into tableView
+    /// - Parameters:
+    ///   - scrollView: the scrollView
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        // Hide keyboard
+        view.endEditing(true)
     }
 }

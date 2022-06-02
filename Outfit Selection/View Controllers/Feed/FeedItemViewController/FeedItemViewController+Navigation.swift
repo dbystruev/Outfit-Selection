@@ -34,6 +34,9 @@ extension FeedItemViewController {
                 return
             }
             
+            // Get randome Items for search table view
+            destination.setRandomItems()
+            
             // Set parentNavigationController
             destination.parentNavigationController = navigationController
             
