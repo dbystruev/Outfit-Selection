@@ -33,6 +33,8 @@ extension WishlistViewController {
             // If we were sent by feed item use its item and image information to configure destination
             if let feedItem = sender as? FeedItem {
                 destination.configure(with: feedItem.item, image: feedItem.itemImageView.image)
+                destination.isEditingCollection = true
+                destination.parentNavigationController = feedController.parentNavigationController
                 return
             }
             
