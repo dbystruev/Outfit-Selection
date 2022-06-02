@@ -45,30 +45,6 @@ final class Collection: Codable {
         collectionItems.append(item)
     }
     
-//    /// Append new item into items of collection
-//    /// - Parameters:
-//    ///   - item: item for append
-//    func append(_ item: Item?) {
-//        guard let item = item else {
-//            debug("WARNING: item is nil")
-//            return
-//        }
-//        
-//        debug("Before:", collectionItems.count)
-//        
-//        // Merging items from collectionItems with new item
-//        let items = collectionItems.first?.items.merging([item.id: item]) { $1 }
-//        
-//        guard let items = items else { return }
-//        
-//        // Set new items into collectionItems
-//        collectionItems.first?.items = items
-//        
-//        debug("Before:", collectionItems.count)
-//        
-//        debug(collectionItems)
-//    }
-    
     /// Returns true or false depending on whether collection constains a collection item
     /// - Parameter item: collection item to check for
     /// - Returns: true or false depending on result

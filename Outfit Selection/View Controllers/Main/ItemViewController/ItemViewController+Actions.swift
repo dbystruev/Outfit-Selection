@@ -141,7 +141,7 @@ extension ItemViewController {
                 
                 // TODO: Update item into Collection
                 // Update item to Collection
-                //Collection.update(item, index: indexSection)
+                //Collection.update(firstItem, item, index: indexSection)
                 
                 // Return to FeedItemViewController
                 navigationController?.popToViewController(feedItemViewController, animated: true)
@@ -219,7 +219,7 @@ extension ItemViewController {
             
             // TODO: Add item to Collection
             // Add item to Collection
-            //Collection.append(item, index: indexSection)
+            Collection.append(item, index: indexSection)
             
             dismiss(animated: true)
             

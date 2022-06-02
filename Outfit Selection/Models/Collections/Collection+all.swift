@@ -46,16 +46,27 @@ extension Collection {
         genderCollections[gender] = collections
     }
     
+    /// Append new item into collection
+    /// - Parameters:
+    ///   - item: item for append
+    ///   - index: index collection
     static func append(_ item: Item, index: Int) {
-        debug(genderCollections)
-        
         // Check gender are present already
         guard let gender = Gender.current else { return }
         guard let collection = genderCollections[gender]?.remove(at: index) else { return }
         
-        //TODO: ADD item to Collection
-        //collection.append(item)
-        append(collection)
+        // Append new item into collection
+        collection.append(CollectionItemCatalog(item))
+        
+        guard var collections = genderCollections[gender] else {
+            // If not present — create new collection list for its gender
+            genderCollections[gender] = [collection]
+            return
+        }
+        
+        // Insert new collection into collections
+        collections.insert(collection, at: index)
+        genderCollections[gender] = collections
     }
     
     /// Remove all collections for current gender
@@ -100,4 +111,18 @@ extension Collection {
         collection.name = newName
         append(collection)
     }
+    
+    //    static func update(item: Item, newItem: Item, index: Int) {
+    //        guard let gender = Gender.current else { return }
+    //        guard let collection = genderCollections[gender]?[index] else {
+    //            debug("ERROR: Can't get collection for index", index )
+    //            return
+    //        }
+    //
+    //        var items = collection.items
+    //        items.replaceElement(item, withElement: newItem)
+    //
+    //        genderCollections[gender]?[index].items = items
+    //    }
+    
 }

@@ -11,11 +11,11 @@ import UIKit
 extension SearchItemsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        // Hide keyboard
-        view.endEditing(true)
-        
         // Deselect row after tap
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        // Hide keyboard
+        view.endEditing(true)
         
         // Instantiate a view controller from wishlist storyboard
         let wishlistStoryboard = UIStoryboard(name: "Wishlist", bundle: nil)
