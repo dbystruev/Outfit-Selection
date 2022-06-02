@@ -141,7 +141,7 @@ extension ItemViewController {
                 
                 // TODO: Update item into Collection
                 // Update item to Collection
-                //Collection.update(firstItem, item, index: indexSection)
+                Collection.update(item: firstItem, newItem: item, index: indexSection)
                 
                 // Return to FeedItemViewController
                 navigationController?.popToViewController(feedItemViewController, animated: true)
@@ -217,8 +217,7 @@ extension ItemViewController {
             wishlistViewController.feedController.items.removeValue(forKey: pickType)
             wishlistViewController.feedController.items = wishlistViewController.feedController.items.merging([pickType : items]) { $1 }
             
-            // TODO: Add item to Collection
-            // Add item to Collection
+            // Add new item into Collection
             Collection.append(item, index: indexSection)
             
             dismiss(animated: true)

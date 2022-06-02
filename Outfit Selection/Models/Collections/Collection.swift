@@ -73,6 +73,11 @@ final class Collection: Codable {
     func remove(_ item: CollectionItemCatalog) {
         collectionItems.removeAll { $0 == item }
     }
+    
+    /// Removes all collection item from the collection
+    func removeAll() {
+        collectionItems.removeAll()
+    }
 }
 
 // MARK: - CustomStringConvertible
