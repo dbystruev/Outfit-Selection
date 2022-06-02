@@ -11,7 +11,7 @@ import UIKit
 // MARK: - Actions
 extension BrandsViewController {
     /// Call when leftBarButtonItem tapped
-    @objc func cancelButtonTap() {
+    @objc func cancelButtonTapped() {
         
         // Clear searchBar text
         searchBar.text = ""

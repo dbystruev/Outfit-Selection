@@ -11,7 +11,7 @@ import UIKit
 extension FeedsProfileViewController {
     // MARK: - Actions
     /// Call when leftBarButtonItem tapped
-    @objc func cancelButtonTap() {
+    @objc func cancelButtonTapped() {
         // Hide backButton
         navigationItem.hidesBackButton = true
         
@@ -23,8 +23,7 @@ extension FeedsProfileViewController {
     }
     
     /// Call when save button  tapped
-    @IBAction func saveButtonTap() {
-        
+    @IBAction func saveButtonTapped() {
         if feedProfileSelectedFeedsIDs != [String](FeedsProfile.all.selected.feedsIDs) {
             // Save selected feeds to user default
             FeedsProfile.save()

@@ -56,7 +56,7 @@ class FeedsProfileViewController: UIViewController {
         navigationItem.hidesBackButton = isEditing
         
         // Set new backButton into leftBarButtonItem
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTapped))
         
         // Set title
         self.title = "Feeds"~
