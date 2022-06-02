@@ -71,9 +71,6 @@ class ItemViewController: LoggingViewController {
     @IBOutlet weak var trailingStackView: UIStackView!
     @IBOutlet var vendorLabels: [UILabel]!
     
-    // Set new cancel into leftBarButtonItem
-    let cancelBarButton = UIBarButtonItem()
-    
     // Set new save into leftBarButtonItem
     let saveButton  = UIBarButtonItem()
     
@@ -242,8 +239,8 @@ class ItemViewController: LoggingViewController {
         
         addToWishlistButton.isEnabled = !isEditing
         
-        // Set custom title for Edit button
-        navigationItem.rightBarButtonItem?.title = isEditing ? "Save"~ : "Edit"~
+        // Configure Edit BarButtonItem
+        let editButton = UIBarButtonItem(title: isEditing ? "Save"~ : "Edit"~, style: .plain, target: self, action: #selector(editButtonItemTapped))
         
         // Set new title for Button
         orderButton.setTitle( isEditing ? "Save"~ : "Shop now"~, for: .normal)
@@ -252,7 +249,7 @@ class ItemViewController: LoggingViewController {
         
         // Hide or show backButton
         navigationItem.hidesBackButton = isEditing
-        
+    
         if isEditing {
             // Configure custom backBatton for leftBarButtonItems
             backBarButon.setTitle("Back"~, for: .normal)
@@ -267,16 +264,22 @@ class ItemViewController: LoggingViewController {
             backBarButon.isEnabled = false
             
             // Configure cancel button for rightBarButtonItems
-            cancelBarButton.title = "Cancel"~
-            cancelBarButton.target = self
-            cancelBarButton.action = #selector(cancelButtonTap)
-            
-            // Add cancel button into rightBarButtonItems
-            navigationItem.rightBarButtonItems?.append(cancelBarButton)
+            let cancelBarButton = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTapped))
+
+            navigationItem.rightBarButtonItems = [editButton, cancelBarButton]
             
         } else {
-            // Remove cancel button from rightBarButtonItems
-            navigationItem.rightBarButtonItems?.remove(at: 1)
+            
+            // Append Delete button
+            if isEditingCollection {
+                let delete = UIBarButtonItem(title: "Delete"~, style: .plain, target: self, action: #selector(showAlert))
+                delete.tintColor = .red
+                delete.style = .done
+                navigationItem.rightBarButtonItems = [delete, editButton]
+            } else {
+                navigationItem.rightBarButtonItems = [editButton]
+            }
+            
             backBarButon.isHidden = true
         }
     }
@@ -292,11 +295,18 @@ class ItemViewController: LoggingViewController {
         // Configyre editButtonItem
         if isEditingEnabled {
             navigationItem.rightBarButtonItem = editButtonItem
-            navigationItem.rightBarButtonItem?.action = #selector(editButtonItemTap)
+            navigationItem.rightBarButtonItem?.action = #selector(editButtonItemTapped)
+            
+            // Append Delete button
+            if isEditingCollection {
+                let delete = UIBarButtonItem(title: "Delete"~, style: .plain, target: self, action: #selector(showAlert))
+                delete.tintColor = .red
+                delete.style = .done
+                navigationItem.rightBarButtonItems?.insert(delete, at: 0)
+            }
         } else {
             // Clear rightBarButtonItem
             navigationItem.rightBarButtonItem = nil
-            //shareButton.isHidden = true
         }
         
         // Set title for Button
