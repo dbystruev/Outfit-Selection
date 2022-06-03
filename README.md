@@ -37,15 +37,15 @@ Figma [original](https://www.figma.com/file/R1u7CpopH9Kfj79P9Aseh0/Get-Outfit?no
 ## Requirements
 
 REST/JSON server with the following API calls implemented with [PostgREST](https://postgrest.org):
-* [categories](http://spb.getoutfit.co:3000/categories)
-* [items](http://spb.getoutfit.co:3000/items?limit=10)
-* [occasions](http://spb.getoutfit.co:3000/occasions)
-* [onboarding](http://spb.getoutfit.co:3000/onboarding)
-* [server](http://spb.getoutfit.co:3000/server)
+* [categories](http://oracle.getoutfit.net:3000/categories)
+* [items](http://oracle.getoutfit.net:3000/items?limit=10)
+* [occasions](http://oracle.getoutfit.net:3000/occasions)
+* [onboarding](http://oracle.getoutfit.net:3000/onboarding)
+* [server](http://oracle.getoutfit.net:3000/server)
 
 Example request:
 
-[/items?gender=in.(male,unisex)&limit=45&order=modified_time.desc&vendor=in.(acoldwall,acnestudios)](http://spb.getoutfit.co:3000/items?gender=in.%28male,unisex%29&limit=45&order=modified_time.desc&vendor=in.%28acoldwall,acnestudios%29)
+[/items?gender=in.(male,unisex)&limit=45&order=modified_time.desc&vendor=in.(acoldwall,acnestudios)](http://oracle.getoutfit.net:3000/items?gender=in.%28male,unisex%29&limit=45&order=modified_time.desc&vendor=in.%28acoldwall,acnestudios%29)
 
 ## Acknowledgments
 
