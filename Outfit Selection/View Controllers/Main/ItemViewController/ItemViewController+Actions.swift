@@ -11,7 +11,7 @@ import UIKit
 extension ItemViewController {
     // MARK: - Helper Methods
     /// Call when leftBarButtonItem tapped
-    @objc func backButtonTap() {
+    @objc func backButtonTapped() {
         
         // Restore saved items
         searchItems = searchItemsSave
@@ -33,7 +33,7 @@ extension ItemViewController {
     }
     
     /// Call when leftBarButtonItem tapped
-    @objc func cancelButtonTap() {
+    @objc func cancelButtonTapped() {
         // Show tableView
         tableStackView.isHidden = true
         
@@ -50,8 +50,63 @@ extension ItemViewController {
         navigationItem.hidesBackButton = true
         isEditing.toggle()
     }
+    
+    /// Call when delete button  tapped
+    private func deleteButtonTapped() {
+        
+        // Set isEditing to false
+        setEditing(false, animated: false)
+        
+        // Find FeedItemViewController into hierarchy UINavigationController
+        guard let feedItemViewController = parentNavigationController?.findViewController(ofType: FeedItemViewController.self) else {
+            debug("WARNING: Can't find \(FeedItemViewController.self)")
+            return
+        }
+        
+        // Make shure that item is not nil
+        guard let item = item else {
+            debug("ERROR: Current item is nil")
+            return
+        }
+        
+        // Remove item from items into feed item view controller
+        feedItemViewController.items.removeAll(where: { $0 == item })
+        feedItemViewController.itemCollectionView.reloadData()
+        
+        // Find wishlist view controller into navigation controller
+        guard let wishlistViewController = feedItemViewController.navigationController?.findViewController(ofType: WishlistViewController.self) else {
+            debug("ERROR:", WishlistViewController.className, "not found in this navigation controller")
+            return
+        }
+        
+        // Extract index section
+        let indexSection = feedItemViewController.indexSection
+        let wishlistItems = wishlistViewController.feedController.items
+        
+        // Get pickType from items
+        let pickType = wishlistItems[indexSection].key
+        
+        // Get items from items and add new item
+        var items = wishlistItems[indexSection].value
+        
+        // Remove item from items
+        items.removeAll(where: { $0 == item })
+        
+        // Remove collection from collections items
+        wishlistViewController.feedController.items.removeValue(forKey: pickType)
+        
+        // Set new items into items from wishlist view controller
+        wishlistViewController.feedController.items = wishlistItems.merging([pickType : items]) { $1 }
+        
+        // Delete item from Collection
+        Collection.remove(item, index: indexSection)
+        
+        // Return to FeedItemViewController
+        navigationController?.popToViewController(feedItemViewController, animated: true)
+    }
+    
     /// Call when rightBarButtonItem tapped
-    @objc func editButtonItemTap() {
+    @objc func editButtonItemTapped() {
         setEditing(!isEditing, animated: true)
         if !isEditing {
             orderButtonTapped(navigationItem)
@@ -60,6 +115,20 @@ extension ItemViewController {
     /// Call when UIimageView was tapped
     @objc func imageTapped(sender: UITapGestureRecognizer) {
         performSegue(withIdentifier: ImageViewController.segueIdentifier, sender: item)
+    }
+    
+    /// Show alert with information to delete current item from collection
+    @objc func showAlert() {
+        let alert = Alert.configured(
+            "Delete this item"~,
+            message: "Are you sure you want to delete this item?"~,
+            actionTitles: ["Cancel"~, "Yes"~],
+            styles: [.cancel, .destructive],
+            handlers: [{ _ in
+            },{ _ in
+                self.deleteButtonTapped()
+            }])
+        present(alert, animated: true)
     }
     
     // MARK: - Actions
@@ -73,7 +142,7 @@ extension ItemViewController {
     }
     
     @IBAction func backButtonTapped(_ sender: Any) {
-        backButtonTap()
+        backButtonTapped()
     }
     
     @IBAction func dislikeButtonTapped(_ sender: WishlistButton) {
@@ -85,36 +154,100 @@ extension ItemViewController {
     }
     
     @IBAction func orderButtonTapped(_ sender: Any) {
-        if isEditing || ((sender as? UINavigationItem) != nil) {
-            
-            navigationItem.rightBarButtonItem?.isEnabled = false
-            // Get OutfitViewController
-            guard let outfitViewController = navigationController?.findViewController(ofType: OutfitViewController.self) else {
-                debug("ERROR: Can't find outfitViewController")
-                return
-            }
-            // Get is showing items from OutfitViewController
-            var items = outfitViewController.visibleItems
-            // Get index current item into occasion items array
-            guard let index = items.firstIndex(where: {$0.id == firstItem?.id}) else {
-                debug("ERROR: Can't find itemID into items", items)
-                return
-            }
-            
-            // Get current chosen item
-            guard let item = item else {
-                debug("ERROR: Can't find item into items")
-                return
-            }
-            
-            // Set a new item into ocassion array
-            items[index] = item
-            
-            // Download all images and add to viewModels
-            ItemManager.shared.loadImagesFromItems(items: items) {
+        if isEditing || ((sender as? UINavigationItem) != nil)  {
+            //debug(isEditingCollection, parentNavigationController != nil)
+            if isEditingCollection {
                 
-                // Go to NavigationManager into outfit and show back button
-                NavigationManager.navigate(to: .outfit(items: items, hideBackButton: true))
+                // Set isEditing to false
+                setEditing(false, animated: false)
+                
+                // Find FeedItemViewController into hierarchy UINavigationController
+                guard let feedItemViewController = parentNavigationController?.findViewController(ofType: FeedItemViewController.self) else {
+                    debug("WARNING: Can't find \(FeedItemViewController.self)")
+                    return
+                }
+                
+                // Make shure that item is not nil
+                guard let item = item else {
+                    debug("ERROR: Current item is nil")
+                    return
+                }
+                
+                // Make shure that first item is not nil
+                guard let firstItem = firstItem else {
+                    debug("ERROR: First item item is nil")
+                    return
+                }
+                
+                // Replace old item from items to new item
+                feedItemViewController.items.replaceElement(firstItem, withElement: item)
+                feedItemViewController.itemCollectionView.reloadData()
+                
+                // Find wishlist view controller into navigation controller
+                guard let wishlistViewController = feedItemViewController.navigationController?.findViewController(ofType: WishlistViewController.self) else {
+                    debug("ERROR:", WishlistViewController.className, "not found in this navigation controller")
+                    return
+                }
+                
+                // Extract index section
+                let indexSection = feedItemViewController.indexSection
+                let wishlistItems = wishlistViewController.feedController.items
+                
+                // Get pickType from items
+                let pickType = wishlistItems[indexSection].key
+                
+                // Get items from items and add new item
+                var items = wishlistItems[indexSection].value
+                
+                // Replace old item from items to new item
+                items.replaceElement(firstItem, withElement: item)
+                
+                // Remove collection from collections items
+                wishlistViewController.feedController.items.removeValue(forKey: pickType)
+                
+                // Set new items into items from wishlist view controller
+                wishlistViewController.feedController.items = wishlistItems.merging([pickType : items]) { $1 }
+                
+                // Update item to Collection
+                Collection.update(item: firstItem, newItem: item, index: indexSection)
+                
+                // Return to FeedItemViewController
+                navigationController?.popToViewController(feedItemViewController, animated: true)
+                
+            } else {
+                
+                navigationItem.rightBarButtonItem?.isEnabled = false
+                
+                // Get OutfitViewController
+                guard let outfitViewController = navigationController?.findViewController(ofType: OutfitViewController.self) else {
+                    debug("ERROR: Can't find outfitViewController")
+                    return
+                }
+                
+                // Get is showing items from OutfitViewController
+                var items = outfitViewController.visibleItems
+                
+                // Get index current item into occasion items array
+                guard let index = items.firstIndex(where: {$0.id == firstItem?.id}) else {
+                    debug("ERROR: Can't find itemID into items", items)
+                    return
+                }
+                
+                // Get current chosen item
+                guard let item = item else {
+                    debug("ERROR: Can't find item into items")
+                    return
+                }
+                
+                // Set a new item into ocassion array
+                items[index] = item
+                
+                // Download all images and add to viewModels
+                ItemManager.shared.loadImagesFromItems(items: items) {
+                    
+                    // Go to NavigationManager into outfit and show back button
+                    NavigationManager.navigate(to: .outfit(items: items, hideBackButton: true))
+                }
             }
             
         } else if isAddEnabled && parentNavigationController != nil {
@@ -137,7 +270,7 @@ extension ItemViewController {
             
             // Find wishlist view controller into navigation controller
             guard let wishlistViewController = feedItemViewController.navigationController?.findViewController(ofType: WishlistViewController.self) else {
-                debug("ERROR:", WishlistViewController.className, " not found in this navigation controller")
+                debug("ERROR:", WishlistViewController.className, "not found in this navigation controller")
                 return
             }
             
@@ -152,7 +285,7 @@ extension ItemViewController {
             wishlistViewController.feedController.items.removeValue(forKey: pickType)
             wishlistViewController.feedController.items = wishlistViewController.feedController.items.merging([pickType : items]) { $1 }
             
-            // Add item to Collection
+            // Add new item into Collection
             Collection.append(item, index: indexSection)
             
             dismiss(animated: true)
@@ -168,12 +301,12 @@ extension ItemViewController {
         
         // Make sure item is not nil
         guard let item = item else { return }
-
+        
         // Identificator for universal share link
         let id: String = "eq."
         // Get current item ID
         let itemID: String = item.id
-
+        
         // Parts of the universal link
         let scheme = Global.UniversalLinks.scheme.https
         let domain = Global.UniversalLinks.domain.getoutfit
@@ -181,7 +314,7 @@ extension ItemViewController {
         
         // Build share link
         let itemURLShare = URL(string: scheme + domain + patch + id + itemID)
-    
+        
         // Share item url
         let activityController = UIActivityViewController(activityItems: [itemURLShare as Any], applicationActivities: nil)
         activityController.popoverPresentationController?.sourceView = (sender as AnyObject).customView

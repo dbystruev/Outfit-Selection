@@ -17,7 +17,6 @@ extension WishlistViewController: ButtonDelegate {
     func buttonTapped(_ sender: Any) {
         // Check if feed item was tapped
         if let feedItem = sender as? FeedItem {
-            debug()
             performSegue(withIdentifier: ItemViewController.segueIdentifier, sender: feedItem)
             return
         }

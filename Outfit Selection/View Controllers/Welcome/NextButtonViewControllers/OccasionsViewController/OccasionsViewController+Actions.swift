@@ -11,7 +11,7 @@ import UIKit
 extension OccasionsViewController {
     // MARK: - Actions
     /// Call when leftBarButtonItem tapped
-    @objc func cancelButtonTap() {
+    @objc func cancelButtonTapped() {
         // Hide backButton
         navigationItem.hidesBackButton = true
         

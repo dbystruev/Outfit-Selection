@@ -9,6 +9,7 @@
 "Add thing to collection" = "Добавить вещь в коллекцию";
 "Add something to collection" = "Добавить вещи в коллекцию";
 "Are you sure you want to delete the collection?" = "Вы уверены, что хотите удалить коллекцию?";
+"Are you sure you want to delete this item?" = "Вы действительно хотите удалить эту вешь из коллекции?";
 "Back" = "Назад";
 "Brands" = "Бренды";
 "brands out of" = "брендов из";
@@ -22,6 +23,8 @@
 "Concept Group" = "Концепт Груп";
 "Copy Link" = "Скопировать ссылку";
 "Delete the collection" = "Удалить коллекцию";
+"Delete this item" = "Удалить эту вешь";
+"Delete" = "Удалить";
 "Discover thousands of brands" = "Выбирайте из тысяч брендов";
 "Dislike" = "Не нравится";
 "Do you really want to dislike the item?" = "Вы действительно не хотите учитывать эту вещь при создании образа?";

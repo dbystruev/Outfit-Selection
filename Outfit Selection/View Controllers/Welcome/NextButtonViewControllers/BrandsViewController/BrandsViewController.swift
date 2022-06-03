@@ -95,7 +95,7 @@ class BrandsViewController: NextButtonViewController {
             navigationItem.hidesBackButton = isEditing
             
             // Set a new backButton into leftBarButtonItem
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTapped))
             
             // Change next button title
             nextButton?.setTitle("Save"~, for: .normal)

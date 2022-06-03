@@ -75,7 +75,7 @@ class OccasionsViewController: NextButtonViewController {
             navigationItem.hidesBackButton = isEditing
             
             // Set new backButton into leftBarButtonItem
-            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTap))
+            navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Cancel"~, style: .plain, target: self, action: #selector(cancelButtonTapped))
             
             // Change title nexButton
             nextButton?.setTitle("Save"~, for: .normal)

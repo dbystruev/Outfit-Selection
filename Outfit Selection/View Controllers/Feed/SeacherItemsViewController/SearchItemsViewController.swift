@@ -18,6 +18,9 @@ class SearchItemsViewController: UIViewController {
     /// Time of last click in search bar
     var lastClick: Date?
     
+    /// length for generate string for get randome items
+    let length: Int = 1
+    
     /// The limit of count items after request
     let limited = 25
     
@@ -27,6 +30,30 @@ class SearchItemsViewController: UIViewController {
     /// Items for searchBar
     var searchItems: Items?
     
+    // MARK: - Private Methods
+    /// Get random items for table view
+    func setRandomItems() {
+        NetworkManager.shared.getItems(for: Gender.current, limited: limited, named: randomString(length: length)) { items in
+            guard let items = items else { return }
+            self.searchItems = items
+            
+            DispatchQueue.main.async {
+                guard !items.isEmpty else { return }
+                
+                if AppDelegate.canReload && self.searchTableView?.hasUncommittedUpdates == false {
+                    self.searchTableView?.reloadData()
+                }
+            }
+        }
+    }
+    
+    // MARK: - Helper Methods
+    /// Generating random string
+    func randomString(length: Int) -> String {
+        let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
+        return String((0..<length).map{ _ in letters.randomElement()! })
+    }
+    
     // MARK: - Inherited Methods
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +62,7 @@ class SearchItemsViewController: UIViewController {
         searchTableView.dataSource = self
         searchTableView.delegate = self
         
-        // UISheetPresentation 
+        // UISheetPresentation
         if #available(iOS 15.0, *) {
             if let presentationController = presentationController as? UISheetPresentationController {
                 presentationController.detents = [.medium(), .large()]

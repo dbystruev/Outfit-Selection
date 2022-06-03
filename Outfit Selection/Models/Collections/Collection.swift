@@ -19,6 +19,9 @@ final class Collection: Codable {
     /// Collection name
     var name: String
     
+    /// ID for collection
+    let id: String
+    
     // MARK: - Computed Propeties
     var isEmpty: Bool { items.isEmpty }
     var itemCount: Int { items.count }
@@ -34,6 +37,7 @@ final class Collection: Codable {
     init(_ gender: Gender?, _ name: String) {
         self.gender = gender ?? .other
         self.name = name
+        self.id = UUID().uuidString
     }
     
     // MARK: - Methods
@@ -44,30 +48,6 @@ final class Collection: Codable {
         }
         collectionItems.append(item)
     }
-    
-//    /// Append new item into items of collection
-//    /// - Parameters:
-//    ///   - item: item for append
-//    func append(_ item: Item?) {
-//        guard let item = item else {
-//            debug("WARNING: item is nil")
-//            return
-//        }
-//        
-//        debug("Before:", collectionItems.count)
-//        
-//        // Merging items from collectionItems with new item
-//        let items = collectionItems.first?.items.merging([item.id: item]) { $1 }
-//        
-//        guard let items = items else { return }
-//        
-//        // Set new items into collectionItems
-//        collectionItems.first?.items = items
-//        
-//        debug("Before:", collectionItems.count)
-//        
-//        debug(collectionItems)
-//    }
     
     /// Returns true or false depending on whether collection constains a collection item
     /// - Parameter item: collection item to check for
@@ -97,11 +77,16 @@ final class Collection: Codable {
     func remove(_ item: CollectionItemCatalog) {
         collectionItems.removeAll { $0 == item }
     }
+    
+    /// Removes all collection item from the collection
+    func removeAll() {
+        collectionItems.removeAll()
+    }
 }
 
 // MARK: - CustomStringConvertible
 extension Collection: CustomStringConvertible {
     var description: String {
-        "collectionItems: \(collectionItems), gender: \(gender), name: \(name)"
+        "collectionItems: \(collectionItems), id: \(id), gender: \(gender), name: \(name)"
     }
 }
