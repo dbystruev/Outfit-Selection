@@ -16,6 +16,8 @@ extension FeedCollectionViewController: ButtonDelegate {
             // Configure and push feed item view controller
             let kind = feedHeader.pick
             
+            debug(feedHeader.id)
+            
             // Check if we came from wish list
             guard let wishlistNavigationController = parentNavigationController else {
                 
@@ -73,6 +75,8 @@ extension FeedCollectionViewController: ButtonDelegate {
              
             if displayedPicks.isEmpty {
                 feedItemViewController.configure(kind.type, with: items[kind.type], named: feedHeader.title, edit: true, indexSection: feedHeader.indexSection)
+//                let items = collection.first(where: { $0.id == feedHeader.id })?.items
+//                feedItemViewController.configure(kind.type, with: items, named: feedHeader.title, edit: true, indexSection: feedHeader.indexSection)
             } else {
                 feedItemViewController.configure(kind, with: pickItems[kind], named: feedHeader.title)
             }

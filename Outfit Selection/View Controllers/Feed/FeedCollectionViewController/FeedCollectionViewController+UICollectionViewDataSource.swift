@@ -24,6 +24,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             sectionType = displayedPicks[indexPath.section].type
         default:
             sectionType = items[indexPath.section].key
+//            sectionType = PickType.collections(collection[indexPath.section].name)
         }
         
         // Switch for displayedPick type
@@ -64,8 +65,8 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
                 if let item = pickItems[pick]?[indexPath.item] {
                     itemCell.configureContent(pick: pick, item: item, isInteractive: true)
                 }
-            default:
                 
+            default:
                 // Configure content for cell in section
                 let kind = items[indexPath.section].key
                 if let item = items[kind]?[indexPath.item] {
@@ -75,13 +76,17 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
                         isInteractive: true
                     )
                 }
+
+//                // Configure content for cell in section
+//                let kind = PickType.collections(collection[indexPath.section].name)
+//                let item = collection[indexPath.section].items[indexPath.item]
+//                itemCell.configureContent(kind: kind, item: item,isInteractive: true)
             }
             
             itemCell.delegate = self
             return itemCell
         }
     }
-    
     
     /// Returns the number of items in each section of collection view
     /// - Parameters:
@@ -95,8 +100,10 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             let count = pickItems[pick]?.count ?? 0
             return count
         default:
+//            let kind = PickType.collections(collection[section].name)
             let kind = items[section].key
             let count = kind == .brands ? Brands.sorted.count : items[kind]?.count ?? 0
+//            let count = kind == .brands ? Brands.sorted.count : collection[section].items.count
             return count
         }
         
@@ -111,6 +118,7 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
             return displayedPicks.count
         default:
             return items.count
+//            return collection.count
         }
     }
     
@@ -142,7 +150,8 @@ extension FeedCollectionViewController: UICollectionViewDataSource {
         case feedCollectionView:
             feedHeader.configureContent(pick: displayedPicks[indexPath.section % displayedPicks.count])
         default:
-            feedHeader.configureContent(kind: items[indexPath.section % items.count].key, indexSection: indexPath.section)
+            feedHeader.configureContent(kind: items[indexPath.section % items.count].key, indexSection: indexPath.section, id: "")
+//            feedHeader.configureContent(kind: PickType.collections(collection[indexPath.section].name), indexSection: indexPath.section, id: collection[indexPath.section].id)
         }
         
         feedHeader.delegate = self

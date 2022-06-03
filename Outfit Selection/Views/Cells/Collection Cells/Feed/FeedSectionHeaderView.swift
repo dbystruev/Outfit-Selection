@@ -34,9 +34,13 @@ class FeedSectionHeaderView: UICollectionReusableView {
     /// Delegate to call when something inside is tapped (for use in child classes)
     var delegate: ButtonDelegate?
     
+    /// Identificator collection
+    var id: String?
+    
     /// Index of collection view section
     var indexSection: Int = 0
-
+    
+    /// Empty pick
     var pick: Pick = Pick(.hello, title: "")
     
     // MARK: - Computed Properties
@@ -92,11 +96,12 @@ class FeedSectionHeaderView: UICollectionReusableView {
         ])
     }
     
-    func configureContent(kind: PickType, indexSection: Int) {
+    func configureContent(kind: PickType, indexSection: Int, id: String) {
         self.pick = Pick(kind, title: kind.title ?? "")
         seeAllButton.setTitle("See all"~, for: .normal)
         seeAllButton.isHidden = kind == .brands || kind == .emptyBrands || kind == .hello
         header.text = kind.title
+        self.id = id
         self.indexSection = indexSection
     }
     

@@ -26,6 +26,10 @@ class FeedCollectionViewController: LoggingViewController {
     /// The current User
     let currentUser = User.current
     
+    // TODO: DataSource switch to Collection.all
+    /// Collections
+    let collection = Collection.all
+    
     /// Displayed Picks for data source
     var displayedPicks: Picks = []
     

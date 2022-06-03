@@ -49,7 +49,9 @@ class SearchItemsViewController: UIViewController {
     
     // MARK: - Helper Methods
     /// Generating random string
-    func randomString(length: Int) -> String {
+    /// - Parameter length: count character
+    /// - Returns: random string
+    private func randomString(length: Int) -> String {
         let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         return String((0..<length).map{ _ in letters.randomElement()! })
     }
