@@ -35,6 +35,9 @@ extension Collection {
         
         // Check if collections for gender are present already
         let gender = collection.gender
+        
+        debug(genderCollections[gender])
+        
         guard var collections = genderCollections[gender] else {
             // If not present — create new collection list for its gender
             genderCollections[gender] = [collection]
@@ -57,6 +60,8 @@ extension Collection {
         
         // Check gender are present already
         guard let gender = Gender.current else { return }
+        
+        debug(genderCollections[gender])
         
         // Remove collection into Collections
         guard let collection = genderCollections[gender]?.remove(at: index) else {
