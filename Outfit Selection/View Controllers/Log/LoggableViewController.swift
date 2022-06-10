@@ -8,7 +8,7 @@
 
 import UIKit
 
-/// Base view controller for all that logs viewDidAppear(), and viewDidDissapear() events
+/// Base view controller for all that logs viewDidAppear(), viewDidDissapear(), and viewDidLoad() events
 open class LoggableViewController: UIViewController {
     open override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -18,5 +18,10 @@ open class LoggableViewController: UIViewController {
     open override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         debug("⛔️", className)
+    }
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        debug("👍", className)
     }
 }

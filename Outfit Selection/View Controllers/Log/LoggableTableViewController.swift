@@ -19,4 +19,9 @@ open class LoggableTableViewController: UITableViewController {
         super.viewDidDisappear(animated)
         debug("⛔️", className)
     }
+    
+    open override func viewDidLoad() {
+        super.viewDidLoad()
+        debug("👍", className)
+    }
 }
