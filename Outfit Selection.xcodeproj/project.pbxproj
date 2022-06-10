@@ -54,6 +54,8 @@
 		6906A9B026E68CEB00386267 /* CollectionBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6906A9AF26E68CEB00386267 /* CollectionBaseViewController.swift */; };
 		690A212C27D8766C00BFDF45 /* Brands+UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690A212B27D8766C00BFDF45 /* Brands+UserDefaults.swift */; };
 		690B42B226DD7601000C683B /* WishlistButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690B42B126DD7601000C683B /* WishlistButton.swift */; };
+		690C002D28530425004A0E21 /* LoggableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690C002C28530425004A0E21 /* LoggableViewController.swift */; };
+		690C002F28530471004A0E21 /* LoggableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690C002E28530471004A0E21 /* LoggableTableViewController.swift */; };
 		6910BDE4260B6D7B00A26F90 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910BDE3260B6D7B00A26F90 /* Bubble.swift */; };
 		6910E0C6274B92F300C15F75 /* ItemSearchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6910E0C5274B92F300C15F75 /* ItemSearchable.swift */; };
 		6912773627076DB700FB6107 /* Collection+Equatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6912773527076DB700FB6107 /* Collection+Equatable.swift */; };
@@ -396,6 +398,8 @@
 		6906A9AF26E68CEB00386267 /* CollectionBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionBaseViewController.swift; sourceTree = "<group>"; };
 		690A212B27D8766C00BFDF45 /* Brands+UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Brands+UserDefaults.swift"; sourceTree = "<group>"; };
 		690B42B126DD7601000C683B /* WishlistButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistButton.swift; sourceTree = "<group>"; };
+		690C002C28530425004A0E21 /* LoggableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggableViewController.swift; sourceTree = "<group>"; };
+		690C002E28530471004A0E21 /* LoggableTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggableTableViewController.swift; sourceTree = "<group>"; };
 		6910BDE3260B6D7B00A26F90 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		6910E0C5274B92F300C15F75 /* ItemSearchable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemSearchable.swift; sourceTree = "<group>"; };
 		6912773527076DB700FB6107 /* Collection+Equatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Collection+Equatable.swift"; sourceTree = "<group>"; };
@@ -791,6 +795,16 @@
 				6906A9AA26E6853700386267 /* CollectionNameViewController+UITextFieldDelegate.swift */,
 			);
 			path = CollectionNameViewController;
+			sourceTree = "<group>";
+		};
+		690C002B285303DD004A0E21 /* Log */ = {
+			isa = PBXGroup;
+			children = (
+				690C002E28530471004A0E21 /* LoggableTableViewController.swift */,
+				690C002C28530425004A0E21 /* LoggableViewController.swift */,
+				696209A326FB969400B46FE8 /* LoggingViewController.swift */,
+			);
+			path = Log;
 			sourceTree = "<group>";
 		};
 		691C5F3D26E7755F00DF0758 /* CollectionSelectViewController */ = {
@@ -1444,8 +1458,8 @@
 			children = (
 				6906A9A926E684E300386267 /* Collections */,
 				6976232726D76E7300504F31 /* Feed */,
-				696209A326FB969400B46FE8 /* LoggingViewController.swift */,
 				6900142226DA2E4D007F1A44 /* FeedItemCollectionViewLayout.swift */,
+				690C002B285303DD004A0E21 /* Log */,
 				6979DF7A2717426F001EC168 /* Main */,
 				695295BF27E9BD7100D34C3A /* Messages */,
 				69D0FDA225EB64C600FC15F6 /* ProfileViewController */,
@@ -2032,6 +2046,7 @@
 				7A1E3FEC28465046003A080D /* SearchItemsViewController+UITableViewDataSource.swift in Sources */,
 				6906A9A226E6414C00386267 /* CollectionNameViewController.swift in Sources */,
 				7AC0414B28251E2300CA7E5E /* ImageViewController+Actions.swift in Sources */,
+				690C002D28530425004A0E21 /* LoggableViewController.swift in Sources */,
 				7A2039DB27FC440C00CD4B93 /* AccountCollectionViewCell.swift in Sources */,
 				694E7BEE25DBFFFB006607CD /* UIView+findSuperview.swift in Sources */,
 				696E875B256463160061802E /* Double+asPrice.swift in Sources */,
@@ -2114,6 +2129,7 @@
 				69C5CBE3260A147400DE22E6 /* StringProtocol+byWords.swift in Sources */,
 				694A195B282A5F9D0052EB00 /* ProfileViewController+UIViewController.swift in Sources */,
 				6976231E26D75F3A00504F31 /* FeedBaseCell.swift in Sources */,
+				690C002F28530471004A0E21 /* LoggableTableViewController.swift in Sources */,
 				6986612825705F57008F94CA /* BrandsViewController+UICollectionViewDataSource.swift in Sources */,
 				7AD80C2227D33567005A36DC /* Brand+Comparable.swift in Sources */,
 				6998D83B274516C10086F23D /* StringProtocol+item.swift in Sources */,

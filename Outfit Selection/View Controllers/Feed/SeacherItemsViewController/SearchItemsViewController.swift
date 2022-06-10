@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SearchItemsViewController: UIViewController {
+class SearchItemsViewController: LoggableViewController {
     // MARK: - Outlets
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var cancelUIButton: UIButton!

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FeedsProfileViewController: UIViewController {
+class FeedsProfileViewController: LoggableViewController {
     
     // MARK: - Outlets
     /// Top right button to clear or select all brands

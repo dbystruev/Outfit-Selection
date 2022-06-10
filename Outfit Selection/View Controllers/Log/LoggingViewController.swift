@@ -9,7 +9,7 @@
 import AppsFlyerLib
 import UIKit
 
-class LoggingViewController: UIViewController {
+class LoggingViewController: LoggableViewController {
     // MARK: - Static Properties
     private static var uuid: String?
     
