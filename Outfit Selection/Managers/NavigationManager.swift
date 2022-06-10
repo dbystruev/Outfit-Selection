@@ -117,7 +117,7 @@ class NavigationManager {
                 return
             }
             
-            if !UserDefaults.hasAnswerQuestions {
+            if !UserDefaults.hasAnsweredQuestions {
                 // If tab bar controller is not available presen outfit view controller
                 presentOutfitViewController(in: navigationController)
             } else {

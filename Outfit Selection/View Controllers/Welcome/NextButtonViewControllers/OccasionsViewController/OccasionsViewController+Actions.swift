@@ -53,7 +53,7 @@ extension OccasionsViewController {
             NetworkManager.shared.reloadItems(for: Gender.current) { _ in }
             
             // The user has given answer for questions
-            UserDefaults.hasAnswerQuestions = true
+            UserDefaults.hasAnsweredQuestions = true
             
             // Transition to progress
             performSegue(withIdentifier: ProgressViewController.segueIdentifier, sender: sender)

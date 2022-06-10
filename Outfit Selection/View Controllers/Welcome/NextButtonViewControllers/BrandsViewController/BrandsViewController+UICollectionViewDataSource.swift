@@ -10,7 +10,7 @@ import UIKit
 
 extension BrandsViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        isEditing || !UserDefaults.hasAnswerQuestions ? brands.count : Brands.selected.count
+        isEditing || !UserDefaults.hasAnsweredQuestions ? brands.count : Brands.selected.count
     }
     
     // MARK: - UICollectionViewDataSource Methods
@@ -28,7 +28,7 @@ extension BrandsViewController: UICollectionViewDataSource {
         // Get cell from BrandCollectionViewCell
         let brandCell = cell as? BrandCollectionViewCell ?? BrandCollectionViewCell(frame: cell.frame)
         // Get array with brands
-        let brands = isEditing || !UserDefaults.hasAnswerQuestions ? brands : Brands.selected.sorted
+        let brands = isEditing || !UserDefaults.hasAnsweredQuestions ? brands : Brands.selected.sorted
         // Configure brands into BrandCollectionViewCell
         brandCell.configure(brand: brands[indexPath.row], cellSize: cellSize(for: collectionView))
         return brandCell

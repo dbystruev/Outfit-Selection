@@ -19,11 +19,11 @@ extension UserDefaults {
     @UserDefault(key: "GetOutfitCurrentGender", defaultValue: nil )
     static var currentGender: Data?
     
-    /// True if user has answer for questions
-    @UserDefault(key: "GetOutfitHasAnswerQuestions", defaultValue: false)
-    static var hasAnswerQuestions: Bool
+    /// True if the user has answered the quiz questions
+    @UserDefault(key: "GetOutfitHasAnsweredQuestions", defaultValue: false)
+    static var hasAnsweredQuestions: Bool
     
-    /// True if user has seen onboarding
+    /// True if the user has seen the onboarding
     @UserDefault(key: "GetOutfitHasSeenAppIntroduction", defaultValue: false)
     static var hasSeenAppIntroduction: Bool
     

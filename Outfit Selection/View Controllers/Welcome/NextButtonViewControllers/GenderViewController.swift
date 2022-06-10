@@ -107,7 +107,7 @@ class GenderViewController: NextButtonViewController {
             debug("INFO: Debug mode for \(String(describing: User.current.email)) ON")
         }
         
-        if UserDefaults.hasAnswerQuestions {
+        if UserDefaults.hasAnsweredQuestions {
             guard let navigationController = navigationController else { return }
             
             // Start loading items

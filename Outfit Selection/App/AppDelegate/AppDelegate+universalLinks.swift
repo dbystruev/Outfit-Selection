@@ -60,7 +60,7 @@ extension AppDelegate {
             }
             
             // Set deafult setting
-            if !UserDefaults.hasSeenAppIntroduction || !UserDefaults.hasAnswerQuestions {
+            if !UserDefaults.hasSeenAppIntroduction || !UserDefaults.hasAnsweredQuestions {
                 self.configureSettings()
                 debug("Configure Settings")
             }

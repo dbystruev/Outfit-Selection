@@ -20,7 +20,7 @@ extension ProfileViewController {
         User.current.isLoggedIn = nil
         
         // Set default settiings UserDefaults
-        UserDefaults.hasAnswerQuestions = false
+        UserDefaults.hasAnsweredQuestions = false
         
         // Reload data from into profileCollectionView
         if AppDelegate.canReload && profileCollectionView?.hasUncommittedUpdates == false {
