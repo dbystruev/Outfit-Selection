@@ -20,6 +20,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     ///   - indexPath: index path to give the cell for
     /// - Returns: the cell for the given index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        debug("👉 Section:", indexPath.section)
         switch indexPath.section {
         case 0:
             // Check isLoggedIn
