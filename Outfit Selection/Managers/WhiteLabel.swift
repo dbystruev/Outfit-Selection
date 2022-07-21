@@ -60,19 +60,10 @@ struct WhiteLabel {
         /// Background colors
         enum Background {
             /// Customized light background color
-            static let light: UIColor = kind == .getoutfit
-                ? UIColor(
-                    red: 0.46932125089999999,
-                    green: 0.53824871780000005,
-                    blue: 0.51836496590000003,
-                    alpha: 1
-                )
-                : .white
+            static let light = kind == .getoutfit ? #colorLiteral(red: 0.8470588235, green: 0.8745098039, blue: 0.8274509804, alpha: 1) : .white
             
             /// Customized onboarding background color
-            static let onboarding: UIColor = kind == .getoutfit
-                ? UIColor(red: 0.318, green: 0.38, blue: 0.373, alpha: 1)
-                : .white
+            static let onboarding = kind == .getoutfit ? #colorLiteral(red: 0.8470588235, green: 0.8745098039, blue: 0.8274509804, alpha: 1) : .white
         }
         
         /// Button colors
@@ -81,80 +72,37 @@ struct WhiteLabel {
             /// Gender button colors
             enum Gender {
                 /// Title color for gender buttons
-                static let titleColor: UIColor = kind == .getoutfit
-                ? UIColor(
-                    red: 0.25958698990000001,
-                    green: 0.2596296072,
-                    blue: 0.259577632,
-                    alpha: 1
-                )
-                : .black
+                static let titleColor = kind == .getoutfit ? #colorLiteral(red: 0.1254901961, green: 0.1254901961, blue: 0.1215686275, alpha: 1) : .black
             }
             
             /// Button disabled color
-            static let disabled: UIColor = kind == .getoutfit
-            ? UIColor(red: 0.88, green: 0.88, blue: 0.88, alpha: 1)
-            : .lightGray
+            static let disabled = kind == .getoutfit ? #colorLiteral(red: 0.8470588235, green: 0.8745098039, blue: 0.8274509804, alpha: 1) : .lightGray
             
             /// Button enabled color
-            static let enabled: UIColor = kind == .getoutfit
-            ? UIColor(red: 0.455, green: 0.541, blue: 0.518, alpha: 1)
-            : .black
+            static let enabled = kind == .getoutfit ? #colorLiteral(red: 0.1254901961, green: 0.1254901961, blue: 0.1215686275, alpha: 1) : .black
             
             /// Title color buttons
-            static let titleColor: UIColor = kind == .getoutfit
-            ? UIColor(
-                red: 0.99991279840000002,
-                green: 1,
-                blue: 0.99988144639999998,
-                alpha: 1
-            )
-            : .white
+            static let titleColor = kind == .getoutfit ? #colorLiteral(red: 0.8470588235, green: 0.8745098039, blue: 0.8274509804, alpha: 1) : .white
         }
         
         /// Progress bar colors
         enum Progress {
             /// Progress bar tint color
-            static let progressTintColor: UIColor = kind == .getoutfit
-                ? UIColor(
-                    red: 0.32052502040000003,
-                    green: 0.37435173989999998,
-                    blue: 0.37976023549999999,
-                    alpha: 1
-                )
-                : .black
-
+            static let progressTintColor = kind == .getoutfit ? #colorLiteral(red: 0.1254901961, green: 0.1254901961, blue: 0.1215686275, alpha: 1) : .black
+            
             /// Progress bar track tint color
-            static let trackTintColor: UIColor = kind == .getoutfit
-                ? UIColor(
-                    red: 0.99991279840000002,
-                    green: 1,
-                    blue: 0.99988144639999998,
-                    alpha: 1
-                )
-                : .lightGray
+            static let trackTintColor = kind == .getoutfit ? #colorLiteral(red: 0.8470588235, green: 0.8745098039, blue: 0.8274509804, alpha: 1) : .lightGray
         }
         
         /// Text colors
         enum Text {
-            static let button: UIColor = kind == .getoutfit
-                ? UIColor(
-                    red: 0.25958698990000001,
-                    green: 0.2596296072,
-                    blue: 0.259577632,
-                    alpha: 1
-                )
-                : .black
+            static let button = kind == .getoutfit ? #colorLiteral(red: 0.1254901961, green: 0.1254901961, blue: 0.1215686275, alpha: 1) : .black
             
             /// Customized text label color
-            static let label: UIColor = kind == .getoutfit
-                ? .white
-                : .black
+            static let label = kind == .getoutfit ? #colorLiteral(red: 0.1254901961, green: 0.1254901961, blue: 0.1215686275, alpha: 1) : .black
             
             /// Onboarding text color
-            static let onboarding: UIColor = kind == .getoutfit
-                ? UIColor(red: 0.988, green: 0.988, blue: 0.988, alpha: 1)
-                : .black
+            static let onboarding = kind == .getoutfit ? #colorLiteral(red: 0.1254901961, green: 0.1254901961, blue: 0.1215686275, alpha: 1) : .black
         }
     }
     
