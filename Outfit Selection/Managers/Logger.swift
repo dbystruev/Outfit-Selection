@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Logger {
+public class Logger {
     // MARK: - Static Constants
     /// Load logs from bundled files
     private static let bundledLogs: [String: String] = {

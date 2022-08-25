@@ -80,6 +80,9 @@ extension AppDelegate: UIApplicationDelegate {
         // Firebase configure
         AppDelegate.firebaseConfigure()
         
+        // Initial Telegram configuration
+        Telegram.setup()
+        
         // Load all brands 
         AppDelegate.updateBrands()
         
