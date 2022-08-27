@@ -17,7 +17,6 @@ extension ProfileViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
         case 0:
-            
             //debug(indexPath.row, User.current.isLoggedIn, User.current.sequenceCredentials[indexPath.row])
             // logout current user
             if User.current.isLoggedIn != nil {
@@ -25,14 +24,12 @@ extension ProfileViewController: UICollectionViewDelegate {
                     // Logout into current account
                     showAlert()
                 }
-                
             } else {
                 // Instantiate the tab bar controller
                 let mainStoryboard = UIStoryboard(name: "Signup", bundle: nil)
                 let signupViewController = mainStoryboard.instantiateViewController(withIdentifier: "SignupViewController")
-                self.navigationController?.showDetailViewController(signupViewController, sender: nil)
+                navigationController?.showDetailViewController(signupViewController, sender: nil)
             }
-            
         case 1:
             // Section 0 is gender — check if the user wants to change it
             let newGender = Gender.allCases[indexPath.row]
@@ -47,10 +44,12 @@ extension ProfileViewController: UICollectionViewDelegate {
                     }
                 }
             }
-            
         case 2:
             // Section 2 is brand — select brand and go to BrandsViewController for edit the brands list
-            guard let brandsViewController = brandsViewController else { return }
+            guard let brandsViewController = BrandsViewController.default else {
+                debug("WARNING: BrandsViewController.default is nil")
+                return
+            }
             // Set isEditing true
             brandsViewController.setEditing(true, animated: true)
             // Load BrandsViewController

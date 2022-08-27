@@ -17,14 +17,11 @@ class ProfileViewController: LoggingViewController {
     @IBOutlet weak var versionLabel: UILabel!
     
     // MARK: - Stored Properties
-    /// Brands view controller for one of the `profile collection view` sections
-    var brandsViewController: BrandsViewController?
-    
     /// True if current user is logged in, false or nil othewise
     var isLoggedIn = User.current.isLoggedIn
     
-    /// Maximum number of brands or occasions to show inline, more than that will have `selected ... brands / occasions out of ...`
-    let maxItemCount = 10
+    /// Maximum number of brands, feeds, or occasions to show inline, more than that will have `selected ... brands / occasions out of ...`
+    let maxItemCount = 12 // better a 9 or 12 for brands
     
     /// The height of typical cell and header in `profile collection view`
     let profileCellHeight = 36

@@ -26,9 +26,6 @@ extension ProfileViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Find and configure brands view controller
-        brandsViewController = navigationController?.findViewController(ofType: BrandsViewController.self)
-        
         // Configure navigation controller's bar font
         navigationController?.configureFont()
     
@@ -63,7 +60,7 @@ extension ProfileViewController {
         showTabBar()
         
         // Reload Data
-        brandsViewController?.reloadData()
+        BrandsViewController.default?.reloadData()
         
         // Configure version label with version and build
         configureVersionLabel()

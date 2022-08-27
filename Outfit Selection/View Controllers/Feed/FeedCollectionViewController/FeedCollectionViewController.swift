@@ -120,6 +120,13 @@ class FeedCollectionViewController: LoggingViewController {
     }
     
     // MARK: - Custom Methods
+    /// Clear all picks and collection view
+    public func clearAll() {
+        displayedPicks.removeAll()
+        items.removeAll()
+        pickItems.removeAll()
+    }
+    
     /// Append items to the section of given type (section)
     /// - Parameters:
     ///   - items: items to append to the section
@@ -142,9 +149,9 @@ class FeedCollectionViewController: LoggingViewController {
     
     /// Set section into UICollectionView
     /// - Parameters:
-    ///   - emptySection: marker for set only brands and an enpty sectiion
-    func setSection(with emptySection: Bool = false) {
-            updateItems(picks: picks)
+    ///   - inBatch: if true — update all items in one batch, false by default
+    func setSection(inBatch: Bool = false) {
+            updateItems(picks: picks, inBatch: inBatch)
     }
     
     /// Register cells, set data source and delegate for a given collection view

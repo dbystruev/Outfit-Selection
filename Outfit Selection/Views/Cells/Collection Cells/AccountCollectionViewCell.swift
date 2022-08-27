@@ -9,19 +9,24 @@
 import UIKit
 
 class AccountCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var cursorImage: UIImageView!
-    @IBOutlet weak var label: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
+    /// Optional disclosure image view on the cell's right
+    @IBOutlet weak var disclosureImageView: UIImageView!
+    
+    /// The label on cell's left
+    @IBOutlet weak var fieldNameLabel: UILabel!
+    
+    /// The label in the middle of the cell
+    @IBOutlet weak var textLabel: UILabel!
     
     // MARK: - Methods
     /// Configure gender cell with given gender
     /// - Parameters:
-    ///   - gender: the gender to confiture cell with
-    ///   - selected: gender which is currently selected
-    ///   - cursor: hide or show cursor
-    func configure(titleLabel: String, label: String, cursor: Bool) {
-        self.titleLabel.text = titleLabel
-        self.label.text = label
-        self.cursorImage.isHidden = !cursor
+    ///   - fieldName: text for the cell's left
+    ///   - text: text for the middle of the cell (default: "")
+    ///   - disclosure: should show disclosure indicator (default: false)
+    func configure(_ fieldName: String, text: String = "", disclosure: Bool = false) {
+        disclosureImageView.isHidden = !disclosure
+        fieldNameLabel.text = fieldName
+        textLabel.text = text
     }
 }

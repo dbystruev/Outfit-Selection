@@ -53,6 +53,17 @@ class BrandsViewController: NextButtonViewController {
         }
     }
     
+    // MARK: - Init
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        BrandsViewController.default = self
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        BrandsViewController.default = self
+    }
+    
     // MARK: - Inherited Methods
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)

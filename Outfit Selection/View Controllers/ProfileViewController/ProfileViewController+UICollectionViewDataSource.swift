@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import CryptoKit
 
 // MARK: - UICollectionViewDataSource
 extension ProfileViewController: UICollectionViewDataSource {
     // MARK: - Static Properties
-    static let sectionHeaders = ["Account"~, "Gender"~, "Brands"~, "Occasions"~, "Feeds"~]
+    private static let sectionHeaders = ["Account"~, "Gender"~, "Brands"~, "Occasions"~, "Feeds"~]
     
     // MARK: - UICollectionViewDataSource Methods
     /// Get cell for the given index path in profile collection view
@@ -20,81 +21,73 @@ extension ProfileViewController: UICollectionViewDataSource {
     ///   - indexPath: index path to give the cell for
     /// - Returns: the cell for the given index path
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        debug("👉 Section:", indexPath.section)
         switch indexPath.section {
         case 0:
-            // Check isLoggedIn
-            guard User.current.isLoggedIn != nil else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)
-                (cell as? AccountCollectionViewCell)?.configure(titleLabel: "Log in"~, label: ""~, cursor: false)
+            // Section 0 is account credentials - configure account cell
+            let cell = collectionView
+                .dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)
+            let accountCell = cell as? AccountCollectionViewCell
+            // If user is not logged in show "Log in" prompt
+            guard hasAccountCredentials else {
+                accountCell?.configure("Log in"~)
                 return cell
             }
-            
-            // Check the userCredentials for nil
-            guard !userCredentials.isEmpty else { return UICollectionViewCell() }
-            
-            // Section 0 is account - configure user info cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)
-            let key = sequenceCredentials[indexPath.row]
-            (cell as? AccountCollectionViewCell)?.configure(titleLabel: key,
-                                                            label: userCredentials.first(where: { $0.key == key })?.value ?? "", cursor: false)
-            
+            let key = sequenceCredentials[indexPath.row] // Name, Email, Phone, ...
+            let credential = userCredentials.first(where: { $0.key == key })?.value ?? ""
+            accountCell?.configure(key, text: credential)
             return cell
         case 1:
             // Section 1 is gender - configure gender cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GenderCollectionViewCell.reuseId, for: indexPath)
-            (cell as? GenderCollectionViewCell)?.configure(gender: Gender.allCases[indexPath.row], selected: shownGender)
+            let cell = collectionView
+                .dequeueReusableCell(withReuseIdentifier: GenderCollectionViewCell.reuseId, for: indexPath)
+            let genderCell = cell as? GenderCollectionViewCell
+            let gender = Gender.allCases[indexPath.row]
+            genderCell?.configure(gender: gender, selected: shownGender)
             return cell
-            
         case 2:
-            // Section 2 is brands - use brands view controller section 0 to answer
-            if Brands.selected.count > maxItemCount || Brands.selected.count == 0  {
-                
-                // Configure one cell with simple text
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
-                (cell as? OccasionCollectionViewCell)?.configure(
-                    with: Occasions.selectedUniqueTitle.sorted()[indexPath.row],
-                    hideCheckBox: true,
-                    hideChevron: false,
-                    custtomLabel: "Selected \(Brands.selected.count) brands out of \(Brands.count)"~ )
-                return cell
-                
-            } else {
-                // Return collectionViewCell with selected brands
-                return brandsViewController?.collectionView(collectionView, cellForItemAt: indexPath) ?? BrandCollectionViewCell()
+            // Section 2 is brands - use brands view controller section 0 if available to answer
+            if let brandsViewController = showBrandsViewController {
+                return brandsViewController.collectionView(collectionView, cellForItemAt: indexPath)
             }
-            
+            // Use occasion cell as brands summary cell
+            let cell = collectionView
+                .dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
+            let summaryCell = cell as? OccasionCollectionViewCell
+            summaryCell?.configure(
+                hideCheckBox: true,
+                hideChevron: false,
+                customLabel: "Selected \(Brands.selected.count) brands out of \(Brands.count)"~
+            )
+            return cell
         case 3:
             // Section 3 is Occasion - configure occasion cell
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
-            
+            let cell = collectionView
+                .dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
             // Configure one cell with simple text
-            Occasions.selectedUniqueTitle.count > maxItemCount ?
-            (cell as? OccasionCollectionViewCell)?.configure(
-                with: Occasions.selectedUniqueTitle.sorted()[indexPath.row],
+            let occasionCell = cell as? OccasionCollectionViewCell
+            let occasions = Occasions.selectedUniqueTitle.sorted()
+            let occasion = occasions[indexPath.row]
+            shouldShowSummary(of: occasions) ? occasionCell?.configure(
+                with: occasion,
                 hideCheckBox: true,
                 hideChevron: false,
-                custtomLabel: "Selected \(Occasions.selectedUniqueTitle.count) occasions out of \(Occasions.titles.count)"~ )
-            : (cell as? OccasionCollectionViewCell)?.configure(with: Occasions.selectedUniqueTitle.sorted()[indexPath.row])
+                customLabel: "Selected \(occasions.count) occasions out of \(Occasions.titles.count)"~
+            ) : occasionCell?.configure(with: occasion)
             return cell
-            
         case 4:
-            
-            // Section 3 is Occasion - configure occasion cell
-            if FeedsProfile.all.selected.count > maxItemCount || FeedsProfile.all.selected.count == 0 {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
-            (cell as? OccasionCollectionViewCell)?.configure(
-                with: Occasions.selectedUniqueTitle.sorted()[indexPath.row],
-                hideCheckBox: true,
+            // Section 4 is Feeds - configure feed cell
+            let cell = collectionView
+                .dequeueReusableCell(withReuseIdentifier: FeedsCollectionViewCell.reuseId, for: indexPath)
+            let feedCell = cell as? FeedsCollectionViewCell
+            let allFeeds = FeedsProfile.all
+            let selectedFeeds = allFeeds.selected
+            let feed = selectedFeeds[indexPath.row]
+            shouldShowSummary(of: selectedFeeds) ? feedCell?.configure(
+                with: feed,
                 hideChevron: false,
-                custtomLabel: "Selected \(FeedsProfile.all.selected.count) feed out of \(FeedsProfile.all.count)"~ )
-                return cell
-            } else {
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FeedsCollectionViewCell.reuseId, for: indexPath)
-                (cell as? FeedsCollectionViewCell)?.configure(with: FeedsProfile.all.selected[indexPath.row])
-                return cell
-            }
-            
+                customLabel: "Selected \(selectedFeeds.count) of \(allFeeds.count) feeds"~
+            ) : feedCell?.configure(with: feed)
+            return cell
         default:
             debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")
             return UICollectionViewCell()
@@ -107,12 +100,21 @@ extension ProfileViewController: UICollectionViewDataSource {
     ///   - section: UICollectionView.elementKindSectionHeader
     ///   - indexPath: index path of given section
     /// - Returns: section header for the profile collection view
-    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath
+    ) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: ProfileSectionHeaderView.reuseId, for: indexPath)
-            (headerView as? ProfileSectionHeaderView)?.configure(title: ProfileViewController.sectionHeaders[indexPath.section])
-            return headerView
+            let supplementaryView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind,
+                withReuseIdentifier: ProfileSectionHeaderView.reuseId,
+                for: indexPath
+            )
+            let headerView = supplementaryView as? ProfileSectionHeaderView
+            headerView?.configure(title: ProfileViewController.sectionHeaders[indexPath.section])
+            return supplementaryView
         default:
             debug("WARNING: Unknown pick \(kind) in section \(indexPath.section), row \(indexPath.row)")
             return UICollectionReusableView()
@@ -128,22 +130,22 @@ extension ProfileViewController: UICollectionViewDataSource {
         switch section {
         case 0:
             // Section 0 is user info with avaliable properties
-            return User.current.isLoggedIn != nil ? sequenceCredentials.count : 1
-            
+            return hasAccountCredentials ? sequenceCredentials.count : 1
         case 1:
             // Section 1 is gender — 3 items
             return Gender.allCases.count
-            
         case 2:
-            // Section 2 is brands — use brands view controller section 0 to answer.
-            return Brands.selected.count > maxItemCount || Brands.selected.count == 0 ? 1 : Brands.selected.count
-            
+            // Section 2 is brands - use brands view controller section 0 if available to answer
+            guard let brandsViewController = showBrandsViewController else { return 1 }
+            return brandsViewController.collectionView(collectionView, numberOfItemsInSection: 0)
         case 3:
-            // Section 3 is occasion — use occasion view controller section 0 to answer.
-            return Occasions.selectedUniqueTitle.count > maxItemCount ? 1 : Occasions.selectedUniqueTitle.count
+            // Section 3 is occasion — show a summary or selected occasions.
+            let occasionsSelected = Occasions.selectedUniqueTitle
+            return shouldShowSummary(of: occasionsSelected) ? 1 : occasionsSelected.count
         case 4:
-            // Section 4 is feeds — use feeds view controller section 0 to answer.
-            return FeedsProfile.all.count > maxItemCount || FeedsProfile.all.selected.count == 0 ? 1 : FeedsProfile.all.selected.count
+            // Section 4 is feeds — show a summary or selected feeds.
+            let feedsSelected = FeedsProfile.all.selected
+            return shouldShowSummary(of: feedsSelected) ? 1 : feedsSelected.count
             
         default:
             debug("WARNING: Unknown section \(section)")
@@ -155,4 +157,36 @@ extension ProfileViewController: UICollectionViewDataSource {
     /// - Parameter collectionView: profile collection view
     /// - Returns: the number of sections in profile collection view
     func numberOfSections(in collectionView: UICollectionView) -> Int { ProfileViewController.sectionHeaders.count }
+    
+    // MARK: - Private / Internal Properties
+    /// True if user account credentials are available
+    private var hasAccountCredentials: Bool {
+        User.current.isLoggedIn != nil && !userCredentials.isEmpty
+    }
+    
+    /// Returns brands view controller if there are 1 to `maxItemCount` brands to show
+    internal var showBrandsViewController: BrandsViewController? {
+        shouldShowSummary(of: Brands.selected) ? nil : BrandsViewController.default
+    }
+    
+    /// Returns true if there are no or too many elements of an array
+    /// - Parameter elements: an array of elements
+    /// - Returns: true if there are no or too many (more than `maxItemCount`) elements
+    private func shouldShowSummary<T>(of elements: Array<T>) -> Bool {
+        shouldShowSummary(of: AnyCollection(elements))
+    }
+    
+    /// Returns true if there are no or too many elements of a dictionary
+    /// - Parameter elements: a dictionary of elements
+    /// - Returns: true if there are no or too many (more than `maxItemCount`) elements
+    private func shouldShowSummary<T, U>(of elements: Dictionary<T, U>) -> Bool {
+        shouldShowSummary(of: AnyCollection(elements))
+    }
+    
+    /// Returns true if there are no or too many elements of a collection
+    /// - Parameter elements: any collection of elements
+    /// - Returns: true if there are no or too many (more than `maxItemCount`) elements
+    private func shouldShowSummary<T>(of elements: AnyCollection<T>) -> Bool {
+        elements.isEmpty || maxItemCount < elements.count
+    }
 }

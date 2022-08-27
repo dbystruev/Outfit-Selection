@@ -160,7 +160,7 @@ final class User: Codable {
         )
         
         // Find current emailHash into Users.all
-        if Users.all.first(where: { $0.emailHash == emailHash } ) == nil {
+        if Users.all.first(where: { $0.emailHash == emailHash }) == nil {
             Users.append(newUser)
         }
         

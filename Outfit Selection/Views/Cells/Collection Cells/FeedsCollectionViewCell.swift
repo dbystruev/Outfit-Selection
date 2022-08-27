@@ -9,22 +9,24 @@
 import UIKit
 
 class FeedsCollectionViewCell: UICollectionViewCell {
-
-// MARK: - Outlets
-@IBOutlet weak var logoImageView: UIImageView!
-@IBOutlet weak var chevronImageView: UIImageView!
-@IBOutlet weak var feedNameLabel: UILabel!
-
-// MARK: - Methods
-/// Configure feed cell
-/// - Parameters:
-///   - feed: the feed to confiture cell with
-func configure(
-    with feed: FeedProfile,
-    hideChevron: Bool = true,
-    custtomLabel: String = "") {
-        logoImageView.configure(with: feed.picture)
-        chevronImageView.isHidden = hideChevron
-        feedNameLabel.text = custtomLabel.isEmpty ? feed.name : custtomLabel
-    }
+    
+    // MARK: - Outlets
+    @IBOutlet weak var logoImageView: UIImageView!
+    @IBOutlet weak var chevronImageView: UIImageView!
+    @IBOutlet weak var feedNameLabel: UILabel!
+    
+    // MARK: - Methods
+    /// Configure feed cell
+    /// - Parameters:
+    ///   - feed: the feed to confiture cell with
+    ///   - hideChevron: true if chevron has to be hidden
+    ///   - customLabel: nil by default. If not nil, use instead of feed.name
+    func configure(
+        with feed: FeedProfile,
+        hideChevron: Bool = true,
+        customLabel: String? = nil) {
+            logoImageView.configure(with: feed.picture)
+            chevronImageView.isHidden = hideChevron
+            feedNameLabel.text = customLabel ?? feed.name
+        }
 }

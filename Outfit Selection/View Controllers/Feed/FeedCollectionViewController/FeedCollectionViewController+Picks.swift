@@ -9,42 +9,7 @@
 import Foundation
 
 extension FeedCollectionViewController {
-    
     // MARK: - Methods
-    /// The make expand emptty pick types (.occasion(" "), .brand(" "), .category(" "))
-    /// - Parameter picks: Picks with empty PickType
-    /// - Returns: array Picks aftert expand all empty PickType
-    func expand(picks: Picks) -> Picks {
-        var expandedPiks: Picks = []
-        
-        for pick in picks {
-            switch pick.type {
-            case .hello:
-                let userName = User.current.displayName?.components(separatedBy: " ").first  ?? ""
-                let pickTitle = currentUser.isLoggedIn == true ? pick.title + userName : pick.title
-                let pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pickTitle)
-                expandedPiks.append(pick)
-                
-            case .occasion(""):
-                let picks = pickOccasion(pick: pick)
-                expandedPiks += picks
-                
-            case .brand(""):
-                let picks = pickBrand(pick: pick)
-                expandedPiks += picks
-                
-            case .category(""):
-                let picks = pickCategory(pick: pick)
-                expandedPiks += picks
-                
-            default:
-                expandedPiks.append(pick)
-            }
-        }
-        
-        return expandedPiks
-    }
-    
     /// Gets items depending on feed type (section)
     /// - Parameters:
     ///   - pick: pick for get items
@@ -54,9 +19,9 @@ extension FeedCollectionViewController {
         // Helper properties
         let excluded: [Int] = []
         var gender = Gender.current
-        var limited: Int = self.maxItemsInSection * 2
-        var random: Bool = false
-        var sale: Bool = false
+        var limited = maxItemsInSection * 2
+        var random = false
+        var sale = false
         var subcategoryIDs: [Int] = []
         var vendorNames: [String] = []
         
@@ -128,24 +93,22 @@ extension FeedCollectionViewController {
             limited: limited,
             sale: sale,
             subcategoryIDs: excluded.isEmpty ? subcategoryIDs : []
-        ) { [weak self] items in
-            // Check for self availability
-            guard self != nil else {
-                debug("ERROR: self is not available")
-                return
-            }
-            
-            // Return items and shuffling if it need
+        ) { items in
+            // Return items and shuffle them if needed
             completion(random ? items?.shuffled() : items)
         }
     }
     
     /// Get items and set it into picks for DataSource
     /// - Parameter picks: picks for get items
-    func updateItems(picks: Picks) {
+    /// - Parameter inBatch: if true — update all items in one batch, false by default
+    func updateItems(picks: Picks, inBatch: Bool = false) {
         
         // Make expand picks
         let expandedPicks = expand(picks: picks)
+        
+        // The sections to insert later
+        var insertSections: IndexSet = []
         
         // Dispatch group to wait for all requests to finish
         let group = DispatchGroup()
@@ -162,7 +125,13 @@ extension FeedCollectionViewController {
             }
             
             // Get items for pick
-            getItems(for: pick) { items in
+            getItems(for: pick) { [weak self] items in
+                guard let self = self else {
+                    debug("Self is nil")
+                    group.leave()
+                    return
+                }
+                
                 guard let items = items, !items.isEmpty else {
                     debug("No items:", pick.type, "|",  pick.title)
                     group.leave()
@@ -170,46 +139,90 @@ extension FeedCollectionViewController {
                 }
                 
                 debug("Items count:", items.count, pick.type, "|",  pick.title)
-                let collectionIndex: Int
-                if index < self.displayedPicks.count {
-                    collectionIndex = index
-                    self.displayedPicks.insert(pick, at: index)
-                } else {
-                    collectionIndex = self.displayedPicks.count
-                    self.displayedPicks.append(pick)
-                }
                 
-                // Add items into pickItems
-                self.pickItems[pick] = items
                 DispatchQueue.main.async {
+                    let collectionIndex: Int
+                    if index < self.displayedPicks.count {
+                        collectionIndex = index
+                        self.displayedPicks.insert(pick, at: index)
+                    } else {
+                        collectionIndex = self.displayedPicks.count
+                        self.displayedPicks.append(pick)
+                    }
+                    
+                    // Add items into pickItems
+                    self.pickItems[pick] = items
                     
                     // TODO: Lock See all button when items is downloading
-                    self.feedCollectionView.insertSections([collectionIndex])
+                    if inBatch {
+                        insertSections.insert(collectionIndex)
+                    } else {
+                        self.feedCollectionView.insertSections([collectionIndex])
+                    }
+                    
+                    group.leave()
                 }
-                group.leave()
             }
         }
         
         // Notification from DispatchQueue group when all section got answer
-        group.notify(queue: .main) { [self] in
-            debug("INFO: Get items FINISH", "Picks:", displayedPicks.count )
-            
+        group.notify(queue: .main) { [weak self] in
             // Reload data into UICollectionView
-            if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+            if AppDelegate.canReload && self?.feedCollectionView?.hasUncommittedUpdates == false {
+                if !insertSections.isEmpty {
+                    self?.feedCollectionView.insertSections(insertSections)
+                }
                 
                 // TODO: Unlock See all buttons
-                feedCollectionView?.reloadData()
+                self?.feedCollectionView?.reloadData()
             }
+            debug("INFO: finished getting items", "Picks:", self?.displayedPicks.count )
         }
     }
     
     // MARK: - Private Methods
+    /// Expand empty pick types (.occasion(" "), .brand(" "), .category(" "))
+    /// - Parameter picks: Picks with empty PickType
+    /// - Returns: Picks array with all empty PickType expanded
+    private func expand(picks: Picks) -> Picks {
+        var expandedPicks: Picks = []
+        
+        for pick in picks {
+            switch pick.type {
+            case .hello:
+                let userName = User.current.displayName?.components(separatedBy: " ").first ?? ""
+                let pickTitle = currentUser.isLoggedIn == true ? pick.title + userName : pick.title
+                let pick = Pick(.hello, limit: pick.limit, subtitles: pick.subtitles, title: pickTitle)
+                expandedPicks.append(pick)
+                
+            case .occasion(""):
+                let picks = pickOccasion(pick: pick)
+                expandedPicks += picks
+                
+            case .brand(""):
+                let picks = pickBrand(pick: pick)
+                expandedPicks += picks
+                
+            case .category(""):
+                let picks = pickCategory(pick: pick)
+                expandedPicks += picks
+                
+            default:
+                expandedPicks.append(pick)
+            }
+        }
+        return expandedPicks
+    }
+    
     /// Private method for make expanded (.brand)
     /// - Parameter pick: pick with empty (.brand) PickType for expand
     /// - Returns: array with picks
     private func pickBrand(pick: Pick) -> Picks {
         let selectedBrands = Brands.selected
-        let picks = selectedBrands.map { Pick(.brand($0.value.name), filters: pick.filters, title: pick.title + $0.value.name) }
+        let picks = selectedBrands.map { Pick(
+            .brand($0.value.name),
+            filters: pick.filters, title: pick.title + $0.value.name)
+        }
         return picks
     }
     
@@ -217,9 +230,12 @@ extension FeedCollectionViewController {
     /// - Parameter pick: pick with empty (.category) PickType for expand
     /// - Returns: array with picks
     func pickCategory(pick: Pick) -> Picks {
-        let selectedOccasion = Occasions.selected
-        let categories = Categories.all.filtered(by: selectedOccasion)
-        let picks = categories.map { Pick(.category($0.name), filters: pick.filters, limit: pick.limit, title: $0.name + pick.title) }
+        let selectedOccasions = Occasions.selected
+        let categories = Categories.all.filtered(by: selectedOccasions)
+        let picks = categories.map { Pick(
+            .category($0.name),
+            filters: pick.filters, limit: pick.limit, title: $0.name + pick.title)
+        }
         return picks
     }
     
@@ -227,9 +243,11 @@ extension FeedCollectionViewController {
     /// - Parameter pick: pick with empty (.occasion) PickType for expand
     /// - Returns: array with picks
     private func pickOccasion(pick: Pick) -> Picks {
-        let selectedOccasion = Occasions.selectedUniqueTitle
-        let picks = selectedOccasion.map { Pick(.occasion($0.title), filters: pick.filters, subtitles: pick.subtitles, title: pick.title + $0.title) }
+        let selectedOccasions = Occasions.selectedUniqueTitle
+        let picks = selectedOccasions.map { Pick(
+            .occasion($0.title),
+            filters: pick.filters, subtitles: pick.subtitles, title: pick.title + $0.title)
+        }
         return picks
     }
-    
 }

@@ -60,9 +60,9 @@
                 <constraint firstItem="9W5-E9-h1M" firstAttribute="leading" secondItem="7Fi-dS-0jd" secondAttribute="leading" constant="12" id="yf4-xI-cqi"/>
             </constraints>
             <connections>
-                <outlet property="cursorImage" destination="fOo-8K-Sgb" id="mUa-Zc-Bd0"/>
-                <outlet property="label" destination="yK2-Ph-lL7" id="VSx-hH-ynU"/>
-                <outlet property="titleLabel" destination="9W5-E9-h1M" id="Nxl-c2-ZM2"/>
+                <outlet property="disclosureImageView" destination="fOo-8K-Sgb" id="mUa-Zc-Bd0"/>
+                <outlet property="fieldNameLabel" destination="9W5-E9-h1M" id="Nxl-c2-ZM2"/>
+                <outlet property="textLabel" destination="yK2-Ph-lL7" id="VSx-hH-ynU"/>
             </connections>
             <point key="canvasLocation" x="26.811594202898554" y="57.254464285714285"/>
         </collectionViewCell>

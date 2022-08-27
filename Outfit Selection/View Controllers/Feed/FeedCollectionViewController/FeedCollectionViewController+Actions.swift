@@ -12,12 +12,13 @@ extension FeedCollectionViewController {
     // MARK: - Methods
     /// Called when selected brands was changed
     @objc func haveBrandsChanged() {
-        debug("INFO: Brands will changed")
-        // Make feed item cells reload
-        setSection()
+        debug("INFO: Brands will change")
+        // Clear all feed collection view controller data
+//        clearAll()
+//        setSection(inBatch: true)
         // Reload data
-        if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
-            feedCollectionView?.reloadData()
-        }
+//        if AppDelegate.canReload && feedCollectionView?.hasUncommittedUpdates == false {
+//            feedCollectionView?.reloadData()
+//        }
     }
 }

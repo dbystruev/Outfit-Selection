@@ -21,7 +21,7 @@ class SignupViewController: LoggingViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Configue the views
-        self.view.backgroundColor = Global.Color.Onboarding.background
+        view.backgroundColor = Global.Color.Onboarding.background
     }
     
     // MARK: - Actions
@@ -29,6 +29,7 @@ class SignupViewController: LoggingViewController {
     @IBAction func closeButton(_ sender: UIButton) {
         dismiss(animated: true)
     }
+    
     /// Called when the google button is tapped
     /// - Parameter sender: the gesture recognizer which was tapped
     @IBAction func signInButtonTap(_ sender: Any) {
@@ -58,12 +59,12 @@ class SignupViewController: LoggingViewController {
             let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: authentication.accessToken)
             
             // Firebase authentication call
-            Auth.auth().signIn(with: credential) { authResult, error in
+            Auth.auth().signIn(with: credential) { [weak self] authResult, error in
                 if let error = error {
                     debug("ERROR:", error.localizedDescription)
                 }
                 
-                // Make shure the current auth user in not nil
+                // Make sure the current auth user in not nil
                 guard let user = authResult?.user else {
                     debug("ERROR: can't get authResult")
                     return
@@ -90,7 +91,7 @@ class SignupViewController: LoggingViewController {
                 // Get debugmode and it not equal false
                 guard userContains?.debugmode == true else {
                     // Go to ProgressViewController for reload tabbarController
-                    self.navigate(reload: true)
+                    self?.navigate(reload: true)
                     return
                 }
 
@@ -99,7 +100,7 @@ class SignupViewController: LoggingViewController {
                 debug("INFO: Debug mode for \(String(describing: User.current.email)) ON")
                 
                 // Go to ProgressViewController for reload tabbarController
-                self.navigate(reload: true)
+                self?.navigate(reload: true)
             }
         }
     }
@@ -108,7 +109,7 @@ class SignupViewController: LoggingViewController {
     private func navigate(reload progressViewController: Bool = false ) {
         
         // Find UINavigationViewController into presentingViewController
-        guard let navigationController = self.presentingViewController as? UINavigationController else {
+        guard let navigationController = presentingViewController as? UINavigationController else {
             debug("ERROR: Can't find navigationController from the presentingViewController")
             return
         }
@@ -121,7 +122,7 @@ class SignupViewController: LoggingViewController {
         
         // Check tabBarController
         if progressViewController {
-            self.dismiss(animated: true)
+            dismiss(animated: true)
             // Update all occasions with given gender
             Occasions.updateWith(gender: Gender.current)            
             tabBarController.popToProgress()
@@ -143,6 +144,6 @@ class SignupViewController: LoggingViewController {
         if AppDelegate.canReload && profileViewController.profileCollectionView.hasUncommittedUpdates == false {
             profileViewController.profileCollectionView.reloadSections(IndexSet([0]))
         }
-        self.dismiss(animated: true)
+        dismiss(animated: true)
     }
 }
