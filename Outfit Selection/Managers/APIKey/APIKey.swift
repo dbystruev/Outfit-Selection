@@ -8,9 +8,12 @@
 
 import Foundation
 
+/// Cases used as keys for Global.apiKeys dictionary
 public enum APIKey: String {
     case appleAppID
     case appsFlyerDevKey
+    case telegramApiHash
+    case telegramApiID
     case yandexAppMetricaKey
     
     /// Load Global.apiKeys from APIKeys.plist

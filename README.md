@@ -7,6 +7,25 @@ Install via TestFlight: [testflight.apple.com/join/xNvAtbhx](https://testflight.
 
 Make sure [TestFlight App](https://apps.apple.com/app/testflight/id899247664) is installed.
 
+## Build
+
+Use the latest version of [Xcode](https://apps.apple.com/app/xcode/id497799835).
+
+Before building, copy files named _APIKeys.plist_ and _GoogleService-Info.plist_ to the project's root.
+
+### APIKeys.plist (optional) ###
+
+Add the following string keys to the _APIKeys.plist_:
+* appleAppID — check your App Information in [App Store Connect](https://appstoreconnect.apple.com)
+* appsFlyerDevKey — get at [AppsFlyer](https://support.appsflyer.com/hc/en-us/articles/211719806-App-settings-)
+* telegramApiID — get at [my.telegram.org/apps](https://my.telegram.org/apps)
+* telegramApiHash — get at [my.telegram.org/apps](https://my.telegram.org/apps)
+* yandexAppMetricaKey — get at [appmetrica.yandex.com/application/new](https://appmetrica.yandex.com/application/new)
+
+### GoogleService-Info.plist ###
+
+Register your project in Firebase and obtain the file: [firebase.google.com/docs/ios/setup](https://firebase.google.com/docs/ios/setup)
+
 ## Design
 
 Figma [original](https://www.figma.com/file/R1u7CpopH9Kfj79P9Aseh0/Get-Outfit?node-id=0%3A1) and [updated](https://www.figma.com/file/YCL7qd5B147CPSPEqaVIMj/GetOutfit-%28Copy%29?node-id=1231%3A3502).
