@@ -142,14 +142,14 @@ class NetworkManager {
             // Check if we haven't received nil
             guard let data = data else {
                 let message = error?.localizedDescription ?? "No data"
-                debug("ERROR requesting \(request): \(message)")
+                debug("ERROR requesting '\(request)': \(message)")
                 completion(nil)
                 return
             }
             
             // Decode the received data
             guard let decodedData: T = self.decode(data) else {
-                debug("ERROR decoding response to \(request) \(data)")
+                debug("ERROR decoding response to '\(request)' \(data)")
                 completion(nil)
                 return
             }
@@ -212,7 +212,7 @@ class NetworkManager {
             
             // Get value from name header
             guard let itemHeader = httpResponse.allHeaderFields[header] as? String else {
-                debug("ERROR: httpResponse is not contain \(header)")
+                debug("ERROR: httpResponse does not contain \(header)")
                 completion(nil)
                 return
             }
@@ -229,7 +229,7 @@ class NetworkManager {
     
     /// Call /feeds API
     /// - Parameter completion: closure called after the request is finished, with list of feeds if successfull, or with nil if not
-    func getFeeds(completion: @escaping (_ feeds: FeedsProfile?) -> Void) {
+    func getFeeds(completion: @escaping (_ feeds: Feeds?) -> Void) {
         get("feeds", completion: completion)
     }
     
@@ -241,13 +241,15 @@ class NetworkManager {
         let task = URLSession.shared.dataTask(with: url) { data, _, error in
             guard let data = data else {
                 let message = error?.localizedDescription ?? "No data"
-                debug("ERROR requesting \(url): \(message)")
+                debug("ERROR requesting '\(url)': \(message)")
                 completion(nil)
                 return
             }
             
             guard let image = UIImage(data: data) else {
-                debug("ERROR converting \(data) at \(url) to image")
+                let text = String(data: data, encoding: .utf8)
+                let suffix = text == nil ? "" : ": \(text!)"
+                debug("ERROR converting \(data) at '\(url)' to image\(suffix)")
                 completion(nil)
                 return
             }
@@ -265,7 +267,7 @@ class NetworkManager {
     ///   - completion: closure called when request is finished, with items if successfull, or with nil if not
     func getItems(
         _ IDs: [String],
-        feeds: [String] = [String](FeedsProfile.all.selected.feedsIDs),
+        feeds: [String] = [String](Feeds.all.selected.feedsIDs),
         completion: @escaping (Items?) -> Void
     ) {
         
@@ -308,7 +310,7 @@ class NetworkManager {
     func getItems(
         excluded excludedCategoryIDs: [Int] = [],
         in categoryIDs: [Int] = [],
-        feeds: [String] = [String](FeedsProfile.all.selected.feedsIDs),
+        feeds: [String] = [String](Feeds.all.selected.feedsIDs),
         filteredBy vendorNames: [String] = [],
         for gender: Gender? = Gender.current,
         limited limit: Int? = nil,
@@ -458,7 +460,7 @@ class NetworkManager {
         : "not.in.(\([Int](excludedCategoryIDs.uniqued()).commaJoined))"
         
         // Add "feed" parameter
-        parameters[Keys.feed.rawValue] = feeds.isEmpty
+        parameters[Keys.feedID.rawValue] = feeds.isEmpty
         ? nil
         : "in.(\(feeds.commaJoined))"
         

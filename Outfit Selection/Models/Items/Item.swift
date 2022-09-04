@@ -22,8 +22,8 @@ final class Item: Codable {
     /// Full description for item
     var desc: String?
     
-    /// FeedProfile for current item
-    var feed: String?
+    /// Feed ID for current item
+    var feedID: String?
     
     /// Whether an item has been disliked
     var disliked = false
@@ -65,7 +65,7 @@ final class Item: Codable {
         case categoryID = "category_id"
         case color
         case desc = "description"
-        case feed
+        case feedID = "feed"
         case gender
         case id
         case modifiedTime = "modified_time"
@@ -107,7 +107,7 @@ final class Item: Codable {
         categoryID = try values.decode(Int.self, forKey: .categoryID)
         color = try values.decode(String.self, forKey: .color)
         desc = try? values.decode(String.self, forKey: .desc)
-        feed = try? values.decode(String.self, forKey: .feed)
+        feedID = try? values.decode(String.self, forKey: .feedID)
         gender = try values.decode(Gender.self, forKey: .gender)
         id = try values.decode(String.self, forKey: .id)
         let modifiedTimestamp = try values.decode(String.self, forKey: .modifiedTime)

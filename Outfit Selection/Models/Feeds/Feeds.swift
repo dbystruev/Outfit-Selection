@@ -1,5 +1,5 @@
 //
-//  FeedsProfile.swift
+//  Feeds.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 03.05.2022.
@@ -8,19 +8,20 @@
 
 import Algorithms
 
-public typealias FeedsProfile = [FeedProfile]
+// Matches http://oracle.getoutfit.net:3000/feeds
+public typealias Feeds = [Feed]
 
-extension FeedsProfile {
+extension Feeds {
     // MARK: - Stored Static Properties
     /// The full  list of feeds
-    public static var all: FeedsProfile = [] {
+    public static var all: Feeds = [] {
         didSet {
             zip(all.feedsIDs, all).forEach { ((byID[$0]) = $1) }
         }
     }
         
     /// FeedProfile by ID
-    private(set) static var byID: [String: FeedProfile] = [:]
+    private(set) static var byID: [String: Feed] = [:]
     
     // MARK: - Stored Properties
     /// All uniqued IDs
@@ -32,18 +33,18 @@ extension FeedsProfile {
         map { $0.name }.uniqued()
     }
     /// All selected feeds
-    var selected: FeedsProfile { filter { $0.shouldUse } }
+    var selected: Feeds { filter { $0.shouldUse } }
     
     /// All selected feeds
-    var unselected: FeedsProfile { filter { !$0.shouldUse } }
+    var unselected: Feeds { filter { !$0.shouldUse } }
     
     // MARK: - Static Methods
     /// Select/deselect all feeds with given
     /// - Parameters:
     ///   - feed: the FeedsProfile to search for
     ///   - shouldSelect: true to select, false to unselect
-    static func select(feed: FeedProfile, shouldUse: Bool) {
-        let feed = FeedsProfile.all.first(where: { $0.id == feed.id })
+    static func select(feed: Feed, shouldUse: Bool) {
+        let feed = Feeds.all.first(where: { $0.id == feed.id })
         feed?.shouldUse = shouldUse
     }
     
@@ -51,7 +52,7 @@ extension FeedsProfile {
     /// - Parameters:
     ///   - feed: the FeedsProfile to search for
     ///   - shouldUse: true to select, false to unselect
-    static func selectWithoutSaving(feed: FeedProfile, shouldUse: Bool) {
-        FeedsProfile.all.forEach { $0.selectWithoutSaving(shouldUse) }
+    static func selectWithoutSaving(feed: Feed, shouldUse: Bool) {
+        Feeds.all.forEach { $0.selectWithoutSaving(shouldUse) }
     }
 }

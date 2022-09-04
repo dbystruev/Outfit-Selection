@@ -22,7 +22,7 @@ class ItemViewControllerCell: UITableViewCell {
         /// Set image to itemImage
         itemImage.configure(with: item.pictures.first)
         /// Set  price to priceLabel
-        priceLabel.text = item.price.asPrice
+        priceLabel.text = item.price.asPrice(feedID: item.feedID)
         /// Set brand with name to titleLabel
         titleLabel.text = item.name
     }

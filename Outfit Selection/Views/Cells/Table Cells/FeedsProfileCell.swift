@@ -27,7 +27,7 @@ class FeedsProfileCell: UITableViewCell {
     // MARK: - Custom Methods
     /// Configures this cell with a given feed
     /// - Parameter feed: the feed to configure this cell with
-    func configureContent(with feed: FeedProfile) {
+    func configureContent(with feed: Feed) {
         checkBoxImageView.isHighlighted = feed.shouldUse
         logoImageView.configure(with: feed.picture)
         feedsNameLabel.text = feed.name

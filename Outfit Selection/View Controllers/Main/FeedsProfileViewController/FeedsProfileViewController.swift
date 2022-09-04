@@ -33,12 +33,12 @@ class FeedsProfileViewController: LoggableViewController {
     // MARK: - Custom Methods
     /// Set top right button to clear or select all
     func configureAllButton() {
-        let feedsSource = FeedsProfile.all
+        let feedsSource = Feeds.all
         allButton.isButtonSelected = feedsSource.unselected.count < feedsSource.selected.count
     }
     /// Set go button background color and enable / disable it depending on number of feeds selected
     func configureSaveButton() {
-        let shouldUse = FeedsProfile.all.selected.count
+        let shouldUse = Feeds.all.selected.count
         let isEnabled = 0 < shouldUse
         saveButton?.backgroundColor = isEnabled
         ? Global.Color.Button.enabled
@@ -68,7 +68,7 @@ class FeedsProfileViewController: LoggableViewController {
         tabBarController?.tabBar.isHidden = true
         
         // Setup data source
-        let currentFeedsSource = FeedsProfile.all
+        let currentFeedsSource = Feeds.all
         feedsProfileNames = [String](currentFeedsSource.names)
         
         // Setup occasions table view

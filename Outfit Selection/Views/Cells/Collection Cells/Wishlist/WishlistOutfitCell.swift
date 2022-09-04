@@ -26,7 +26,7 @@ class WishlistOutfitCell: WishlistBaseCell {
         
         // Configure labels
         occasionLabel.text = outfit.name
-        priceLabel.text = outfit.price.asPrice
+        priceLabel.text = outfit.price.asPrice(feedID: outfit.item?.feedID)
         
         // Sorter items value
         let sorteredItems = outfit.itemIDs.compactMap { id in

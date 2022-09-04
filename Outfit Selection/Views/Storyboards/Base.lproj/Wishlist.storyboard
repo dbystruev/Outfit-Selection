@@ -790,7 +790,7 @@
                     <navigationItem key="navigationItem" leftItemsSupplementBackButton="YES" id="OPH-ye-Ie6">
                         <barButtonItem key="leftBarButtonItem" id="kcR-Ph-fJt">
                             <button key="customView" hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" id="e1W-qL-2EP">
-                                <rect key="frame" x="104.5" y="2.5" width="92" height="39"/>
+                                <rect key="frame" x="78.5" y="2.5" width="92" height="39"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="NotoSans-Regular" family="Noto Sans" pointSize="18"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>

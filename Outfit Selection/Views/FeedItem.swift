@@ -53,10 +53,10 @@ class FeedItem: UIView {
         brandLabel.text = item.brand?.capitalizingFirstLetter
         nameLabel.text = item.nameWithoutVendor
         oldPriceLabel.isHidden = !showSale
-        priceLabel.text = item.price.asPrice
+        priceLabel.text = item.price.asPrice(feedID: item.feedID)
         
         // Set strikethrough red font for old price
-        guard let oldPrice = item.oldPrice?.asPrice else { return }
+        guard let oldPrice = item.oldPrice?.asPrice(feedID: item.feedID) else { return }
         let attributedOldPrice = NSMutableAttributedString(string: oldPrice)
         attributedOldPrice.addAttribute(NSAttributedString.Key.strikethroughStyle, value: 2, range: NSMakeRange(0, attributedOldPrice.length))
         oldPriceLabel.attributedText = attributedOldPrice

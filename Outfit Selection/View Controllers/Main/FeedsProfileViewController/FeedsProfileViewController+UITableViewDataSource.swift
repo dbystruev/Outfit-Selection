@@ -24,8 +24,8 @@ extension FeedsProfileViewController: UITableViewDataSource {
         
         // Get feed for configure cell
         let name = feedsProfileNames[indexPath.row]
-        guard let feed = FeedsProfile.all.first(where: { $0.name == name }) else {
-            debug("WARNING: Can't fiind a \(name) into \(FeedsProfile.self)")
+        guard let feed = Feeds.all.first(where: { $0.name == name }) else {
+            debug("WARNING: Can't fiind a \(name) into \(Feeds.self)")
             return feedsCell
         }
         

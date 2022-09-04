@@ -506,7 +506,7 @@ extension OutfitViewController {
         }
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
-            self.priceLabel.text = "Outfit price"~ + ": \(self.price.asPrice)"
+            self.priceLabel.text = "Outfit price"~ + ": \(self.price.asPrice(feedID: self.items.first?.feedID))"
         }
     }
     

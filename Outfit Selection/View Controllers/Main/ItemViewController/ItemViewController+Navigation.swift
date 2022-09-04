@@ -25,13 +25,13 @@ extension ItemViewController {
             let intermediaryViewController = segue.destination as? IntermediaryViewController
             intermediaryViewController?.url = url
             // Get feedProfile from item
-            guard let feedProfile = item?.feed else {
+            guard let feedProfile = item?.feedID else {
                 debug("ERROR: Can't get feed into item", item)
                 return
             }
             
             // Set name for feedProfileName into viewController
-            intermediaryViewController?.feedProfileName = FeedsProfile.byID[feedProfile]?.name
+            intermediaryViewController?.feedProfileName = Feeds.byID[feedProfile]?.name
         }
     }
 }

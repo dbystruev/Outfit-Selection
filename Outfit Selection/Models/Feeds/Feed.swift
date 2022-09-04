@@ -1,5 +1,5 @@
 //
-//  FeedsProfile.swift
+//  Feed.swift
 //  Outfit Selection
 //
 //  Created by Denis Bystruev on 03.05.2022.
@@ -9,9 +9,12 @@
 import Foundation
 
 // Matches http://oracle.getoutfit.net:3000/feeds
-public class FeedProfile: Codable {
-    /// Unique feed ID, e.g. "tsum.2022-05-02", matches feed in Item
+public class Feed: Codable {
+    /// Unique feed ID, e.g. "ounass.ae.en.aed"", matches feed in Item
     let id: String
+    
+    /// Currncy symbol, e.g. "DH" or "₽"
+    let currency: String
     
     /// True if the feed should be used, false otherwise
     var shouldUse: Bool
@@ -19,13 +22,14 @@ public class FeedProfile: Codable {
     /// Date when the feed was created
     let createdAt: Date
     
-    /// Public name of the feed, e.g. "TSUM"
+    /// Public name of the feed, e.g. "Ounass"
     let name: String
     
     /// Public feed picture URL or data, e.g. "https://www.farfetch.com/static/images/logo.png" or "data:image/png;base64,iVBO..."
     let picture: URL?
     
     enum CodingKeys: String, CodingKey {
+        case currency
         case id
         case shouldUse = "in_use"
         case createdAt = "created_at"
@@ -39,6 +43,7 @@ public class FeedProfile: Codable {
         let values = try decoder.container(keyedBy: CodingKeys.self)
         
         // Decode each of the properties
+        currency = try values.decode(String.self, forKey: .currency)
         id = try values.decode(String.self, forKey: .id)
         shouldUse = try values.decode(Bool.self, forKey: .shouldUse)
         let createdAtTimestamp = try values.decode(String.self, forKey: .createdAt)

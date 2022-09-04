@@ -224,10 +224,10 @@ class ItemViewController: LoggingViewController {
         addToWishlistButton?.configure(for: item)
         let nameWithoutVendor = item.nameWithoutVendor
         nameLabels.forEach { $0.text = nameWithoutVendor }
-        //title = item.price.asPrice
+        //title = item.price.asPrice(feedID: item.feedID)
         
         // Set price to label
-        priceLabels.forEach  { $0.text = item.price.asPrice }
+        priceLabels.forEach  { $0.text = item.price.asPrice(feedID: item.feedID) }
         
         let vendorUppercased = item.vendorName.uppercased()
         vendorLabels.forEach { $0.text = vendorUppercased }

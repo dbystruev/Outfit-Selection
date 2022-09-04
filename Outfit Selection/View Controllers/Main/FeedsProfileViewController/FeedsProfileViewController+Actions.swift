@@ -16,7 +16,7 @@ extension FeedsProfileViewController {
         navigationItem.hidesBackButton = true
         
         // Restore selected feedsSource
-        FeedsProfile.restore()
+        Feeds.restore()
         
         // Return to called viewController
         navigationController?.popViewController(animated: true)
@@ -24,9 +24,9 @@ extension FeedsProfileViewController {
     
     /// Call when save button  tapped
     @IBAction func saveButtonTapped() {
-        if feedProfileSelectedFeedsIDs != [String](FeedsProfile.all.selected.feedsIDs) {
+        if feedProfileSelectedFeedsIDs != [String](Feeds.all.selected.feedsIDs) {
             // Save selected feeds to user default
-            FeedsProfile.save()
+            Feeds.save()
             // Post notification with name
             Global.Notification.notificationCenter.post(
                 name: Notification.Name(nameNotification),
@@ -45,11 +45,11 @@ extension FeedsProfileViewController {
         let isSelected = sender.isButtonSelected
         
         // Select / deselect all occasions save the selection to permanent storage
-        for (index ,name) in FeedsProfile.all.names.enumerated() {
-            guard let feed = FeedsProfile.all.first(where: { $0.name == name }) else { return }
+        for (index ,name) in Feeds.all.names.enumerated() {
+            guard let feed = Feeds.all.first(where: { $0.name == name }) else { return }
             
             // Set isSelected for CheckBox but without save it
-            FeedsProfile.selectWithoutSaving(feed: feed, shouldUse: isSelected )
+            Feeds.selectWithoutSaving(feed: feed, shouldUse: isSelected )
             
             // Find cell and IndexPath for it
             let cell = feedsTableView.visibleCells[index]

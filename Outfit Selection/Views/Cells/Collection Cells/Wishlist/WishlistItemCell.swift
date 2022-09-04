@@ -31,9 +31,9 @@ class WishlistItemCell: WishlistBaseCell {
         super.configure(with: item, delegate: delegate)
         
         // Configure labels
-        nameLabel.text = self.item?.nameWithoutVendor
-        priceLabel.text = self.item?.price.asPrice
-        vendorLabel.text = self.item?.vendorName.capitalizingFirstLetter
+        nameLabel.text = item.nameWithoutVendor
+        priceLabel.text = item.price.asPrice(feedID: item.feedID)
+        vendorLabel.text = item.vendorName.capitalizingFirstLetter
         
         // Load the picture
         pictureImageView.configure(with: item.pictures.first)

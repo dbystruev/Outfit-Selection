@@ -22,7 +22,7 @@ class FeedsCollectionViewCell: UICollectionViewCell {
     ///   - hideChevron: true if chevron has to be hidden
     ///   - customLabel: nil by default. If not nil, use instead of feed.name
     func configure(
-        with feed: FeedProfile,
+        with feed: Feed,
         hideChevron: Bool = true,
         customLabel: String? = nil) {
             logoImageView.configure(with: feed.picture)

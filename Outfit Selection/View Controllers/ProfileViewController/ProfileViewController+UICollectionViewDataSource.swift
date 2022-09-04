@@ -79,9 +79,9 @@ extension ProfileViewController: UICollectionViewDataSource {
             let cell = collectionView
                 .dequeueReusableCell(withReuseIdentifier: FeedsCollectionViewCell.reuseId, for: indexPath)
             let feedCell = cell as? FeedsCollectionViewCell
-            let allFeeds = FeedsProfile.all
+            let allFeeds = Feeds.all
             let selectedFeeds = allFeeds.selected
-            let feed = selectedFeeds[indexPath.row]
+            let feed = selectedFeeds[safe: indexPath.row] ?? allFeeds[0]
             shouldShowSummary(of: selectedFeeds) ? feedCell?.configure(
                 with: feed,
                 hideChevron: false,
@@ -144,7 +144,7 @@ extension ProfileViewController: UICollectionViewDataSource {
             return shouldShowSummary(of: occasionsSelected) ? 1 : occasionsSelected.count
         case 4:
             // Section 4 is feeds — show a summary or selected feeds.
-            let feedsSelected = FeedsProfile.all.selected
+            let feedsSelected = Feeds.all.selected
             return shouldShowSummary(of: feedsSelected) ? 1 : feedsSelected.count
             
         default:

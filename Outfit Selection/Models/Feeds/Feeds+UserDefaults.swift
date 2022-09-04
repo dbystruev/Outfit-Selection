@@ -1,5 +1,5 @@
 //
-//  FeedsProfile+UserDefaults.swift
+//  Feeds+UserDefaults.swift
 //  Outfit Selection
 //
 //  Created by Evgeniy Goncharov on 05.05.2022.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-extension FeedsProfile {
+extension Feeds {
     // MARK: - Static Methods
     /// Save selected feeds to user defaults
     static func save() {
@@ -18,7 +18,7 @@ extension FeedsProfile {
     
     /// Load selected feeds from user defaults
     static func restore() {
-        for feed in FeedsProfile.all {
+        for feed in Feeds.all {
             guard !UserDefaults.selectedFeedsIDs.isEmpty else { return }
             
             // Check saved id into current FeedsSource
@@ -27,8 +27,8 @@ extension FeedsProfile {
                 continue
             }
             
-            guard let feed = FeedsProfile.all.first(where: { $0.id == feedIDs }) else {
-                debug("WARNING: Can't find \(feedIDs) into \(FeedsProfile.all)")
+            guard let feed = Feeds.all.first(where: { $0.id == feedIDs }) else {
+                debug("WARNING: Can't find \(feedIDs) into \(Feeds.all)")
                 return
             }
             
