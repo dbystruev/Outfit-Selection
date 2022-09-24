@@ -30,24 +30,21 @@ extension ProfileViewController: UICollectionViewDelegateFlowLayout {
     /// - Returns: size for the item with index path provided
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
-        case 0:
-            // Section 0 is account - 1 item per row
+        // Section 0 is account, 1 is gender, 2 is currency - one item per row
+        case Section.account.rawValue, Section.gender.rawValue, Section.currency.rawValue:
             return CGSize(width: collectionView.bounds.width, height: CGFloat(profileCellHeight))
-        case 1:
-            // Section 1 is gender - 1 item per row
-            return CGSize(width: collectionView.bounds.width, height: CGFloat(profileCellHeight))
-        case 2:
-            // Section 2 is brands — reuse brands view controller to answer
+        // Section 3 is brands — reuse brands view controller to answer
+        case Section.brands.rawValue:
             guard let brandsViewController = showBrandsViewController else {
                 return CGSize(width: collectionView.bounds.width, height: CGFloat(profileCellHeight))
             }
             return brandsViewController
                 .collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath)
-        case 3:
-            // Section 3 is occasions — reuse occasion view controller to answer
+        // Section 4 is occasions — reuse occasion view controller to answer
+        case Section.occasions.rawValue:
             return CGSize(width: collectionView.bounds.width, height: CGFloat(profileCellHeight))
-        case 4:
-            // Section 4 is feed with selected feeds
+        // Section 5 is feed with selected feeds
+        case Section.feeds.rawValue:
             return CGSize(width: collectionView.bounds.width, height: CGFloat(profileCellHeight))
         default:
             debug("WARNING: Unknown section \(indexPath.section)")

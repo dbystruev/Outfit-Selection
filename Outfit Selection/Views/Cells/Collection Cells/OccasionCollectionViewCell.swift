@@ -21,13 +21,15 @@ class OccasionCollectionViewCell: UICollectionViewCell {
     ///   - hideCheckBox: true if check box has to be hidden
     ///   - hideChevron: true if chevron has to be hidden
     ///   - customLabel: nil by default. If not nil, use instead of occasion.title
+    ///   - customSelected: if true select the checkbox, nil by default
     func configure(
         with occasion: Occasion? = nil,
         hideCheckBox: Bool = false,
         hideChevron: Bool = true,
-        customLabel: String? = nil
+        customLabel: String? = nil,
+        customSelected: Bool? = nil
     ) {
-        checkBoxImageView.isHighlighted = occasion?.isSelected == true
+        checkBoxImageView.isHighlighted = occasion?.isSelected == true || customSelected == true
         checkBoxImageView.isHidden = hideCheckBox
         chevronImageView.isHidden = hideChevron
         occasionNameLabel.text = customLabel ?? occasion?.title

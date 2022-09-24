@@ -16,7 +16,8 @@ extension ProfileViewController: UICollectionViewDelegate {
     ///   - indexPath: item index path the user has tapped on
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch indexPath.section {
-        case 0:
+        // Section 0 is account — log in / log out
+        case Section.account.rawValue:
             //debug(indexPath.row, User.current.isLoggedIn, User.current.sequenceCredentials[indexPath.row])
             // logout current user
             if User.current.isLoggedIn != nil {
@@ -30,8 +31,8 @@ extension ProfileViewController: UICollectionViewDelegate {
                 let signupViewController = mainStoryboard.instantiateViewController(withIdentifier: "SignupViewController")
                 navigationController?.showDetailViewController(signupViewController, sender: nil)
             }
-        case 1:
-            // Section 0 is gender — check if the user wants to change it
+        // Section 1 is gender — check if the user wants to change it
+        case Section.gender.rawValue:
             let newGender = Gender.allCases[indexPath.row]
             guard let currentGender = Gender.current, newGender != shownGender else { return }
             if currentGender != newGender {
@@ -40,12 +41,19 @@ extension ProfileViewController: UICollectionViewDelegate {
                 if newGender != shownGender {
                     shownGender = newGender
                     if AppDelegate.canReload && collectionView.hasUncommittedUpdates == false {
-                        collectionView.reloadSections([0])
+                        collectionView.reloadSections([Section.gender.rawValue])
                     }
                 }
             }
-        case 2:
-            // Section 2 is brand — select brand and go to BrandsViewController for edit the brands list
+        // Section 2 is currency — toggle the switch
+        case Section.currency.rawValue:
+            UserDefaults.convertToAED.toggle()
+            if AppDelegate.canReload && collectionView.hasUncommittedUpdates == false {
+                collectionView.reloadSections([Section.currency.rawValue])
+            }
+            
+        // Section 3 is brands — select brand and go to BrandsViewController for edit the brands list
+        case Section.brands.rawValue:
             guard let brandsViewController = BrandsViewController.default else {
                 debug("WARNING: BrandsViewController.default is nil")
                 return
@@ -54,19 +62,17 @@ extension ProfileViewController: UICollectionViewDelegate {
             brandsViewController.setEditing(true, animated: true)
             // Load BrandsViewController
             self.navigationController?.show(brandsViewController, sender: nil)
-            
-        case 3:
-            // Section 3 is occasions — select occasion and go to OccasionsViewController for edit the occasions list
+        // Section 4 is occasions — select occasion and go to OccasionsViewController for edit the occasions list
+        case Section.occasions.rawValue:
             let mainStoryboard = UIStoryboard(name: "Welcome", bundle: nil)
             let occasionsViewController = mainStoryboard.instantiateViewController(withIdentifier: "OccasionsViewController")
             // Set isEditing true
             occasionsViewController.setEditing(true, animated: true)
             // Load OccasionsViewController
             self.navigationController?.show(occasionsViewController, sender: nil)
-        case 4:
-            // Section 4 is feeds — select feed and go to FeedsProfileViewController for edit the feeds list
+        // Section 5 is feeds — select feed and go to FeedsProfileViewController for edit the feeds list
+        case Section.feeds.rawValue:
             self.performSegue(withIdentifier: FeedsProfileViewController.segueIdentifier, sender: nil)
-            
         default:
             debug("WARNING: Unknown section \(indexPath.section), row \(indexPath.row)")
         }

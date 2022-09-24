@@ -55,9 +55,14 @@ class TabBarController: UITabBarController {
         
         // Reload section with brand from FeedCollectionViewController
         if self.selectedIndex == Global.TabBar.index.feed {
-            guard let feedCollectionViewController = findViewController(ofType: FeedCollectionViewController.self) else { return }
-            if AppDelegate.canReload && feedCollectionViewController.feedCollectionView?.hasUncommittedUpdates == false {
-                feedCollectionViewController.feedCollectionView?.reloadSections(IndexSet([0]))
+            guard let feedCollectionViewController = findViewController(
+                ofType: FeedCollectionViewController.self
+            ) else { return }
+            if
+                AppDelegate.canReload &&
+                feedCollectionViewController.feedCollectionView?.hasUncommittedUpdates == false
+            {
+                feedCollectionViewController.feedCollectionView?.reloadSections([0])
             }
         }
         

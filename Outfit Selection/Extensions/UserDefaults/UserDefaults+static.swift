@@ -16,7 +16,11 @@ extension UserDefaults {
     static var collections: Data?
     
     /// Current selected gender  by the user
-    @UserDefault(key: "GetOutfitCurrentGender", defaultValue: nil )
+    @UserDefault(key: "GetOutfitConvertToAED", defaultValue: false)
+    static var convertToAED: Bool
+    
+    /// Current selected gender  by the user
+    @UserDefault(key: "GetOutfitCurrentGender", defaultValue: nil)
     static var currentGender: Data?
     
     /// True if the user has answered the quiz questions
@@ -36,7 +40,7 @@ extension UserDefaults {
     static var selectedOccasionTitles: [String]
     
     /// The list of selectedFeedsIDs selected by the user
-    @UserDefault(key: "GetOutfitselectedFeedsIDsKey", defaultValue: [])
+    @UserDefault(key: "GetOutfitSelectedFeedsIDsKey", defaultValue: [])
     static var selectedFeedsIDs: [String]
     
     /// Wishlist items data saved by the user

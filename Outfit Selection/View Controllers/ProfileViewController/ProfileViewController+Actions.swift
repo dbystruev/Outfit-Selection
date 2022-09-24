@@ -24,7 +24,7 @@ extension ProfileViewController {
         
         // Reload data from into profileCollectionView
         if AppDelegate.canReload && profileCollectionView?.hasUncommittedUpdates == false {
-            profileCollectionView.reloadSections(IndexSet([0]))
+            profileCollectionView.reloadSections([Section.account.rawValue])
         }
         
         // Check current user for debugmode

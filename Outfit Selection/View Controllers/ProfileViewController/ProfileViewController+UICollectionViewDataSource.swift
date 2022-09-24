@@ -6,13 +6,25 @@
 //  Copyright © 2021 Denis Bystruev. All rights reserved.
 //
 
-import UIKit
 import CryptoKit
+import UIKit
 
 // MARK: - UICollectionViewDataSource
 extension ProfileViewController: UICollectionViewDataSource {
-    // MARK: - Static Properties
-    private static let sectionHeaders = ["Account"~, "Gender"~, "Brands"~, "Occasions"~, "Feeds"~]
+    // MARK: - Private Types
+    internal enum Section: Int, CaseIterable {
+        case account
+        case gender
+        case currency
+        case brands
+        case occasions
+        case feeds
+    }
+    
+    // MARK: - Private Static Properties
+    private static let sectionHeaders = [
+        "Account"~, "Gender"~, "Currency"~, "Brands"~, "Occasions"~, "Feeds"~
+    ]
     
     // MARK: - UICollectionViewDataSource Methods
     /// Get cell for the given index path in profile collection view
@@ -20,10 +32,12 @@ extension ProfileViewController: UICollectionViewDataSource {
     ///   - collectionView: profile collection view
     ///   - indexPath: index path to give the cell for
     /// - Returns: the cell for the given index path
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath
+    ) -> UICollectionViewCell {
         switch indexPath.section {
-        case 0:
-            // Section 0 is account credentials - configure account cell
+        // Section 0 is account credentials - configure account cell
+        case Section.account.rawValue:
             let cell = collectionView
                 .dequeueReusableCell(withReuseIdentifier: AccountCollectionViewCell.reuseId, for: indexPath)
             let accountCell = cell as? AccountCollectionViewCell
@@ -36,16 +50,26 @@ extension ProfileViewController: UICollectionViewDataSource {
             let credential = userCredentials.first(where: { $0.key == key })?.value ?? ""
             accountCell?.configure(key, text: credential)
             return cell
-        case 1:
-            // Section 1 is gender - configure gender cell
+        // Section 1 is gender - configure gender cell
+        case Section.gender.rawValue:
             let cell = collectionView
                 .dequeueReusableCell(withReuseIdentifier: GenderCollectionViewCell.reuseId, for: indexPath)
             let genderCell = cell as? GenderCollectionViewCell
             let gender = Gender.allCases[indexPath.row]
             genderCell?.configure(gender: gender, selected: shownGender)
             return cell
-        case 2:
-            // Section 2 is brands - use brands view controller section 0 if available to answer
+        // Section 2 is currency — use occasion cell from section 4 as placeholder
+        case Section.currency.rawValue:
+            let cell = collectionView
+                .dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
+            let occasionCell = cell as? OccasionCollectionViewCell
+            occasionCell?.configure(
+                customLabel: "Convert to AED"~,
+                customSelected: UserDefaults.convertToAED
+            )
+            return cell
+        // Section 3 is brands - use brands view controller section 0 if available to answer
+        case Section.brands.rawValue:
             if let brandsViewController = showBrandsViewController {
                 return brandsViewController.collectionView(collectionView, cellForItemAt: indexPath)
             }
@@ -59,8 +83,8 @@ extension ProfileViewController: UICollectionViewDataSource {
                 customLabel: "Selected \(Brands.selected.count) brands out of \(Brands.count)"~
             )
             return cell
-        case 3:
-            // Section 3 is Occasion - configure occasion cell
+        // Section 4 is Occasion - configure occasion cell
+        case Section.occasions.rawValue:
             let cell = collectionView
                 .dequeueReusableCell(withReuseIdentifier: OccasionCollectionViewCell.reuseId, for: indexPath)
             // Configure one cell with simple text
@@ -74,8 +98,8 @@ extension ProfileViewController: UICollectionViewDataSource {
                 customLabel: "Selected \(occasions.count) occasions out of \(Occasions.titles.count)"~
             ) : occasionCell?.configure(with: occasion)
             return cell
-        case 4:
-            // Section 4 is Feeds - configure feed cell
+        // Section 5 is Feeds - configure feed cell
+        case Section.feeds.rawValue:
             let cell = collectionView
                 .dequeueReusableCell(withReuseIdentifier: FeedsCollectionViewCell.reuseId, for: indexPath)
             let feedCell = cell as? FeedsCollectionViewCell
@@ -128,25 +152,28 @@ extension ProfileViewController: UICollectionViewDataSource {
     /// - Returns: the number of items in given section of profile collection view
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch section {
-        case 0:
-            // Section 0 is user info with avaliable properties
+        // Section 0 is user info with avaliable properties
+        case Section.account.rawValue:
             return hasAccountCredentials ? sequenceCredentials.count : 1
-        case 1:
-            // Section 1 is gender — 3 items
+        // Section 1 is gender — 3 items
+        case Section.gender.rawValue:
             return Gender.allCases.count
-        case 2:
-            // Section 2 is brands - use brands view controller section 0 if available to answer
+        // Section 2 is currency — 1 item
+        case Section.currency.rawValue:
+            return 1
+        // Section 3 is brands - use brands view controller section 0 if available to answer
+        case Section.brands.rawValue:
             guard let brandsViewController = showBrandsViewController else { return 1 }
             return brandsViewController.collectionView(collectionView, numberOfItemsInSection: 0)
-        case 3:
-            // Section 3 is occasion — show a summary or selected occasions.
+        // Section 4 is occasion — show a summary or selected occasions.
+        case Section.occasions.rawValue:
             let occasionsSelected = Occasions.selectedUniqueTitle
             return shouldShowSummary(of: occasionsSelected) ? 1 : occasionsSelected.count
-        case 4:
-            // Section 4 is feeds — show a summary or selected feeds.
+        // Section 5 is feeds — show a summary or selected feeds.
+        case Section.feeds.rawValue:
             let feedsSelected = Feeds.all.selected
             return shouldShowSummary(of: feedsSelected) ? 1 : feedsSelected.count
-            
+        // Unknown section
         default:
             debug("WARNING: Unknown section \(section)")
             return 0
@@ -156,7 +183,7 @@ extension ProfileViewController: UICollectionViewDataSource {
     /// Returns the number of sections in profile collection view: 2 (gender and brands)
     /// - Parameter collectionView: profile collection view
     /// - Returns: the number of sections in profile collection view
-    func numberOfSections(in collectionView: UICollectionView) -> Int { ProfileViewController.sectionHeaders.count }
+    func numberOfSections(in collectionView: UICollectionView) -> Int { Section.allCases.count }
     
     // MARK: - Private / Internal Properties
     /// True if user account credentials are available

@@ -2504,6 +2504,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Outfit Selection/App/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LAUNCH_SCREEN = "Launch Screen Concept";
@@ -2511,7 +2512,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.9;
+				MARKETING_VERSION = 0.9.10;
 				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.concept;
 				PRODUCT_NAME = "Concept Group";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2603,6 +2604,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Outfit Selection/App/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LAUNCH_SCREEN = "Launch Screen Raskroi";
@@ -2610,7 +2612,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.9;
+				MARKETING_VERSION = 0.9.10;
 				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.raskroi;
 				PRODUCT_NAME = Raskroi;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2764,6 +2766,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Outfit Selection/App/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LAUNCH_SCREEN = "Launch Screen";
@@ -2771,7 +2774,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.9;
+				MARKETING_VERSION = 0.9.10;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "Get Outfit";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2795,6 +2798,7 @@
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "$(SRCROOT)/Outfit Selection/App/Info.plist";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.shopping";
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.2;
 				LAUNCH_SCREEN = "Launch Screen";
@@ -2802,7 +2806,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.9;
+				MARKETING_VERSION = 0.9.10;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "Get Outfit";
