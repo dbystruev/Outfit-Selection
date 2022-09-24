@@ -20,7 +20,6 @@
 		69007CFD26EA7462001170D0 /* OccasionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CFC26EA7462001170D0 /* OccasionCell.swift */; };
 		69007D0026EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007CFF26EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift */; };
 		69007D0226EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69007D0126EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift */; };
-		6903D60227FAC9AD00FCA499 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6903D60127FAC9AD00FCA499 /* GoogleService-Info.plist */; };
 		690491F1260C6F190098F1FD /* UINavigationController+configureFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */; };
 		690491F6260C732A0098F1FD /* NotoSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */; };
 		690563A9283898D10082E655 /* AppDelegate+YandexMetrica.swift in Sources */ = {isa = PBXBuildFile; fileRef = 690563A8283898D10082E655 /* AppDelegate+YandexMetrica.swift */; };
@@ -64,6 +63,8 @@
 		691310FD28BA07E10078575E /* BrandsViewController+default.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691310FC28BA07E10078575E /* BrandsViewController+default.swift */; };
 		69149DAD272B46A30083DA27 /* ItemCatalog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69149DAC272B46A30083DA27 /* ItemCatalog.swift */; };
 		69162D9826103EEA001C97A9 /* BrandedImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69162D9726103EEA001C97A9 /* BrandedImages.swift */; };
+		6919962C28D30725007FB512 /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6919962B28D30724007FB512 /* APIKeys.plist */; };
+		6919962E28D30736007FB512 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6919962D28D30736007FB512 /* GoogleService-Info.plist */; };
 		691C5F3C26E764F200DF0758 /* CGSize+CustomStringConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F3B26E764F200DF0758 /* CGSize+CustomStringConvertible.swift */; };
 		691C5F4226E7950900DF0758 /* WishlistBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F4126E7950900DF0758 /* WishlistBaseCell.swift */; };
 		691C5F4426E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 691C5F4326E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift */; };
@@ -206,7 +207,6 @@
 		69AF26DA28388035007005AB /* YandexMobileMetrica in Frameworks */ = {isa = PBXBuildFile; productRef = 69AF26D928388035007005AB /* YandexMobileMetrica */; };
 		69AF26DC28388035007005AB /* YandexMobileMetricaCrashes in Frameworks */ = {isa = PBXBuildFile; productRef = 69AF26DB28388035007005AB /* YandexMobileMetricaCrashes */; };
 		69AF26DE28388210007005AB /* APIKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69AF26DD28388210007005AB /* APIKey.swift */; };
-		69AF26E3283889A5007005AB /* APIKeys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 69AF26E2283889A5007005AB /* APIKeys.plist */; };
 		69B3E2352743F21200A9426D /* PinnableScrollView+scrollTo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3E2342743F21200A9426D /* PinnableScrollView+scrollTo.swift */; };
 		69B3E2372743F6C700A9426D /* PinnableScrollView+Computed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B3E2362743F6C700A9426D /* PinnableScrollView+Computed.swift */; };
 		69B539F2257F9C7A00116F98 /* UIViewController+dismissRoot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69B539F1257F9C7A00116F98 /* UIViewController+dismissRoot.swift */; };
@@ -368,7 +368,6 @@
 		69007CFC26EA7462001170D0 /* OccasionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OccasionCell.swift; sourceTree = "<group>"; };
 		69007CFF26EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OccasionsViewController+UITableViewDataSource.swift"; sourceTree = "<group>"; };
 		69007D0126EA7B3D001170D0 /* OccasionsViewController+UITableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OccasionsViewController+UITableViewDelegate.swift"; sourceTree = "<group>"; };
-		6903D60127FAC9AD00FCA499 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		690491F0260C6F190098F1FD /* UINavigationController+configureFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINavigationController+configureFont.swift"; sourceTree = "<group>"; };
 		690491F5260C732A0098F1FD /* NotoSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "NotoSans-Bold.ttf"; sourceTree = "<group>"; };
 		690563A8283898D10082E655 /* AppDelegate+YandexMetrica.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AppDelegate+YandexMetrica.swift"; sourceTree = "<group>"; };
@@ -412,6 +411,8 @@
 		691310FC28BA07E10078575E /* BrandsViewController+default.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+default.swift"; sourceTree = "<group>"; };
 		69149DAC272B46A30083DA27 /* ItemCatalog.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemCatalog.swift; sourceTree = "<group>"; };
 		69162D9726103EEA001C97A9 /* BrandedImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandedImages.swift; sourceTree = "<group>"; };
+		6919962B28D30724007FB512 /* APIKeys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
+		6919962D28D30736007FB512 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		691C5F3B26E764F200DF0758 /* CGSize+CustomStringConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGSize+CustomStringConvertible.swift"; sourceTree = "<group>"; };
 		691C5F4126E7950900DF0758 /* WishlistBaseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WishlistBaseCell.swift; sourceTree = "<group>"; };
 		691C5F4326E79C1600DF0758 /* WishlistViewController+ButtonDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WishlistViewController+ButtonDelegate.swift"; sourceTree = "<group>"; };
@@ -557,7 +558,6 @@
 		69AE955E256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollView+UIGestureRecognizerDelegate.swift"; sourceTree = "<group>"; };
 		69AEC9E725BF014100183E15 /* GenderButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GenderButton.swift; sourceTree = "<group>"; };
 		69AF26DD28388210007005AB /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
-		69AF26E2283889A5007005AB /* APIKeys.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = APIKeys.plist; sourceTree = "<group>"; };
 		69B3E2342743F21200A9426D /* PinnableScrollView+scrollTo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollView+scrollTo.swift"; sourceTree = "<group>"; };
 		69B3E2362743F6C700A9426D /* PinnableScrollView+Computed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PinnableScrollView+Computed.swift"; sourceTree = "<group>"; };
 		69B539F1257F9C7A00116F98 /* UIViewController+dismissRoot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+dismissRoot.swift"; sourceTree = "<group>"; };
@@ -1417,9 +1417,9 @@
 		69A6F6E722BA26B7002A3B49 = {
 			isa = PBXGroup;
 			children = (
+				6919962D28D30736007FB512 /* GoogleService-Info.plist */,
+				6919962B28D30724007FB512 /* APIKeys.plist */,
 				6953680125F7B5590024EC8B /* .gitignore */,
-				69AF26E2283889A5007005AB /* APIKeys.plist */,
-				6903D60127FAC9AD00FCA499 /* GoogleService-Info.plist */,
 				69A6F6F222BA26B7002A3B49 /* Outfit Selection */,
 				69A6F6F122BA26B7002A3B49 /* Products */,
 				696E876E25647C0F0061802E /* README.md */,
@@ -1990,7 +1990,6 @@
 				69DFE5BA2735295E00D46B5F /* Welcome.storyboard in Resources */,
 				69827B24273BED6F00C59D68 /* Localizable.strings in Resources */,
 				7A2039EA27FF190B00CD4B93 /* Signup.storyboard in Resources */,
-				6903D60227FAC9AD00FCA499 /* GoogleService-Info.plist in Resources */,
 				7A2039D927FC255C00CD4B93 /* AccountCollectionViewCell.xib in Resources */,
 				69827B1E273BD02900C59D68 /* strings.numbers in Resources */,
 				69DFE5C627365CFC00D46B5F /* Wishlist.storyboard in Resources */,
@@ -2002,12 +2001,13 @@
 				69C5CBFF260A1F2200DE22E6 /* NotoSans-Regular.ttf in Resources */,
 				690623A4270C633800813089 /* Screenshot15.png in Resources */,
 				69DFE5AE2735275500D46B5F /* Launch Screen Concept.storyboard in Resources */,
+				6919962E28D30736007FB512 /* GoogleService-Info.plist in Resources */,
 				7AC0412F28229FD600CA7E5E /* FeedsCollectionViewCell.xib in Resources */,
 				690623A2270C633800813089 /* Screenshot14.png in Resources */,
 				69C5CBF5260A1ED800DE22E6 /* NotoSans-SemiBold.ttf in Resources */,
 				690623A9270C633800813089 /* Screenshot02.png in Resources */,
 				693D7286256BF1EA00540C10 /* Brands.bundle in Resources */,
-				69AF26E3283889A5007005AB /* APIKeys.plist in Resources */,
+				6919962C28D30725007FB512 /* APIKeys.plist in Resources */,
 				690623B6270C6FA000813089 /* get_outfit_app.png in Resources */,
 				7AD80C2027D0E0E2005A36DC /* brands.csv in Resources */,
 				690623A3270C633800813089 /* Screenshot11.png in Resources */,
@@ -2496,7 +2496,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.07.27;
+				CURRENT_PROJECT_VERSION = 2022.09.21;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2511,7 +2511,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.8;
+				MARKETING_VERSION = 0.9.9;
 				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.concept;
 				PRODUCT_NAME = "Concept Group";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2595,7 +2595,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.07.27;
+				CURRENT_PROJECT_VERSION = 2022.09.21;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2610,7 +2610,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.8;
+				MARKETING_VERSION = 0.9.9;
 				PRODUCT_BUNDLE_IDENTIFIER = app.getoutfit.raskroi;
 				PRODUCT_NAME = Raskroi;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2727,6 +2727,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				EXCLUDED_ARCHS = "";
+				"EXCLUDED_ARCHS[sdk=*]" = arm7v;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2755,7 +2756,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.07.27;
+				CURRENT_PROJECT_VERSION = 2022.09.21;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				EXCLUDED_ARCHS = "";
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2770,7 +2771,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.8;
+				MARKETING_VERSION = 0.9.9;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "Get Outfit";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2787,7 +2788,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Outfit Selection/Outfit Selection.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2022.07.27;
+				CURRENT_PROJECT_VERSION = 2022.09.21;
 				DEVELOPMENT_TEAM = 8J39KF9DMS;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2801,7 +2802,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.8;
+				MARKETING_VERSION = 0.9.9;
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_BUNDLE_IDENTIFIER = ru.getoutfit.stylist;
 				PRODUCT_NAME = "Get Outfit";
