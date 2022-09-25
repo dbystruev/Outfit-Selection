@@ -33,6 +33,6 @@ extension ProfileViewController {
         version = versionBundle.isEmpty
         ? nil
         : "v\(versionBundle.joined(separator: " build "))"
-        + " " + (NetworkManager.shared.url.host?.dropExtension.dropExtension ?? "")
+        + " " + (NetworkManager.shared.urlRequest.url?.host?.dropExtension.dropExtension ?? "")
     }
 }

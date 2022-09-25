@@ -8,10 +8,25 @@
 
 import UIKit
 
-class NetworkManager {
+public class NetworkManager {
+    // MARK: - Public Types
+    public enum Kind {
+        case `default`
+        case quiz
+    }
+    
     // MARK: - Static Properties
-    static let defaultURL = URL(string: "http://oracle.getoutfit.net:3000")!
-    static let shared = NetworkManager()
+    /// Base URL for getting feeds data
+    internal static let defaultURL = URL(string: "http://oracle.getoutfit.net:3000")!
+    
+    /// Base URL for getting / sending information from / to Airtable
+    private static let quizURL = URL(string: "https://api.airtable.com/v0/appX2PtrqF5elfb9C")!
+    
+    /// Instance for Airtable female quiz
+    public static let quiz = NetworkManager(.quiz)
+    
+    /// Default shared instance of Network Manager
+    public static let shared = NetworkManager(.default)!
     
     // MARK: - Stored Properties
     /// Maximum number of simultaneous get requests (image loading is not counted)
@@ -35,8 +50,8 @@ class NetworkManager {
         }
     }
     
-    /// API server URL
-    var url: URL
+    /// API server URL Request
+    private(set) var urlRequest: URLRequest
     
     /// Map short vendor names to full vendor names
     var fullVendorNames: [String: String] = {
@@ -52,8 +67,25 @@ class NetworkManager {
     }
     
     // MARK: - Init
-    private init(_ url: URL? = nil) {
-        self.url = url ?? NetworkManager.defaultURL
+    /// Init network manager with Airtable base URL depending on quiz gender
+    /// - Parameter kind: network manager kind — .default or .quiz
+    convenience init?(_ kind: Kind) {
+        switch kind {
+        case .default:
+            self.init(URLRequest(url: NetworkManager.defaultURL))
+        case .quiz:
+            guard let airtableApiKey = Global.apiKeys[.airtableApiKey] else {
+                debug("ERROR: airtableApiKey is not set in APIKeys.plist")
+                return nil
+            }
+            var request = URLRequest(url: NetworkManager.quizURL)
+            request.setValue("Bearer \(airtableApiKey)", forHTTPHeaderField: "Authorization")
+            self.init(request)
+        }
+    }
+    
+    private init(_ request: URLRequest? = nil) {
+        urlRequest = request ?? URLRequest(url: NetworkManager.defaultURL)
     }
     
     /// Decode the data given with JSON
@@ -95,24 +127,28 @@ class NetworkManager {
     
     /// Send get request with parameters and call completion when done
     /// - Parameters:
-    ///   - path: path to add to server URL
+    ///   - path: path to add to server URL, nil by default
     ///   - parameters: query parameters to add to request
     ///   - serverURL: use serverURL for request if not nil, otherwise use self.url
     ///   - completion: closure called after request is finished, with data if successfull, or with nil if not
     func get<T: Codable>(
-        _ path: String,
+        _ path: String? = nil,
         parameters: [String: Any] = [:],
         from serverURL: URL? = nil,
         completion: @escaping (T?) -> Void
     ) {
-        
         // Compose the request URL
-        let requestPath = (serverURL ?? url).appendingPathComponent(path)
-        let request = parameters.isEmpty ? requestPath : requestPath.withQueries(parameters)
+        var request = URLRequest(serverURL) ?? urlRequest
+        if let path = path {
+            request.url = request.url?.appendingPathComponent(path)
+        }
+        if !parameters.isEmpty {
+            request.url = request.url?.withQueries(parameters)
+        }
         
         // Check if we already may have the needed request in the cache
         if
-            let response = Logger.get(for: request.absoluteString),
+            let response = Logger.get(for: request.url?.absoluteString),
             let data = response.data(using: .utf8),
             let decodedData: T = decode(data)
         {
@@ -156,7 +192,7 @@ class NetworkManager {
             
             // Store the message in logger cache
             let message = String(data: data, encoding: .utf8)
-            Logger.log(key: request.absoluteString, message)
+            Logger.log(key: request.url?.absoluteString, message)
             //debug(request.absoluteURL)
             completion(decodedData)
         }
@@ -173,8 +209,11 @@ class NetworkManager {
     func head<T: Codable>(_ path: String, parameters: [String: Any] = [:], header: String, completion: @escaping (T?) -> Void) {
         
         // Compose the request URL
-        let requestPath = url.appendingPathComponent(path)
-        let request = parameters.isEmpty ? requestPath : requestPath.withQueries(parameters)
+        var request = urlRequest
+        request.url = request.url?.appendingPathComponent(path)
+        if !parameters.isEmpty {
+            request.url = request.url?.withQueries(parameters)
+        }
         
         // Configure URLSession
         let configuration = URLSessionConfiguration.default
@@ -570,7 +609,7 @@ class NetworkManager {
                 updated = true
                 
                 // Update server URL and logger's should log
-                self?.url = server.url
+                self?.urlRequest = URLRequest(url: server.url)
                 debug("INFO: Updated server to \(server.url)")
                 
                 completion(true)

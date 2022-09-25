@@ -151,6 +151,9 @@
 		697D628727BDE9E900EA0F40 /* ProfileViewController+version.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697D628627BDE9E900EA0F40 /* ProfileViewController+version.swift */; };
 		697E1FDD25ECF0E8008C85C9 /* UITabBarController+findViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */; };
 		697E1FE125ED01A6008C85C9 /* IntermediaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */; };
+		697F992428E0186E00C2435E /* Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697F992328E0186E00C2435E /* Quiz.swift */; };
+		697F992728E0198800C2435E /* NetworkManager+Quiz.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697F992628E0198800C2435E /* NetworkManager+Quiz.swift */; };
+		697F992928E01A5A00C2435E /* QuizGender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 697F992828E01A5A00C2435E /* QuizGender.swift */; };
 		6981670B27DDE46C00320245 /* Localizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 6981670D27DDE46C00320245 /* Localizable.stringsdict */; };
 		69827B1E273BD02900C59D68 /* strings.numbers in Resources */ = {isa = PBXBuildFile; fileRef = 69827B19273BD02900C59D68 /* strings.numbers */; };
 		69827B21273BD02900C59D68 /* storyboards.sh in Resources */ = {isa = PBXBuildFile; fileRef = 69827B1D273BD02900C59D68 /* storyboards.sh */; };
@@ -274,6 +277,7 @@
 		69EB6B7A282126B50022338F /* Feeds.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EB6B79282126B50022338F /* Feeds.swift */; };
 		69EB8BB525EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */; };
 		69ECB1A8232374CD00FB42B9 /* PinnableScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */; };
+		69EEEBD128E0586900CC5D81 /* URLRequest+init.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69EEEBD028E0586900CC5D81 /* URLRequest+init.swift */; };
 		69F046F926FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F046F826FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift */; };
 		69F60BCC272BC5EB004C4EA3 /* Corner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F60BCB272BC5EB004C4EA3 /* Corner.swift */; };
 		69F60BCE272BC676004C4EA3 /* Corners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69F60BCD272BC676004C4EA3 /* Corners.swift */; };
@@ -497,6 +501,9 @@
 		697D628627BDE9E900EA0F40 /* ProfileViewController+version.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+version.swift"; sourceTree = "<group>"; };
 		697E1FDC25ECF0E8008C85C9 /* UITabBarController+findViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITabBarController+findViewController.swift"; sourceTree = "<group>"; };
 		697E1FE025ED01A6008C85C9 /* IntermediaryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntermediaryViewController.swift; sourceTree = "<group>"; };
+		697F992328E0186E00C2435E /* Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quiz.swift; sourceTree = "<group>"; };
+		697F992628E0198800C2435E /* NetworkManager+Quiz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NetworkManager+Quiz.swift"; sourceTree = "<group>"; };
+		697F992828E01A5A00C2435E /* QuizGender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuizGender.swift; sourceTree = "<group>"; };
 		6981670C27DDE46C00320245 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		6981670E27DDE46F00320245 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/Localizable.stringsdict; sourceTree = "<group>"; };
 		69827B19273BD02900C59D68 /* strings.numbers */ = {isa = PBXFileReference; lastKnownFileType = file; path = strings.numbers; sourceTree = "<group>"; };
@@ -635,6 +642,7 @@
 		69EB6B79282126B50022338F /* Feeds.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feeds.swift; sourceTree = "<group>"; };
 		69EB8BB425EC27C800F56CC8 /* ProfileViewController+UICollectionViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ProfileViewController+UICollectionViewDelegate.swift"; sourceTree = "<group>"; };
 		69ECB1A7232374CD00FB42B9 /* PinnableScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PinnableScrollView.swift; sourceTree = "<group>"; };
+		69EEEBD028E0586900CC5D81 /* URLRequest+init.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLRequest+init.swift"; sourceTree = "<group>"; };
 		69F046F826FDD606002E16C0 /* BrandsViewController+UISearchBarDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BrandsViewController+UISearchBarDelegate.swift"; sourceTree = "<group>"; };
 		69F60BCB272BC5EB004C4EA3 /* Corner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corner.swift; sourceTree = "<group>"; };
 		69F60BCD272BC676004C4EA3 /* Corners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Corners.swift; sourceTree = "<group>"; };
@@ -874,6 +882,7 @@
 				69007CED26EA6396001170D0 /* Occasions */,
 				6957565C27158A99007ADE02 /* Onboarding */,
 				69A0C9E42704675400C49977 /* Pick */,
+				697F992228E0185300C2435E /* Quiz */,
 				69AD31D7281E909E0094C3F9 /* Servers */,
 				7AC21E7327FB1956006E1ED5 /* User */,
 				698A7F8D26E8E26B006C36FD /* Wishlists */,
@@ -894,7 +903,7 @@
 				693D7291256BFDD700540C10 /* ItemManager.swift */,
 				699AAB7F26CD72AE001F6522 /* Logger.swift */,
 				7ACB354227AD093B00DC0EDC /* NavigationManager.swift */,
-				692C940E254700FC0075BD92 /* NetworkManager.swift */,
+				697F992528E0195F00C2435E /* Network */,
 				69BEC0EF27298C250034F454 /* StandardErrorOutputStream.swift */,
 				69D7CB4F28B72D7A00A8E6FF /* Telegram.swift */,
 				69A0C9E92705B3F200C49977 /* WhiteLabel.swift */,
@@ -1178,6 +1187,24 @@
 				6986611A25700ED2008F94CA /* Double+asTime.swift */,
 			);
 			path = Double;
+			sourceTree = "<group>";
+		};
+		697F992228E0185300C2435E /* Quiz */ = {
+			isa = PBXGroup;
+			children = (
+				697F992328E0186E00C2435E /* Quiz.swift */,
+				697F992828E01A5A00C2435E /* QuizGender.swift */,
+			);
+			path = Quiz;
+			sourceTree = "<group>";
+		};
+		697F992528E0195F00C2435E /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				692C940E254700FC0075BD92 /* NetworkManager.swift */,
+				697F992628E0198800C2435E /* NetworkManager+Quiz.swift */,
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		69827B17273BD02900C59D68 /* Localization */ = {
@@ -1775,8 +1802,9 @@
 		7A1C8A4827AB74E90038DF28 /* URL */ = {
 			isa = PBXGroup;
 			children = (
-				692C9416254708830075BD92 /* URL+withQueries.swift */,
 				7A1C8A4627AA85490038DF28 /* URL+getParameters.swift */,
+				692C9416254708830075BD92 /* URL+withQueries.swift */,
+				69EEEBD028E0586900CC5D81 /* URLRequest+init.swift */,
 			);
 			path = URL;
 			sourceTree = "<group>";
@@ -2209,6 +2237,7 @@
 				697E1FDD25ECF0E8008C85C9 /* UITabBarController+findViewController.swift in Sources */,
 				698A7F9826E92106006C36FD /* Wishlist+all.swift in Sources */,
 				69AF26DE28388210007005AB /* APIKey.swift in Sources */,
+				697F992928E01A5A00C2435E /* QuizGender.swift in Sources */,
 				7AEB482527CE246A003360CF /* ItemImageView.swift in Sources */,
 				695A1ACF27186F920028FB9D /* Array+chunked.swift in Sources */,
 				69AE955F256403D600850210 /* PinnableScrollView+UIGestureRecognizerDelegate.swift in Sources */,
@@ -2241,6 +2270,7 @@
 				696209A426FB969400B46FE8 /* LoggingViewController.swift in Sources */,
 				69297C5225EB852700A8684E /* BrandCollectionViewCell.swift in Sources */,
 				69BA640425E66EDE00C805B6 /* ProgressViewController.swift in Sources */,
+				697F992428E0186E00C2435E /* Quiz.swift in Sources */,
 				69DA789A2746B34E00196615 /* ImageCollectionViewModels.swift in Sources */,
 				695295BE27E9BD6800D34C3A /* ChatViewController.swift in Sources */,
 				6957565B27158987007ADE02 /* Onboarding.swift in Sources */,
@@ -2279,6 +2309,7 @@
 				69FB0EA12714656D006C20E9 /* Occasion+CustomStringConvertible.swift in Sources */,
 				69007D0026EA7738001170D0 /* OccasionsViewController+UITableViewDataSource.swift in Sources */,
 				69B539F2257F9C7A00116F98 /* UIViewController+dismissRoot.swift in Sources */,
+				69EEEBD128E0586900CC5D81 /* URLRequest+init.swift in Sources */,
 				69297C5F25EBC9FE00A8684E /* GenderCollectionViewCell.swift in Sources */,
 				69D984E6272FC3CE003E1BAC /* NSObject+className.swift in Sources */,
 				6986613325706B6B008F94CA /* BrandsViewController+UICollectionViewDelegate.swift in Sources */,
@@ -2286,6 +2317,7 @@
 				699632A726FCA42100841B6F /* AppDelegate+update.swift in Sources */,
 				69BA5DCB27F58E5700426D26 /* Link.swift in Sources */,
 				6978202F2587BCAA007D4CCB /* ImageCollectionViewModel.swift in Sources */,
+				697F992728E0198800C2435E /* NetworkManager+Quiz.swift in Sources */,
 				692C940A2546FB8D0075BD92 /* Gender.swift in Sources */,
 				7AB1805B283B946600C28848 /* FeedCollectionViewController+Picks.swift in Sources */,
 				69C3696725E79ED3000A8E5E /* WishlistViewController.swift in Sources */,

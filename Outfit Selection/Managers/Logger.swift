@@ -165,10 +165,10 @@ public class Logger {
     /// Getter to the private logs
     /// - Parameter key: the key
     /// - Returns: message stored under the key
-    static func get(for key: String) -> String? {
+    static func get(for key: String?) -> String? {
+        guard let key = key else { return nil }
         // Check first if we have loaded the cache files
         if !initialized { logs = savedLogs }
-        
         return logs[key]
     }
     
@@ -177,9 +177,9 @@ public class Logger {
     /// - Parameters:
     ///   - key: the key to store the messages for
     ///   - messages: messages to store under the key
-    static func log(key: String, _ messages: CustomStringConvertible?...) {
+    static func log(key: String?, _ messages: CustomStringConvertible?...) {
         // Check if we should log at all
-        guard shouldLog else { return }
+        guard let key = key, shouldLog else { return }
         
         // Excluded keys we never cache
         let excluded = [NetworkManager.defaultURL.absoluteString + "/server"]

@@ -43,6 +43,11 @@ extension ProfileViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        // TODO: Move under profile quiz subsection
+        NetworkManager.getQuiz(for: QuizGender(Gender.current)) { quiz in
+            guard let quiz = quiz else { return }
+            debug(quiz.records)
+        }
         
         // Configure user profile section
         configureUserCredentials()

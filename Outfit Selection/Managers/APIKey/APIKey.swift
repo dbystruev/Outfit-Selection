@@ -10,6 +10,7 @@ import Foundation
 
 /// Cases used as keys for Global.apiKeys dictionary
 public enum APIKey: String {
+    case airtableApiKey
     case appleAppID
     case appsFlyerDevKey
     case telegramApiHash
